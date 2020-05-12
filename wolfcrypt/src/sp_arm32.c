@@ -20618,7 +20618,7 @@ static void sp_4096_to_bin(sp_digit* r, byte* a)
     }
 }
 
-#ifndef WOLFSSL_SP_SMALL
+#ifdef WOLFSSL_SP_SMALL
 /* Add b to a into r. (r = a + b)
  *
  * r  A single precision integer.
@@ -20897,6 +20897,10 @@ static sp_digit sp_4096_add_64(sp_digit* r, const sp_digit* a,
     return c;
 }
 
+#endif /* WOLFSSL_SP_SMALL */
+
+
+#ifndef WOLFSSL_SP_SMALL
 /* Sub b from a into a. (a -= b)
  *
  * a  A single precision integer and result.
@@ -21961,6 +21965,8 @@ static sp_digit sp_4096_add_128(sp_digit* r, const sp_digit* a,
 
     return c;
 }
+
+#ifdef WOLFSSL_SP_SMALL
 
 /* Multiply a and b into r. (r = a * b)
  *
@@ -50905,6 +50911,7 @@ static void sp_4096_mul_64(sp_digit* r, const sp_digit* a, const sp_digit* b)
     );
 }
 
+
 /* AND m into each word of a and store in r.
  *
  * r  A single precision integer.
@@ -50934,6 +50941,8 @@ static void sp_4096_mask_64(sp_digit* r, const sp_digit* a, sp_digit m)
     }
 #endif
 }
+
+#endif /* WOLFSSL_SP_SMALL */
 
 /* Multiply a and b into r. (r = a * b)
  *
@@ -50967,6 +50976,9 @@ SP_NOINLINE static void sp_4096_mul_128(sp_digit* r, const sp_digit* a,
     XMEMSET(r + 192 + 1, 0, sizeof(sp_digit) * (64 - 1));
     (void)sp_4096_add_128(r + 128, r + 128, z2);
 }
+
+
+#ifdef WOLFSSL_SP_SMALL
 
 /* Square a and put result in r. (r = a * a)
  *
@@ -66354,6 +66366,8 @@ static void sp_4096_sqr_64(sp_digit* r, const sp_digit* a)
         : "memory", "r2", "r3", "r4", "r8", "r9", "r10", "r8", "r5", "r6", "r7", "r14"
     );
 }
+
+#endif /* WOLFSSL_SP_SMALL */
 
 /* Square a and put result in r. (r = a * a)
  *
