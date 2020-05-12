@@ -20618,7 +20618,8 @@ static void sp_4096_to_bin(sp_digit* r, byte* a)
     }
 }
 
-#ifdef WOLFSSL_SP_SMALL
+#if defined(WOLFSSL_SP_SMALL) && !defined(WOLFSSL_SP_ARM32_ASM)
+
 /* Add b to a into r. (r = a + b)
  *
  * r  A single precision integer.
