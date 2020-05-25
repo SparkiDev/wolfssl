@@ -243,8 +243,8 @@ extern void sp_2048_mont_reduce_16(sp_digit* a, const sp_digit* m, sp_digit mp);
  * m   Modulus (prime).
  * mp  Montogmery mulitplier.
  */
-static void sp_2048_mont_mul_16(sp_digit* r, const sp_digit* a, const sp_digit* b,
-        const sp_digit* m, sp_digit mp)
+static void sp_2048_mont_mul_16(sp_digit* r, const sp_digit* a,
+        const sp_digit* b, const sp_digit* m, sp_digit mp)
 {
     sp_2048_mul_16(r, a, b);
     sp_2048_mont_reduce_16(r, m, mp);
@@ -257,8 +257,8 @@ static void sp_2048_mont_mul_16(sp_digit* r, const sp_digit* a, const sp_digit* 
  * m   Modulus (prime).
  * mp  Montogmery mulitplier.
  */
-static void sp_2048_mont_sqr_16(sp_digit* r, const sp_digit* a, const sp_digit* m,
-        sp_digit mp)
+static void sp_2048_mont_sqr_16(sp_digit* r, const sp_digit* a,
+        const sp_digit* m, sp_digit mp)
 {
     sp_2048_sqr_16(r, a);
     sp_2048_mont_reduce_16(r, m, mp);
@@ -326,8 +326,8 @@ extern int64_t sp_2048_cmp_16(const sp_digit* a, const sp_digit* b);
  * r  Remainder from the division.
  * returns MP_OKAY indicating success.
  */
-static WC_INLINE int sp_2048_div_16(const sp_digit* a, const sp_digit* d, sp_digit* m,
-        sp_digit* r)
+static WC_INLINE int sp_2048_div_16(const sp_digit* a, const sp_digit* d,
+        sp_digit* m, sp_digit* r)
 {
     sp_digit t1[32], t2[17];
     sp_digit div, r1;
@@ -382,7 +382,8 @@ static WC_INLINE int sp_2048_div_16(const sp_digit* a, const sp_digit* d, sp_dig
  * m  A single precision number that is the modulus to reduce with.
  * returns MP_OKAY indicating success.
  */
-static WC_INLINE int sp_2048_mod_16(sp_digit* r, const sp_digit* a, const sp_digit* m)
+static WC_INLINE int sp_2048_mod_16(sp_digit* r, const sp_digit* a,
+        const sp_digit* m)
 {
     return sp_2048_div_16(a, m, NULL, r);
 }
@@ -558,8 +559,8 @@ extern void sp_2048_mont_reduce_avx2_16(sp_digit* a, const sp_digit* m, sp_digit
  * m   Modulus (prime).
  * mp  Montogmery mulitplier.
  */
-static void sp_2048_mont_mul_avx2_16(sp_digit* r, const sp_digit* a, const sp_digit* b,
-        const sp_digit* m, sp_digit mp)
+static void sp_2048_mont_mul_avx2_16(sp_digit* r, const sp_digit* a,
+        const sp_digit* b, const sp_digit* m, sp_digit mp)
 {
     sp_2048_mul_avx2_16(r, a, b);
     sp_2048_mont_reduce_avx2_16(r, m, mp);
@@ -574,8 +575,8 @@ static void sp_2048_mont_mul_avx2_16(sp_digit* r, const sp_digit* a, const sp_di
  * m   Modulus (prime).
  * mp  Montogmery mulitplier.
  */
-static void sp_2048_mont_sqr_avx2_16(sp_digit* r, const sp_digit* a, const sp_digit* m,
-        sp_digit mp)
+static void sp_2048_mont_sqr_avx2_16(sp_digit* r, const sp_digit* a,
+        const sp_digit* m, sp_digit mp)
 {
     sp_2048_sqr_avx2_16(r, a);
     sp_2048_mont_reduce_avx2_16(r, m, mp);
@@ -773,8 +774,8 @@ extern void sp_2048_mont_reduce_32(sp_digit* a, const sp_digit* m, sp_digit mp);
  * m   Modulus (prime).
  * mp  Montogmery mulitplier.
  */
-static void sp_2048_mont_mul_32(sp_digit* r, const sp_digit* a, const sp_digit* b,
-        const sp_digit* m, sp_digit mp)
+static void sp_2048_mont_mul_32(sp_digit* r, const sp_digit* a,
+        const sp_digit* b, const sp_digit* m, sp_digit mp)
 {
     sp_2048_mul_32(r, a, b);
     sp_2048_mont_reduce_32(r, m, mp);
@@ -787,8 +788,8 @@ static void sp_2048_mont_mul_32(sp_digit* r, const sp_digit* a, const sp_digit* 
  * m   Modulus (prime).
  * mp  Montogmery mulitplier.
  */
-static void sp_2048_mont_sqr_32(sp_digit* r, const sp_digit* a, const sp_digit* m,
-        sp_digit mp)
+static void sp_2048_mont_sqr_32(sp_digit* r, const sp_digit* a,
+        const sp_digit* m, sp_digit mp)
 {
     sp_2048_sqr_32(r, a);
     sp_2048_mont_reduce_32(r, m, mp);
@@ -856,8 +857,8 @@ extern int64_t sp_2048_cmp_32(const sp_digit* a, const sp_digit* b);
  * r  Remainder from the division.
  * returns MP_OKAY indicating success.
  */
-static WC_INLINE int sp_2048_div_32(const sp_digit* a, const sp_digit* d, sp_digit* m,
-        sp_digit* r)
+static WC_INLINE int sp_2048_div_32(const sp_digit* a, const sp_digit* d,
+        sp_digit* m, sp_digit* r)
 {
     sp_digit t1[64], t2[33];
     sp_digit div, r1;
@@ -912,7 +913,8 @@ static WC_INLINE int sp_2048_div_32(const sp_digit* a, const sp_digit* d, sp_dig
  * m  A single precision number that is the modulus to reduce with.
  * returns MP_OKAY indicating success.
  */
-static WC_INLINE int sp_2048_mod_32(sp_digit* r, const sp_digit* a, const sp_digit* m)
+static WC_INLINE int sp_2048_mod_32(sp_digit* r, const sp_digit* a,
+        const sp_digit* m)
 {
     return sp_2048_div_32(a, m, NULL, r);
 }
@@ -928,8 +930,8 @@ extern sp_digit sp_2048_sub_32(sp_digit* r, const sp_digit* a, const sp_digit* b
  * r  Remainder from the division.
  * returns MP_OKAY indicating success.
  */
-static WC_INLINE int sp_2048_div_32_cond(const sp_digit* a, const sp_digit* d, sp_digit* m,
-        sp_digit* r)
+static WC_INLINE int sp_2048_div_32_cond(const sp_digit* a, const sp_digit* d,
+        sp_digit* m, sp_digit* r)
 {
     sp_digit t1[64], t2[33];
     sp_digit div, r1;
@@ -988,7 +990,8 @@ static WC_INLINE int sp_2048_div_32_cond(const sp_digit* a, const sp_digit* d, s
  * m  A single precision number that is the modulus to reduce with.
  * returns MP_OKAY indicating success.
  */
-static WC_INLINE int sp_2048_mod_32_cond(sp_digit* r, const sp_digit* a, const sp_digit* m)
+static WC_INLINE int sp_2048_mod_32_cond(sp_digit* r, const sp_digit* a,
+        const sp_digit* m)
 {
     return sp_2048_div_32_cond(a, m, NULL, r);
 }
@@ -1166,8 +1169,8 @@ extern void sp_2048_mont_reduce_avx2_32(sp_digit* a, const sp_digit* m, sp_digit
  * m   Modulus (prime).
  * mp  Montogmery mulitplier.
  */
-static void sp_2048_mont_mul_avx2_32(sp_digit* r, const sp_digit* a, const sp_digit* b,
-        const sp_digit* m, sp_digit mp)
+static void sp_2048_mont_mul_avx2_32(sp_digit* r, const sp_digit* a,
+        const sp_digit* b, const sp_digit* m, sp_digit mp)
 {
     sp_2048_mul_avx2_32(r, a, b);
     sp_2048_mont_reduce_avx2_32(r, m, mp);
@@ -1182,8 +1185,8 @@ static void sp_2048_mont_mul_avx2_32(sp_digit* r, const sp_digit* a, const sp_di
  * m   Modulus (prime).
  * mp  Montogmery mulitplier.
  */
-static void sp_2048_mont_sqr_avx2_32(sp_digit* r, const sp_digit* a, const sp_digit* m,
-        sp_digit mp)
+static void sp_2048_mont_sqr_avx2_32(sp_digit* r, const sp_digit* a,
+        const sp_digit* m, sp_digit mp)
 {
     sp_2048_sqr_avx2_32(r, a);
     sp_2048_mont_reduce_avx2_32(r, m, mp);
@@ -2439,8 +2442,8 @@ extern void sp_3072_mont_reduce_24(sp_digit* a, const sp_digit* m, sp_digit mp);
  * m   Modulus (prime).
  * mp  Montogmery mulitplier.
  */
-static void sp_3072_mont_mul_24(sp_digit* r, const sp_digit* a, const sp_digit* b,
-        const sp_digit* m, sp_digit mp)
+static void sp_3072_mont_mul_24(sp_digit* r, const sp_digit* a,
+        const sp_digit* b, const sp_digit* m, sp_digit mp)
 {
     sp_3072_mul_24(r, a, b);
     sp_3072_mont_reduce_24(r, m, mp);
@@ -2453,8 +2456,8 @@ static void sp_3072_mont_mul_24(sp_digit* r, const sp_digit* a, const sp_digit* 
  * m   Modulus (prime).
  * mp  Montogmery mulitplier.
  */
-static void sp_3072_mont_sqr_24(sp_digit* r, const sp_digit* a, const sp_digit* m,
-        sp_digit mp)
+static void sp_3072_mont_sqr_24(sp_digit* r, const sp_digit* a,
+        const sp_digit* m, sp_digit mp)
 {
     sp_3072_sqr_24(r, a);
     sp_3072_mont_reduce_24(r, m, mp);
@@ -2522,8 +2525,8 @@ extern int64_t sp_3072_cmp_24(const sp_digit* a, const sp_digit* b);
  * r  Remainder from the division.
  * returns MP_OKAY indicating success.
  */
-static WC_INLINE int sp_3072_div_24(const sp_digit* a, const sp_digit* d, sp_digit* m,
-        sp_digit* r)
+static WC_INLINE int sp_3072_div_24(const sp_digit* a, const sp_digit* d,
+        sp_digit* m, sp_digit* r)
 {
     sp_digit t1[48], t2[25];
     sp_digit div, r1;
@@ -2578,7 +2581,8 @@ static WC_INLINE int sp_3072_div_24(const sp_digit* a, const sp_digit* d, sp_dig
  * m  A single precision number that is the modulus to reduce with.
  * returns MP_OKAY indicating success.
  */
-static WC_INLINE int sp_3072_mod_24(sp_digit* r, const sp_digit* a, const sp_digit* m)
+static WC_INLINE int sp_3072_mod_24(sp_digit* r, const sp_digit* a,
+        const sp_digit* m)
 {
     return sp_3072_div_24(a, m, NULL, r);
 }
@@ -2754,8 +2758,8 @@ extern void sp_3072_mont_reduce_avx2_24(sp_digit* a, const sp_digit* m, sp_digit
  * m   Modulus (prime).
  * mp  Montogmery mulitplier.
  */
-static void sp_3072_mont_mul_avx2_24(sp_digit* r, const sp_digit* a, const sp_digit* b,
-        const sp_digit* m, sp_digit mp)
+static void sp_3072_mont_mul_avx2_24(sp_digit* r, const sp_digit* a,
+        const sp_digit* b, const sp_digit* m, sp_digit mp)
 {
     sp_3072_mul_avx2_24(r, a, b);
     sp_3072_mont_reduce_avx2_24(r, m, mp);
@@ -2770,8 +2774,8 @@ static void sp_3072_mont_mul_avx2_24(sp_digit* r, const sp_digit* a, const sp_di
  * m   Modulus (prime).
  * mp  Montogmery mulitplier.
  */
-static void sp_3072_mont_sqr_avx2_24(sp_digit* r, const sp_digit* a, const sp_digit* m,
-        sp_digit mp)
+static void sp_3072_mont_sqr_avx2_24(sp_digit* r, const sp_digit* a,
+        const sp_digit* m, sp_digit mp)
 {
     sp_3072_sqr_avx2_24(r, a);
     sp_3072_mont_reduce_avx2_24(r, m, mp);
@@ -2969,8 +2973,8 @@ extern void sp_3072_mont_reduce_48(sp_digit* a, const sp_digit* m, sp_digit mp);
  * m   Modulus (prime).
  * mp  Montogmery mulitplier.
  */
-static void sp_3072_mont_mul_48(sp_digit* r, const sp_digit* a, const sp_digit* b,
-        const sp_digit* m, sp_digit mp)
+static void sp_3072_mont_mul_48(sp_digit* r, const sp_digit* a,
+        const sp_digit* b, const sp_digit* m, sp_digit mp)
 {
     sp_3072_mul_48(r, a, b);
     sp_3072_mont_reduce_48(r, m, mp);
@@ -2983,8 +2987,8 @@ static void sp_3072_mont_mul_48(sp_digit* r, const sp_digit* a, const sp_digit* 
  * m   Modulus (prime).
  * mp  Montogmery mulitplier.
  */
-static void sp_3072_mont_sqr_48(sp_digit* r, const sp_digit* a, const sp_digit* m,
-        sp_digit mp)
+static void sp_3072_mont_sqr_48(sp_digit* r, const sp_digit* a,
+        const sp_digit* m, sp_digit mp)
 {
     sp_3072_sqr_48(r, a);
     sp_3072_mont_reduce_48(r, m, mp);
@@ -3052,8 +3056,8 @@ extern int64_t sp_3072_cmp_48(const sp_digit* a, const sp_digit* b);
  * r  Remainder from the division.
  * returns MP_OKAY indicating success.
  */
-static WC_INLINE int sp_3072_div_48(const sp_digit* a, const sp_digit* d, sp_digit* m,
-        sp_digit* r)
+static WC_INLINE int sp_3072_div_48(const sp_digit* a, const sp_digit* d,
+        sp_digit* m, sp_digit* r)
 {
     sp_digit t1[96], t2[49];
     sp_digit div, r1;
@@ -3108,7 +3112,8 @@ static WC_INLINE int sp_3072_div_48(const sp_digit* a, const sp_digit* d, sp_dig
  * m  A single precision number that is the modulus to reduce with.
  * returns MP_OKAY indicating success.
  */
-static WC_INLINE int sp_3072_mod_48(sp_digit* r, const sp_digit* a, const sp_digit* m)
+static WC_INLINE int sp_3072_mod_48(sp_digit* r, const sp_digit* a,
+        const sp_digit* m)
 {
     return sp_3072_div_48(a, m, NULL, r);
 }
@@ -3124,8 +3129,8 @@ extern sp_digit sp_3072_sub_48(sp_digit* r, const sp_digit* a, const sp_digit* b
  * r  Remainder from the division.
  * returns MP_OKAY indicating success.
  */
-static WC_INLINE int sp_3072_div_48_cond(const sp_digit* a, const sp_digit* d, sp_digit* m,
-        sp_digit* r)
+static WC_INLINE int sp_3072_div_48_cond(const sp_digit* a, const sp_digit* d,
+        sp_digit* m, sp_digit* r)
 {
     sp_digit t1[96], t2[49];
     sp_digit div, r1;
@@ -3184,7 +3189,8 @@ static WC_INLINE int sp_3072_div_48_cond(const sp_digit* a, const sp_digit* d, s
  * m  A single precision number that is the modulus to reduce with.
  * returns MP_OKAY indicating success.
  */
-static WC_INLINE int sp_3072_mod_48_cond(sp_digit* r, const sp_digit* a, const sp_digit* m)
+static WC_INLINE int sp_3072_mod_48_cond(sp_digit* r, const sp_digit* a,
+        const sp_digit* m)
 {
     return sp_3072_div_48_cond(a, m, NULL, r);
 }
@@ -3362,8 +3368,8 @@ extern void sp_3072_mont_reduce_avx2_48(sp_digit* a, const sp_digit* m, sp_digit
  * m   Modulus (prime).
  * mp  Montogmery mulitplier.
  */
-static void sp_3072_mont_mul_avx2_48(sp_digit* r, const sp_digit* a, const sp_digit* b,
-        const sp_digit* m, sp_digit mp)
+static void sp_3072_mont_mul_avx2_48(sp_digit* r, const sp_digit* a,
+        const sp_digit* b, const sp_digit* m, sp_digit mp)
 {
     sp_3072_mul_avx2_48(r, a, b);
     sp_3072_mont_reduce_avx2_48(r, m, mp);
@@ -3378,8 +3384,8 @@ static void sp_3072_mont_mul_avx2_48(sp_digit* r, const sp_digit* a, const sp_di
  * m   Modulus (prime).
  * mp  Montogmery mulitplier.
  */
-static void sp_3072_mont_sqr_avx2_48(sp_digit* r, const sp_digit* a, const sp_digit* m,
-        sp_digit mp)
+static void sp_3072_mont_sqr_avx2_48(sp_digit* r, const sp_digit* a,
+        const sp_digit* m, sp_digit mp)
 {
     sp_3072_sqr_avx2_48(r, a);
     sp_3072_mont_reduce_avx2_48(r, m, mp);
@@ -4613,8 +4619,8 @@ extern void sp_4096_mont_reduce_64(sp_digit* a, const sp_digit* m, sp_digit mp);
  * m   Modulus (prime).
  * mp  Montogmery mulitplier.
  */
-static void sp_4096_mont_mul_64(sp_digit* r, const sp_digit* a, const sp_digit* b,
-        const sp_digit* m, sp_digit mp)
+static void sp_4096_mont_mul_64(sp_digit* r, const sp_digit* a,
+        const sp_digit* b, const sp_digit* m, sp_digit mp)
 {
     sp_4096_mul_64(r, a, b);
     sp_4096_mont_reduce_64(r, m, mp);
@@ -4627,8 +4633,8 @@ static void sp_4096_mont_mul_64(sp_digit* r, const sp_digit* a, const sp_digit* 
  * m   Modulus (prime).
  * mp  Montogmery mulitplier.
  */
-static void sp_4096_mont_sqr_64(sp_digit* r, const sp_digit* a, const sp_digit* m,
-        sp_digit mp)
+static void sp_4096_mont_sqr_64(sp_digit* r, const sp_digit* a,
+        const sp_digit* m, sp_digit mp)
 {
     sp_4096_sqr_64(r, a);
     sp_4096_mont_reduce_64(r, m, mp);
@@ -4696,8 +4702,8 @@ extern int64_t sp_4096_cmp_64(const sp_digit* a, const sp_digit* b);
  * r  Remainder from the division.
  * returns MP_OKAY indicating success.
  */
-static WC_INLINE int sp_4096_div_64(const sp_digit* a, const sp_digit* d, sp_digit* m,
-        sp_digit* r)
+static WC_INLINE int sp_4096_div_64(const sp_digit* a, const sp_digit* d,
+        sp_digit* m, sp_digit* r)
 {
     sp_digit t1[128], t2[65];
     sp_digit div, r1;
@@ -4752,7 +4758,8 @@ static WC_INLINE int sp_4096_div_64(const sp_digit* a, const sp_digit* d, sp_dig
  * m  A single precision number that is the modulus to reduce with.
  * returns MP_OKAY indicating success.
  */
-static WC_INLINE int sp_4096_mod_64(sp_digit* r, const sp_digit* a, const sp_digit* m)
+static WC_INLINE int sp_4096_mod_64(sp_digit* r, const sp_digit* a,
+        const sp_digit* m)
 {
     return sp_4096_div_64(a, m, NULL, r);
 }
@@ -4768,8 +4775,8 @@ extern sp_digit sp_4096_sub_64(sp_digit* r, const sp_digit* a, const sp_digit* b
  * r  Remainder from the division.
  * returns MP_OKAY indicating success.
  */
-static WC_INLINE int sp_4096_div_64_cond(const sp_digit* a, const sp_digit* d, sp_digit* m,
-        sp_digit* r)
+static WC_INLINE int sp_4096_div_64_cond(const sp_digit* a, const sp_digit* d,
+        sp_digit* m, sp_digit* r)
 {
     sp_digit t1[128], t2[65];
     sp_digit div, r1;
@@ -4828,7 +4835,8 @@ static WC_INLINE int sp_4096_div_64_cond(const sp_digit* a, const sp_digit* d, s
  * m  A single precision number that is the modulus to reduce with.
  * returns MP_OKAY indicating success.
  */
-static WC_INLINE int sp_4096_mod_64_cond(sp_digit* r, const sp_digit* a, const sp_digit* m)
+static WC_INLINE int sp_4096_mod_64_cond(sp_digit* r, const sp_digit* a,
+        const sp_digit* m)
 {
     return sp_4096_div_64_cond(a, m, NULL, r);
 }
@@ -5006,8 +5014,8 @@ extern void sp_4096_mont_reduce_avx2_64(sp_digit* a, const sp_digit* m, sp_digit
  * m   Modulus (prime).
  * mp  Montogmery mulitplier.
  */
-static void sp_4096_mont_mul_avx2_64(sp_digit* r, const sp_digit* a, const sp_digit* b,
-        const sp_digit* m, sp_digit mp)
+static void sp_4096_mont_mul_avx2_64(sp_digit* r, const sp_digit* a,
+        const sp_digit* b, const sp_digit* m, sp_digit mp)
 {
     sp_4096_mul_avx2_64(r, a, b);
     sp_4096_mont_reduce_avx2_64(r, m, mp);
@@ -5022,8 +5030,8 @@ static void sp_4096_mont_mul_avx2_64(sp_digit* r, const sp_digit* a, const sp_di
  * m   Modulus (prime).
  * mp  Montogmery mulitplier.
  */
-static void sp_4096_mont_sqr_avx2_64(sp_digit* r, const sp_digit* a, const sp_digit* m,
-        sp_digit mp)
+static void sp_4096_mont_sqr_avx2_64(sp_digit* r, const sp_digit* a,
+        const sp_digit* m, sp_digit mp)
 {
     sp_4096_sqr_avx2_64(r, a);
     sp_4096_mont_reduce_avx2_64(r, m, mp);
@@ -6029,12 +6037,20 @@ int sp_DhExp_4096(mp_int* base, const byte* exp, word32 expLen,
 
 /* Point structure to use. */
 typedef struct sp_point_256 {
+    /* X ordinate of point. */
     sp_digit x[2 * 4];
+    /* Y ordinate of point. */
     sp_digit y[2 * 4];
+    /* Z ordinate of point. */
     sp_digit z[2 * 4];
+    /* Indicates point is at infinity. */
     int infinity;
 } sp_point_256;
 
+extern void sp_256_mul_4(sp_digit* r, const sp_digit* a, const sp_digit* b);
+extern void sp_256_sqr_4(sp_digit* r, const sp_digit* a);
+extern sp_digit sp_256_add_4(sp_digit* r, const sp_digit* a, const sp_digit* b);
+extern sp_digit sp_256_sub_4(sp_digit* r, const sp_digit* a, const sp_digit* b);
 /* The modulus (prime) of the curve P256. */
 static const sp_digit p256_mod[4] = {
     0xffffffffffffffffL,0x00000000ffffffffL,0x0000000000000000L,
@@ -6103,7 +6119,15 @@ static const sp_digit p256_b[4] = {
 };
 #endif
 
-static int sp_256_point_new_ex_4(void* heap, sp_point_256* sp, sp_point_256** p)
+/* Create a new point.
+ *
+ * heap  [in]   Buffer to allocate dynamic memory from.
+ * sp    [in]   Data for point - only if not allocating.
+ * p     [out]  New point.
+ * returns MEMORY_E when dynamic memory allocation fails and 0 otherwise. 
+ */
+static int sp_256_point_new_ex_4(void* heap, sp_point_256* sp,
+        sp_point_256** p)
 {
     int ret = MP_OKAY;
     (void)heap;
@@ -6128,6 +6152,12 @@ static int sp_256_point_new_ex_4(void* heap, sp_point_256* sp, sp_point_256** p)
 #endif
 
 
+/* Free the point.
+ *
+ * p      [in,out]  Point to free.
+ * clear  [in]      Indicates whether to zeroize point.
+ * heap   [in]      Buffer from which dynamic memory was allocate from.
+ */
 static void sp_256_point_free_4(sp_point_256* p, int clear, void* heap)
 {
 #if (defined(WOLFSSL_SP_SMALL) || defined(WOLFSSL_SMALL_STACK)) && !defined(WOLFSSL_SP_NO_MALLOC)
@@ -6301,7 +6331,8 @@ static void sp_256_from_mp(sp_digit* r, int size, const mp_int* a)
  * p   Point of type sp_point_256 (result).
  * pm  Point of type ecc_point.
  */
-static void sp_256_point_from_ecc_point_4(sp_point_256* p, const ecc_point* pm)
+static void sp_256_point_from_ecc_point_4(sp_point_256* p,
+        const ecc_point* pm)
 {
     XMEMSET(p->x, 0, sizeof(p->x));
     XMEMSET(p->y, 0, sizeof(p->y));
@@ -6505,7 +6536,6 @@ extern int64_t sp_256_cmp_4(const sp_digit* a, const sp_digit* b);
 #define sp_256_norm_4(a)
 
 extern sp_digit sp_256_cond_sub_4(sp_digit* r, const sp_digit* a, const sp_digit* b, sp_digit m);
-extern sp_digit sp_256_sub_4(sp_digit* r, const sp_digit* a, const sp_digit* b);
 #define sp_256_mont_reduce_order_4         sp_256_mont_reduce_4
 
 extern void sp_256_mont_reduce_4(sp_digit* a, const sp_digit* m, sp_digit mp);
@@ -6515,7 +6545,8 @@ extern void sp_256_mont_reduce_4(sp_digit* a, const sp_digit* m, sp_digit mp);
  * p  Montgomery form projective coordinate point.
  * t  Temporary ordinate data.
  */
-static void sp_256_map_4(sp_point_256* r, const sp_point_256* p, sp_digit* t)
+static void sp_256_map_4(sp_point_256* r, const sp_point_256* p,
+        sp_digit* t)
 {
     sp_digit* t1 = t;
     sp_digit* t2 = t + 2*4;
@@ -6562,7 +6593,8 @@ extern void sp_256_div2_4(sp_digit* r, const sp_digit* a, const sp_digit* m);
  * p  Point to double.
  * t  Temporary ordinate data.
  */
-static void sp_256_proj_point_dbl_4(sp_point_256* r, const sp_point_256* p, sp_digit* t)
+static void sp_256_proj_point_dbl_4(sp_point_256* r,
+        const sp_point_256* p, sp_digit* t)
 {
     sp_digit* t1 = t;
     sp_digit* t2 = t + 2*4;
@@ -6623,7 +6655,8 @@ static void sp_256_proj_point_dbl_4(sp_point_256* r, const sp_point_256* p, sp_d
  * n  Number of times to double
  * t  Temporary ordinate data.
  */
-static void sp_256_proj_point_dbl_n_4(sp_point_256* p, int n, sp_digit* t)
+static void sp_256_proj_point_dbl_n_4(sp_point_256* p, int n,
+        sp_digit* t)
 {
     sp_digit* w = t;
     sp_digit* a = t + 2*4;
@@ -6723,8 +6756,8 @@ static int sp_256_cmp_equal_4(const sp_digit* a, const sp_digit* b)
  * q  Second point to add.
  * t  Temporary ordinate data.
  */
-static void sp_256_proj_point_add_4(sp_point_256* r, const sp_point_256* p, const sp_point_256* q,
-        sp_digit* t)
+static void sp_256_proj_point_add_4(sp_point_256* r,
+        const sp_point_256* p, const sp_point_256* q, sp_digit* t)
 {
     const sp_point_256* ap[2];
     sp_point_256* rp[2];
@@ -6817,8 +6850,8 @@ static void sp_256_proj_point_add_4(sp_point_256* r, const sp_point_256* p, cons
  * n  Number of times to double
  * t  Temporary ordinate data.
  */
-static void sp_256_proj_point_dbl_n_store_4(sp_point_256* r, const sp_point_256* p,
-        int n, int m, sp_digit* t)
+static void sp_256_proj_point_dbl_n_store_4(sp_point_256* r,
+        const sp_point_256* p, int n, int m, sp_digit* t)
 {
     sp_digit* w = t;
     sp_digit* a = t + 2*4;
@@ -6887,8 +6920,9 @@ static void sp_256_proj_point_dbl_n_store_4(sp_point_256* r, const sp_point_256*
  * q   Second point to add.
  * t   Temporary ordinate data.
  */
-static void sp_256_proj_point_add_sub_4(sp_point_256* ra, sp_point_256* rs,
-        const sp_point_256* p, const sp_point_256* q, sp_digit* t)
+static void sp_256_proj_point_add_sub_4(sp_point_256* ra,
+        sp_point_256* rs, const sp_point_256* p, const sp_point_256* q,
+        sp_digit* t)
 {
     sp_digit* t1 = t;
     sp_digit* t2 = t + 2*4;
@@ -7037,8 +7071,8 @@ static void sp_256_ecc_recode_6_4(const sp_digit* k, ecc_recode_256* v)
  * heap  Heap to use for allocation.
  * returns MEMORY_E when memory allocation fails and MP_OKAY on success.
  */
-static int sp_256_ecc_mulmod_win_add_sub_4(sp_point_256* r, const sp_point_256* g,
-        const sp_digit* k, int map, void* heap)
+static int sp_256_ecc_mulmod_win_add_sub_4(sp_point_256* r,
+        const sp_point_256* g, const sp_digit* k, int map, void* heap)
 {
 #if (!defined(WOLFSSL_SP_SMALL) && !defined(WOLFSSL_SMALL_STACK)) || defined(WOLFSSL_SP_NO_MALLOC)
     sp_point_256 td[33];
@@ -7122,6 +7156,7 @@ static int sp_256_ecc_mulmod_win_add_sub_4(sp_point_256* r, const sp_point_256* 
 
             XMEMCPY(p, &t[v[i].i], sizeof(sp_point_256));
             sp_256_sub_4(negy, p256_mod, p->y);
+            sp_256_norm_4(negy);
             sp_256_cond_copy_4(p->y, negy, (sp_digit)0 - v[i].neg);
             sp_256_proj_point_add_4(rt, rt, p, tmp);
         }
@@ -7147,6 +7182,7 @@ static int sp_256_ecc_mulmod_win_add_sub_4(sp_point_256* r, const sp_point_256* 
 }
 
 #ifdef HAVE_INTEL_AVX2
+#define sp_256_mod_mul_norm_avx2_4 sp_256_mod_mul_norm_4
 extern void sp_256_mont_mul_avx2_4(sp_digit* r, const sp_digit* a, const sp_digit* b, const sp_digit* m, sp_digit mp);
 extern void sp_256_mont_sqr_avx2_4(sp_digit* r, const sp_digit* a, const sp_digit* m, sp_digit mp);
 #if !defined(WOLFSSL_SP_SMALL) || defined(HAVE_COMP_KEY)
@@ -7238,13 +7274,18 @@ static void sp_256_mont_inv_avx2_4(sp_digit* r, const sp_digit* a, sp_digit* td)
 #endif /* WOLFSSL_SP_SMALL */
 }
 
+extern sp_digit sp_256_cond_sub_avx2_4(sp_digit* r, const sp_digit* a, const sp_digit* b, sp_digit m);
+#define sp_256_mont_reduce_order_avx2_4    sp_256_mont_reduce_avx2_4
+
+extern void sp_256_mont_reduce_avx2_4(sp_digit* a, const sp_digit* m, sp_digit mp);
 /* Map the Montgomery form projective coordinate point to an affine point.
  *
  * r  Resulting affine coordinate point.
  * p  Montgomery form projective coordinate point.
  * t  Temporary ordinate data.
  */
-static void sp_256_map_avx2_4(sp_point_256* r, const sp_point_256* p, sp_digit* t)
+static void sp_256_map_avx2_4(sp_point_256* r, const sp_point_256* p,
+        sp_digit* t)
 {
     sp_digit* t1 = t;
     sp_digit* t2 = t + 2*4;
@@ -7258,20 +7299,20 @@ static void sp_256_map_avx2_4(sp_point_256* r, const sp_point_256* p, sp_digit* 
     /* x /= z^2 */
     sp_256_mont_mul_avx2_4(r->x, p->x, t2, p256_mod, p256_mp_mod);
     XMEMSET(r->x + 4, 0, sizeof(r->x) / 2U);
-    sp_256_mont_reduce_4(r->x, p256_mod, p256_mp_mod);
+    sp_256_mont_reduce_avx2_4(r->x, p256_mod, p256_mp_mod);
     /* Reduce x to less than modulus */
     n = sp_256_cmp_4(r->x, p256_mod);
-    sp_256_cond_sub_4(r->x, r->x, p256_mod, 0 - ((n >= 0) ?
+    sp_256_cond_sub_avx2_4(r->x, r->x, p256_mod, 0 - ((n >= 0) ?
                 (sp_digit)1 : (sp_digit)0));
     sp_256_norm_4(r->x);
 
     /* y /= z^3 */
     sp_256_mont_mul_avx2_4(r->y, p->y, t1, p256_mod, p256_mp_mod);
     XMEMSET(r->y + 4, 0, sizeof(r->y) / 2U);
-    sp_256_mont_reduce_4(r->y, p256_mod, p256_mp_mod);
+    sp_256_mont_reduce_avx2_4(r->y, p256_mod, p256_mp_mod);
     /* Reduce y to less than modulus */
     n = sp_256_cmp_4(r->y, p256_mod);
-    sp_256_cond_sub_4(r->y, r->y, p256_mod, 0 - ((n >= 0) ?
+    sp_256_cond_sub_avx2_4(r->y, r->y, p256_mod, 0 - ((n >= 0) ?
                 (sp_digit)1 : (sp_digit)0));
     sp_256_norm_4(r->y);
 
@@ -7280,13 +7321,18 @@ static void sp_256_map_avx2_4(sp_point_256* r, const sp_point_256* p, sp_digit* 
 
 }
 
+#define sp_256_mont_add_avx2_4 sp_256_mont_add_4
+#define sp_256_mont_dbl_avx2_4 sp_256_mont_dbl_4
+#define sp_256_mont_tpl_avx2_4 sp_256_mont_tpl_4
+#define sp_256_mont_sub_avx2_4 sp_256_mont_sub_4
 /* Double the Montgomery form projective point p.
  *
  * r  Result of doubling point.
  * p  Point to double.
  * t  Temporary ordinate data.
  */
-static void sp_256_proj_point_dbl_avx2_4(sp_point_256* r, const sp_point_256* p, sp_digit* t)
+static void sp_256_proj_point_dbl_avx2_4(sp_point_256* r,
+        const sp_point_256* p, sp_digit* t)
 {
     sp_digit* t1 = t;
     sp_digit* t2 = t + 2*4;
@@ -7307,17 +7353,17 @@ static void sp_256_proj_point_dbl_avx2_4(sp_point_256* r, const sp_point_256* p,
     /* Z = Y * Z */
     sp_256_mont_mul_avx2_4(z, p->y, p->z, p256_mod, p256_mp_mod);
     /* Z = 2Z */
-    sp_256_mont_dbl_4(z, z, p256_mod);
+    sp_256_mont_dbl_avx2_4(z, z, p256_mod);
     /* T2 = X - T1 */
-    sp_256_mont_sub_4(t2, p->x, t1, p256_mod);
+    sp_256_mont_sub_avx2_4(t2, p->x, t1, p256_mod);
     /* T1 = X + T1 */
-    sp_256_mont_add_4(t1, p->x, t1, p256_mod);
+    sp_256_mont_add_avx2_4(t1, p->x, t1, p256_mod);
     /* T2 = T1 * T2 */
     sp_256_mont_mul_avx2_4(t2, t1, t2, p256_mod, p256_mp_mod);
     /* T1 = 3T2 */
-    sp_256_mont_tpl_4(t1, t2, p256_mod);
+    sp_256_mont_tpl_avx2_4(t1, t2, p256_mod);
     /* Y = 2Y */
-    sp_256_mont_dbl_4(y, p->y, p256_mod);
+    sp_256_mont_dbl_avx2_4(y, p->y, p256_mod);
     /* Y = Y * Y */
     sp_256_mont_sqr_avx2_4(y, y, p256_mod, p256_mp_mod);
     /* T2 = Y * Y */
@@ -7329,15 +7375,15 @@ static void sp_256_proj_point_dbl_avx2_4(sp_point_256* r, const sp_point_256* p,
     /* X = T1 * T1 */
     sp_256_mont_sqr_avx2_4(x, t1, p256_mod, p256_mp_mod);
     /* X = X - Y */
-    sp_256_mont_sub_4(x, x, y, p256_mod);
+    sp_256_mont_sub_avx2_4(x, x, y, p256_mod);
     /* X = X - Y */
-    sp_256_mont_sub_4(x, x, y, p256_mod);
+    sp_256_mont_sub_avx2_4(x, x, y, p256_mod);
     /* Y = Y - X */
-    sp_256_mont_sub_4(y, y, x, p256_mod);
+    sp_256_mont_sub_avx2_4(y, y, x, p256_mod);
     /* Y = Y * T1 */
     sp_256_mont_mul_avx2_4(y, y, t1, p256_mod, p256_mp_mod);
     /* Y = Y - T2 */
-    sp_256_mont_sub_4(y, y, t2, p256_mod);
+    sp_256_mont_sub_avx2_4(y, y, t2, p256_mod);
 }
 
 /* Double the Montgomery form projective point p a number of times.
@@ -7347,7 +7393,8 @@ static void sp_256_proj_point_dbl_avx2_4(sp_point_256* r, const sp_point_256* p,
  * n  Number of times to double
  * t  Temporary ordinate data.
  */
-static void sp_256_proj_point_dbl_n_avx2_4(sp_point_256* p, int n, sp_digit* t)
+static void sp_256_proj_point_dbl_n_avx2_4(sp_point_256* p, int n,
+        sp_digit* t)
 {
     sp_digit* w = t;
     sp_digit* a = t + 2*4;
@@ -7363,7 +7410,7 @@ static void sp_256_proj_point_dbl_n_avx2_4(sp_point_256* p, int n, sp_digit* t)
     z = p->z;
 
     /* Y = 2*Y */
-    sp_256_mont_dbl_4(y, y, p256_mod);
+    sp_256_mont_dbl_avx2_4(y, y, p256_mod);
     /* W = Z^4 */
     sp_256_mont_sqr_avx2_4(w, z, p256_mod, p256_mp_mod);
     sp_256_mont_sqr_avx2_4(w, w, p256_mod, p256_mp_mod);
@@ -7376,15 +7423,15 @@ static void sp_256_proj_point_dbl_n_avx2_4(sp_point_256* p, int n, sp_digit* t)
     {
         /* A = 3*(X^2 - W) */
         sp_256_mont_sqr_avx2_4(t1, x, p256_mod, p256_mp_mod);
-        sp_256_mont_sub_4(t1, t1, w, p256_mod);
-        sp_256_mont_tpl_4(a, t1, p256_mod);
+        sp_256_mont_sub_avx2_4(t1, t1, w, p256_mod);
+        sp_256_mont_tpl_avx2_4(a, t1, p256_mod);
         /* B = X*Y^2 */
         sp_256_mont_sqr_avx2_4(t1, y, p256_mod, p256_mp_mod);
         sp_256_mont_mul_avx2_4(b, t1, x, p256_mod, p256_mp_mod);
         /* X = A^2 - 2B */
         sp_256_mont_sqr_avx2_4(x, a, p256_mod, p256_mp_mod);
-        sp_256_mont_dbl_4(t2, b, p256_mod);
-        sp_256_mont_sub_4(x, x, t2, p256_mod);
+        sp_256_mont_dbl_avx2_4(t2, b, p256_mod);
+        sp_256_mont_sub_avx2_4(x, x, t2, p256_mod);
         /* Z = Z*Y */
         sp_256_mont_mul_avx2_4(z, z, y, p256_mod, p256_mp_mod);
         /* t2 = Y^4 */
@@ -7397,32 +7444,32 @@ static void sp_256_proj_point_dbl_n_avx2_4(sp_point_256* p, int n, sp_digit* t)
             sp_256_mont_mul_avx2_4(w, w, t1, p256_mod, p256_mp_mod);
         }
         /* y = 2*A*(B - X) - Y^4 */
-        sp_256_mont_sub_4(y, b, x, p256_mod);
+        sp_256_mont_sub_avx2_4(y, b, x, p256_mod);
         sp_256_mont_mul_avx2_4(y, y, a, p256_mod, p256_mp_mod);
-        sp_256_mont_dbl_4(y, y, p256_mod);
-        sp_256_mont_sub_4(y, y, t1, p256_mod);
+        sp_256_mont_dbl_avx2_4(y, y, p256_mod);
+        sp_256_mont_sub_avx2_4(y, y, t1, p256_mod);
     }
 #ifndef WOLFSSL_SP_SMALL
     /* A = 3*(X^2 - W) */
     sp_256_mont_sqr_avx2_4(t1, x, p256_mod, p256_mp_mod);
-    sp_256_mont_sub_4(t1, t1, w, p256_mod);
-    sp_256_mont_tpl_4(a, t1, p256_mod);
+    sp_256_mont_sub_avx2_4(t1, t1, w, p256_mod);
+    sp_256_mont_tpl_avx2_4(a, t1, p256_mod);
     /* B = X*Y^2 */
     sp_256_mont_sqr_avx2_4(t1, y, p256_mod, p256_mp_mod);
     sp_256_mont_mul_avx2_4(b, t1, x, p256_mod, p256_mp_mod);
     /* X = A^2 - 2B */
     sp_256_mont_sqr_avx2_4(x, a, p256_mod, p256_mp_mod);
-    sp_256_mont_dbl_4(t2, b, p256_mod);
-    sp_256_mont_sub_4(x, x, t2, p256_mod);
+    sp_256_mont_dbl_avx2_4(t2, b, p256_mod);
+    sp_256_mont_sub_avx2_4(x, x, t2, p256_mod);
     /* Z = Z*Y */
     sp_256_mont_mul_avx2_4(z, z, y, p256_mod, p256_mp_mod);
     /* t2 = Y^4 */
     sp_256_mont_sqr_avx2_4(t1, t1, p256_mod, p256_mp_mod);
     /* y = 2*A*(B - X) - Y^4 */
-    sp_256_mont_sub_4(y, b, x, p256_mod);
+    sp_256_mont_sub_avx2_4(y, b, x, p256_mod);
     sp_256_mont_mul_avx2_4(y, y, a, p256_mod, p256_mp_mod);
-    sp_256_mont_dbl_4(y, y, p256_mod);
-    sp_256_mont_sub_4(y, y, t1, p256_mod);
+    sp_256_mont_dbl_avx2_4(y, y, p256_mod);
+    sp_256_mont_sub_avx2_4(y, y, t1, p256_mod);
 #endif
     /* Y = Y/2 */
     sp_256_div2_4(y, y, p256_mod);
@@ -7435,8 +7482,8 @@ static void sp_256_proj_point_dbl_n_avx2_4(sp_point_256* p, int n, sp_digit* t)
  * q  Second point to add.
  * t  Temporary ordinate data.
  */
-static void sp_256_proj_point_add_avx2_4(sp_point_256* r, const sp_point_256* p, const sp_point_256* q,
-        sp_digit* t)
+static void sp_256_proj_point_add_avx2_4(sp_point_256* r,
+        const sp_point_256* p, const sp_point_256* q, sp_digit* t)
 {
     const sp_point_256* ap[2];
     sp_point_256* rp[2];
@@ -7500,9 +7547,9 @@ static void sp_256_proj_point_add_avx2_4(sp_point_256* r, const sp_point_256* p,
         /* S2 = Y2*Z1^3 */
         sp_256_mont_mul_avx2_4(t4, t4, q->y, p256_mod, p256_mp_mod);
         /* H = U2 - U1 */
-        sp_256_mont_sub_4(t2, t2, t1, p256_mod);
+        sp_256_mont_sub_avx2_4(t2, t2, t1, p256_mod);
         /* R = S2 - S1 */
-        sp_256_mont_sub_4(t4, t4, t3, p256_mod);
+        sp_256_mont_sub_avx2_4(t4, t4, t3, p256_mod);
         /* Z3 = H*Z1*Z2 */
         sp_256_mont_mul_avx2_4(z, z, q->z, p256_mod, p256_mp_mod);
         sp_256_mont_mul_avx2_4(z, z, t2, p256_mod, p256_mp_mod);
@@ -7511,14 +7558,14 @@ static void sp_256_proj_point_add_avx2_4(sp_point_256* r, const sp_point_256* p,
         sp_256_mont_sqr_avx2_4(t5, t2, p256_mod, p256_mp_mod);
         sp_256_mont_mul_avx2_4(y, t1, t5, p256_mod, p256_mp_mod);
         sp_256_mont_mul_avx2_4(t5, t5, t2, p256_mod, p256_mp_mod);
-        sp_256_mont_sub_4(x, x, t5, p256_mod);
-        sp_256_mont_dbl_4(t1, y, p256_mod);
-        sp_256_mont_sub_4(x, x, t1, p256_mod);
+        sp_256_mont_sub_avx2_4(x, x, t5, p256_mod);
+        sp_256_mont_dbl_avx2_4(t1, y, p256_mod);
+        sp_256_mont_sub_avx2_4(x, x, t1, p256_mod);
         /* Y3 = R*(U1*H^2 - X3) - S1*H^3 */
-        sp_256_mont_sub_4(y, y, x, p256_mod);
+        sp_256_mont_sub_avx2_4(y, y, x, p256_mod);
         sp_256_mont_mul_avx2_4(y, y, t4, p256_mod, p256_mp_mod);
         sp_256_mont_mul_avx2_4(t5, t5, t3, p256_mod, p256_mp_mod);
-        sp_256_mont_sub_4(y, y, t5, p256_mod);
+        sp_256_mont_sub_avx2_4(y, y, t5, p256_mod);
     }
 }
 
@@ -7529,8 +7576,8 @@ static void sp_256_proj_point_add_avx2_4(sp_point_256* r, const sp_point_256* p,
  * n  Number of times to double
  * t  Temporary ordinate data.
  */
-static void sp_256_proj_point_dbl_n_store_avx2_4(sp_point_256* r, const sp_point_256* p,
-        int n, int m, sp_digit* t)
+static void sp_256_proj_point_dbl_n_store_avx2_4(sp_point_256* r,
+        const sp_point_256* p, int n, int m, sp_digit* t)
 {
     sp_digit* w = t;
     sp_digit* a = t + 2*4;
@@ -7553,23 +7600,23 @@ static void sp_256_proj_point_dbl_n_store_avx2_4(sp_point_256* r, const sp_point
     }
 
     /* Y = 2*Y */
-    sp_256_mont_dbl_4(y, y, p256_mod);
+    sp_256_mont_dbl_avx2_4(y, y, p256_mod);
     /* W = Z^4 */
     sp_256_mont_sqr_avx2_4(w, z, p256_mod, p256_mp_mod);
     sp_256_mont_sqr_avx2_4(w, w, p256_mod, p256_mp_mod);
     for (i=1; i<=n; i++) {
         /* A = 3*(X^2 - W) */
         sp_256_mont_sqr_avx2_4(t1, x, p256_mod, p256_mp_mod);
-        sp_256_mont_sub_4(t1, t1, w, p256_mod);
-        sp_256_mont_tpl_4(a, t1, p256_mod);
+        sp_256_mont_sub_avx2_4(t1, t1, w, p256_mod);
+        sp_256_mont_tpl_avx2_4(a, t1, p256_mod);
         /* B = X*Y^2 */
         sp_256_mont_sqr_avx2_4(t2, y, p256_mod, p256_mp_mod);
         sp_256_mont_mul_avx2_4(b, t2, x, p256_mod, p256_mp_mod);
         x = r[(1<<i)*m].x;
         /* X = A^2 - 2B */
         sp_256_mont_sqr_avx2_4(x, a, p256_mod, p256_mp_mod);
-        sp_256_mont_dbl_4(t1, b, p256_mod);
-        sp_256_mont_sub_4(x, x, t1, p256_mod);
+        sp_256_mont_dbl_avx2_4(t1, b, p256_mod);
+        sp_256_mont_sub_avx2_4(x, x, t1, p256_mod);
         /* Z = Z*Y */
         sp_256_mont_mul_avx2_4(r[(1<<i)*m].z, z, y, p256_mod, p256_mp_mod);
         z = r[(1<<i)*m].z;
@@ -7580,10 +7627,10 @@ static void sp_256_proj_point_dbl_n_store_avx2_4(sp_point_256* r, const sp_point
             sp_256_mont_mul_avx2_4(w, w, t2, p256_mod, p256_mp_mod);
         }
         /* y = 2*A*(B - X) - Y^4 */
-        sp_256_mont_sub_4(y, b, x, p256_mod);
+        sp_256_mont_sub_avx2_4(y, b, x, p256_mod);
         sp_256_mont_mul_avx2_4(y, y, a, p256_mod, p256_mp_mod);
-        sp_256_mont_dbl_4(y, y, p256_mod);
-        sp_256_mont_sub_4(y, y, t2, p256_mod);
+        sp_256_mont_dbl_avx2_4(y, y, p256_mod);
+        sp_256_mont_sub_avx2_4(y, y, t2, p256_mod);
 
         /* Y = Y/2 */
         sp_256_div2_4(r[(1<<i)*m].y, y, p256_mod);
@@ -7599,8 +7646,9 @@ static void sp_256_proj_point_dbl_n_store_avx2_4(sp_point_256* r, const sp_point
  * q   Second point to add.
  * t   Temporary ordinate data.
  */
-static void sp_256_proj_point_add_sub_avx2_4(sp_point_256* ra, sp_point_256* rs,
-        const sp_point_256* p, const sp_point_256* q, sp_digit* t)
+static void sp_256_proj_point_add_sub_avx2_4(sp_point_256* ra,
+        sp_point_256* rs, const sp_point_256* p, const sp_point_256* q,
+        sp_digit* t)
 {
     sp_digit* t1 = t;
     sp_digit* t2 = t + 2*4;
@@ -7635,11 +7683,11 @@ static void sp_256_proj_point_add_sub_avx2_4(sp_point_256* ra, sp_point_256* rs,
     /* S2 = Y2*Z1^3 */
     sp_256_mont_mul_avx2_4(t4, t4, q->y, p256_mod, p256_mp_mod);
     /* H = U2 - U1 */
-    sp_256_mont_sub_4(t2, t2, t1, p256_mod);
+    sp_256_mont_sub_avx2_4(t2, t2, t1, p256_mod);
     /* RS = S2 + S1 */
-    sp_256_mont_add_4(t6, t4, t3, p256_mod);
+    sp_256_mont_add_avx2_4(t6, t4, t3, p256_mod);
     /* R = S2 - S1 */
-    sp_256_mont_sub_4(t4, t4, t3, p256_mod);
+    sp_256_mont_sub_avx2_4(t4, t4, t3, p256_mod);
     /* Z3 = H*Z1*Z2 */
     /* ZS = H*Z1*Z2 */
     sp_256_mont_mul_avx2_4(z, z, q->z, p256_mod, p256_mp_mod);
@@ -7652,21 +7700,21 @@ static void sp_256_proj_point_add_sub_avx2_4(sp_point_256* ra, sp_point_256* rs,
     sp_256_mont_sqr_avx2_4(t5, t2, p256_mod, p256_mp_mod);
     sp_256_mont_mul_avx2_4(y, t1, t5, p256_mod, p256_mp_mod);
     sp_256_mont_mul_avx2_4(t5, t5, t2, p256_mod, p256_mp_mod);
-    sp_256_mont_sub_4(x, x, t5, p256_mod);
-    sp_256_mont_sub_4(xs, xs, t5, p256_mod);
-    sp_256_mont_dbl_4(t1, y, p256_mod);
-    sp_256_mont_sub_4(x, x, t1, p256_mod);
-    sp_256_mont_sub_4(xs, xs, t1, p256_mod);
+    sp_256_mont_sub_avx2_4(x, x, t5, p256_mod);
+    sp_256_mont_sub_avx2_4(xs, xs, t5, p256_mod);
+    sp_256_mont_dbl_avx2_4(t1, y, p256_mod);
+    sp_256_mont_sub_avx2_4(x, x, t1, p256_mod);
+    sp_256_mont_sub_avx2_4(xs, xs, t1, p256_mod);
     /* Y3 = R*(U1*H^2 - X3) - S1*H^3 */
     /* YS = -RS*(U1*H^2 - XS) - S1*H^3 */
-    sp_256_mont_sub_4(ys, y, xs, p256_mod);
-    sp_256_mont_sub_4(y, y, x, p256_mod);
+    sp_256_mont_sub_avx2_4(ys, y, xs, p256_mod);
+    sp_256_mont_sub_avx2_4(y, y, x, p256_mod);
     sp_256_mont_mul_avx2_4(y, y, t4, p256_mod, p256_mp_mod);
     sp_256_sub_4(t6, p256_mod, t6);
     sp_256_mont_mul_avx2_4(ys, ys, t6, p256_mod, p256_mp_mod);
     sp_256_mont_mul_avx2_4(t5, t5, t3, p256_mod, p256_mp_mod);
-    sp_256_mont_sub_4(y, y, t5, p256_mod);
-    sp_256_mont_sub_4(ys, ys, t5, p256_mod);
+    sp_256_mont_sub_avx2_4(y, y, t5, p256_mod);
+    sp_256_mont_sub_avx2_4(ys, ys, t5, p256_mod);
 }
 
 /* Multiply the point by the scalar and return the result.
@@ -7679,8 +7727,8 @@ static void sp_256_proj_point_add_sub_avx2_4(sp_point_256* ra, sp_point_256* rs,
  * heap  Heap to use for allocation.
  * returns MEMORY_E when memory allocation fails and MP_OKAY on success.
  */
-static int sp_256_ecc_mulmod_win_add_sub_avx2_4(sp_point_256* r, const sp_point_256* g,
-        const sp_digit* k, int map, void* heap)
+static int sp_256_ecc_mulmod_win_add_sub_avx2_4(sp_point_256* r,
+        const sp_point_256* g, const sp_digit* k, int map, void* heap)
 {
 #if (!defined(WOLFSSL_SP_SMALL) && !defined(WOLFSSL_SMALL_STACK)) || defined(WOLFSSL_SP_NO_MALLOC)
     sp_point_256 td[33];
@@ -7720,13 +7768,13 @@ static int sp_256_ecc_mulmod_win_add_sub_avx2_4(sp_point_256* r, const sp_point_
         XMEMSET(&t[0], 0, sizeof(t[0]));
         t[0].infinity = 1;
         /* t[1] = {g->x, g->y, g->z} * norm */
-        err = sp_256_mod_mul_norm_4(t[1].x, g->x, p256_mod);
+        err = sp_256_mod_mul_norm_avx2_4(t[1].x, g->x, p256_mod);
     }
     if (err == MP_OKAY) {
-        err = sp_256_mod_mul_norm_4(t[1].y, g->y, p256_mod);
+        err = sp_256_mod_mul_norm_avx2_4(t[1].y, g->y, p256_mod);
     }
     if (err == MP_OKAY) {
-        err = sp_256_mod_mul_norm_4(t[1].z, g->z, p256_mod);
+        err = sp_256_mod_mul_norm_avx2_4(t[1].z, g->z, p256_mod);
     }
 
     if (err == MP_OKAY) {
@@ -7764,6 +7812,7 @@ static int sp_256_ecc_mulmod_win_add_sub_avx2_4(sp_point_256* r, const sp_point_
 
             XMEMCPY(p, &t[v[i].i], sizeof(sp_point_256));
             sp_256_sub_4(negy, p256_mod, p->y);
+            sp_256_norm_4(negy);
             sp_256_cond_copy_4(p->y, negy, (sp_digit)0 - v[i].neg);
             sp_256_proj_point_add_avx2_4(rt, rt, p, tmp);
         }
@@ -7904,6 +7953,10 @@ static void sp_256_proj_to_affine_4(sp_point_256* a, sp_digit* t)
 
 /* Generate the pre-computed table of points for the base point.
  *
+ * width = 8
+ * 256 entries
+ * 32 bits between
+ *
  * a      The base point.
  * table  Place to store generated point data.
  * tmp    Temporary data.
@@ -7988,14 +8041,20 @@ static int sp_256_gen_stripe_table_4(const sp_point_256* a,
 /* Multiply the point by the scalar and return the result.
  * If map is true then convert result to affine coordinates.
  *
+ * Stripe implementation.
+ * Pre-generated: 2^0, 2^32, ...
+ * Pre-generated: products of all combinations of above.
+ * 8 doubles and adds (with qz=1)
+ *
  * r     Resulting point.
  * k     Scalar to multiply by.
  * map   Indicates whether to convert result to affine.
  * heap  Heap to use for allocation.
  * returns MEMORY_E when memory allocation fails and MP_OKAY on success.
  */
-static int sp_256_ecc_mulmod_stripe_4(sp_point_256* r, const sp_point_256* g,
-        const sp_table_entry_256* table, const sp_digit* k, int map, void* heap)
+static int sp_256_ecc_mulmod_stripe_4(sp_point_256* r,
+        const sp_point_256* g, const sp_table_entry_256* table,
+        const sp_digit* k, int map, void* heap)
 {
 #if (!defined(WOLFSSL_SP_SMALL) && !defined(WOLFSSL_SMALL_STACK)) || defined(WOLFSSL_SP_NO_MALLOC)
     sp_point_256 rtd;
@@ -8076,16 +8135,25 @@ static int sp_256_ecc_mulmod_stripe_4(sp_point_256* r, const sp_point_256* g,
     #define FP_ENTRIES 16
 #endif
 
+/* Cache entry - holds precomputation tables for a point. */
 typedef struct sp_cache_256_t {
+    /* X ordinate of point that table was generated from. */
     sp_digit x[4];
+    /* Y ordinate of point that table was generated from. */
     sp_digit y[4];
+    /* Precomputation table for point. */
     sp_table_entry_256 table[256];
+    /* Count of entries in table. */
     uint32_t cnt;
+    /* Point and table set in entry. */
     int set;
 } sp_cache_256_t;
 
+/* Cache of tables. */
 static THREAD_LS_T sp_cache_256_t sp_cache_256[FP_ENTRIES];
+/* Index of last entry in cache. */
 static THREAD_LS_T int sp_cache_256_last = -1;
+/* Cache has been initialized. */
 static THREAD_LS_T int sp_cache_256_inited = 0;
 
 #ifndef HAVE_THREAD_LS
@@ -8093,7 +8161,13 @@ static THREAD_LS_T int sp_cache_256_inited = 0;
     static wolfSSL_Mutex sp_cache_256_lock;
 #endif
 
-static void sp_ecc_get_cache_256(const sp_point_256* g, sp_cache_256_t** cache)
+/* Get the cache entry for the point.
+ *
+ * g      [in]   Point scalar multipling.
+ * cache  [out]  Cache table to use.
+ */
+static void sp_ecc_get_cache_256(const sp_point_256* g,
+        sp_cache_256_t** cache)
 {
     int i, j;
     uint32_t least;
@@ -8159,8 +8233,8 @@ static void sp_ecc_get_cache_256(const sp_point_256* g, sp_cache_256_t** cache)
  * heap  Heap to use for allocation.
  * returns MEMORY_E when memory allocation fails and MP_OKAY on success.
  */
-static int sp_256_ecc_mulmod_4(sp_point_256* r, const sp_point_256* g, const sp_digit* k,
-        int map, void* heap)
+static int sp_256_ecc_mulmod_4(sp_point_256* r, const sp_point_256* g,
+        const sp_digit* k, int map, void* heap)
 {
 #ifndef FP_ECC
     return sp_256_ecc_mulmod_win_add_sub_4(r, g, k, map, heap);
@@ -8264,9 +8338,9 @@ static void sp_256_proj_point_add_qz1_avx2_4(sp_point_256* r, const sp_point_256
         /* S2 = Y2*Z1^3 */
         sp_256_mont_mul_avx2_4(t4, t4, q->y, p256_mod, p256_mp_mod);
         /* H = U2 - X1 */
-        sp_256_mont_sub_4(t2, t2, x, p256_mod);
+        sp_256_mont_sub_avx2_4(t2, t2, x, p256_mod);
         /* R = S2 - Y1 */
-        sp_256_mont_sub_4(t4, t4, y, p256_mod);
+        sp_256_mont_sub_avx2_4(t4, t4, y, p256_mod);
         /* Z3 = H*Z1 */
         sp_256_mont_mul_avx2_4(z, z, t2, p256_mod, p256_mp_mod);
         /* X3 = R^2 - H^3 - 2*X1*H^2 */
@@ -8274,14 +8348,14 @@ static void sp_256_proj_point_add_qz1_avx2_4(sp_point_256* r, const sp_point_256
         sp_256_mont_sqr_avx2_4(t5, t2, p256_mod, p256_mp_mod);
         sp_256_mont_mul_avx2_4(t3, x, t5, p256_mod, p256_mp_mod);
         sp_256_mont_mul_avx2_4(t5, t5, t2, p256_mod, p256_mp_mod);
-        sp_256_mont_sub_4(x, t1, t5, p256_mod);
-        sp_256_mont_dbl_4(t1, t3, p256_mod);
-        sp_256_mont_sub_4(x, x, t1, p256_mod);
+        sp_256_mont_sub_avx2_4(x, t1, t5, p256_mod);
+        sp_256_mont_dbl_avx2_4(t1, t3, p256_mod);
+        sp_256_mont_sub_avx2_4(x, x, t1, p256_mod);
         /* Y3 = R*(X1*H^2 - X3) - Y1*H^3 */
-        sp_256_mont_sub_4(t3, t3, x, p256_mod);
+        sp_256_mont_sub_avx2_4(t3, t3, x, p256_mod);
         sp_256_mont_mul_avx2_4(t3, t3, t4, p256_mod, p256_mp_mod);
         sp_256_mont_mul_avx2_4(t5, t5, y, p256_mod, p256_mp_mod);
-        sp_256_mont_sub_4(y, t3, t5, p256_mod);
+        sp_256_mont_sub_avx2_4(y, t3, t5, p256_mod);
     }
 }
 
@@ -8309,6 +8383,10 @@ static void sp_256_proj_to_affine_avx2_4(sp_point_256* a, sp_digit* t)
 }
 
 /* Generate the pre-computed table of points for the base point.
+ *
+ * width = 8
+ * 256 entries
+ * 32 bits between
  *
  * a      The base point.
  * table  Place to store generated point data.
@@ -8338,13 +8416,13 @@ static int sp_256_gen_stripe_table_avx2_4(const sp_point_256* a,
     }
 
     if (err == MP_OKAY) {
-        err = sp_256_mod_mul_norm_4(t->x, a->x, p256_mod);
+        err = sp_256_mod_mul_norm_avx2_4(t->x, a->x, p256_mod);
     }
     if (err == MP_OKAY) {
-        err = sp_256_mod_mul_norm_4(t->y, a->y, p256_mod);
+        err = sp_256_mod_mul_norm_avx2_4(t->y, a->y, p256_mod);
     }
     if (err == MP_OKAY) {
-        err = sp_256_mod_mul_norm_4(t->z, a->z, p256_mod);
+        err = sp_256_mod_mul_norm_avx2_4(t->z, a->z, p256_mod);
     }
     if (err == MP_OKAY) {
         t->infinity = 0;
@@ -8394,14 +8472,20 @@ static int sp_256_gen_stripe_table_avx2_4(const sp_point_256* a,
 /* Multiply the point by the scalar and return the result.
  * If map is true then convert result to affine coordinates.
  *
+ * Stripe implementation.
+ * Pre-generated: 2^0, 2^32, ...
+ * Pre-generated: products of all combinations of above.
+ * 8 doubles and adds (with qz=1)
+ *
  * r     Resulting point.
  * k     Scalar to multiply by.
  * map   Indicates whether to convert result to affine.
  * heap  Heap to use for allocation.
  * returns MEMORY_E when memory allocation fails and MP_OKAY on success.
  */
-static int sp_256_ecc_mulmod_stripe_avx2_4(sp_point_256* r, const sp_point_256* g,
-        const sp_table_entry_256* table, const sp_digit* k, int map, void* heap)
+static int sp_256_ecc_mulmod_stripe_avx2_4(sp_point_256* r,
+        const sp_point_256* g, const sp_table_entry_256* table,
+        const sp_digit* k, int map, void* heap)
 {
 #if (!defined(WOLFSSL_SP_SMALL) && !defined(WOLFSSL_SMALL_STACK)) || defined(WOLFSSL_SP_NO_MALLOC)
     sp_point_256 rtd;
@@ -8487,8 +8571,8 @@ static int sp_256_ecc_mulmod_stripe_avx2_4(sp_point_256* r, const sp_point_256* 
  * heap  Heap to use for allocation.
  * returns MEMORY_E when memory allocation fails and MP_OKAY on success.
  */
-static int sp_256_ecc_mulmod_avx2_4(sp_point_256* r, const sp_point_256* g, const sp_digit* k,
-        int map, void* heap)
+static int sp_256_ecc_mulmod_avx2_4(sp_point_256* r, const sp_point_256* g,
+        const sp_digit* k, int map, void* heap)
 {
 #ifndef FP_ECC
     return sp_256_ecc_mulmod_win_add_sub_avx2_4(r, g, k, map, heap);
@@ -8590,6 +8674,10 @@ int sp_ecc_mulmod_256(mp_int* km, ecc_point* gm, ecc_point* r, int map,
 }
 
 #ifdef WOLFSSL_SP_SMALL
+/* Striping precomputation table.
+ * 8 points combined into a table of 256 points.
+ * Distance of 32 between points.
+ */
 static const sp_table_entry_256 p256_table[256] = {
     /* 0 */
     { { 0x00, 0x00, 0x00, 0x00 },
@@ -9874,6 +9962,11 @@ static const sp_table_entry_256 p256_table[256] = {
 /* Multiply the base point of P256 by the scalar and return the result.
  * If map is true then convert result to affine coordinates.
  *
+ * Stripe implementation.
+ * Pre-generated: 2^0, 2^32, ...
+ * Pre-generated: products of all combinations of above.
+ * 8 doubles and adds (with qz=1)
+ *
  * r     Resulting point.
  * k     Scalar to multiply by.
  * map   Indicates whether to convert result to affine.
@@ -9890,6 +9983,11 @@ static int sp_256_ecc_mulmod_base_4(sp_point_256* r, const sp_digit* k,
 #ifdef HAVE_INTEL_AVX2
 /* Multiply the base point of P256 by the scalar and return the result.
  * If map is true then convert result to affine coordinates.
+ *
+ * Stripe implementation.
+ * Pre-generated: 2^0, 2^32, ...
+ * Pre-generated: products of all combinations of above.
+ * 8 doubles and adds (with qz=1)
  *
  * r     Resulting point.
  * k     Scalar to multiply by.
@@ -21986,6 +22084,7 @@ static int sp_256_ecc_mulmod_add_only_4(sp_point_256* r, const sp_point_256* g,
             XMEMCPY(p->y, table[i * 65 + v[i].i].y, sizeof(table->y));
             p->infinity = !v[i].i;
             sp_256_sub_4(negy, p256_mod, p->y);
+            sp_256_norm_4(negy);
             sp_256_cond_copy_4(p->y, negy, 0 - v[i].neg);
             sp_256_proj_point_add_qz1_4(rt, rt, p, tmp);
         }
@@ -22084,6 +22183,7 @@ static int sp_256_ecc_mulmod_add_only_avx2_4(sp_point_256* r, const sp_point_256
             XMEMCPY(p->y, table[i * 65 + v[i].i].y, sizeof(table->y));
             p->infinity = !v[i].i;
             sp_256_sub_4(negy, p256_mod, p->y);
+            sp_256_norm_4(negy);
             sp_256_cond_copy_4(p->y, negy, 0 - v[i].neg);
             sp_256_proj_point_add_qz1_avx2_4(rt, rt, p, tmp);
         }
@@ -22152,8 +22252,7 @@ int sp_ecc_mulmod_base_256(mp_int* km, ecc_point* r, int map, void* heap)
     err = sp_256_point_new_4(heap, p, point);
 #if (defined(WOLFSSL_SP_SMALL) || defined(WOLFSSL_SMALL_STACK)) && !defined(WOLFSSL_SP_NO_MALLOC)
     if (err == MP_OKAY) {
-        k = (sp_digit*)XMALLOC(sizeof(sp_digit) * 4, heap,
-                                                              DYNAMIC_TYPE_ECC);
+        k = (sp_digit*)XMALLOC(sizeof(sp_digit) * 4, heap, DYNAMIC_TYPE_ECC);
         if (k == NULL) {
             err = MEMORY_E;
         }
@@ -22438,17 +22537,12 @@ int sp_ecc_secret_gen_256(mp_int* priv, ecc_point* pub, byte* out,
 #endif /* HAVE_ECC_DHE */
 
 #if defined(HAVE_ECC_SIGN) || defined(HAVE_ECC_VERIFY)
-extern sp_digit sp_256_add_4(sp_digit* r, const sp_digit* a, const sp_digit* b);
-#endif
-#if defined(HAVE_ECC_SIGN) || defined(HAVE_ECC_VERIFY)
-extern void sp_256_mul_4(sp_digit* r, const sp_digit* a, const sp_digit* b);
 #ifdef HAVE_INTEL_AVX2
 extern void sp_256_mul_avx2_4(sp_digit* r, const sp_digit* a, const sp_digit* b);
 #endif /* HAVE_INTEL_AVX2 */
 #endif
 #if defined(HAVE_ECC_SIGN) || defined(HAVE_ECC_VERIFY)
 extern sp_digit sp_256_sub_in_place_4(sp_digit* a, const sp_digit* b);
-extern sp_digit sp_256_cond_sub_avx2_4(sp_digit* r, const sp_digit* a, const sp_digit* b, sp_digit m);
 extern void sp_256_mul_d_4(sp_digit* r, const sp_digit* a, sp_digit b);
 extern void sp_256_mul_d_avx2_4(sp_digit* r, const sp_digit* a, const sp_digit b);
 /* Divide the double width number (d1|d0) by the dividend. (d1|d0 / div)
@@ -22501,8 +22595,8 @@ static void sp_256_mask_4(sp_digit* r, const sp_digit* a, sp_digit m)
  * r  Remainder from the division.
  * returns MP_OKAY indicating success.
  */
-static WC_INLINE int sp_256_div_4(const sp_digit* a, const sp_digit* d, sp_digit* m,
-        sp_digit* r)
+static WC_INLINE int sp_256_div_4(const sp_digit* a, const sp_digit* d,
+        sp_digit* m, sp_digit* r)
 {
     sp_digit t1[8], t2[5];
     sp_digit div, r1;
@@ -22557,14 +22651,14 @@ static WC_INLINE int sp_256_div_4(const sp_digit* a, const sp_digit* d, sp_digit
  * m  A single precision number that is the modulus to reduce with.
  * returns MP_OKAY indicating success.
  */
-static WC_INLINE int sp_256_mod_4(sp_digit* r, const sp_digit* a, const sp_digit* m)
+static WC_INLINE int sp_256_mod_4(sp_digit* r, const sp_digit* a,
+        const sp_digit* m)
 {
     return sp_256_div_4(a, m, NULL, r);
 }
 
 #endif
 #if defined(HAVE_ECC_SIGN) || defined(HAVE_ECC_VERIFY)
-extern void sp_256_sqr_4(sp_digit* r, const sp_digit* a);
 #ifdef WOLFSSL_SP_SMALL
 /* Order-2 for the P256 curve. */
 static const uint64_t p256_order_minus_2[4] = {
@@ -22721,9 +22815,6 @@ static void sp_256_mont_inv_order_4(sp_digit* r, const sp_digit* a,
 
 #ifdef HAVE_INTEL_AVX2
 extern void sp_256_sqr_avx2_4(sp_digit* r, const sp_digit* a);
-#define sp_256_mont_reduce_order_avx2_4    sp_256_mont_reduce_avx2_4
-
-extern void sp_256_mont_reduce_avx2_4(sp_digit* a, const sp_digit* m, sp_digit mp);
 /* Multiply two number mod the order of P256 curve. (r = a * b mod order)
  *
  * r  Result of the multiplication.
@@ -23906,12 +23997,20 @@ int sp_ecc_uncompress_256(mp_int* xm, int odd, mp_int* ym)
 
 /* Point structure to use. */
 typedef struct sp_point_384 {
+    /* X ordinate of point. */
     sp_digit x[2 * 6];
+    /* Y ordinate of point. */
     sp_digit y[2 * 6];
+    /* Z ordinate of point. */
     sp_digit z[2 * 6];
+    /* Indicates point is at infinity. */
     int infinity;
 } sp_point_384;
 
+extern void sp_384_mul_6(sp_digit* r, const sp_digit* a, const sp_digit* b);
+extern void sp_384_sqr_6(sp_digit* r, const sp_digit* a);
+extern sp_digit sp_384_add_6(sp_digit* r, const sp_digit* a, const sp_digit* b);
+extern sp_digit sp_384_sub_6(sp_digit* r, const sp_digit* a, const sp_digit* b);
 /* The modulus (prime) of the curve P384. */
 static const sp_digit p384_mod[6] = {
     0x00000000ffffffffL,0xffffffff00000000L,0xfffffffffffffffeL,
@@ -23978,7 +24077,15 @@ static const sp_digit p384_b[6] = {
 };
 #endif
 
-static int sp_384_point_new_ex_6(void* heap, sp_point_384* sp, sp_point_384** p)
+/* Create a new point.
+ *
+ * heap  [in]   Buffer to allocate dynamic memory from.
+ * sp    [in]   Data for point - only if not allocating.
+ * p     [out]  New point.
+ * returns MEMORY_E when dynamic memory allocation fails and 0 otherwise. 
+ */
+static int sp_384_point_new_ex_6(void* heap, sp_point_384* sp,
+        sp_point_384** p)
 {
     int ret = MP_OKAY;
     (void)heap;
@@ -24003,6 +24110,12 @@ static int sp_384_point_new_ex_6(void* heap, sp_point_384* sp, sp_point_384** p)
 #endif
 
 
+/* Free the point.
+ *
+ * p      [in,out]  Point to free.
+ * clear  [in]      Indicates whether to zeroize point.
+ * heap   [in]      Buffer from which dynamic memory was allocate from.
+ */
 static void sp_384_point_free_6(sp_point_384* p, int clear, void* heap)
 {
 #if (defined(WOLFSSL_SP_SMALL) || defined(WOLFSSL_SMALL_STACK)) && !defined(WOLFSSL_SP_NO_MALLOC)
@@ -24229,7 +24342,8 @@ static void sp_384_from_mp(sp_digit* r, int size, const mp_int* a)
  * p   Point of type sp_point_384 (result).
  * pm  Point of type ecc_point.
  */
-static void sp_384_point_from_ecc_point_6(sp_point_384* p, const ecc_point* pm)
+static void sp_384_point_from_ecc_point_6(sp_point_384* p,
+        const ecc_point* pm)
 {
     XMEMSET(p->x, 0, sizeof(p->x));
     XMEMSET(p->y, 0, sizeof(p->y));
@@ -24327,7 +24441,6 @@ static int sp_384_point_to_ecc_point_6(const sp_point_384* p, ecc_point* pm)
 }
 
 extern void sp_384_cond_copy_6(sp_digit* r, const sp_digit* a, sp_digit m);
-extern void sp_384_mul_6(sp_digit* r, const sp_digit* a, const sp_digit* b);
 extern sp_digit sp_384_cond_sub_6(sp_digit* r, const sp_digit* a, const sp_digit* b, sp_digit m);
 extern void sp_384_mont_reduce_6(sp_digit* a, const sp_digit* m, sp_digit mp);
 extern void sp_384_mont_reduce_order_6(sp_digit* a, const sp_digit* m, sp_digit mp);
@@ -24340,14 +24453,13 @@ extern void sp_384_mont_reduce_order_6(sp_digit* a, const sp_digit* m, sp_digit 
  * m   Modulus (prime).
  * mp  Montogmery mulitplier.
  */
-static void sp_384_mont_mul_6(sp_digit* r, const sp_digit* a, const sp_digit* b,
-        const sp_digit* m, sp_digit mp)
+static void sp_384_mont_mul_6(sp_digit* r, const sp_digit* a,
+        const sp_digit* b, const sp_digit* m, sp_digit mp)
 {
     sp_384_mul_6(r, a, b);
     sp_384_mont_reduce_6(r, m, mp);
 }
 
-extern void sp_384_sqr_6(sp_digit* r, const sp_digit* a);
 /* Square the Montgomery form number. (r = a * a mod m)
  *
  * r   Result of squaring.
@@ -24355,8 +24467,8 @@ extern void sp_384_sqr_6(sp_digit* r, const sp_digit* a);
  * m   Modulus (prime).
  * mp  Montogmery mulitplier.
  */
-static void sp_384_mont_sqr_6(sp_digit* r, const sp_digit* a, const sp_digit* m,
-        sp_digit mp)
+static void sp_384_mont_sqr_6(sp_digit* r, const sp_digit* a,
+        const sp_digit* m, sp_digit mp)
 {
     sp_384_sqr_6(r, a);
     sp_384_mont_reduce_6(r, m, mp);
@@ -24487,7 +24599,8 @@ extern int64_t sp_384_cmp_6(const sp_digit* a, const sp_digit* b);
  * p  Montgomery form projective coordinate point.
  * t  Temporary ordinate data.
  */
-static void sp_384_map_6(sp_point_384* r, const sp_point_384* p, sp_digit* t)
+static void sp_384_map_6(sp_point_384* r, const sp_point_384* p,
+        sp_digit* t)
 {
     sp_digit* t1 = t;
     sp_digit* t2 = t + 2*6;
@@ -24523,7 +24636,6 @@ static void sp_384_map_6(sp_point_384* r, const sp_point_384* p, sp_digit* t)
 
 }
 
-extern sp_digit sp_384_add_6(sp_digit* r, const sp_digit* a, const sp_digit* b);
 /* Add two Montgomery form numbers (r = a + b % m).
  *
  * r   Result of addition.
@@ -24571,7 +24683,6 @@ static void sp_384_mont_tpl_6(sp_digit* r, const sp_digit* a, const sp_digit* m)
     sp_384_cond_sub_6(r, r, m, 0 - o);
 }
 
-extern sp_digit sp_384_sub_6(sp_digit* r, const sp_digit* a, const sp_digit* b);
 extern sp_digit sp_384_cond_add_6(sp_digit* r, const sp_digit* a, const sp_digit* b, sp_digit m);
 /* Subtract two Montgomery form numbers (r = a - b % m).
  *
@@ -24596,7 +24707,8 @@ extern void sp_384_div2_6(sp_digit* r, const sp_digit* a, const sp_digit* m);
  * p  Point to double.
  * t  Temporary ordinate data.
  */
-static void sp_384_proj_point_dbl_6(sp_point_384* r, const sp_point_384* p, sp_digit* t)
+static void sp_384_proj_point_dbl_6(sp_point_384* r,
+        const sp_point_384* p, sp_digit* t)
 {
     sp_digit* t1 = t;
     sp_digit* t2 = t + 2*6;
@@ -24657,7 +24769,8 @@ static void sp_384_proj_point_dbl_6(sp_point_384* r, const sp_point_384* p, sp_d
  * n  Number of times to double
  * t  Temporary ordinate data.
  */
-static void sp_384_proj_point_dbl_n_6(sp_point_384* p, int n, sp_digit* t)
+static void sp_384_proj_point_dbl_n_6(sp_point_384* p, int n,
+        sp_digit* t)
 {
     sp_digit* w = t;
     sp_digit* a = t + 2*6;
@@ -24758,8 +24871,8 @@ static int sp_384_cmp_equal_6(const sp_digit* a, const sp_digit* b)
  * q  Second point to add.
  * t  Temporary ordinate data.
  */
-static void sp_384_proj_point_add_6(sp_point_384* r, const sp_point_384* p, const sp_point_384* q,
-        sp_digit* t)
+static void sp_384_proj_point_add_6(sp_point_384* r,
+        const sp_point_384* p, const sp_point_384* q, sp_digit* t)
 {
     const sp_point_384* ap[2];
     sp_point_384* rp[2];
@@ -24852,8 +24965,8 @@ static void sp_384_proj_point_add_6(sp_point_384* r, const sp_point_384* p, cons
  * n  Number of times to double
  * t  Temporary ordinate data.
  */
-static void sp_384_proj_point_dbl_n_store_6(sp_point_384* r, const sp_point_384* p,
-        int n, int m, sp_digit* t)
+static void sp_384_proj_point_dbl_n_store_6(sp_point_384* r,
+        const sp_point_384* p, int n, int m, sp_digit* t)
 {
     sp_digit* w = t;
     sp_digit* a = t + 2*6;
@@ -24922,8 +25035,9 @@ static void sp_384_proj_point_dbl_n_store_6(sp_point_384* r, const sp_point_384*
  * q   Second point to add.
  * t   Temporary ordinate data.
  */
-static void sp_384_proj_point_add_sub_6(sp_point_384* ra, sp_point_384* rs,
-        const sp_point_384* p, const sp_point_384* q, sp_digit* t)
+static void sp_384_proj_point_add_sub_6(sp_point_384* ra,
+        sp_point_384* rs, const sp_point_384* p, const sp_point_384* q,
+        sp_digit* t)
 {
     sp_digit* t1 = t;
     sp_digit* t2 = t + 2*6;
@@ -25072,8 +25186,8 @@ static void sp_384_ecc_recode_6_6(const sp_digit* k, ecc_recode_384* v)
  * heap  Heap to use for allocation.
  * returns MEMORY_E when memory allocation fails and MP_OKAY on success.
  */
-static int sp_384_ecc_mulmod_win_add_sub_6(sp_point_384* r, const sp_point_384* g,
-        const sp_digit* k, int map, void* heap)
+static int sp_384_ecc_mulmod_win_add_sub_6(sp_point_384* r,
+        const sp_point_384* g, const sp_digit* k, int map, void* heap)
 {
 #if (!defined(WOLFSSL_SP_SMALL) && !defined(WOLFSSL_SMALL_STACK)) || defined(WOLFSSL_SP_NO_MALLOC)
     sp_point_384 td[33];
@@ -25157,6 +25271,7 @@ static int sp_384_ecc_mulmod_win_add_sub_6(sp_point_384* r, const sp_point_384* 
 
             XMEMCPY(p, &t[v[i].i], sizeof(sp_point_384));
             sp_384_sub_6(negy, p384_mod, p->y);
+            sp_384_norm_6(negy);
             sp_384_cond_copy_6(p->y, negy, (sp_digit)0 - v[i].neg);
             sp_384_proj_point_add_6(rt, rt, p, tmp);
         }
@@ -25182,6 +25297,7 @@ static int sp_384_ecc_mulmod_win_add_sub_6(sp_point_384* r, const sp_point_384* 
 }
 
 #ifdef HAVE_INTEL_AVX2
+#define sp_384_mod_mul_norm_avx2_6 sp_384_mod_mul_norm_6
 #ifdef HAVE_INTEL_AVX2
 extern void sp_384_mul_avx2_6(sp_digit* r, const sp_digit* a, const sp_digit* b);
 #define sp_384_mont_reduce_avx2_6         sp_384_mont_reduce_6
@@ -25195,8 +25311,8 @@ extern void sp_384_mont_reduce_order_avx2_6(sp_digit* a, const sp_digit* m, sp_d
  * m   Modulus (prime).
  * mp  Montogmery mulitplier.
  */
-static void sp_384_mont_mul_avx2_6(sp_digit* r, const sp_digit* a, const sp_digit* b,
-        const sp_digit* m, sp_digit mp)
+static void sp_384_mont_mul_avx2_6(sp_digit* r, const sp_digit* a,
+        const sp_digit* b, const sp_digit* m, sp_digit mp)
 {
     sp_384_mul_avx2_6(r, a, b);
     sp_384_mont_reduce_avx2_6(r, m, mp);
@@ -25212,8 +25328,8 @@ extern void sp_384_sqr_avx2_6(sp_digit* r, const sp_digit* a);
  * m   Modulus (prime).
  * mp  Montogmery mulitplier.
  */
-static void sp_384_mont_sqr_avx2_6(sp_digit* r, const sp_digit* a, const sp_digit* m,
-        sp_digit mp)
+static void sp_384_mont_sqr_avx2_6(sp_digit* r, const sp_digit* a,
+        const sp_digit* m, sp_digit mp)
 {
     sp_384_sqr_avx2_6(r, a);
     sp_384_mont_reduce_avx2_6(r, m, mp);
@@ -25325,13 +25441,15 @@ static void sp_384_mont_inv_avx2_6(sp_digit* r, const sp_digit* a, sp_digit* td)
 #endif /* WOLFSSL_SP_SMALL */
 }
 
+extern sp_digit sp_384_cond_sub_avx2_6(sp_digit* r, const sp_digit* a, const sp_digit* b, sp_digit m);
 /* Map the Montgomery form projective coordinate point to an affine point.
  *
  * r  Resulting affine coordinate point.
  * p  Montgomery form projective coordinate point.
  * t  Temporary ordinate data.
  */
-static void sp_384_map_avx2_6(sp_point_384* r, const sp_point_384* p, sp_digit* t)
+static void sp_384_map_avx2_6(sp_point_384* r, const sp_point_384* p,
+        sp_digit* t)
 {
     sp_digit* t1 = t;
     sp_digit* t2 = t + 2*6;
@@ -25345,20 +25463,20 @@ static void sp_384_map_avx2_6(sp_point_384* r, const sp_point_384* p, sp_digit* 
     /* x /= z^2 */
     sp_384_mont_mul_avx2_6(r->x, p->x, t2, p384_mod, p384_mp_mod);
     XMEMSET(r->x + 6, 0, sizeof(r->x) / 2U);
-    sp_384_mont_reduce_6(r->x, p384_mod, p384_mp_mod);
+    sp_384_mont_reduce_avx2_6(r->x, p384_mod, p384_mp_mod);
     /* Reduce x to less than modulus */
     n = sp_384_cmp_6(r->x, p384_mod);
-    sp_384_cond_sub_6(r->x, r->x, p384_mod, 0 - ((n >= 0) ?
+    sp_384_cond_sub_avx2_6(r->x, r->x, p384_mod, 0 - ((n >= 0) ?
                 (sp_digit)1 : (sp_digit)0));
     sp_384_norm_6(r->x);
 
     /* y /= z^3 */
     sp_384_mont_mul_avx2_6(r->y, p->y, t1, p384_mod, p384_mp_mod);
     XMEMSET(r->y + 6, 0, sizeof(r->y) / 2U);
-    sp_384_mont_reduce_6(r->y, p384_mod, p384_mp_mod);
+    sp_384_mont_reduce_avx2_6(r->y, p384_mod, p384_mp_mod);
     /* Reduce y to less than modulus */
     n = sp_384_cmp_6(r->y, p384_mod);
-    sp_384_cond_sub_6(r->y, r->y, p384_mod, 0 - ((n >= 0) ?
+    sp_384_cond_sub_avx2_6(r->y, r->y, p384_mod, 0 - ((n >= 0) ?
                 (sp_digit)1 : (sp_digit)0));
     sp_384_norm_6(r->y);
 
@@ -25367,13 +25485,18 @@ static void sp_384_map_avx2_6(sp_point_384* r, const sp_point_384* p, sp_digit* 
 
 }
 
+#define sp_384_mont_add_avx2_6 sp_384_mont_add_6
+#define sp_384_mont_dbl_avx2_6 sp_384_mont_dbl_6
+#define sp_384_mont_tpl_avx2_6 sp_384_mont_tpl_6
+#define sp_384_mont_sub_avx2_6 sp_384_mont_sub_6
 /* Double the Montgomery form projective point p.
  *
  * r  Result of doubling point.
  * p  Point to double.
  * t  Temporary ordinate data.
  */
-static void sp_384_proj_point_dbl_avx2_6(sp_point_384* r, const sp_point_384* p, sp_digit* t)
+static void sp_384_proj_point_dbl_avx2_6(sp_point_384* r,
+        const sp_point_384* p, sp_digit* t)
 {
     sp_digit* t1 = t;
     sp_digit* t2 = t + 2*6;
@@ -25394,17 +25517,17 @@ static void sp_384_proj_point_dbl_avx2_6(sp_point_384* r, const sp_point_384* p,
     /* Z = Y * Z */
     sp_384_mont_mul_avx2_6(z, p->y, p->z, p384_mod, p384_mp_mod);
     /* Z = 2Z */
-    sp_384_mont_dbl_6(z, z, p384_mod);
+    sp_384_mont_dbl_avx2_6(z, z, p384_mod);
     /* T2 = X - T1 */
-    sp_384_mont_sub_6(t2, p->x, t1, p384_mod);
+    sp_384_mont_sub_avx2_6(t2, p->x, t1, p384_mod);
     /* T1 = X + T1 */
-    sp_384_mont_add_6(t1, p->x, t1, p384_mod);
+    sp_384_mont_add_avx2_6(t1, p->x, t1, p384_mod);
     /* T2 = T1 * T2 */
     sp_384_mont_mul_avx2_6(t2, t1, t2, p384_mod, p384_mp_mod);
     /* T1 = 3T2 */
-    sp_384_mont_tpl_6(t1, t2, p384_mod);
+    sp_384_mont_tpl_avx2_6(t1, t2, p384_mod);
     /* Y = 2Y */
-    sp_384_mont_dbl_6(y, p->y, p384_mod);
+    sp_384_mont_dbl_avx2_6(y, p->y, p384_mod);
     /* Y = Y * Y */
     sp_384_mont_sqr_avx2_6(y, y, p384_mod, p384_mp_mod);
     /* T2 = Y * Y */
@@ -25416,15 +25539,15 @@ static void sp_384_proj_point_dbl_avx2_6(sp_point_384* r, const sp_point_384* p,
     /* X = T1 * T1 */
     sp_384_mont_sqr_avx2_6(x, t1, p384_mod, p384_mp_mod);
     /* X = X - Y */
-    sp_384_mont_sub_6(x, x, y, p384_mod);
+    sp_384_mont_sub_avx2_6(x, x, y, p384_mod);
     /* X = X - Y */
-    sp_384_mont_sub_6(x, x, y, p384_mod);
+    sp_384_mont_sub_avx2_6(x, x, y, p384_mod);
     /* Y = Y - X */
-    sp_384_mont_sub_6(y, y, x, p384_mod);
+    sp_384_mont_sub_avx2_6(y, y, x, p384_mod);
     /* Y = Y * T1 */
     sp_384_mont_mul_avx2_6(y, y, t1, p384_mod, p384_mp_mod);
     /* Y = Y - T2 */
-    sp_384_mont_sub_6(y, y, t2, p384_mod);
+    sp_384_mont_sub_avx2_6(y, y, t2, p384_mod);
 }
 
 /* Double the Montgomery form projective point p a number of times.
@@ -25434,7 +25557,8 @@ static void sp_384_proj_point_dbl_avx2_6(sp_point_384* r, const sp_point_384* p,
  * n  Number of times to double
  * t  Temporary ordinate data.
  */
-static void sp_384_proj_point_dbl_n_avx2_6(sp_point_384* p, int n, sp_digit* t)
+static void sp_384_proj_point_dbl_n_avx2_6(sp_point_384* p, int n,
+        sp_digit* t)
 {
     sp_digit* w = t;
     sp_digit* a = t + 2*6;
@@ -25450,7 +25574,7 @@ static void sp_384_proj_point_dbl_n_avx2_6(sp_point_384* p, int n, sp_digit* t)
     z = p->z;
 
     /* Y = 2*Y */
-    sp_384_mont_dbl_6(y, y, p384_mod);
+    sp_384_mont_dbl_avx2_6(y, y, p384_mod);
     /* W = Z^4 */
     sp_384_mont_sqr_avx2_6(w, z, p384_mod, p384_mp_mod);
     sp_384_mont_sqr_avx2_6(w, w, p384_mod, p384_mp_mod);
@@ -25463,15 +25587,15 @@ static void sp_384_proj_point_dbl_n_avx2_6(sp_point_384* p, int n, sp_digit* t)
     {
         /* A = 3*(X^2 - W) */
         sp_384_mont_sqr_avx2_6(t1, x, p384_mod, p384_mp_mod);
-        sp_384_mont_sub_6(t1, t1, w, p384_mod);
-        sp_384_mont_tpl_6(a, t1, p384_mod);
+        sp_384_mont_sub_avx2_6(t1, t1, w, p384_mod);
+        sp_384_mont_tpl_avx2_6(a, t1, p384_mod);
         /* B = X*Y^2 */
         sp_384_mont_sqr_avx2_6(t1, y, p384_mod, p384_mp_mod);
         sp_384_mont_mul_avx2_6(b, t1, x, p384_mod, p384_mp_mod);
         /* X = A^2 - 2B */
         sp_384_mont_sqr_avx2_6(x, a, p384_mod, p384_mp_mod);
-        sp_384_mont_dbl_6(t2, b, p384_mod);
-        sp_384_mont_sub_6(x, x, t2, p384_mod);
+        sp_384_mont_dbl_avx2_6(t2, b, p384_mod);
+        sp_384_mont_sub_avx2_6(x, x, t2, p384_mod);
         /* Z = Z*Y */
         sp_384_mont_mul_avx2_6(z, z, y, p384_mod, p384_mp_mod);
         /* t2 = Y^4 */
@@ -25484,32 +25608,32 @@ static void sp_384_proj_point_dbl_n_avx2_6(sp_point_384* p, int n, sp_digit* t)
             sp_384_mont_mul_avx2_6(w, w, t1, p384_mod, p384_mp_mod);
         }
         /* y = 2*A*(B - X) - Y^4 */
-        sp_384_mont_sub_6(y, b, x, p384_mod);
+        sp_384_mont_sub_avx2_6(y, b, x, p384_mod);
         sp_384_mont_mul_avx2_6(y, y, a, p384_mod, p384_mp_mod);
-        sp_384_mont_dbl_6(y, y, p384_mod);
-        sp_384_mont_sub_6(y, y, t1, p384_mod);
+        sp_384_mont_dbl_avx2_6(y, y, p384_mod);
+        sp_384_mont_sub_avx2_6(y, y, t1, p384_mod);
     }
 #ifndef WOLFSSL_SP_SMALL
     /* A = 3*(X^2 - W) */
     sp_384_mont_sqr_avx2_6(t1, x, p384_mod, p384_mp_mod);
-    sp_384_mont_sub_6(t1, t1, w, p384_mod);
-    sp_384_mont_tpl_6(a, t1, p384_mod);
+    sp_384_mont_sub_avx2_6(t1, t1, w, p384_mod);
+    sp_384_mont_tpl_avx2_6(a, t1, p384_mod);
     /* B = X*Y^2 */
     sp_384_mont_sqr_avx2_6(t1, y, p384_mod, p384_mp_mod);
     sp_384_mont_mul_avx2_6(b, t1, x, p384_mod, p384_mp_mod);
     /* X = A^2 - 2B */
     sp_384_mont_sqr_avx2_6(x, a, p384_mod, p384_mp_mod);
-    sp_384_mont_dbl_6(t2, b, p384_mod);
-    sp_384_mont_sub_6(x, x, t2, p384_mod);
+    sp_384_mont_dbl_avx2_6(t2, b, p384_mod);
+    sp_384_mont_sub_avx2_6(x, x, t2, p384_mod);
     /* Z = Z*Y */
     sp_384_mont_mul_avx2_6(z, z, y, p384_mod, p384_mp_mod);
     /* t2 = Y^4 */
     sp_384_mont_sqr_avx2_6(t1, t1, p384_mod, p384_mp_mod);
     /* y = 2*A*(B - X) - Y^4 */
-    sp_384_mont_sub_6(y, b, x, p384_mod);
+    sp_384_mont_sub_avx2_6(y, b, x, p384_mod);
     sp_384_mont_mul_avx2_6(y, y, a, p384_mod, p384_mp_mod);
-    sp_384_mont_dbl_6(y, y, p384_mod);
-    sp_384_mont_sub_6(y, y, t1, p384_mod);
+    sp_384_mont_dbl_avx2_6(y, y, p384_mod);
+    sp_384_mont_sub_avx2_6(y, y, t1, p384_mod);
 #endif
     /* Y = Y/2 */
     sp_384_div2_6(y, y, p384_mod);
@@ -25522,8 +25646,8 @@ static void sp_384_proj_point_dbl_n_avx2_6(sp_point_384* p, int n, sp_digit* t)
  * q  Second point to add.
  * t  Temporary ordinate data.
  */
-static void sp_384_proj_point_add_avx2_6(sp_point_384* r, const sp_point_384* p, const sp_point_384* q,
-        sp_digit* t)
+static void sp_384_proj_point_add_avx2_6(sp_point_384* r,
+        const sp_point_384* p, const sp_point_384* q, sp_digit* t)
 {
     const sp_point_384* ap[2];
     sp_point_384* rp[2];
@@ -25587,9 +25711,9 @@ static void sp_384_proj_point_add_avx2_6(sp_point_384* r, const sp_point_384* p,
         /* S2 = Y2*Z1^3 */
         sp_384_mont_mul_avx2_6(t4, t4, q->y, p384_mod, p384_mp_mod);
         /* H = U2 - U1 */
-        sp_384_mont_sub_6(t2, t2, t1, p384_mod);
+        sp_384_mont_sub_avx2_6(t2, t2, t1, p384_mod);
         /* R = S2 - S1 */
-        sp_384_mont_sub_6(t4, t4, t3, p384_mod);
+        sp_384_mont_sub_avx2_6(t4, t4, t3, p384_mod);
         /* Z3 = H*Z1*Z2 */
         sp_384_mont_mul_avx2_6(z, z, q->z, p384_mod, p384_mp_mod);
         sp_384_mont_mul_avx2_6(z, z, t2, p384_mod, p384_mp_mod);
@@ -25598,14 +25722,14 @@ static void sp_384_proj_point_add_avx2_6(sp_point_384* r, const sp_point_384* p,
         sp_384_mont_sqr_avx2_6(t5, t2, p384_mod, p384_mp_mod);
         sp_384_mont_mul_avx2_6(y, t1, t5, p384_mod, p384_mp_mod);
         sp_384_mont_mul_avx2_6(t5, t5, t2, p384_mod, p384_mp_mod);
-        sp_384_mont_sub_6(x, x, t5, p384_mod);
-        sp_384_mont_dbl_6(t1, y, p384_mod);
-        sp_384_mont_sub_6(x, x, t1, p384_mod);
+        sp_384_mont_sub_avx2_6(x, x, t5, p384_mod);
+        sp_384_mont_dbl_avx2_6(t1, y, p384_mod);
+        sp_384_mont_sub_avx2_6(x, x, t1, p384_mod);
         /* Y3 = R*(U1*H^2 - X3) - S1*H^3 */
-        sp_384_mont_sub_6(y, y, x, p384_mod);
+        sp_384_mont_sub_avx2_6(y, y, x, p384_mod);
         sp_384_mont_mul_avx2_6(y, y, t4, p384_mod, p384_mp_mod);
         sp_384_mont_mul_avx2_6(t5, t5, t3, p384_mod, p384_mp_mod);
-        sp_384_mont_sub_6(y, y, t5, p384_mod);
+        sp_384_mont_sub_avx2_6(y, y, t5, p384_mod);
     }
 }
 
@@ -25616,8 +25740,8 @@ static void sp_384_proj_point_add_avx2_6(sp_point_384* r, const sp_point_384* p,
  * n  Number of times to double
  * t  Temporary ordinate data.
  */
-static void sp_384_proj_point_dbl_n_store_avx2_6(sp_point_384* r, const sp_point_384* p,
-        int n, int m, sp_digit* t)
+static void sp_384_proj_point_dbl_n_store_avx2_6(sp_point_384* r,
+        const sp_point_384* p, int n, int m, sp_digit* t)
 {
     sp_digit* w = t;
     sp_digit* a = t + 2*6;
@@ -25640,23 +25764,23 @@ static void sp_384_proj_point_dbl_n_store_avx2_6(sp_point_384* r, const sp_point
     }
 
     /* Y = 2*Y */
-    sp_384_mont_dbl_6(y, y, p384_mod);
+    sp_384_mont_dbl_avx2_6(y, y, p384_mod);
     /* W = Z^4 */
     sp_384_mont_sqr_avx2_6(w, z, p384_mod, p384_mp_mod);
     sp_384_mont_sqr_avx2_6(w, w, p384_mod, p384_mp_mod);
     for (i=1; i<=n; i++) {
         /* A = 3*(X^2 - W) */
         sp_384_mont_sqr_avx2_6(t1, x, p384_mod, p384_mp_mod);
-        sp_384_mont_sub_6(t1, t1, w, p384_mod);
-        sp_384_mont_tpl_6(a, t1, p384_mod);
+        sp_384_mont_sub_avx2_6(t1, t1, w, p384_mod);
+        sp_384_mont_tpl_avx2_6(a, t1, p384_mod);
         /* B = X*Y^2 */
         sp_384_mont_sqr_avx2_6(t2, y, p384_mod, p384_mp_mod);
         sp_384_mont_mul_avx2_6(b, t2, x, p384_mod, p384_mp_mod);
         x = r[(1<<i)*m].x;
         /* X = A^2 - 2B */
         sp_384_mont_sqr_avx2_6(x, a, p384_mod, p384_mp_mod);
-        sp_384_mont_dbl_6(t1, b, p384_mod);
-        sp_384_mont_sub_6(x, x, t1, p384_mod);
+        sp_384_mont_dbl_avx2_6(t1, b, p384_mod);
+        sp_384_mont_sub_avx2_6(x, x, t1, p384_mod);
         /* Z = Z*Y */
         sp_384_mont_mul_avx2_6(r[(1<<i)*m].z, z, y, p384_mod, p384_mp_mod);
         z = r[(1<<i)*m].z;
@@ -25667,10 +25791,10 @@ static void sp_384_proj_point_dbl_n_store_avx2_6(sp_point_384* r, const sp_point
             sp_384_mont_mul_avx2_6(w, w, t2, p384_mod, p384_mp_mod);
         }
         /* y = 2*A*(B - X) - Y^4 */
-        sp_384_mont_sub_6(y, b, x, p384_mod);
+        sp_384_mont_sub_avx2_6(y, b, x, p384_mod);
         sp_384_mont_mul_avx2_6(y, y, a, p384_mod, p384_mp_mod);
-        sp_384_mont_dbl_6(y, y, p384_mod);
-        sp_384_mont_sub_6(y, y, t2, p384_mod);
+        sp_384_mont_dbl_avx2_6(y, y, p384_mod);
+        sp_384_mont_sub_avx2_6(y, y, t2, p384_mod);
 
         /* Y = Y/2 */
         sp_384_div2_6(r[(1<<i)*m].y, y, p384_mod);
@@ -25686,8 +25810,9 @@ static void sp_384_proj_point_dbl_n_store_avx2_6(sp_point_384* r, const sp_point
  * q   Second point to add.
  * t   Temporary ordinate data.
  */
-static void sp_384_proj_point_add_sub_avx2_6(sp_point_384* ra, sp_point_384* rs,
-        const sp_point_384* p, const sp_point_384* q, sp_digit* t)
+static void sp_384_proj_point_add_sub_avx2_6(sp_point_384* ra,
+        sp_point_384* rs, const sp_point_384* p, const sp_point_384* q,
+        sp_digit* t)
 {
     sp_digit* t1 = t;
     sp_digit* t2 = t + 2*6;
@@ -25722,11 +25847,11 @@ static void sp_384_proj_point_add_sub_avx2_6(sp_point_384* ra, sp_point_384* rs,
     /* S2 = Y2*Z1^3 */
     sp_384_mont_mul_avx2_6(t4, t4, q->y, p384_mod, p384_mp_mod);
     /* H = U2 - U1 */
-    sp_384_mont_sub_6(t2, t2, t1, p384_mod);
+    sp_384_mont_sub_avx2_6(t2, t2, t1, p384_mod);
     /* RS = S2 + S1 */
-    sp_384_mont_add_6(t6, t4, t3, p384_mod);
+    sp_384_mont_add_avx2_6(t6, t4, t3, p384_mod);
     /* R = S2 - S1 */
-    sp_384_mont_sub_6(t4, t4, t3, p384_mod);
+    sp_384_mont_sub_avx2_6(t4, t4, t3, p384_mod);
     /* Z3 = H*Z1*Z2 */
     /* ZS = H*Z1*Z2 */
     sp_384_mont_mul_avx2_6(z, z, q->z, p384_mod, p384_mp_mod);
@@ -25739,21 +25864,21 @@ static void sp_384_proj_point_add_sub_avx2_6(sp_point_384* ra, sp_point_384* rs,
     sp_384_mont_sqr_avx2_6(t5, t2, p384_mod, p384_mp_mod);
     sp_384_mont_mul_avx2_6(y, t1, t5, p384_mod, p384_mp_mod);
     sp_384_mont_mul_avx2_6(t5, t5, t2, p384_mod, p384_mp_mod);
-    sp_384_mont_sub_6(x, x, t5, p384_mod);
-    sp_384_mont_sub_6(xs, xs, t5, p384_mod);
-    sp_384_mont_dbl_6(t1, y, p384_mod);
-    sp_384_mont_sub_6(x, x, t1, p384_mod);
-    sp_384_mont_sub_6(xs, xs, t1, p384_mod);
+    sp_384_mont_sub_avx2_6(x, x, t5, p384_mod);
+    sp_384_mont_sub_avx2_6(xs, xs, t5, p384_mod);
+    sp_384_mont_dbl_avx2_6(t1, y, p384_mod);
+    sp_384_mont_sub_avx2_6(x, x, t1, p384_mod);
+    sp_384_mont_sub_avx2_6(xs, xs, t1, p384_mod);
     /* Y3 = R*(U1*H^2 - X3) - S1*H^3 */
     /* YS = -RS*(U1*H^2 - XS) - S1*H^3 */
-    sp_384_mont_sub_6(ys, y, xs, p384_mod);
-    sp_384_mont_sub_6(y, y, x, p384_mod);
+    sp_384_mont_sub_avx2_6(ys, y, xs, p384_mod);
+    sp_384_mont_sub_avx2_6(y, y, x, p384_mod);
     sp_384_mont_mul_avx2_6(y, y, t4, p384_mod, p384_mp_mod);
     sp_384_sub_6(t6, p384_mod, t6);
     sp_384_mont_mul_avx2_6(ys, ys, t6, p384_mod, p384_mp_mod);
     sp_384_mont_mul_avx2_6(t5, t5, t3, p384_mod, p384_mp_mod);
-    sp_384_mont_sub_6(y, y, t5, p384_mod);
-    sp_384_mont_sub_6(ys, ys, t5, p384_mod);
+    sp_384_mont_sub_avx2_6(y, y, t5, p384_mod);
+    sp_384_mont_sub_avx2_6(ys, ys, t5, p384_mod);
 }
 
 /* Multiply the point by the scalar and return the result.
@@ -25766,8 +25891,8 @@ static void sp_384_proj_point_add_sub_avx2_6(sp_point_384* ra, sp_point_384* rs,
  * heap  Heap to use for allocation.
  * returns MEMORY_E when memory allocation fails and MP_OKAY on success.
  */
-static int sp_384_ecc_mulmod_win_add_sub_avx2_6(sp_point_384* r, const sp_point_384* g,
-        const sp_digit* k, int map, void* heap)
+static int sp_384_ecc_mulmod_win_add_sub_avx2_6(sp_point_384* r,
+        const sp_point_384* g, const sp_digit* k, int map, void* heap)
 {
 #if (!defined(WOLFSSL_SP_SMALL) && !defined(WOLFSSL_SMALL_STACK)) || defined(WOLFSSL_SP_NO_MALLOC)
     sp_point_384 td[33];
@@ -25807,13 +25932,13 @@ static int sp_384_ecc_mulmod_win_add_sub_avx2_6(sp_point_384* r, const sp_point_
         XMEMSET(&t[0], 0, sizeof(t[0]));
         t[0].infinity = 1;
         /* t[1] = {g->x, g->y, g->z} * norm */
-        err = sp_384_mod_mul_norm_6(t[1].x, g->x, p384_mod);
+        err = sp_384_mod_mul_norm_avx2_6(t[1].x, g->x, p384_mod);
     }
     if (err == MP_OKAY) {
-        err = sp_384_mod_mul_norm_6(t[1].y, g->y, p384_mod);
+        err = sp_384_mod_mul_norm_avx2_6(t[1].y, g->y, p384_mod);
     }
     if (err == MP_OKAY) {
-        err = sp_384_mod_mul_norm_6(t[1].z, g->z, p384_mod);
+        err = sp_384_mod_mul_norm_avx2_6(t[1].z, g->z, p384_mod);
     }
 
     if (err == MP_OKAY) {
@@ -25851,6 +25976,7 @@ static int sp_384_ecc_mulmod_win_add_sub_avx2_6(sp_point_384* r, const sp_point_
 
             XMEMCPY(p, &t[v[i].i], sizeof(sp_point_384));
             sp_384_sub_6(negy, p384_mod, p->y);
+            sp_384_norm_6(negy);
             sp_384_cond_copy_6(p->y, negy, (sp_digit)0 - v[i].neg);
             sp_384_proj_point_add_avx2_6(rt, rt, p, tmp);
         }
@@ -25991,6 +26117,10 @@ static void sp_384_proj_to_affine_6(sp_point_384* a, sp_digit* t)
 
 /* Generate the pre-computed table of points for the base point.
  *
+ * width = 8
+ * 256 entries
+ * 48 bits between
+ *
  * a      The base point.
  * table  Place to store generated point data.
  * tmp    Temporary data.
@@ -26074,14 +26204,20 @@ static int sp_384_gen_stripe_table_6(const sp_point_384* a,
 /* Multiply the point by the scalar and return the result.
  * If map is true then convert result to affine coordinates.
  *
+ * Stripe implementation.
+ * Pre-generated: 2^0, 2^48, ...
+ * Pre-generated: products of all combinations of above.
+ * 8 doubles and adds (with qz=1)
+ *
  * r     Resulting point.
  * k     Scalar to multiply by.
  * map   Indicates whether to convert result to affine.
  * heap  Heap to use for allocation.
  * returns MEMORY_E when memory allocation fails and MP_OKAY on success.
  */
-static int sp_384_ecc_mulmod_stripe_6(sp_point_384* r, const sp_point_384* g,
-        const sp_table_entry_384* table, const sp_digit* k, int map, void* heap)
+static int sp_384_ecc_mulmod_stripe_6(sp_point_384* r,
+        const sp_point_384* g, const sp_table_entry_384* table,
+        const sp_digit* k, int map, void* heap)
 {
 #if (!defined(WOLFSSL_SP_SMALL) && !defined(WOLFSSL_SMALL_STACK)) || defined(WOLFSSL_SP_NO_MALLOC)
     sp_point_384 rtd;
@@ -26161,16 +26297,25 @@ static int sp_384_ecc_mulmod_stripe_6(sp_point_384* r, const sp_point_384* g,
     #define FP_ENTRIES 16
 #endif
 
+/* Cache entry - holds precomputation tables for a point. */
 typedef struct sp_cache_384_t {
+    /* X ordinate of point that table was generated from. */
     sp_digit x[6];
+    /* Y ordinate of point that table was generated from. */
     sp_digit y[6];
+    /* Precomputation table for point. */
     sp_table_entry_384 table[256];
+    /* Count of entries in table. */
     uint32_t cnt;
+    /* Point and table set in entry. */
     int set;
 } sp_cache_384_t;
 
+/* Cache of tables. */
 static THREAD_LS_T sp_cache_384_t sp_cache_384[FP_ENTRIES];
+/* Index of last entry in cache. */
 static THREAD_LS_T int sp_cache_384_last = -1;
+/* Cache has been initialized. */
 static THREAD_LS_T int sp_cache_384_inited = 0;
 
 #ifndef HAVE_THREAD_LS
@@ -26178,7 +26323,13 @@ static THREAD_LS_T int sp_cache_384_inited = 0;
     static wolfSSL_Mutex sp_cache_384_lock;
 #endif
 
-static void sp_ecc_get_cache_384(const sp_point_384* g, sp_cache_384_t** cache)
+/* Get the cache entry for the point.
+ *
+ * g      [in]   Point scalar multipling.
+ * cache  [out]  Cache table to use.
+ */
+static void sp_ecc_get_cache_384(const sp_point_384* g,
+        sp_cache_384_t** cache)
 {
     int i, j;
     uint32_t least;
@@ -26244,8 +26395,8 @@ static void sp_ecc_get_cache_384(const sp_point_384* g, sp_cache_384_t** cache)
  * heap  Heap to use for allocation.
  * returns MEMORY_E when memory allocation fails and MP_OKAY on success.
  */
-static int sp_384_ecc_mulmod_6(sp_point_384* r, const sp_point_384* g, const sp_digit* k,
-        int map, void* heap)
+static int sp_384_ecc_mulmod_6(sp_point_384* r, const sp_point_384* g,
+        const sp_digit* k, int map, void* heap)
 {
 #ifndef FP_ECC
     return sp_384_ecc_mulmod_win_add_sub_6(r, g, k, map, heap);
@@ -26349,9 +26500,9 @@ static void sp_384_proj_point_add_qz1_avx2_6(sp_point_384* r, const sp_point_384
         /* S2 = Y2*Z1^3 */
         sp_384_mont_mul_avx2_6(t4, t4, q->y, p384_mod, p384_mp_mod);
         /* H = U2 - X1 */
-        sp_384_mont_sub_6(t2, t2, x, p384_mod);
+        sp_384_mont_sub_avx2_6(t2, t2, x, p384_mod);
         /* R = S2 - Y1 */
-        sp_384_mont_sub_6(t4, t4, y, p384_mod);
+        sp_384_mont_sub_avx2_6(t4, t4, y, p384_mod);
         /* Z3 = H*Z1 */
         sp_384_mont_mul_avx2_6(z, z, t2, p384_mod, p384_mp_mod);
         /* X3 = R^2 - H^3 - 2*X1*H^2 */
@@ -26359,14 +26510,14 @@ static void sp_384_proj_point_add_qz1_avx2_6(sp_point_384* r, const sp_point_384
         sp_384_mont_sqr_avx2_6(t5, t2, p384_mod, p384_mp_mod);
         sp_384_mont_mul_avx2_6(t3, x, t5, p384_mod, p384_mp_mod);
         sp_384_mont_mul_avx2_6(t5, t5, t2, p384_mod, p384_mp_mod);
-        sp_384_mont_sub_6(x, t1, t5, p384_mod);
-        sp_384_mont_dbl_6(t1, t3, p384_mod);
-        sp_384_mont_sub_6(x, x, t1, p384_mod);
+        sp_384_mont_sub_avx2_6(x, t1, t5, p384_mod);
+        sp_384_mont_dbl_avx2_6(t1, t3, p384_mod);
+        sp_384_mont_sub_avx2_6(x, x, t1, p384_mod);
         /* Y3 = R*(X1*H^2 - X3) - Y1*H^3 */
-        sp_384_mont_sub_6(t3, t3, x, p384_mod);
+        sp_384_mont_sub_avx2_6(t3, t3, x, p384_mod);
         sp_384_mont_mul_avx2_6(t3, t3, t4, p384_mod, p384_mp_mod);
         sp_384_mont_mul_avx2_6(t5, t5, y, p384_mod, p384_mp_mod);
-        sp_384_mont_sub_6(y, t3, t5, p384_mod);
+        sp_384_mont_sub_avx2_6(y, t3, t5, p384_mod);
     }
 }
 
@@ -26394,6 +26545,10 @@ static void sp_384_proj_to_affine_avx2_6(sp_point_384* a, sp_digit* t)
 }
 
 /* Generate the pre-computed table of points for the base point.
+ *
+ * width = 8
+ * 256 entries
+ * 48 bits between
  *
  * a      The base point.
  * table  Place to store generated point data.
@@ -26423,13 +26578,13 @@ static int sp_384_gen_stripe_table_avx2_6(const sp_point_384* a,
     }
 
     if (err == MP_OKAY) {
-        err = sp_384_mod_mul_norm_6(t->x, a->x, p384_mod);
+        err = sp_384_mod_mul_norm_avx2_6(t->x, a->x, p384_mod);
     }
     if (err == MP_OKAY) {
-        err = sp_384_mod_mul_norm_6(t->y, a->y, p384_mod);
+        err = sp_384_mod_mul_norm_avx2_6(t->y, a->y, p384_mod);
     }
     if (err == MP_OKAY) {
-        err = sp_384_mod_mul_norm_6(t->z, a->z, p384_mod);
+        err = sp_384_mod_mul_norm_avx2_6(t->z, a->z, p384_mod);
     }
     if (err == MP_OKAY) {
         t->infinity = 0;
@@ -26478,14 +26633,20 @@ static int sp_384_gen_stripe_table_avx2_6(const sp_point_384* a,
 /* Multiply the point by the scalar and return the result.
  * If map is true then convert result to affine coordinates.
  *
+ * Stripe implementation.
+ * Pre-generated: 2^0, 2^48, ...
+ * Pre-generated: products of all combinations of above.
+ * 8 doubles and adds (with qz=1)
+ *
  * r     Resulting point.
  * k     Scalar to multiply by.
  * map   Indicates whether to convert result to affine.
  * heap  Heap to use for allocation.
  * returns MEMORY_E when memory allocation fails and MP_OKAY on success.
  */
-static int sp_384_ecc_mulmod_stripe_avx2_6(sp_point_384* r, const sp_point_384* g,
-        const sp_table_entry_384* table, const sp_digit* k, int map, void* heap)
+static int sp_384_ecc_mulmod_stripe_avx2_6(sp_point_384* r,
+        const sp_point_384* g, const sp_table_entry_384* table,
+        const sp_digit* k, int map, void* heap)
 {
 #if (!defined(WOLFSSL_SP_SMALL) && !defined(WOLFSSL_SMALL_STACK)) || defined(WOLFSSL_SP_NO_MALLOC)
     sp_point_384 rtd;
@@ -26570,8 +26731,8 @@ static int sp_384_ecc_mulmod_stripe_avx2_6(sp_point_384* r, const sp_point_384* 
  * heap  Heap to use for allocation.
  * returns MEMORY_E when memory allocation fails and MP_OKAY on success.
  */
-static int sp_384_ecc_mulmod_avx2_6(sp_point_384* r, const sp_point_384* g, const sp_digit* k,
-        int map, void* heap)
+static int sp_384_ecc_mulmod_avx2_6(sp_point_384* r, const sp_point_384* g,
+        const sp_digit* k, int map, void* heap)
 {
 #ifndef FP_ECC
     return sp_384_ecc_mulmod_win_add_sub_avx2_6(r, g, k, map, heap);
@@ -26672,6 +26833,10 @@ int sp_ecc_mulmod_384(mp_int* km, ecc_point* gm, ecc_point* r, int map,
     return err;
 }
 
+/* Striping precomputation table.
+ * 8 points combined into a table of 256 points.
+ * Distance of 48 between points.
+ */
 static const sp_table_entry_384 p384_table[256] = {
     /* 0 */
     { { 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 },
@@ -27956,6 +28121,11 @@ static const sp_table_entry_384 p384_table[256] = {
 /* Multiply the base point of P384 by the scalar and return the result.
  * If map is true then convert result to affine coordinates.
  *
+ * Stripe implementation.
+ * Pre-generated: 2^0, 2^48, ...
+ * Pre-generated: products of all combinations of above.
+ * 8 doubles and adds (with qz=1)
+ *
  * r     Resulting point.
  * k     Scalar to multiply by.
  * map   Indicates whether to convert result to affine.
@@ -27972,6 +28142,11 @@ static int sp_384_ecc_mulmod_base_6(sp_point_384* r, const sp_digit* k,
 #ifdef HAVE_INTEL_AVX2
 /* Multiply the base point of P384 by the scalar and return the result.
  * If map is true then convert result to affine coordinates.
+ *
+ * Stripe implementation.
+ * Pre-generated: 2^0, 2^48, ...
+ * Pre-generated: products of all combinations of above.
+ * 8 doubles and adds (with qz=1)
  *
  * r     Resulting point.
  * k     Scalar to multiply by.
@@ -28012,8 +28187,7 @@ int sp_ecc_mulmod_base_384(mp_int* km, ecc_point* r, int map, void* heap)
     err = sp_384_point_new_6(heap, p, point);
 #if (defined(WOLFSSL_SP_SMALL) || defined(WOLFSSL_SMALL_STACK)) && !defined(WOLFSSL_SP_NO_MALLOC)
     if (err == MP_OKAY) {
-        k = (sp_digit*)XMALLOC(sizeof(sp_digit) * 6, heap,
-                                                              DYNAMIC_TYPE_ECC);
+        k = (sp_digit*)XMALLOC(sizeof(sp_digit) * 6, heap, DYNAMIC_TYPE_ECC);
         if (k == NULL) {
             err = MEMORY_E;
         }
@@ -28303,7 +28477,6 @@ int sp_ecc_secret_gen_384(mp_int* priv, ecc_point* pub, byte* out,
 #endif
 #if defined(HAVE_ECC_SIGN) || defined(HAVE_ECC_VERIFY)
 extern sp_digit sp_384_sub_in_place_6(sp_digit* a, const sp_digit* b);
-extern sp_digit sp_384_cond_sub_avx2_6(sp_digit* r, const sp_digit* a, const sp_digit* b, sp_digit m);
 extern void sp_384_mul_d_6(sp_digit* r, const sp_digit* a, sp_digit b);
 extern void sp_384_mul_d_avx2_6(sp_digit* r, const sp_digit* a, const sp_digit b);
 /* Divide the double width number (d1|d0) by the dividend. (d1|d0 / div)
@@ -28358,8 +28531,8 @@ static void sp_384_mask_6(sp_digit* r, const sp_digit* a, sp_digit m)
  * r  Remainder from the division.
  * returns MP_OKAY indicating success.
  */
-static WC_INLINE int sp_384_div_6(const sp_digit* a, const sp_digit* d, sp_digit* m,
-        sp_digit* r)
+static WC_INLINE int sp_384_div_6(const sp_digit* a, const sp_digit* d,
+        sp_digit* m, sp_digit* r)
 {
     sp_digit t1[12], t2[7];
     sp_digit div, r1;
@@ -28414,7 +28587,8 @@ static WC_INLINE int sp_384_div_6(const sp_digit* a, const sp_digit* d, sp_digit
  * m  A single precision number that is the modulus to reduce with.
  * returns MP_OKAY indicating success.
  */
-static WC_INLINE int sp_384_mod_6(sp_digit* r, const sp_digit* a, const sp_digit* m)
+static WC_INLINE int sp_384_mod_6(sp_digit* r, const sp_digit* a,
+        const sp_digit* m)
 {
     return sp_384_div_6(a, m, NULL, r);
 }
@@ -29763,6 +29937,10320 @@ int sp_ecc_uncompress_384(mp_int* xm, int odd, mp_int* ym)
 }
 #endif
 #endif /* WOLFSSL_SP_384 */
+#ifdef WOLFSSL_SP_1024
+
+/* Point structure to use. */
+typedef struct sp_point_1024 {
+    /* X ordinate of point. */
+    sp_digit x[2 * 16];
+    /* Y ordinate of point. */
+    sp_digit y[2 * 16];
+    /* Z ordinate of point. */
+    sp_digit z[2 * 16];
+    /* Indicates point is at infinity. */
+    int infinity;
+} sp_point_1024;
+
+extern void sp_1024_mul_16(sp_digit* r, const sp_digit* a, const sp_digit* b);
+extern void sp_1024_sqr_16(sp_digit* r, const sp_digit* a);
+extern void sp_1024_mul_avx2_16(sp_digit* r, const sp_digit* a, const sp_digit* b);
+extern void sp_1024_sqr_avx2_16(sp_digit* r, const sp_digit* a);
+/* The modulus (prime) of the curve P1024. */
+static const sp_digit p1024_mod[16] = {
+    0x666d807afea85febL,0x80c5df10ac7ace87L,0xfce3e82389857db0L,
+    0x9f94d6af56971f1fL,0xa7cf3c521c3c09aaL,0xb6aff4a831852a82L,
+    0x512ac5cd65681ce1L,0xe26c6487326b4cd4L,0x356d27f4a666a6d0L,
+    0xe791b39ff7c88a19L,0x228730d531a59cb0L,0xf40aab27e2fc0f1bL,
+    0xbe9ae358b3e01a2eL,0x416c0ce19cb48261L,0x65c61198dad0657aL,
+    0x997abb1f0a563fdaL
+};
+/* The Montogmery normalizer for modulus of the curve P1024. */
+static const sp_digit p1024_norm_mod[16] = {
+    0x99927f850157a015L,0x7f3a20ef53853178L,0x031c17dc767a824fL,
+    0x606b2950a968e0e0L,0x5830c3ade3c3f655L,0x49500b57ce7ad57dL,
+    0xaed53a329a97e31eL,0x1d939b78cd94b32bL,0xca92d80b5999592fL,
+    0x186e4c60083775e6L,0xdd78cf2ace5a634fL,0x0bf554d81d03f0e4L,
+    0x41651ca74c1fe5d1L,0xbe93f31e634b7d9eL,0x9a39ee67252f9a85L,
+    0x668544e0f5a9c025L
+};
+/* The Montogmery multiplier for modulus of the curve P1024. */
+static sp_digit p1024_mp_mod = 0x290420077c8f2f3d;
+#ifdef WOLFSSL_SP_SMALL
+/* The order of the curve P1024. */
+static const sp_digit p1024_order[16] = {
+    0xd99b601ebfaa17fbL,0x203177c42b1eb3a1L,0xff38fa08e2615f6cL,
+    0xa7e535abd5a5c7c7L,0xa9f3cf14870f026aL,0x6dabfd2a0c614aa0L,
+    0x144ab173595a0738L,0x389b1921cc9ad335L,0x4d5b49fd2999a9b4L,
+    0x39e46ce7fdf22286L,0xc8a1cc354c69672cL,0xbd02aac9f8bf03c6L,
+    0x6fa6b8d62cf8068bL,0x905b0338672d2098L,0x9971846636b4195eL,
+    0x265eaec7c2958ff6L
+};
+#endif
+/* The base point of curve P1024. */
+static const sp_point_1024 p1024_base = {
+    /* X ordinate */
+    {
+        0x880dc8abeae63895L,0x80ec46c4967e0979L,0xee9163a5b63f73ecL,
+        0xd5cfb4cc80728d87L,0xa7c1514dba66910dL,0xa702c3397a60de74L,
+        0x337c86548b72f2e1L,0x9760af765dd5bccbL,0x718bd9e7406ce890L,
+        0x43d5f22cdb9dfa55L,0xab10db9030b09e10L,0xb5edb6c0f6ce2308L,
+        0x98b2f204b6ff7cbfL,0x2b1a2fd60aec69c6L,0x0a7990053ed9b52aL,
+        0x53fc09ee332c29adL,
+        0L, 0L, 0L, 0L, 0L, 0L, 0L, 0L, 0L, 0L, 0L, 0L, 0L, 0L, 0L, 0L
+    },
+    /* Y ordinate */
+    {
+        0x75573fd71bef16d7L,0xadb9b5706a67dcdeL,0x80bdad5ad5bb4636L,
+        0x13515ad7e9cb99a9L,0x492d979fc5a4d5f2L,0xac6f1e80164aa989L,
+        0xcad696b5b7652fe0L,0x70dae117ad547c6cL,0x416cff0ca9e032b9L,
+        0x6b598ccf9a140b2eL,0xe7f7f5e5f0de55f6L,0xf5ea69f4654ec2b9L,
+        0x3d778d821e141178L,0xd3e8201602990696L,0xf9f1f0533634a135L,
+        0x0a8249063f6009f1L,
+        0L, 0L, 0L, 0L, 0L, 0L, 0L, 0L, 0L, 0L, 0L, 0L, 0L, 0L, 0L, 0L
+    },
+    /* Z ordinate */
+    {
+        0x0000000000000001L,0x0000000000000000L,0x0000000000000000L,
+        0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,
+        0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,
+        0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,
+        0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,
+        0x0000000000000000L,
+        0L, 0L, 0L, 0L, 0L, 0L, 0L, 0L, 0L, 0L, 0L, 0L, 0L, 0L, 0L, 0L
+    },
+    /* infinity */
+    0
+};
+
+extern sp_digit sp_1024_add_16(sp_digit* r, const sp_digit* a, const sp_digit* b);
+extern sp_digit sp_1024_sub_in_place_16(sp_digit* a, const sp_digit* b);
+extern sp_digit sp_1024_cond_sub_16(sp_digit* r, const sp_digit* a, const sp_digit* b, sp_digit m);
+extern sp_digit sp_1024_cond_sub_avx2_16(sp_digit* r, const sp_digit* a, const sp_digit* b, sp_digit m);
+extern void sp_1024_mul_d_16(sp_digit* r, const sp_digit* a, sp_digit b);
+extern void sp_1024_mul_d_avx2_16(sp_digit* r, const sp_digit* a, const sp_digit b);
+/* Divide the double width number (d1|d0) by the dividend. (d1|d0 / div)
+ *
+ * d1   The high order half of the number to divide.
+ * d0   The low order half of the number to divide.
+ * div  The dividend.
+ * returns the result of the division.
+ */
+static WC_INLINE sp_digit div_1024_word_16(sp_digit d1, sp_digit d0,
+        sp_digit div)
+{
+    register sp_digit r asm("rax");
+    __asm__ __volatile__ (
+        "divq %3"
+        : "=a" (r)
+        : "d" (d1), "a" (d0), "r" (div)
+        :
+    );
+    return r;
+}
+/* AND m into each word of a and store in r.
+ *
+ * r  A single precision integer.
+ * a  A single precision integer.
+ * m  Mask to AND against each digit.
+ */
+static void sp_1024_mask_16(sp_digit* r, const sp_digit* a, sp_digit m)
+{
+#ifdef WOLFSSL_SP_SMALL
+    int i;
+
+    for (i=0; i<16; i++) {
+        r[i] = a[i] & m;
+    }
+#else
+    int i;
+
+    for (i = 0; i < 16; i += 8) {
+        r[i+0] = a[i+0] & m;
+        r[i+1] = a[i+1] & m;
+        r[i+2] = a[i+2] & m;
+        r[i+3] = a[i+3] & m;
+        r[i+4] = a[i+4] & m;
+        r[i+5] = a[i+5] & m;
+        r[i+6] = a[i+6] & m;
+        r[i+7] = a[i+7] & m;
+    }
+#endif
+}
+
+extern int64_t sp_1024_cmp_16(const sp_digit* a, const sp_digit* b);
+/* Divide d in a and put remainder into r (m*d + r = a)
+ * m is not calculated as it is not needed at this time.
+ *
+ * a  Number to be divided.
+ * d  Number to divide with.
+ * m  Multiplier result.
+ * r  Remainder from the division.
+ * returns MP_OKAY indicating success.
+ */
+static WC_INLINE int sp_1024_div_16(const sp_digit* a, const sp_digit* d,
+        sp_digit* m, sp_digit* r)
+{
+    sp_digit t1[32], t2[17];
+    sp_digit div, r1;
+    int i;
+#ifdef HAVE_INTEL_AVX2
+    word32 cpuid_flags = cpuid_get_flags();
+#endif
+
+    (void)m;
+
+    div = d[15];
+    XMEMCPY(t1, a, sizeof(*t1) * 2 * 16);
+    r1 = sp_1024_cmp_16(&t1[16], d) >= 0;
+#ifdef HAVE_INTEL_AVX2
+    if (IS_INTEL_BMI2(cpuid_flags) && IS_INTEL_ADX(cpuid_flags))
+        sp_1024_cond_sub_avx2_16(&t1[16], &t1[16], d, (sp_digit)0 - r1);
+    else
+#endif
+        sp_1024_cond_sub_16(&t1[16], &t1[16], d, (sp_digit)0 - r1);
+    for (i=15; i>=0; i--) {
+        r1 = div_1024_word_16(t1[16 + i], t1[16 + i - 1], div);
+
+#ifdef HAVE_INTEL_AVX2
+        if (IS_INTEL_BMI2(cpuid_flags) && IS_INTEL_ADX(cpuid_flags))
+            sp_1024_mul_d_avx2_16(t2, d, r1);
+        else
+#endif
+            sp_1024_mul_d_16(t2, d, r1);
+        t1[16 + i] += sp_1024_sub_in_place_16(&t1[i], t2);
+        t1[16 + i] -= t2[16];
+        sp_1024_mask_16(t2, d, t1[16 + i]);
+        t1[16 + i] += sp_1024_add_16(&t1[i], &t1[i], t2);
+        sp_1024_mask_16(t2, d, t1[16 + i]);
+        t1[16 + i] += sp_1024_add_16(&t1[i], &t1[i], t2);
+    }
+
+    r1 = sp_1024_cmp_16(t1, d) >= 0;
+#ifdef HAVE_INTEL_AVX2
+    if (IS_INTEL_BMI2(cpuid_flags) && IS_INTEL_ADX(cpuid_flags))
+        sp_1024_cond_sub_avx2_16(r, t1, d, (sp_digit)0 - r1);
+    else
+#endif
+        sp_1024_cond_sub_16(r, t1, d, (sp_digit)0 - r1);
+
+    return MP_OKAY;
+}
+
+/* Reduce a modulo m into r. (r = a mod m)
+ *
+ * r  A single precision number that is the reduced result.
+ * a  A single precision number that is to be reduced.
+ * m  A single precision number that is the modulus to reduce with.
+ * returns MP_OKAY indicating success.
+ */
+static WC_INLINE int sp_1024_mod_16(sp_digit* r, const sp_digit* a,
+        const sp_digit* m)
+{
+    return sp_1024_div_16(a, m, NULL, r);
+}
+
+/* Multiply a number by Montogmery normalizer mod modulus (prime).
+ *
+ * r  The resulting Montgomery form number.
+ * a  The number to convert.
+ * m  The modulus (prime).
+ * returns MEMORY_E when memory allocation fails and MP_OKAY otherwise.
+ */
+static int sp_1024_mod_mul_norm_16(sp_digit* r, const sp_digit* a, const sp_digit* m)
+{
+    sp_1024_mul_16(r, a, p1024_norm_mod);
+    return sp_1024_mod_16(r, r, m);
+}
+
+/* Multiply a number by Montogmery normalizer mod modulus (prime).
+ *
+ * r  The resulting Montgomery form number.
+ * a  The number to convert.
+ * m  The modulus (prime).
+ * returns MEMORY_E when memory allocation fails and MP_OKAY otherwise.
+ */
+static int sp_1024_mod_mul_norm_avx2_16(sp_digit* r, const sp_digit* a, const sp_digit* m)
+{
+    sp_1024_mul_avx2_16(r, a, p1024_norm_mod);
+    return sp_1024_mod_16(r, r, m);
+}
+
+/* Create a new point.
+ *
+ * heap  [in]   Buffer to allocate dynamic memory from.
+ * sp    [in]   Data for point - only if not allocating.
+ * p     [out]  New point.
+ * returns MEMORY_E when dynamic memory allocation fails and 0 otherwise. 
+ */
+static int sp_1024_point_new_ex_16(void* heap, sp_point_1024* sp,
+        sp_point_1024** p)
+{
+    int ret = MP_OKAY;
+    (void)heap;
+#if (defined(WOLFSSL_SP_SMALL) || defined(WOLFSSL_SMALL_STACK)) && !defined(WOLFSSL_SP_NO_MALLOC)
+    (void)sp;
+    *p = (sp_point_1024*)XMALLOC(sizeof(sp_point_1024), heap, DYNAMIC_TYPE_ECC);
+#else
+    *p = sp;
+#endif
+    if (*p == NULL) {
+        ret = MEMORY_E;
+    }
+    return ret;
+}
+
+#if (defined(WOLFSSL_SP_SMALL) || defined(WOLFSSL_SMALL_STACK)) && !defined(WOLFSSL_SP_NO_MALLOC)
+/* Allocate memory for point and return error. */
+#define sp_1024_point_new_16(heap, sp, p) sp_1024_point_new_ex_16((heap), NULL, &(p))
+#else
+/* Set pointer to data and return no error. */
+#define sp_1024_point_new_16(heap, sp, p) sp_1024_point_new_ex_16((heap), &(sp), &(p))
+#endif
+
+
+/* Free the point.
+ *
+ * p      [in,out]  Point to free.
+ * clear  [in]      Indicates whether to zeroize point.
+ * heap   [in]      Buffer from which dynamic memory was allocate from.
+ */
+static void sp_1024_point_free_16(sp_point_1024* p, int clear, void* heap)
+{
+#if (defined(WOLFSSL_SP_SMALL) || defined(WOLFSSL_SMALL_STACK)) && !defined(WOLFSSL_SP_NO_MALLOC)
+/* If valid pointer then clear point data if requested and free data. */
+    if (p != NULL) {
+        if (clear != 0) {
+            XMEMSET(p, 0, sizeof(*p));
+        }
+        XFREE(p, heap, DYNAMIC_TYPE_ECC);
+    }
+#else
+/* Clear point data if requested. */
+    if (clear != 0) {
+        XMEMSET(p, 0, sizeof(*p));
+    }
+#endif
+    (void)heap;
+}
+
+/* Convert an mp_int to an array of sp_digit.
+ *
+ * r  A single precision integer.
+ * size  Maximum number of bytes to convert
+ * a  A multi-precision integer.
+ */
+static void sp_1024_from_mp(sp_digit* r, int size, const mp_int* a)
+{
+#if DIGIT_BIT == 64
+    int j;
+
+    XMEMCPY(r, a->dp, sizeof(sp_digit) * a->used);
+
+    for (j = a->used; j < size; j++) {
+        r[j] = 0;
+    }
+#elif DIGIT_BIT > 64
+    int i, j = 0;
+    word32 s = 0;
+
+    r[0] = 0;
+    for (i = 0; i < a->used && j < size; i++) {
+        r[j] |= ((sp_digit)a->dp[i] << s);
+        r[j] &= 0xffffffffffffffffl;
+        s = 64U - s;
+        if (j + 1 >= size) {
+            break;
+        }
+        /* lint allow cast of mismatch word32 and mp_digit */
+        r[++j] = (sp_digit)(a->dp[i] >> s); /*lint !e9033*/
+        while ((s + 64U) <= (word32)DIGIT_BIT) {
+            s += 64U;
+            r[j] &= 0xffffffffffffffffl;
+            if (j + 1 >= size) {
+                break;
+            }
+            if (s < (word32)DIGIT_BIT) {
+                /* lint allow cast of mismatch word32 and mp_digit */
+                r[++j] = (sp_digit)(a->dp[i] >> s); /*lint !e9033*/
+            }
+            else {
+                r[++j] = 0L;
+            }
+        }
+        s = (word32)DIGIT_BIT - s;
+    }
+
+    for (j++; j < size; j++) {
+        r[j] = 0;
+    }
+#else
+    int i, j = 0, s = 0;
+
+    r[0] = 0;
+    for (i = 0; i < a->used && j < size; i++) {
+        r[j] |= ((sp_digit)a->dp[i]) << s;
+        if (s + DIGIT_BIT >= 64) {
+            r[j] &= 0xffffffffffffffffl;
+            if (j + 1 >= size) {
+                break;
+            }
+            s = 64 - s;
+            if (s == DIGIT_BIT) {
+                r[++j] = 0;
+                s = 0;
+            }
+            else {
+                r[++j] = a->dp[i] >> s;
+                s = DIGIT_BIT - s;
+            }
+        }
+        else {
+            s += DIGIT_BIT;
+        }
+    }
+
+    for (j++; j < size; j++) {
+        r[j] = 0;
+    }
+#endif
+}
+
+/* Convert a point of type ecc_point to type sp_point_1024.
+ *
+ * p   Point of type sp_point_1024 (result).
+ * pm  Point of type ecc_point.
+ */
+static void sp_1024_point_from_ecc_point_16(sp_point_1024* p,
+        const ecc_point* pm)
+{
+    XMEMSET(p->x, 0, sizeof(p->x));
+    XMEMSET(p->y, 0, sizeof(p->y));
+    XMEMSET(p->z, 0, sizeof(p->z));
+    sp_1024_from_mp(p->x, 16, pm->x);
+    sp_1024_from_mp(p->y, 16, pm->y);
+    sp_1024_from_mp(p->z, 16, pm->z);
+    p->infinity = 0;
+}
+
+/* Convert an array of sp_digit to an mp_int.
+ *
+ * a  A single precision integer.
+ * r  A multi-precision integer.
+ */
+static int sp_1024_to_mp(const sp_digit* a, mp_int* r)
+{
+    int err;
+
+    err = mp_grow(r, (1024 + DIGIT_BIT - 1) / DIGIT_BIT);
+    if (err == MP_OKAY) { /*lint !e774 case where err is always MP_OKAY*/
+#if DIGIT_BIT == 64
+        XMEMCPY(r->dp, a, sizeof(sp_digit) * 16);
+        r->used = 16;
+        mp_clamp(r);
+#elif DIGIT_BIT < 64
+        int i, j = 0, s = 0;
+
+        r->dp[0] = 0;
+        for (i = 0; i < 16; i++) {
+            r->dp[j] |= (mp_digit)(a[i] << s);
+            r->dp[j] &= (1L << DIGIT_BIT) - 1;
+            s = DIGIT_BIT - s;
+            r->dp[++j] = (mp_digit)(a[i] >> s);
+            while (s + DIGIT_BIT <= 64) {
+                s += DIGIT_BIT;
+                r->dp[j++] &= (1L << DIGIT_BIT) - 1;
+                if (s == SP_WORD_SIZE) {
+                    r->dp[j] = 0;
+                }
+                else {
+                    r->dp[j] = (mp_digit)(a[i] >> s);
+                }
+            }
+            s = 64 - s;
+        }
+        r->used = (1024 + DIGIT_BIT - 1) / DIGIT_BIT;
+        mp_clamp(r);
+#else
+        int i, j = 0, s = 0;
+
+        r->dp[0] = 0;
+        for (i = 0; i < 16; i++) {
+            r->dp[j] |= ((mp_digit)a[i]) << s;
+            if (s + 64 >= DIGIT_BIT) {
+    #if DIGIT_BIT != 32 && DIGIT_BIT != 64
+                r->dp[j] &= (1L << DIGIT_BIT) - 1;
+    #endif
+                s = DIGIT_BIT - s;
+                r->dp[++j] = a[i] >> s;
+                s = 64 - s;
+            }
+            else {
+                s += 64;
+            }
+        }
+        r->used = (1024 + DIGIT_BIT - 1) / DIGIT_BIT;
+        mp_clamp(r);
+#endif
+    }
+
+    return err;
+}
+
+/* Convert a point of type sp_point_1024 to type ecc_point.
+ *
+ * p   Point of type sp_point_1024.
+ * pm  Point of type ecc_point (result).
+ * returns MEMORY_E when allocation of memory in ecc_point fails otherwise
+ * MP_OKAY.
+ */
+static int sp_1024_point_to_ecc_point_16(const sp_point_1024* p, ecc_point* pm)
+{
+    int err;
+
+    err = sp_1024_to_mp(p->x, pm->x);
+    if (err == MP_OKAY) {
+        err = sp_1024_to_mp(p->y, pm->y);
+    }
+    if (err == MP_OKAY) {
+        err = sp_1024_to_mp(p->z, pm->z);
+    }
+
+    return err;
+}
+
+extern void sp_1024_cond_copy_16(sp_digit* r, const sp_digit* a, sp_digit m);
+extern void sp_1024_mont_reduce_16(sp_digit* a, const sp_digit* m, sp_digit mp);
+/* Multiply two Montogmery form numbers mod the modulus (prime).
+ * (r = a * b mod m)
+ *
+ * r   Result of multiplication.
+ * a   First number to multiply in Montogmery form.
+ * b   Second number to multiply in Montogmery form.
+ * m   Modulus (prime).
+ * mp  Montogmery mulitplier.
+ */
+static void sp_1024_mont_mul_16(sp_digit* r, const sp_digit* a,
+        const sp_digit* b, const sp_digit* m, sp_digit mp)
+{
+    sp_1024_mul_16(r, a, b);
+    sp_1024_mont_reduce_16(r, m, mp);
+}
+
+/* Square the Montgomery form number. (r = a * a mod m)
+ *
+ * r   Result of squaring.
+ * a   Number to square in Montogmery form.
+ * m   Modulus (prime).
+ * mp  Montogmery mulitplier.
+ */
+static void sp_1024_mont_sqr_16(sp_digit* r, const sp_digit* a,
+        const sp_digit* m, sp_digit mp)
+{
+    sp_1024_sqr_16(r, a);
+    sp_1024_mont_reduce_16(r, m, mp);
+}
+
+/* Mod-2 for the P1024 curve. */
+static const uint8_t p1024_mod_minus_2[] = {
+     6,0x06,  7,0x0f,  7,0x0b,  6,0x0c,  7,0x1e,  9,0x09,  7,0x0c,  7,0x1f, 
+     6,0x16,  6,0x06,  7,0x0e,  8,0x10,  6,0x03,  8,0x11,  6,0x0d,  7,0x14, 
+     9,0x12,  6,0x0f,  7,0x04,  9,0x0d,  6,0x00,  7,0x13,  6,0x01,  6,0x07, 
+     8,0x0d,  8,0x00,  6,0x06,  9,0x17,  6,0x14,  6,0x15,  6,0x11,  6,0x0b, 
+     9,0x0c,  6,0x1e, 13,0x14,  7,0x0e,  6,0x1d, 12,0x0a,  6,0x0b,  8,0x07, 
+     6,0x18,  6,0x0f,  6,0x10,  8,0x1c,  7,0x16,  7,0x02,  6,0x01,  6,0x13, 
+    10,0x15,  7,0x06,  8,0x14,  6,0x0c,  6,0x19,  7,0x10,  6,0x19,  6,0x19, 
+     9,0x16,  7,0x19,  6,0x1f,  6,0x17,  6,0x12,  8,0x02,  6,0x01,  6,0x04, 
+     6,0x15,  7,0x16,  6,0x04,  6,0x1f,  6,0x09,  7,0x06,  7,0x13,  7,0x09, 
+     6,0x0d, 10,0x18,  6,0x06,  6,0x11,  6,0x04,  6,0x01,  6,0x13,  8,0x06, 
+     6,0x0d,  8,0x13,  7,0x08,  6,0x08,  6,0x05,  7,0x0c,  7,0x0e,  7,0x15, 
+     6,0x05,  7,0x14, 10,0x19,  6,0x10,  6,0x16,  6,0x15,  7,0x1f,  6,0x14, 
+     6,0x0a, 10,0x11,  6,0x01,  7,0x05,  7,0x08,  8,0x0a,  7,0x1e,  7,0x1c, 
+     6,0x1c,  7,0x09, 10,0x18,  7,0x1c, 10,0x06,  6,0x0a,  6,0x07,  6,0x19, 
+     7,0x06,  6,0x0d,  7,0x0f,  7,0x0b,  7,0x05,  6,0x11,  6,0x1c,  7,0x1f, 
+     6,0x1e,  7,0x18,  6,0x1e,  6,0x00,  6,0x03,  6,0x02,  7,0x10,  6,0x0b, 
+     6,0x1b,  7,0x10,  6,0x00,  8,0x11,  7,0x1b,  6,0x18,  6,0x01,  7,0x0c, 
+     7,0x1d,  7,0x13,  6,0x08,  7,0x1b,  8,0x13,  7,0x16, 13,0x1d,  7,0x1f, 
+     6,0x0a,  6,0x01,  7,0x1f,  6,0x14,  1,0x01, 
+};
+
+/* Invert the number, in Montgomery form, modulo the modulus (prime) of the
+ * P1024 curve. (r = 1 / a mod m)
+ *
+ * r   Inverse result.
+ * a   Number to invert.
+ * td  Temporary data.
+ */
+static void sp_1024_mont_inv_16(sp_digit* r, const sp_digit* a,
+        sp_digit* td)
+{
+    sp_digit* t = td;
+    int i, j;
+    sp_digit table[32][2 * 16];
+
+    XMEMCPY(table[0], a, sizeof(sp_digit) * 16);
+    for (i = 1; i < 6; i++) {
+        sp_1024_mont_sqr_16(table[0], table[0], p1024_mod, p1024_mp_mod);
+    }
+    for (i = 1; i < 32; i++) {
+        sp_1024_mont_mul_16(table[i], table[i-1], a, p1024_mod, p1024_mp_mod);
+    }
+
+    XMEMCPY(t, table[p1024_mod_minus_2[1]], sizeof(sp_digit) * 16);
+    for (i = 2; i < (int)sizeof(p1024_mod_minus_2) - 2; i += 2) {
+        for (j = 0; j < p1024_mod_minus_2[i]; j++) {
+            sp_1024_mont_sqr_16(t, t, p1024_mod, p1024_mp_mod);
+        }
+        sp_1024_mont_mul_16(t, t, table[p1024_mod_minus_2[i+1]], p1024_mod,
+            p1024_mp_mod);
+    }
+    sp_1024_mont_sqr_16(t, t, p1024_mod, p1024_mp_mod);
+    sp_1024_mont_mul_16(r, t, a, p1024_mod, p1024_mp_mod);
+}
+
+/* Normalize the values in each word to 64.
+ *
+ * a  Array of sp_digit to normalize.
+ */
+#define sp_1024_norm_16(a)
+
+/* Map the Montgomery form projective coordinate point to an affine point.
+ *
+ * r  Resulting affine coordinate point.
+ * p  Montgomery form projective coordinate point.
+ * t  Temporary ordinate data.
+ */
+static void sp_1024_map_16(sp_point_1024* r, const sp_point_1024* p,
+        sp_digit* t)
+{
+    sp_digit* t1 = t;
+    sp_digit* t2 = t + 2*16;
+    int64_t n;
+
+    sp_1024_mont_inv_16(t1, p->z, t + 2*16);
+
+    sp_1024_mont_sqr_16(t2, t1, p1024_mod, p1024_mp_mod);
+    sp_1024_mont_mul_16(t1, t2, t1, p1024_mod, p1024_mp_mod);
+
+    /* x /= z^2 */
+    sp_1024_mont_mul_16(r->x, p->x, t2, p1024_mod, p1024_mp_mod);
+    XMEMSET(r->x + 16, 0, sizeof(r->x) / 2U);
+    sp_1024_mont_reduce_16(r->x, p1024_mod, p1024_mp_mod);
+    /* Reduce x to less than modulus */
+    n = sp_1024_cmp_16(r->x, p1024_mod);
+    sp_1024_cond_sub_16(r->x, r->x, p1024_mod, 0 - ((n >= 0) ?
+                (sp_digit)1 : (sp_digit)0));
+    sp_1024_norm_16(r->x);
+
+    /* y /= z^3 */
+    sp_1024_mont_mul_16(r->y, p->y, t1, p1024_mod, p1024_mp_mod);
+    XMEMSET(r->y + 16, 0, sizeof(r->y) / 2U);
+    sp_1024_mont_reduce_16(r->y, p1024_mod, p1024_mp_mod);
+    /* Reduce y to less than modulus */
+    n = sp_1024_cmp_16(r->y, p1024_mod);
+    sp_1024_cond_sub_16(r->y, r->y, p1024_mod, 0 - ((n >= 0) ?
+                (sp_digit)1 : (sp_digit)0));
+    sp_1024_norm_16(r->y);
+
+    XMEMSET(r->z, 0, sizeof(r->z));
+    r->z[0] = 1;
+
+}
+
+extern void sp_1024_mont_add_16(sp_digit* r, const sp_digit* a, const sp_digit* b, const sp_digit* m);
+extern void sp_1024_mont_dbl_16(sp_digit* r, const sp_digit* a, const sp_digit* m);
+extern void sp_1024_mont_tpl_16(sp_digit* r, const sp_digit* a, const sp_digit* m);
+extern void sp_1024_mont_sub_16(sp_digit* r, const sp_digit* a, const sp_digit* b, const sp_digit* m);
+extern void sp_1024_div2_16(sp_digit* r, const sp_digit* a, const sp_digit* m);
+/* Double the Montgomery form projective point p.
+ *
+ * r  Result of doubling point.
+ * p  Point to double.
+ * t  Temporary ordinate data.
+ */
+static void sp_1024_proj_point_dbl_16(sp_point_1024* r,
+        const sp_point_1024* p, sp_digit* t)
+{
+    sp_digit* t1 = t;
+    sp_digit* t2 = t + 2*16;
+    sp_digit* x;
+    sp_digit* y;
+    sp_digit* z;
+
+    x = r->x;
+    y = r->y;
+    z = r->z;
+    /* Put infinity into result. */
+    if (r != p) {
+        r->infinity = p->infinity;
+    }
+
+    /* T1 = Z * Z */
+    sp_1024_mont_sqr_16(t1, p->z, p1024_mod, p1024_mp_mod);
+    /* Z = Y * Z */
+    sp_1024_mont_mul_16(z, p->y, p->z, p1024_mod, p1024_mp_mod);
+    /* Z = 2Z */
+    sp_1024_mont_dbl_16(z, z, p1024_mod);
+    /* T2 = X - T1 */
+    sp_1024_mont_sub_16(t2, p->x, t1, p1024_mod);
+    /* T1 = X + T1 */
+    sp_1024_mont_add_16(t1, p->x, t1, p1024_mod);
+    /* T2 = T1 * T2 */
+    sp_1024_mont_mul_16(t2, t1, t2, p1024_mod, p1024_mp_mod);
+    /* T1 = 3T2 */
+    sp_1024_mont_tpl_16(t1, t2, p1024_mod);
+    /* Y = 2Y */
+    sp_1024_mont_dbl_16(y, p->y, p1024_mod);
+    /* Y = Y * Y */
+    sp_1024_mont_sqr_16(y, y, p1024_mod, p1024_mp_mod);
+    /* T2 = Y * Y */
+    sp_1024_mont_sqr_16(t2, y, p1024_mod, p1024_mp_mod);
+    /* T2 = T2/2 */
+    sp_1024_div2_16(t2, t2, p1024_mod);
+    /* Y = Y * X */
+    sp_1024_mont_mul_16(y, y, p->x, p1024_mod, p1024_mp_mod);
+    /* X = T1 * T1 */
+    sp_1024_mont_sqr_16(x, t1, p1024_mod, p1024_mp_mod);
+    /* X = X - Y */
+    sp_1024_mont_sub_16(x, x, y, p1024_mod);
+    /* X = X - Y */
+    sp_1024_mont_sub_16(x, x, y, p1024_mod);
+    /* Y = Y - X */
+    sp_1024_mont_sub_16(y, y, x, p1024_mod);
+    /* Y = Y * T1 */
+    sp_1024_mont_mul_16(y, y, t1, p1024_mod, p1024_mp_mod);
+    /* Y = Y - T2 */
+    sp_1024_mont_sub_16(y, y, t2, p1024_mod);
+}
+
+/* Double the Montgomery form projective point p a number of times.
+ *
+ * r  Result of repeated doubling of point.
+ * p  Point to double.
+ * n  Number of times to double
+ * t  Temporary ordinate data.
+ */
+static void sp_1024_proj_point_dbl_n_16(sp_point_1024* p, int n,
+        sp_digit* t)
+{
+    sp_digit* w = t;
+    sp_digit* a = t + 2*16;
+    sp_digit* b = t + 4*16;
+    sp_digit* t1 = t + 6*16;
+    sp_digit* t2 = t + 8*16;
+    sp_digit* x;
+    sp_digit* y;
+    sp_digit* z;
+
+    x = p->x;
+    y = p->y;
+    z = p->z;
+
+    /* Y = 2*Y */
+    sp_1024_mont_dbl_16(y, y, p1024_mod);
+    /* W = Z^4 */
+    sp_1024_mont_sqr_16(w, z, p1024_mod, p1024_mp_mod);
+    sp_1024_mont_sqr_16(w, w, p1024_mod, p1024_mp_mod);
+
+#ifndef WOLFSSL_SP_SMALL
+    while (--n > 0)
+#else
+    while (--n >= 0)
+#endif
+    {
+        /* A = 3*(X^2 - W) */
+        sp_1024_mont_sqr_16(t1, x, p1024_mod, p1024_mp_mod);
+        sp_1024_mont_sub_16(t1, t1, w, p1024_mod);
+        sp_1024_mont_tpl_16(a, t1, p1024_mod);
+        /* B = X*Y^2 */
+        sp_1024_mont_sqr_16(t1, y, p1024_mod, p1024_mp_mod);
+        sp_1024_mont_mul_16(b, t1, x, p1024_mod, p1024_mp_mod);
+        /* X = A^2 - 2B */
+        sp_1024_mont_sqr_16(x, a, p1024_mod, p1024_mp_mod);
+        sp_1024_mont_dbl_16(t2, b, p1024_mod);
+        sp_1024_mont_sub_16(x, x, t2, p1024_mod);
+        /* Z = Z*Y */
+        sp_1024_mont_mul_16(z, z, y, p1024_mod, p1024_mp_mod);
+        /* t2 = Y^4 */
+        sp_1024_mont_sqr_16(t1, t1, p1024_mod, p1024_mp_mod);
+#ifdef WOLFSSL_SP_SMALL
+        if (n != 0)
+#endif
+        {
+            /* W = W*Y^4 */
+            sp_1024_mont_mul_16(w, w, t1, p1024_mod, p1024_mp_mod);
+        }
+        /* y = 2*A*(B - X) - Y^4 */
+        sp_1024_mont_sub_16(y, b, x, p1024_mod);
+        sp_1024_mont_mul_16(y, y, a, p1024_mod, p1024_mp_mod);
+        sp_1024_mont_dbl_16(y, y, p1024_mod);
+        sp_1024_mont_sub_16(y, y, t1, p1024_mod);
+    }
+#ifndef WOLFSSL_SP_SMALL
+    /* A = 3*(X^2 - W) */
+    sp_1024_mont_sqr_16(t1, x, p1024_mod, p1024_mp_mod);
+    sp_1024_mont_sub_16(t1, t1, w, p1024_mod);
+    sp_1024_mont_tpl_16(a, t1, p1024_mod);
+    /* B = X*Y^2 */
+    sp_1024_mont_sqr_16(t1, y, p1024_mod, p1024_mp_mod);
+    sp_1024_mont_mul_16(b, t1, x, p1024_mod, p1024_mp_mod);
+    /* X = A^2 - 2B */
+    sp_1024_mont_sqr_16(x, a, p1024_mod, p1024_mp_mod);
+    sp_1024_mont_dbl_16(t2, b, p1024_mod);
+    sp_1024_mont_sub_16(x, x, t2, p1024_mod);
+    /* Z = Z*Y */
+    sp_1024_mont_mul_16(z, z, y, p1024_mod, p1024_mp_mod);
+    /* t2 = Y^4 */
+    sp_1024_mont_sqr_16(t1, t1, p1024_mod, p1024_mp_mod);
+    /* y = 2*A*(B - X) - Y^4 */
+    sp_1024_mont_sub_16(y, b, x, p1024_mod);
+    sp_1024_mont_mul_16(y, y, a, p1024_mod, p1024_mp_mod);
+    sp_1024_mont_dbl_16(y, y, p1024_mod);
+    sp_1024_mont_sub_16(y, y, t1, p1024_mod);
+#endif
+    /* Y = Y/2 */
+    sp_1024_div2_16(y, y, p1024_mod);
+}
+
+extern sp_digit sp_1024_sub_16(sp_digit* r, const sp_digit* a, const sp_digit* b);
+/* Compare two numbers to determine if they are equal.
+ * Constant time implementation.
+ *
+ * a  First number to compare.
+ * b  Second number to compare.
+ * returns 1 when equal and 0 otherwise.
+ */
+static int sp_1024_cmp_equal_16(const sp_digit* a, const sp_digit* b)
+{
+    return ((a[0] ^ b[0]) | (a[1] ^ b[1]) | (a[2] ^ b[2]) | (a[3] ^ b[3]) |
+            (a[4] ^ b[4]) | (a[5] ^ b[5]) | (a[6] ^ b[6]) | (a[7] ^ b[7]) |
+            (a[8] ^ b[8]) | (a[9] ^ b[9]) | (a[10] ^ b[10]) | (a[11] ^ b[11]) |
+            (a[12] ^ b[12]) | (a[13] ^ b[13]) | (a[14] ^ b[14]) | (a[15] ^ b[15])) == 0;
+}
+
+/* Add two Montgomery form projective points.
+ *
+ * r  Result of addition.
+ * p  First point to add.
+ * q  Second point to add.
+ * t  Temporary ordinate data.
+ */
+static void sp_1024_proj_point_add_16(sp_point_1024* r,
+        const sp_point_1024* p, const sp_point_1024* q, sp_digit* t)
+{
+    const sp_point_1024* ap[2];
+    sp_point_1024* rp[2];
+    sp_digit* t1 = t;
+    sp_digit* t2 = t + 2*16;
+    sp_digit* t3 = t + 4*16;
+    sp_digit* t4 = t + 6*16;
+    sp_digit* t5 = t + 8*16;
+    sp_digit* x;
+    sp_digit* y;
+    sp_digit* z;
+    int i;
+
+    /* Ensure only the first point is the same as the result. */
+    if (q == r) {
+        const sp_point_1024* a = p;
+        p = q;
+        q = a;
+    }
+
+    /* Check double */
+    (void)sp_1024_mont_sub_16(t1, p1024_mod, q->y, p1024_mod);
+    sp_1024_norm_16(t1);
+    if ((sp_1024_cmp_equal_16(p->x, q->x) & sp_1024_cmp_equal_16(p->z, q->z) &
+        (sp_1024_cmp_equal_16(p->y, q->y) | sp_1024_cmp_equal_16(p->y, t1))) != 0) {
+        sp_1024_proj_point_dbl_16(r, p, t);
+    }
+    else {
+        rp[0] = r;
+
+        /*lint allow cast to different type of pointer*/
+        rp[1] = (sp_point_1024*)t; /*lint !e9087 !e740*/
+        XMEMSET(rp[1], 0, sizeof(sp_point_1024));
+        x = rp[p->infinity | q->infinity]->x;
+        y = rp[p->infinity | q->infinity]->y;
+        z = rp[p->infinity | q->infinity]->z;
+
+        ap[0] = p;
+        ap[1] = q;
+        for (i=0; i<16; i++) {
+            r->x[i] = ap[p->infinity]->x[i];
+        }
+        for (i=0; i<16; i++) {
+            r->y[i] = ap[p->infinity]->y[i];
+        }
+        for (i=0; i<16; i++) {
+            r->z[i] = ap[p->infinity]->z[i];
+        }
+        r->infinity = ap[p->infinity]->infinity;
+
+        /* U1 = X1*Z2^2 */
+        sp_1024_mont_sqr_16(t1, q->z, p1024_mod, p1024_mp_mod);
+        sp_1024_mont_mul_16(t3, t1, q->z, p1024_mod, p1024_mp_mod);
+        sp_1024_mont_mul_16(t1, t1, x, p1024_mod, p1024_mp_mod);
+        /* U2 = X2*Z1^2 */
+        sp_1024_mont_sqr_16(t2, z, p1024_mod, p1024_mp_mod);
+        sp_1024_mont_mul_16(t4, t2, z, p1024_mod, p1024_mp_mod);
+        sp_1024_mont_mul_16(t2, t2, q->x, p1024_mod, p1024_mp_mod);
+        /* S1 = Y1*Z2^3 */
+        sp_1024_mont_mul_16(t3, t3, y, p1024_mod, p1024_mp_mod);
+        /* S2 = Y2*Z1^3 */
+        sp_1024_mont_mul_16(t4, t4, q->y, p1024_mod, p1024_mp_mod);
+        /* H = U2 - U1 */
+        sp_1024_mont_sub_16(t2, t2, t1, p1024_mod);
+        /* R = S2 - S1 */
+        sp_1024_mont_sub_16(t4, t4, t3, p1024_mod);
+        /* Z3 = H*Z1*Z2 */
+        sp_1024_mont_mul_16(z, z, q->z, p1024_mod, p1024_mp_mod);
+        sp_1024_mont_mul_16(z, z, t2, p1024_mod, p1024_mp_mod);
+        /* X3 = R^2 - H^3 - 2*U1*H^2 */
+        sp_1024_mont_sqr_16(x, t4, p1024_mod, p1024_mp_mod);
+        sp_1024_mont_sqr_16(t5, t2, p1024_mod, p1024_mp_mod);
+        sp_1024_mont_mul_16(y, t1, t5, p1024_mod, p1024_mp_mod);
+        sp_1024_mont_mul_16(t5, t5, t2, p1024_mod, p1024_mp_mod);
+        sp_1024_mont_sub_16(x, x, t5, p1024_mod);
+        sp_1024_mont_dbl_16(t1, y, p1024_mod);
+        sp_1024_mont_sub_16(x, x, t1, p1024_mod);
+        /* Y3 = R*(U1*H^2 - X3) - S1*H^3 */
+        sp_1024_mont_sub_16(y, y, x, p1024_mod);
+        sp_1024_mont_mul_16(y, y, t4, p1024_mod, p1024_mp_mod);
+        sp_1024_mont_mul_16(t5, t5, t3, p1024_mod, p1024_mp_mod);
+        sp_1024_mont_sub_16(y, y, t5, p1024_mod);
+    }
+}
+
+/* Double the Montgomery form projective point p a number of times.
+ *
+ * r  Result of repeated doubling of point.
+ * p  Point to double.
+ * n  Number of times to double
+ * t  Temporary ordinate data.
+ */
+static void sp_1024_proj_point_dbl_n_store_16(sp_point_1024* r,
+        const sp_point_1024* p, int n, int m, sp_digit* t)
+{
+    sp_digit* w = t;
+    sp_digit* a = t + 2*16;
+    sp_digit* b = t + 4*16;
+    sp_digit* t1 = t + 6*16;
+    sp_digit* t2 = t + 8*16;
+    sp_digit* x = r[2*m].x;
+    sp_digit* y = r[(1<<n)*m].y;
+    sp_digit* z = r[2*m].z;
+    int i;
+
+    for (i=0; i<16; i++) {
+        x[i] = p->x[i];
+    }
+    for (i=0; i<16; i++) {
+        y[i] = p->y[i];
+    }
+    for (i=0; i<16; i++) {
+        z[i] = p->z[i];
+    }
+
+    /* Y = 2*Y */
+    sp_1024_mont_dbl_16(y, y, p1024_mod);
+    /* W = Z^4 */
+    sp_1024_mont_sqr_16(w, z, p1024_mod, p1024_mp_mod);
+    sp_1024_mont_sqr_16(w, w, p1024_mod, p1024_mp_mod);
+    for (i=1; i<=n; i++) {
+        /* A = 3*(X^2 - W) */
+        sp_1024_mont_sqr_16(t1, x, p1024_mod, p1024_mp_mod);
+        sp_1024_mont_sub_16(t1, t1, w, p1024_mod);
+        sp_1024_mont_tpl_16(a, t1, p1024_mod);
+        /* B = X*Y^2 */
+        sp_1024_mont_sqr_16(t2, y, p1024_mod, p1024_mp_mod);
+        sp_1024_mont_mul_16(b, t2, x, p1024_mod, p1024_mp_mod);
+        x = r[(1<<i)*m].x;
+        /* X = A^2 - 2B */
+        sp_1024_mont_sqr_16(x, a, p1024_mod, p1024_mp_mod);
+        sp_1024_mont_dbl_16(t1, b, p1024_mod);
+        sp_1024_mont_sub_16(x, x, t1, p1024_mod);
+        /* Z = Z*Y */
+        sp_1024_mont_mul_16(r[(1<<i)*m].z, z, y, p1024_mod, p1024_mp_mod);
+        z = r[(1<<i)*m].z;
+        /* t2 = Y^4 */
+        sp_1024_mont_sqr_16(t2, t2, p1024_mod, p1024_mp_mod);
+        if (i != n) {
+            /* W = W*Y^4 */
+            sp_1024_mont_mul_16(w, w, t2, p1024_mod, p1024_mp_mod);
+        }
+        /* y = 2*A*(B - X) - Y^4 */
+        sp_1024_mont_sub_16(y, b, x, p1024_mod);
+        sp_1024_mont_mul_16(y, y, a, p1024_mod, p1024_mp_mod);
+        sp_1024_mont_dbl_16(y, y, p1024_mod);
+        sp_1024_mont_sub_16(y, y, t2, p1024_mod);
+
+        /* Y = Y/2 */
+        sp_1024_div2_16(r[(1<<i)*m].y, y, p1024_mod);
+        r[(1<<i)*m].infinity = 0;
+    }
+}
+
+/* Add two Montgomery form projective points.
+ *
+ * ra  Result of addition.
+ * rs  Result of subtraction.
+ * p   First point to add.
+ * q   Second point to add.
+ * t   Temporary ordinate data.
+ */
+static void sp_1024_proj_point_add_sub_16(sp_point_1024* ra,
+        sp_point_1024* rs, const sp_point_1024* p, const sp_point_1024* q,
+        sp_digit* t)
+{
+    sp_digit* t1 = t;
+    sp_digit* t2 = t + 2*16;
+    sp_digit* t3 = t + 4*16;
+    sp_digit* t4 = t + 6*16;
+    sp_digit* t5 = t + 8*16;
+    sp_digit* t6 = t + 10*16;
+    sp_digit* x = ra->x;
+    sp_digit* y = ra->y;
+    sp_digit* z = ra->z;
+    sp_digit* xs = rs->x;
+    sp_digit* ys = rs->y;
+    sp_digit* zs = rs->z;
+
+
+    XMEMCPY(x, p->x, sizeof(p->x) / 2);
+    XMEMCPY(y, p->y, sizeof(p->y) / 2);
+    XMEMCPY(z, p->z, sizeof(p->z) / 2);
+    ra->infinity = 0;
+    rs->infinity = 0;
+
+    /* U1 = X1*Z2^2 */
+    sp_1024_mont_sqr_16(t1, q->z, p1024_mod, p1024_mp_mod);
+    sp_1024_mont_mul_16(t3, t1, q->z, p1024_mod, p1024_mp_mod);
+    sp_1024_mont_mul_16(t1, t1, x, p1024_mod, p1024_mp_mod);
+    /* U2 = X2*Z1^2 */
+    sp_1024_mont_sqr_16(t2, z, p1024_mod, p1024_mp_mod);
+    sp_1024_mont_mul_16(t4, t2, z, p1024_mod, p1024_mp_mod);
+    sp_1024_mont_mul_16(t2, t2, q->x, p1024_mod, p1024_mp_mod);
+    /* S1 = Y1*Z2^3 */
+    sp_1024_mont_mul_16(t3, t3, y, p1024_mod, p1024_mp_mod);
+    /* S2 = Y2*Z1^3 */
+    sp_1024_mont_mul_16(t4, t4, q->y, p1024_mod, p1024_mp_mod);
+    /* H = U2 - U1 */
+    sp_1024_mont_sub_16(t2, t2, t1, p1024_mod);
+    /* RS = S2 + S1 */
+    sp_1024_mont_add_16(t6, t4, t3, p1024_mod);
+    /* R = S2 - S1 */
+    sp_1024_mont_sub_16(t4, t4, t3, p1024_mod);
+    /* Z3 = H*Z1*Z2 */
+    /* ZS = H*Z1*Z2 */
+    sp_1024_mont_mul_16(z, z, q->z, p1024_mod, p1024_mp_mod);
+    sp_1024_mont_mul_16(z, z, t2, p1024_mod, p1024_mp_mod);
+    XMEMCPY(zs, z, sizeof(p->z)/2);
+    /* X3 = R^2 - H^3 - 2*U1*H^2 */
+    /* XS = RS^2 - H^3 - 2*U1*H^2 */
+    sp_1024_mont_sqr_16(x, t4, p1024_mod, p1024_mp_mod);
+    sp_1024_mont_sqr_16(xs, t6, p1024_mod, p1024_mp_mod);
+    sp_1024_mont_sqr_16(t5, t2, p1024_mod, p1024_mp_mod);
+    sp_1024_mont_mul_16(y, t1, t5, p1024_mod, p1024_mp_mod);
+    sp_1024_mont_mul_16(t5, t5, t2, p1024_mod, p1024_mp_mod);
+    sp_1024_mont_sub_16(x, x, t5, p1024_mod);
+    sp_1024_mont_sub_16(xs, xs, t5, p1024_mod);
+    sp_1024_mont_dbl_16(t1, y, p1024_mod);
+    sp_1024_mont_sub_16(x, x, t1, p1024_mod);
+    sp_1024_mont_sub_16(xs, xs, t1, p1024_mod);
+    /* Y3 = R*(U1*H^2 - X3) - S1*H^3 */
+    /* YS = -RS*(U1*H^2 - XS) - S1*H^3 */
+    sp_1024_mont_sub_16(ys, y, xs, p1024_mod);
+    sp_1024_mont_sub_16(y, y, x, p1024_mod);
+    sp_1024_mont_mul_16(y, y, t4, p1024_mod, p1024_mp_mod);
+    sp_1024_mont_sub_16(t6, p1024_mod, t6, p1024_mod);
+    sp_1024_mont_mul_16(ys, ys, t6, p1024_mod, p1024_mp_mod);
+    sp_1024_mont_mul_16(t5, t5, t3, p1024_mod, p1024_mp_mod);
+    sp_1024_mont_sub_16(y, y, t5, p1024_mod);
+    sp_1024_mont_sub_16(ys, ys, t5, p1024_mod);
+}
+
+/* Structure used to describe recoding of scalar multiplication. */
+typedef struct ecc_recode_1024 {
+    /* Index into pre-computation table. */
+    uint8_t i;
+    /* Use the negative of the point. */
+    uint8_t neg;
+} ecc_recode_1024;
+
+/* The index into pre-computation table to use. */
+static const uint8_t recode_index_16_6[66] = {
+     0,  1,  2,  3,  4,  5,  6,  7,  8,  9, 10, 11, 12, 13, 14, 15,
+    16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31,
+    32, 31, 30, 29, 28, 27, 26, 25, 24, 23, 22, 21, 20, 19, 18, 17,
+    16, 15, 14, 13, 12, 11, 10,  9,  8,  7,  6,  5,  4,  3,  2,  1,
+     0,  1,
+};
+
+/* Whether to negate y-ordinate. */
+static const uint8_t recode_neg_16_6[66] = {
+     0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,
+     0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,
+     1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,
+     1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,
+     0,  0,
+};
+
+/* Recode the scalar for multiplication using pre-computed values and
+ * subtraction.
+ *
+ * k  Scalar to multiply by.
+ * v  Vector of operations to perform.
+ */
+static void sp_1024_ecc_recode_6_16(const sp_digit* k, ecc_recode_1024* v)
+{
+    int i, j;
+    uint8_t y;
+    int carry = 0;
+    int o;
+    sp_digit n;
+
+    j = 0;
+    n = k[j];
+    o = 0;
+    for (i=0; i<171; i++) {
+        y = n;
+        if (o + 6 < 64) {
+            y &= 0x3f;
+            n >>= 6;
+            o += 6;
+        }
+        else if (o + 6 == 64) {
+            n >>= 6;
+            if (++j < 16)
+                n = k[j];
+            o = 0;
+        }
+        else if (++j < 16) {
+            n = k[j];
+            y |= (n << (64 - o)) & 0x3f;
+            o -= 58;
+            n >>= o;
+        }
+
+        y += carry;
+        v[i].i = recode_index_16_6[y];
+        v[i].neg = recode_neg_16_6[y];
+        carry = (y >> 6) + v[i].neg;
+    }
+}
+
+/* Multiply the point by the scalar and return the result.
+ * If map is true then convert result to affine coordinates.
+ *
+ * r     Resulting point.
+ * g     Point to multiply.
+ * k     Scalar to multiply by.
+ * map   Indicates whether to convert result to affine.
+ * heap  Heap to use for allocation.
+ * returns MEMORY_E when memory allocation fails and MP_OKAY on success.
+ */
+static int sp_1024_ecc_mulmod_win_add_sub_16(sp_point_1024* r,
+        const sp_point_1024* g, const sp_digit* k, int map, void* heap)
+{
+#if (!defined(WOLFSSL_SP_SMALL) && !defined(WOLFSSL_SMALL_STACK)) || defined(WOLFSSL_SP_NO_MALLOC)
+    sp_point_1024 td[33];
+    sp_point_1024 rtd, pd;
+    sp_digit tmpd[2 * 16 * 6];
+#endif
+    sp_point_1024* t;
+    sp_point_1024* rt;
+    sp_point_1024* p = NULL;
+    sp_digit* tmp;
+    sp_digit* negy;
+    int i;
+    ecc_recode_1024 v[171];
+    int err;
+
+    (void)heap;
+
+    err = sp_1024_point_new_16(heap, rtd, rt);
+    if (err == MP_OKAY)
+        err = sp_1024_point_new_16(heap, pd, p);
+#if (defined(WOLFSSL_SP_SMALL) || defined(WOLFSSL_SMALL_STACK)) && !defined(WOLFSSL_SP_NO_MALLOC)
+    t = (sp_point_1024*)XMALLOC(sizeof(sp_point_1024) * 33, heap, DYNAMIC_TYPE_ECC);
+    if (t == NULL)
+        err = MEMORY_E;
+    tmp = (sp_digit*)XMALLOC(sizeof(sp_digit) * 2 * 16 * 6, heap,
+                             DYNAMIC_TYPE_ECC);
+    if (tmp == NULL)
+        err = MEMORY_E;
+#else
+    t = td;
+    tmp = tmpd;
+#endif
+
+
+    if (err == MP_OKAY) {
+        /* t[0] = {0, 0, 1} * norm */
+        XMEMSET(&t[0], 0, sizeof(t[0]));
+        t[0].infinity = 1;
+        /* t[1] = {g->x, g->y, g->z} * norm */
+        err = sp_1024_mod_mul_norm_16(t[1].x, g->x, p1024_mod);
+    }
+    if (err == MP_OKAY) {
+        err = sp_1024_mod_mul_norm_16(t[1].y, g->y, p1024_mod);
+    }
+    if (err == MP_OKAY) {
+        err = sp_1024_mod_mul_norm_16(t[1].z, g->z, p1024_mod);
+    }
+
+    if (err == MP_OKAY) {
+        t[1].infinity = 0;
+        /* t[2] ... t[32]  */
+        sp_1024_proj_point_dbl_n_store_16(t, &t[ 1], 5, 1, tmp);
+        sp_1024_proj_point_add_16(&t[ 3], &t[ 2], &t[ 1], tmp);
+        sp_1024_proj_point_dbl_16(&t[ 6], &t[ 3], tmp);
+        sp_1024_proj_point_add_sub_16(&t[ 7], &t[ 5], &t[ 6], &t[ 1], tmp);
+        sp_1024_proj_point_dbl_16(&t[10], &t[ 5], tmp);
+        sp_1024_proj_point_add_sub_16(&t[11], &t[ 9], &t[10], &t[ 1], tmp);
+        sp_1024_proj_point_dbl_16(&t[12], &t[ 6], tmp);
+        sp_1024_proj_point_dbl_16(&t[14], &t[ 7], tmp);
+        sp_1024_proj_point_add_sub_16(&t[15], &t[13], &t[14], &t[ 1], tmp);
+        sp_1024_proj_point_dbl_16(&t[18], &t[ 9], tmp);
+        sp_1024_proj_point_add_sub_16(&t[19], &t[17], &t[18], &t[ 1], tmp);
+        sp_1024_proj_point_dbl_16(&t[20], &t[10], tmp);
+        sp_1024_proj_point_dbl_16(&t[22], &t[11], tmp);
+        sp_1024_proj_point_add_sub_16(&t[23], &t[21], &t[22], &t[ 1], tmp);
+        sp_1024_proj_point_dbl_16(&t[24], &t[12], tmp);
+        sp_1024_proj_point_dbl_16(&t[26], &t[13], tmp);
+        sp_1024_proj_point_add_sub_16(&t[27], &t[25], &t[26], &t[ 1], tmp);
+        sp_1024_proj_point_dbl_16(&t[28], &t[14], tmp);
+        sp_1024_proj_point_dbl_16(&t[30], &t[15], tmp);
+        sp_1024_proj_point_add_sub_16(&t[31], &t[29], &t[30], &t[ 1], tmp);
+
+        negy = t[0].y;
+
+        sp_1024_ecc_recode_6_16(k, v);
+
+        i = 170;
+        XMEMCPY(rt, &t[v[i].i], sizeof(sp_point_1024));
+        for (--i; i>=0; i--) {
+            sp_1024_proj_point_dbl_n_16(rt, 6, tmp);
+
+            XMEMCPY(p, &t[v[i].i], sizeof(sp_point_1024));
+            sp_1024_mont_sub_16(negy, p1024_mod, p->y, p1024_mod);
+            sp_1024_norm_16(negy);
+            sp_1024_cond_copy_16(p->y, negy, (sp_digit)0 - v[i].neg);
+            sp_1024_proj_point_add_16(rt, rt, p, tmp);
+        }
+
+        if (map != 0) {
+            sp_1024_map_16(r, rt, tmp);
+        }
+        else {
+            XMEMCPY(r, rt, sizeof(sp_point_1024));
+        }
+    }
+
+#if (defined(WOLFSSL_SP_SMALL) || defined(WOLFSSL_SMALL_STACK)) && !defined(WOLFSSL_SP_NO_MALLOC)
+    if (t != NULL)
+        XFREE(t, heap, DYNAMIC_TYPE_ECC);
+    if (tmp != NULL)
+        XFREE(tmp, heap, DYNAMIC_TYPE_ECC);
+#endif
+    sp_1024_point_free_16(p, 0, heap);
+    sp_1024_point_free_16(rt, 0, heap);
+
+    return err;
+}
+
+#ifdef HAVE_INTEL_AVX2
+#ifdef HAVE_INTEL_AVX2
+extern void sp_1024_mont_reduce_avx2_16(sp_digit* a, const sp_digit* m, sp_digit mp);
+/* Multiply two Montogmery form numbers mod the modulus (prime).
+ * (r = a * b mod m)
+ *
+ * r   Result of multiplication.
+ * a   First number to multiply in Montogmery form.
+ * b   Second number to multiply in Montogmery form.
+ * m   Modulus (prime).
+ * mp  Montogmery mulitplier.
+ */
+static void sp_1024_mont_mul_avx2_16(sp_digit* r, const sp_digit* a,
+        const sp_digit* b, const sp_digit* m, sp_digit mp)
+{
+    sp_1024_mul_avx2_16(r, a, b);
+    sp_1024_mont_reduce_avx2_16(r, m, mp);
+}
+
+#endif /* HAVE_INTEL_AVX2 */
+#ifdef HAVE_INTEL_AVX2
+/* Square the Montgomery form number. (r = a * a mod m)
+ *
+ * r   Result of squaring.
+ * a   Number to square in Montogmery form.
+ * m   Modulus (prime).
+ * mp  Montogmery mulitplier.
+ */
+static void sp_1024_mont_sqr_avx2_16(sp_digit* r, const sp_digit* a,
+        const sp_digit* m, sp_digit mp)
+{
+    sp_1024_sqr_avx2_16(r, a);
+    sp_1024_mont_reduce_avx2_16(r, m, mp);
+}
+
+#endif /* HAVE_INTEL_AVX2 */
+
+/* Invert the number, in Montgomery form, modulo the modulus (prime) of the
+ * P1024 curve. (r = 1 / a mod m)
+ *
+ * r   Inverse result.
+ * a   Number to invert.
+ * td  Temporary data.
+ */
+static void sp_1024_mont_inv_avx2_16(sp_digit* r, const sp_digit* a,
+        sp_digit* td)
+{
+    sp_digit* t = td;
+    int i, j;
+    sp_digit table[32][2 * 16];
+
+    XMEMCPY(table[0], a, sizeof(sp_digit) * 16);
+    for (i = 1; i < 6; i++) {
+        sp_1024_mont_sqr_avx2_16(table[0], table[0], p1024_mod, p1024_mp_mod);
+    }
+    for (i = 1; i < 32; i++) {
+        sp_1024_mont_mul_avx2_16(table[i], table[i-1], a, p1024_mod, p1024_mp_mod);
+    }
+
+    XMEMCPY(t, table[p1024_mod_minus_2[1]], sizeof(sp_digit) * 16);
+    for (i = 2; i < (int)sizeof(p1024_mod_minus_2) - 2; i += 2) {
+        for (j = 0; j < p1024_mod_minus_2[i]; j++) {
+            sp_1024_mont_sqr_avx2_16(t, t, p1024_mod, p1024_mp_mod);
+        }
+        sp_1024_mont_mul_avx2_16(t, t, table[p1024_mod_minus_2[i+1]], p1024_mod,
+            p1024_mp_mod);
+    }
+    sp_1024_mont_sqr_avx2_16(t, t, p1024_mod, p1024_mp_mod);
+    sp_1024_mont_mul_avx2_16(r, t, a, p1024_mod, p1024_mp_mod);
+}
+
+/* Map the Montgomery form projective coordinate point to an affine point.
+ *
+ * r  Resulting affine coordinate point.
+ * p  Montgomery form projective coordinate point.
+ * t  Temporary ordinate data.
+ */
+static void sp_1024_map_avx2_16(sp_point_1024* r, const sp_point_1024* p,
+        sp_digit* t)
+{
+    sp_digit* t1 = t;
+    sp_digit* t2 = t + 2*16;
+    int64_t n;
+
+    sp_1024_mont_inv_avx2_16(t1, p->z, t + 2*16);
+
+    sp_1024_mont_sqr_avx2_16(t2, t1, p1024_mod, p1024_mp_mod);
+    sp_1024_mont_mul_avx2_16(t1, t2, t1, p1024_mod, p1024_mp_mod);
+
+    /* x /= z^2 */
+    sp_1024_mont_mul_avx2_16(r->x, p->x, t2, p1024_mod, p1024_mp_mod);
+    XMEMSET(r->x + 16, 0, sizeof(r->x) / 2U);
+    sp_1024_mont_reduce_avx2_16(r->x, p1024_mod, p1024_mp_mod);
+    /* Reduce x to less than modulus */
+    n = sp_1024_cmp_16(r->x, p1024_mod);
+    sp_1024_cond_sub_avx2_16(r->x, r->x, p1024_mod, 0 - ((n >= 0) ?
+                (sp_digit)1 : (sp_digit)0));
+    sp_1024_norm_16(r->x);
+
+    /* y /= z^3 */
+    sp_1024_mont_mul_avx2_16(r->y, p->y, t1, p1024_mod, p1024_mp_mod);
+    XMEMSET(r->y + 16, 0, sizeof(r->y) / 2U);
+    sp_1024_mont_reduce_avx2_16(r->y, p1024_mod, p1024_mp_mod);
+    /* Reduce y to less than modulus */
+    n = sp_1024_cmp_16(r->y, p1024_mod);
+    sp_1024_cond_sub_avx2_16(r->y, r->y, p1024_mod, 0 - ((n >= 0) ?
+                (sp_digit)1 : (sp_digit)0));
+    sp_1024_norm_16(r->y);
+
+    XMEMSET(r->z, 0, sizeof(r->z));
+    r->z[0] = 1;
+
+}
+
+extern void sp_1024_mont_add_avx2_16(sp_digit* r, const sp_digit* a, const sp_digit* b, const sp_digit* m);
+extern void sp_1024_mont_dbl_avx2_16(sp_digit* r, const sp_digit* a, const sp_digit* m);
+extern void sp_1024_mont_tpl_avx2_16(sp_digit* r, const sp_digit* a, const sp_digit* m);
+extern void sp_1024_mont_sub_avx2_16(sp_digit* r, const sp_digit* a, const sp_digit* b, const sp_digit* m);
+/* Double the Montgomery form projective point p.
+ *
+ * r  Result of doubling point.
+ * p  Point to double.
+ * t  Temporary ordinate data.
+ */
+static void sp_1024_proj_point_dbl_avx2_16(sp_point_1024* r,
+        const sp_point_1024* p, sp_digit* t)
+{
+    sp_digit* t1 = t;
+    sp_digit* t2 = t + 2*16;
+    sp_digit* x;
+    sp_digit* y;
+    sp_digit* z;
+
+    x = r->x;
+    y = r->y;
+    z = r->z;
+    /* Put infinity into result. */
+    if (r != p) {
+        r->infinity = p->infinity;
+    }
+
+    /* T1 = Z * Z */
+    sp_1024_mont_sqr_avx2_16(t1, p->z, p1024_mod, p1024_mp_mod);
+    /* Z = Y * Z */
+    sp_1024_mont_mul_avx2_16(z, p->y, p->z, p1024_mod, p1024_mp_mod);
+    /* Z = 2Z */
+    sp_1024_mont_dbl_avx2_16(z, z, p1024_mod);
+    /* T2 = X - T1 */
+    sp_1024_mont_sub_avx2_16(t2, p->x, t1, p1024_mod);
+    /* T1 = X + T1 */
+    sp_1024_mont_add_avx2_16(t1, p->x, t1, p1024_mod);
+    /* T2 = T1 * T2 */
+    sp_1024_mont_mul_avx2_16(t2, t1, t2, p1024_mod, p1024_mp_mod);
+    /* T1 = 3T2 */
+    sp_1024_mont_tpl_avx2_16(t1, t2, p1024_mod);
+    /* Y = 2Y */
+    sp_1024_mont_dbl_avx2_16(y, p->y, p1024_mod);
+    /* Y = Y * Y */
+    sp_1024_mont_sqr_avx2_16(y, y, p1024_mod, p1024_mp_mod);
+    /* T2 = Y * Y */
+    sp_1024_mont_sqr_avx2_16(t2, y, p1024_mod, p1024_mp_mod);
+    /* T2 = T2/2 */
+    sp_1024_div2_16(t2, t2, p1024_mod);
+    /* Y = Y * X */
+    sp_1024_mont_mul_avx2_16(y, y, p->x, p1024_mod, p1024_mp_mod);
+    /* X = T1 * T1 */
+    sp_1024_mont_sqr_avx2_16(x, t1, p1024_mod, p1024_mp_mod);
+    /* X = X - Y */
+    sp_1024_mont_sub_avx2_16(x, x, y, p1024_mod);
+    /* X = X - Y */
+    sp_1024_mont_sub_avx2_16(x, x, y, p1024_mod);
+    /* Y = Y - X */
+    sp_1024_mont_sub_avx2_16(y, y, x, p1024_mod);
+    /* Y = Y * T1 */
+    sp_1024_mont_mul_avx2_16(y, y, t1, p1024_mod, p1024_mp_mod);
+    /* Y = Y - T2 */
+    sp_1024_mont_sub_avx2_16(y, y, t2, p1024_mod);
+}
+
+/* Double the Montgomery form projective point p a number of times.
+ *
+ * r  Result of repeated doubling of point.
+ * p  Point to double.
+ * n  Number of times to double
+ * t  Temporary ordinate data.
+ */
+static void sp_1024_proj_point_dbl_n_avx2_16(sp_point_1024* p, int n,
+        sp_digit* t)
+{
+    sp_digit* w = t;
+    sp_digit* a = t + 2*16;
+    sp_digit* b = t + 4*16;
+    sp_digit* t1 = t + 6*16;
+    sp_digit* t2 = t + 8*16;
+    sp_digit* x;
+    sp_digit* y;
+    sp_digit* z;
+
+    x = p->x;
+    y = p->y;
+    z = p->z;
+
+    /* Y = 2*Y */
+    sp_1024_mont_dbl_avx2_16(y, y, p1024_mod);
+    /* W = Z^4 */
+    sp_1024_mont_sqr_avx2_16(w, z, p1024_mod, p1024_mp_mod);
+    sp_1024_mont_sqr_avx2_16(w, w, p1024_mod, p1024_mp_mod);
+
+#ifndef WOLFSSL_SP_SMALL
+    while (--n > 0)
+#else
+    while (--n >= 0)
+#endif
+    {
+        /* A = 3*(X^2 - W) */
+        sp_1024_mont_sqr_avx2_16(t1, x, p1024_mod, p1024_mp_mod);
+        sp_1024_mont_sub_avx2_16(t1, t1, w, p1024_mod);
+        sp_1024_mont_tpl_avx2_16(a, t1, p1024_mod);
+        /* B = X*Y^2 */
+        sp_1024_mont_sqr_avx2_16(t1, y, p1024_mod, p1024_mp_mod);
+        sp_1024_mont_mul_avx2_16(b, t1, x, p1024_mod, p1024_mp_mod);
+        /* X = A^2 - 2B */
+        sp_1024_mont_sqr_avx2_16(x, a, p1024_mod, p1024_mp_mod);
+        sp_1024_mont_dbl_avx2_16(t2, b, p1024_mod);
+        sp_1024_mont_sub_avx2_16(x, x, t2, p1024_mod);
+        /* Z = Z*Y */
+        sp_1024_mont_mul_avx2_16(z, z, y, p1024_mod, p1024_mp_mod);
+        /* t2 = Y^4 */
+        sp_1024_mont_sqr_avx2_16(t1, t1, p1024_mod, p1024_mp_mod);
+#ifdef WOLFSSL_SP_SMALL
+        if (n != 0)
+#endif
+        {
+            /* W = W*Y^4 */
+            sp_1024_mont_mul_avx2_16(w, w, t1, p1024_mod, p1024_mp_mod);
+        }
+        /* y = 2*A*(B - X) - Y^4 */
+        sp_1024_mont_sub_avx2_16(y, b, x, p1024_mod);
+        sp_1024_mont_mul_avx2_16(y, y, a, p1024_mod, p1024_mp_mod);
+        sp_1024_mont_dbl_avx2_16(y, y, p1024_mod);
+        sp_1024_mont_sub_avx2_16(y, y, t1, p1024_mod);
+    }
+#ifndef WOLFSSL_SP_SMALL
+    /* A = 3*(X^2 - W) */
+    sp_1024_mont_sqr_avx2_16(t1, x, p1024_mod, p1024_mp_mod);
+    sp_1024_mont_sub_avx2_16(t1, t1, w, p1024_mod);
+    sp_1024_mont_tpl_avx2_16(a, t1, p1024_mod);
+    /* B = X*Y^2 */
+    sp_1024_mont_sqr_avx2_16(t1, y, p1024_mod, p1024_mp_mod);
+    sp_1024_mont_mul_avx2_16(b, t1, x, p1024_mod, p1024_mp_mod);
+    /* X = A^2 - 2B */
+    sp_1024_mont_sqr_avx2_16(x, a, p1024_mod, p1024_mp_mod);
+    sp_1024_mont_dbl_avx2_16(t2, b, p1024_mod);
+    sp_1024_mont_sub_avx2_16(x, x, t2, p1024_mod);
+    /* Z = Z*Y */
+    sp_1024_mont_mul_avx2_16(z, z, y, p1024_mod, p1024_mp_mod);
+    /* t2 = Y^4 */
+    sp_1024_mont_sqr_avx2_16(t1, t1, p1024_mod, p1024_mp_mod);
+    /* y = 2*A*(B - X) - Y^4 */
+    sp_1024_mont_sub_avx2_16(y, b, x, p1024_mod);
+    sp_1024_mont_mul_avx2_16(y, y, a, p1024_mod, p1024_mp_mod);
+    sp_1024_mont_dbl_avx2_16(y, y, p1024_mod);
+    sp_1024_mont_sub_avx2_16(y, y, t1, p1024_mod);
+#endif
+    /* Y = Y/2 */
+    sp_1024_div2_16(y, y, p1024_mod);
+}
+
+/* Add two Montgomery form projective points.
+ *
+ * r  Result of addition.
+ * p  First point to add.
+ * q  Second point to add.
+ * t  Temporary ordinate data.
+ */
+static void sp_1024_proj_point_add_avx2_16(sp_point_1024* r,
+        const sp_point_1024* p, const sp_point_1024* q, sp_digit* t)
+{
+    const sp_point_1024* ap[2];
+    sp_point_1024* rp[2];
+    sp_digit* t1 = t;
+    sp_digit* t2 = t + 2*16;
+    sp_digit* t3 = t + 4*16;
+    sp_digit* t4 = t + 6*16;
+    sp_digit* t5 = t + 8*16;
+    sp_digit* x;
+    sp_digit* y;
+    sp_digit* z;
+    int i;
+
+    /* Ensure only the first point is the same as the result. */
+    if (q == r) {
+        const sp_point_1024* a = p;
+        p = q;
+        q = a;
+    }
+
+    /* Check double */
+    (void)sp_1024_mont_sub_avx2_16(t1, p1024_mod, q->y, p1024_mod);
+    sp_1024_norm_16(t1);
+    if ((sp_1024_cmp_equal_16(p->x, q->x) & sp_1024_cmp_equal_16(p->z, q->z) &
+        (sp_1024_cmp_equal_16(p->y, q->y) | sp_1024_cmp_equal_16(p->y, t1))) != 0) {
+        sp_1024_proj_point_dbl_16(r, p, t);
+    }
+    else {
+        rp[0] = r;
+
+        /*lint allow cast to different type of pointer*/
+        rp[1] = (sp_point_1024*)t; /*lint !e9087 !e740*/
+        XMEMSET(rp[1], 0, sizeof(sp_point_1024));
+        x = rp[p->infinity | q->infinity]->x;
+        y = rp[p->infinity | q->infinity]->y;
+        z = rp[p->infinity | q->infinity]->z;
+
+        ap[0] = p;
+        ap[1] = q;
+        for (i=0; i<16; i++) {
+            r->x[i] = ap[p->infinity]->x[i];
+        }
+        for (i=0; i<16; i++) {
+            r->y[i] = ap[p->infinity]->y[i];
+        }
+        for (i=0; i<16; i++) {
+            r->z[i] = ap[p->infinity]->z[i];
+        }
+        r->infinity = ap[p->infinity]->infinity;
+
+        /* U1 = X1*Z2^2 */
+        sp_1024_mont_sqr_avx2_16(t1, q->z, p1024_mod, p1024_mp_mod);
+        sp_1024_mont_mul_avx2_16(t3, t1, q->z, p1024_mod, p1024_mp_mod);
+        sp_1024_mont_mul_avx2_16(t1, t1, x, p1024_mod, p1024_mp_mod);
+        /* U2 = X2*Z1^2 */
+        sp_1024_mont_sqr_avx2_16(t2, z, p1024_mod, p1024_mp_mod);
+        sp_1024_mont_mul_avx2_16(t4, t2, z, p1024_mod, p1024_mp_mod);
+        sp_1024_mont_mul_avx2_16(t2, t2, q->x, p1024_mod, p1024_mp_mod);
+        /* S1 = Y1*Z2^3 */
+        sp_1024_mont_mul_avx2_16(t3, t3, y, p1024_mod, p1024_mp_mod);
+        /* S2 = Y2*Z1^3 */
+        sp_1024_mont_mul_avx2_16(t4, t4, q->y, p1024_mod, p1024_mp_mod);
+        /* H = U2 - U1 */
+        sp_1024_mont_sub_avx2_16(t2, t2, t1, p1024_mod);
+        /* R = S2 - S1 */
+        sp_1024_mont_sub_avx2_16(t4, t4, t3, p1024_mod);
+        /* Z3 = H*Z1*Z2 */
+        sp_1024_mont_mul_avx2_16(z, z, q->z, p1024_mod, p1024_mp_mod);
+        sp_1024_mont_mul_avx2_16(z, z, t2, p1024_mod, p1024_mp_mod);
+        /* X3 = R^2 - H^3 - 2*U1*H^2 */
+        sp_1024_mont_sqr_avx2_16(x, t4, p1024_mod, p1024_mp_mod);
+        sp_1024_mont_sqr_avx2_16(t5, t2, p1024_mod, p1024_mp_mod);
+        sp_1024_mont_mul_avx2_16(y, t1, t5, p1024_mod, p1024_mp_mod);
+        sp_1024_mont_mul_avx2_16(t5, t5, t2, p1024_mod, p1024_mp_mod);
+        sp_1024_mont_sub_avx2_16(x, x, t5, p1024_mod);
+        sp_1024_mont_dbl_avx2_16(t1, y, p1024_mod);
+        sp_1024_mont_sub_avx2_16(x, x, t1, p1024_mod);
+        /* Y3 = R*(U1*H^2 - X3) - S1*H^3 */
+        sp_1024_mont_sub_avx2_16(y, y, x, p1024_mod);
+        sp_1024_mont_mul_avx2_16(y, y, t4, p1024_mod, p1024_mp_mod);
+        sp_1024_mont_mul_avx2_16(t5, t5, t3, p1024_mod, p1024_mp_mod);
+        sp_1024_mont_sub_avx2_16(y, y, t5, p1024_mod);
+    }
+}
+
+/* Double the Montgomery form projective point p a number of times.
+ *
+ * r  Result of repeated doubling of point.
+ * p  Point to double.
+ * n  Number of times to double
+ * t  Temporary ordinate data.
+ */
+static void sp_1024_proj_point_dbl_n_store_avx2_16(sp_point_1024* r,
+        const sp_point_1024* p, int n, int m, sp_digit* t)
+{
+    sp_digit* w = t;
+    sp_digit* a = t + 2*16;
+    sp_digit* b = t + 4*16;
+    sp_digit* t1 = t + 6*16;
+    sp_digit* t2 = t + 8*16;
+    sp_digit* x = r[2*m].x;
+    sp_digit* y = r[(1<<n)*m].y;
+    sp_digit* z = r[2*m].z;
+    int i;
+
+    for (i=0; i<16; i++) {
+        x[i] = p->x[i];
+    }
+    for (i=0; i<16; i++) {
+        y[i] = p->y[i];
+    }
+    for (i=0; i<16; i++) {
+        z[i] = p->z[i];
+    }
+
+    /* Y = 2*Y */
+    sp_1024_mont_dbl_avx2_16(y, y, p1024_mod);
+    /* W = Z^4 */
+    sp_1024_mont_sqr_avx2_16(w, z, p1024_mod, p1024_mp_mod);
+    sp_1024_mont_sqr_avx2_16(w, w, p1024_mod, p1024_mp_mod);
+    for (i=1; i<=n; i++) {
+        /* A = 3*(X^2 - W) */
+        sp_1024_mont_sqr_avx2_16(t1, x, p1024_mod, p1024_mp_mod);
+        sp_1024_mont_sub_avx2_16(t1, t1, w, p1024_mod);
+        sp_1024_mont_tpl_avx2_16(a, t1, p1024_mod);
+        /* B = X*Y^2 */
+        sp_1024_mont_sqr_avx2_16(t2, y, p1024_mod, p1024_mp_mod);
+        sp_1024_mont_mul_avx2_16(b, t2, x, p1024_mod, p1024_mp_mod);
+        x = r[(1<<i)*m].x;
+        /* X = A^2 - 2B */
+        sp_1024_mont_sqr_avx2_16(x, a, p1024_mod, p1024_mp_mod);
+        sp_1024_mont_dbl_avx2_16(t1, b, p1024_mod);
+        sp_1024_mont_sub_avx2_16(x, x, t1, p1024_mod);
+        /* Z = Z*Y */
+        sp_1024_mont_mul_avx2_16(r[(1<<i)*m].z, z, y, p1024_mod, p1024_mp_mod);
+        z = r[(1<<i)*m].z;
+        /* t2 = Y^4 */
+        sp_1024_mont_sqr_avx2_16(t2, t2, p1024_mod, p1024_mp_mod);
+        if (i != n) {
+            /* W = W*Y^4 */
+            sp_1024_mont_mul_avx2_16(w, w, t2, p1024_mod, p1024_mp_mod);
+        }
+        /* y = 2*A*(B - X) - Y^4 */
+        sp_1024_mont_sub_avx2_16(y, b, x, p1024_mod);
+        sp_1024_mont_mul_avx2_16(y, y, a, p1024_mod, p1024_mp_mod);
+        sp_1024_mont_dbl_avx2_16(y, y, p1024_mod);
+        sp_1024_mont_sub_avx2_16(y, y, t2, p1024_mod);
+
+        /* Y = Y/2 */
+        sp_1024_div2_16(r[(1<<i)*m].y, y, p1024_mod);
+        r[(1<<i)*m].infinity = 0;
+    }
+}
+
+/* Add two Montgomery form projective points.
+ *
+ * ra  Result of addition.
+ * rs  Result of subtraction.
+ * p   First point to add.
+ * q   Second point to add.
+ * t   Temporary ordinate data.
+ */
+static void sp_1024_proj_point_add_sub_avx2_16(sp_point_1024* ra,
+        sp_point_1024* rs, const sp_point_1024* p, const sp_point_1024* q,
+        sp_digit* t)
+{
+    sp_digit* t1 = t;
+    sp_digit* t2 = t + 2*16;
+    sp_digit* t3 = t + 4*16;
+    sp_digit* t4 = t + 6*16;
+    sp_digit* t5 = t + 8*16;
+    sp_digit* t6 = t + 10*16;
+    sp_digit* x = ra->x;
+    sp_digit* y = ra->y;
+    sp_digit* z = ra->z;
+    sp_digit* xs = rs->x;
+    sp_digit* ys = rs->y;
+    sp_digit* zs = rs->z;
+
+
+    XMEMCPY(x, p->x, sizeof(p->x) / 2);
+    XMEMCPY(y, p->y, sizeof(p->y) / 2);
+    XMEMCPY(z, p->z, sizeof(p->z) / 2);
+    ra->infinity = 0;
+    rs->infinity = 0;
+
+    /* U1 = X1*Z2^2 */
+    sp_1024_mont_sqr_avx2_16(t1, q->z, p1024_mod, p1024_mp_mod);
+    sp_1024_mont_mul_avx2_16(t3, t1, q->z, p1024_mod, p1024_mp_mod);
+    sp_1024_mont_mul_avx2_16(t1, t1, x, p1024_mod, p1024_mp_mod);
+    /* U2 = X2*Z1^2 */
+    sp_1024_mont_sqr_avx2_16(t2, z, p1024_mod, p1024_mp_mod);
+    sp_1024_mont_mul_avx2_16(t4, t2, z, p1024_mod, p1024_mp_mod);
+    sp_1024_mont_mul_avx2_16(t2, t2, q->x, p1024_mod, p1024_mp_mod);
+    /* S1 = Y1*Z2^3 */
+    sp_1024_mont_mul_avx2_16(t3, t3, y, p1024_mod, p1024_mp_mod);
+    /* S2 = Y2*Z1^3 */
+    sp_1024_mont_mul_avx2_16(t4, t4, q->y, p1024_mod, p1024_mp_mod);
+    /* H = U2 - U1 */
+    sp_1024_mont_sub_avx2_16(t2, t2, t1, p1024_mod);
+    /* RS = S2 + S1 */
+    sp_1024_mont_add_avx2_16(t6, t4, t3, p1024_mod);
+    /* R = S2 - S1 */
+    sp_1024_mont_sub_avx2_16(t4, t4, t3, p1024_mod);
+    /* Z3 = H*Z1*Z2 */
+    /* ZS = H*Z1*Z2 */
+    sp_1024_mont_mul_avx2_16(z, z, q->z, p1024_mod, p1024_mp_mod);
+    sp_1024_mont_mul_avx2_16(z, z, t2, p1024_mod, p1024_mp_mod);
+    XMEMCPY(zs, z, sizeof(p->z)/2);
+    /* X3 = R^2 - H^3 - 2*U1*H^2 */
+    /* XS = RS^2 - H^3 - 2*U1*H^2 */
+    sp_1024_mont_sqr_avx2_16(x, t4, p1024_mod, p1024_mp_mod);
+    sp_1024_mont_sqr_avx2_16(xs, t6, p1024_mod, p1024_mp_mod);
+    sp_1024_mont_sqr_avx2_16(t5, t2, p1024_mod, p1024_mp_mod);
+    sp_1024_mont_mul_avx2_16(y, t1, t5, p1024_mod, p1024_mp_mod);
+    sp_1024_mont_mul_avx2_16(t5, t5, t2, p1024_mod, p1024_mp_mod);
+    sp_1024_mont_sub_avx2_16(x, x, t5, p1024_mod);
+    sp_1024_mont_sub_avx2_16(xs, xs, t5, p1024_mod);
+    sp_1024_mont_dbl_avx2_16(t1, y, p1024_mod);
+    sp_1024_mont_sub_avx2_16(x, x, t1, p1024_mod);
+    sp_1024_mont_sub_avx2_16(xs, xs, t1, p1024_mod);
+    /* Y3 = R*(U1*H^2 - X3) - S1*H^3 */
+    /* YS = -RS*(U1*H^2 - XS) - S1*H^3 */
+    sp_1024_mont_sub_avx2_16(ys, y, xs, p1024_mod);
+    sp_1024_mont_sub_avx2_16(y, y, x, p1024_mod);
+    sp_1024_mont_mul_avx2_16(y, y, t4, p1024_mod, p1024_mp_mod);
+    sp_1024_mont_sub_avx2_16(t6, p1024_mod, t6, p1024_mod);
+    sp_1024_mont_mul_avx2_16(ys, ys, t6, p1024_mod, p1024_mp_mod);
+    sp_1024_mont_mul_avx2_16(t5, t5, t3, p1024_mod, p1024_mp_mod);
+    sp_1024_mont_sub_avx2_16(y, y, t5, p1024_mod);
+    sp_1024_mont_sub_avx2_16(ys, ys, t5, p1024_mod);
+}
+
+/* Multiply the point by the scalar and return the result.
+ * If map is true then convert result to affine coordinates.
+ *
+ * r     Resulting point.
+ * g     Point to multiply.
+ * k     Scalar to multiply by.
+ * map   Indicates whether to convert result to affine.
+ * heap  Heap to use for allocation.
+ * returns MEMORY_E when memory allocation fails and MP_OKAY on success.
+ */
+static int sp_1024_ecc_mulmod_win_add_sub_avx2_16(sp_point_1024* r,
+        const sp_point_1024* g, const sp_digit* k, int map, void* heap)
+{
+#if (!defined(WOLFSSL_SP_SMALL) && !defined(WOLFSSL_SMALL_STACK)) || defined(WOLFSSL_SP_NO_MALLOC)
+    sp_point_1024 td[33];
+    sp_point_1024 rtd, pd;
+    sp_digit tmpd[2 * 16 * 6];
+#endif
+    sp_point_1024* t;
+    sp_point_1024* rt;
+    sp_point_1024* p = NULL;
+    sp_digit* tmp;
+    sp_digit* negy;
+    int i;
+    ecc_recode_1024 v[171];
+    int err;
+
+    (void)heap;
+
+    err = sp_1024_point_new_16(heap, rtd, rt);
+    if (err == MP_OKAY)
+        err = sp_1024_point_new_16(heap, pd, p);
+#if (defined(WOLFSSL_SP_SMALL) || defined(WOLFSSL_SMALL_STACK)) && !defined(WOLFSSL_SP_NO_MALLOC)
+    t = (sp_point_1024*)XMALLOC(sizeof(sp_point_1024) * 33, heap, DYNAMIC_TYPE_ECC);
+    if (t == NULL)
+        err = MEMORY_E;
+    tmp = (sp_digit*)XMALLOC(sizeof(sp_digit) * 2 * 16 * 6, heap,
+                             DYNAMIC_TYPE_ECC);
+    if (tmp == NULL)
+        err = MEMORY_E;
+#else
+    t = td;
+    tmp = tmpd;
+#endif
+
+
+    if (err == MP_OKAY) {
+        /* t[0] = {0, 0, 1} * norm */
+        XMEMSET(&t[0], 0, sizeof(t[0]));
+        t[0].infinity = 1;
+        /* t[1] = {g->x, g->y, g->z} * norm */
+        err = sp_1024_mod_mul_norm_avx2_16(t[1].x, g->x, p1024_mod);
+    }
+    if (err == MP_OKAY) {
+        err = sp_1024_mod_mul_norm_avx2_16(t[1].y, g->y, p1024_mod);
+    }
+    if (err == MP_OKAY) {
+        err = sp_1024_mod_mul_norm_avx2_16(t[1].z, g->z, p1024_mod);
+    }
+
+    if (err == MP_OKAY) {
+        t[1].infinity = 0;
+        /* t[2] ... t[32]  */
+        sp_1024_proj_point_dbl_n_store_avx2_16(t, &t[ 1], 5, 1, tmp);
+        sp_1024_proj_point_add_avx2_16(&t[ 3], &t[ 2], &t[ 1], tmp);
+        sp_1024_proj_point_dbl_avx2_16(&t[ 6], &t[ 3], tmp);
+        sp_1024_proj_point_add_sub_avx2_16(&t[ 7], &t[ 5], &t[ 6], &t[ 1], tmp);
+        sp_1024_proj_point_dbl_avx2_16(&t[10], &t[ 5], tmp);
+        sp_1024_proj_point_add_sub_avx2_16(&t[11], &t[ 9], &t[10], &t[ 1], tmp);
+        sp_1024_proj_point_dbl_avx2_16(&t[12], &t[ 6], tmp);
+        sp_1024_proj_point_dbl_avx2_16(&t[14], &t[ 7], tmp);
+        sp_1024_proj_point_add_sub_avx2_16(&t[15], &t[13], &t[14], &t[ 1], tmp);
+        sp_1024_proj_point_dbl_avx2_16(&t[18], &t[ 9], tmp);
+        sp_1024_proj_point_add_sub_avx2_16(&t[19], &t[17], &t[18], &t[ 1], tmp);
+        sp_1024_proj_point_dbl_avx2_16(&t[20], &t[10], tmp);
+        sp_1024_proj_point_dbl_avx2_16(&t[22], &t[11], tmp);
+        sp_1024_proj_point_add_sub_avx2_16(&t[23], &t[21], &t[22], &t[ 1], tmp);
+        sp_1024_proj_point_dbl_avx2_16(&t[24], &t[12], tmp);
+        sp_1024_proj_point_dbl_avx2_16(&t[26], &t[13], tmp);
+        sp_1024_proj_point_add_sub_avx2_16(&t[27], &t[25], &t[26], &t[ 1], tmp);
+        sp_1024_proj_point_dbl_avx2_16(&t[28], &t[14], tmp);
+        sp_1024_proj_point_dbl_avx2_16(&t[30], &t[15], tmp);
+        sp_1024_proj_point_add_sub_avx2_16(&t[31], &t[29], &t[30], &t[ 1], tmp);
+
+        negy = t[0].y;
+
+        sp_1024_ecc_recode_6_16(k, v);
+
+        i = 170;
+        XMEMCPY(rt, &t[v[i].i], sizeof(sp_point_1024));
+        for (--i; i>=0; i--) {
+            sp_1024_proj_point_dbl_n_avx2_16(rt, 6, tmp);
+
+            XMEMCPY(p, &t[v[i].i], sizeof(sp_point_1024));
+            sp_1024_mont_sub_avx2_16(negy, p1024_mod, p->y, p1024_mod);
+            sp_1024_norm_16(negy);
+            sp_1024_cond_copy_16(p->y, negy, (sp_digit)0 - v[i].neg);
+            sp_1024_proj_point_add_avx2_16(rt, rt, p, tmp);
+        }
+
+        if (map != 0) {
+            sp_1024_map_avx2_16(r, rt, tmp);
+        }
+        else {
+            XMEMCPY(r, rt, sizeof(sp_point_1024));
+        }
+    }
+
+#if (defined(WOLFSSL_SP_SMALL) || defined(WOLFSSL_SMALL_STACK)) && !defined(WOLFSSL_SP_NO_MALLOC)
+    if (t != NULL)
+        XFREE(t, heap, DYNAMIC_TYPE_ECC);
+    if (tmp != NULL)
+        XFREE(tmp, heap, DYNAMIC_TYPE_ECC);
+#endif
+    sp_1024_point_free_16(p, 0, heap);
+    sp_1024_point_free_16(rt, 0, heap);
+
+    return err;
+}
+
+#endif /* HAVE_INTEL_AVX2 */
+/* A table entry for pre-computed points. */
+typedef struct sp_table_entry_1024 {
+    sp_digit x[16];
+    sp_digit y[16];
+} sp_table_entry_1024;
+
+#ifdef FP_ECC
+#endif /* FP_ECC */
+/* Add two Montgomery form projective points. The second point has a q value of
+ * one.
+ * Only the first point can be the same pointer as the result point.
+ *
+ * r  Result of addition.
+ * p  First point to add.
+ * q  Second point to add.
+ * t  Temporary ordinate data.
+ */
+static void sp_1024_proj_point_add_qz1_16(sp_point_1024* r, const sp_point_1024* p,
+        const sp_point_1024* q, sp_digit* t)
+{
+    const sp_point_1024* ap[2];
+    sp_point_1024* rp[2];
+    sp_digit* t1 = t;
+    sp_digit* t2 = t + 2*16;
+    sp_digit* t3 = t + 4*16;
+    sp_digit* t4 = t + 6*16;
+    sp_digit* t5 = t + 8*16;
+    sp_digit* x;
+    sp_digit* y;
+    sp_digit* z;
+    int i;
+
+    /* Check double */
+    (void)sp_1024_mont_sub_16(t1, p1024_mod, q->y, p1024_mod);
+    sp_1024_norm_16(t1);
+    if ((sp_1024_cmp_equal_16(p->x, q->x) & sp_1024_cmp_equal_16(p->z, q->z) &
+        (sp_1024_cmp_equal_16(p->y, q->y) | sp_1024_cmp_equal_16(p->y, t1))) != 0) {
+        sp_1024_proj_point_dbl_16(r, p, t);
+    }
+    else {
+        rp[0] = r;
+
+        /*lint allow cast to different type of pointer*/
+        rp[1] = (sp_point_1024*)t; /*lint !e9087 !e740*/
+        XMEMSET(rp[1], 0, sizeof(sp_point_1024));
+        x = rp[p->infinity | q->infinity]->x;
+        y = rp[p->infinity | q->infinity]->y;
+        z = rp[p->infinity | q->infinity]->z;
+
+        ap[0] = p;
+        ap[1] = q;
+        for (i=0; i<16; i++) {
+            r->x[i] = ap[p->infinity]->x[i];
+        }
+        for (i=0; i<16; i++) {
+            r->y[i] = ap[p->infinity]->y[i];
+        }
+        for (i=0; i<16; i++) {
+            r->z[i] = ap[p->infinity]->z[i];
+        }
+        r->infinity = ap[p->infinity]->infinity;
+
+        /* U2 = X2*Z1^2 */
+        sp_1024_mont_sqr_16(t2, z, p1024_mod, p1024_mp_mod);
+        sp_1024_mont_mul_16(t4, t2, z, p1024_mod, p1024_mp_mod);
+        sp_1024_mont_mul_16(t2, t2, q->x, p1024_mod, p1024_mp_mod);
+        /* S2 = Y2*Z1^3 */
+        sp_1024_mont_mul_16(t4, t4, q->y, p1024_mod, p1024_mp_mod);
+        /* H = U2 - X1 */
+        sp_1024_mont_sub_16(t2, t2, x, p1024_mod);
+        /* R = S2 - Y1 */
+        sp_1024_mont_sub_16(t4, t4, y, p1024_mod);
+        /* Z3 = H*Z1 */
+        sp_1024_mont_mul_16(z, z, t2, p1024_mod, p1024_mp_mod);
+        /* X3 = R^2 - H^3 - 2*X1*H^2 */
+        sp_1024_mont_sqr_16(t1, t4, p1024_mod, p1024_mp_mod);
+        sp_1024_mont_sqr_16(t5, t2, p1024_mod, p1024_mp_mod);
+        sp_1024_mont_mul_16(t3, x, t5, p1024_mod, p1024_mp_mod);
+        sp_1024_mont_mul_16(t5, t5, t2, p1024_mod, p1024_mp_mod);
+        sp_1024_mont_sub_16(x, t1, t5, p1024_mod);
+        sp_1024_mont_dbl_16(t1, t3, p1024_mod);
+        sp_1024_mont_sub_16(x, x, t1, p1024_mod);
+        /* Y3 = R*(X1*H^2 - X3) - Y1*H^3 */
+        sp_1024_mont_sub_16(t3, t3, x, p1024_mod);
+        sp_1024_mont_mul_16(t3, t3, t4, p1024_mod, p1024_mp_mod);
+        sp_1024_mont_mul_16(t5, t5, y, p1024_mod, p1024_mp_mod);
+        sp_1024_mont_sub_16(y, t3, t5, p1024_mod);
+    }
+}
+
+#if defined(FP_ECC) || !defined(WOLFSSL_SP_SMALL)
+/* Convert the projective point to affine.
+ * Ordinates are in Montgomery form.
+ *
+ * a  Point to convert.
+ * t  Temporary data.
+ */
+static void sp_1024_proj_to_affine_16(sp_point_1024* a, sp_digit* t)
+{
+    sp_digit* t1 = t;
+    sp_digit* t2 = t + 2 * 16;
+    sp_digit* tmp = t + 4 * 16;
+
+    sp_1024_mont_inv_16(t1, a->z, tmp);
+
+    sp_1024_mont_sqr_16(t2, t1, p1024_mod, p1024_mp_mod);
+    sp_1024_mont_mul_16(t1, t2, t1, p1024_mod, p1024_mp_mod);
+
+    sp_1024_mont_mul_16(a->x, a->x, t2, p1024_mod, p1024_mp_mod);
+    sp_1024_mont_mul_16(a->y, a->y, t1, p1024_mod, p1024_mp_mod);
+    XMEMCPY(a->z, p1024_norm_mod, sizeof(p1024_norm_mod));
+}
+
+/* Generate the pre-computed table of points for the base point.
+ *
+ * width = 8
+ * 256 entries
+ * 128 bits between
+ *
+ * a      The base point.
+ * table  Place to store generated point data.
+ * tmp    Temporary data.
+ * heap  Heap to use for allocation.
+ */
+static int sp_1024_gen_stripe_table_16(const sp_point_1024* a,
+        sp_table_entry_1024* table, sp_digit* tmp, void* heap)
+{
+#if (!defined(WOLFSSL_SP_SMALL) && !defined(WOLFSSL_SMALL_STACK)) || defined(WOLFSSL_SP_NO_MALLOC)
+    sp_point_1024 td, s1d, s2d;
+#endif
+    sp_point_1024* t;
+    sp_point_1024* s1 = NULL;
+    sp_point_1024* s2 = NULL;
+    int i, j;
+    int err;
+
+    (void)heap;
+
+    err = sp_1024_point_new_16(heap, td, t);
+    if (err == MP_OKAY) {
+        err = sp_1024_point_new_16(heap, s1d, s1);
+    }
+    if (err == MP_OKAY) {
+        err = sp_1024_point_new_16(heap, s2d, s2);
+    }
+
+    if (err == MP_OKAY) {
+        err = sp_1024_mod_mul_norm_16(t->x, a->x, p1024_mod);
+    }
+    if (err == MP_OKAY) {
+        err = sp_1024_mod_mul_norm_16(t->y, a->y, p1024_mod);
+    }
+    if (err == MP_OKAY) {
+        err = sp_1024_mod_mul_norm_16(t->z, a->z, p1024_mod);
+    }
+    if (err == MP_OKAY) {
+        t->infinity = 0;
+        sp_1024_proj_to_affine_16(t, tmp);
+
+        XMEMCPY(s1->z, p1024_norm_mod, sizeof(p1024_norm_mod));
+        s1->infinity = 0;
+        XMEMCPY(s2->z, p1024_norm_mod, sizeof(p1024_norm_mod));
+        s2->infinity = 0;
+
+        /* table[0] = {0, 0, infinity} */
+        XMEMSET(&table[0], 0, sizeof(sp_table_entry_1024));
+        /* table[1] = Affine version of 'a' in Montgomery form */
+        XMEMCPY(table[1].x, t->x, sizeof(table->x));
+        XMEMCPY(table[1].y, t->y, sizeof(table->y));
+
+        for (i=1; i<8; i++) {
+            sp_1024_proj_point_dbl_n_16(t, 128, tmp);
+            sp_1024_proj_to_affine_16(t, tmp);
+            XMEMCPY(table[1<<i].x, t->x, sizeof(table->x));
+            XMEMCPY(table[1<<i].y, t->y, sizeof(table->y));
+        }
+
+        for (i=1; i<8; i++) {
+            XMEMCPY(s1->x, table[1<<i].x, sizeof(table->x));
+            XMEMCPY(s1->y, table[1<<i].y, sizeof(table->y));
+            for (j=(1<<i)+1; j<(1<<(i+1)); j++) {
+                XMEMCPY(s2->x, table[j-(1<<i)].x, sizeof(table->x));
+                XMEMCPY(s2->y, table[j-(1<<i)].y, sizeof(table->y));
+                sp_1024_proj_point_add_qz1_16(t, s1, s2, tmp);
+                sp_1024_proj_to_affine_16(t, tmp);
+                XMEMCPY(table[j].x, t->x, sizeof(table->x));
+                XMEMCPY(table[j].y, t->y, sizeof(table->y));
+            }
+        }
+    }
+
+    sp_1024_point_free_16(s2, 0, heap);
+    sp_1024_point_free_16(s1, 0, heap);
+    sp_1024_point_free_16( t, 0, heap);
+
+    return err;
+}
+
+#endif /* FP_ECC || !WOLFSSL_SP_SMALL */
+/* Multiply the point by the scalar and return the result.
+ * If map is true then convert result to affine coordinates.
+ *
+ * Stripe implementation.
+ * Pre-generated: 2^0, 2^128, ...
+ * Pre-generated: products of all combinations of above.
+ * 8 doubles and adds (with qz=1)
+ *
+ * r     Resulting point.
+ * k     Scalar to multiply by.
+ * map   Indicates whether to convert result to affine.
+ * heap  Heap to use for allocation.
+ * returns MEMORY_E when memory allocation fails and MP_OKAY on success.
+ */
+static int sp_1024_ecc_mulmod_stripe_16(sp_point_1024* r,
+        const sp_point_1024* g, const sp_table_entry_1024* table,
+        const sp_digit* k, int map, void* heap)
+{
+#if (!defined(WOLFSSL_SP_SMALL) && !defined(WOLFSSL_SMALL_STACK)) || defined(WOLFSSL_SP_NO_MALLOC)
+    sp_point_1024 rtd;
+    sp_point_1024 pd;
+    sp_digit td[2 * 16 * 5];
+#endif
+    sp_point_1024* rt;
+    sp_point_1024* p = NULL;
+    sp_digit* t;
+    int i, j;
+    int y, x;
+    int err;
+
+    (void)g;
+    (void)heap;
+
+
+    err = sp_1024_point_new_16(heap, rtd, rt);
+    if (err == MP_OKAY) {
+        err = sp_1024_point_new_16(heap, pd, p);
+    }
+#if (defined(WOLFSSL_SP_SMALL) || defined(WOLFSSL_SMALL_STACK)) && !defined(WOLFSSL_SP_NO_MALLOC)
+    t = (sp_digit*)XMALLOC(sizeof(sp_digit) * 2 * 16 * 5, heap,
+                           DYNAMIC_TYPE_ECC);
+    if (t == NULL) {
+        err = MEMORY_E;
+    }
+#else
+    t = td;
+#endif
+
+    if (err == MP_OKAY) {
+        XMEMCPY(p->z, p1024_norm_mod, sizeof(p1024_norm_mod));
+        XMEMCPY(rt->z, p1024_norm_mod, sizeof(p1024_norm_mod));
+
+        y = 0;
+        for (j=0,x=127; j<8; j++,x+=128) {
+            y |= ((k[x / 64] >> (x % 64)) & 1) << j;
+        }
+        XMEMCPY(rt->x, table[y].x, sizeof(table[y].x));
+        XMEMCPY(rt->y, table[y].y, sizeof(table[y].y));
+        rt->infinity = !y;
+        for (i=126; i>=0; i--) {
+            y = 0;
+            for (j=0,x=i; j<8; j++,x+=128) {
+                y |= ((k[x / 64] >> (x % 64)) & 1) << j;
+            }
+
+            sp_1024_proj_point_dbl_16(rt, rt, t);
+            XMEMCPY(p->x, table[y].x, sizeof(table[y].x));
+            XMEMCPY(p->y, table[y].y, sizeof(table[y].y));
+            p->infinity = !y;
+            sp_1024_proj_point_add_qz1_16(rt, rt, p, t);
+        }
+
+        if (map != 0) {
+            sp_1024_map_16(r, rt, t);
+        }
+        else {
+            XMEMCPY(r, rt, sizeof(sp_point_1024));
+        }
+    }
+
+#if (defined(WOLFSSL_SP_SMALL) || defined(WOLFSSL_SMALL_STACK)) && !defined(WOLFSSL_SP_NO_MALLOC)
+    if (t != NULL) {
+        XFREE(t, heap, DYNAMIC_TYPE_ECC);
+    }
+#endif
+    sp_1024_point_free_16(p, 0, heap);
+    sp_1024_point_free_16(rt, 0, heap);
+
+    return err;
+}
+
+#ifdef FP_ECC
+#ifndef FP_ENTRIES
+    #define FP_ENTRIES 16
+#endif
+
+/* Cache entry - holds precomputation tables for a point. */
+typedef struct sp_cache_1024_t {
+    /* X ordinate of point that table was generated from. */
+    sp_digit x[16];
+    /* Y ordinate of point that table was generated from. */
+    sp_digit y[16];
+    /* Precomputation table for point. */
+    sp_table_entry_1024 table[256];
+    /* Count of entries in table. */
+    uint32_t cnt;
+    /* Point and table set in entry. */
+    int set;
+} sp_cache_1024_t;
+
+/* Cache of tables. */
+static THREAD_LS_T sp_cache_1024_t sp_cache_1024[FP_ENTRIES];
+/* Index of last entry in cache. */
+static THREAD_LS_T int sp_cache_1024_last = -1;
+/* Cache has been initialized. */
+static THREAD_LS_T int sp_cache_1024_inited = 0;
+
+#ifndef HAVE_THREAD_LS
+    static volatile int initCacheMutex_1024 = 0;
+    static wolfSSL_Mutex sp_cache_1024_lock;
+#endif
+
+/* Get the cache entry for the point.
+ *
+ * g      [in]   Point scalar multipling.
+ * cache  [out]  Cache table to use.
+ */
+static void sp_ecc_get_cache_1024(const sp_point_1024* g,
+        sp_cache_1024_t** cache)
+{
+    int i, j;
+    uint32_t least;
+
+    if (sp_cache_1024_inited == 0) {
+        for (i=0; i<FP_ENTRIES; i++) {
+            sp_cache_1024[i].set = 0;
+        }
+        sp_cache_1024_inited = 1;
+    }
+
+    /* Compare point with those in cache. */
+    for (i=0; i<FP_ENTRIES; i++) {
+        if (!sp_cache_1024[i].set)
+            continue;
+
+        if (sp_1024_cmp_equal_16(g->x, sp_cache_1024[i].x) &
+                           sp_1024_cmp_equal_16(g->y, sp_cache_1024[i].y)) {
+            sp_cache_1024[i].cnt++;
+            break;
+        }
+    }
+
+    /* No match. */
+    if (i == FP_ENTRIES) {
+        /* Find empty entry. */
+        i = (sp_cache_1024_last + 1) % FP_ENTRIES;
+        for (; i != sp_cache_1024_last; i=(i+1)%FP_ENTRIES) {
+            if (!sp_cache_1024[i].set) {
+                break;
+            }
+        }
+
+        /* Evict least used. */
+        if (i == sp_cache_1024_last) {
+            least = sp_cache_1024[0].cnt;
+            for (j=1; j<FP_ENTRIES; j++) {
+                if (sp_cache_1024[j].cnt < least) {
+                    i = j;
+                    least = sp_cache_1024[i].cnt;
+                }
+            }
+        }
+
+        XMEMCPY(sp_cache_1024[i].x, g->x, sizeof(sp_cache_1024[i].x));
+        XMEMCPY(sp_cache_1024[i].y, g->y, sizeof(sp_cache_1024[i].y));
+        sp_cache_1024[i].set = 1;
+        sp_cache_1024[i].cnt = 1;
+    }
+
+    *cache = &sp_cache_1024[i];
+    sp_cache_1024_last = i;
+}
+#endif /* FP_ECC */
+
+/* Multiply the base point of P1024 by the scalar and return the result.
+ * If map is true then convert result to affine coordinates.
+ *
+ * r     Resulting point.
+ * g     Point to multiply.
+ * k     Scalar to multiply by.
+ * map   Indicates whether to convert result to affine.
+ * heap  Heap to use for allocation.
+ * returns MEMORY_E when memory allocation fails and MP_OKAY on success.
+ */
+static int sp_1024_ecc_mulmod_16(sp_point_1024* r, const sp_point_1024* g,
+        const sp_digit* k, int map, void* heap)
+{
+#ifndef FP_ECC
+    return sp_1024_ecc_mulmod_win_add_sub_16(r, g, k, map, heap);
+#else
+    sp_digit tmp[2 * 16 * 5];
+    sp_cache_1024_t* cache;
+    int err = MP_OKAY;
+
+#ifndef HAVE_THREAD_LS
+    if (initCacheMutex_1024 == 0) {
+         wc_InitMutex(&sp_cache_1024_lock);
+         initCacheMutex_1024 = 1;
+    }
+    if (wc_LockMutex(&sp_cache_1024_lock) != 0)
+       err = BAD_MUTEX_E;
+#endif /* HAVE_THREAD_LS */
+
+    if (err == MP_OKAY) {
+        sp_ecc_get_cache_1024(g, &cache);
+        if (cache->cnt == 2)
+            sp_1024_gen_stripe_table_16(g, cache->table, tmp, heap);
+
+#ifndef HAVE_THREAD_LS
+        wc_UnLockMutex(&sp_cache_1024_lock);
+#endif /* HAVE_THREAD_LS */
+
+        if (cache->cnt < 2) {
+            err = sp_1024_ecc_mulmod_win_add_sub_16(r, g, k, map, heap);
+        }
+        else {
+            err = sp_1024_ecc_mulmod_stripe_16(r, g, cache->table, k,
+                    map, heap);
+        }
+    }
+
+    return err;
+#endif
+}
+
+#ifdef HAVE_INTEL_AVX2
+#ifdef FP_ECC
+#endif /* FP_ECC */
+/* Add two Montgomery form projective points. The second point has a q value of
+ * one.
+ * Only the first point can be the same pointer as the result point.
+ *
+ * r  Result of addition.
+ * p  First point to add.
+ * q  Second point to add.
+ * t  Temporary ordinate data.
+ */
+static void sp_1024_proj_point_add_qz1_avx2_16(sp_point_1024* r, const sp_point_1024* p,
+        const sp_point_1024* q, sp_digit* t)
+{
+    const sp_point_1024* ap[2];
+    sp_point_1024* rp[2];
+    sp_digit* t1 = t;
+    sp_digit* t2 = t + 2*16;
+    sp_digit* t3 = t + 4*16;
+    sp_digit* t4 = t + 6*16;
+    sp_digit* t5 = t + 8*16;
+    sp_digit* x;
+    sp_digit* y;
+    sp_digit* z;
+    int i;
+
+    /* Check double */
+    (void)sp_1024_mont_sub_avx2_16(t1, p1024_mod, q->y, p1024_mod);
+    sp_1024_norm_16(t1);
+    if ((sp_1024_cmp_equal_16(p->x, q->x) & sp_1024_cmp_equal_16(p->z, q->z) &
+        (sp_1024_cmp_equal_16(p->y, q->y) | sp_1024_cmp_equal_16(p->y, t1))) != 0) {
+        sp_1024_proj_point_dbl_16(r, p, t);
+    }
+    else {
+        rp[0] = r;
+
+        /*lint allow cast to different type of pointer*/
+        rp[1] = (sp_point_1024*)t; /*lint !e9087 !e740*/
+        XMEMSET(rp[1], 0, sizeof(sp_point_1024));
+        x = rp[p->infinity | q->infinity]->x;
+        y = rp[p->infinity | q->infinity]->y;
+        z = rp[p->infinity | q->infinity]->z;
+
+        ap[0] = p;
+        ap[1] = q;
+        for (i=0; i<16; i++) {
+            r->x[i] = ap[p->infinity]->x[i];
+        }
+        for (i=0; i<16; i++) {
+            r->y[i] = ap[p->infinity]->y[i];
+        }
+        for (i=0; i<16; i++) {
+            r->z[i] = ap[p->infinity]->z[i];
+        }
+        r->infinity = ap[p->infinity]->infinity;
+
+        /* U2 = X2*Z1^2 */
+        sp_1024_mont_sqr_avx2_16(t2, z, p1024_mod, p1024_mp_mod);
+        sp_1024_mont_mul_avx2_16(t4, t2, z, p1024_mod, p1024_mp_mod);
+        sp_1024_mont_mul_avx2_16(t2, t2, q->x, p1024_mod, p1024_mp_mod);
+        /* S2 = Y2*Z1^3 */
+        sp_1024_mont_mul_avx2_16(t4, t4, q->y, p1024_mod, p1024_mp_mod);
+        /* H = U2 - X1 */
+        sp_1024_mont_sub_avx2_16(t2, t2, x, p1024_mod);
+        /* R = S2 - Y1 */
+        sp_1024_mont_sub_avx2_16(t4, t4, y, p1024_mod);
+        /* Z3 = H*Z1 */
+        sp_1024_mont_mul_avx2_16(z, z, t2, p1024_mod, p1024_mp_mod);
+        /* X3 = R^2 - H^3 - 2*X1*H^2 */
+        sp_1024_mont_sqr_avx2_16(t1, t4, p1024_mod, p1024_mp_mod);
+        sp_1024_mont_sqr_avx2_16(t5, t2, p1024_mod, p1024_mp_mod);
+        sp_1024_mont_mul_avx2_16(t3, x, t5, p1024_mod, p1024_mp_mod);
+        sp_1024_mont_mul_avx2_16(t5, t5, t2, p1024_mod, p1024_mp_mod);
+        sp_1024_mont_sub_avx2_16(x, t1, t5, p1024_mod);
+        sp_1024_mont_dbl_avx2_16(t1, t3, p1024_mod);
+        sp_1024_mont_sub_avx2_16(x, x, t1, p1024_mod);
+        /* Y3 = R*(X1*H^2 - X3) - Y1*H^3 */
+        sp_1024_mont_sub_avx2_16(t3, t3, x, p1024_mod);
+        sp_1024_mont_mul_avx2_16(t3, t3, t4, p1024_mod, p1024_mp_mod);
+        sp_1024_mont_mul_avx2_16(t5, t5, y, p1024_mod, p1024_mp_mod);
+        sp_1024_mont_sub_avx2_16(y, t3, t5, p1024_mod);
+    }
+}
+
+#if defined(FP_ECC) || !defined(WOLFSSL_SP_SMALL)
+/* Convert the projective point to affine.
+ * Ordinates are in Montgomery form.
+ *
+ * a  Point to convert.
+ * t  Temporary data.
+ */
+static void sp_1024_proj_to_affine_avx2_16(sp_point_1024* a, sp_digit* t)
+{
+    sp_digit* t1 = t;
+    sp_digit* t2 = t + 2 * 16;
+    sp_digit* tmp = t + 4 * 16;
+
+    sp_1024_mont_inv_avx2_16(t1, a->z, tmp);
+
+    sp_1024_mont_sqr_avx2_16(t2, t1, p1024_mod, p1024_mp_mod);
+    sp_1024_mont_mul_avx2_16(t1, t2, t1, p1024_mod, p1024_mp_mod);
+
+    sp_1024_mont_mul_avx2_16(a->x, a->x, t2, p1024_mod, p1024_mp_mod);
+    sp_1024_mont_mul_avx2_16(a->y, a->y, t1, p1024_mod, p1024_mp_mod);
+    XMEMCPY(a->z, p1024_norm_mod, sizeof(p1024_norm_mod));
+}
+
+/* Generate the pre-computed table of points for the base point.
+ *
+ * width = 8
+ * 256 entries
+ * 128 bits between
+ *
+ * a      The base point.
+ * table  Place to store generated point data.
+ * tmp    Temporary data.
+ * heap  Heap to use for allocation.
+ */
+static int sp_1024_gen_stripe_table_avx2_16(const sp_point_1024* a,
+        sp_table_entry_1024* table, sp_digit* tmp, void* heap)
+{
+#if (!defined(WOLFSSL_SP_SMALL) && !defined(WOLFSSL_SMALL_STACK)) || defined(WOLFSSL_SP_NO_MALLOC)
+    sp_point_1024 td, s1d, s2d;
+#endif
+    sp_point_1024* t;
+    sp_point_1024* s1 = NULL;
+    sp_point_1024* s2 = NULL;
+    int i, j;
+    int err;
+
+    (void)heap;
+
+    err = sp_1024_point_new_16(heap, td, t);
+    if (err == MP_OKAY) {
+        err = sp_1024_point_new_16(heap, s1d, s1);
+    }
+    if (err == MP_OKAY) {
+        err = sp_1024_point_new_16(heap, s2d, s2);
+    }
+
+    if (err == MP_OKAY) {
+        err = sp_1024_mod_mul_norm_avx2_16(t->x, a->x, p1024_mod);
+    }
+    if (err == MP_OKAY) {
+        err = sp_1024_mod_mul_norm_avx2_16(t->y, a->y, p1024_mod);
+    }
+    if (err == MP_OKAY) {
+        err = sp_1024_mod_mul_norm_avx2_16(t->z, a->z, p1024_mod);
+    }
+    if (err == MP_OKAY) {
+        t->infinity = 0;
+        sp_1024_proj_to_affine_avx2_16(t, tmp);
+
+        XMEMCPY(s1->z, p1024_norm_mod, sizeof(p1024_norm_mod));
+        s1->infinity = 0;
+        XMEMCPY(s2->z, p1024_norm_mod, sizeof(p1024_norm_mod));
+        s2->infinity = 0;
+
+        /* table[0] = {0, 0, infinity} */
+        XMEMSET(&table[0], 0, sizeof(sp_table_entry_1024));
+        /* table[1] = Affine version of 'a' in Montgomery form */
+        XMEMCPY(table[1].x, t->x, sizeof(table->x));
+        XMEMCPY(table[1].y, t->y, sizeof(table->y));
+
+        for (i=1; i<8; i++) {
+            sp_1024_proj_point_dbl_n_avx2_16(t, 128, tmp);
+            sp_1024_proj_to_affine_avx2_16(t, tmp);
+            XMEMCPY(table[1<<i].x, t->x, sizeof(table->x));
+            XMEMCPY(table[1<<i].y, t->y, sizeof(table->y));
+        }
+
+        for (i=1; i<8; i++) {
+            XMEMCPY(s1->x, table[1<<i].x, sizeof(table->x));
+            XMEMCPY(s1->y, table[1<<i].y, sizeof(table->y));
+            for (j=(1<<i)+1; j<(1<<(i+1)); j++) {
+                XMEMCPY(s2->x, table[j-(1<<i)].x, sizeof(table->x));
+                XMEMCPY(s2->y, table[j-(1<<i)].y, sizeof(table->y));
+                sp_1024_proj_point_add_qz1_avx2_16(t, s1, s2, tmp);
+                sp_1024_proj_to_affine_avx2_16(t, tmp);
+                XMEMCPY(table[j].x, t->x, sizeof(table->x));
+                XMEMCPY(table[j].y, t->y, sizeof(table->y));
+            }
+        }
+    }
+
+    sp_1024_point_free_16(s2, 0, heap);
+    sp_1024_point_free_16(s1, 0, heap);
+    sp_1024_point_free_16( t, 0, heap);
+
+    return err;
+}
+
+#endif /* FP_ECC || !WOLFSSL_SP_SMALL */
+/* Multiply the point by the scalar and return the result.
+ * If map is true then convert result to affine coordinates.
+ *
+ * Stripe implementation.
+ * Pre-generated: 2^0, 2^128, ...
+ * Pre-generated: products of all combinations of above.
+ * 8 doubles and adds (with qz=1)
+ *
+ * r     Resulting point.
+ * k     Scalar to multiply by.
+ * map   Indicates whether to convert result to affine.
+ * heap  Heap to use for allocation.
+ * returns MEMORY_E when memory allocation fails and MP_OKAY on success.
+ */
+static int sp_1024_ecc_mulmod_stripe_avx2_16(sp_point_1024* r,
+        const sp_point_1024* g, const sp_table_entry_1024* table,
+        const sp_digit* k, int map, void* heap)
+{
+#if (!defined(WOLFSSL_SP_SMALL) && !defined(WOLFSSL_SMALL_STACK)) || defined(WOLFSSL_SP_NO_MALLOC)
+    sp_point_1024 rtd;
+    sp_point_1024 pd;
+    sp_digit td[2 * 16 * 5];
+#endif
+    sp_point_1024* rt;
+    sp_point_1024* p = NULL;
+    sp_digit* t;
+    int i, j;
+    int y, x;
+    int err;
+
+    (void)g;
+    (void)heap;
+
+
+    err = sp_1024_point_new_16(heap, rtd, rt);
+    if (err == MP_OKAY) {
+        err = sp_1024_point_new_16(heap, pd, p);
+    }
+#if (defined(WOLFSSL_SP_SMALL) || defined(WOLFSSL_SMALL_STACK)) && !defined(WOLFSSL_SP_NO_MALLOC)
+    t = (sp_digit*)XMALLOC(sizeof(sp_digit) * 2 * 16 * 5, heap,
+                           DYNAMIC_TYPE_ECC);
+    if (t == NULL) {
+        err = MEMORY_E;
+    }
+#else
+    t = td;
+#endif
+
+    if (err == MP_OKAY) {
+        XMEMCPY(p->z, p1024_norm_mod, sizeof(p1024_norm_mod));
+        XMEMCPY(rt->z, p1024_norm_mod, sizeof(p1024_norm_mod));
+
+        y = 0;
+        for (j=0,x=127; j<8; j++,x+=128) {
+            y |= ((k[x / 64] >> (x % 64)) & 1) << j;
+        }
+        XMEMCPY(rt->x, table[y].x, sizeof(table[y].x));
+        XMEMCPY(rt->y, table[y].y, sizeof(table[y].y));
+        rt->infinity = !y;
+        for (i=126; i>=0; i--) {
+            y = 0;
+            for (j=0,x=i; j<8; j++,x+=128) {
+                y |= ((k[x / 64] >> (x % 64)) & 1) << j;
+            }
+
+            sp_1024_proj_point_dbl_avx2_16(rt, rt, t);
+            XMEMCPY(p->x, table[y].x, sizeof(table[y].x));
+            XMEMCPY(p->y, table[y].y, sizeof(table[y].y));
+            p->infinity = !y;
+            sp_1024_proj_point_add_qz1_avx2_16(rt, rt, p, t);
+        }
+
+        if (map != 0) {
+            sp_1024_map_avx2_16(r, rt, t);
+        }
+        else {
+            XMEMCPY(r, rt, sizeof(sp_point_1024));
+        }
+    }
+
+#if (defined(WOLFSSL_SP_SMALL) || defined(WOLFSSL_SMALL_STACK)) && !defined(WOLFSSL_SP_NO_MALLOC)
+    if (t != NULL) {
+        XFREE(t, heap, DYNAMIC_TYPE_ECC);
+    }
+#endif
+    sp_1024_point_free_16(p, 0, heap);
+    sp_1024_point_free_16(rt, 0, heap);
+
+    return err;
+}
+
+/* Multiply the base point of P1024 by the scalar and return the result.
+ * If map is true then convert result to affine coordinates.
+ *
+ * r     Resulting point.
+ * g     Point to multiply.
+ * k     Scalar to multiply by.
+ * map   Indicates whether to convert result to affine.
+ * heap  Heap to use for allocation.
+ * returns MEMORY_E when memory allocation fails and MP_OKAY on success.
+ */
+static int sp_1024_ecc_mulmod_avx2_16(sp_point_1024* r, const sp_point_1024* g,
+        const sp_digit* k, int map, void* heap)
+{
+#ifndef FP_ECC
+    return sp_1024_ecc_mulmod_win_add_sub_avx2_16(r, g, k, map, heap);
+#else
+    sp_digit tmp[2 * 16 * 5];
+    sp_cache_1024_t* cache;
+    int err = MP_OKAY;
+
+#ifndef HAVE_THREAD_LS
+    if (initCacheMutex_1024 == 0) {
+         wc_InitMutex(&sp_cache_1024_lock);
+         initCacheMutex_1024 = 1;
+    }
+    if (wc_LockMutex(&sp_cache_1024_lock) != 0)
+       err = BAD_MUTEX_E;
+#endif /* HAVE_THREAD_LS */
+
+    if (err == MP_OKAY) {
+        sp_ecc_get_cache_1024(g, &cache);
+        if (cache->cnt == 2)
+            sp_1024_gen_stripe_table_avx2_16(g, cache->table, tmp, heap);
+
+#ifndef HAVE_THREAD_LS
+        wc_UnLockMutex(&sp_cache_1024_lock);
+#endif /* HAVE_THREAD_LS */
+
+        if (cache->cnt < 2) {
+            err = sp_1024_ecc_mulmod_win_add_sub_avx2_16(r, g, k, map, heap);
+        }
+        else {
+            err = sp_1024_ecc_mulmod_stripe_avx2_16(r, g, cache->table, k,
+                    map, heap);
+        }
+    }
+
+    return err;
+#endif
+}
+
+#endif /* HAVE_INTEL_AVX2 */
+/* Multiply the point by the scalar and return the result.
+ * If map is true then convert result to affine coordinates.
+ *
+ * km    Scalar to multiply by.
+ * p     Point to multiply.
+ * r     Resulting point.
+ * map   Indicates whether to convert result to affine.
+ * heap  Heap to use for allocation.
+ * returns MEMORY_E when memory allocation fails and MP_OKAY on success.
+ */
+int sp_ecc_mulmod_1024(mp_int* km, ecc_point* gm, ecc_point* r, int map,
+        void* heap)
+{
+#if (!defined(WOLFSSL_SP_SMALL) && !defined(WOLFSSL_SMALL_STACK)) || defined(WOLFSSL_SP_NO_MALLOC)
+    sp_point_1024 p;
+    sp_digit kd[16];
+#endif
+    sp_point_1024* point;
+    sp_digit* k = NULL;
+    int err = MP_OKAY;
+#ifdef HAVE_INTEL_AVX2
+    word32 cpuid_flags = cpuid_get_flags();
+#endif
+
+    err = sp_1024_point_new_16(heap, p, point);
+#if (defined(WOLFSSL_SP_SMALL) || defined(WOLFSSL_SMALL_STACK)) && !defined(WOLFSSL_SP_NO_MALLOC)
+    if (err == MP_OKAY) {
+        k = (sp_digit*)XMALLOC(sizeof(sp_digit) * 16, heap,
+                                                              DYNAMIC_TYPE_ECC);
+        if (k == NULL)
+            err = MEMORY_E;
+    }
+#else
+    k = kd;
+#endif
+    if (err == MP_OKAY) {
+        sp_1024_from_mp(k, 16, km);
+        sp_1024_point_from_ecc_point_16(point, gm);
+
+#ifdef HAVE_INTEL_AVX2
+        if (IS_INTEL_BMI2(cpuid_flags) && IS_INTEL_ADX(cpuid_flags))
+            err = sp_1024_ecc_mulmod_avx2_16(point, point, k, map, heap);
+        else
+#endif
+            err = sp_1024_ecc_mulmod_16(point, point, k, map, heap);
+    }
+    if (err == MP_OKAY) {
+        err = sp_1024_point_to_ecc_point_16(point, r);
+    }
+
+#if (defined(WOLFSSL_SP_SMALL) || defined(WOLFSSL_SMALL_STACK)) && !defined(WOLFSSL_SP_NO_MALLOC)
+    if (k != NULL) {
+        XFREE(k, heap, DYNAMIC_TYPE_ECC);
+    }
+#endif
+    sp_1024_point_free_16(point, 0, heap);
+
+    return err;
+}
+
+/* Striping precomputation table.
+ * 8 points combined into a table of 256 points.
+ * Distance of 128 between points.
+ */
+static const sp_table_entry_1024 p1024_table[256] = {
+    /* 0 */
+    { { 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 },
+      { 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 } },
+    /* 1 */
+    { { 0xbf9c7ec6e0162bc2L,0xddecc6e310a89289L,0x5d599df09e499d81L,
+        0x9a96ea286d358218L,0x01aec7d370c5f8dbL,0xe72e49958cf5d066L,
+        0xc2e7297d3e91d7f8L,0x8621db92da9f2f5aL,0x4b26c8675a5679edL,
+        0x233385df2c56aac1L,0xb88e74d4c6a13f99L,0x1214b173ffa8ec11L,
+        0xa0386a271f3f9fefL,0xbd9b1b4ec0e7b44eL,0xafe528dceecd3496L,
+        0x8dfff96a1c49f80bL },
+      { 0xb4a4753ac03c0c83L,0x68e69d18abcdcd75L,0xe3839b88f775b649L,
+        0x803f949abf58f352L,0x5f702679bd0bc15cL,0x85bf5d168ff298c2L,
+        0x3f6ebd98c6c7976eL,0x20618af445e3e1b4L,0x67d5598e54e64093L,
+        0xb047283b504fed9eL,0x450cabfd70d87517L,0x47d628bf3f5addbeL,
+        0x0037ef3078cb4ccaL,0x4e148d3c6b1c4908L,0xe256d3294fcfd837L,
+        0x2aa1207bde3c01f3L } },
+    /* 2 */
+    { { 0xa95b6dae01900955L,0xa5dc9cc1ceb4656dL,0x50c78907e72fe95bL,
+        0xa1ae5447a040c334L,0x911913707952ea6eL,0x54ff73436d097305L,
+        0xa4db0074bda4d10fL,0xfd5306f191644070L,0x14b9fe738b24522cL,
+        0x1468dad67849f762L,0x87b29a18b0dcd2e4L,0xadd7f1a15e1ad492L,
+        0x9ac63a81dbba2a1aL,0x01379c5b81223379L,0xf402b2f0b0e53bc8L,
+        0x8c3eb27f0bf13b61L },
+      { 0x9a4ad3e1e513696fL,0x0350ba5c18c81ffaL,0x1e2fc1363c033d13L,
+        0x53da6e7117a531bcL,0x42ec64901aed610dL,0xd33e8df7e99ff567L,
+        0xe4aad73e3deed12aL,0xd983b465180f4debL,0x99365269502f30b4L,
+        0x7e2799aba8918d7fL,0x0ffe84b6700fc79aL,0x7b4400d640bfd8c2L,
+        0xc3a21d215d2641bdL,0x79839442c32621cbL,0xace6500bb1401e83L,
+        0x7bf4163e251c4310L } },
+    /* 3 */
+    { { 0x1c174f88e3fd589eL,0xdb501790df974a03L,0xd09623e33e70549fL,
+        0x8d091eff15924f34L,0xeef79cadf9b65ac5L,0xd2cc42623f69c2cfL,
+        0x817d903252cd82bcL,0xacf4f4d9a5f1ddddL,0xd06126355011b6bdL,
+        0x9f74490d2ed140c9L,0x64092e8c4db686d2L,0x225eef16776b0fccL,
+        0x0e8c01e9df16aeb6L,0x6283674184bbd82aL,0x757574e28956e337L,
+        0x9871edc6705a7f07L },
+      { 0xbd0b76d5776535f7L,0x5214d6022635b3b8L,0xc0c25ad99d216f64L,
+        0xfd4df3a75515bf75L,0x24a625bc5e9f1675L,0x3c35efb7406873e7L,
+        0xef5c9a33bb2e5c4aL,0xa971b35e806b198aL,0x9f5c0ca5a3c690edL,
+        0xa8d5dd898e1e2341L,0x4cecbcce955ad9e4L,0x2ecf4407248d3416L,
+        0x1abb381145c0af6eL,0x3f4bee821c780fffL,0xd14df768c272ed57L,
+        0x397ed10a371637adL } },
+    /* 4 */
+    { { 0xcf3e0bb2755c2a27L,0xd38e42f959585c44L,0x46b13e0f19285e60L,
+        0xc3ecd0c076273d0fL,0x7800f085193c569aL,0xf04e74ab4351818aL,
+        0x9258aa388496363bL,0x8456617cb8c894feL,0x8bc62aaa2af969a0L,
+        0x66c2280b5a4668d9L,0xbc9df58ea992f4faL,0x5db0b7d93f401e99L,
+        0xe0614fe1c4c38c0eL,0xd531151c2ccdf6b3L,0x1c7575ece143b618L,
+        0x40247985df9398a4L },
+      { 0xfba251788f055746L,0xc5ba00400ab1e6e0L,0xe1b194fbac292697L,
+        0x771521195b4f4740L,0x250091d09bb7ba54L,0x7a674861b9a139a4L,
+        0xba8413b3f353aa7eL,0xafe771922443ceeeL,0x14468d363847bbd0L,
+        0x61f79ff63da4942dL,0x1563a1c1d425b456L,0x3c270fcd75ff4630L,
+        0x42072090eb2802c9L,0x68f0cdcbc85c7004L,0xca4372fbfa032e74L,
+        0x1a6fd1e6c8b79d80L } },
+    /* 5 */
+    { { 0x967a901a8d5116a3L,0x0b844394b2f5f47fL,0xe39ad45260ebaf3bL,
+        0x1e1be61760ccfc0cL,0xac07e3d2cc3f53f2L,0xdd838e0e1ed11bb6L,
+        0x454753071c15b0c2L,0x70dd4748920fe5b8L,0x1a20be2de471896dL,
+        0x3c3fad8a59276c7cL,0x026a1cc3c886ee07L,0x9fdb6f376e831ac4L,
+        0x26a35d1aac501d65L,0x0ae9890540da8574L,0x65dde0a4abd734e5L,
+        0x29b7d4dc15614750L },
+      { 0x44b3c2cbcbf4e20bL,0x1c3f548f58cc44c5L,0x39809b545b0cac1fL,
+        0x0c0f02b500f80621L,0xe612b890066905e0L,0x8f158ed78350188cL,
+        0xc01dc4583f5576b2L,0x29803272a45492e0L,0x77a5623a0ff92443L,
+        0xd12a2b0029d0dc41L,0xb41254592780e87aL,0x1ebcf9030d53f272L,
+        0xbae6ea4024301e8dL,0x1e5f3f2fa37d0798L,0x9342c31022b4126cL,
+        0x5d0928025382497eL } },
+    /* 6 */
+    { { 0x583a2b7eff2f780dL,0x34d26820d7d76b1dL,0xe3c3284786f74aecL,
+        0x0fd4221210823febL,0x227e417efb5e7bf4L,0x510d49b6a568f8cdL,
+        0x53bce7d61781bbecL,0x9cfe3f222f3718b7L,0x7f44e89fd9de6c1fL,
+        0xf1cc553f3fac9b55L,0x9d2d0846e6f300bcL,0x976c82a29f0ae6b1L,
+        0xe63dbf5e24b8bbe0L,0x4cac7f45973a5aa7L,0xc6eb623784dd33c7L,
+        0x0a26e434142fee5dL },
+      { 0x8081339facaa9a08L,0x40f311055246ece1L,0x892c817061393747L,
+        0x8d8d4103242f02e1L,0x482bfd203b5de98aL,0x89ef946b5abbe952L,
+        0xb8d218b937698249L,0xd5268e8966617c7aL,0x962e75518b7d2b91L,
+        0x2c5c7973fe8d67c3L,0x42e3150a2b017c51L,0x6f4e5ebcc1a29469L,
+        0xa39910ce531c7083L,0xaf4f6eb4b77b9e50L,0x68cbb175da120ad0L,
+        0x19497c61b92636ecL } },
+    /* 7 */
+    { { 0x6920b0c6417659a8L,0xc77ab9c792cb28ffL,0x55b67180b687797fL,
+        0x4caf58c1e7759363L,0x5155bdb65561b186L,0x2e64e355780f4946L,
+        0xeb0ac9b7229a8b20L,0x88594d782571bd60L,0x5dcc0939e3fa78f9L,
+        0x7b8b48302ac2d379L,0x505fbf60b90f1444L,0xac610e813ce4b3c1L,
+        0x39a4f27ad59b5c18L,0x5fa339737cea0222L,0xe578730b8dff1c7bL,
+        0x96b91b8b517bf7a6L },
+      { 0xc1a991f49aac087cL,0xce62f74e6cfdb28dL,0x08d6ff9a5f7600d6L,
+        0xd781cd04f917f9c9L,0x7796f5f63de52dbfL,0xe7db64e02ed72180L,
+        0x0f0876f66fa4137dL,0x3271ee643ca1f716L,0xcb9b20587c4ab8a3L,
+        0xcba1710739481047L,0xdf9a190d598c5c37L,0x0cb6e72a6f20e125L,
+        0xa3142204f4f2902dL,0x42d28cb97ce2dcfbL,0xdf261b8aa3d3c351L,
+        0x73f3d315cffc249dL } },
+    /* 8 */
+    { { 0x5d86855be6fd3673L,0x309b70af9d214b7bL,0x8d332f90dcc46cd3L,
+        0xe553c015595510deL,0x5746a09638c1251cL,0xcd7cea5b85cc1bc9L,
+        0x4ffa1468002eba8fL,0x10a3cb7022fcd77cL,0xb6999dfbc4ea05e3L,
+        0x3375a0d04efa756eL,0x4d90279edced5fd8L,0x48192403251fd56eL,
+        0xe87633a482a4c5f1L,0x3170d1301b34105bL,0x93998b0f7247e578L,
+        0x88934f64436ba1faL },
+      { 0xf09f43b04713eabcL,0x4ca7dd91accdc517L,0x27daa63bef13ca7cL,
+        0x8b2e5a7a2588184bL,0x0a8cb612d95dc269L,0x346975a2e1f2f14cL,
+        0x1f29b8ede172935cL,0xc3cbfd6ed40bc1e3L,0xd3f46b3f132623daL,
+        0xc115be6dfb0b7681L,0x5e31c34556da4344L,0xa7c63f18a8e43d98L,
+        0x55cb20834bddb4eaL,0xb16a0c384a54f58cL,0x74eacca246fd69d9L,
+        0x0d1898bb153548e1L } },
+    /* 9 */
+    { { 0x4ea73461e35ef043L,0x107b67d93496b564L,0xd62c173bd0f83a3cL,
+        0xfad4b03851d29c35L,0x3f42882a71b1c1a4L,0x5d2bcf6654b43b9eL,
+        0xc77b15aa2abdf543L,0x5cb38a80dabe3dc1L,0x15fda0aea481673bL,
+        0x86996b4de7b90ebeL,0x84f87e252bc8f3d8L,0xaded03d637c4e424L,
+        0xe5ede666d7a7afd8L,0x80dd95a2a1ccb93aL,0xa55cfd2546fba391L,
+        0x2bdab1dc46f82e60L },
+      { 0x7a4de22bfa6fed61L,0xca458aa5cc8dd94eL,0x3e372df1071222f5L,
+        0x06a4b44fe5aff377L,0xbc2d0ba74a738e6dL,0x1a470e1d5f31f136L,
+        0x77ff933ae102a911L,0x8b380a50310c7885L,0x9f3c0228783fc5acL,
+        0xec66892544725d06L,0x878f0e165ac84221L,0x9a3af1afcfda6e8aL,
+        0x0183ed3778cd2abaL,0x32cdbd60826d0eaeL,0xb3234661cbee6415L,
+        0x353eb892b9c10120L } },
+    /* 10 */
+    { { 0xc8fdcad610b5521eL,0x1a11b44052e702f0L,0x6302680d8ffda49cL,
+        0xcdb9654acbf36badL,0x7b58ce114c10a2d7L,0x1e5d1f7de630e7e0L,
+        0x8cbe3d7d6760a813L,0xeb35866b6480d77fL,0x58728cf37f036219L,
+        0xdd5865ed42a8a757L,0x283f1f1d906a2870L,0x79e23fa4a51f906bL,
+        0xf2ac6e83543b20a8L,0x4f0b6379b81e7754L,0x57fbc0d4840016eeL,
+        0x8da20771e621b67dL },
+      { 0x3c855004ecce65ecL,0x76d10d1fb748185eL,0x64be7bca78797ad2L,
+        0x43444db077e54aadL,0x17b6b0c9be0df0ffL,0x8fc4256c055086a4L,
+        0xf952c43bfd74d5a3L,0x501e005a01c4edb8L,0xd5172dfc4a57e328L,
+        0xdb40ce4e535d6ee3L,0xbaef1e5c0c650918L,0xe85145e7857561fcL,
+        0xe468536a34a224c6L,0x69a8e2270ec0e0a2L,0xb3f52247242b03fcL,
+        0x862f55e2c3bebd5fL } },
+    /* 11 */
+    { { 0x2d6a390f226049feL,0xcc92a578dcbbc9fbL,0xa52feca497634fb7L,
+        0x2b340cb63dea5893L,0xa39f338a2a49e916L,0x26b2df3d949e41f3L,
+        0xc71c7cdb065a7e40L,0x4a9b84a0468281a2L,0x63eeb503731eeecaL,
+        0xe6d0913476cbb725L,0x0cf979a9b94a678cL,0xb44d8c3b808fd9f1L,
+        0xe60da613e0afc5b9L,0x52dce7de3ea5be69L,0x3a5d6864dc1ee74fL,
+        0x71ab28913bc80790L },
+      { 0xcf618fc43b5b60adL,0x0afb5e304a0c3184L,0xd22381ccbc403302L,
+        0x33cf8953db1c0c66L,0x9c994e4da6112a8dL,0xd7aae2c3d1967a86L,
+        0xc28d54935b7acd29L,0x8075bd136c9a57fbL,0xc9c0373e9c8427f9L,
+        0x2cbca18d193225f5L,0x73777d13442c018cL,0xebe5ed47fbb3a727L,
+        0x70437d491962dc18L,0xf39c1e092dc08806L,0x03e9c6f715fff35cL,
+        0x8d087bb65e360a65L } },
+    /* 12 */
+    { { 0xbe2123023fdc1844L,0x6eca27ef105eac56L,0x2183a606f168a348L,
+        0x295f807de1d7a4cbL,0x7246a6327ef5d43eL,0xae143205c77025c7L,
+        0x4bdfc7caf3484e3eL,0xec939895df52c075L,0x82e655f6d7a9cac0L,
+        0x985dfe208baeddb0L,0x79c817e4527de731L,0x30ce0fbc313de1eaL,
+        0x9df95b89cc4f6cbbL,0xf2aedf1ef5bb20cdL,0xfc1e0a891a8cfb01L,
+        0x225ed34a63edb7ecL },
+      { 0x3e13154dbabb1a85L,0xd3d8dae71e6a565aL,0xd3217d56ab4b100fL,
+        0xd44d934eebc78e1aL,0x0215321b48e73d37L,0xbbc90bfa201e43cbL,
+        0x3c23f1d027500905L,0x2a2e5000c86691a1L,0x08b2bad26065841cL,
+        0x15d41caf30026b60L,0x1712c2f45276ce61L,0x01c4c3e715932ffbL,
+        0x7894e13d6a74caf2L,0x02d6f5df0c0537a4L,0xa8fb7602c2b1c97eL,
+        0x612b60e5d0887c7bL } },
+    /* 13 */
+    { { 0xefd495cfba245d6bL,0x5cf0cbb7a2ce3ff6L,0x24da2ac0dff5feeeL,
+        0x90c914f8cf28c6a3L,0x72fdb50d4308a56bL,0x03dbf77913d72034L,
+        0xcfa5ec91822ac9e9L,0x0dde73c83aea3e81L,0x545ba96266289139L,
+        0xa52f648bca6acbd3L,0xff6f276e98a0683aL,0x2536d3aca378ed52L,
+        0x353c2c54885ac1d9L,0xcaff52da00bc84a7L,0x3971f81c37684167L,
+        0x0f7334e1d2d7986eL },
+      { 0xafbb5c836596067eL,0x33e54e1938c19806L,0x8285d96739cb0dccL,
+        0x2b53f43d424035f9L,0x38c531f8dfef9095L,0x90fbe8e4db0f571aL,
+        0x9a0c1ed2a39ca787L,0x2fecc1d6606f2620L,0x9dc890b172b7cb4aL,
+        0xc33ca6fbccbb7868L,0xd1b11082fe73ee49L,0x590b7d17fcb66c48L,
+        0x9356b0a686e14573L,0x75d682c4053ead85L,0xb2ae55fac54d30fbL,
+        0x67636a72f8aee949L } },
+    /* 14 */
+    { { 0x638063bcb91d6beaL,0xae263a2e923ecb96L,0x9d7b0992c627aca6L,
+        0xc6ed001a77af9e7eL,0x9214accf24aafebbL,0xa3564b9678055a90L,
+        0x00999b1ce027499dL,0xe413a4e1e46a06a5L,0xa05d13f62e51efe7L,
+        0x35e87d349ba843beL,0x0a6338253183159eL,0x6023e8ba54601923L,
+        0x9b107721b7fd1cf2L,0x46b5542bfdf2fd53L,0xb314f4f81c18af38L,
+        0x086f987660ac8965L },
+      { 0x767019548cbb9850L,0x6210b730a20d2c8cL,0x4084d0575335670cL,
+        0x3ecdc5950324baeaL,0x607fc5f2c76ee9b4L,0xf393d00f440ffa64L,
+        0xe01117962dc1463cL,0xf00b82519c7725e7L,0x35e607365bd1d186L,
+        0xf3d8554c2cf72aacL,0xb4dd0fdeefa3497dL,0xd712268cf646ad11L,
+        0x07c20afb9f7b8eadL,0x630969d4fc06dfe5L,0x76b7df1c7245549aL,
+        0x681f9403e61ae810L } },
+    /* 15 */
+    { { 0x7cad5163c9a0623bL,0xdbf8295767fab8d4L,0x2ccab0ec81af7c7cL,
+        0x469e38c8e966d5c2L,0x34430d52f0d4e41cL,0x426075a2a52b359cL,
+        0x242dd3e333bd0127L,0xcda3f6359fed2341L,0x4df33730d7d52ffaL,
+        0x5fff56f07640c3efL,0x4783c21c1bbde57cL,0xd8784a2aeb8bb336L,
+        0x1ec7c533ead08405L,0x4b7f1423f9b62bd4L,0x5543145c7075d4afL,
+        0x0c9de94aba60590aL },
+      { 0x8ed7273595d5682bL,0x711c42832ec276edL,0xd1f4aed58b36a0d2L,
+        0x62ab40c48498a88fL,0x58c8fc624480f451L,0x8bc8ca4bb79cffe2L,
+        0x90ab583c701a359dL,0xaee31a733fd5d15dL,0x02a5597bc912333cL,
+        0x1019cae4b6c3e3c2L,0xe513042c29938088L,0x0e00283df47c8199L,
+        0x90d68e58f2a00e92L,0x69e2df41a775ae3bL,0xb8d2eca5871c30b2L,
+        0x733dca0ebb1de396L } },
+    /* 16 */
+    { { 0xf5b495d04b59213aL,0xca6720398d70200eL,0x4bcb09a62b6771c1L,
+        0x26adeed42b9eb0cbL,0xeb5447548cdba212L,0x0e1abfcdf08890d1L,
+        0x52509963698e46b4L,0xe1bff0b082e9c138L,0xa189e4cd51099a71L,
+        0x2360c9bcc9b91cc7L,0x9bd4d7dc137ec4beL,0xd0356521d1519f6eL,
+        0xbf5f6d78cf832503L,0xe43010318deea2b4L,0xc3132494ef4c319cL,
+        0x2ab3bd470f1fa7d7L },
+      { 0x5753b680922c9fbbL,0x869e7dc80f16c6d1L,0x83445135bac16efcL,
+        0x4326a3b4846d1d9bL,0xb517fee3b2d62c21L,0x6905afa20b292ad5L,
+        0x2a57131a2cadac13L,0xcd904d8febdbca8dL,0xdfeda86f3f365fb2L,
+        0x7097b208dc7eaa1cL,0x89a35a84a45e77c0L,0x417a062ccf5d118eL,
+        0x3c0c04a81f6e99e8L,0xc44704b0ba7a087dL,0x6f8a27d13ea22ad2L,
+        0x93a4b4164c27d229L } },
+    /* 17 */
+    { { 0xd4271bc11f1efb7aL,0xae4e68e633fccc0dL,0x9d9bc8f1b11f50a8L,
+        0x5430398faf076089L,0x45e242fb443d0e03L,0x73ec2519f6e3d4c1L,
+        0xab70f790ba9bad09L,0xde612ad5f9add10fL,0xb837e54e14e942b4L,
+        0x175a56d3ddb8b68aL,0xe85b233c1ac2a408L,0xf8ff6c30f0c80f94L,
+        0x4b7f3fb7898db4f9L,0xa2c6044f45a7dcddL,0xf3abb2f6fe3d3895L,
+        0x342ce0d732ee7763L },
+      { 0xeb261394cf491b1fL,0xdcaaeed71909e395L,0xdcc4055a9fe4dbeaL,
+        0x17a6611d493d604dL,0xba445a3a1ce5ebefL,0xe82e2858e3989cb5L,
+        0xb96f428283f58406L,0x99877b99a156cf55L,0xaf906a664e166a0eL,
+        0xcea1d353b2976d13L,0xefc16f2736c61a01L,0xdb04c433b0f55d86L,
+        0x3cb4b2698eb34c01L,0x38d07f782ae60280L,0x43ac3bcb43be3ec5L,
+        0x455f4af3e156fd20L } },
+    /* 18 */
+    { { 0xc057f262754ec21cL,0x3eacd4c9e3a1ba38L,0x3a0210d1116c1fe9L,
+        0xe4ea4e94eacc8ab6L,0x31c00c9aea6f32caL,0x5cb6239d86b975ceL,
+        0x654d5d8ca14ea1e9L,0x230d31f45067fc8bL,0x48bb90cb6355fecbL,
+        0x78f81ecedc172e8eL,0x288380a8cb006737L,0x19b02e01e162d012L,
+        0x0e087a06c5af145cL,0xf04dc8b7b72dc354L,0xf70ef2148de3c066L,
+        0x4f14824313009fb7L },
+      { 0x5e004fce6e2055e2L,0x89e247ea86c32067L,0x4ebcbd955f9daaa2L,
+        0xd15f212fceb7f63bL,0x5ecc5c1f863784a0L,0x53b3800b75760251L,
+        0xeb9301c38a6a2954L,0x0f16ba18a13cdd19L,0x8313d251887c2d24L,
+        0xf99235859a9413f6L,0x423405e6fe3fd7c5L,0x678aeb3416e0ee05L,
+        0x1f3be7bb3fadaab0L,0x7901fa2c82884471L,0xc950db304d662ff6L,
+        0x74d5d2d43c01170bL } },
+    /* 19 */
+    { { 0xa3002dc02b5bfe11L,0x0733410d52d321e7L,0x15920f659679ba89L,
+        0x0e248c14685b236eL,0x8cfab594346f6040L,0x9f57afb740c717f0L,
+        0x0dbab28c66044576L,0x0fa099689cdc3247L,0x41e02ae2c230ed05L,
+        0x0d961554e45bef74L,0x9688a982ce4d7b6fL,0xfadefac75e62d22eL,
+        0xaf1512a6bd2cba28L,0x78868e62be7c749fL,0x88048d81ae9f5a6bL,
+        0x6b1a5442c5857a29L },
+      { 0x9f5ab9ad43242066L,0x0afef1b52ccca2aeL,0xb1b43ec7988edc4eL,
+        0x0d0c00f10341b0d5L,0x4d68b8f7b50aab37L,0x9a8e4e6ff3a64a99L,
+        0x198338fb7f1a684eL,0x8bc0e748351a0f5cL,0x2cacf2cddac44515L,
+        0xc14d39995e9ff76bL,0x54a01b3f16393055L,0x6ac3eea5888d8376L,
+        0xb84d9a9a723277b1L,0x99132691e11dbbbfL,0x597717aeabb67178L,
+        0x4c2135268bb14ac8L } },
+    /* 20 */
+    { { 0x2e6fe0a695532833L,0xabca228ed626d067L,0x22aef3d9649e73bdL,
+        0x2083a87af03c4c0cL,0xe954e75d35169b45L,0x577509ee74506a89L,
+        0x49cb276e2aeacf90L,0x08275d77fa409f91L,0x61eb6f3df0bbd6b9L,
+        0x948202cbe4132704L,0x35f3fc21b1c498b1L,0x76c68ba8361fee59L,
+        0xa18cbbd950e051f3L,0x2384a879318e7042L,0x292abead80dd1e8bL,
+        0x65713c295c37c334L },
+      { 0xdccca8e9ceb77b9aL,0x2f97e72723b69469L,0xc76abee6a01d6b28L,
+        0x3925203d5abecdfeL,0x8944808229290d70L,0xf9931424b0314438L,
+        0x04209df17cd447c3L,0x7c6f2059c855c827L,0xd97d786256c0e069L,
+        0x5a9db6fe412d94c4L,0x19a64591994c41ddL,0x12348aa1c89e21a3L,
+        0xd6904b50c6a03f0eL,0x55c15156a616feacL,0x4e36d1b57cc7693bL,
+        0x6b0e996c3bae3c38L } },
+    /* 21 */
+    { { 0x32789fabcceced00L,0x3237e71ae5b7aa66L,0x87b2e2692ddebcdfL,
+        0xb7245120b61dad8fL,0xe11e5e48d35f803cL,0xfb4df5d798e50f0dL,
+        0x60ee68b4bcd2ab92L,0x98ab2f5c1ce3363dL,0x15ba39da7cd42647L,
+        0x1a6572eb83f4fb3fL,0x0f77de88e56f08dbL,0x1743761e172562c2L,
+        0xbe349ff88a58f0f4L,0xe04da71b84d1d6e2L,0x368f03429e9ff3b4L,
+        0x4022a205678223f8L },
+      { 0x527bbd0583847375L,0x3ae56b623f451af0L,0x6198f24d4b2c7f18L,
+        0xee323f5b4525b98dL,0xa9d8d39a0e0884b5L,0xd005d7f6fb12c776L,
+        0xd71c483e708bc154L,0x8ca6fd28742541bcL,0x0af3dccdf8397ddbL,
+        0xb80d31253eccf243L,0xc743a10858d81b8dL,0x3f48eb2171391f68L,
+        0x493aff8833bb657fL,0x1d15ed6607e47e31L,0x10159b11e08279f6L,
+        0x312179cb24a6a956L } },
+    /* 22 */
+    { { 0xa94cc3ca07615ac2L,0x85865e64121ad581L,0xae47616fa7986b79L,
+        0x395a40eb9d5e0f1dL,0xa91432643d9457eaL,0x8de6d6a3fa2865d9L,
+        0x0771db961014ae8cL,0x77a7cce6976a87cbL,0xa7de42e1143a0f60L,
+        0xe203cc09d993d934L,0x9201869398ec4c3dL,0xd77546d83a25df4bL,
+        0x0ad9eb4762b02d6bL,0xfaaaf208d05a7189L,0x5238181f431221bbL,
+        0x417d6c78733511eaL },
+      { 0x3cbd81b70e91e9a8L,0x73340418c370d6b3L,0x825db10a8eaa2373L,
+        0x8f2b09e46c7d6756L,0xe288ee9b94c33dedL,0xcd8426bb1695e3fbL,
+        0xa6176c86dce9e888L,0x3f4c89226165e362L,0x514e411f6063fb09L,
+        0x6907ac20c8f9e04cL,0xcef7469cdfd2ad61L,0xba30bae48452199aL,
+        0x3068129312ac3462L,0x011be873c92d482dL,0xff4cbf89e8330995L,
+        0x02189d52d1470a0aL } },
+    /* 23 */
+    { { 0x73e419dd92599c69L,0x5b94221b7fec32caL,0xb2bf9bd209bbfbfdL,
+        0x61ea97a463ed895bL,0x6609146b3f486f79L,0xbd1c7a05fd141a39L,
+        0xc79ec8cf83d64135L,0x7f8fd42f9883507bL,0xafcb53b717b3d027L,
+        0x86658dcd67ca5a21L,0xa6a6c0accd149786L,0x16f3d70e34b95067L,
+        0x371208e3df44958cL,0xd2dd64e6ec280212L,0x33b2c4ab30782c71L,
+        0x7bbf8abd521176faL },
+      { 0xbe9e4aafa78b981aL,0x788b4e36304ec828L,0x0c45cf393959dea3L,
+        0x70a9bdd3240b39c7L,0x499cd7dd28383b7dL,0x30690b2e307a1026L,
+        0x2262d598ee92f1b3L,0xc62d77deb4725a48L,0xa16f25bc7bc3aa0eL,
+        0x62dd8b65d15ef7faL,0xd979221d0b96d68fL,0xb92885c3a00f1906L,
+        0xfa476b9beb74c740L,0x217ddbb5c7576222L,0xc2782c305788504fL,
+        0x860d096cf812716bL } },
+    /* 24 */
+    { { 0xfebc337d4d79bbf9L,0x5d53eab869f74f80L,0xff36a09533104d53L,
+        0x2ab820da196f8b97L,0x961d3d1f75ce6909L,0xb197ec0404683754L,
+        0xa68ce1bf93a6cb9bL,0x503456ffc5f021a3L,0xb50a2db18940ffdbL,
+        0x77c50f8fef004209L,0xd635d17704965875L,0x725766d98bb8770aL,
+        0x8e19b028a078e53eL,0x364d4ccaf9fc8378L,0x1a3df411f0dd39a0L,
+        0x7e80e44203adf920L },
+      { 0x4b5f8a57539a1ddfL,0xd248e7aeee486562L,0x1c7b491d816021e1L,
+        0x2e7b871bfd36d2c4L,0xda38b5040aec00d9L,0xf28276126193f1b3L,
+        0x69c3fe86fb1f78d6L,0x56c8b786e827ac33L,0x1687f6c73487c8f7L,
+        0xab8f221719dee5bcL,0x04e8473fff399418L,0xf384c014a9027c80L,
+        0x9967be9aaa1d2e28L,0x869686d3e065eef1L,0x737c6b08c7bd837cL,
+        0x5dcab5d19e8bd863L } },
+    /* 25 */
+    { { 0x0784283a9a7d772bL,0x6b49e525e540959bL,0x546bb00886414ab5L,
+        0xd44481629d74b2a9L,0x267890ad203b0b1bL,0x1e7a82bcc8d3f86bL,
+        0x1352bfb5d85a83c7L,0xf29f16e3fad07ccfL,0xc02a63b841e0c43fL,
+        0x904f22c56b379fefL,0x19d8a653b1244f26L,0x6635b6df3a28bdeaL,
+        0x18b68851f6d455ceL,0x74ac28189cff3735L,0xad40f9df8b2cbdabL,
+        0x08cc2d9eadc9d498L },
+      { 0x2e6a6866c170c84bL,0xbb989e8b5a49a484L,0x7b0e00e0d04c8992L,
+        0x55ad347861b3a423L,0x3c952450b0d01899L,0xe3922155e3100cb3L,
+        0x19265b6ef03276d0L,0x0fe8595a76d42b53L,0x0a96dee0fc6353b6L,
+        0x761e0dc8246f893eL,0x4ec902bef0a74cbaL,0x610086843fdfad9bL,
+        0x5d6a60e44fdb6975L,0x3f53aac87ef7590aL,0xd29e6be012870a37L,
+        0x991fadc155aa55b0L } },
+    /* 26 */
+    { { 0x82bc4b0fb4844ffeL,0x7392271460f8b871L,0x8ac000e24ce3f1f3L,
+        0xf0d548b4163519ecL,0x7aaf842b88288b5fL,0x9e8b0c4c2bdc9a70L,
+        0xa06d51524ba5fd67L,0xd0b1afa0f93cdec3L,0x280955badf89f8f0L,
+        0x86cbe92deea32c92L,0x0cae3f993fe05be4L,0xf2607095fa6919aaL,
+        0x0f54741e6e0f1b8bL,0x2aed1f7430ecf988L,0x9296f76b734991d7L,
+        0x66cf8d28259f0fe9L },
+      { 0x9b01905b226f5868L,0xc102e88c16909e9eL,0x2bd089164a37eb54L,
+        0xf72253e8c9816323L,0x37f84e9d86bac53cL,0x2e352454afeaaaf7L,
+        0x67c86f772ca0046eL,0x86bce50e6663372eL,0xf6a3a960b6950a04L,
+        0x61f994d7fc1aba93L,0x1957c12bc1326e6eL,0x9b658fe42e56b005L,
+        0x9cd297fc8592740cL,0x7654ce9b177f26a5L,0xaaa699dba79d2ebbL,
+        0x5fca0c5a0ecb6448L } },
+    /* 27 */
+    { { 0xe26e25f3569a6663L,0x09597ee7e6aa4ca7L,0x25a4cda68d18b80cL,
+        0x450602b522926730L,0x9af5f65007387209L,0xfeeedb3426733a53L,
+        0x0f5ce76886572951L,0x872a360b8398ae9aL,0x60347a802b30f6c3L,
+        0xd2113b231a162158L,0x6fd9cf92ee6c6decL,0x85f0a5a85cbcf9e6L,
+        0xd7a5a6e42ba3fe84L,0xaafe672051ecd727L,0xe09c6bb2a2081a10L,
+        0x657acbf0b973b0b4L },
+      { 0x3130466fc274c8d4L,0x4276517630a994d1L,0x217258ca7079435fL,
+        0x44850406eb897a06L,0xf38dfeee561ee130L,0x11f4facfaa1778bbL,
+        0x765c6617b9abb9e9L,0xb135499bd8f10932L,0xc0eb6337a73b9159L,
+        0xf2c1ccf16f7e8b6aL,0x5b32c03a187def53L,0x89ad1d49830b9c62L,
+        0x1735eae32f10e538L,0xb1cbd9c29d5f55bcL,0x42428c47e539db0dL,
+        0x3d2da412c852b3bbL } },
+    /* 28 */
+    { { 0x97702b6e871f2865L,0x56cb639f142920d6L,0x328522a045b58611L,
+        0xf3943ad1f3b13812L,0xe6c2200a712206e8L,0xc2890e5aa34d59eaL,
+        0xab52fd40f6b7f759L,0xf522c8de180bf567L,0x181e97b2accee396L,
+        0xe0375819c4ea5cbbL,0x0d9985e8ab51d3efL,0xe26c96cabcb50fd8L,
+        0xfb9d6b1397e1c80dL,0x582b1814f796357dL,0x89a7822107f4c7fbL,
+        0x02aeef2dc0357e61L },
+      { 0x2ba7926f2c7ec9beL,0x292f307e7258b201L,0x74e62a10c6fa6b4aL,
+        0x80c08549e2bcc5abL,0xb4160db87bb8c073L,0xd5ef0529329f194dL,
+        0x0eb8da146dda4a9cL,0x0b5d43d215ea23d1L,0x6cebef02fc34bfaeL,
+        0xacd364d0848757a7L,0xc14013682d34cca3L,0x09ca67421d2d95e2L,
+        0xc3fd1d6e786eaa28L,0x9eb1136da2965fecL,0x48871baac0779203L,
+        0x6b446c014b15aeb0L } },
+    /* 29 */
+    { { 0xc819eb2e25e8fe80L,0x2b5f790698238a17L,0xd6f1e99681e41849L,
+        0x58ad8ad698ea6d45L,0x5bae5ad4bfd02e40L,0x016dc327a812416dL,
+        0x8b31a985a3347ca1L,0x0b4da61082a65391L,0x1cb91b2db48c35fbL,
+        0x9e96817cd2aaf8c4L,0x1a630483cdfdcdc0L,0x7055936112b69254L,
+        0x5fdcd712f8a2a097L,0x59ab623a35cc5281L,0x30c8ebe0932b6095L,
+        0x8613424bb08e052fL },
+      { 0x28902063b2231d8aL,0xb0f62329d9a61667L,0xaafa0fe7071a9f27L,
+        0x6bcd8960603f047eL,0x118cca76fd92a1c3L,0x3414e62b71d483b6L,
+        0xa123ccddba705262L,0x1a576437fd9b5c5aL,0xa5301bc24c8d0fa3L,
+        0x96f0ad44102427cdL,0x0e6fb5e0d3aa6c02L,0xcd8c4880072a3996L,
+        0x4dafca12840d3fadL,0x29f4ca3dde91d541L,0x0037c5988441734dL,
+        0x86333a999ccfe57cL } },
+    /* 30 */
+    { { 0xd213a751ecf53b40L,0xcff2c6f22f78a542L,0x0f59f0e2f13ae56dL,
+        0x91f8ccbf0e61748eL,0x0aadecb9d72c4145L,0x6b2ed8524c9cdcb7L,
+        0x8e00b72c1eaffc70L,0x89b24285aa728102L,0xaa7ea7e0b679cafaL,
+        0x5d2b8c264f0a6f6fL,0x7ed7b1730e804397L,0x5a93eb45c8573049L,
+        0xc92bf5d40986e93eL,0x526b5a9c6a20c0afL,0x0adf47c9b99dc3afL,
+        0x12b25fe2ba202cc9L },
+      { 0x09b8d78a33eea395L,0xc7a93618f633fc5cL,0x7e821629270eceefL,
+        0x524779b8c628ed0cL,0x91db5ca1a1d68939L,0x8626e18e586edc90L,
+        0xfe023e8bfeb3f3bfL,0x6279fde10250171cL,0xe52ec7dc55e172deL,
+        0x445e8695c6d4ca45L,0x42de3878bdbc10f1L,0x2b114de86fc3835eL,
+        0x9faba4567e10b652L,0x4111d82a390e78feL,0x576b61c2aedf0acaL,
+        0x216279a974accb74L } },
+    /* 31 */
+    { { 0xc14cdabf4047f747L,0x03ca233dc1315a1eL,0x59e7cbd340e5d0a7L,
+        0x1fd0c4e9bb413869L,0x189d08b10f01fbd8L,0x50449c42a76b823dL,
+        0x81c224a1398b00a1L,0x08084e4f8e8179e4L,0xfd8af994698e41e9L,
+        0x1e30e37c5610bf2eL,0x4e6a043fa7d2790fL,0x9d96e60cb3195388L,
+        0xe75f986d03799dfdL,0x3b4a8f11f8ff902fL,0xfa9453787588416eL,
+        0x20683e3f9827535eL },
+      { 0xcb582e26d0378878L,0x9e214c23a7945787L,0x13d000bf8f6688b3L,
+        0x7548d4f540515270L,0x7113c15d40111f5dL,0x3bf5a526a8bff902L,
+        0xbda6b0109b4945ccL,0x83dcc74ebc2f3a05L,0x2aef628443efdfa1L,
+        0xd2e60ee9565c5bf4L,0x4f0fa10d592f243aL,0x6ae58b321bc3bf51L,
+        0x813b086860576a74L,0x0bc023f84d73081aL,0x9fd03aa032dcee59L,
+        0x5e416bf527d6c795L } },
+    /* 32 */
+    { { 0x24313760026cc23cL,0xf819aaeeb5b29058L,0xa92272f8c5d2ee17L,
+        0x8048e7cbee5cc402L,0xdbc7d6ee77def07dL,0x61d69244f6af821eL,
+        0x5f7966ed996cbb89L,0xf81b17ea96a155a4L,0xb2d9ef7003f3ed56L,
+        0x5e6e5906e882a5b2L,0x86fa1072ae947180L,0x34d9fc51658c76f4L,
+        0x9f603dc0cb035aa0L,0xb7b39feb75be6481L,0xca87554acf04a9efL,
+        0x4ff682ec87b4fde3L },
+      { 0x3125627fd0a10ad5L,0x7fd45c72968e6f45L,0x2981bd6b806a1163L,
+        0xb92de1cdde5033e3L,0x3b44b45ebf4f8988L,0xca1b9896dae7e1dcL,
+        0x52166e5a0778d878L,0x82d472bea5116847L,0xfbdd382af2895445L,
+        0x22ed16025d6ec4c9L,0x3614eb1cb6552b02L,0x63c5df73a1e6210fL,
+        0xe9160285021a74a7L,0xa44ca400c65cbd4dL,0x48cb187e0f15e299L,
+        0x51eb818e3402507cL } },
+    /* 33 */
+    { { 0x1fc1d178b92100abL,0xdf2e3d609605b839L,0x12a7c255b71e59d0L,
+        0x3f8b667514fcbe04L,0x0e8a393559fd06afL,0x5632650212020d07L,
+        0x6696fcd1528e7be5L,0x6588514b0c7b7654L,0x0cd80f8c5912a5b5L,
+        0x8bafef04f324cb7fL,0x6b53eecfc6da3d75L,0xedef48d831d1df2fL,
+        0xf336b96573812b6dL,0xc82eae4aee626031L,0x300abd32d244f09bL,
+        0x8b0af95531d9647fL },
+      { 0xb770180a2e603544L,0x2b573ac3221acd9eL,0x3a17f66562407032L,
+        0xad3e74adb89abc3dL,0x8a3d2e3ad793225aL,0x457bba04ef02564bL,
+        0x8875652ffc2dd2b5L,0xd2905d15e67143e8L,0x6d884b4202e48d70L,
+        0x06f99219c7636a57L,0xa8dc342135e378dfL,0x95c1d73d10c64a02L,
+        0xcd6a4ececc157a66L,0xbadcc1c88e24a354L,0x8024f1b29839329dL,
+        0x5363e5494da48ad0L } },
+    /* 34 */
+    { { 0x1f5523b7e23fc641L,0xfe54e72f86667063L,0x294a15f58e009d2fL,
+        0xf203997f8c57f5e1L,0xa229724cb16d64dcL,0x697be4fd4baa2ffbL,
+        0x3f507e460a6e8ed6L,0x0afe3a5d78508536L,0xeeef6cdd95408208L,
+        0x701fd889f2c4237cL,0x496d883a5c385253L,0xe25c67ed72a212f1L,
+        0x4b4167831ff78fcdL,0xe9967004c16f4146L,0xfa45c3a1c45b0697L,
+        0x633340183fbd30c3L },
+      { 0x39c9a0cca2fbbbceL,0x876f6e5caa0cb744L,0x9ce6010e3438ece3L,
+        0x0aad148e13802d82L,0x9c3e5c609cd45a1bL,0x875cb8597bcfc1e0L,
+        0xb19ff790d8584dd0L,0x2598b81ed81c2a2bL,0x118bdf2f02be07e3L,
+        0x074fc8eeb9765ce9L,0x125e9d88b24f95aeL,0x3bb12cdc0c98f09dL,
+        0x4a6aee07a0b74b27L,0x4723d2f9c08077ceL,0x959447d6bea8026fL,
+        0x93a7075c16280b73L } },
+    /* 35 */
+    { { 0x26bbefe2715b27f9L,0xa935a5e22a280923L,0x5ddf23affd58a26aL,
+        0x54c83e167c138694L,0x44799bc9892a2153L,0x4e6e47109b8d09f5L,
+        0xc63af616d588ea68L,0x5e896706883ab1b6L,0x3c1393a03d209336L,
+        0xd02f292192c23ddaL,0xab70cb7adcf6ea43L,0x12434ea8791559e1L,
+        0x040680db6d70ff0bL,0x1a10fe522832ba45L,0xd69f9c08e5f0cb8fL,
+        0x1a7422ac44b141fdL },
+      { 0xc3a9dd2e9f40b675L,0x2a7c6603fcc71f39L,0x18939a611948e342L,
+        0x8f3b6158ed0ab484L,0xa3aa7d97ee31ca6bL,0xbc1e865ef7a8db63L,
+        0x315f8c092c7c62e4L,0xa260788f9f5c6d0fL,0xb18331294b6f3ec5L,
+        0x73adbcd636b4d849L,0x66e14890bc699a9bL,0xbf3790d82a1175e7L,
+        0x7f43605afc53ca4fL,0x577f6c4787ff6091L,0x827c7552600c82b6L,
+        0x0944d6309d25599cL } },
+    /* 36 */
+    { { 0xcfdeb63ee6ab9620L,0xdff4fa6d786cd808L,0x145edd82456320b3L,
+        0x2ae5f862c4943915L,0x9508e813b73b3f87L,0x3bd805f3e52f97a9L,
+        0xf71b5c28c9829b62L,0xb394c70e86e0cefcL,0x534fb1a923bdb36eL,
+        0xd64f5862dbe27e5aL,0xbae23df383ab6169L,0xdd6df1b127c828cbL,
+        0x1901899f3a307a8aL,0x36cc8659811ddf66L,0xa3cb777479943b77L,
+        0x7d89f3836fd86576L },
+      { 0xf8564242c9f92b2bL,0x700c6a75c46e32bdL,0x93e768b77f99a5c5L,
+        0xb6efe85803149568L,0xbbfe8a19c2ce6709L,0x721a3b1bee6ec493L,
+        0x26eeeea9c371c28dL,0xd798115e15177e1dL,0xd7bf3bceb068a5a5L,
+        0xdf8da22046d2b4b2L,0x3df0995b59be9dfcL,0xc96897bc77640b79L,
+        0xce0cf4c25a2bd3c5L,0x16f45d6e89afe744L,0xb53f3acb3a8509bbL,
+        0x449af81f63f2a6e6L } },
+    /* 37 */
+    { { 0xc2fcf132a16d9377L,0x9ab377b37e1a2f9eL,0x72e1a12e86d19ae5L,
+        0xd2b12e66d013bbb1L,0x0972e055cb5f66baL,0xd11de1c0399eab50L,
+        0xc1f314fdc65f5ec2L,0xfc3118418a9ff593L,0xdf73c1ece05246e6L,
+        0xc28d13631625056dL,0x30a9dbd76fb25e19L,0x049ed244845cd2d7L,
+        0xc779b83fd36e852dL,0x85a35fc7f68c8a83L,0x299bf1e1c95e8033L,
+        0x0e8617c320891af5L },
+      { 0x5372060267c81b5cL,0x2fa89dcde737873cL,0x2a7430b0a8144fd0L,
+        0x3006c5a726208c83L,0x4e066660d8ea40f5L,0x9dd025f9896413a4L,
+        0xbdf380cc46b9149fL,0x801566190a125cc2L,0x04d6a3b752793c37L,
+        0xb60013746b7a62f2L,0xa9cfe268585d5978L,0xdcad0cb88395fe66L,
+        0xbab468fc46b261f6L,0xca0ef5ef9d9d9218L,0xc507d4a85e452402L,
+        0x6f4404f1326cf687L } },
+    /* 38 */
+    { { 0xa3e1920b4febd3ffL,0xca6234d8fdfd2bbaL,0xb7d1af2ae19a9829L,
+        0x23de1610c6f5bc20L,0xe204dbf3daa39ca9L,0x2a2de9b86d8c70abL,
+        0x272e0c377c9d370bL,0x80914c06e565510eL,0xb611e7a857cbb6b0L,
+        0x076fc6efd8266a6eL,0xdfac34ee3095801cL,0x69ff40a2b9e24063L,
+        0xa7ba31a9787aa5c5L,0x0e4d1fdf33c70cd2L,0x903e31326895f074L,
+        0x905771f87fb671e2L },
+      { 0x5199ba0da4062beeL,0x18e7238c94d7d9f9L,0xf53f29bc1e0922c0L,
+        0xde9b2a81b12d855fL,0x649f3eed6d68ca29L,0x64adfc34c50c097fL,
+        0x81964ab99db398a0L,0x00d59c477a587224L,0x09fea39674c5903aL,
+        0x6aafd8ee15043dd0L,0xc5721a6e5f1ecc20L,0xb6d6a4830db9b7b4L,
+        0x06ffc61766c8d52aL,0x3de241d6acc82a27L,0x0605f05227f2f7a8L,
+        0x6a22953b6404deccL } },
+    /* 39 */
+    { { 0x92452d8f74fce389L,0x059634c02afa5564L,0x9377ccbbf0ed7825L,
+        0x89f4045b37718e0dL,0x11074e7d9fa69a4dL,0x5d70bb077295b0baL,
+        0xb22d54adf107ede6L,0x5c39a3d8a1a29c7bL,0x37236c02d795e3abL,
+        0xf7282d002b589951L,0x5e2265be5790bee2L,0x91e0ea11a8e65ea2L,
+        0x0e71a7086001cebdL,0x16900f5a2c1c5402L,0xc3b2d5c0357f6981L,
+        0x528c9ea0619e3427L },
+      { 0x1edc86b45f26c577L,0xf80747089438bd45L,0x2dfe1013792582a7L,
+        0xe08eaca0de1e569fL,0x5f952efa9a55a356L,0xa4d80b53e4976216L,
+        0xd2b65855cd5d71f2L,0x246704bf66cea3f0L,0x193f641f492323caL,
+        0xa681855c9adb1325L,0x86d522ce2d19d652L,0x53609f105b82ed7bL,
+        0x3b0f00948e150d29L,0x23ad8bfb0b13e891L,0xcbb1556cf794b449L,
+        0x200f9093738bcf57L } },
+    /* 40 */
+    { { 0xf9b22fc58388387fL,0xcf26f17028e883c5L,0x447cab90d1b7973cL,
+        0x8d5d4ea2f6ec9171L,0x2e16f498c30cdbc0L,0xdc92910c48623c2bL,
+        0xeb1491b030dbc545L,0x631deb2e14de21b0L,0x04a210662fe830f4L,
+        0xa4c6979c379c1f3fL,0x8a732b68fb06a795L,0x3a44327a1619dfa9L,
+        0x91a307d38dbe2c9bL,0x939bc8d203989feaL,0x3daabaf20f4a331fL,
+        0x5c307e98dd0f55dcL },
+      { 0xbbc4e0c435b233daL,0xe3d2908522f6f985L,0x99dd2d21a8b02468L,
+        0x978f40e9a96916e7L,0x0327d86c614bccedL,0x95e95502b290762cL,
+        0x0ffd2197a879f2edL,0xc436513750e0bd33L,0x26c3148a0827c4c4L,
+        0xc79812a83fcfc0b2L,0xc3d8d17e31928589L,0x8b572cfe8830f42dL,
+        0x7cd9ff924b07f83fL,0x331ca9500a51148fL,0xd0c539684c59f9acL,
+        0x1df16dfac1434785L } },
+    /* 41 */
+    { { 0xcc7bb4ac68bcacc3L,0x06ded34f430f58cfL,0xc59f9f4fd461855aL,
+        0xf549199445c9f0bcL,0xdc5f7ec64375c892L,0x1b8708f13c85983aL,
+        0xb32a5cc482fcd087L,0xefdcdc352d6b4c0fL,0x4bb24f048ac6fb2dL,
+        0x5982d4f533906471L,0x162eb52fb83a3ac4L,0x7130df282337a223L,
+        0xdce7b802cbc3dbd3L,0x8b3959592467ac0eL,0x21d3d2e81b56717eL,
+        0x729a7f5046512617L },
+      { 0x874ed1aa8420f90aL,0x6368e19e0fe4c855L,0xb62d4aaab0be74afL,
+        0x76fcc4808ca60ca9L,0xf310b5a57645a867L,0x131bac9bddb1b24cL,
+        0xef77d71d2dea5b44L,0x4706d21072fcc64eL,0x29b92691673d77f0L,
+        0x22e00bf3e89e0663L,0x472d0cd374077d40L,0x3e21040d829232e2L,
+        0x2f916dfb38dc8533L,0x48bbb59b14b8f667L,0x19de9f4ad44be19dL,
+        0x7f6d3649232d9d5cL } },
+    /* 42 */
+    { { 0x3bd064de6e794819L,0x5a6b694ef82ebda1L,0x1f017fe0b91e2804L,
+        0x190d31f307a43cd2L,0x6c26f226630433e9L,0xba488aa70abfdcb4L,
+        0x418d9085a46411c0L,0x1b934fe6bffb5880L,0x75d1e237e200f849L,
+        0xdf04d63fa55413dbL,0xe216ed75e23b3f77L,0xa05866cb0f91bd30L,
+        0x84c395d97729c509L,0xec97e188452ab2d7L,0x8cb7c1f90093d686L,
+        0x2d032395628f086cL },
+      { 0xa81c94074a44b4c5L,0xb9846879cc702c98L,0xcb502287ceb0dc97L,
+        0x303011266e3aa321L,0xc0ac8763e4c256c2L,0x65034d20e55b4845L,
+        0xaa96a040f240f35bL,0x046d26d37cf7eedcL,0x62a5a8e13b810656L,
+        0x86044b9783d70c2bL,0x2fbaff8859e4da8fL,0x929d901a5457f5d1L,
+        0xd29e1eb2b531b757L,0x214dabdc9e4e9739L,0x5bd724fc4eaa9bd9L,
+        0x734c12b31ef9bb9bL } },
+    /* 43 */
+    { { 0x98fe3c2e92f9b086L,0x4641b93eb3fd4544L,0x47ce208b5c02c65cL,
+        0x8a52dca1c4f03242L,0xb5ec17d9679d29f6L,0x11d2fed09406f5f4L,
+        0x260f63dc0d9ba811L,0xde2b056f15472a3fL,0x1b170d9f007290e6L,
+        0xa2e23e8db6b5c8f9L,0x345a2839cf34c3eeL,0x9bdc54611b973ee2L,
+        0x65bda6c2bb24d1c5L,0x97d52ba33c6141a1L,0x47bb16129d2eb201L,
+        0x7c558a8721fbe49fL },
+      { 0xb9485a523f350fecL,0x016678c56a38d4c0L,0x8ef346a20d5aa64dL,
+        0xb85daa02d96da2e4L,0x845ec4ea4f647b3cL,0xc0d1a6ca0d5e946cL,
+        0x41d8d1c14fa9f4abL,0x43972cc59c8b1303L,0x67e1f48d434ffbfbL,
+        0x350ce93a819d2318L,0x49f530906ddef23fL,0x3c2e6cf9200cf12cL,
+        0x42691cc1640432fcL,0xbfff74b472496b52L,0x44527c9f020a97beL,
+        0x34cd7dca7b3c4348L } },
+    /* 44 */
+    { { 0xf031761a59e7fe87L,0xb1eae31a0047cd72L,0x27902e68fae30f62L,
+        0xa666f48db71db143L,0x75ee66780e0038f4L,0x3b45ac6702bdd76dL,
+        0x0d2fb828a0d6cd5cL,0x27ce7f1d9d8c5b11L,0x141fe0e4120b5e96L,
+        0x95a1b984b9267c37L,0x5206e589d60312cdL,0x1867342eda549356L,
+        0x374520b9070c74acL,0x2703cbb59557b0b3L,0xf621f59ca6ed8c14L,
+        0x7ceb1cc2abf7b887L },
+      { 0x0647a5bbdb7fd65bL,0xd8d45cc036c9457cL,0xc6da99db9e12718aL,
+        0xed1dbbf4e93a7fb1L,0x4512c95cbd1566a1L,0x4861ba00dbc0c919L,
+        0x3c6cc2989e7f5269L,0x671961500941aaaeL,0xbfcf5d0fc8c538e3L,
+        0xad6e9929a25a551fL,0x9071098517ca0f26L,0x743b78eafa89ef7eL,
+        0x39d5ea3171ab4549L,0x7442f3f3e6d1c36dL,0x25a683e0059d568dL,
+        0x1f629a99227ced5cL } },
+    /* 45 */
+    { { 0x8925ddace45a1c3eL,0x72d2936541f7545fL,0x45622fcb37e7f828L,
+        0x882345133e4c79d2L,0x5dffaf849c2645d6L,0x3078f4dd994802b9L,
+        0x566927f09d339fa0L,0x9a500a1e9fd91dccL,0xce0081800ab0abd7L,
+        0xd97135a38194e5dfL,0x9e87630798adf088L,0x3baf01b89a45a2a7L,
+        0x6fed6154788b4399L,0x980e5722e77a997dL,0xaac90ffa2a378eedL,
+        0x4a75fda28bd805a2L },
+      { 0xd09a8fbb55e74cbcL,0x737738cefab18f25L,0x0fc23ad69764ec3aL,
+        0xc5a7d35be7e0ad31L,0xe75e068ee481cc9bL,0xf0c2ea993d4aec34L,
+        0xf1324fe80d4a63c4L,0x5dbb7c1699b0592cL,0x442d674da7e0f46bL,
+        0x5a5d66c7a300faeaL,0xe83dc8213333ac83L,0x70ef812e8c408496L,
+        0x96e1dcb699ef5fc1L,0x6e2b771b1734e862L,0x04629cdc583507d8L,
+        0x5819f9ae23d8179aL } },
+    /* 46 */
+    { { 0xd99691216aa78811L,0xf64ee8f42103e7c3L,0xddf0107022b9e698L,
+        0xe6001f9e4f582cdeL,0x24a608af2ecfac1aL,0x6ef4c78406393009L,
+        0x5262eae6ebf72911L,0xddbd0af58c4ee5a0L,0x875aff90ecd87bc7L,
+        0x2fddb34c6f24f114L,0x48104281e865f172L,0x95692426886c1b9aL,
+        0x6f5f32089ef4231fL,0xaf587acfd0a7e82eL,0xd65719179ac395c8L,
+        0x7459603c1364a750L },
+      { 0x1c2475bff41ae519L,0x34401fb14af8f251L,0x70ddfcd2aefb2c3dL,
+        0x9b2d385b51cdaf08L,0x8531c2568208bb19L,0x16c89df64c33f3f6L,
+        0xc23cfa9924571769L,0x2339b51e86d010baL,0x08db0e8d22638313L,
+        0xf769e17900fedeb7L,0x3fd96dcba3687ef1L,0xcd046b2391476475L,
+        0xf3ff20640c45c8ddL,0xefd167bdb8343d78L,0x493ccb6d4b77ee90L,
+        0x33025513b3cf7b45L } },
+    /* 47 */
+    { { 0x36f0046935eaaca1L,0x0c384b7589119102L,0xcb375665e6d2954cL,
+        0xcb9199b9b1e9d6d7L,0x75852349c29c2757L,0x89cbd1bab8e738d0L,
+        0x9b8dbe905923a427L,0xa237793e18fe1889L,0xa4271757a742e083L,
+        0x8c4979d24eebd613L,0x40325054d4f2cf77L,0xa3b8a091958705deL,
+        0x1b191bd933d999baL,0xbafefba43b0fee1eL,0xb3bad1843facdf14L,
+        0x9328adb04387561cL },
+      { 0xabe84e80f906b872L,0x705523a078262665L,0xd89c6a7e3398ccf7L,
+        0x2fab551df55b5323L,0xa0578eca0554dea8L,0xef26523d375589cdL,
+        0xd8fd6242864ad750L,0x93f27fc5178fe1feL,0x7b3e6f309df87422L,
+        0x2862e49e3750d054L,0x7d90c6b25dc038a1L,0xc1a1ae2284db682bL,
+        0x47f3dab79881930aL,0x30e6bd52baf3e0a4L,0x0680025bf62d25c5L,
+        0x0aa1f3cfadd0d5e7L } },
+    /* 48 */
+    { { 0xa982219022a10453L,0xdd1eb91c2a03a10bL,0xafbb5d9596646f3bL,
+        0xa58de344f38b6fc6L,0xce47c3e5b8cfca1dL,0xfcd8e16d0f70da04L,
+        0xac44349bda262ed6L,0x9320d87bc56e2f8eL,0x9ce3ea0819138e58L,
+        0xa5862dffa2b236c0L,0x6b0f9a5c8e7efb0dL,0x4b53432b16ac78ebL,
+        0x6ff43105709b51afL,0x08e236f88f519628L,0x1f93f176eed403adL,
+        0x559337e09636545eL },
+      { 0x30ddf738d8fd807aL,0xf4e0ec9dab131222L,0x14a2f4db625afbc3L,
+        0xd5b706049f12f895L,0xb46f3c23ac3044fdL,0x1b232d1ff540148fL,
+        0x61b458f539b4e554L,0xf694b24a0dd70b75L,0x0fc64299289581d9L,
+        0xc05d49beee5fe22dL,0x7af3447f6a18bf63L,0xe96a1dc27f1929d6L,
+        0x6afe6028c1551e8cL,0x27dacaf32b5d4fa2L,0x4a1631bc545c2cb4L,
+        0x930070f9b0c914d3L } },
+    /* 49 */
+    { { 0xd2f32c5e69a9bc05L,0x0a5c19c6589c4b73L,0x095c9e5e94665f9cL,
+        0x8ab0f293bcfb4c39L,0xb90708771ddb7c31L,0x894e965866b38048L,
+        0xf19a90cf606bd9bdL,0xcc1d58dfb6fd2d69L,0x886dcc4e461d8a69L,
+        0xc455c277f9ce4831L,0x749a5996765f8a82L,0x2ffc668cc3badc8dL,
+        0x380183969112cdabL,0xa98795c3b243c7cbL,0x8775f310010a2224L,
+        0x043a2141587b5e14L },
+      { 0x7bbe9dbc3a873752L,0xee1493f42f442feeL,0x981ca2c8c18c2181L,
+        0x00ce3090e29769e7L,0xb4626ac8de768c5fL,0x33e9ce4634d7677eL,
+        0xf89c2cade0fa94e6L,0x04f5cc1141f5b5bfL,0x2565f7362228c12cL,
+        0xf1bf706a0c05cce5L,0x5d07ffffbe487c4fL,0x3ec43c09a499f1a4L,
+        0x4f4e79bb98d94800L,0x8a335a16073f12f8L,0x4bb5eaf70f970d6dL,
+        0x18d0747bf24d0ae8L } },
+    /* 50 */
+    { { 0x58d3c77c84601fafL,0xc9465be2af1c1f72L,0xff626798d116d806L,
+        0x3996c0c6d5b0d93cL,0x2fa1ad755ec6723aL,0x966a814403ba5349L,
+        0xdc4c94222ac34d8aL,0xddf471deed675865L,0xd8aca597953d528fL,
+        0xb2e463b524ebf67dL,0x258248717e25b4d3L,0x23c5adba43159daaL,
+        0x5458f9c683357540L,0xcf685da7f938b1a6L,0x981a4fdacefed231L,
+        0x711093ed08bb5e59L },
+      { 0x12aa3fc6401f161aL,0xf7358560974c5e87L,0x4aa252fb17b5df82L,
+        0xb0b82b07a48e6299L,0x0023415729dd847dL,0xf1e54d004529c5a6L,
+        0xcc1c539e6d98f538L,0x36162b5328d3abcbL,0x75a379382a84f0cdL,
+        0xf717a81b4dee7484L,0x16cf35fb4c23bf1bL,0x7fd1c29f787e8b3eL,
+        0xb7da7e6859b79ab0L,0x072100a085f6c60bL,0x31840159e7ed48b5L,
+        0x17898bda4d9c97d4L } },
+    /* 51 */
+    { { 0xcd8483d8ae1b8cf8L,0x323d4b42e9a28856L,0x7633584f204a4bc2L,
+        0x4e0b2228ca7a69faL,0x8afbda8bf757bab2L,0x85b240886cc5f9caL,
+        0x47fb4813d41a95c3L,0x3f1bc53cc2aabe6bL,0xf22cda3f1ad1599dL,
+        0x1b2ec081c31ea9b1L,0x048f304b01614ac1L,0xce31cee9c6afa7abL,
+        0x55af76334140dc3dL,0x84b7ab37dce8abbaL,0x50de7648c7cf3efeL,
+        0x73a88dcf15356ab2L },
+      { 0x3f86828806e83b39L,0x477a44139f44037dL,0xf9058b0f17dbc841L,
+        0x2db64f4f54d17549L,0xa23cea6af2307ffeL,0x393efd554f126261L,
+        0x2f4e658a10f37f26L,0xa4437ce3f4ee1e35L,0x64ef42a7a93cde8bL,
+        0x1debc9f4939aa901L,0x44223d6a3d7b5cd4L,0x789a6a11f88a3accL,
+        0x56fb9df82c608a2dL,0xe79db8e3bbf56c06L,0x73c56af2668fa300L,
+        0x52f32b17ae396a1eL } },
+    /* 52 */
+    { { 0x56f524c1e714f71aL,0xc1be12629add8519L,0xad9189d865cadbe3L,
+        0xd88bf5c85a0fb649L,0x9efa6a9221d192d9L,0xe3fe83896f724b6fL,
+        0xec3fae24b250119cL,0x4b6af9f62ae0d3c0L,0x8fceba0bd619624dL,
+        0x7dc3092b2fdb6e3aL,0xc91da3763263cd29L,0x30c0761ef95c43bdL,
+        0x89136400cdeb44d9L,0xfd7dce8443c0d31dL,0x78fec3b19871899fL,
+        0x79e14d28efdf58c1L },
+      { 0xe38222359bb40c55L,0x0a27202d0ed07a42L,0x48e6c1a94838c1f4L,
+        0x2b5f24a7d864a78eL,0x7e7f140a0c6c55c9L,0xe62c104ace12d508L,
+        0x9b0a1a7ec11b1e10L,0xfd8a275fafbb3dd5L,0xdff354fe9a3b6b30L,
+        0x5a105d9e46602a01L,0x3d371b4d93bb65f7L,0xda5cbf0b0f82fdebL,
+        0x4601229bde468545L,0x505e10b9c73d517eL,0x77cfa541672ff492L,
+        0x0d8ec28a99566ce2L } },
+    /* 53 */
+    { { 0x014cf73ecbeee995L,0xb2eb88bcd491e80cL,0x615a6cadd9aba5d4L,
+        0x2f7d46339304c84dL,0xba0501d28ab03c9aL,0xc8f723de91babb94L,
+        0xc885f97750405772L,0xb5e1d2b3c7fcb094L,0x61ee7995df96c71aL,
+        0xb8c8daab3464499eL,0xdb425ddd5f607932L,0x70251ca1b1243587L,
+        0x26d7d3be9fc74340L,0x8c179310c902ac89L,0x72522c154559a74fL,
+        0x86001e27c3734afcL },
+      { 0x13b00ba5e7693947L,0x6478641e012c062bL,0xe1a438e0e85490a8L,
+        0x5173dbbfd9574d5eL,0x9532eb8c9bd3ba61L,0x1f41bcb85f3ea075L,
+        0xac1cc2478cbb92b9L,0x0f34648e1ef901b4L,0xdd929d1ed2b3b2eeL,
+        0x470f1eabc3d75bfcL,0x5cdbc6f7139cf4d2L,0xcd86454df0424953L,
+        0x1e07981247fcb383L,0xb9f209b417df930cL,0x4225fc31114ebc00L,
+        0x020591cb347946c1L } },
+    /* 54 */
+    { { 0xe3003721275e0af4L,0x721141efe78a4a4bL,0x666cfcf6d1757485L,
+        0x5fa1d737168e659eL,0x263e3e540e2842eeL,0xadecc3d4948bd5f6L,
+        0x019de03d246b104aL,0xf8a9e903f343d818L,0xcb57ba4a5b0c0d31L,
+        0x8246c50651e2765fL,0x80c5751f6519bf67L,0x5f05c200f2119a01L,
+        0x7e6487b87821d4f4L,0x262f94aa261c3a06L,0x56cfe48972146052L,
+        0x5119985fa1df05efL },
+      { 0x5819497db18586c0L,0x004415d6c6eeaa62L,0x7c6a46b697cda28bL,
+        0x9a149b287c194594L,0xb56369fa4ed3a506L,0x7092aa6643c94cb4L,
+        0x55bce73aa9e9eee2L,0x34bb287077893509L,0x8af95fb006eb5326L,
+        0x87cd03239638f485L,0x293762685ba75bf8L,0xf32d6f3d9d42d581L,
+        0xa4cad57465c6d64dL,0x985f50fbb2cded41L,0xcf34ce0e9006a067L,
+        0x59eaf26558a57f9aL } },
+    /* 55 */
+    { { 0x7b407efb6ec3876fL,0x780c6123f0f48648L,0x2abb56ffbf893039L,
+        0x9592eaa045a91ab0L,0xce5b84d778811b82L,0x86a71a341f9f3fc9L,
+        0xc17fdd86f0e7e13bL,0x88ed8297655a0880L,0x75d6dc7481d5e666L,
+        0xeffc9df61d171797L,0x36ad4c8de3f79e1fL,0xdb15317d2046192eL,
+        0x78c9fa7a274fda62L,0x04ec924f82dd9914L,0x059d1e383a64971cL,
+        0x3b4450ea2620bbfbL },
+      { 0x3db7a955c776dcdbL,0x35c4a57c81c8ba47L,0xae285003505760fbL,
+        0xe3e80691b3aec353L,0x380335be47117be5L,0xe1c47e3a056ccf61L,
+        0x253cfdeb33977916L,0x3decdfbaf5cb7ee1L,0xf3c9794f7cf4b704L,
+        0x2401680c9ff81462L,0x4e440e11be3daa9fL,0xc5d0437769f91d8aL,
+        0x4106c7a8cb5e9c5dL,0x191909a133b7d24dL,0xe893c8383764b4a2L,
+        0x4a7fe30cc429b614L } },
+    /* 56 */
+    { { 0xe78f3a702455c7c5L,0x5b7636e870157754L,0xf32c45247623262cL,
+        0x2c98b11e1bc780c7L,0xd48eaeac915ed877L,0xbb04d3c0199265f4L,
+        0x6b52b19bcfa5200fL,0xc46a098193ea3fe8L,0xd82c733dba758059L,
+        0xd324bbd61896aaccL,0xac09a2fcce8ecd51L,0x529918fd02fc44b3L,
+        0xf0c45e4aaaa1784bL,0x35626340fe22085cL,0x53cbb676c50c7d61L,
+        0x83fa1ea365126b23L },
+      { 0x60ac86da10ccc646L,0x2ce0637f7b0451e9L,0xbbbcf6308a088610L,
+        0x23c1901920349982L,0x707fc39cfc0bcda0L,0x7f4d1f151bd4fd7dL,
+        0xd6a64e7444713bbbL,0x57bdc676c5ac9e60L,0x456c530337b61169L,
+        0xd3451396dcf40a1dL,0xf3edec254997d2c7L,0x534ae9a4c2c4a739L,
+        0x1401397e6a6ad2e2L,0x20769d4d23e95f81L,0xcee007c6de98fabfL,
+        0x61409779931c51e0L } },
+    /* 57 */
+    { { 0x3ddb32db15156623L,0x68137fbcab7a67c2L,0x26011f506f19e3c2L,
+        0x34218b0289924c61L,0x492a0b0fc6804c1cL,0xd65be706afaae6a7L,
+        0x3b13d23e0d01be61L,0x44545b47f87f4c69L,0xd42236e204dc1aa3L,
+        0x6135261d3c5161ecL,0x1eb46a63bd88bc07L,0x78c6d8361599d720L,
+        0xf6955fe169baf0f3L,0x467eebd617072820L,0x2f1b8a2a3e3a340aL,
+        0x636dac762d0b5f88L },
+      { 0x94280db9b4c80af3L,0x9a189cd14e3892abL,0x26e702e0d1477ddcL,
+        0xe91aee3868f9f14fL,0x2864f63a80baa0b2L,0xacd81f738b714a29L,
+        0x30e1b870c5fe7cb6L,0x883ea1c3b10837fdL,0x2da279536b20489fL,
+        0x3aeb2a6858a2da5fL,0xe2330bf203a8fa14L,0xb5c488b5dc70b1c4L,
+        0x0a78c4d9299678f4L,0x233bd09825df675cL,0x37b5c0767b67d368L,
+        0x2f6dbdfe4d0bef3fL } },
+    /* 58 */
+    { { 0x2f8472fd2e4da7c7L,0x708cfc91ae677932L,0x364af08a3dc268e2L,
+        0x0f10dfe0799a2424L,0xef912d5871d58bffL,0x6bf35dfc988962e6L,
+        0x28b96fa95f47ea0aL,0x734a79eaaad308c1L,0x957303379f437bbaL,
+        0x002cbd8e6cf54f75L,0x47606dcfe7632eecL,0x404b5ecb53193104L,
+        0x0ae0897c0acf729dL,0x89628b863bddf1deL,0xeced154ef87d7448L,
+        0x5cb6e197458d5d4eL },
+      { 0x98cef197008c75edL,0x7cf49d3ef6eeaaf8L,0x1d6f9e021875e96dL,
+        0xfcec2cfedd9b0d8aL,0x38a61cfeb9576daaL,0x10003f3936a7dbb8L,
+        0xb37c386823b814f4L,0x9fb66dcbb80e3153L,0x9e7e2eba059847a8L,
+        0xa4ec63fd35a72770L,0x311f3d91fc9e0ed0L,0x3c1dc094d515baa4L,
+        0x75a06ebca08cd4e3L,0xab6172382ed5eeaaL,0x2e82bbb0e1f52c1fL,
+        0x2149d6305175d6e5L } },
+    /* 59 */
+    { { 0xee1a8e6f5f9311f6L,0xc97e3c9fbabc1f85L,0x4fa7c52eb494209aL,
+        0x04c2f51c19774fe1L,0x5cefd1228555844fL,0xb53862a3b5873ab3L,
+        0x768efdd6cbed19fcL,0xcdc12479ee58469aL,0x11237e313d80c09cL,
+        0xdd74a290c044c28cL,0x9ee6517abd47e287L,0xc2421228ad0ffeefL,
+        0x4273088f818d281fL,0xebc744bc43ec0de1L,0x5b26eccfb415bd73L,
+        0x14e2f350cb07c26cL },
+      { 0x548d2a104216946bL,0x6e801f077a4bd92dL,0x5996d0a343695160L,
+        0x0f1b5c2f63a197c9L,0x79da3c4f061f77c9L,0x1c1cd63493ff7b22L,
+        0x5e61b650a234123fL,0x826b34c5f284033cL,0x718b90e8c2f34214L,
+        0xa5f35620ae806ec5L,0xa2fae345e324a9b4L,0x8c0bb95e8b53cb51L,
+        0xc94f6ac2f9965778L,0x07ec607d6b9def32L,0x63bf1dbad0ed8f27L,
+        0x58537e02dcb61e4fL } },
+    /* 60 */
+    { { 0x1f64b06464f80ba2L,0xe8e055e70559a45bL,0xc3262b34f1f4b634L,
+        0xef4f7d5fde8c8482L,0x9d55dea0c30c780aL,0x1740afb9cfa1e693L,
+        0x2cfe6a667460c34bL,0xf66959411187c1eeL,0x1382f2775f974d94L,
+        0x1ca0ace4004549ebL,0xf8244b3fbabded02L,0xc36f4d064e3653eaL,
+        0xeab9f0dcc55c5f83L,0xd93b9cefacebce90L,0x16658e7219061425L,
+        0x4857835f82d7970dL },
+      { 0xdcd525bcd2576210L,0x9f378aa7d51b5443L,0xfe97bf171bd83994L,
+        0x930d0f63f38ac621L,0xaf8f2c17818408ccL,0x2692c87e260f53f6L,
+        0x0ee45407db0a75e4L,0x0ec47ae5ffdb1b37L,0x769129dc7aa6a44bL,
+        0xb6f932b22e40b75dL,0xe06764d095ef3b77L,0x28fd47f568bc63e8L,
+        0xd18104949c0014c0L,0x90e2d3fdd7995d8eL,0xeb39a05d6c2a85afL,
+        0x6c0277bda21f3128L } },
+    /* 61 */
+    { { 0xe41b7086b509e7efL,0x8842ec7b3d7f9f91L,0xcd285f945526b88bL,
+        0x6e44e064051dd0abL,0x90198c10774f1cebL,0x6ecabe98123e661bL,
+        0x4481113632f647d9L,0x1dd82b4526c52aeeL,0xd650907f939dc9d5L,
+        0xbd5eeef2fcd455bfL,0x7815a4dd8d2e5d7cL,0x5ad4ec9288bc9f2aL,
+        0xc6f10d0b57a3b322L,0xe8d0c1e720b9cbdbL,0x5a0b071a9b774ee8L,
+        0x3067bc9af22fcf8fL },
+      { 0xe0e589f2b7ca9326L,0x17a106fdb1224f63L,0xb2354521747a57bdL,
+        0x2614982d62b0882eL,0x7f3af5444391ffcfL,0x1aaa337ba84e440dL,
+        0x28ea37b0941bb071L,0xa957dcb42e4a7f54L,0xe7ab662c1a6ad5fbL,
+        0xd135e381f7c36a20L,0x42e7980c9baa0b6bL,0x4237030c94e4671fL,
+        0x24cc63ff8b0922e3L,0xd10d5279445a589fL,0xbb99d316a870ff6cL,
+        0x390c83caa996c195L } },
+    /* 62 */
+    { { 0x50d3fa82ffc4a73fL,0x2665d6353bd53303L,0x80a06f8a264bb77dL,
+        0x81c04a6e22d73d84L,0x2409cff50323b8aaL,0x31dce2178c4c4d5aL,
+        0x374aa80e0c0f9c19L,0x0b25a38700186bb8L,0xd0b77a10aaf1487fL,
+        0x15f39ad5ab498de1L,0x92e32da61aa0c116L,0x228e3dbd96e25ce8L,
+        0xb57c88dc5e8646d1L,0x672b1164267b1c68L,0x5d0d807f600bdec5L,
+        0x3ea4007d223e573aL },
+      { 0xd76debd0a595d0a3L,0xa6bd76cbaff0b3b4L,0xbf2c154f9b1bdb97L,
+        0x62b19ab44c714c71L,0xc9bf33b9221af663L,0x23d87c498c941ef6L,
+        0x255804c3d79f0f6dL,0x6f1a10052a7acbc1L,0x5dab79d9550528afL,
+        0xfd77a6f0c8d16213L,0x40508b6dde5e1029L,0xd95ac0f2f95da12bL,
+        0x8860af71758a8ba1L,0x0b194c837160c8fbL,0xa40e6c80ce004d34L,
+        0x09f82a176b14aaa0L } },
+    /* 63 */
+    { { 0x60abe588c21366dcL,0x729c0a4faf75daf9L,0x70501fd9acb93ed4L,
+        0xb97e744e87a16d70L,0xa42e0a7a98e7361bL,0x1acdaff228b54cf3L,
+        0xf087ccbbb7bd9078L,0xda6f3983663250e7L,0x66d693eebaf07c09L,
+        0x79baf4c38cbaf157L,0x5a984e07dfca99d0L,0xab4d3247f26d8dabL,
+        0x4d0be7017eba36f9L,0x37bb9e650e8dd216L,0x72aa4e24531c4f03L,
+        0x77d1e984b753d85aL },
+      { 0xd9373239d8e62367L,0x3361848bb9820cf1L,0x00c7e3445a9c97c4L,
+        0x9a0ec9ae14f960fcL,0xcf41f0cf740474b5L,0xa5eede8fece065d5L,
+        0xb1de5a4e9e808610L,0x17c44ae4ae0cf75dL,0x2fa563236b148d0bL,
+        0x64fa740fd29ff2dcL,0xc605eb8a88cb212eL,0xf2c771ad6a863016L,
+        0x6d6112e7607b4c17L,0xfe90ec0740d49785L,0x599be18be256e0e5L,
+        0x4e6eabecca54adb0L } },
+    /* 64 */
+    { { 0x950323d3fb99cfe6L,0x7b09bc26c9334178L,0x64111e417cbdfb6fL,
+        0x9114174489a75760L,0x4c633df910919cb0L,0x715fc7c7396bfd2fL,
+        0x8ca195128cab62dbL,0x306724734db81aacL,0xe67a246bb4c4c54aL,
+        0xd77ea0fabf229646L,0x5bed15f1fa5b5d70L,0xa5686da5c2f192f3L,
+        0xdecac72a7f6690adL,0x0c4af2a2caa50b7dL,0xf44631c16049ad2fL,
+        0x325d279604ecf056L },
+      { 0xee11fb554848c144L,0x4e062925b6a7af32L,0x125b68e1369e0f9aL,
+        0xad9bdae6ca53b21eL,0xf50d605c2e98ea1bL,0xbdb9e1539f2fa395L,
+        0x4570e32de91532f5L,0x810698ae46a250d7L,0x7fd9546cad9d9145L,
+        0xabf6772111e97a5eL,0xca29f7d5249f82e9L,0xa9c539a99851df63L,
+        0xfd84d54b71d0e3e5L,0xd1e0459c041d2b56L,0xceb3eb6efd80096aL,
+        0x19d48546e32a79d3L } },
+    /* 65 */
+    { { 0xfe19ee8fb540f5e5L,0x86d2a52f04e68d17L,0xd2320db0adbdc871L,
+        0xa83ad5a8d03a7fc8L,0x54bf83c708bcb916L,0x092133ea2e51e840L,
+        0xbce38424cb52dddfL,0xd5c7be4031063583L,0xc1ebb9df458e3176L,
+        0xafb19639bc4dabbfL,0x36350fe4c05725a8L,0xac4a063484e1cd24L,
+        0xadf73154c145b8deL,0x0aa6dd9eb3483237L,0xa3345c3dcbff2720L,
+        0x1b3ace6cb4e453b0L },
+      { 0x0343e5e990a8bdc5L,0xa203bf9d6306a089L,0x98489a358e48520eL,
+        0xbd17debede7d1d06L,0x8fafa6d75f795d3fL,0xa4ceb630387b0a3fL,
+        0xe0166b32ffddeafaL,0xa2fe20547e764e02L,0x55ab9824e871f304L,
+        0xa2bd36bb952ec45eL,0x7b4c1484a90d20caL,0x5319f38775bcfb53L,
+        0x34238a4a6982c4e5L,0xa2bb61c7a102921dL,0x1e061b64db3ab17eL,
+        0x538ec33e192f0a14L } },
+    /* 66 */
+    { { 0x193496fea19b56cfL,0x663d77f47bb99acdL,0x8f04afa857d0a881L,
+        0xcced3da2082835fdL,0x7e21faed5d82cec7L,0x6e175b99f8009c85L,
+        0xd9c6e31b2d05a307L,0x96948d4a81487d82L,0x86ebd3f2d46f6655L,
+        0x86851aa8773ccc49L,0x3e220f228b1640a6L,0x9f06e3a841a20b75L,
+        0x2cfffe5e90ac0a6fL,0xf5a9b1da8ebeb3fbL,0x2587d9976e08e2c9L,
+        0x6fd6029803e9f401L },
+      { 0x54709f8d8eb7516aL,0x83058a74bdc598abL,0xd234dd9887e801ceL,
+        0xfd0f9d90d17b8a96L,0xaa1e549f6e90f6abL,0x2496ff805a7ed55bL,
+        0x0d9f657a6c254c19L,0x3cdea49cb8962575L,0xb685a3f02dff27deL,
+        0x3c50e7fddb8bc04bL,0x904ff0ff987236b0L,0x494298fdbb0d5055L,
+        0x34b3386de14be8d0L,0x7ad34e9c7c3d30d6L,0x1f2b32bde159fdd9L,
+        0x84cfa23cc761e5c0L } },
+    /* 67 */
+    { { 0x13bc11eb8b99b964L,0x8e280c0a58e2fc47L,0x870fbc49d4c9a54bL,
+        0x37a334a2bf6e20faL,0xee583d0dd7c88cfaL,0x05e029a8ef4af1daL,
+        0x6d55e2340c2ef8a6L,0x61b6fdfe209e9b62L,0x3b1dad26bb8e080fL,
+        0x5adbc1629392fc1aL,0x02ac0fe60aae3f4eL,0x8d99801ac2bf4d5bL,
+        0x2333f93fc282fed2L,0x16dcb10cb52db33fL,0x09f90f84c55752e7L,
+        0x287d4c51c84a0d8eL },
+      { 0x5fa582010e9867daL,0x614589b31a874cdaL,0x005e27c5fbdee22eL,
+        0xe357fef5e612bda8L,0x4e0dbedf2d3635f9L,0x62be70e46f125a86L,
+        0xa09b98840d94a2e5L,0x7eb99a1528b5e5d1L,0x21b9416e751028b5L,
+        0x1b137fd7e06d2cc4L,0x6fa1f517fea09845L,0x3ba1e966ffcecbd7L,
+        0xd4c89a4a832f453eL,0x07b1e2afeca68fa1L,0xd0fb44534bd395a3L,
+        0x0132a3dcd8ef9e13L } },
+    /* 68 */
+    { { 0xe53c7785576374c2L,0xe60526d184727040L,0x8a066dc8228ca044L,
+        0x1fe1c1b2f1ce1313L,0x2aeec832cdeb0c5dL,0xa75966999cbf826fL,
+        0xcd188e81de77a589L,0xe5ce0fe0118d1254L,0xa142a9840790b86aL,
+        0xe28f043f39ac28ceL,0x4eef829087de5804L,0x83c31b32f639a8c5L,
+        0xd70454a75887794fL,0xca635d5018b1b391L,0xcefea07631d9c795L,
+        0x13cbee76b6f8aa25L },
+      { 0x79cabe0f8d3f34f3L,0xbda9c31ca3617fe3L,0xb26dee23dd9426a1L,
+        0xe9dd9627f29c9104L,0x033eb169e2c6cd3bL,0x8a73f492fcba2196L,
+        0x92e37e0bb858c83cL,0xe4f2aca623b3fbb7L,0x8101fb1e64be00a2L,
+        0x91a7826a948f6448L,0x414067b4907260e7L,0xf774aa50e30bb835L,
+        0xf922ca80c999c06eL,0x6b8635b90ba08511L,0xbf936b5c25fa04f0L,
+        0x4e0a1adae02e8967L } },
+    /* 69 */
+    { { 0x00ca66708ba29c4dL,0xc08240ce22988094L,0x21c5ca6716dda752L,
+        0x689c0e45abbbfa34L,0x1d7545fd3ed28b72L,0x5f221198d7c56ab4L,
+        0x4b3d8f7438759d65L,0x93490dfb8fe50b89L,0xb641f5d7e80eba16L,
+        0x7b0da5eb79acb537L,0xab6b14970c1d5e5eL,0x2338e68da5da429aL,
+        0xe010c4372f6d2f25L,0x226f16d26530f3a7L,0xefb0f7b6cbef08bcL,
+        0x733e30d99f99c999L },
+      { 0xecfe1582a42a38f9L,0xaec2d58e4730b500L,0x2ee2f2a7de976b2cL,
+        0xf0539db5a969c1bbL,0x31954168fcecdb4aL,0xf2f7348ae7a8e902L,
+        0x1d58d7cc3121541fL,0x5d25b75c2202ae52L,0xdea9965af40835a7L,
+        0x3feb6a41529b4e46L,0x5c97fb6fbd27ad9bL,0xd87554c0261f900bL,
+        0xb43031d904d5b19eL,0x33d5e9b8cb219b9cL,0x7a43d4923ee00bcfL,
+        0x56facb39b79a5c0cL } },
+    /* 70 */
+    { { 0x019165a2a3018bfaL,0x100c6b249ffad984L,0xbbf1b1f655341a9bL,
+        0xe6bd1d9725dc4cc9L,0x52850ed52bfffe60L,0x24e992cc7e5509abL,
+        0xff6c502e4ceb59f1L,0x2f0b35731aa7d148L,0xe90c1ddde7e3aa46L,
+        0xbaec9f45d1142880L,0x475cfd2665be5dd5L,0x83abb14e1febce13L,
+        0x6aba482980942d30L,0x1e1b235d297e82c8L,0xb771cdbe50d8218dL,
+        0x88599266d94d6cbbL },
+      { 0x08847290155ccaf2L,0x8679ebc77c5b773eL,0xa88b2dd1b2dd08edL,
+        0x960a180e87d475dbL,0x80fdb6b76694d02aL,0x3e8758c93f3f9e96L,
+        0xbda3f6fa4ad836c4L,0x9400c58132fb387dL,0x25a785422550200fL,
+        0x2a97c351776ecf18L,0x03ebf46e566db59aL,0x4743a28026545edaL,
+        0xed169d84cf74ab44L,0xbaab931d88cb3f69L,0x70ae932cd8257196L,
+        0x797224a6a0c09719L } },
+    /* 71 */
+    { { 0x632923f8441f3567L,0xc11c31682e24bf1dL,0x4b97726bb7671fffL,
+        0x601746a77a5e1a22L,0x53dddea03addb417L,0x57867a3c7f59b846L,
+        0xb012a98756cd7ff7L,0x1bd5fec9f19ba9a8L,0x750379a2f8306748L,
+        0x7763445dab8c05d1L,0x5d7f441b7903f42aL,0xc011674da903e46dL,
+        0x1b1d3c4dadd126c1L,0xa2752aac61455b40L,0x4da42a68555c356eL,
+        0x3ff09c15d820852cL },
+      { 0x4c0a1bcef9cb7784L,0xaec539bc2422f305L,0x5f40f9fd0c414aa7L,
+        0xd3aa316cffd42bc4L,0x42f5a4c32f358e15L,0x00bdcd9ed6e27682L,
+        0x069f789ff8a5eceeL,0x8078018e05e14f5dL,0x2bb3e4938b40c741L,
+        0x5dbc8c1d7917f72dL,0xe0eea664cc57150cL,0xa25ecc5ac3fa8920L,
+        0x3c21b0f51c797164L,0x8f09a2f2634ad16bL,0x8e730fc558391d9aL,
+        0x47ef18054fdfae4cL } },
+    /* 72 */
+    { { 0x9965f3d13da285e4L,0xba7d4dba3a01e3f4L,0x4738413a61214ad0L,
+        0xd3b7d53522397549L,0xa53dbdcf5a730b92L,0x3130d92b332d165dL,
+        0x44a2854182f97ef4L,0xbf62221c44dce1b6L,0xbba138587e2a0ec9L,
+        0x33f32c8dcbfad998L,0x409e5f3fb5fed44bL,0x5c328c65c66217bbL,
+        0xb00db69ffcdf71a9L,0xa23c2a21b8920788L,0xf8ab28e63ae6464bL,
+        0x1a6b6e9cb8de0861L },
+      { 0xaf6ec2b606af77aaL,0x2e60f5cda887f065L,0x87d214009f498c56L,
+        0xdb595b59fcbaaf4bL,0x0fb592a1271ab855L,0xa0ce10e5d4349b0cL,
+        0x9d6187d8887d8c9cL,0x03ee95f9154bd6dbL,0x8fe532135d06c999L,
+        0xf4a7bc30fb6a64d0L,0x3d22af0d66a4cb60L,0x16952cef5d37367cL,
+        0x6f0ea734997d8e55L,0xb447c70f731732d0L,0x00ab3034a9cb3942L,
+        0x79dd018028510fd0L } },
+    /* 73 */
+    { { 0x04e0033a3ac7424eL,0xdb06b68860fda4d0L,0x236a9766bcb772fbL,
+        0x294a8e2bf297cda4L,0x4b0aab85db013c6eL,0x3d2aec988723a3adL,
+        0x0cae32cd13c84a6bL,0x21888f5e70ec169eL,0x739633bd42a88262L,
+        0x68ac792e7b60d9b8L,0x89f2b72210769fe1L,0x8f3fcfe6d24bed34L,
+        0xd35efb88a3eb24aaL,0xddecfa3f484c706bL,0x7cc119a9929ece0dL,
+        0x87e5ad458d405436L },
+      { 0xba99aa9d7d1000a7L,0x8b94affcae823833L,0xc8229628dfb83dc5L,
+        0x2f59fe11845a418dL,0xa8b970f85d417054L,0x8918c26572b71581L,
+        0xe4ef477dc0d1dd17L,0xb50b4cf33afad7c0L,0x21baea7901870a5bL,
+        0xc77087f9bb3a2868L,0x7857531e124a59cdL,0xed74c26f57f43239L,
+        0xd5f5ae250164c94aL,0x6608b7e2f094bf74L,0xf4cdb5bafdceea32L,
+        0x0b712519990cc045L } },
+    /* 74 */
+    { { 0x5a290ca188d5c64dL,0x0596d749a7492534L,0xa04b0d3d2a00e925L,
+        0x082cd02ccaf7b66bL,0x912b50c2ecdded83L,0x813ce9deff31646eL,
+        0x62ae70c7c75fff95L,0x6f6852e07e2a4615L,0x320fd7d003804fd1L,
+        0xb1a2a4dd8218e8d9L,0x4918a6fbafc645d7L,0xfb080fa1e8d9fdbeL,
+        0x33d4d08a4470b6eeL,0xd2ba20776d974ef7L,0x8ecb95a769dae5d2L,
+        0x7a3f423a7d69596dL },
+      { 0x362d2ca69a929387L,0xabdb7581cb1c1fffL,0xd892ec9f7e51b6cbL,
+        0xee8d86323a4e131fL,0x4680e3f15bd87561L,0xe3a597e1d4e7e732L,
+        0x3cc72b7c5581fefeL,0xf3e77f8aca8cae0bL,0xfcc7d7dc5e2fd4afL,
+        0xdd3a455221355b79L,0x546b24f2a2c07177L,0x415b532d0689621fL,
+        0x2be9af513f78163eL,0x27d63b9b33d7ed21L,0xab019ef296802943L,
+        0x2da5fc551623faf4L } },
+    /* 75 */
+    { { 0x62429cf3c8a5c600L,0xa7a80c223fe33e7cL,0x9ffda7400a57ddcbL,
+        0xd1ae156d925b0c74L,0x097a43f96b100eb0L,0x169e945cef943c81L,
+        0xa1f734e51128cf24L,0x04387c4a419f0133L,0xc007868b01044024L,
+        0xe5416abf90359cf2L,0xf9c76fee478d54e3L,0x66219da642a2173eL,
+        0x61e031569fe30141L,0xa0ff5ce393ef247eL,0x811792ba072b6592L,
+        0x855f021970c854d3L },
+      { 0x61fbfb6c847314c4L,0x97906155eb45b96aL,0x7102e1466ba2afacL,
+        0xed51f975ab949781L,0x9d2f5b17c110c4feL,0x7ac8ce70aff57667L,
+        0xe7366a216eb244e7L,0xdd1bbcec551c65c7L,0xb525060ae1a859deL,
+        0x7a0481748ba7d2e7L,0xe1a2c541ab8ea8c4L,0x6e7824c36fdff078L,
+        0x79b49fc714874b04L,0x22ae337f06b1f733L,0x1c3521926f8fe6cfL,
+        0x292236cf525d0797L } },
+    /* 76 */
+    { { 0xcdb8d80a7d8b29dcL,0xd17a202408ea648aL,0x7db12c5eae92be91L,
+        0x1f347d18fda72fbcL,0x11374b409e760c6fL,0x7361e8f1d8e38d91L,
+        0x7714be9d739ac1f4L,0xc1f9701cb4df5c4eL,0xd9138ed86f72cae1L,
+        0x1c7fe1f76ad180c4L,0xf8c185be9e2dbf9cL,0x835db2697c70c44dL,
+        0xf997cfeab0d15b5fL,0x5101445a61e6545eL,0x16b0688425184e5eL,
+        0x7cfac3597521e7aaL },
+      { 0x811821673c0bc53aL,0x84b5ede37e751367L,0x3ca255fda3657a18L,
+        0x096abbf4ba1fdd98L,0x9ce8369fc5da77d8L,0xf27b9ae7aab342c5L,
+        0x06c91bd6972059f1L,0xee0dab30914ecfe9L,0xbb647fbb93f53f12L,
+        0x30c38a7affa57e0eL,0x517d06ef9f2ad607L,0x49728d87bb99dcc9L,
+        0xb0034af1446080a1L,0xcc810c3f12b9c17dL,0x7225f14f772a22a0L,
+        0x6ce3dc7f1ddf82bdL } },
+    /* 77 */
+    { { 0xc07cd835a4397830L,0x4dd9290cf4733306L,0xdd35d3a829989e8cL,
+        0x79902559563d8152L,0xf278d911e87de61bL,0x9c7340c71024e35cL,
+        0x2d4444614a0d0e59L,0x63e7608ff32626a1L,0x627a37e9c4c9baa9L,
+        0x0c56dc5176fffd25L,0xcb6defc8cef2a1cdL,0xcbcc0d56efc559d9L,
+        0xe45f3fc5041cb692L,0xcd05c239e5161e09L,0x2a731ee95c3b559cL,
+        0x85151122a3d0a16dL },
+      { 0x782d033586ff19e2L,0xc2c60daa1da28603L,0xb2e78cfe557c7eedL,
+        0xa8f6f9841bc4e8b0L,0xcc1f9b4b3df35c67L,0x96e136034764462aL,
+        0xbf910b977c7ae0b0L,0x27c7f30551435956L,0xc14db15cf631eae5L,
+        0xa51d61427e69b34cL,0xdec828515fc12ff2L,0xfcceae13fb887162L,
+        0xda332ac1de1488bdL,0xa20374e22ee3e74cL,0x597ea1a1f0ae069cL,
+        0x8b1159f277bdec04L } },
+    /* 78 */
+    { { 0x4af71a442f961d30L,0xbdf968a87ac7248fL,0xd32df87cb1a906cdL,
+        0x00c10e2604abf925L,0xb8711759b9f04d4cL,0x00d54e60939705daL,
+        0xf7587433c9f80849L,0x2e9abade6a7a2375L,0x5676d47894ac17acL,
+        0x4ca0525bc202d99cL,0x95b8bcadabfae73dL,0x2371ed383405991bL,
+        0x2b69e47a458a99c3L,0x7cac0b182b78c866L,0x6ceaa79be0232c7cL,
+        0x0bd86433588f7459L },
+      { 0xdea1a8b47e734189L,0x52c5ac88cfe5fa17L,0x444a4d4e11437664L,
+        0xc2522308af9e9750L,0x78b1d0c3d30c6b3bL,0x2edae5f04c6df477L,
+        0x53131d9a2ee88dd7L,0xc4e380eeacc93e34L,0xd499b1aca8db0e8eL,
+        0x77348c167f5d49d7L,0xc96632571556ccd7L,0x65ce0e8c2611d13dL,
+        0x2c95fe66b5a2fdccL,0x266988328658faa1L,0xda87d1f431c32c98L,
+        0x46650598fcd91907L } },
+    /* 79 */
+    { { 0x4c6c13cc6b4a5efaL,0xc481989b1d07b265L,0x10b966ce8bdc69c0L,
+        0xf54cfaa22c2531d4L,0xcb5f1808cad0a100L,0xbeb52538ee5da449L,
+        0xa6240085bedd83ccL,0xe792dacfd6255c78L,0x883719062062058fL,
+        0x96615e83ed1658c1L,0x4b549b277d28d542L,0xeaf127db83b75df3L,
+        0x4f60df6d17fbb942L,0xd08631dbf6f7c930L,0x17c38f986018789fL,
+        0x0c43574ab9a9280cL },
+      { 0x76eb324c1d20cad0L,0x90decb098c61108aL,0xa6e9d39c6f06d36dL,
+        0x6cd978babc0da197L,0x5948b1c0507ac5ceL,0x2bd47164c5497eb5L,
+        0x2a9c4c0f4d5914e3L,0x772c5046a759f03cL,0xe7d7328a69ac847eL,
+        0xa8d57d0c3048b330L,0xe60034e040f7baceL,0x823d9193a85f1790L,
+        0xa6e9b66c5c859736L,0x22ca2c7a679e1022L,0x00e7a19c09023fa4L,
+        0x324999f12726d5b9L } },
+    /* 80 */
+    { { 0x667eaed67c834915L,0x9f77aa6abc5eb64dL,0x729ebcb625d62011L,
+        0x0aee24f2699fd9c2L,0xe1eb58742b8d4f6cL,0x7f12710c14c976d6L,
+        0x91390335f6d9ea65L,0x668b704906b50064L,0x65969a0e0876ee4fL,
+        0xf901bf3f2f9d9360L,0xfb1a8651b499e3ceL,0x80b953fbf2dbcaaaL,
+        0x312cc566973b06b6L,0x3534d9c33af36c64L,0xe4463a5210ffd815L,
+        0x57ea2b4bf18c2b91L },
+      { 0x00f5e1628aa0f2f2L,0x8c7e75c50e46bcaaL,0x97ab479aa4a2c42dL,
+        0xb4f308ea14baa202L,0xa901bd146943cc2eL,0xbb125feeeed58804L,
+        0x6502c8f99d180f7cL,0xe53539191580c61cL,0x7e27806927101ee3L,
+        0x7a0a40a1faa72717L,0x32edce024c75b153L,0xda23660b538f1c22L,
+        0x4d511e98be307d2eL,0x24276e409baee0b4L,0xa78c39277ff1f307L,
+        0x60480b46ea7935c9L } },
+    /* 81 */
+    { { 0x31087d663872ece3L,0x5f29be7d955b70f8L,0xb50b4fc79cf95bb8L,
+        0xbae3b58ddbffa621L,0x0e61d280e022ba5dL,0x78ae51174181449cL,
+        0x0b132840cf555485L,0x800ed1b6b8ce0b0eL,0x35dffdd578d5de3dL,
+        0xf7e4237469a56b47L,0xd5e323698d910ae7L,0xb6ff52a06313c7c7L,
+        0x5a2fe20da92de9e5L,0x41b347d3d12110bbL,0xc5905edb40c16f23L,
+        0x0774a0d39a8f88ccL },
+      { 0x3ae181abe3b6c106L,0x4ebe163f8de150b7L,0xcf75b82f6f354836L,
+        0xaa0d20633ac7ac16L,0x5c680668291722afL,0x73941e6111545553L,
+        0x17127e38bf5de3f7L,0x32cfdf031afb41daL,0xc6893c9187bc8663L,
+        0x75046744a62c9c99L,0x96866e2d962c1947L,0x489ec8df378cdf4cL,
+        0x3a60709b3407fa32L,0xd37d2159551290d1L,0x9623d303bab92273L,
+        0x081519542432014bL } },
+    /* 82 */
+    { { 0xf9236d89fb7b2108L,0x3ecc83ccad75f9aaL,0xf7c72b15b4e1da11L,
+        0x552aeaef0315c362L,0x11e140edf272fe3fL,0x99d79bf687843ee8L,
+        0xce6b54fd1d9bb25bL,0xb20b0e215b1bad74L,0x54a0214f5b84c90dL,
+        0x459bbf52fca6cec9L,0xe363c48d9e4df76fL,0x3045f84ed64cf17eL,
+        0x8402a167f62ada48L,0x2c9e1bf36a74ca01L,0xe8cf9d41f691c42dL,
+        0x5abf2178c2c4b874L },
+      { 0x4777966bf3b3bccdL,0x0047e0f0be3e0caaL,0xcb8383b38c7d5043L,
+        0xe77e3baf946fd5fcL,0x79baa785e9ec0e87L,0xd83c557cc8a18d25L,
+        0x9b96e5af25befcfeL,0x4f05d15e98c71b61L,0x081f991a77e62da1L,
+        0x1c6ec781cbaa3821L,0x7522f65de54d9bfbL,0xf5d0557344ed1430L,
+        0x3035b31f95cafddaL,0x47e67f436378f5bfL,0x029f7cad5270b9d9L,
+        0x15ad15874d916a48L } },
+    /* 83 */
+    { { 0x00de2eceaa588ae4L,0x552ebc58a371a232L,0xd00ea93471230444L,
+        0xafbfa67de4b1832dL,0x29216341b689e843L,0x1f96bbbd61f4e2e8L,
+        0x9542068404c29dc5L,0xc7fe382742317fd1L,0xe0a0aec663483162L,
+        0xfc2b94d10700184fL,0x07219973fe1fbd85L,0x648b6ab1fb074352L,
+        0x23bbdaadc46e5392L,0x0db8dd1f00fa56ffL,0x104815eb866725f6L,
+        0x3f9c4cca52e81963L },
+      { 0xff36b29732ce637eL,0x81a15f2df5d25cddL,0x1a1d052d8b02ad97L,
+        0x2e5f3bbccfbab3e9L,0x60d2cbd7614eeb75L,0xd4491843cd5a793aL,
+        0x2242cf75cdba2144L,0xa20705e788b99766L,0x64e12cc0ec77e132L,
+        0xb1c14df6b61a9b05L,0x8fd97f0474825b5aL,0x956048213da31223L,
+        0xde4867274d30c70dL,0xbcab8f151c12ee69L,0x5dc638b4668d893dL,
+        0x6479dad6223f574bL } },
+    /* 84 */
+    { { 0x569044f3b05f2b26L,0xb35a294a80b9f76cL,0x8839fe284290f6aeL,
+        0x761cfb23026a5877L,0x768926b62e5ff9c3L,0xbae6cd200b11c576L,
+        0xdc85775672a03efeL,0x0cae074ae1bad63aL,0x3fe491a1d709d99cL,
+        0x76c5ded66501d9c1L,0x1da6eca1c32aeff7L,0x50849d55c57683e8L,
+        0x9e392e9cdf98d847L,0xfad7982f64d9a564L,0xf7c3bdb7a37b98b2L,
+        0x1fe09f94f0860497L },
+      { 0x49a7eaae7648cc63L,0x13ea251167cfa714L,0xfc8b923c653f4559L,
+        0xd957619b81a16e86L,0x0c7e804b3c864674L,0xfc88134a1616599aL,
+        0x366ea9690a652328L,0x415329604bc9029eL,0xef9e1994ae2aad2bL,
+        0x9e2a8c527f10bef5L,0x73dcb586c67bf860L,0xf61a43fa844cc25dL,
+        0xd74e7eea74eb3653L,0xf3356706dd240f02L,0xeec7694cfd83bcb4L,
+        0x4de95786db62526aL } },
+    /* 85 */
+    { { 0x4867d3153deac2f7L,0xa084778ab61d9a8eL,0xf3b76f960ab7b2d5L,
+        0x00b30056cfdf4f79L,0xd0701e1531ab8f4bL,0x07f948d59c779d01L,
+        0x7c994ebc82675371L,0x1104d4ee48bad4c0L,0x798ce0b5bfc9d058L,
+        0xc7ca898d309fa80bL,0x0244f225acb33eafL,0xd51e8dfc5b2f3175L,
+        0x3e49ba6ba4d7be34L,0x1760f4c7bda02b43L,0x37e36a7e4435275aL,
+        0x1c94418be636980cL },
+      { 0x43a2131309dc1414L,0x060765fc43c93537L,0x6ff3207adf5f79ceL,
+        0x6f18b1fa85d4cfcaL,0xf5c4272e63e995abL,0x121a09e4a82b3002L,
+        0x82b65d1b97147f16L,0x4993c20c20a7fe26L,0x99c9cb98e6716726L,
+        0x5a02d673feb440a0L,0x3f3fa9e1251b4bc5L,0x75dbc474a05338eaL,
+        0x3cb4044b7b09f6cbL,0x6767da1880434609L,0x97851422098ceac2L,
+        0x611bfbb2b55235baL } },
+    /* 86 */
+    { { 0xbdbaa55ef00ad2a1L,0x29efa85e14a290d7L,0x3b4a4768e92b1694L,
+        0x67111bcd11ec8130L,0x0e42570288bd27b2L,0xf28cf2a3d9a03c06L,
+        0xbb7c8d2df318884aL,0xe2ea1462e3aaeb20L,0x3353580443b85d77L,
+        0x81ee4482554ee9bdL,0xeb2eee9ee6aa198fL,0x7a5aa804c26c5944L,
+        0xa0ef2da582ab167cL,0x5a2ab47602fe21a5L,0x169cb3b83370298eL,
+        0x86e6c5440eb3aa8dL },
+      { 0xede033210b793d9bL,0xf79fade11ddb5eceL,0xf73fda9268930b64L,
+        0x06aad97dfe4fd1b2L,0x073a5b1d92a4dc88L,0x8af8cbd8bc976d75L,
+        0x60b4abb163ce26c0L,0x9c8300a9dcb1fb06L,0x335a594cda95b3d3L,
+        0x1f97d7d4b37eac87L,0xa3d2eba220eefaabL,0x3258c906f3e828c8L,
+        0xc832616f85ab7781L,0x725971928c28b617L,0xcd7196bc3233b82dL,
+        0x83867eb919fa126dL } },
+    /* 87 */
+    { { 0x774fe73e22474edbL,0x2a7663941a84e1aeL,0x270329ad9c6dd6e3L,
+        0x00c4a41514f8bf5dL,0x3ce2ea37d2267b90L,0x1275301511d24faeL,
+        0x7c14d854263a1b78L,0x20c8401b1ae0b206L,0xf32a011b081f49fcL,
+        0x1e8123fb959c6df8L,0xa328dc7c800e1d06L,0x5876a37824259a9aL,
+        0x23ada8b5b7ef6c37L,0x023f6b6ea93d4c9fL,0x89f5414dffb6389fL,
+        0x4b26bba2e628b39eL },
+      { 0xd30b1cb45d318454L,0x123b749fd7436cb6L,0x3110c726568a7461L,
+        0xc85de1231c84fd1eL,0xa5f8d6e608403d55L,0x395b6e139b1fabf8L,
+        0xfe6d68c33cfedce0L,0x1d90381f94b91110L,0xf0a8ea812dcc6eb7L,
+        0x59e804137e90ca2bL,0xbeb5fc07c8a25c5aL,0x009c253a5d84663cL,
+        0x00b15073910b6a7cL,0x8607da4c4108f8d5L,0x02c3d9c3cb901e65L,
+        0x4d697bc52c9615c6L } },
+    /* 88 */
+    { { 0xe0db1ef0efa8fb40L,0x29021c5b5ba3989cL,0xa8d6fb15809d19dfL,
+        0x6b787b734c1219e1L,0x6417e16814ef05e2L,0x449342db8f9796e2L,
+        0x2f878a5ebf84421bL,0xe71916d7e94a4536L,0x9818bba3ae119693L,
+        0xec674be95768804eL,0x0a26074cf8424f8aL,0xdbc93b9d466ce6abL,
+        0xb3f15a98c920078bL,0x9d10fd0d3870f1a3L,0xa61241d9e4e785a7L,
+        0x76ca87a1e6c8cd80L },
+      { 0x4357fb56e02e48b7L,0xfbd14b13cc09e9c6L,0xdb5f243524069cf0L,
+        0xf878165c2c3b01a9L,0xe549e7c4e6956dadL,0xf2fe9538bbd60b68L,
+        0x952f856b059dc653L,0xd3f60225b377fe9bL,0x6a0c7328bfe908c4L,
+        0xce6aa2d3bc8f5f2dL,0xf721344324425050L,0x17e1266a3d3b3ce5L,
+        0x75b5e43fc1677512L,0x1592706237fb894aL,0x152607532be3e375L,
+        0x27e7f2c66da3b7beL } },
+    /* 89 */
+    { { 0x638f65ade6a15883L,0xd4a7e68c66afdb33L,0x6207b6abd3f12de5L,
+        0x1c6ff95037b87810L,0xc0d44cb264acf6d3L,0x163ac601f2be78c2L,
+        0x1c63cc5a1636980eL,0x3e92cfe895c9349bL,0x7738e0d841ec7220L,
+        0x6169d7642d5fa961L,0x2aa776c1c3e028e9L,0x93dc5646b16d5409L,
+        0xa0b27fb5706df4d9L,0x9e991170ce9c6b97L,0xea8e42be53c85f40L,
+        0x02e9643783246528L },
+      { 0x91540addae78ea1fL,0x51a1b74d7b670e96L,0xf9936441f7006826L,
+        0x8f97d6ea7d7520c7L,0x0faa6a0269ce12e1L,0x2590aca879208342L,
+        0x7a48386375614436L,0x07c6149ef381408fL,0x733bf584d7853406L,
+        0x8761b0109abbb6f7L,0xe4eb249ff528a09aL,0x08781ed82e00ae3cL,
+        0x864c1b252178effaL,0xcc1e62a29d513a7eL,0xedb8b94e1919062fL,
+        0x739f53da4f16527dL } },
+    /* 90 */
+    { { 0x7a5f4a88924adc5fL,0x95646c16a818f56dL,0x0ec491297795f954L,
+        0x2b48753dd19c5400L,0x16fa236b205912b4L,0x6b3d65f3e87a4946L,
+        0xa7174a01045fd066L,0xb635031312a5e140L,0xa79c4b44a96b8623L,
+        0x7a339d659ab003d5L,0xc72f30c63826f31aL,0xb4e7390c6f7090cdL,
+        0x59ac6c36906ebe24L,0x39a7f06dbba4505aL,0x839991e1c58c413aL,
+        0x020c23ffa20e0e84L },
+      { 0x120e4adaafc74661L,0x37bbcf63277fc065L,0x41049cf6b6dce799L,
+        0x5b8d6b537b161ba1L,0x22218431a9610fb2L,0xde9ec9d1dfdde769L,
+        0xd32bfa4d42d80630L,0x3885702a6244df4bL,0xcdedd1ed45592dfbL,
+        0x0e1df45bfb4e01b8L,0x8f4bded286e215b0L,0x809354876a937e6aL,
+        0x415278ba8130f723L,0xc6dc469238a821f8L,0x2207b119fd8b4f8aL,
+        0x76e7bf53f9269cefL } },
+    /* 91 */
+    { { 0x5f12842827ebd187L,0x8d3320abb65aadbbL,0xb042765a72258695L,
+        0xda3f33f98f0986abL,0x411807a7aebff503L,0x25c776ca825f71a5L,
+        0xc0de7bedff7df24bL,0xda8b0f42165f1fb4L,0x5f3ff737731f3ae3L,
+        0x4cd1d7e7193e0a52L,0x8df84aa3b6b3ba46L,0xba84b897aa1f3782L,
+        0x6e7960cce7733ac7L,0x4d46d6ab50981a21L,0x1ec12c257cbb80edL,
+        0x79e7ad272b96ef09L },
+      { 0x3cd970dc8f30caaeL,0x85cabcf10a6ebef4L,0x63c1863ec714616dL,
+        0x1c50db0b519e3a98L,0xf39b896364cb13d6L,0xdf67d81f22547b69L,
+        0x7157abb9d67db0ccL,0xccca25ba889491b7L,0xf689207c7a27e0dcL,
+        0x34ae8fbe0fd43281L,0xa5d91f735720ec09L,0xb2f61909cdfd7bedL,
+        0x1ec102324a039e32L,0xd3c3d65edb0d8fdcL,0x32c916c84fe5005dL,
+        0x7f8c37ac4c0bea94L } },
+    /* 92 */
+    { { 0x33ec1e5443ac05e5L,0xda4a4da4cd8d3825L,0x86d88c0b88bf9e2bL,
+        0x34d71dd0b53811dcL,0x655040d2a3c3aba4L,0x2bc40949b61611beL,
+        0x1c2d426e279a4fa0L,0x535a5aa23b065ac3L,0xdaa8a32fc52ea890L,
+        0x5a5deca79fddad22L,0x911f05fd2ab3b26fL,0x5dace7dbf37cd81eL,
+        0x0e0e44e790d16b8cL,0x15e68aede4f5894eL,0xafe04999fc92a74fL,
+        0x1d7703aa970e7c2fL },
+      { 0xa8a4c81d3f0062a9L,0xe31eb2b8d96a20baL,0x66dd98df864bd101L,
+        0xba05f5924413b614L,0x51a67a0de9a555f8L,0xacc2f0972e4b52d1L,
+        0xab5daaec7184ab23L,0xce08b43e7c7f691bL,0x520e530b76c427f4L,
+        0x7d352069e423ebdcL,0x6b5e39e834df14ceL,0x3dcbf295446305acL,
+        0x682cb2e1fe34cdc1L,0xd4ac45d1111f5afbL,0xc5ef63cd47f296f9L,
+        0x0a2c40ec93c20871L } },
+    /* 93 */
+    { { 0x09bc384faf5747dbL,0x3bad6086c06ab86bL,0xa406882e9e7c1547L,
+        0x2d5326d155977abfL,0x063a9a05da81deb0L,0x9a86e4a7524b6111L,
+        0x1402f87a4ab2eb90L,0x7d0721d4d5c600baL,0x1a2fd9a9f289fdbfL,
+        0xf5dce66decde6f07L,0x62171277dab9fa73L,0x6d2dc49f6c474babL,
+        0xdc017e1f76eed033L,0xb97175c04da825d3L,0x6c297e3d54b05e43L,
+        0x2efb454656c9c87eL },
+      { 0xa4712b008b21c064L,0xd186fe424a70629eL,0x6435b3409b74f0afL,
+        0x6965aa437ec9e629L,0xdda14673c4c60d08L,0x0b656670bf3057aaL,
+        0x7f05e8403ce86f60L,0xc05073a904401a16L,0x16b1e638294e607eL,
+        0x2078325269cf7046L,0x2941141be8ce7d3aL,0xd38ad8d37577053dL,
+        0xdba68fb3caa6630dL,0xecbeaff1e9504350L,0x9f5166d51d2d760bL,
+        0x337532ce462891e4L } },
+    /* 94 */
+    { { 0x3f1118533a00bb9bL,0x2d2ffbae45f66685L,0x9ae11a85d4aee24dL,
+        0x18ba1e1b0341856eL,0xa9ac81782731349fL,0xc13dfd4a545715b5L,
+        0xa5f7423c5daad2eaL,0x30a483b9535b76a7L,0x92e9ada4ff873e9bL,
+        0x15662d84723a1055L,0xb935497b8edac4e0L,0x61b6441a39d8fa70L,
+        0x1541d75640d1589fL,0x62994237f0a05f0aL,0xfd8b00346bb28908L,
+        0x192a2b5dd4cd32bfL },
+      { 0x63576628365ced07L,0x029f32fb05de1d1fL,0x6d17b9bcbf40a7aaL,
+        0x1b1b2a089bb50a47L,0x9389abbb795a6278L,0x52cff60fb34fc19bL,
+        0xf3ab9492387d8739L,0xa8f053e66920ccd6L,0x3ef2dd4b63a9b4f0L,
+        0x9ab0ede151e82129L,0xafba0c0b0838bfa1L,0x2bd5a7ac9ffc11beL,
+        0x058bfd9595cc0878L,0x686d48a3f8c2f0c6L,0xc33abaaf1d9b31baL,
+        0x632e22893bc0c268L } },
+    /* 95 */
+    { { 0x1c851d2015a1cccaL,0x4efe290c7e522bc3L,0x0b741d5518eab053L,
+        0xae656197bc85e217L,0xae13141e01cf8b29L,0x2e2cb59366948478L,
+        0xeb57bb0fc31bd8aeL,0xdecef5d6c264e788L,0x6fa856cc9cb96d86L,
+        0x2db16813279183daL,0xf03f3820383d796aL,0x58a456ff1d0c6fedL,
+        0x255898058a6abd9bL,0x339f52c583f96f19L,0xcf6ded8fda7e9ea7L,
+        0x68c3d9c15d1ccd45L },
+      { 0x67e26265e6b392b7L,0xcec1d9bf775d9509L,0xe16abcd4d76514f7L,
+        0xd86f59b20de72e1cL,0xa66e43cd1adfb033L,0xdb34434005e457ccL,
+        0xb67a79165681daa2L,0xc32e7babf0114731L,0x066fe16ed3b1e961L,
+        0x924e298ef63d26e6L,0x9bea0dd8541add6dL,0xef9500df9982f971L,
+        0x5c876e63c5f076acL,0x55e12ae5b23d396bL,0x09efbb362ec6747aL,
+        0x8f2055ee233286a5L } },
+    /* 96 */
+    { { 0x4a4ab9e3b82c1af0L,0xfc65e9e7f2cae264L,0x4feaac0a60187d46L,
+        0x27d3f335e393b363L,0x9c9f7c00819bacceL,0x3f7418b5b8aa6611L,
+        0xffa94557372aae95L,0x937d78048db38589L,0xd10c86df6f1fbc1cL,
+        0x48aebd89a2f0a0ceL,0xae5d5fa2367439ebL,0x103a6a0b3f17d2d8L,
+        0xf233f68a411d9894L,0x7fece8b3218b67a2L,0x0422540f2319bf06L,
+        0x1292c8c9340d322eL },
+      { 0xf5eb55870386463dL,0xd4bbc2b20371d97fL,0x1b3645710b819c5aL,
+        0x0cbb42d6cf04ad41L,0x5d819c7666939ec1L,0x8745ac13a01847e7L,
+        0x4f704b021c7232e4L,0x2c9e58a0acb05780L,0x9523b8b3b561e295L,
+        0x3384df0079f9ba35L,0x78231fc21eaa9628L,0xa2eac54f8aea2b90L,
+        0x8075ed7730d1c263L,0xacb44ed5fb339000L,0x92546ac2f011293aL,
+        0x7c78762beb821764L } },
+    /* 97 */
+    { { 0xb8f7d6fb067902b6L,0xb2823a43d1735980L,0x062cfb1259741dddL,
+        0x6e391b074033f95cL,0x3831d0a368589b8cL,0xe3474d49522290f2L,
+        0x4dab14d6222e1f3aL,0x8f00fcde53f08d39L,0x559917ae707f28f5L,
+        0x166aa0ba068e607cL,0x602713e7d7e1f824L,0x7c2555404d6a328fL,
+        0x0d2e32649890cd2aL,0xf2207944eca0b20aL,0x5c98dc0752f4e09cL,
+        0x69403504d84de81dL },
+      { 0xf8b7b366e5407206L,0x1ecf54cf0d88fa8cL,0x6fefe548f7272e6fL,
+        0xd653137281ab4468L,0x52cb5f0e4e474408L,0x9e426b3a6490737fL,
+        0x2576c19b4980d071L,0x91f346280f272cafL,0x78e60a4f468f31c9L,
+        0x8776a32990844d89L,0x8a55700cb951582bL,0xab1af36514b1adbfL,
+        0x22ebff92fbd343efL,0x32f9fb01b7d81f34L,0xad850e06ba6b30e1L,
+        0x6da9e027bc5f9546L } },
+    /* 98 */
+    { { 0x21eee4c25c9490ceL,0xa96ec4a30df68381L,0xe6c607e0a4a9368eL,
+        0xd8b0492a4bc262f3L,0x0846a210460c34ffL,0xf7ff7a6428df33cdL,
+        0x10c5504421827612L,0x9d25fce9149bcd01L,0x725611cdcfc613dcL,
+        0x159f7e8897f51ce5L,0x3fa3bf314e8c08b5L,0xea15611575e7538fL,
+        0xd1e0a95191c84020L,0x0d2268bacf02ad0aL,0xa04c6ac4058b8e5fL,
+        0x773b40b9b3515912L },
+      { 0x00ff2cdc3631cfd2L,0x14c4c2d3807737bcL,0xd600616a338a5270L,
+        0xd0e3306db32cabdeL,0x336738eaa70b17caL,0xf2f4aa8d79f353eeL,
+        0x712f6ad9576f3ad3L,0xe427985289b2bce0L,0x05d8f94dda92ca30L,
+        0x9891d475d8492dd9L,0x3e06a5ca4d15e4bdL,0x4725d4eb254eabbdL,
+        0x31394acec0ed513cL,0x7e0f9859bbfaae6cL,0xdc125546833fd137L,
+        0x12b46385c56c4f75L } },
+    /* 99 */
+    { { 0x810dbebd932951deL,0x96959d425aa69c94L,0x5fc49c04ecb2f08dL,
+        0xac74f0cc2250b82cL,0x96a439a53aec4e1dL,0xc33cab9a90499acdL,
+        0x2fccde6654d9b3afL,0xf4af285c3863ae8bL,0x2373373e46febf88L,
+        0x751d672c3c9ab7edL,0xc1c51130fe12020cL,0xad82402f52f3e56eL,
+        0x3489ab7aa4a64a81L,0x0a1fb661d9f163f2L,0x17c69be10e553317L,
+        0x61c1935e7d88d417L },
+      { 0x2e722d9b3492ae43L,0x1ef89d950538f05aL,0xae77e588200aab63L,
+        0x2872c120eba4b117L,0x5c2432c83a461cb8L,0x315b3434cb938f26L,
+        0x05bf2ac58c4c7dc0L,0xd2e501dd596b378dL,0xa8506c9fcb890c30L,
+        0x3d0af4617c361f0cL,0x21f7b7185a35cbaeL,0xbd1035f1f3fc0138L,
+        0x74628af58b248edfL,0x8d6421d048c9cae0L,0x75e3da392ca18773L,
+        0x27ad0df271d3db94L } },
+    /* 100 */
+    { { 0x9e3bda79305b5aedL,0x2c67d4a45998d6a7L,0xc855e1d30f7eb700L,
+        0xc18a7e9e147d1c44L,0x3ea99618c89540edL,0xa53be20a7e6bfd20L,
+        0xc9487e64ecc14437L,0x7297920734ef85c6L,0xfa0d4e71d5e1ebd5L,
+        0xfda2b1e64d48d6b6L,0x782a1e0566e200d4L,0x2a3c70da5a5366a1L,
+        0xfe3fbd2b1a473738L,0xd7ef8c067fe020e8L,0xec686fdeeacfb665L,
+        0x5d9b5e276dd1542fL },
+      { 0x3637c5a5cb3e472eL,0x2153d92730a1405eL,0x009992e5b4498558L,
+        0x18f00ccdf39a0851L,0x26237c11b5c6c560L,0x418ed4081343540eL,
+        0xfef7cbf07e7f3184L,0xecd92366bf48576bL,0x1b75be1abc94c91aL,
+        0x8e1778de4a162276L,0xc52e57d3c5c6bcb8L,0x5cc382c75ab71858L,
+        0xe12c2c283f6e39f9L,0x4c7e0ef2d62735fcL,0xe071deb1835a5996L,
+        0x24f891cdcbb8c766L } },
+    /* 101 */
+    { { 0x24ef60bf6778c1e2L,0xff49c03d00d5be5cL,0xec11986e2f01a09fL,
+        0x59a728a4ae096e58L,0xaabbcedb7077984cL,0xfb473bd2870ca5a5L,
+        0x8c928c614de30e3dL,0x3fae7f9a4f67abcaL,0x83c2b2ebec21a9cfL,
+        0xafa70d629cd9b5deL,0xadeaea59c60b18dfL,0xd5fef7be4049b54cL,
+        0xfceebc766dd310e3L,0x7748efe38f6321ccL,0xfe9c32b118ee8af5L,
+        0x863ac3cfd42df612L },
+      { 0x0a36fca7b85a2fe2L,0xf3e70d08ee429dc6L,0x8c9ba209141c3944L,
+        0x306a810667272a0aL,0xe69a1555f968bd06L,0xb86f7e47153c603dL,
+        0x9706614aef56e4faL,0xc0dc36b898780b4cL,0x43657fe23a1d3263L,
+        0x01f97a86435522c9L,0xd91897f6edfef679L,0xebbe31d46daa17a0L,
+        0x6f17910085accfbdL,0xe0da6e328f9fc1deL,0x1c9d53dbe1e7142cL,
+        0x3e3f1b1e8b86725aL } },
+    /* 102 */
+    { { 0xb7ea15c07b7fbf05L,0x992f11b61f1a3882L,0xc9ddd95ad1dcd1bcL,
+        0x31f5b7faad0f7e8bL,0x2936e5ebfca7ab79L,0x30f417dc19a55be6L,
+        0x1f6f4e4343cde554L,0x971f5e6582f044bfL,0x73c3b8e44288c408L,
+        0x61aac59fb807f575L,0xa64ee2dd818b58f0L,0x6f7a0a6097a3b0d3L,
+        0x8b85ecc80394b058L,0x9a059474bfb3517dL,0x89ad5977a79c3f06L,
+        0x81208ed8700a8025L },
+      { 0x1093509914c4ce37L,0xf34bb843a1aa48a6L,0x86007024580d58e8L,
+        0x6db42c49b375b8baL,0xac365524ed3bde83L,0x5521e1b4649233b6L,
+        0xbc7cc5d564dd946fL,0x9c14b035bfb5b6aeL,0x7f22ba180146c1a3L,
+        0x0b62fbbc872214f5L,0x3acfd7f7b4921764L,0x5ff10da1cb4d6df1L,
+        0x660e262062600a91L,0x7ac7da9d81d9167fL,0x6e8e260cb6e7a199L,
+        0x44383fb880deb3c2L } },
+    /* 103 */
+    { { 0xe107f01de44f9af6L,0x36381a4d8cb1fa1cL,0xe65be3ecfb7dd493L,
+        0xd0b8435a26a8839fL,0xee60f9153ec789d8L,0xe25fea502bcc5e1fL,
+        0x0477c0c57e44a81cL,0x349e9f83230ba5b8L,0xdd42f32fde180dd9L,
+        0x8b039eaf64a3d11cL,0x80ef884ebeb7083aL,0x288e60c4f12742cbL,
+        0x44156cc5720a0262L,0xcd547de67253b77fL,0x9829a6eca6013a59L,
+        0x8aee708f0d548445L },
+      { 0x18f22d9c32c54409L,0xa9ebfa4675ebaac4L,0x90e2e92886284981L,
+        0xd0201f6f6b3a8e0cL,0xc973016cbd77641eL,0xf926f2f070170575L,
+        0x4984048ffec0ce01L,0xbf696211f319d304L,0x74b5c844c91a88c4L,
+        0x4c40fbcee0030a82L,0xbed67525e4f6d521L,0xaf7e47cc29d67d1eL,
+        0xfa307db8c21d3536L,0x56b6c46abbb29405L,0xf059a7e3033e805fL,
+        0x970f61fe6096a5a0L } },
+    /* 104 */
+    { { 0x1bc53d231bec8e4aL,0x8809ac1435a6034cL,0x4ee081da509e464dL,
+        0x496ae1fd8a488235L,0xa1ae9863325864b6L,0xbaca13e974cd069fL,
+        0x3738cc58b1d8a6b4L,0x5fa71f58e76b9da4L,0xc919be88c7eb16fbL,
+        0xf5c8f13fad4e429dL,0x4583b6712499f9edL,0xbce20115a10d8bd7L,
+        0xf66d76055790bb7eL,0x9316aede482b78ddL,0xe0d8fb2d75f855faL,
+        0x404b5b945a7dcca7L },
+      { 0xf9ee682a517a15c7L,0xaae4cfbcef880202L,0xcee2c1395106a354L,
+        0x5de60192170febe7L,0x589e39fd73d0c54bL,0x195c71358c9092b7L,
+        0xcb7ed53f0a7bfe5fL,0x2bd9242af61cc979L,0x8d2ef16c5395f7d9L,
+        0x0d4ac1ca70b32f09L,0xa587526d52d185c1L,0x2932b04a942d6195L,
+        0xfe25a979a500b0acL,0x5fa1f4ae562fd230L,0x60f55af220da253cL,
+        0x7faa11b583146002L } },
+    /* 105 */
+    { { 0xb0ba4f0c6e402149L,0x3584cc1d963cc119L,0x7740dc1aa6527476L,
+        0x3f77ff75c95715f2L,0xb2f234ad3f89fb0eL,0x55159032ef9be3ffL,
+        0xfc9fb21d04237e82L,0xeb2eff38a153ed93L,0x89d53ae010041d13L,
+        0xcf2e545b7f1bd828L,0xdd4a27ce43953ea5L,0x00d2e5d4d85e75c8L,
+        0xeb93ed62241be1c3L,0x1e53f25f0242032dL,0xb9957636c3a4e701L,
+        0x14b63a52ed98febfL },
+      { 0x7610b55371c43336L,0x19dfd4a623a4824bL,0x7b97a2e00286051bL,
+        0x86abbb9c8f5f1edbL,0x67a57d779b67daadL,0x8ace506dcd5ffafbL,
+        0x85da9f9589ac3c63L,0x081cbaa875a3d150L,0x03353d8fe9346ed2L,
+        0xb2ab61f1a1f9a02dL,0xb0cb09373a659c71L,0xb7e0e30b4f5df8a1L,
+        0x77c4c741eb7d5a1dL,0x8f046c9c728e5cf0L,0x32dd0bc7f7c171acL,
+        0x02485873836d2655L } },
+    /* 106 */
+    { { 0xcd40dd2375a4cd8dL,0x132ca43397bcba78L,0x30c5cd84258d61f5L,
+        0x0a7ec059da1e8e68L,0x07a8f1711d65d40aL,0x869e655ef4350d76L,
+        0xb98ce6f05983ae42L,0x7b61391d9d8bebd0L,0x3a529e25b1ba5d49L,
+        0x46f732e91f6b2cf6L,0xbd66ec6a3fa3b629L,0x397950ecc3ef0ed2L,
+        0xee9008cb5f08b476L,0xfd6be425965a0e2eL,0x78ed513c1177bc87L,
+        0x6798cedffe512daeL },
+      { 0x49e3f8fd1b97c5c6L,0x39fbab3e78c3b33fL,0x4427441240f595baL,
+        0x174225b95d7d4376L,0x880b3fcc79c44777L,0xdc3aca833296b245L,
+        0x55913df71734e184L,0xa4db23d39c934472L,0xcebb3733d1420a11L,
+        0xb9d20cf9f3608bdcL,0xa618acf630cfe13fL,0x75f06b315f30874cL,
+        0x506efe7f9f0005a5L,0x8aaea78c01bfc9dbL,0xf9179255f78e7c41L,
+        0x3ea7aed252e96395L } },
+    /* 107 */
+    { { 0x98617e045b06ae25L,0xbcac148dcb5750efL,0x91ea2f0e604c2ba2L,
+        0x00c19f6b76b78975L,0x79b9b6d0651da181L,0xf3225bebc945705bL,
+        0x30b435f35c005bf1L,0x440b4482bc24d86dL,0x2b8f0996d6373777L,
+        0x65fd6c561c44b4dcL,0xe9405ee630906999L,0x19ff092408aa1ec1L,
+        0xeef3246a3d2f2895L,0x016c3765bc746797L,0x62d2569fd0705f7eL,
+        0x6a8ad39c05250044L },
+      { 0xe45f020d46be7282L,0x9405afed21380f12L,0x4cdca5bdd5da6ad0L,
+        0xc2d6f1847f8be61eL,0x20132953596b8178L,0x8d3b1e7b7a8df954L,
+        0x757c61bb39572b4dL,0xd749b57b80cc3b56L,0x9590ff9337b3ffecL,
+        0x39bbb653145dc94dL,0x70c1c6062335e573L,0x9c2e72d7f763febaL,
+        0x4768e424cc61b732L,0x777d2fa6aa73f2caL,0xdee4dbaac5cb58cdL,
+        0x1a1811799cfae1aaL } },
+    /* 108 */
+    { { 0x6f6ff62f77575ed0L,0x18f14fa97d1da99bL,0x2e72aefb69efd7f6L,
+        0xc45ab4cbddc28633L,0xb0e20d48586c5834L,0xd397011a39775dd8L,
+        0x0130c808f4134498L,0x2d408ebaf5115ed8L,0xc506a05c0260ded9L,
+        0x9e5b736219cab911L,0x4cf508c6e8693a86L,0x4e71245fcc773617L,
+        0x2f71aa1f95d89ca3L,0x4bba7c6a607bbc98L,0xf3a515e7212b7fd2L,
+        0x7d2ddc759230f5a8L },
+      { 0x3d05816d4ed2cae8L,0x4cf6bc7db9c00377L,0xc23e98e6646b08d4L,
+        0xf9ee6c614b9c0180L,0xe11c9a13ef9179c1L,0xa5b6147e8ed9688aL,
+        0x7afeb648d06670a7L,0xd670333c17685275L,0xa89dd96975f9e8f2L,
+        0xbb57228d37a68adeL,0x21a05d5e454cb186L,0x4810158f063dd550L,
+        0x92dd4f084cb6caf3L,0x70c4d8527854abe7L,0x845969dc6e729d76L,
+        0x5a52f87ab1bf40baL } },
+    /* 109 */
+    { { 0xed019e9109ecacbdL,0x6544023d7b89bdeaL,0x7cc51f0b5707371eL,
+        0x14832b0416c8e217L,0xb1aa668281259ab5L,0x6e100f9223e361d4L,
+        0xe593eee9e3a95c2aL,0x699b6bbd16c10e26L,0xad4878739473a13fL,
+        0xf1c14dc5b274987cL,0x57dc00752559e2e9L,0x8449849dc3d47ad2L,
+        0x83df278add527793L,0x770e3ec8eefd5b99L,0x2ae5844676bd02a0L,
+        0x17f027643e705ffeL },
+      { 0xdda4010d29abea1fL,0x636b96952407ac4cL,0x96a601290433218bL,
+        0xf221fc3b163d534aL,0x05ba15beccc20565L,0x1238e54d96285577L,
+        0x1b144257878804d3L,0x96fbf304a89a9fe4L,0xc8a7f06c4be642b1L,
+        0xdd1a20e86e2b085eL,0x8f7f27c2ff4a591dL,0xc17b0753a4a343b8L,
+        0x684b1e88bb173d4dL,0x3accea443dc07bbeL,0xdb15c88d4c441d77L,
+        0x0ef0309a53e5957eL } },
+    /* 110 */
+    { { 0x4fc25721fa8e5b60L,0x646938ad691c0bb2L,0xe46d4b760b0a2248L,
+        0x863f9ac27de16877L,0x503bb6ef2721c630L,0xf8c199df0b67fb02L,
+        0x78c1ed72e07abd39L,0xcf9deb7bb32f0ddaL,0xaff726f06c3c89f3L,
+        0xb7008b2d1972225aL,0x8f5a61174f145f5cL,0x4e0e6f8c457c4f37L,
+        0x8bbdaa441c453c64L,0x57be326da6e92c80L,0xa9bc3fd95d773561L,
+        0x3d3b6cc6bb37b72aL },
+      { 0x6e6f12cc9722c880L,0x3a1b6ae7286b6889L,0xba1cc09bad2fafecL,
+        0xad64ad7a43bb8befL,0xa5af6a0097c3f4c3L,0x2afcb0d9c353a91bL,
+        0xca13fcab69ccbf6bL,0x699a1391f2abc190L,0x2dbd554223a247e5L,
+        0xe206180f95488d9aL,0xba9e7bff1244cc3cL,0x29297abe87d3a365L,
+        0x4054fa38fa4ca5e2L,0xb390623d67be1b6cL,0x1fa67c5778f41a44L,
+        0x2e946e43c7b544e7L } },
+    /* 111 */
+    { { 0x2980fddfc60934aeL,0x2c3e7eff164206d1L,0xf75e7f96416ed75aL,
+        0xfac60cf35cd0b2dcL,0xddc4bece1faad87bL,0x753fa87c9849e5ddL,
+        0xc5d516a32c1bf1aeL,0x565dbea814732b4bL,0x007ebe3ace48696bL,
+        0x40ca74d6cdb97694L,0x3f5cd27065e4e7beL,0x74847c013aac4ebcL,
+        0x6762e03443d6c3a1L,0x690d8c95467a076aL,0x768d78d61eda677dL,
+        0x0997ce550181d8c2L },
+      { 0x9297746c965a0b81L,0x48b58be6e5e12dfaL,0x5573b3c4715f437fL,
+        0xe425e907b565c459L,0x4f43f5121582797cL,0xe5dafa6f8ea5474fL,
+        0x2aeb8fbe13de04acL,0xed7f95f0e8a07c83L,0x3e012a6e662c09feL,
+        0xbf96e9b8c742cf17L,0x8ea5759ae28a1c45L,0x475941b45cf4e2f3L,
+        0x7dd3c02df901a019L,0xe7a4deea70916b2eL,0x50b272b52fa9b988L,
+        0x96f9f09fd0917fe6L } },
+    /* 112 */
+    { { 0x78e8aac42c310a96L,0x32a98303f7a2a734L,0xc46ca83d23962207L,
+        0xad131e6ed9541280L,0x5791fc5e2cabe911L,0x50cb77eb841b6c68L,
+        0xaff93dea3d3c8878L,0x06541f1df1007bceL,0x4ee729c255cdf1fdL,
+        0xe0f71317323e3972L,0xa2de7a41ad4d08c1L,0xa9912abfa35e22bfL,
+        0xa050122b89b03325L,0x8b9e51f406514d4eL,0x423c7aad79d3e0abL,
+        0x71998e2640b8fea5L },
+      { 0x40140fcdceb6ed78L,0x653cf37718534516L,0x0450b65ae8d60dccL,
+        0xce6c1a769dac55f8L,0x8a96a92dae05686cL,0x2fe4476212712562L,
+        0x747bcb50a4f39425L,0xf0ec6ff2fc531fc2L,0xc97c344710fe9ff0L,
+        0xfb4887839c792cffL,0x552c5248026fb019L,0x4001a29cd804c290L,
+        0x742b5ad835c8ca73L,0xc3781f176ee5dfa0L,0xca6b85f03dfa4ab1L,
+        0x8389941a0b0d32acL } },
+    /* 113 */
+    { { 0xc0f062a2de067dffL,0xd4f32690bcb80162L,0x98cd990d0707a2bdL,
+        0x5afc63b8fae4a391L,0x684f1b7bb32ad814L,0xb0a2dce2f199dfb1L,
+        0x2260e17f48f25848L,0x7393db00c2d5e862L,0x9e88f854338cf171L,
+        0x0067942902acf522L,0x19157cb86835af3dL,0x2faa6f92b8a2614cL,
+        0x04ff95f5134ec46cL,0xcf00626efb7a8135L,0x454b3d05b37a4704L,
+        0x1fbfda312694ec25L },
+      { 0xfdebb657c8f69c77L,0x92a8278ba3df88faL,0x463b5571c1fb78b4L,
+        0xd2066a1a11c71a33L,0x10c88143089958b0L,0xb975c7e0cf9d67a6L,
+        0xdaa5d20873037b8fL,0x5ee5005d40bf5861L,0x300e6ce77dba69a9L,
+        0x893c3cb3c962cc74L,0x0ac986294cf84055L,0x0a7ef63a225c9d70L,
+        0xfe184869b91e47e8L,0x1b9d7deb8c2f84beL,0x67788915c0e278bfL,
+        0x4f9488cac426f19eL } },
+    /* 114 */
+    { { 0x610dfcd4dd51b8ceL,0x0857927836230e80L,0xedc7ff1c36599562L,
+        0x905ead4be2cae877L,0xa1c325d9e7967608L,0x3e39edddbd38926cL,
+        0xda92c8685f6f0a4eL,0xe16f800af47a0fa4L,0x50b4db5be5f60aabL,
+        0x3665412f983853d3L,0x64b622509b79789cL,0xea5600584e0e72b2L,
+        0xabbd4901e555c2bbL,0x378419a717292e11L,0x6e0b5aaae174218fL,
+        0x688e06848f796b92L },
+      { 0xcdfef641313b8f64L,0xaef11b7b942c7462L,0x067cfb775c0d8abdL,
+        0x608ea5f0af4041a9L,0x23d5bd826935210fL,0x5ab904fc27917a08L,
+        0x85dbb1fe45d22d21L,0xc3d5e5094d36159fL,0xaebb528e1d39b8f2L,
+        0xdd5ca828f44acef0L,0x24209adf20c57a54L,0x5742b43378f95f44L,
+        0xd11fa7d9a9337d37L,0xd66a0c09c64cfdb7L,0x56e55b8f9bb817ecL,
+        0x1723c7e3e4c41265L } },
+    /* 115 */
+    { { 0x9a6486d8dc8b43f3L,0xfc3e0e6126409e68L,0x1889c437d9b46003L,
+        0x3a8503356284ec7bL,0x5a3665c46a9dbaeaL,0x7bf6941de978933cL,
+        0x1ed5a51069341490L,0x664a7b7a8cb8002dL,0x603f76e460ed0a59L,
+        0xc3e06ba31f4ebf27L,0x296ced41f2c38a7fL,0x2ac18f79cf1db08aL,
+        0xc919e882cde7a3b6L,0x15e77d29dbf68b06L,0x21978baa4e947cb5L,
+        0x84bf542b7630993aL },
+      { 0xc1decda9e364f21eL,0x0d6cf345012e557eL,0xba246848588f90e1L,
+        0x9f6dda4be3b104b8L,0x6bf7a346e3aef57aL,0x210299fee8327ea9L,
+        0xaa99f487da95e6c7L,0x24ff813ed2cdf645L,0xd1dbb2d28bd414b8L,
+        0x065101afcafa1a61L,0x7d9f4b9a9cdebda4L,0xaf41b395e41039e4L,
+        0xe3e9e6bac50adf42L,0x4f2133ae341e9e49L,0x4968c0f3cb157f23L,
+        0x383f827bda068153L } },
+    /* 116 */
+    { { 0x2ec46a216583ff4cL,0x4e645a294ad709e7L,0xdc66e9cfc04ca12aL,
+        0x82f128f49160a7e5L,0xbfb227b1569c762eL,0xf80c7963c2edb8e7L,
+        0xa7dafe0649a0f688L,0xb7e417542d14b8ccL,0x3a0c5c5386de40beL,
+        0xf0d052861db79331L,0xb902ce69fbfe071bL,0x61e46956210e9903L,
+        0xfaef874ef703ebb8L,0xf668947edd5f78b6L,0x6fe865475af5ea3aL,
+        0x3b121f1543f94625L },
+      { 0x5b26e847659275e9L,0x47581cfd6d0fce50L,0x55f5cbfd8aa3f1efL,
+        0x1e7be315e484e60eL,0xd8f1a20ffe9698e4L,0x25d46da97ab04784L,
+        0xa526db75834cdb3eL,0x1fd408d98d08a009L,0xfc004b205b5ca816L,
+        0x5b3e3bb365e4bbe8L,0xf50cc125759bb6efL,0xf05fa817c2fac737L,
+        0x9ee102d2d273951aL,0x2a8e540bfecb3367L,0x673446fb2a6a515fL,
+        0x5505e1d137290c83L } },
+    /* 117 */
+    { { 0x0c3014a1d15e68a6L,0x6f9f0b2664dd35e5L,0x18c3742d03ad67f9L,
+        0x74818c0ed2c14484L,0xc51811690d41a3cbL,0x65c8c83fc49f3e9eL,
+        0x9b260c612c279386L,0xf6086faeced04e9cL,0xa7b2ccebfd7c4758L,
+        0x4b3c313390297fd8L,0xca8264e809701ac8L,0x9f976a87508b3762L,
+        0x5d582714983a8dfeL,0x350d2669d9d598e9L,0x85cb89cb0f6fd348L,
+        0x617d80d4a574317cL },
+      { 0x4cef267e70022b67L,0x80536bb53768b94aL,0x3153a566d2784462L,
+        0x49054d4438243919L,0x8d11e1725df78c4aL,0x9b252a71d5a1e35aL,
+        0x07866c808171e31dL,0x0a8501db1b38a00eL,0x2ed932b8ce770236L,
+        0xa2d776098edaf7d0L,0x3aee5dabb93006e9L,0xfaffc8c4bbfeb036L,
+        0x077b96784e21b38bL,0x491fc59fdca8e069L,0x3f624f550e938471L,
+        0x5156f5087cd1780bL } },
+    /* 118 */
+    { { 0x58234e220206e8d0L,0xf5f6f5d47f15af32L,0xafab7289d638950fL,
+        0x66ec4d097d4495f4L,0xad890c5d68da80a9L,0xe4aa092064f8a36bL,
+        0x799e257e0f4d5c5fL,0x44c677ae24495e31L,0x720387b3a5b8e352L,
+        0x703790f475a287b9L,0x54895cc5c3c1f2f7L,0xb8680f9b41a7fa41L,
+        0xfcd47458b00b008bL,0x149cc838ba6473cbL,0x78ed5f7aac9be19aL,
+        0x5254599cb33765baL },
+      { 0x08739679a21b54c4L,0x029ece2ab6497d9dL,0xf14f1a92c8488640L,
+        0xae48dcffe9fa79d9L,0x14b911c246c208dbL,0x5ab0fbf2dae3f69eL,
+        0x180ac87ed1edb838L,0x146fd718188586bbL,0x210eb6545467cbd0L,
+        0xaa2394081667cfeeL,0xdb125c1ab73d1a60L,0xde685300881c1cbeL,
+        0xfe34c71337c30232L,0xc6c6070e6f3c8d18L,0x07e365bab4af4e83L,
+        0x22f0a7eddcf82b45L } },
+    /* 119 */
+    { { 0xe262791fea7f1b7fL,0x9c3d8c5ddcff09d4L,0x86c2a9c339c7dc58L,
+        0x4dad40174276e8c0L,0x0a918f59e9fe1d56L,0xb8d796702aa810c9L,
+        0xeb7a88364aa5cdc4L,0xfc4c23bbe7afa72eL,0x4dbb5c9e4ac86908L,
+        0x37e390136a0c7e6fL,0x855d700149c218d2L,0xe475bc6794b324a2L,
+        0xc98a8dc66287a071L,0x395a299b5fb4323cL,0xe186c3ee0c0389e9L,
+        0x79f81e6f16734c46L },
+      { 0x83f2c1f3364f3c4eL,0x536b2ac51367e14bL,0x44a6dcfc5933e43dL,
+        0x34e5947510d961feL,0x08234ece7e3f2aaeL,0xcb92e00abdea7f25L,
+        0x1efba4f0a791a124L,0xc2086fd21192d53aL,0xfec0d0fcb51c8af6L,
+        0x48d1b2cadc0f1b5fL,0xb07a388f812dbe19L,0x40873a6adedbdd45L,
+        0xbc2a1268d702589aL,0xbbf6e3a817e27b64L,0x73ee56636d386e85L,
+        0x442ecd379de7c000L } },
+    /* 120 */
+    { { 0xb4cd1ae68a2f90a6L,0xf277d41d6f5ad0ccL,0x6a3828c4401d4b8eL,
+        0xe817a134d8376631L,0x142b758df5e1124bL,0x25fbc69dfd6b95e4L,
+        0xa30c9f5fd74a9e3eL,0x5ac0f163d89663ceL,0x32a9eef70ce6386dL,
+        0x7a690ea5d8ed5544L,0x5de23ff09889427aL,0x75ad36a5eaaced58L,
+        0x3514a6c1d3e18465L,0x3d9162c37f093910L,0x5c10add9e33d56e8L,
+        0x85176b7306aa691eL },
+      { 0xa32110fa28a21e38L,0x97b6379d5773d538L,0xd3697bbf2d020dc4L,
+        0x59177593961833cdL,0x6d7045fae5fa8516L,0x3390f29a786ab5d2L,
+        0xac0bda30dc4f5b70L,0xcca0240adcc615c6L,0x8e1f1702c5146d91L,
+        0xceb472d0a72cef87L,0x848407080b669ba1L,0x79b08f9d7e61aa0aL,
+        0x388160be4669560bL,0x23935c2d948eb71eL,0xd7fd83c09431590cL,
+        0x8ab154bb6e5768b3L } },
+    /* 121 */
+    { { 0x28686003353c4a96L,0x4e5c60e8905cd835L,0xbd5913648f66f8ccL,
+        0xb6b80b989faccf9eL,0xbc1c1faee32639e5L,0x2f6396d2278aadebL,
+        0x00a796d01898202dL,0x18ab548f3a474835L,0xacd056c3b31b0e3eL,
+        0x15ba68dd0164512dL,0x203836d94b03f3bcL,0xd64eca6bd8f206c5L,
+        0x931a361e9f1779b6L,0xd82690fc52ab34a8L,0x342bb8e092922e22L,
+        0x1bfcdd84e00b02a9L },
+      { 0x310b9a4375a365d9L,0xd4ade15e08d8fb03L,0x9c9753d7d742df83L,
+        0xcf7309d4de318742L,0x1228e2123360ace0L,0x1043d238f7669643L,
+        0xfc2adbedf90f5a53L,0x41d64cb77b5f9397L,0x5200b30ac446d010L,
+        0xc3c8642d231720feL,0xfcc0122db9aa2075L,0x856e3b12041eae47L,
+        0x4586445568c876a4L,0x1a1c7842233606b1L,0x9b766d1f227757bfL,
+        0x25b78a3bf7b9d4f1L } },
+    /* 122 */
+    { { 0x90835718156707ceL,0x9bdc23984314f90aL,0x017c885a8be57dbdL,
+        0xd4bba225ad63a4b8L,0x5ce71b8615aacffdL,0x5f26647572954722L,
+        0x0a80f1f74f0ad3ddL,0x010538a3fc352ed7L,0xf8a640454203c6caL,
+        0x2b2c7a88330c73b4L,0xb3433ee602dcac1bL,0x2e0499cfed2b17c7L,
+        0x9f8681a4bd6329c7L,0x3897994636fadc37L,0xdc5650c892b7895bL,
+        0x70ab957065a51cf0L },
+      { 0x46778ec47b585d93L,0xca6d3610a633fe4eL,0x21da154e4ea0311aL,
+        0xaf22190bbd64002fL,0x9e633ac7d91cb7a9L,0xed13c31fee6837d7L,
+        0xda4a07d71616ee8aL,0xd78a27323afcd616L,0xc06696e5ba14d694L,
+        0x733754d74df58420L,0xe85e504e2778e3c9L,0x3055aa0c55b5a5c2L,
+        0x313df5388a3acb5cL,0x5896acb52a088edaL,0xfc8842a084c85ddeL,
+        0x5fec9f7951dde6beL } },
+    /* 123 */
+    { { 0x5ebc2c7cfe519f99L,0xe396bd80e5410353L,0xaded94028a3988f3L,
+        0x1c03b735d601bda1L,0xfd30203614ce64acL,0x5837ebe901240290L,
+        0xcaaea1a3a554097dL,0xdce73d25b0b88139L,0x35ed412becb090b9L,
+        0x99029ff7d63dab3cL,0x555437d9062db071L,0x277d2f5642a4c11dL,
+        0x477fa64524fc9109L,0x7b12e9b72799254dL,0x7ad2ae22d84c618cL,
+        0x0a8d5663ce8ed195L },
+      { 0x43ac51630a21fde1L,0xcfcf5dd66903d849L,0x6d2499ee5fdd6281L,
+        0x4dedc6f077a49a34L,0x46bda2c02875c06fL,0xd0e0e0f6347b8046L,
+        0x1058169b5e67836fL,0xc961912ade8a8042L,0xdf3fea0aa93b3d32L,
+        0x9f138edb0c576bc5L,0x7971ad6ed8d37e47L,0xeab85739cce5e7cbL,
+        0x88a4b4341d202b40L,0x5d842557e3a1fd26L,0x872fabd5b3a86f91L,
+        0x95b934936aa4629fL } },
+    /* 124 */
+    { { 0x9998a70199f951deL,0x8fade596f058db45L,0x4d479c1ef3d03dd3L,
+        0x6e928d5d33b141d3L,0x9a465800acfe8a40L,0xd108ad2fc1cefa3dL,
+        0x64b96921e013726eL,0xb9b6a6b68e83bb9fL,0x29f1e6dc1242e544L,
+        0xd3f8f6762f65966bL,0xa34dd0965e105b41L,0xd4e9139a16011e1cL,
+        0xeea4dc682515541bL,0x6f8030acc822166dL,0xbdc7ae1d31d16124L,
+        0x2e25ef51621afa7dL },
+      { 0x2533cf8fdd8e7357L,0x333ba218eaceddb8L,0x68e3e31d0784d2acL,
+        0x1c927f36f2804ae2L,0x01433d2277e7ad7eL,0x0b401cf0587f78a0L,
+        0x9dfcf036aa0027aeL,0xc9e46c8b1d9a46b5L,0xaa6de4861f288d32L,
+        0xdd56da2f1b8a043dL,0x346230e5f2d0bb56L,0x19f0b6e419defb56L,
+        0x55ec37cd21d2c874L,0x3dbf0397b70e45b3L,0xf0862a8dac7ce852L,
+        0x87979ea7e141f3d6L } },
+    /* 125 */
+    { { 0x9b7e7b3f7f1c747fL,0x151a4c1dc6e63369L,0x4273ff70b372dba0L,
+        0xca6d2234d3ee54feL,0x12fc8e0cd33cae0fL,0x273285385dd6f10cL,
+        0xc86f3fbdf01a9cf9L,0x5322677fe36cae91L,0x39a700332fefea44L,
+        0x2c9ca328ce8af217L,0xc0256776f6a731f4L,0xc687b3df66a96813L,
+        0x194aab128db2eda8L,0xde30dc5aeec4febdL,0xc052236a979241b2L,
+        0x3ec98802c23d4c16L },
+      { 0x0f9e760c4072f74dL,0xe78eb0deab594059L,0xdb3dea40c9b009c2L,
+        0x47e875f038b59ae5L,0xf40eb4362b4daa06L,0x9a6a4f92090f3788L,
+        0xefebe9afedbfaf8bL,0xf87f96a59867e256L,0x1e6fed2375ab6aebL,
+        0x17f2782a3fdb13cbL,0x5102c71e70fa2621L,0x5d2b06ecfd4c0dbeL,
+        0x537cc26830347297L,0x8dbf5e2b2b67e780L,0x2f633f3aba25da32L,
+        0x3e9315e8efaec914L } },
+    /* 126 */
+    { { 0x9255cfa5239a9ea9L,0x20f3c6900be33a62L,0x759eeb4b9cb642bdL,
+        0x3316c54600bae718L,0x874a76d5f3410f84L,0x123b502e90f129b6L,
+        0xadc8f9a812851f1cL,0xf57b764a1b62408cL,0x116ec01f1a80777bL,
+        0x746ecef21f0ddc5cL,0x3c49d47ce5a6a5a7L,0x1e15dbe706e955baL,
+        0x629c0c79b45d79b0L,0x11278308778d1087L,0x22585dc78c6a22d7L,
+        0x2ed02a0d0a682791L },
+      { 0x530434164daa2682L,0x0e26d32b01359625L,0x449c834abd867097L,
+        0x11a19d2bee77ae2eL,0x39bd529a3af6c169L,0x36cca5c05cd61054L,
+        0x6370a59bdc6c0fe1L,0xca420d27b93d5135L,0xd8730d45554c451aL,
+        0xebd258c996cdebf2L,0x0cb1b990a50f9a05L,0x69a8c97a7b0f0151L,
+        0x2cc36d3411d217e1L,0xf117688a752f75e8L,0x1db01394a09b2a61L,
+        0x14627844a9efd7ddL } },
+    /* 127 */
+    { { 0x6bca3aed232803cfL,0xc1e4398b9a96ff34L,0xcaf6757f74ab788bL,
+        0xc3a53e007e68c04dL,0x5f969c195cb7cd20L,0xf28b65a6dc068bcaL,
+        0xe3ca01d31d863032L,0x9b733b8187808e14L,0xb5d704d9efe618beL,
+        0x276f3542b01b946dL,0xe057e19efbedddbfL,0x7d182f2b903275ceL,
+        0x3cdc5f77880f7bc6L,0xd6f03d3f78476c14L,0x035f5557a9ba5072L,
+        0x7acb57b6b4029628L },
+      { 0xd241356944e6b07cL,0x451c4cc9e1c7345dL,0x407444d8e273b9fbL,
+        0xfe496079b88e34fcL,0x77d184cff152776dL,0x6d1033b9c742299cL,
+        0x29a0a68477bf2897L,0x59ffdf10ee8f0420L,0x4e17146c44bb56d6L,
+        0x831d06c2fb9ae855L,0xb2cb82dbd93e7cd5L,0x83381c463c96b607L,
+        0x06aed2517549e2a8L,0xef97891c774a21d4L,0xae9807c78675fbddL,
+        0x6a5a05b96363516cL } },
+    /* 128 */
+    { { 0x92e71ea66a8f4f33L,0xf2fc6fc64dea8f4aL,0xd356252cfee88461L,
+        0x59b0a83e08954d08L,0x5bd68c23468ab766L,0x40281357900f8d04L,
+        0x181c19c052b867aeL,0x986a516918764c41L,0xcb01dfae13575d24L,
+        0x17269ae5593677b7L,0xf6d1702546dc9b19L,0x8de68499c40097c8L,
+        0x76df0032259c407bL,0x4091aad917d29d8bL,0xa7f46d214a7ab5f6L,
+        0x688054b470ece48cL },
+      { 0xf0d168aa51a5b86cL,0x2437e4d895777247L,0xae844076f1720329L,
+        0x0a7ac87d9647a54eL,0x1e597a4b0405622cL,0xedefe5c6f0a79f2fL,
+        0xaf3ef0c24d55156dL,0x917fb04eef047cf6L,0x3792799f54b62137L,
+        0x875ea32f314be0b8L,0xe157c65b0c466b0cL,0xd28c90ce7e218978L,
+        0xb90fc3bacde587afL,0xdd32d71c8b877bedL,0x3b432200ca8e10cdL,
+        0x0021f419d94f6e53L } },
+    /* 129 */
+    { { 0x2191122c43519d26L,0xbdafac1d40a51845L,0xcc6f71e9548bb89fL,
+        0x9ef3375c16844bf9L,0xe7789f79178e8d55L,0x04f599b61f8be1c5L,
+        0x8088c99a2cbbde40L,0x8939a260893206c9L,0xa1ae4bfffcd30851L,
+        0x664cb3fee08feafeL,0x61f38099ff14aabcL,0x0d8394cc2a841ef9L,
+        0x75fad8ad17f01db6L,0x6fc345766debb773L,0x1e716b05a4252512L,
+        0x7985588029e1ed9fL },
+      { 0xa2cb3aaa95106473L,0x95fafa415a61da04L,0xfd3c9362539563c0L,
+        0xbaa4809195312b87L,0x6c7e7582bf885c76L,0x70f6dab6230c78d5L,
+        0x8ce3051c7747440dL,0x6dbebd14ffdb6186L,0xb0e041fa190e4096L,
+        0xba10c4666ee62e2aL,0x93d57e2a74f333d6L,0x006aadc4fe7b9b66L,
+        0xfaf72f6c06d2837dL,0x318cc5e6910741eaL,0x9c50260965692477L,
+        0x95d823c31d0fb08dL } },
+    /* 130 */
+    { { 0x6aeebd86140528a5L,0xf268c2ba53979bc8L,0xb1bc9b8a4ec144abL,
+        0x1efabb0d82a7d7edL,0xf12c70d14e0118d8L,0x31607168a1c1558eL,
+        0x33e428b7e4b7e73eL,0x6317663783aec9ddL,0x5172ffbee12ac35cL,
+        0x37df0bfbbc17b2a4L,0x4212f870741f812aL,0x3dcecbdbe2888f9cL,
+        0xa9dc15aa756ca55dL,0xf31918ecb9028e41L,0x7ede02856aeadb03L,
+        0x0e2708d578654f54L },
+      { 0x2270cc53cde20f88L,0x9338272c5f5b1039L,0x5042e19e5dcb1dbfL,
+        0x4b3de219b72d74c1L,0x16c49a8b2aaaaa55L,0x008443e5bba86ba6L,
+        0xee6bcd7220cf1695L,0x59ffac6ba89abd11L,0x2831217bf115639dL,
+        0xe4d28af2f34cba52L,0xf27f03e70727a906L,0x6842c79f69017766L,
+        0xcb3469bd7a81123eL,0x48c0f346a42973b8L,0xfc5784a623990dbdL,
+        0x0d3dab3bfb299678L } },
+    /* 131 */
+    { { 0x8f8376e6ce29c3ccL,0xcb0507ecf016cbc6L,0xdebff9965e394ce1L,
+        0x24fc526f73c50d41L,0x4edd5a542d16ce3dL,0xbb37bdd991c13141L,
+        0xe3442ef2e33a8606L,0x2ae90337c0629da8L,0x57faec64592ab331L,
+        0x1a938997d82b857bL,0xad6c8cb9a3373176L,0x82595de29086751fL,
+        0xa81e97fb18c17196L,0xe4f48a13bf697357L,0xa1387c2e5cb89f69L,
+        0x530b4eeb5874b426L },
+      { 0xe9f275a1bab7b5aeL,0xbb69dc4d03a57bf4L,0xc974dc4aa45c505bL,
+        0x726369f3416ac402L,0x735e4e78aed985dcL,0x0548d879cdd446a1L,
+        0x84ceb0699e16b02aL,0xf73f6fa4789b11a6L,0x6aa0c41fb2a4e784L,
+        0xb1f7690293a9b697L,0x814cce00f03a8ab2L,0x64cb255b844d66c1L,
+        0xb794e7d630952201L,0xe052d4e43da32271L,0x5278b2e708b6a4d9L,
+        0x9094255280c6577fL } },
+    /* 132 */
+    { { 0xd269a14d0d5b4c2fL,0x2b8fc59b5c8a649cL,0x95becb3ab0e37d4aL,
+        0xfda1a7689111037eL,0x5810e05a94e35322L,0xa24dcc12a178fafcL,
+        0x5c2c63b28e3dce62L,0x995c3f179452c444L,0x35330ec342d45161L,
+        0xa025a60ab4ef8129L,0x854932528bae9c13L,0x25d1a606e2e3caf8L,
+        0xd44091ab3649bf47L,0xc7d0afbf704ec5f1L,0x27bd1d62bd8b3333L,
+        0x50570111cfe616f5L },
+      { 0xd0084acef534356bL,0x9df1de054b4b0fbcL,0x021afe05cee04dc1L,
+        0x64bde688361b78e1L,0xa324fcc7ef78d38bL,0xfeb372ceeb0a5e4eL,
+        0xef04fcb365811996L,0x7dce5d505eb0ab4eL,0x1e29b588238c586eL,
+        0xde5e3197bcd80037L,0x8bf5e4514806b9cfL,0x4330968bd18e67abL,
+        0x26a7d04ef9f63fadL,0xa1c7f123b5c18bb4L,0x485b848225dce22cL,
+        0x8ff0b36fd540e79fL } },
+    /* 133 */
+    { { 0x99f2e2f43ff42cffL,0xa3c19f9d1c35317cL,0xdb749392aba1b545L,
+        0x84232b054afa9a32L,0x0b855d46d7dcd436L,0x8ac35e2045cf9915L,
+        0xd7cf22c7f001a218L,0x057d35aeed408305L,0x25a4a519553ccfcdL,
+        0x5e56579393e2b939L,0xa20332b03422ec27L,0x9b09005e3ac53958L,
+        0x628051a379e9b163L,0xb4a0dc09fc6618d6L,0x9e0e857f6748e7afL,
+        0x71b28eeec577d63eL },
+      { 0x4942b0cd99726bf8L,0x1290a3b91c208f3cL,0xfd7290e7b0598eaaL,
+        0xc6a7791fa25a9128L,0x2d33db24c037d7daL,0xc21efeb070e2837bL,
+        0xbf70d96ee3dae2a0L,0x43ed819185076027L,0x4aeb0aa84d4ad7e3L,
+        0xbc75101fe8c5b74cL,0xdbfb2a6ead26ebddL,0xba8120686b78aa4eL,
+        0xc94aa8f2e1159848L,0x0d10d9db3eba5c4eL,0xce7fec476318295aL,
+        0x7294711a330d925aL } },
+    /* 134 */
+    { { 0xfce4590432bbd495L,0x330f4dd1be54973fL,0x006bee1d5d9c3f4eL,
+        0x40ee607859ba7204L,0xc194fd3f42c2c768L,0xa0e76b12e9fe88beL,
+        0x17cddddbec2b0210L,0x689d436b00811ec7L,0xa6a6ba37284be9e4L,
+        0xabc395b2007d4114L,0xf8cdf9f30f11e744L,0xc5febec8e9396402L,
+        0x8a751743eeb46285L,0x99bf8782c6e0d137L,0x3965e170beb292e3L,
+        0x001c39d85801fd5fL },
+      { 0xf4805cb9da4a0912L,0xd27cb76a4410bca4L,0xef3dcb8eec71d65bL,
+        0x780fbb2b4816849aL,0xef6a7026a8b24635L,0x15625c8812c44e68L,
+        0x624c232c4d7a74a8L,0x81a770374b1631e4L,0x04e4f7f1db917c2eL,
+        0x1d0465fd1f61ed95L,0xb1048049cbde6e3dL,0x637ce0c1d7131fcfL,
+        0x22e4dbc28ada4715L,0xf7530c5cace99726L,0xa0160dccee287450L,
+        0x9132e670bb91af13L } },
+    /* 135 */
+    { { 0x8057efe27996099dL,0xb72344dba06e608cL,0xeb4a8740d0958588L,
+        0xe53daf0679e5aee9L,0xc9560a9a908a2fadL,0x7f4be131107e706aL,
+        0x6d5f3d9b2830246aL,0xa5f8e8da27cca3e6L,0xeb51dca64c28f292L,
+        0x4cfa310ef31dfd78L,0x92e0c7c22ca073e5L,0x102f1694a40da683L,
+        0x16bb07cc750d38fcL,0x703e83e2badae035L,0xea93c066b4d3c9ddL,
+        0x7d0b03e579940ed1L },
+      { 0x5fe7ea304dd94c63L,0x57ef01c5738b0b3aL,0x9534a78ca14e6b4bL,
+        0x07622cdea5353276L,0xaf696a077c22d006L,0x733c18867d46b209L,
+        0x9654ccbb626c2b4aL,0xa098d3a1a84f3c4cL,0x3596f9ed2d734b74L,
+        0xdfd3021a5d551c90L,0xe2ba7d2f1ec5123fL,0xf9726925b2c1aa39L,
+        0xd2e75d0ef8eb2927L,0xfaba712e19192a6fL,0xa606b43a9b83e50eL,
+        0x31b1782fdab5de60L } },
+    /* 136 */
+    { { 0x878dba454034db92L,0xa39779018f34dc4dL,0x8d004f2edf754c33L,
+        0xeaa5954acd563a88L,0xa29d6c89bb5ffad1L,0xa8adf655b0d8bdb8L,
+        0xf7fb842d8cdbdb47L,0xb72e3a0380d3205bL,0xc335b0b27cac7ca9L,
+        0xffc60bcbd8a5475dL,0x736f7719eba4d25fL,0x3d901c380c50fca6L,
+        0x1fdacf7b80c01900L,0x75cf658f5681f84dL,0x57a7e6345cefbbc1L,
+        0x6fc0fbe53e07ed1fL },
+      { 0x496d116bb81b0e5fL,0xd82dd2a52ac853b8L,0x357e22d4327387f0L,
+        0x3e332a84ba912c59L,0x8b71c64349d5dcc1L,0x0c982ee9438d85d3L,
+        0x90b9553cbf7fcd4eL,0x2cb39bbc38fed5e3L,0xa2c67c9c5ac42903L,
+        0xebf21217bf07da55L,0x55ac05ada0b9e4eeL,0x10bb12c28ee9e0c6L,
+        0x5cf3aee548bb6e3fL,0x4ae7269c8b046e91L,0xcb266012aa0e553fL,
+        0x701935a1a94c8fc8L } },
+    /* 137 */
+    { { 0xde58d41da4626deaL,0x25ef66ca15b9039fL,0x99a810a43164e65bL,
+        0x9fe6daad748cfccfL,0x7ab9a6bd2f142fa9L,0xa4cba1685d471796L,
+        0x12d30b366bc3a39bL,0x1f46a5dc8bf45076L,0xb868e5291421ac0eL,
+        0x7a68620659bba1c4L,0x2b4b552eda698b90L,0x5039dcd4e5453707L,
+        0x42a07a9e9e90165fL,0xa838fff3d7d45dfcL,0x41991e5a3b5ceb30L,
+        0x6c961ec8969ca600L },
+      { 0x703bdc1bc4e7eb46L,0xd6bac557596c7b48L,0x4f9917cd66afd74dL,
+        0x56355105656ce6f3L,0x3d1fb50c32497175L,0xfda6783e63effb2dL,
+        0xbd79f1f3eefaa2bdL,0xa4efbe5417af9ef7L,0x6cef64625a55b7a4L,
+        0x116f32381a713304L,0xdb2a2a7fb95625a3L,0x6a0aa43a0b027e96L,
+        0x458fe5d24832b3bcL,0x523418df5adfaac0L,0xc05a89cbc49e7f9aL,
+        0x830883d869e24b53L } },
+    /* 138 */
+    { { 0x959b1c6202557389L,0x5fe5ce97adefc0bcL,0x893bbe7f8330f383L,
+        0x27e0c6af16cfb81eL,0x6f64e65bd04428fdL,0x53de9245b79e6182L,
+        0x08a313c1487e11caL,0x65cec3b9445bce93L,0x33bc0314d67ed49eL,
+        0x69f36b2430782352L,0xd78e5daf93ad31d2L,0xf2682b70c780890cL,
+        0x7015c34f9e45efe9L,0x135d4ba4e6cbafeaL,0x43a378a47e3fcc6cL,
+        0x2376f97f96638f8cL },
+      { 0x0a6e1ec0ae575b99L,0x7e14cb4f81b970dcL,0xf00a3824d3a73947L,
+        0x0b4b9c81fb235a9dL,0x8d15115f5bf62944L,0xcfd35b431e165d7aL,
+        0x5d12fea2b2ee3e3bL,0x629984a6f5182e7bL,0x4e43e2f3c365d08eL,
+        0x9932709130f36e72L,0x698b4a00fd345401L,0x23c4fd0ebaf96dceL,
+        0xa60ba0ae23675554L,0x51bdac2db0325784L,0x8ab4190a215464a1L,
+        0x8c4616616bf10296L } },
+    /* 139 */
+    { { 0xeffca2582d1f36a5L,0x0eded2b2894c5f2dL,0x35a5cdb843ced84fL,
+        0x290f8982db0e3b9bL,0xcce0eaf00719a112L,0xd0e657e439a362d6L,
+        0x5516a55d62697e47L,0x269e1f778e636514L,0x5e3dedcbd50269bcL,
+        0xecec2300441c57c5L,0xdb83f31cc705578dL,0x1bdefb731e489eabL,
+        0x20b678cf395fcdb4L,0x908cf91cff9db001L,0xcbebc6f455f52cc8L,
+        0x155ea622b4c61162L },
+      { 0x94be2f1f876fa42eL,0xab5e87497fadeee7L,0x692e70f538c865afL,
+        0x16e99b84df8059b0L,0x0ceb606e8b5a7ac9L,0xced233572d463d2bL,
+        0x2d0f26232a9a09a0L,0x2529998c3861fbdfL,0x711888a7c1be310bL,
+        0x9b1229c50d8aade3L,0xdbcf9b783b13533dL,0x3ca746f8ff029708L,
+        0xa5a013a1da83ef88L,0x8e904d184ab28444L,0x2fe84b3dbcbd4abaL,
+        0x8f570f24259058c3L } },
+    /* 140 */
+    { { 0xdeb66c8a2ca9c508L,0x2dc5bec269d6b780L,0x16d6126688ead600L,
+        0x61841b9749d72614L,0x41e40e6cce472e6fL,0xada242641fa7a876L,
+        0x45b9fd33cc3997a0L,0xb25e8fa97c15dcf4L,0x0124ceb212e9629dL,
+        0x3a8c72c67db3d956L,0x8e2ded2b7c1a7844L,0x94ab09c66dd027ffL,
+        0xf89a057d7e7a2bc6L,0xad8bf226cf70c763L,0x4cb268e7c8a26212L,
+        0x3d171e87b2c44c1dL },
+      { 0x382ac16e8ce49820L,0x24ee45e2c0c44dc9L,0x0ec6791273e858c4L,
+        0x918cb25c46327cf9L,0x43e3876bc6159c1fL,0xb6b6e0e037545cb3L,
+        0x64b839ab5d12347eL,0x72e09274a300d541L,0x26ab28e6881c1169L,
+        0x4a580fffeb75a843L,0x0a5802ca359120dfL,0x7fee82d03209f4a3L,
+        0xb518016b8e6a9380L,0xb99c6c70c2ee11caL,0x16105af1ab9d4ec7L,
+        0x234e98f834cd9004L } },
+    /* 141 */
+    { { 0xff43520814db9cdaL,0x99cfdc4796adec90L,0x843aaa6faf458b6dL,
+        0x3f1f7415743eaa31L,0x915e192e61735d81L,0x3441a22d0ac595d5L,
+        0x704bbf67c044bc8dL,0x2f960471be23a236L,0xcc32638815d1d557L,
+        0x9410230b76b1dd94L,0xf2e5439f0c1c8a67L,0x56b141ac833c910dL,
+        0x467c999f865b84dfL,0x1b0251fa21f02b7bL,0xde5b526096216950L,
+        0x6a2130e3ce3a1e93L },
+      { 0xd21b67a04b3ca1a7L,0xaf42ed5300c0ce80L,0x22ccd368932cf07aL,
+        0x36523a815c25c35aL,0xecdd39588dd04d06L,0x73da3502b2f93a3bL,
+        0x4c5e0c3cd5e5b530L,0xef9f548613268777L,0xed87fefc1e742292L,
+        0x6d9ac29ea24e5edeL,0x08abc9f033849f1aL,0xb09b229240f23905L,
+        0x6791072c7f934353L,0x102a6381e6aeb550L,0x3ee0740996feb870L,
+        0x34f06faa9c4d2830L } },
+    /* 142 */
+    { { 0x869dc79f2348f005L,0x9b5c5d71df4920b1L,0xfd1b57ca6dee64a4L,
+        0x21b7f734e82a4fb4L,0x637cb834b9578366L,0xc934101b7d287d96L,
+        0x1590f8ac0392ecabL,0x280dc3737f75f4e3L,0x8b36f50f6a61ac62L,
+        0x74f58304a65568daL,0x80d792a9d930870aL,0x6d17b192fc8895ccL,
+        0x498392fa4914939fL,0xaf36027dd41d5b9eL,0x452d79e25caa82b5L,
+        0x764d47b1f4115d1aL },
+      { 0x5df22303a2ee8b9cL,0x1b9f72d385dfcd48L,0x6b42b98310813a37L,
+        0xe28c523b3de741f5L,0x0857625af303bb5bL,0x926f299aac9bf9afL,
+        0x21beac080d445b34L,0x6a523a02d6ba2c0eL,0xe302a1b17fce2864L,
+        0x4516a235e300c1eaL,0x4543736a7b4a9311L,0xd3c0b9e8c0cc89f7L,
+        0x0481904f40ed88deL,0x4f269b563cb7fc70L,0x09a1d53a321b9738L,
+        0x1c0dd9c3230a3810L } },
+    /* 143 */
+    { { 0xffaa1f67c46a7d9aL,0x64743334bedf91ccL,0x45833a7447a42f2eL,
+        0x67980051241ffaa9L,0x70979a84335efe6bL,0x5f0613f5f08b2403L,
+        0x6bb22fcd64f211dcL,0xe1b8b2a3a0572cfcL,0x19e0eb417950a14aL,
+        0xe634bb293eb6cd4cL,0x31a04b25470a25ffL,0xa41f7ac9a3d15a0aL,
+        0xefed85ecbf2fede9L,0x1f581f5f81b94a00L,0xaa3996b09ef4a15cL,
+        0x52d8be39b06041bcL },
+      { 0xbd1536f6fd631a2fL,0x91fae7f0b351a8dcL,0xd1a590c79b126212L,
+        0x52d4875f2bd0f435L,0x9aedb6d392b0ea70L,0x0bd0abdcb83ab89eL,
+        0x827a106289fe192cL,0x6566a960102a0bdaL,0xda083037ce036814L,
+        0x30bed79f58639405L,0x972019b6dbca8df9L,0x89201286efdaa3f5L,
+        0xb337b9965236b892L,0x11d3e38e28fc2e73L,0x70787f41880e8da3L,
+        0x6cff6367dae4a45dL } },
+    /* 144 */
+    { { 0xbd3d0433f89a8bb4L,0x42144c3393b98f71L,0x82b616c803470a2dL,
+        0x98fcc757e5da089eL,0x542354ef7bf5fda6L,0x1885c2539ebd34ccL,
+        0x2e20b285bec5dd0dL,0xe71bbbe1782a1bcaL,0x959ded309b854ef0L,
+        0x172499798997fa6aL,0x50cf8fa8d81f3c45L,0xa9a3b51760c11152L,
+        0xc9b0ef7decf845eaL,0xc9339e23b9fed11bL,0xc93e9c5c28256080L,
+        0x1d2c8217613ec1e7L },
+      { 0x7381347d987cfc93L,0x047603bbf187f810L,0x3fa6bc9d1250ca31L,
+        0x480091e0bb055bf3L,0xbdf95f1a3a3af87cL,0xe2687770140540abL,
+        0x998df730d7fe045bL,0xb398135fb723bc2dL,0xac230f8c15ebec46L,
+        0xe08e18305f5561c0L,0x7c0fbf4cda60a47fL,0x06e95c24e16d4bfcL,
+        0x7416349574617e92L,0x397198694ae0c20eL,0xfe2693122131e2b6L,
+        0x25486e360a537722L } },
+    /* 145 */
+    { { 0x618795ca53572806L,0xb2c89449656968e1L,0x149c2c973fb323aeL,
+        0xfb15de26409bc7d6L,0xa90cda72c79121b3L,0x6d2fa14e204cabbbL,
+        0xcbcda6f791604125L,0x25086261b435f947L,0xdb686c38c282eb10L,
+        0x51016d62f1a791cbL,0x6b1c7ed161a2266cL,0x26780666271d74a6L,
+        0xb5ffeda1824287a4L,0xcbe503ffbbe4f0f3L,0xd7f7f0beb9482a74L,
+        0x751b2358088493f1L },
+      { 0xd597b9d6e9c9be68L,0x1794b5c467d10c6cL,0xa88cdc3d7762b2f4L,
+        0x6d94a63aa1b44e11L,0xfb0bbbb9aaa8eca8L,0xf4b0f2d0c963d87fL,
+        0xb753062c5dc7075dL,0xfed726ac49933989L,0x5da6063857f9ccdeL,
+        0x221c392a75f8c766L,0xcd264d955dc672caL,0x7004ff22b66ecc8dL,
+        0xfb1aa9ae18a458baL,0xea9644df8babd653L,0xa9378e802ba0de7cL,
+        0x144cc12dca2c6c75L } },
+    /* 146 */
+    { { 0x593a0a1d2989aa3aL,0xd83f228359e6e64dL,0xe938b0cbd32e732eL,
+        0xf4c464c53c3cb249L,0x9750a5f8f89ea6acL,0x467e5bbf346cfc32L,
+        0xc9bfab9d37b2b809L,0xf8eb74533b339c6dL,0x3fe01fbe3b766deeL,
+        0xb3154254ef6aea27L,0x555c3df27be61b10L,0x70fb6d81dd818488L,
+        0xda1af3a4bbe714f9L,0x575f20179d18f693L,0xdc08fc6b2465b839L,
+        0x874ecf336b84a951L },
+      { 0x624af83ebbb3f6beL,0xf578fbb908bb423dL,0x5623b0bad7873527L,
+        0xc3659bd8a62e0442L,0x2903b167fe236f79L,0x55a430c6e53f26a6L,
+        0x222547ae3ad712cfL,0xb73890d776eb272bL,0x95b4f70b3d628df9L,
+        0x9f0e13b053eae4acL,0x5b4f5138e7f2174eL,0x75482cf998dbae17L,
+        0x2b69bbde44518480L,0x4f279652cafef15cL,0xa0a3ef2bb6bcaf19L,
+        0x31fb8581ce4c634fL } },
+    /* 147 */
+    { { 0x398306d1615cd607L,0x680c9faaaa32c3a6L,0xe87a705b7779131dL,
+        0x1031013a36708b00L,0x814fa0e19445297fL,0x70c5583aa6a79b56L,
+        0x03039cbf4b16bed4L,0x18a7ca8daaaaf8d3L,0xf33159e75cdb68a5L,
+        0xdea0e738d23814faL,0xeb3527188d0f4f9fL,0xb0b76609dcdff032L,
+        0x65ba8ea93d48338bL,0x18044d8255dd507aL,0x844a223e4a4a50b4L,
+        0x9832300018e19e54L },
+      { 0x28a2102757f3d5a6L,0xffce56486e8cadcdL,0x9590381b02551f3bL,
+        0xb26cc64f935ebdf1L,0x60611291c083aa6eL,0xcd988a6688e4cf41L,
+        0x581c3f73dd53b1b5L,0x78c804a977fc621dL,0x31874330fadca2faL,
+        0xf7008da4c83ccf02L,0xc4122a1da79a4707L,0x9a8e0d3f4a915eb5L,
+        0xa2de157dd0123660L,0x45ef43b265ead2a0L,0xd0a22ade188db285L,
+        0x8abbe39e922e0caaL } },
+    /* 148 */
+    { { 0xb44469053a2d2f01L,0xd27c31935dc6685cL,0x6a908bbf1d74a027L,
+        0x01da350f5b50ec1dL,0x1d3dd45e3f3c2e26L,0xf66e11d0b836ee92L,
+        0x7e03908f474b979cL,0x19e7c5b998b87834L,0xa741d3febd3d1de9L,
+        0x63c68e8d1ef6059bL,0x9b9ff9393674e247L,0x1d7d53e73e7e67f6L,
+        0x698dc326aee9e248L,0x52f23edab3bd984cL,0xf95e31b06f8fe8a7L,
+        0x0f15b4d0c3d0ba95L },
+      { 0x8f2f6635790a8d85L,0x51bffbaee2595af1L,0xd15b7ec624b51287L,
+        0x7639b6ab3234715dL,0x0cdd52992bc5441dL,0x54800ea4f6d05833L,
+        0x21efd752f6d6e360L,0xc0b7ffe519290613L,0xb68a5825eea898cdL,
+        0xecedba9222982266L,0x678a91b0bbd06bb2L,0xb2436dc04bb6b0cbL,
+        0xcf7a99e7caf8ea98L,0xb92d0e6e71aa05bbL,0xbf8d0471f5993eb1L,
+        0x515db37820385ddbL } },
+    /* 149 */
+    { { 0xee43eaaa6f5bef22L,0x952d269820348712L,0x1e4c484e7a3af6c6L,
+        0x18d434c69a8c9403L,0x63e5d7415001899aL,0x5238dbbcfe8ea40cL,
+        0xca6cc8d296798721L,0x73db6aee04acbde8L,0xbf69328db7f993ceL,
+        0xa3f79bbfad45e334L,0x8c51ec937c1f1630L,0x4907325f9b00a6deL,
+        0x49e6acb412d82bc3L,0x5901b36d0ec59fc9L,0xcb09b7109cf34e3bL,
+        0x2de0487e1abf4c02L },
+      { 0x18b722f38dd9d484L,0x833493937c77baccL,0x58dbb8f193d92b8aL,
+        0x80d78d508e3fac25L,0xf0500981745f4a7dL,0xd072bfed877cc29dL,
+        0x67abf8f2c30a89f8L,0x92c567ea9a0820d7L,0x425ab12e8a3a5738L,
+        0xc162faebf055521bL,0xee1c4f26b94ea5e9L,0x1e4149943d71e546L,
+        0x258183b843e8be1dL,0x44917c82ef9eae0bL,0x6813a45773874a30L,
+        0x6f6ac071cc42f86eL } },
+    /* 150 */
+    { { 0xd38822ad4dd6e3b1L,0xfc78e1ccad620869L,0xe78438452cacde80L,
+        0x121cc14aa8469fe3L,0x8e8f3da7e67e8ef2L,0xdb83d16e4d347448L,
+        0x3ba1dd98798631f4L,0xdfab59770a4c4c17L,0x1f0a13063edc701fL,
+        0x4649d6016cd8ff28L,0x2267230bbcc55bc9L,0x02a19c605760412aL,
+        0xc719d5f1328faef6L,0x27cb969ef67eaad9L,0xf342530e719bafb5L,
+        0x6e2c24ccff5a82cbL },
+      { 0x6313024badaf8793L,0x944bccf1035c948eL,0xe9a066b7953500bfL,
+        0x7991a9461d116765L,0x95addb2e9fd93c78L,0x05d2c037e92e5495L,
+        0xcb145b189f03e5cfL,0x81ae48ca95aa1f72L,0x203f2702135a6e4fL,
+        0x2bcef5a249b2a7d5L,0x0687a90002d7f2a3L,0x2f7d32286c6745b0L,
+        0x3da8a87586507305L,0xbe38b8842e8dc58fL,0x6b48bf34dbf11185L,
+        0x5af7fd0d97c08f91L } },
+    /* 151 */
+    { { 0x55f9b950f4a224a5L,0x41904574cc50273aL,0x34f81330643f1fd5L,
+        0x996801bb0e50f783L,0x866d740389581712L,0xdb9a405da4091d36L,
+        0xf1e379df16a46fe7L,0x8d04a93f83bf9168L,0xae4c833532b20bcaL,
+        0x99d334b1f72a1c10L,0x8fbc9977d8195db4L,0xcaeb3dfffba14b5dL,
+        0x60fef02276daf476L,0x4b948dfedb5b72f4L,0x5185c925b6dfb062L,
+        0x27a9c3819609d4aeL },
+      { 0x73c37346f12a93afL,0x028b707c5536634dL,0x8efa58d5498193d1L,
+        0x4f83a5ccef21b69dL,0x05cbb0a3a788a0e2L,0x0103178165b13c98L,
+        0xfea20e582b73784cL,0xdf9713a0e50361f2L,0x31449a0fd0cc22d9L,
+        0x183752e77c5e2e1bL,0x6e44d6bdb67044cfL,0x012dde95733e177aL,
+        0x68b4966908ee2c23L,0xd9bb05411f5f1949L,0x95182c716acd886fL,
+        0x1c690694fbde9244L } },
+    /* 152 */
+    { { 0x5db67d173a880026L,0x89c4f0a0125d95f2L,0x290505513f6cb7a4L,
+        0x3eb231d15cbbdca5L,0xf8cffc99972bcbd3L,0xcb4ef4d4ad55a03aL,
+        0x944d47ca22867c2fL,0x96d885480ead1aa5L,0x76a57cf8cbc8b045L,
+        0xdfe5844b005e55a0L,0x5e9e7e191d18a097L,0x957a26e852923c74L,
+        0xd0867b797f5db339L,0x2553408e63bed0c8L,0x1596e5d5689ad23cL,
+        0x7b8c13d6a504c339L },
+      { 0x2fc43aad52fb6901L,0x1c0313f916ca253bL,0x1475830a515aadc6L,
+        0xc93d19267f577dc2L,0x26e52e8ef723c0ddL,0x2f1e0eb83eb9f6daL,
+        0x9979de82f180376dL,0x43e28ecbb0834939L,0x9a2d51dca39c38e7L,
+        0x6e6063a9a8e3f6b5L,0x4cf1da3a4b9b3270L,0x6e5348a2d2f8915dL,
+        0x5e75e3e050507912L,0xaeffce5720d383faL,0x1d6d53cc8fd2fb29L,
+        0x0e3c3ef6696f4cd0L } },
+    /* 153 */
+    { { 0x3bc337c121ee1d83L,0x97e08f6d787b7788L,0xbf709fcc138fa4ceL,
+        0xbaf77647a0348e58L,0x04f8babca55e672dL,0x0ed2919d7d5ec5ddL,
+        0x8ce64bff33e99218L,0xac09fc5724b059afL,0x506831f9dc5e32baL,
+        0x26a22677465af6a9L,0x3c5efe66c97f1ff8L,0x1515e0d6bc6087fdL,
+        0xb1a39c5eaa8edc6bL,0x3dd816bb0e79ed29L,0x6cc13769bc3788b8L,
+        0x463098e3c092a51cL },
+      { 0x3a6408c7c8bd0fa7L,0xd1764311ce6bde49L,0xe315e108283ef7beL,
+        0x8213cc7799b5d938L,0xaf7f158145a49a6bL,0xd00fdb0fe529e4d1L,
+        0x55d38f77ce66c9d6L,0xb4f7ccc01bd4b952L,0x8d975b49af71f986L,
+        0x12b59fcbcd64d00aL,0x1860e504a5a3bad7L,0x6d9760442b5c89f1L,
+        0xfed0c6597a3e231fL,0x58114c33178cba92L,0xe2e74c066698e11eL,
+        0x7f8fd093a348b85aL } },
+    /* 154 */
+    { { 0xf24592cac19428afL,0x192a1c813a308665L,0x42589812e30bbd7fL,
+        0x10db0723836c6bb9L,0x9c7a41e9598e4987L,0x8aff179e6ead6f4bL,
+        0x70f8f9b975862c44L,0x6b3b02376f21983eL,0x25d83e9b98e65152L,
+        0x3b2d26a8d751218aL,0x9508281a9d6f1da6L,0x8df78d05a5a81f74L,
+        0xd79ee559e4687471L,0x2060ca576787d8ccL,0x427a84ffa8476c95L,
+        0x87b64c51e6435131L },
+      { 0x87f46f654b30d3c4L,0xcdec4c5c23b4ef14L,0xb3b7476663ca4d68L,
+        0x1df34269cf3fb56dL,0xd4f139c40fd7d46aL,0xa3b7c7c76a69a8bdL,
+        0xee56b4c9cbadd7d2L,0xb28ff342ac942334L,0x0046fdfa786f1da3L,
+        0xce5d149cb700c82eL,0xca30ef8150966597L,0x44a20609fcff4bddL,
+        0x0f2f65e744925268L,0xe5b6552cd4021f38L,0x77ea9c2a042dbbd0L,
+        0x8c95267cd9c062f5L } },
+    /* 155 */
+    { { 0x6655032e5fc1abb1L,0x2215af5412fe4743L,0xfd65756029f05ef5L,
+        0xb0e73325dc191be9L,0x7ab3c65ec08639b0L,0x67507f511c3e6673L,
+        0x638befc3c8615555L,0x5d0188cf42f0c4adL,0x843a301cd896186dL,
+        0x045603f7b2c6741eL,0xf7545c0cfa3cd1d0L,0xf612affd4a40672eL,
+        0x56197c9f45b9e8ddL,0xb453237d87922d74L,0xbf132e3a4b2d59bfL,
+        0x8afa1b73b84a6a16L },
+      { 0x6b3596eae793ac70L,0x4c94ef8eeef6dd10L,0x926b4fa270422e40L,
+        0xc8c71dcee9e5d763L,0x352fcb70f512aadfL,0x1b7ba138a883975fL,
+        0x57991390058c3b13L,0x9692092a97740fd1L,0x19ad945b160b0697L,
+        0xbc63438810837ab2L,0x76ee11c4f174bb71L,0x6111bfc1ab1b80ebL,
+        0xbc82bac870ec458aL,0xeee60127312d3325L,0xb4118b1ab240adc8L,
+        0x672111912b5a093cL } },
+    /* 156 */
+    { { 0x91e99306f55cf9bfL,0x9b045308a46b96d9L,0xae3c1e1d9e7a65dfL,
+        0x453cb151c731bcbbL,0x14be5227a4d58a61L,0x39dac92297c74cc2L,
+        0x4d0f7a45822e00d6L,0xafeb1d51c62b03dfL,0xbb1dc3a4baa18b2dL,
+        0x7f3c7178df2b74f0L,0xfcd328a6896b6a33L,0xe95ed4541dce055fL,
+        0x97fbc76b6a4e2b87L,0xe5ec67f1fa59dce9L,0x052368accc0367c1L,
+        0x7c86391654e4a3feL },
+      { 0x55e94b5eca7388cfL,0x17cc0a60c0335d38L,0x9b69b78b616f85baL,
+        0x705d02ef10122980L,0x565a6e801cfd0a79L,0xeb74a96d7d1ee352L,
+        0x5c8832ed427b9dadL,0x96ea8528e6d5330fL,0x30d8862b18d24ee8L,
+        0x9cd38ed59ff939f7L,0x690fc9a201060252L,0xc62d88b82303b3ffL,
+        0xfc42d7a4dd52b469L,0x06f8dfa28cad2d93L,0x5023609060920438L,
+        0x32582758fce855adL } },
+    /* 157 */
+    { { 0xeb20e45f359e8c60L,0xc71bb8a5364ca186L,0x02b15071dff8e110L,
+        0x074e91d34c93e578L,0xc0326e00b829d0d8L,0x3c192258626a83faL,
+        0x387a64d5fb29a09eL,0xcaaa3d34e5ac5c82L,0x8ed685e5ada2da29L,
+        0x92720267eb29650eL,0xf7184b19763802f3L,0x23f5dd0edf6b1aeaL,
+        0xbe1fa34725e6125dL,0xd6287f9d0c872a1aL,0x49aa93d2ac57c3afL,
+        0x1a4e6a715bda7656L },
+      { 0x1a126ede554d1267L,0x37f945331cd02b48L,0xd70af04cce31fb1dL,
+        0xcf410b0b097dc012L,0x930e1d1736c7b6c5L,0x902fee41c6891085L,
+        0x349ba4a779fb638fL,0xa16c5821acd6f8dfL,0xfb3b83c12e076aceL,
+        0x6b8d033be501d14dL,0x0593d45220f2d2daL,0x3752526d99df1880L,
+        0xca32351c9feb33a6L,0xd91343bc1f6ef456L,0xc74857db35b9dc8aL,
+        0x856a7c9385b4e832L } },
+    /* 158 */
+    { { 0xa007d0020d0a5583L,0x2f1301ddeda4658aL,0x91c0796434d939beL,
+        0xa0cb6780a70c0836L,0xc0b4df95be81e540L,0x6cbbcd345d4ac8b8L,
+        0x57c52ed054756239L,0xcac2dca41805ceb6L,0x915ee6ab79344255L,
+        0x366def3124c9a2a6L,0xbd3b962f8c12c674L,0xaab64f1b7dbb7c3bL,
+        0x3c0e4553e22bb95bL,0x2408febac4c63b74L,0x3ca773122a4da631L,
+        0x62889084c636da40L },
+      { 0xa457fd538cb8d208L,0x7a8f8009543f06d4L,0xb66de154f2eff2abL,
+        0xfddb28ebf72517e7L,0x0149fe66f9389d2cL,0x79e8773fd85b88ceL,
+        0x452e090b0ba543f7L,0xdeb9b5cfb0b03fc0L,0x3113448a6c5ed77bL,
+        0x3609f3cf8ffc0372L,0x2bc9c46d5c1b4c4aL,0xe66f3bf38fa59be9L,
+        0x1396bf5fcdb02691L,0xf1ec59d4009f88f9L,0xc29034562ad9dfe3L,
+        0x79d8122c5ada4d58L } },
+    /* 159 */
+    { { 0x14d4e4ceaa529507L,0x056a081474655d00L,0xc0d30a384f0fc474L,
+        0x8a8203ea3443cb8eL,0x33c62fb097f1728dL,0x8a38dcfdb520ef52L,
+        0xa0f90d5d7cac9d3eL,0x28a7b0bf873cea50L,0xd115ae3a6c6c41cbL,
+        0xa35171daa13812c1L,0x25d4bba5624d507eL,0x91dad2897e98f42fL,
+        0xffd6b1e996a41371L,0xd46c2125b69e5b77L,0xc7d2b42420c4f707L,
+        0x2ab3af958142557aL },
+      { 0x86ca074c6a5372a6L,0x728fb83e56292ba7L,0x745596dc77741cf5L,
+        0x70b4cea1520ef49dL,0x1472fe3461e46472L,0xf4d6bd663fb8ac5dL,
+        0x46e52cc9c10bc071L,0x28794efe371a3461L,0xa4850718276fe877L,
+        0xedad57739bef5ab4L,0x24c2d9ff3f15c815L,0x188950e58f8395c3L,
+        0xbae4099680b6a855L,0x4f53e22c8a8803e1L,0xaf233f61039d25eeL,
+        0x07db2c35250409caL } },
+    /* 160 */
+    { { 0xc7f3b8db037d4703L,0xe83708dfc5f488b9L,0x1fba830f8471d402L,
+        0xa55ee8d25a2faae9L,0xc2e5bf105404fc1eL,0x647d5027aa2d5651L,
+        0x37a53c0c7ebaf5f9L,0x7adf0bb295b30abfL,0x5a62e1fed64c93baL,
+        0x7ffc18c0e2ef4a78L,0x139dd9d94d2cd04fL,0x253fbab75ea0af02L,
+        0x7c8100ea0fef9acfL,0x74c5384dc8615aa7L,0xcb28682d9fe52069L,
+        0x08b6ca8fcf7dd759L },
+      { 0xe04e5bea036c3b5aL,0x387261027f9f2b4bL,0xa9fca57029797c0fL,
+        0x1656180b82879ea3L,0x153389bb607f0ddfL,0x99a1223c67b0e087L,
+        0x0d1808ec9d897fc7L,0x9470711a916edf19L,0xf8f52f2b07217118L,
+        0x5d8b29ffd18888b6L,0xef1e22c54cc6f900L,0xc4036165eb24877fL,
+        0xfda9523335479525L,0xd622a4216861468aL,0x5d043b0774faba08L,
+        0x2c337b020d31a7d2L } },
+    /* 161 */
+    { { 0x7b2305bcea22fa65L,0xbe183ef4d159f63aL,0x3473d87d3f35923fL,
+        0xb27fb306c11d7753L,0x702e7e6b2a054cffL,0x3ce9f97caf185619L,
+        0x835502434e7d51c5L,0xa63e3d82f356ac5bL,0x867b7caad7645131L,
+        0xee85e6afa671fc9dL,0x3b985ede2b07cd77L,0x07d598b0ffda5193L,
+        0xb10eca39a942dc36L,0x17f3dcee506218a9L,0x3d94e8d106b7d5caL,
+        0x509b2634ed8831c9L },
+      { 0xb1b9414e48caed54L,0x77a78c6ccbf51e97L,0xa4688c8d4de9b258L,
+        0x0024137c91ee3d78L,0xa68f9234e30ee64cL,0x573255bc88190d78L,
+        0x41e8e05fba80690bL,0x50038d84ec354f4cL,0xb18f02d6dfa52816L,
+        0xc47f9007ccb63fdaL,0x29d480fbe98ae455L,0x4ac45d225d0e319dL,
+        0xd06f3575026db719L,0x733b9e202c3587b9L,0x224839922c317727L,
+        0x1592d5a754bb8752L } },
+    /* 162 */
+    { { 0x5778d9a2cf7453f0L,0xaffb899aed83c1f0L,0xae6506d3e0a82ba7L,
+        0x32c84e1aea3d5081L,0x9ad528c0810aa38bL,0xb1fdb020bd37d041L,
+        0x78d6cbe1d06ce41fL,0xd287f0f02e74b7f6L,0xf5cd2575c43bb022L,
+        0x6d28f2f3f81a71b3L,0xe65bb1f5c633e7f4L,0x32e5fc1cc4fc580eL,
+        0xcd55539fbb7b07a5L,0xb5a94471c3caaf3aL,0xb958bdf44cc22d2dL,
+        0x1614bdbd77a2777cL },
+      { 0x4c1f0230ed0ab04dL,0xae347b006e2082eaL,0x9f10bc63c42c5b5fL,
+        0xb0539e6fde019935L,0xd89bd4e765dd0825L,0x92260fefbbceda16L,
+        0x8aaa755ce62aca32L,0xed762fa95ec82c5fL,0x99e64c0118650768L,
+        0x57dd6245c92e348cL,0x0db88a7731ea6d68L,0xef0012ab07b44736L,
+        0xb9356b94171d70feL,0xe68b062803f891b0L,0x3a54a53ab79c20a2L,
+        0x489656c7b00b0728L } },
+    /* 163 */
+    { { 0xe43649ba71353c25L,0x517f27a113f67e24L,0x10bd333a1c1eb9e3L,
+        0x94e1c05c78e29bf9L,0x84fe7d974743f15dL,0x9c87490890da2df0L,
+        0x82403fa753673be1L,0x7ebf5db41baea1b1L,0xcfe0ae3524180eadL,
+        0x1d15873fc2f50c3fL,0x16851ad670661cd9L,0x802968d9a51e8c2cL,
+        0xe7d1a9cde0161099L,0x2b153c89a8a7ea56L,0x6d41b78906e3c498L,
+        0x082bb2e9d6769dcbL },
+      { 0x6180ef46c4d6615fL,0xfc629dc101b9829cL,0xde222ec00fb264caL,
+        0xc5457e0610ecc2c4L,0x95ce599f1eea2c4dL,0x0433fa728f9c5b2cL,
+        0xee035462cd6310f9L,0x84c57c3bce2e2253L,0x6c8ec31a96d87e44L,
+        0x30bfe393a452c5a7L,0xc592b140a047b235L,0x7bd8be18c018545eL,
+        0x794e01075c178c46L,0x484719462e23005bL,0x2665e237622a54f3L,
+        0x36451a46901c9042L } },
+    /* 164 */
+    { { 0x17802d1819893e71L,0xa1765d8b539a2082L,0xfc6aea012302ecfcL,
+        0x8d4cf51b365bf59dL,0x87741d720d232a80L,0xac343eb318e80427L,
+        0x553ecb2fe74739ecL,0xaeca79a81a8b07caL,0x089ff32256f4ab3aL,
+        0x5e95d7293fa1d1f7L,0x260569aef62a9a16L,0x5e776232aa08ddc2L,
+        0x93fabec31b7bb54aL,0x48a20956743d56e7L,0x749cdb12eb0ebeffL,
+        0x705307a469b8fcf1L },
+      { 0x7a8e4c04e488310bL,0x12726e325325cd7bL,0x5d0fd8b04983efacL,
+        0x796e552c02ddb913L,0x0eeca3f777b9685cL,0x9b766e89b15f24a3L,
+        0x7c2736d648efc979L,0x3d619685a8021c6cL,0xfe33e278a0b2f1eaL,
+        0x95c69879b676d6b0L,0xa07473191af4e0beL,0xa2fab5f136c4ee55L,
+        0x6938b8ff59e5f3b9L,0x1e114da439cafe6eL,0xc9595ec36a6ad120L,
+        0x80f79bd057e62aecL } },
+    /* 165 */
+    { { 0x3cef42a760af09b3L,0x3c016ebd933dfe14L,0x720cf1e0ed85eaa8L,
+        0xd4f5e99fceaa3bc9L,0x7216b9d2b7106f97L,0x65f34c36c9668ad2L,
+        0xa8fb82bc5b0c651fL,0x20f42f1cf2fda4deL,0xeb31ab2cd21f659eL,
+        0xb7a776c7a13d1618L,0xec44102238662be5L,0xc825da70cad08e0bL,
+        0x99299079022c0180L,0x7623bda02aef9ffdL,0xde84f4f3f5c58b50L,
+        0x5f5a5da4d824ff19L },
+      { 0x5737257e7e8311dcL,0xdef94f51466cf136L,0xa73e1645b05ca21aL,
+        0x38ea9b3c02e4ab37L,0x7760eac98579165bL,0xdffdd047c24b01a4L,
+        0x188d4fd13fb95584L,0xfaac38b825548bdaL,0x1a79a6f059e9dcacL,
+        0x983f720f09a2700fL,0x8cbba554fb8a7e48L,0x38a1996847a1fad5L,
+        0x118565475abd6b5eL,0x75113d31f3716ec2L,0x1391e7814212907bL,
+        0x5319c8010dc15889L } },
+    /* 166 */
+    { { 0x2320136e6b61c3afL,0x1d40f2de07b4bb68L,0x651dee7f380c97f0L,
+        0xa978ba706a8c313aL,0x22c587d62011ca10L,0x48bba218ab1f445bL,
+        0x8c5eaf07e50444e6L,0x5549f02a442fccf9L,0x2564746f3d80493dL,
+        0x42d24f6179c04591L,0x1600fa18abdc8887L,0x5cb8600aded38f8fL,
+        0xa4bf9b90923aeb46L,0xd63fee351e1c578aL,0xf3c9c5acebb9ea14L,
+        0x3d13314df11a4ff0L },
+      { 0xe5cc662db4513d1eL,0xde78a8c5d55952bdL,0xe8a37a3fe7f86d0aL,
+        0xca2d12a47a04f0c5L,0x4c6696e42e25d06cL,0x52614698b2136071L,
+        0xf4d2701b89f6e1cbL,0xaafd617780efd95eL,0xe6d73ac4c5bb6907L,
+        0x49e874ac420db35aL,0x11631de4f2751fa0L,0xb29f7336a1fa2eddL,
+        0x4c406864b7fd794dL,0x73cb21d3e22f92a6L,0xeae904e62043cc76L,
+        0x67f28a9fb322c6adL } },
+    /* 167 */
+    { { 0x7c17b258ca148ab5L,0xb9a1976fb3c60051L,0xea260698c8f28df9L,
+        0x87b2cc74e8d45017L,0x372573290578a422L,0x81d5ee2517bec732L,
+        0xd7411fcf1d48bbc4L,0x46217e6b487f5cfeL,0xcb007ac541eb8e1bL,
+        0xc41c57a6e05a00c8L,0x1f954d2bd2f9fa99L,0x370bd5db40941cadL,
+        0xe487879c3829509dL,0x4c1375525ceca5eeL,0xe8ef7fa4fd3efb9eL,
+        0x5ff091741bd1bdb2L },
+      { 0x791912a4579c6632L,0xbb19a44fb8a20815L,0xf4f97b84535639d3L,
+        0xe57e2bcbbc3c9bceL,0x122b3f2bf19e6410L,0x1f0189da1357d9adL,
+        0x675573bb79e5ff66L,0x444e5c98ef2f3c4cL,0xd6f61e2004d10731L,
+        0x0dfa366fac75d635L,0x9fc47c862c854f23L,0xc04ae43e0ad0850bL,
+        0x5ce94f642f720c32L,0x67efae65a753bc9dL,0xc27d30d3b0373a63L,
+        0x6681013a29721646L } },
+    /* 168 */
+    { { 0x1385d913e84509dfL,0xe978beddcf339376L,0x2df425d33423a148L,
+        0x43fa0ae3ee8cb579L,0xf015369d31c4553cL,0x05cf08bbdfbf1d48L,
+        0xadff4be69444244aL,0x01635f81a35dda33L,0x085c8949e76fab7cL,
+        0x4bd7fcde16737783L,0xfd8cb52ca254f8d2L,0x62168a66413ec985L,
+        0xf2db97417a9026ccL,0x3962ee5650e1e1b7L,0xbee0a346d3beffdeL,
+        0x3b35b72f0bdfab1fL },
+      { 0xbff8de9f535c3749L,0x23c1f20f8add9c48L,0xa975b37bc8f8f663L,
+        0x2529e475e8f3ae49L,0xc32f10d51d5e2628L,0x5ac0d29767862f1dL,
+        0x13c79338854cbe36L,0x48f004ef4b67e462L,0xfa37a150e5d10ee1L,
+        0x4974778dd28288a0L,0x96830a66cfb73f4dL,0x9f44401307804952L,
+        0x8233c7099760b694L,0x8340cca525b75c99L,0x3f62e40bc771f99cL,
+        0x47d0a1ebcd95c685L } },
+    /* 169 */
+    { { 0x266f4fff652811f1L,0xeaacaa9362ef3002L,0x6c387a5550cba0caL,
+        0xa350142a007f5467L,0xc7fd102a202f2673L,0x5daee57033dc6e65L,
+        0x60682ec3064a63d9L,0x46cf0bb0462b251eL,0x0e030ca55da936e7L,
+        0xc87a60f2434265b5L,0x9637b2bb69b4e8f5L,0x601fb58c7ad7770aL,
+        0x1f2147f6ed3a15a6L,0x05b47d5e2995e961L,0xcb0ca9b383213a16L,
+        0x8f4b614a4995a85cL },
+      { 0x5aa8ec194b4eb3c1L,0x8c549ac420323a70L,0x00d493224f6cc6aaL,
+        0x0e53b9bb45f9a5a3L,0xe46ef1100897abbbL,0xfe873e57d7acd7d0L,
+        0x7cfccfe50f7cb588L,0x0ea53d65c85557d1L,0xfdd9eb447288f2e2L,
+        0xab2dedfac0eb68a8L,0x5822147008603a0cL,0x6946468900feb06cL,
+        0x804cf5bf25e5caacL,0xd85598589fc91ae9L,0xed9378b173c45eaeL,
+        0x8f942d02524c9801L } },
+    /* 170 */
+    { { 0x1f1ec3028e845808L,0xc302bffab77abfc5L,0x26afd4b9f8d97dc7L,
+        0x3d3a83c43aac594bL,0xe3b74bd1674d94dcL,0x4464b737caa5911cL,
+        0x62925773871c2cd2L,0x419f24853b4440feL,0xdda6a0f3e052ad7dL,
+        0x645280d6846c86c0L,0xa25689faf8324f42L,0xc74ad1e807cf117aL,
+        0x5626dea08ddc9db7L,0x52620373966fc85dL,0xe0ad57c3f3b1eb53L,
+        0x38300252949c1acbL },
+      { 0xa0ef5a405e744723L,0xdb5bcf751ae08481L,0xabfad8ccfec1f76fL,
+        0xfba5d831fab37fc6L,0xbe39e248c8fedb78L,0xa5cfad5fad93f310L,
+        0x747fdb1e913d5c24L,0x052a47c94518b7f5L,0x9e208d6c7cfb4327L,
+        0xb135cb9c70e538beL,0x363527595bb17916L,0xa2c078805b3106c7L,
+        0xd2d42a06c209bb06L,0xb525b471d3c504adL,0xc9f4b368822ce034L,
+        0x15f18796eb4185a5L } },
+    /* 171 */
+    { { 0x094dea060aee4684L,0x42b21f067cdbdbc8L,0xa439e149b1931319L,
+        0xea4bdd4181a7dba6L,0xc62137063c2ae80fL,0xb58b096712823dc2L,
+        0x7443d515832611b1L,0x2e16f83113c20384L,0x0ce204d62bd992d2L,
+        0x499dbcd6f419388bL,0x492ded1d1d3778c7L,0x9d5bd74fc5ddae73L,
+        0xd4813d52994b6259L,0x191d9cf60e86ca68L,0x562179eaf3e9c2acL,
+        0x6146f1f39fee1238L },
+      { 0xbd06d33e078e2aa6L,0x693af7f79dee9265L,0xd56e0f81daa40e84L,
+        0x05fbbb889b9a407eL,0xdcf44adcede99519L,0x7f71f8d3092dba39L,
+        0x675b5da54231774bL,0x7456a251a5f605ebL,0x9031d4af87a39a9eL,
+        0xdb43000605b474bdL,0xbda5dbf2b665aa91L,0x5d1a3df56631eeb4L,
+        0x028149ef62377c58L,0x2e1af4e9685d0bffL,0xe0ea087582a465deL,
+        0x95543f9e06bd0050L } },
+    /* 172 */
+    { { 0xf7cbc6f485d7c6efL,0xcad8084d63b1bc24L,0xdf90ce88bf8cba62L,
+        0x98e4b686b455c192L,0x6146b8d5774fc6edL,0x70e2389e7ae20077L,
+        0x5241c47961c22529L,0x7d2215103884e5f5L,0xd6d20ce217e28273L,
+        0xe3119f514f2674f8L,0x8545905570c011dbL,0xdfab75d9fcfb760eL,
+        0x9546362a9e8c2a19L,0x4b6d3f8a4a7d4b27L,0xa5c87104ee5d698cL,
+        0x6db434782ba296ffL },
+      { 0x064864935c3f0d95L,0x8917db824e748895L,0xf73fdf626b2f3e44L,
+        0xc60edc542b7f574bL,0xbe1c09a2af732723L,0x7d34669d7cad114cL,
+        0x9646600a321aaff9L,0xb94e2bbaed0cd61cL,0x866e1a41dec4750eL,
+        0xa1be990db1a89f58L,0xc39e4d6cf2759693L,0x11cfb780c0e0dddfL,
+        0xf0afcd7fd99c8a41L,0xcebffadb6e1c3050L,0x4f3981b096d2c6e4L,
+        0x07a791e72ae27a94L } },
+    /* 173 */
+    { { 0xe70e90471e9f0300L,0xe0253ad9bccdf904L,0x51c0289dff053078L,
+        0xf1ef092eae893462L,0x2c90a91aa4846845L,0x1946eda0f1dad4b4L,
+        0xf07650f333df67b2L,0xc6e988db0b15a014L,0x72e0c66eb542f0f9L,
+        0x5d4b6311e0c0378fL,0x548badaaae86950dL,0x6801638db35f1c8fL,
+        0x129e3216944d1ad4L,0x9951bac840471d32L,0x03cc29f385e94ddeL,
+        0x6d6acc2e4543ecacL },
+      { 0xeb999e9557b2d299L,0x3a2bcd9be3d721cdL,0x2e60384fbb4cb444L,
+        0xae177709dc060faaL,0x74f0e6d38c987cdeL,0x9a237cf81076fbedL,
+        0x69af15137983fbffL,0x6c3f7a1d323f9584L,0x3e21cacf6db64398L,
+        0x7cd8134f96703d92L,0x0755898fb8393f76L,0x1b5b28bc2e825222L,
+        0xb78799c17924aa7cL,0x1db378f281427a8aL,0xd5a451b1ff289492L,
+        0x79d182123d3c46eeL } },
+    /* 174 */
+    { { 0x1a3edff9109d5589L,0xded52eb4029b4499L,0x13eb9d30b4b54adfL,
+        0x4f9214c1a27bff67L,0x4c817ee767f0f460L,0xbadf8d83c3a50e28L,
+        0xc5dc03c994026237L,0x5f29581b966647c1L,0x10b6a0898a0687f3L,
+        0xae787cec31634517L,0x2001dba562e75188L,0x55d4e1a745e2c3fbL,
+        0xbfcacdebb67d3395L,0xa1a0af9cbc6842eeL,0x50590a2b3e88580bL,
+        0x73104491a784cdc8L },
+      { 0x44ca2cdf2648d676L,0x9a85eca54f1b12b1L,0x1b9dac942980e1ebL,
+        0xf30d37091ac8aa89L,0x73072ab7c719e195L,0xba518c822f703797L,
+        0xac090e14ac0067f6L,0x0e6cfc708dcd2927L,0x4f5889e221e7da63L,
+        0xb4aaa40b8371c7c6L,0x1f9dabe28f7878c9L,0xf78aed6bd84caf3fL,
+        0x3c39dd079e0e1d92L,0x680be5fb122424dcL,0xf41b214d0bdc0099L,
+        0x6a8f8fc95180c54fL } },
+    /* 175 */
+    { { 0x62a1ed6353235132L,0x1db233f159dba88bL,0x85625452291efdd8L,
+        0xc7505297b25111aeL,0xb5921af91d701bd8L,0xb4d05d729774f45dL,
+        0x6e3d4c5ef18e73ffL,0x897d985f899b3038L,0x8a9c30fbc89b1558L,
+        0x3c92d1a34d13181cL,0x292e86ba2223320eL,0xcf2454c201ceed02L,
+        0x27a45f74583f309fL,0x75a6102cad0fd1a3L,0xdb4f45d2cb9c7538L,
+        0x4752d8c1db283fd7L },
+      { 0x514d6cead5dff4d5L,0x74cd5fdb45a827f4L,0x1070a60c4fc7135eL,
+        0xdec0bb781be5778eL,0x271e12cd58dc6b08L,0xb765089b54bc2496L,
+        0x6ddf2c63619098acL,0xfd6ebac667528832L,0xeaa2d025c2508af1L,
+        0x13c2cda84dcfc1f0L,0x1c7836a845510be0L,0x3904688d1a886801L,
+        0x643132aaafaf2545L,0x496855772830a88dL,0x569491ca8744b470L,
+        0x3a6518f375fb8552L } },
+    /* 176 */
+    { { 0xaaa8ed50224042a0L,0x6cb4e3b02452f1e6L,0xedca5f4c768211d8L,
+        0x4e0fe3f9ef4d5d3fL,0x33a8e2a4522d46e5L,0x5998e21ff1446775L,
+        0x1496c50ef592d01bL,0x69104c2f83a67739L,0x28670bcb472bbf00L,
+        0x8ea883b2503177bdL,0xc5d8bc057d2712a2L,0x41ef9317b439c994L,
+        0x9801d3a8dcda1affL,0xd686eeb57038f6fbL,0xe80c5cd0fbfbf820L,
+        0x540ac363edc25817L },
+      { 0xa71969a9fe7f43dfL,0xe66538082c1b9e4cL,0xad9677d8859c2917L,
+        0xbaca954596aa4404L,0x0e9d855fff1297daL,0x1f61897b22aea7deL,
+        0x96edccfd36f13f8eL,0x627d307016e200dfL,0x729f0736c98988a4L,
+        0x95e25e6097f231d2L,0xaf7f221bf6048752L,0xd66826094019b299L,
+        0x1d99de0926b4b1d9L,0xec47cf661acdd7a3L,0x4de9f2b36ebe15e9L,
+        0x17db32ecfa16974fL } },
+    /* 177 */
+    { { 0x75ef69196cf40599L,0x7ea10dfb00c020eaL,0x3da5ae7bfcaaf679L,
+        0x0d663ca388ddd678L,0x5a21f8fe255bcfcdL,0xe9c3f538e344bc7eL,
+        0x35f62b1d548e0632L,0x654f242543c6e64dL,0xc755a7a626993627L,
+        0xa3b7c5f7b0f41324L,0x05697f793a2180f3L,0x6cf85fb11e81675bL,
+        0x6d3cdb35e53428f5L,0xe3aa159152d28b02L,0xa8470255f7a3fb78L,
+        0x460bd01ba194445dL },
+      { 0xbc34dc23c24d8077L,0x82f4b5804c720d2cL,0xa29da9116f5d1ffeL,
+        0x578af52092783ce2L,0xe29f51abb5904af3L,0x46c570d7f7aa1190L,
+        0x4a522fba571bddf0L,0xbf4e2a06ae89bb51L,0x799b35cc59f3444dL,
+        0xc302836726cc2557L,0x94a4e985afcec177L,0xadaf7dcb7c36cbd0L,
+        0xed31b78775d39077L,0x52d6904f2d3e24bcL,0xc5ca26691f95421bL,
+        0x7d342c3c1734878dL } },
+    /* 178 */
+    { { 0xe5cf2c0a11fd127fL,0x66d36bb8119e4c5eL,0x621ab2526ef56ac3L,
+        0x30cfeaeee5430675L,0x2ede27d2ac3e9619L,0x6413513af8fce671L,
+        0x6159c61b075f4c3dL,0xd447efe959069d98L,0xaf8d6f68ea76aea9L,
+        0xac5dc61b0f5bd164L,0xdbab446e1e88bb98L,0x618b8b161ba92320L,
+        0xa0eafb3c78989865L,0x0c7abcc2c08b7e82L,0x10f09b6e20d160bbL,
+        0x5be0afa68e4c63a7L },
+      { 0x82ab6d381bbbf49cL,0x3e09ce498c0703feL,0xeca58b5de10f4263L,
+        0xd9cc6581da5a4532L,0x07e18876f618f7b7L,0x0419a5e3250f7fe7L,
+        0xbb1a9e90de6b86beL,0x584a7deb37359169L,0x38eb34895149db2cL,
+        0x14546a33b0ebabb8L,0x0067f0b0c2f88a92L,0xbde0dfe70a2db019L,
+        0xba51b06cc63e6f3eL,0xa19127b9e9206fadL,0xe4eb5e87fe80dc0aL,
+        0x1e6fccf5d4de30aeL } },
+    /* 179 */
+    { { 0xb57dff66aa8ac924L,0x06e9ad31c298b3e8L,0xd140e32965fb080cL,
+        0x7dab211d1d95c93fL,0x6d68d8428a180caaL,0x1a929408a20ded69L,
+        0xa815175338df461fL,0xff5604ae60eae932L,0x901b9e497dae4c0bL,
+        0x4573a97fde262e89L,0xed69d9a4f1084983L,0x8ffa022f64724f1dL,
+        0xd5f1c2e4ea85a15fL,0x4c626ce901453794L,0x80440cd6bf0907ddL,
+        0x4522d4615ddaa837L },
+      { 0x8895f079ebfbe7c5L,0x30ea1ded84ef3446L,0x716a9eb6d4a1ab96L,
+        0x1a4a5d2250a30c68L,0x5a16631c0043bbaaL,0xbd1075025010e5f5L,
+        0xbffe3e9d3d8c0556L,0x31b30b1807772419L,0x90ff7ef084b82297L,
+        0x00c37d75f21a18c3L,0x18d0a635565bb8f8L,0xbac1da2a45e3bcebL,
+        0x1c38e90c23f0b08dL,0xf1ba1aa25fbc5ac5L,0x09d5256bdda71fc6L,
+        0x346501a96d7e40baL } },
+    /* 180 */
+    { { 0x86be448ccc2b0f1dL,0xe3eb45c9ac4c3703L,0x5387f65d9fc96bbfL,
+        0xcef3c4e95ae27fdaL,0xa008f7761bc18089L,0xf374a08422ca18a1L,
+        0xee88284253b73371L,0xcb6fc6d87cc09354L,0x8489ec1b61496d6bL,
+        0xa92c29b949e325c4L,0x15c6ca527bdec166L,0x95444eeedcea2813L,
+        0x34683eb33a21154fL,0x8fb26f98d39061cfL,0xc3b08aa806c940bbL,
+        0x7c1d42cfe554c96dL },
+      { 0x766e703fdc110aa7L,0xab7b79d7f362e378L,0xd259c75d5aadca3cL,
+        0x2a6eca7960be3373L,0xf4744a4b06c4e8ffL,0xb2842ccef3b705bfL,
+        0x1a3af5aaae304b53L,0x7bbfa2011b2d31b8L,0xc4ba6eba4bee88d9L,
+        0x2d3565ce565cb839L,0x24808696daf7ece8L,0x2c7ccce7e6959745L,
+        0xefd6eb3ce94f9837L,0x0a33b4cf3811a326L,0x14203f43fffa93a6L,
+        0x031e982873c31d90L } },
+    /* 181 */
+    { { 0x4fefecfc765a17ffL,0xa09f3888d1290a65L,0xbf265c46938da038L,
+        0x4bb6145da169ad46L,0x33cf821423a62fe8L,0x562df571abc860a5L,
+        0xbf2a90fa815c38c4L,0x45ba1d6e17eda875L,0x799d881a946fa5e1L,
+        0x6c1be784b90f5a3bL,0x0910a37cb10ff52aL,0xc38c1fe4a4f4fd36L,
+        0xc3180fc58e2d3ba0L,0x3e2ff050b17a6187L,0x3a00059b943a35c2L,
+        0x494d3645a28cc51cL },
+      { 0x398426b64ba021f8L,0xd14c9083796deb6cL,0x6d2e53957e36c762L,
+        0x8f556eca751cf216L,0xdaca1e0019b24a19L,0x47887da44b20c2aeL,
+        0x93ed4ccdff41a733L,0x8d717c445c7c0cd7L,0xcc48634a91bf7009L,
+        0xa1f146f93b59bbafL,0xdd38bb39e5624f15L,0x96d41aad303f8443L,
+        0x6b670f034bf104fcL,0x0503f9ed29706582L,0x768e1f47b34200f5L,
+        0x3cfdcc5ebbd4c6f3L } },
+    /* 182 */
+    { { 0x536c2a86b523e13dL,0x1014a4582920d0a0L,0x3d52b478e7571296L,
+        0x057460667eb51beaL,0x709f786187b0e919L,0x028aed88686888e8L,
+        0x79a809d7d94afcd4L,0x50c6032fe2129af3L,0x75e4be72983c4082L,
+        0x98331bbb7ab3be8eL,0xd31a032cb618c728L,0x36dd85a13f59c4a4L,
+        0xdbece345ed4f61e2L,0xba7aaccd1e571715L,0x138c58da64a1ebd7L,
+        0x89296d0f3d1aeea1L },
+      { 0xb165288fcca82c97L,0x26c6c12d1427e8dcL,0x66a94f074c3edda9L,
+        0x94600e1eeaa01ebeL,0x14abce7c30f5e86dL,0x741d7020cb456a31L,
+        0xab05aa13279f42c2L,0x70b60fafd4238468L,0xa18efec1318d39e6L,
+        0xeb07f1ac8920b318L,0x01e3cba8d8399e03L,0x65f8932e3c81a301L,
+        0xae8bca7dccc667d8L,0xcee1ae79a268607cL,0x3182e64ccac0a12cL,
+        0x9233a2f72b1a4c54L } },
+    /* 183 */
+    { { 0x717e8df60acbee17L,0x0f0959c25c24fcdcL,0x46f09887e54ffcb0L,
+        0xb993decad285116bL,0x0bfaa4f8bba1fa51L,0x9c9249efd0f2183eL,
+        0xf93cb35896847779L,0x284bfb7f2322d421L,0x40cc709ad42af009L,
+        0xc69f22749bb1d615L,0x76f50b3a717c3c6aL,0x8b21e985bb9c5eebL,
+        0x58fb19aea4783b5fL,0x04c86b9b52e1c3e7L,0xaca59092f2971ac8L,
+        0x2bb26a6921ed8291L },
+      { 0x98a3443515f81416L,0x086e72e7aaff5bb4L,0x3d1f64de0317261cL,
+        0x31c0786c5c0a1cfeL,0x542ea4d8b3683401L,0x2f77273a1a39b4cdL,
+        0x14fe7ee1cbef27f1L,0xee7fc09e16bb27dcL,0xc0dccc17410e5dc7L,
+        0xa34667421943b3ddL,0x92934b603f31c1b7L,0x0186ded9c22c1070L,
+        0xa37ee8ba799f966bL,0x0f3bfcb4249b0893L,0xbae614472e92d4deL,
+        0x937cb3f8e196eb08L } },
+    /* 184 */
+    { { 0x57c0e77c16fbfdceL,0xea034cc9c98d4cc0L,0xe7606d7242572d20L,
+        0x9861b55c0019a83cL,0x80ba2803f1597162L,0x0f4141dd05a0fd7bL,
+        0x8865913b4b0daaa2L,0xe6685746aa3848ecL,0x16d15a5a3e0485d2L,
+        0x81c0c7743b6905ddL,0xcec31b7d818af2baL,0x80d8f194d2b74b78L,
+        0xca659db2543e2f28L,0x31b83a7d9fb07c1cL,0x86537fdc1f1048c0L,
+        0x4d57bb0778586a11L },
+      { 0xbc4b768a53b396b6L,0xbc8b24c493b51dacL,0x33e511eba30ae1b3L,
+        0x893bbd95945147c5L,0x6cc86031179fe3ceL,0x34b0a1673f920bd4L,
+        0xb32912eb6b256160L,0xbc69a2a49d168d83L,0xb4949e7aef0dd128L,
+        0x2613419a872699e1L,0x06c58477bf21376bL,0xe55b1909a4f97147L,
+        0x63d6eb757b9b745fL,0xb5365b2908df3c85L,0x0e257e4355fcfae3L,
+        0x1067c118979f2aa8L } },
+    /* 185 */
+    { { 0xc845508432bf8883L,0x4755286a6fd06667L,0xd70b0f8f77c2335dL,
+        0x678e60da2f4a2c94L,0xa468d8acd118acf5L,0xce93830bbf5b90d9L,
+        0xea4b1c74ed4e9104L,0xac67316d27776ea4L,0xb98ad75c361bab12L,
+        0xc323d48299122451L,0x26440220530a43aeL,0x3a44532e3292d5a5L,
+        0xdb48694b5fecf1bcL,0xe4e0516ec667b8b8L,0xb3aa595fa4306adeL,
+        0x7e4f7091f34e9725L },
+      { 0x3f3816e9b7f70919L,0x765216ed16b003f5L,0x46c6cff4778c99e5L,
+        0xe6a5abe830a51810L,0xef6f49e645e728dbL,0x6fdd73eacaccefd6L,
+        0xec394e6f8c37f3f7L,0x73320802b6407fc3L,0x988e8f7a96625cbdL,
+        0x832923637cabfb00L,0x258ba9df407f359aL,0xff01aee5ccbfae50L,
+        0xfbeaeacefe251813L,0x9c69f16183f1cba1L,0x512c58ad9eadcdb5L,
+        0x2ae49cd46ccce8bdL } },
+    /* 186 */
+    { { 0x1239b0e3c40849f2L,0x5136a4cda441098cL,0x61535a99e547f649L,
+        0x92e4bdc47a9bbac6L,0x195a164653547af6L,0x85ecb3198b47a74aL,
+        0x278553fc9de6a2b2L,0x471c038a0e2ba52dL,0x12ba1b8835bcba93L,
+        0xd4bf50da6f31eca2L,0xd146e3f6802b32c6L,0x0c9c01313c64c8c4L,
+        0xad30f12deed21297L,0x9b75bffb9c68530fL,0x23c0ad3e8918de51L,
+        0x180e9d52a73771b7L },
+      { 0xc316542f29ab77b0L,0xdd411d9cf7aee628L,0x044c0685353c2f40L,
+        0x638dc7e44b0ae4cfL,0xa092418595fc266fL,0x639da671fd2feb7dL,
+        0x56858ed55ea39798L,0x7a694f3158f3832aL,0xa94233c6d316d831L,
+        0x2fcacb2630a35a7bL,0xfef8f7ddf1ff713bL,0x8b9b452559eee2f3L,
+        0xd1b4f91b156d064aL,0x177866c22f5cfcfcL,0x12bc25663777eb41L,
+        0x21ca6f3cd8ab85b4L } },
+    /* 187 */
+    { { 0x0e162b13a3e66635L,0x1ef20a2b2a9f76afL,0xab473a3046db3356L,
+        0x0840bd777802bb8dL,0x5b6baf5ea699b44cL,0xc6e119001b2207f1L,
+        0xe5de16a9790b0105L,0x22b12f15db67f004L,0x185fad458a025d25L,
+        0xbccf6953df0a1142L,0x4c42129bf45034c0L,0x0f7404001c277bffL,
+        0x6e440b4c280a9e18L,0x767de8f5842aa2b4L,0x3de20ab805e8d94fL,
+        0x5aff585920227635L },
+      { 0x805acd20a8458e40L,0x5a5557d8149732bdL,0xc70741315f1ca72dL,
+        0x7f2e269c952b5323L,0x5c5925566494fadfL,0x153b7acd1a7d2666L,
+        0xa6df063d86fe2865L,0x1e91db1357d53b6bL,0x9195bb89e93ead01L,
+        0x3d71e1af2963bfe6L,0xfab2b9c288278886L,0x778366923b859b6fL,
+        0x6e695174f7029dd1L,0xc79878767b984561L,0x64fb4f1d5907d849L,
+        0x3eab7e1c88d8a977L } },
+    /* 188 */
+    { { 0xc73a94b652e5718bL,0xe3aefa54f4cee1e9L,0x654e9e63553eedeaL,
+        0xf2541e1b5f3aca1aL,0xd71294890d083316L,0x7965af63fb7f950eL,
+        0xd8fc9e0dc74e3e4aL,0xb4ee48d2eaf79ebcL,0xa458a86a8b7787e6L,
+        0xd8c7621ff7cceaf0L,0x8228eeffdf67980dL,0x210d4742f9106727L,
+        0x91f63501b07e3629L,0x441761c67971e29dL,0xc0ccc65f03a3b8a5L,
+        0x3491da4f38e09544L },
+      { 0x6706d046cb062eaeL,0xee7db7355d08776dL,0x80de8052292315d2L,
+        0x40785662c402bbdbL,0x5f93525c26ed3337L,0x6cea14d67d568ed3L,
+        0x916a118966888b1eL,0x0fbd52055dc71675L,0x833d1077e4575df2L,
+        0x4e93100aec092335L,0x2f9e1d016cd85389L,0xeebd372543226368L,
+        0x401d172b1ba4cfd7L,0x377dab9d574c5838L,0xaeaa695880d517deL,
+        0x0c843dfd6ad15a18L } },
+    /* 189 */
+    { { 0x455811ffc9373300L,0x1c39332a99fdc300L,0xe19bb81c353cb655L,
+        0x774b924a96a83d27L,0xcbfc8fcbb2ee3f1aL,0xaf278ec4010d56c7L,
+        0x6fde682fe0abaf79L,0x7566d0727339aebfL,0xbd35ad5d71205db6L,
+        0xb5bbe6947051c9d0L,0x577db480d3a3067cL,0x2c70ff54572d7530L,
+        0xe8615aece06d853dL,0x71999ccb05abfb5dL,0xeeefc96bea0a8ed7L,
+        0x2dcc469d35f6df69L },
+      { 0xcca6cd06c65f0e77L,0xddcc7980bd71b14aL,0xb6221f8b3c93cc00L,
+        0xddfcd5b3ae8cbf57L,0xbc92973f76f8e63fL,0xe9848a3406e132b7L,
+        0x4cc59a03d51ec9e2L,0x9c9d32bb3a33081aL,0x0012105280e8466bL,
+        0xc2b0032a1bbe7295L,0xdbfc657224938448L,0xe972a0ceb6bba0ffL,
+        0xf60c0a4fc0a94802L,0xf62c41cc599d8bc7L,0x820c96ee312da0b8L,
+        0x5a1a65dbcdbdf9fcL } },
+    /* 190 */
+    { { 0xbfba691a42485684L,0x613116b929c470c9L,0xb4b01971e62a0519L,
+        0xf3245aa65ff499daL,0xc2ef87f4a5238effL,0xc16dc6bacc9d5515L,
+        0x5a7f227e2dbdacacL,0x8dedaac4a9bbaecbL,0xff308a6d2e7c9885L,
+        0x4c6f2fc2e6895593L,0x3655f285177e0611L,0xa63e8d06300b1beeL,
+        0xbed0ce7913c17b54L,0xca4abe35c4974262L,0xf4b44a17bc4e4037L,
+        0x5ae95099efe5fbd9L },
+      { 0x122e5ee7804f7455L,0x341a499722066682L,0x97d24c317795e333L,
+        0x12f4123ce48efcedL,0xe8738d9219fbc21cL,0xbb3bdc610663a3aeL,
+        0x3603d8c28593a6dbL,0x926227f2e3c1ac75L,0xfea92ac05eaae519L,
+        0x5b596f0bfd6812acL,0x3ce7e844fc2a82dcL,0x3840481a63522b27L,
+        0x836088b152867895L,0x21ffb7cc26588688L,0x0ca331612f4a7cacL,
+        0x4110667ea3edd298L } },
+    /* 191 */
+    { { 0x81830357c2d04b63L,0x3fc5a34df4929a18L,0xc73bf6da22d195dfL,
+        0x14df2f89cb432473L,0x345afe5ce997f138L,0xd8e3f5f98b9604f4L,
+        0xad7942e950c10ae5L,0xcefd5447eed25ff3L,0xbf68e51e0e73c0ccL,
+        0x5b1ad591ab54fa4cL,0x8bbc110512b61c8cL,0xbb932913b5abf760L,
+        0xdb1231be01e79649L,0xd0a83e91040ccbe7L,0x3dde426f90a96db9L,
+        0x1cceb64534df11eaL },
+      { 0x2d210c4f0c6d0f55L,0x6cadf61b9c673c9dL,0xdd7f9919a9ce3fbbL,
+        0x135f494c93b063e4L,0x580bdb3c145a93beL,0x4d8723320f52ef7cL,
+        0x74d876e88814bb6aL,0x4f6f723ac7a97deeL,0x7de2b8f03e3cd833L,
+        0x6162f082ae720270L,0xe88ec2d4ddfa486eL,0xd965c8598d3a17c6L,
+        0x62e59e543980171aL,0x0ab6285dbbef6b22L,0x3cf451954d48b203L,
+        0x1f1752334ea25ea3L } },
+    /* 192 */
+    { { 0x808a765b3467ea91L,0x3f4632eefd2d9c45L,0x7b75dc6d9cf2bc6fL,
+        0xefc8d240359813aeL,0x23ecb209e44cbd8dL,0x59ba10e321525622L,
+        0xfa14d9343f1ee19aL,0xdf97c21bfb0c48f7L,0xc4e62890ea30d437L,
+        0xb286e2a4651475c2L,0x291f01e4126672a5L,0x9c6fda5c31aab3b8L,
+        0xb7277a5ae17d22ecL,0xbd88ed83914f0badL,0xd0b05d1b6a2392e1L,
+        0x4cb8af9065893c2bL },
+      { 0xa2b02057bb4b1953L,0x4ce08b44f597f6eeL,0x854f5d9b5e6412c8L,
+        0x1913262db3cd4919L,0x902762e46e42bb5dL,0x8355c8e6d78e7f60L,
+        0x8efaa82438b6c16cL,0xd0173790e550f618L,0x118af462e57d778eL,
+        0xa16ad5e8715b4714L,0x900596c341dea4f9L,0x2a957c32280ca610L,
+        0x2faee800374c65a1L,0xdb10512750080414L,0x8c1db931ff080fa1L,
+        0x486a5c25d79878fcL } },
+    /* 193 */
+    { { 0x0521e213941b4f36L,0xbaacfb14f803b4f9L,0xfdf1e22e52a54ba8L,
+        0xacfabbba8fe4796cL,0xae0788db58dbacb6L,0xdf98d736c19dfa51L,
+        0x155c286a35a716eeL,0xbe7d46769c86461bL,0x50b6380f63a64a5eL,
+        0x14b419149f609262L,0x0919a7d0a2dfc5b3L,0xc454da55cef466acL,
+        0x93fa4a246986aaecL,0x5090b17171a49cedL,0x602f1d6cc1fa75adL,
+        0x5d269f8978e4c054L },
+      { 0x3a74030c14920419L,0x0845d86890968739L,0x81b994c4eeb70fa6L,
+        0xabcaa06dd9fc5bcbL,0x06539427f58f8f2dL,0x35c85f67b1dc52aaL,
+        0x5a7d8d722c911baaL,0x4041005caec2d834L,0xb5868a447a8e5347L,
+        0x04ee180b8de512c3L,0x4daa66e5211168ebL,0xc0bd5dab2317cd8aL,
+        0xa1d4185d61164df6L,0xacedca261dbad7c9L,0x0fe4b5ac09b02683L,
+        0x8ac9995a26d9550fL } },
+    /* 194 */
+    { { 0xb2c8dc9b2640a39dL,0x21ff0b38ede0c9f9L,0x74f469bda1ecba0aL,
+        0x8a902ccd080d0417L,0xe956fa32f4994604L,0x348f85cf9776ab15L,
+        0xc21fc6ee0066f492L,0x35b1ebfefeeef367L,0x7804581c4613e5edL,
+        0xcbdfe8e6ea6ba071L,0xddfcaa32950d73edL,0xc97479361da48889L,
+        0xce867c8cdbaffbd1L,0xd267431f1cbaeae7L,0x68255045897912c8L,
+        0x0c7c1ddcd7ea1e4dL },
+      { 0x53aa30cc1ce963a7L,0x7352f64cc4c5fadeL,0x2b9aa2f82828afbfL,
+        0x64273c56ca212107L,0xaadd765485a576dcL,0x6196ac3e90b5c77cL,
+        0x20d43e9fd1aaf39bL,0xfc392062cd05cbc4L,0x141638724c0ff2fdL,
+        0xcf32b8d82ae821e6L,0x5f58f9433fa7a3f0L,0xaebf1d2df644ca92L,
+        0x0c0615631918a75fL,0x7989b5ed6b876118L,0xbf342445ad412441L,
+        0x24ffc9ae1df633abL } },
+    /* 195 */
+    { { 0x89fcdc0593c7cb2bL,0xc1243b95590053fbL,0x601debcf6182343cL,
+        0x364546ef66c18a63L,0xa5290701ec913287L,0xc35b8026f9788c31L,
+        0x852b862a92d1f7d7L,0x1809cb050aa79728L,0x897d467ca3cb2005L,
+        0xf20c77c09ef5b946L,0xc3372c42f2241984L,0xda053e0df35bb206L,
+        0xbc26c6d0a9c140b5L,0x61cfcc0ccb56fb33L,0x1c3cf9ef299b3968L,
+        0x89e4d3d140621ba4L },
+      { 0xd35e80e7a45a9be3L,0xc4daa57807356fbdL,0x0186d62eb967bc2fL,
+        0xa702679e47cd16e3L,0xca2f1c025f30ce9bL,0xf1205b461f864f50L,
+        0x7fd6d79785061d66L,0x47edc4f68a08809eL,0x5dac04499a4d3ae2L,
+        0xf844664a6d1f9da8L,0x9f30ce84d7a83a71L,0xe9382baceaac33f1L,
+        0x1f033831948622abL,0xb037a4baf7681eb2L,0xd156a90899a1b5c7L,
+        0x675d3e6fe6f1d0fbL } },
+    /* 196 */
+    { { 0xd9767ffd707193e5L,0xe478aa91810358e5L,0x5634f9ff328d8ef7L,
+        0x913a0ee86dbbd9a7L,0x379b29687e215686L,0x903f410a89d9da38L,
+        0xd9f8d7b91b1334d2L,0x9fe74229bd82efb5L,0xdb568b623803c778L,
+        0x93e9a350d3d25344L,0x559c35b0724497e8L,0xc472d436a169e23bL,
+        0x09864632cc5b4c69L,0x9f6d759d83c7f531L,0xa91cf1db1e497888L,
+        0x5f7f92fe60af1a4bL },
+      { 0xf18a1cc60545167eL,0x55ee2e02affa88e0L,0x24cdff51432a7bcfL,
+        0x7382da42a7510866L,0xe894c11f40511af7L,0xaa4e4e312aaf1423L,
+        0x8c3d36f0f63dd2aeL,0xfc5c9550d7660635L,0x0125373137ea7eabL,
+        0x2a5cd59839b950f6L,0x95a0f60140e63442L,0x905e238ef2ac7045L,
+        0x44bacc0e446b0f73L,0x4cd4206ec448578aL,0x367b1aaaa5bd7803L,
+        0x25beced90a2b458dL } },
+    /* 197 */
+    { { 0x079a73820c33a8fbL,0xcfbf6cd10f25dc1dL,0x4ffc73f8c6d482b6L,
+        0x3e51f18c07bf844aL,0xa7651236599162f0L,0xac59a74e14013811L,
+        0x957a6865e55018a0L,0xe1ec51bde3ca09b1L,0xbc0c7eb3a960253fL,
+        0xe83bfd147de03f84L,0xc0540ed152fbdb09L,0x6ba52eddcea15ec1L,
+        0xf3d30ed54b261307L,0x9bd7bae8e8397206L,0xf20d8692096373aaL,
+        0x0a616a4bc3b0bf63L },
+      { 0x2075f3ed6e1339c9L,0x7afaa072bf8b00a6L,0xdfafec82bccd9b47L,
+        0x4713158f00ca54c7L,0x449102f138bc31aeL,0xaf98f158310dfc8aL,
+        0xc9ef207559e954d4L,0xe8021af9c527a0c4L,0x6e8012777a192023L,
+        0x635f538c7fb02377L,0x5df1974fe8c9e951L,0x0287faed15cc9097L,
+        0xfa0728f0f7a5115cL,0x90dbfbe60fac623dL,0xa8d40fd40311ba09L,
+        0x876d154e07c6464cL } },
+    /* 198 */
+    { { 0xd3a4d6d2c2d3ea8aL,0x36be681ba842600eL,0xc53f100de4070672L,
+        0xe3e5b6fe6a7d7a7bL,0x6e6994f95d5e1a83L,0x07cacd2276097c2aL,
+        0x12d98dbaa6791011L,0xddfc4461102e0e24L,0x4815dbc2d493272aL,
+        0x7e38e64ba9436696L,0x4960eb1a32b2bf90L,0xda457525d928e28bL,
+        0x72f75b392a077c9eL,0x27760cbb7fd61d00L,0xaf235d1b0f4b1456L,
+        0x3040c23be76d1700L },
+      { 0xb10dc55b4efa9a70L,0xd4de414f53e86610L,0x3d95c11309f8a27fL,
+        0x505109a506661d3cL,0xcaa2994a60eb513eL,0x3ee415371e7d338bL,
+        0x4fd145fc4651e71fL,0x51bbf838cbc313b4L,0xb039e0781eb92150L,
+        0xe8696b4414bf5ac7L,0x2d6671888be0d48cL,0xbe93b2f5dd8f2b6fL,
+        0xc1dfd1e7eb8a7f8aL,0x862b3dd990f751c5L,0x1eb1ad58a32a74beL,
+        0x5486d79a1ebbc9a2L } },
+    /* 199 */
+    { { 0xcb2e34ffa1359e13L,0x202d8dbf28196051L,0xe95e023d23564b5eL,
+        0xfb1340b642f6ac12L,0x543ba852b653725dL,0x81aedcd68d2466adL,
+        0xbf780224547c728bL,0x559f8a119569fb65L,0x505b7a62dfb22ec9L,
+        0x071075409eed5e52L,0x9c899288299f6f11L,0xa7d692613db6f8c7L,
+        0x30eb7fb3b3ca79a9L,0xcab99bb8fb2160b0L,0xd2012568d28b409aL,
+        0x380f1b0f5ac45f8bL },
+      { 0xc0b99e6be6a0068fL,0x4b67cf2ac8a73753L,0xa6c9a548b2faeb7cL,
+        0x7f417f99340260c3L,0x8ee56855cc0f739eL,0xf08b510f780949daL,
+        0xb1770fc28d5c6effL,0xb4f5abeefd96a7bbL,0xa07b1136f2665a2aL,
+        0x2fb380a4b601dcf9L,0xcc803614162becc6L,0x3498fb96ee6b83b3L,
+        0xea9b0fd6a8c17eebL,0x5834b5baa177efc2L,0x929044f55b110b3eL,
+        0x4abeddedebd7285eL } },
+    /* 200 */
+    { { 0x3355e1b9700ef376L,0xd56e5d9a66cdabffL,0xb3dc257547e87646L,
+        0x28f44b8a00f79369L,0x08c32b1ea0c52e29L,0x5a78de123729b392L,
+        0x4184519ab26d239dL,0x23f6b4b7e0ce4a6bL,0x235f6f8aacb2a9f9L,
+        0xbb8bc454e2064a59L,0x37efd0341bf3062eL,0x6bac683b94dff6f9L,
+        0xc3364b1e8aa7fa06L,0x0616772ace0b3745L,0x46f08d08d1e3fb0fL,
+        0x6a20abb318e132d3L },
+      { 0xea8310166a85cbc7L,0xd0990946934f9aa7L,0xc2211088e778f1b3L,
+        0x7ea4ff8f2247b799L,0xb3171d71454484ceL,0x294039494f98c364L,
+        0x5da911f397df1458L,0xa6b5809309439116L,0x75f9509a174238bcL,
+        0xfeb518218209758dL,0xae0c6021a47925d0L,0x0e946694af8a315eL,
+        0xae7af8a36bad04b7L,0x44c15e7ff072447dL,0x5184668aa5456ffeL,
+        0x45e353a7bf36b977L } },
+    /* 201 */
+    { { 0x7605676493092f71L,0xeb66b6c2f5b92d71L,0x9db3149be2c8b6c5L,
+        0xf62f583a20c0363eL,0x688acd3303cd7097L,0x85d0c0f8ebb916acL,
+        0x1bf7462c84c19b0eL,0xc76ed5f97c4a6ad1L,0xec8b88bad119f369L,
+        0x59b8371bebe50b83L,0x0cc69508866706a6L,0x531c75a3f8373d2cL,
+        0x4e1cd3a32a5a02fbL,0xe8274778da39a1d0L,0xedfc5bbb75da333eL,
+        0x15941f24ca79bd36L },
+      { 0x42e8c0f8a77dd512L,0xa91b59a71dc365f6L,0xe80d14cd08753862L,
+        0x1624230dd272facaL,0xeea3ec164027cb5aL,0xc1700b59c1ef9f03L,
+        0xd411c1270da3148dL,0x801ee448c4181af1L,0xedf285599e3a900bL,
+        0x5d67b0bd0d09affdL,0xd839df968b370024L,0x3b6307e0e6f836b8L,
+        0x5382e588bd3201c9L,0x636d8a6b7a1d02bbL,0x70b7db76968641e9L,
+        0x6d17c34a118fad03L } },
+    /* 202 */
+    { { 0xcf608841c181c99bL,0xb65dc901c87bdcafL,0xb460b4473720dabeL,
+        0x4c79c3965377515bL,0xd447f22e0a96c277L,0x0d9521302ac0f440L,
+        0x8330b26bc90583adL,0xe25e977a928904a0L,0x1deaffd985c50b18L,
+        0xcf4dbcb7a5ad5f6aL,0xcbcd0019c8a37ed5L,0x7846dd901e9850b6L,
+        0x1ac8194ab0b8e605L,0xb972857134132f90L,0x4ce9f149f56ee28bL,
+        0x1ab9b5a43e9e1d4eL },
+      { 0x206dab92314fa7a3L,0xcc4af0f0478ff963L,0x4cce1713904d9fdbL,
+        0xac20a2eb12c045feL,0x44fc5478fd8f6d7dL,0x886e72c5ca7b6ffaL,
+        0x7fa4529b6fd6f758L,0x4df1d1b192a820d5L,0x3d812f9f2789f149L,
+        0x9842f083aabb53d2L,0x2648539b2a03ab32L,0x631ce090b1512502L,
+        0xe1294d15731f6bd5L,0xb229361d9436e634L,0x8c4281c43ca966afL,
+        0x24b34956c21ab3edL } },
+    /* 203 */
+    { { 0x49bdcb86659824e2L,0x6dc4ce484e13e74cL,0xa4c01a266bbe1eeaL,
+        0x47b2b8e71e3ec457L,0x7e8b15e02f5a8e4bL,0xe81eb6e6e333530dL,
+        0xacba369e17a45202L,0x81241431d70e4c9fL,0xc190af4b3e12beb8L,
+        0x5327052311f486fdL,0x9f6c41e129fb2bceL,0xbe6287ebb70f6c08L,
+        0x1479850a3feb4477L,0xfcfdfb119bcf18bbL,0x925c292fda80d040L,
+        0x212d65e57e3c5bf9L },
+      { 0x23adb386ca15cf08L,0x4dfa4ac481e172ebL,0x9d1dbf934d42d0c0L,
+        0xd9cf607374404dc7L,0x60508441e932bfcdL,0x9ae910ca1c682a98L,
+        0x9528fc1841ac1cc0L,0xe6a120aedbbed630L,0x94e0e1ec30ccf250L,
+        0xfe84ba54e58bbf2fL,0xc66d0b4f9faa4415L,0x0c58f1e7ecee7ce5L,
+        0x7a1d43eb6fa6873aL,0x96c6c5a0399f1348L,0xe6ef9aaae6727ab7L,
+        0x66afa5549a5c2447L } },
+    /* 204 */
+    { { 0xda5aaba8c980e91dL,0xa93cf5096ac98efaL,0xb0990e0a8da32662L,
+        0x01d215300081453eL,0x2bb0d33e3d71de84L,0x465f6d803e19a012L,
+        0x5902ff4c78a838e7L,0x74e2afb71931348cL,0xa49327579cfb057bL,
+        0x761ea6423ad03f8fL,0xb7d4c24558ffa40aL,0xb5e9c0d977a87e30L,
+        0xd1c5edbac9c84d26L,0xeca8839a3d1963a0L,0xbc6f2f35ebf6bf0dL,
+        0x01ef06310d58abdfL },
+      { 0x2bf903163ecdcbb0L,0x19e2d72827c1c955L,0x9e5270309575c930L,
+        0x0dc1c5a996983930L,0xef9f80ff7cd082dfL,0xcd915075df97e051L,
+        0xf286fffe9cc61b55L,0x352db38f80f24cc4L,0xed9b99ec36523ae3L,
+        0x109a8ca810b104a9L,0xc2700fe7305203adL,0x2a2ee24e769400f5L,
+        0xd595d399ee0c452cL,0x0ab75d6af7f02a41L,0x341080990db730b7L,
+        0x0e4f5ffd5e8d1202L } },
+    /* 205 */
+    { { 0xbd1c64440ff14c38L,0x9a5b59faaece11f2L,0xaa4605a722af6330L,
+        0xddc9f65a82af24eeL,0xf4ee4bfeeb9a1159L,0x2463d07674e84eafL,
+        0x88cbe1e00e0baaceL,0x7ca568ead5fabdcbL,0xbd80d524c57eb99dL,
+        0x9c46572ce9be9873L,0x918a1dcd7300b85eL,0x4922131240f54176L,
+        0xf7e324ffb5b14236L,0x40dda5012434f16aL,0x08833421a133d97cL,
+        0x33d411610876f020L },
+      { 0x7531a36b9878e5ecL,0x5de3e32146918232L,0xd15f9a33d0a30464L,
+        0x734c1b87aa173659L,0xac2094a2f925d4feL,0x43c965a1c262b0f4L,
+        0x759c903e447d5cbcL,0x92af215e05239300L,0xfffb6d5f1f593f34L,
+        0x65943b4bc3cddb5fL,0x9d03a29cbfdd5408L,0x8f7cda6b198d76c0L,
+        0xc0790a22c0f27b59L,0xba557a848cb58ccfL,0x5922052d76c54fdcL,
+        0x2d3de7aa47b6b466L } },
+    /* 206 */
+    { { 0xaade746265add3b7L,0xe5888f35abf24c2aL,0xd41549cae1a57d93L,
+        0x0e22e18e2c76f7bfL,0x67f288eabe3202b3L,0xb79a66ba1d1d0f0aL,
+        0x0e0ab7492881ad18L,0x7d424086c7adb0e9L,0x870c32c52842132fL,
+        0x858477f158f9a09eL,0x422a9372ec025589L,0xbe428c5ca5098777L,
+        0x45b7956457660058L,0x6c7fc631957f37cfL,0x8b7023ddd6316289L,
+        0x47003bb65b1c12a6L },
+      { 0xd99401c1c91c1c96L,0xaa5dcdf927a12970L,0x3ab92e17c3c29107L,
+        0x26fce8f7a3fe4710L,0xb0d09d5e4ee998eeL,0xafa622048e3a41f8L,
+        0xb1c012a5a26ca506L,0x2c6f734c99b57252L,0x1093d79f512f7fe1L,
+        0x2f30906eacee19a6L,0x6bff8381056d1ea6L,0x61c75856eff35f21L,
+        0x6e07e978c1ad2224L,0x2cca6ca16b20fde8L,0xab4d6d2d633fe81bL,
+        0x73dff504b06a2ce6L } },
+    /* 207 */
+    { { 0x8b615805d8e20fb8L,0x7c6873e482b533f0L,0x5205f00156a854caL,
+        0x87fec6accb369211L,0x1fa3c0ecc7f092b7L,0x5b36647ee845fe4cL,
+        0xd4781e85f8b1f112L,0xc65268398b0f1a6fL,0xceeb8c6cdcb8eb92L,
+        0x133f0ead8e5f6d52L,0x31883e23c8d934dcL,0x214ed5bd428ac45aL,
+        0xf77ca492dbbfca85L,0xdf4113fe07e5ae13L,0x63e4a0d272ab05fbL,
+        0x7544d0b77148f535L },
+      { 0x4fe8d13480797aceL,0x216d6aa0af86d97eL,0xdbf0a688ef5a68fcL,
+        0x18b26f459f9b2684L,0x52fefcfa8999d2fcL,0xd5af8d8262423955L,
+        0x8f123469f63a3780L,0x2933454fdcd4feafL,0xba8018b7a73b5d09L,
+        0x9af1f276e5552c18L,0xc5d4773dff26bb1cL,0x9ef4941006dd4f44L,
+        0xad8f12f95f39ba49L,0x5767f6dcf66ca4f2L,0xba8773f17922f59aL,
+        0x220081eac1e42d49L } },
+    /* 208 */
+    { { 0x3043d573ba37a0baL,0x05a431bcdd176df6L,0x03322cfcc42070f7L,
+        0x5cabd30e67c2d109L,0x362c95decbf8bcfaL,0xd767d2777787b10bL,
+        0x612c915e6ec05e64L,0x9e669631ce69c30eL,0x27c9dd8f682e2635L,
+        0x79021f1295ffcc38L,0x06a8ee798a2adca2L,0x8e00e7844b5d500aL,
+        0x87746fc78d80d6c5L,0x246053be915f10ccL,0x844e328b219f6fd8L,
+        0x620541ac11bd3733L },
+      { 0x0f7fd382509e5a29L,0x8748d7d0b432531eL,0x8f749354cd3883b9L,
+        0xc6b8ac748bfbb17aL,0xa4616a6605f2d2c5L,0xb3d966251bcb1b83L,
+        0xcf7531042fee265aL,0xc70d73fbdb225058L,0x1211d434f0c2d556L,
+        0x862061d854b259b3L,0xffe4606dc42b3f7dL,0x4c5c8585e86a4949L,
+        0x04ddcc8b160eedacL,0x1804ce67568e2420L,0x91f3855a42141656L,
+        0x7f378198f932be97L } },
+    /* 209 */
+    { { 0x9a374bdadfa6639aL,0x0cbd48d402ab7391L,0x5c5ef23647031e2dL,
+        0xb49ee2bcd0599d1fL,0xd285eb60e0d38443L,0xdbbea92f269392e8L,
+        0x91455fbfb8bc538fL,0xae259ff1e469b768L,0xc1cecb1f41de5682L,
+        0xc876f0719952d1aeL,0x1ce25181e7bf7446L,0xcb93ad86282ad2f1L,
+        0x8fa3cd316ba4ef67L,0xfce68a04e507aa3eL,0xced74170a61bb608L,
+        0x6de716b3f6ac10d0L },
+      { 0xd4e58d04172d6dc5L,0xbed2cde66397c65cL,0x7ae77e180c9eb4e8L,
+        0x5627546875fa2edbL,0x4b30324ea91e6738L,0x6023a856235c8b2eL,
+        0x9df6d6c2a8f92887L,0xec2c185ff6f5e8b5L,0x7892e12b3ad5748aL,
+        0x7aebb4f2d54aefbcL,0x14915448ee868821L,0xa26c5f71b1d9bd5bL,
+        0xe5ccd1662ff00df7L,0xebc99f17b95b1deeL,0x909836163fe1f774L,
+        0x51f90830bb3d25b0L } },
+    /* 210 */
+    { { 0x49376fa1f2922461L,0xdbb1b1c31650d0d1L,0x92b91c330dd8608dL,
+        0x3e612c4b36b89906L,0xe1977b0bdf560052L,0xf8afff70636a2545L,
+        0xcda7d27811723d8eL,0x0b0bc4bb81bde7baL,0x3cb080b2ed2a578eL,
+        0x5bda0d0d171b2e02L,0xf6df38cf941bb9aeL,0x85dd81dbc14a65c5L,
+        0x7f98c82dc19dd98eL,0xc613747f52206f93L,0x9e13a2c25f5bbe78L,
+        0x5eed218e0aa34be7L },
+      { 0xe156575401d4dc0bL,0xa1ae5f27f566bb07L,0xe985ebebb82225d5L,
+        0x5f3ad21c1189ec6bL,0x17da518cecce4d9dL,0xc84a2d3ed6b65b59L,
+        0x7f9881758ffa771cL,0x50d6ae122ac69a7aL,0xcb7f30b1c6e6846dL,
+        0x8c023a605bd0bb13L,0x9a10fecdd73f2407L,0x8c5158cce5f0a996L,
+        0xd26bf615bd8f5806L,0xaf32ea87915a46e1L,0xeaf74e810287d308L,
+        0x8c14ba06a6264254L } },
+    /* 211 */
+    { { 0x0c877895b17ee201L,0xc05aa47188e57a77L,0x19c3e76397822456L,
+        0x0be6f8c0c9c3ba1dL,0xfe85f4ffb4389ebeL,0x538bccce0ce7fbb6L,
+        0x876eab2a65266c64L,0x5c9ac690cf9a3842L,0x9f5cf3b1ccc8f981L,
+        0xfa17be6a9cf687deL,0xfcfc10fc83835c15L,0x086b0fdb150ef2ebL,
+        0x9f97ecd9884a52e6L,0x416e6fa2b0cd1eb8L,0xe2bd15993ecc03baL,
+        0x645c0a5deabb165eL },
+      { 0xd94c420550aa7e31L,0xaec8df0c2f851da5L,0x996469093c726e6aL,
+        0x72dbdc362619bf9aL,0x1b4260e0e253fbd5L,0x97c259fb8c709e06L,
+        0xfabf7cbbcddaec5bL,0xb4d5e8b1e4b703e9L,0x1b06e56e0734efddL,
+        0x02d4a4f91f55f8a5L,0x7f8608ba3f565c8dL,0x822f47d2816d1d94L,
+        0x0cc361565ce7b136L,0xe46ee5ef31d04242L,0xb2a65f70683567f6L,
+        0x27e9ff40d2fa6c91L } },
+    /* 212 */
+    { { 0x75251893d7e952e7L,0x15b30583c735bf18L,0x732b599296fe0491L,
+        0x27451858806d2fcaL,0x71ab76a01b885ed9L,0xbdce9d976d9f55ecL,
+        0x3da60b2048f2ba9cL,0x6977c086592b132bL,0xb6dca9cb099051d7L,
+        0xd9c2ab23d188ae25L,0x9f469f3fe20aaf3dL,0xdbd1f7cf5aad74d0L,
+        0x3d5efe5c22a9eb3bL,0x8c5edfa2137010c4L,0xada2217b57870260L,
+        0x4feee5673dac9776L },
+      { 0x30e18d52b5d3d780L,0x4dadb5d307166744L,0x320d386e5a742156L,
+        0x5d8c290e8d6bbb86L,0x981a43232d263dd1L,0x33d0e7ca98984636L,
+        0x5138784da519acb1L,0x832e3fabdddc81ffL,0xfc2785943199a43aL,
+        0x5b4cabcf32743163L,0x9fa010bd74f94fa7L,0xc28a743d5694a627L,
+        0xc1d2a888cb657a24L,0x7eef2503e86a25eaL,0xed11a5d304c561ffL,
+        0x4fe818e79c9ede0eL } },
+    /* 213 */
+    { { 0x00252c9d7fc1c7ffL,0xa9bd419d9fa89ad1L,0xc93a124a4064e9ccL,
+        0x384cbcb843942eccL,0x004c21fd8749695bL,0x69c81d9f421165bfL,
+        0xe2325628dde01102L,0xec9374575a9b004dL,0xfb3346bff6dcfc21L,
+        0xac4da64b4d372c7dL,0xcecb7ad3f20494e2L,0x562c41b5e867c150L,
+        0x299395cec2b723d8L,0xc91adfc57ee53231L,0xe06f1161f10b6597L,
+        0x81915529b74d3ffcL },
+      { 0x8ec124316ed9d4eeL,0x3dffa154689aff01L,0x4aba349f2a89a3f4L,
+        0x2db1e8e2d467efb2L,0x18dea354039102e2L,0x422ab853e52f082bL,
+        0x7130a2c1ed36dd47L,0xca60e86d0295d1eeL,0xe6ac68087c7f5ad3L,
+        0x0f83cecfde864658L,0x72e66c21461d1265L,0xfeef4150bd385099L,
+        0x0f183f3aa6632289L,0x275454be792dc795L,0x2744c11b11367702L,
+        0x7d06bcc7e8ea6ef3L } },
+    /* 214 */
+    { { 0x892859427090212fL,0x691b7d4c5521e844L,0x4c038422be2dbb92L,
+        0x317721edbd81f880L,0xc136cbeeac89bc36L,0x4f71b60b7b8f004dL,
+        0x269132d04e218ab8L,0xb0e2496ee6cc814dL,0x0b2ce31775fadc15L,
+        0x82e3c08466d223c5L,0x9721caa64c612f8bL,0x59a751eba4b65355L,
+        0x3433aad5c7d3d9d1L,0x1e61b9d2e80d4246L,0x149f655ffc673caaL,
+        0x48b52b99d0f9cb92L },
+      { 0xa3915399efdc05beL,0xde70db1813e095e9L,0x447862e9cddb3fdaL,
+        0xa2b031621a009451L,0x4b27980c23920ea3L,0xac5394f1a23b8febL,
+        0x163f72563e5616d4L,0xaa0ff93fb714219aL,0xd26f96d293d62474L,
+        0xdd212ea87dcfe276L,0xab27bf2f47038d15L,0xe58c8325f418168eL,
+        0xe3704222b32a989aL,0xa3694390bfc9f13bL,0xf16e26060d0684adL,
+        0x17c0de879d8c76ecL } },
+    /* 215 */
+    { { 0xbca5f453dcc01958L,0x7d9459541ce88393L,0x5e6350a1561f5b6dL,
+        0x291c3c867e2d36bcL,0xf6c7ed84a5ac3a6cL,0x7913c40bd98006cdL,
+        0xf78bb0875671ec3bL,0x1c928f6eb43e89a9L,0xfdf28df3ae1ea1edL,
+        0x62bba5b1b924b2b5L,0x491d27051a116e05L,0x08ec02b7167ed3e3L,
+        0xe291cf7b5bc0b046L,0x30e501698c5d7f59L,0x0c7c350df5c799b7L,
+        0x6862b9e20ac6e1d7L },
+      { 0x56c6f4e79ffa1f64L,0xfed6a91aa1e24349L,0xe9a0ee0ccdb75232L,
+        0xbfc90b370322d607L,0x29480ad2462fef87L,0xfc214969c2bfcf34L,
+        0x6e5211e0a539e38fL,0x2a59ec2612a5149cL,0x195fe212d706b532L,
+        0xf77fb108e99c8429L,0x74ceaea35dc80482L,0xa5a6030bbd92d298L,
+        0xad42dca5aaea15eeL,0xd6ac3bc74987109cL,0xc64e1c40290af649L,
+        0x5093fa2d51f8de6cL } },
+    /* 216 */
+    { { 0xc4cf32804c2d553bL,0xdc1abe223b966c29L,0x556a549c2296914aL,
+        0xd8c9f8b5999976c9L,0xc22c57bd776e83f3L,0x4f2942ab7c85ec57L,
+        0xef3407e56e2c61f5L,0xf005e8caf213db48L,0x470c853df32698c7L,
+        0xe6f488d7cac0a54bL,0xb6bd6bed60b7501eL,0xf0103106714a4bd9L,
+        0x5285bc3b6e098894L,0xec06741af5f92a00L,0x32f16426ef7ef24aL,
+        0x12f9c44d6c77a438L },
+      { 0x1951e96483313a1cL,0x98edd3da33c58b37L,0x4edbbf52c7ac4044L,
+        0x866ca6f70dcb5ee8L,0xec0ae8f56dd422f8L,0x1077bc540661ec2eL,
+        0x6d39913ad422523cL,0xd105e1e858e7cb3eL,0x47c9397fc979bb45L,
+        0x3221d4a90997b592L,0x0ef628a3e8952fe7L,0xd08d58274e946241L,
+        0x64cbed0f59780f40L,0x13d7c22708e110ecL,0xd186d8667679b1a3L,
+        0x02f75e4e26ae1d18L } },
+    /* 217 */
+    { { 0x1b637ebf47f307d7L,0x6b644a6ad0141477L,0x82a33d652e05a80cL,
+        0xc8f1a0f3fed07b31L,0xc09ee7f93696e597L,0xcdaa7ec3c7ffc01eL,
+        0x549f88fef8f373b9L,0xc88d1961c3bb8989L,0xd92a4fe9dfcaa7b7L,
+        0x12ff9ee23ae4ab20L,0xf5aea641f5ecb1a5L,0xe769237fe32fb47dL,
+        0x96a5c42025d085c0L,0xdc91255826c755a2L,0x580b985f9bce9723L,
+        0x72b1b56663961941L },
+      { 0x9d708a08790e5558L,0x985360410689af80L,0xe85e7b8a42313b5fL,
+        0xe6ba129255a49d1aL,0x5e76c4b0ac371b0bL,0x58504f39938e6e19L,
+        0x8dd4142260ae9a21L,0xd8b04e9b968485ceL,0xf94c4ba5887efe43L,
+        0x11268e67f11c5e73L,0x92623e28cf6b99c4L,0xf2d0aaa87a0a9662L,
+        0xb266772a4ca02ed3L,0x68ee8e4e2d63b551L,0xcdebb2992e78b5b5L,
+        0x5df19216e17225adL } },
+    /* 218 */
+    { { 0x20027e1e8df2e7e3L,0xb183cc68d8da07deL,0xce35ba694b4ae694L,
+        0x896d97df3ca62e88L,0x3de4713b52efed2cL,0xd006c40e26bd084fL,
+        0x1e9b71bbfc81923bL,0x9991c7b61aacc6b0L,0x650c93648f656840L,
+        0x138561d187f47524L,0x610f2b11bffd3ca2L,0x96915faffa191418L,
+        0x8f1236de955e5309L,0x613cbeeaa1872d79L,0x7f7b44ea66a2a48bL,
+        0x452265c2e0a89c32L },
+      { 0x4ad5ec7925430010L,0xcac786ffebd090c0L,0xa5f9f4ff20a9d3f5L,
+        0xfcbf4112a3edc65fL,0x8824839c0cf3eb11L,0xb8dd6d4e8aa5b700L,
+        0xe2271dfdb7568ab8L,0xe43ec373b744560eL,0x78eaf9261cf75296L,
+        0x1809ae0e3fa96d9bL,0x0b312d2ddc25dfd5L,0x6b8f78b46bab7711L,
+        0x069efc8db5ecf1e4L,0xc1952bae609fecaaL,0x43e302ed5f4dbde1L,
+        0x14b02bf91e078555L } },
+    /* 219 */
+    { { 0x2c71c768b87e5b57L,0x0bcc78f7f531a557L,0x4ff93f8bf7597dc8L,
+        0xb28e026d139e175fL,0x6b83b727cb94ca6cL,0x2eafe3b20079f7fcL,
+        0x2aca54decf3bd170L,0x17c4133c6af0dc6cL,0xbea1e665ccf5e35eL,
+        0xa6691a48345505c6L,0x2633abd0e6100b89L,0x966c6706c17d0388L,
+        0x7aefffbe1a0cf90cL,0x4d847be7d0add64cL,0xd49bcdfbaea2aa46L,
+        0x85e07e742cc7d0a5L },
+      { 0x23aae0a60bc25bcaL,0x6e8e55f1e44f64ecL,0xe1e696d8b607b773L,
+        0xaa90a746d3005909L,0x072b1ccd2cbc4990L,0x0d0fe6c6c68e2f5dL,
+        0x920ec5f053e28ec9L,0x79b21fb4f0040cc1L,0xa7375bd3fcc4a2c7L,
+        0xf5f5def9e1bac7ddL,0xdc315d7935c0f8d3L,0x7117c1702cacd318L,
+        0x6f2823c4e926f71cL,0x38db58bbed02f39aL,0xe5b492317db69323L,
+        0x0964039f8d49f430L } },
+    /* 220 */
+    { { 0x21774f1656999ebaL,0x3d8ee287b1de6305L,0xd81af726de0b2669L,
+        0x374469393f8942a1L,0xbcf6b615ea03e13cL,0xd30c0c3594e273cfL,
+        0x4fd33a56c6725c56L,0xa57534ada8be97a2L,0x799242a67c22a251L,
+        0x4e51bdb59d0c5c49L,0xd7cd76ccc6a42768L,0x914097acd426bf59L,
+        0x59404a2c66e9beb2L,0x4738fe985c96e3e9L,0xbcbb3e0eaad666d0L,
+        0x626b0fd263bc5e56L },
+      { 0x47217dbae1a1ec42L,0xaa6ae7dbab5acc50L,0xb7e1ab1e865331d1L,
+        0xb84530703d30126fL,0x280649e0dee61851L,0x8806f4a3ea689544L,
+        0x4bbe43adcb56f632L,0x036b9bdabcaff94fL,0x0d941e65bd0637beL,
+        0x82179d44686f3abbL,0x1486912caad6afd6L,0x9a3b891eff7e1534L,
+        0x88c426ceeb86fd96L,0xb56e6a81117928c3L,0x933e713596399e00L,
+        0x09bbddd9a17b6ac1L } },
+    /* 221 */
+    { { 0x75e39c1de4fd3673L,0xf880d9d1a65c8e07L,0x4725c1dc7289c7feL,
+        0x5b6735ee3529d200L,0xc1f8f2ed3c747af3L,0x5cf3998f912efdf5L,
+        0xed72261849859c39L,0x23793a2f0e69795dL,0x8a6ab8d686b1d2a7L,
+        0x00c815de22a882e4L,0xbe77d6fcf9db8d7eL,0x0886fb3202267547L,
+        0xb62687d449c10edcL,0x9f1c3e177c83ed4cL,0xe6d5d7f05af366eaL,
+        0x2eaa01b8d1efad24L },
+      { 0x5e47fb701f357c74L,0x93085c4aa9e3b794L,0x4f0987336e85a905L,
+        0xf53808ffbe0244c9L,0x91dddf93a3b5660dL,0x8b76377bf3b95ed6L,
+        0x91b911b7bb3920d4L,0x7ccf08bf86a13cf3L,0x53ed8f97ea018e58L,
+        0xb1ea434378c55194L,0x8e6adde9e0d2d5a6L,0xfc2b248f9b96259aL,
+        0x96ebceaeeef17dddL,0xf694b443557f9c85L,0x48cd150f07d5bba8L,
+        0x02d31de9b4c1986bL } },
+    /* 222 */
+    { { 0xa6bb9e1ede79499dL,0xf6ca8ff8fd0fc2adL,0xbec0f8e81a7d9356L,
+        0xbc3d1c9fe8f06327L,0x805c72173b300bebL,0x00420a08413c181bL,
+        0x9e9a167ef0ca9d01L,0x076c909d1aeeddd6L,0x64a1997f8e3a8a72L,
+        0x3ce7f7a7a77b429eL,0xaac0fbf45c94d3e9L,0xf37694a7e6d48407L,
+        0xf56679e2a91921e7L,0xf23fe0f3ee1dbbd6L,0xc7917566cbf9fa99L,
+        0x965860f2e0f4d765L },
+      { 0xe734702b7fa5f79cL,0x930bd4265af2d26dL,0x45bd8b986c73e0ceL,
+        0x7dbe7bed4ee44a2dL,0xc129e024956c8a1aL,0x6fdc05ac77cdf80eL,
+        0x70a6ba2b589ca59bL,0xfc484021999825afL,0x1d284b547a23f0b6L,
+        0xb1da10a428a0a8afL,0xb1eb1b312b2af6d8L,0xf051443a33935ee3L,
+        0x7a07eb268effa6ecL,0x16ee4086d662654cL,0x7a7bc5014549ee4cL,
+        0x650810321fa98a52L } },
+    /* 223 */
+    { { 0x49f0e460b67ed9b2L,0x0cda0fd0c36d93d2L,0xbb5963e988c75e1cL,
+        0x757bbe93614bc0c9L,0x9a9b88019a768605L,0xa8b7e2af48edc544L,
+        0x9e77ed9eb51a5985L,0xdd025274ebbf024cL,0x598b62881545c636L,
+        0x39bdaed04800dba0L,0x7fc2013981e2a23aL,0xdc66fd5c550cb4f2L,
+        0xad27032fb52068c7L,0xc9a0bcae8169fa15L,0x60606f213a7ca8a2L,
+        0x982950469862652fL },
+      { 0x3e3746002e11c128L,0x80dfae5d0e6dca7eL,0xe44016e2d9552264L,
+        0xf65f88f2880b7143L,0xca3d28d4526b881cL,0xf9c59dd1dfb86afeL,
+        0x548860c24c74f958L,0xd06ea43c9cb69f4fL,0x5343c9ae7334ececL,
+        0x5cc2ccd635329713L,0xa95ff4035f3a6c0cL,0x2e01a1ccb372653bL,
+        0x31510fdfa250523dL,0xeee538e2a6227eb2L,0xeadfc8a0ca23cd10L,
+        0x4b7e6e1b3e78f54bL } },
+    /* 224 */
+    { { 0x79c9076fdb5f928bL,0xe6250bb6b7347cecL,0x54b67798ac00ec41L,
+        0x900d20ba9d9619c7L,0xed42c0d059e4343fL,0x3df39e85451935d7L,
+        0x2639118264f701ceL,0xce8f2554e1f87aacL,0xfddd678965f91aaaL,
+        0x96cd163fa324539fL,0x5c815f2c4bace995L,0xd78c8c2aa94f9ea5L,
+        0x7ab2aff4ef24e455L,0xf0ed64091cddc26aL,0x954a420b00ca2822L,
+        0x0611c4c5d3297658L },
+      { 0xf192001ca9e81829L,0xded3332008a282ccL,0x0bfd7de18f9ded9bL,
+        0x6793ac0db7889003L,0xbb00d91d3577a5ddL,0xe17a23a7802d3c2bL,
+        0xff95f88cfb549014L,0x7cd1bf4bc71b6e07L,0x2e3b24a023588c8bL,
+        0x9b5335b8a4112076L,0x2481c05ec4056d30L,0x55c7410ce916a1b5L,
+        0xbbe03271850179f4L,0x15e6c177b3cd1208L,0x509a24c090cbfe50L,
+        0x820795291c108566L } },
+    /* 225 */
+    { { 0x5d2d3cff1c7d353eL,0xd5e7eccd7de0ce3bL,0xb4b1075f6ca87635L,
+        0xda8404e025f9ad3eL,0x6b963e89205cb5aeL,0x9e5ee0d809f221a1L,
+        0xd64c85d9ea41aca4L,0x6a46c4e934442a34L,0xac6ff97e3cf655a4L,
+        0x76565c1ee5417d7cL,0x681009a9eebf9c4cL,0x95b61d3988da6388L,
+        0x6402b46af6b472c6L,0x1fde51650b7f1171L,0x94f8f273be0c05e3L,
+        0x7487b036a88344a7L },
+      { 0xa860e5759c3e2370L,0x19d58193f8048719L,0x3a0dbf3ca6e2f9aaL,
+        0xb6c7e9596144719bL,0xa9049c74deffec21L,0x8ba064b23f50cebfL,
+        0xb12822c049a1de15L,0xb654b7d9b1d527f2L,0xc470859d0ffd0430L,
+        0x37c74a674f05446bL,0xe553251ba3add995L,0x4a3ed6cbe33533b5L,
+        0x2f2f44d027e419ceL,0x2d84ee82a5d1b979L,0xcc76b123db6fa69fL,
+        0x834f85c521fa3bddL } },
+    /* 226 */
+    { { 0x329347c12ce9b31aL,0x1d88522afe3fb3b7L,0x4bcefb4d52ff90fdL,
+        0x53b173862b1a081dL,0x538c11ba2a411f08L,0x7895b93c141b603aL,
+        0x2993b9aab10bd741L,0xccbbd04609912986L,0x669fafb0eea0aba5L,
+        0xd484462235661897L,0x4a63b89c367ffa54L,0xcbad5d1d1c3478daL,
+        0xc5339227aa6034f7L,0x0e6d705fe61b1391L,0xdd14b660f74ff515L,
+        0x639d8b0a5332b54cL },
+      { 0xfa423162162217cdL,0x2e0e4a2a811c28e6L,0x68d9ce1821766dc0L,
+        0x51263739046a06efL,0x44eea231dde92101L,0x0607c8f2114298d3L,
+        0x27f272ba63d957e9L,0xe7ce80cca5e8cae1L,0x5816ebe224f7a63fL,
+        0x4dece5a789673e34L,0x13756a22536babd4L,0x644d61aee3bf77afL,
+        0x60b2bf6e2bcf98bcL,0x3b0b59f329fa962cL,0xb0769a1aabb50023L,
+        0x409031360c75402cL } },
+    /* 227 */
+    { { 0x84d2873a1670433fL,0xc9394df625493dfcL,0xeb05a19a80fcf89eL,
+        0xe39e4310db297616L,0x50742dc9d9e63046L,0xf31ad8c81de9ca9eL,
+        0x86aabf94fb7b1d0dL,0x36cda27a1b3c82d1L,0xfb1a2ef439702d84L,
+        0x280bfddc46081299L,0xe4b2b48dd2396238L,0x2db2c2f37b3c9353L,
+        0xd5b5b31712fb8a69L,0xf9b87a3b08180474L,0xd85909861e952578L,
+        0x80668eedf37a2bc8L },
+      { 0xe2edcd35b39a0249L,0xaf230cd4b2f8aeaeL,0x295b15e47223df05L,
+        0xbb66982ae0e937f4L,0x019d2b728cbc9162L,0x5c512ae9cf49dca1L,
+        0x11b491a7630f07b4L,0x48d4f34ca03874e9L,0xc1fd0ea644cb7433L,
+        0x13f79ae1f95b30c3L,0x40362d4ded8b60acL,0x9e8314ff61ead81cL,
+        0xed600dd4498c3d28L,0x5fcb1c19c2521702L,0x592329fc3a9c1f33L,
+        0x046775481bde6ce9L } },
+    /* 228 */
+    { { 0xee3de56e39233c96L,0x868c409c80737eafL,0xacae11bd201abc68L,
+        0x0f2cea9b2b486205L,0xe32387e16f19056cL,0xea75365aa5dc2a41L,
+        0x76c29acc12b4be86L,0xa01fcab78d63294dL,0x81dbe88b0cab9f24L,
+        0x76646e5bf414c054L,0xfe111893cb96b7aaL,0xb649f5b17664e097L,
+        0xa196422e53fcf5a9L,0x5978c9bd0b7ff634L,0xb5feb38e3c229895L,
+        0x038a49fb0833c456L },
+      { 0x35e3818c13e93257L,0x14cebc9da612741bL,0x4f6e92497caac06bL,
+        0x82278e333daa1116L,0xe7cc565e4de2034aL,0xbb7dc95f0a1ba630L,
+        0x81dd9f2366956fbdL,0xc63e6319bb132dd6L,0x6e22b022fc241337L,
+        0x238481937e8beb1cL,0x83b1994dd8c938acL,0xb54cfacaa6bb5644L,
+        0x1a7cd44e06f91807L,0x1dd439bba8f8d9f3L,0x660c2a787f74a8e6L,
+        0x4bb76e22121b5660L } },
+    /* 229 */
+    { { 0x7a151e8ae6354817L,0x33d494eaf038b438L,0x4c86c68885958986L,
+        0x721538271dcbac12L,0xf487af8cc0edad06L,0xad33051fe500e5d6L,
+        0x0a711b1bd6e47f55L,0xa68709a78c746ad5L,0x27f172626402f35eL,
+        0xc6d08efafb30c130L,0x9ef1c041c06c7497L,0xd0c74ecedcc3e2daL,
+        0x30c5f96e092e1073L,0x0f1393cf2aa12b74L,0x245840162107eb02L,
+        0x8843d25f7b76f98bL },
+      { 0x4e1501dcedb2a83eL,0xbcfe8fb02bb8d724L,0x09020659d925df62L,
+        0x3c715dcf42ab6fc3L,0x73c05055a0f09dfdL,0x126745d8e3590aeaL,
+        0x5382f4d876ff749eL,0xfc69feefa920c663L,0xde1602119fd711caL,
+        0x4219c3bd9075c4d5L,0x3800cbd13ded6bf2L,0x8c7ea0eb6263a116L,
+        0x35bd79587d264c37L,0x56e22e457159c98cL,0x71bf2a2dfa7373b5L,
+        0x0503f9398935c949L } },
+    /* 230 */
+    { { 0x65addc6671dad4f6L,0x238e4889024bea1bL,0xfb76c8e2f605d3ddL,
+        0x13d5f5deb0d96b89L,0xe0b5ba356601b2cbL,0xe37d491d83e3d254L,
+        0xe8860423240c8ea7L,0x374182f3e91c99baL,0x26c2caf9a87ad919L,
+        0x4b13040af574f295L,0x5b9bced1944000a3L,0x4ccc57be06df42e7L,
+        0x22e8ec504bd1089dL,0x0c53177adddbb500L,0x690d31d29ecfeadbL,
+        0x735778fe176668f9L },
+      { 0x0f86ee3e843c1137L,0x3c1c42fa3f0b73cdL,0x0e75679d8ab20e3aL,
+        0x6f95f1f416242faeL,0x7b88e11c39b092e4L,0x1629403e4c236ac0L,
+        0x66105f412dac02e6L,0x74dc28a7862e0632L,0x2118ffb2f3b23c8dL,
+        0x1182417c0745ffbfL,0x49b55a044c05711eL,0x2c665b74cefbe4deL,
+        0x1cc4c01d97bf7107L,0xb2ca06dac54f0676L,0xfc599daa7450d0f8L,
+        0x52e637a61a3182a1L } },
+    /* 231 */
+    { { 0x481700f16bebc6dbL,0x4a6b45dbf9503d92L,0xc715cd3c5d153919L,
+        0x942a1c05e5ad2abcL,0x36a82433ab7b466fL,0xba413bedba13918bL,
+        0x698a562490f4e6ceL,0xbb720da6f3f1f3caL,0x2116d41d63471ab3L,
+        0xe00d2227303d3609L,0x7fd4cc00463ba69eL,0xac609e4d62845fd1L,
+        0x63603b2c80adc9c7L,0xbf16fc9a45fafbcaL,0x41007f7fc4bc94abL,
+        0x7c916b4fa74b1698L },
+      { 0xc1026f9178bac2d4L,0x8a2e80982601a875L,0xad2f276e0073d640L,
+        0x443610c4fcc1fb88L,0x5727b822ca6b291fL,0x0645532c88ec60fcL,
+        0x51e48899ed9ad48bL,0x841b48b5f543f103L,0xa6ccb1bed591ceebL,
+        0xfc4adf0f9dcf5a8bL,0x3a7ca020b347ddb4L,0xaa1accc2cb44c521L,
+        0x773b68280527c0c4L,0xaa374c107023cf50L,0x733d10006b74c926L,
+        0x1ff3916f77a8d07cL } },
+    /* 232 */
+    { { 0xaa218fe4f997939dL,0x3d4dfbbb791583b3L,0xb3a7b5da87f7560bL,
+        0xa9c028015da92c98L,0xe1eb4aad46666f4aL,0x2eb17a5114ce9dd7L,
+        0xf46a66a4ef8f3076L,0x900b45c6810e546eL,0xf7af22584baf04ddL,
+        0x3cc1c8725c84d42fL,0x3093f2258e4c83deL,0x62fade41170d88b2L,
+        0xe19612e4ac076e44L,0xf48d734632dd141bL,0xc1b1f759925e34daL,
+        0x19ed1a56072b90c9L },
+      { 0x9cf7fcde6c735473L,0xaab88e676003bc3eL,0x12187cbcfb199bb8L,
+        0xbb7304419accccbdL,0x214aff3cb0f65459L,0x6aec81a36f926282L,
+        0xaa82cb329f9d20b8L,0x82f3f90f5773cc90L,0x4af60e6bf62257e1L,
+        0xf18b44bfbd4762dfL,0x3948b129db970753L,0xc6e920e97c22c18eL,
+        0x393d620857be97adL,0xe8d7382c46b637f9L,0xf6625ccbf1fed1d5L,
+        0x6f31e0f968681599L } },
+    /* 233 */
+    { { 0xc45afe5582b8f204L,0xac0441b6d358b54aL,0x7213e7bfacd5f5edL,
+        0x1914c70b139bcd93L,0x714b458196dbcbb0L,0xe9297d351ed35d21L,
+        0x8f6408376a3e1f20L,0x150a8a9d2f3cd705L,0xfb36e801dcdd9f6dL,
+        0x5a54eb655cf56d82L,0x7610500c92aa5a21L,0xd10d0ae23b089f03L,
+        0x491b2079c42b66e8L,0x4af1ae3d0eee8d48L,0x137e4c2841556f45L,
+        0x875e330863d8a7e6L },
+      { 0xdc80fddcaf6c0accL,0xd5ad1e66bb1e7c08L,0xdc717ae1828585adL,
+        0xbdc54340275c7da6L,0xf4b4c852d26b9e15L,0x5f0a1fbf6a05fa50L,
+        0xc6f81e47817bcb32L,0x2cbd432870ff2e1dL,0x8a24901667c7f7fcL,
+        0xd045acb7b585a6c4L,0x2e972ad44666c057L,0xc74d87cfe6d7d63dL,
+        0xf7067d870e274144L,0xb2ca157a8b2584aeL,0x495c5bfb75f0fdebL,
+        0x5abb0581f386e009L } },
+    /* 234 */
+    { { 0x8be62d2bf0c97f57L,0x0fe04871962f28c7L,0xc548a46747b50abbL,
+        0xf6b26e0344fa09edL,0xfd44c6e3ab05a96eL,0xedb0032c70e6ae82L,
+        0x28bd402bd7e4899dL,0x43f2e9639b7c11c2L,0x0ec3fc0ece913716L,
+        0x769b8bc902fd0f8cL,0x9d9cb3aa7cabc3acL,0xe88a889206924cc9L,
+        0xa51461aa42609014L,0xc7f4aa8b962e79e0L,0x4ef0210a8b1b3e80L,
+        0x705446801bfee4bcL },
+      { 0xfab3d713121901c1L,0xe90a2627fead54aaL,0x64f6d285bc08ba23L,
+        0x8d99301536ec227eL,0x99a16ab906c191abL,0x86b1cf5bf649ce2cL,
+        0x5920675966be3a80L,0x18836279ccba2cf0L,0x2c157b87eff53486L,
+        0xbfac98964b223af2L,0xcd0fd4f00aae7a57L,0xdaddb94063218a80L,
+        0x3844bb79df88f14eL,0xc1b3e3d4b71ed9fdL,0x6c634a13d6205036L,
+        0x6f56aecfb8680a6bL } },
+    /* 235 */
+    { { 0xb01dc803d9205c5dL,0x68955f7d67123929L,0x3debbffd9d9b6565L,
+        0xb844395ed3b1acfeL,0x04328b216094eeffL,0x6631ffa822991febL,
+        0x0dde66e6190dd075L,0x75b03c55e8577c05L,0x6c91ce5f91722407L,
+        0x9a288a408ebb3a3fL,0x1d376f8a058a1396L,0xf3a594579a6e0676L,
+        0x103029c57b71d288L,0x0843f428b44c30c0L,0xd8e6aff8730e0b9cL,
+        0x7b6be8114ed644adL },
+      { 0x3ec38e4a3d3aa54eL,0x10233943d83d509aL,0xf84aa621243955e2L,
+        0x29104717f51d3d44L,0x62d2442c7eca4e37L,0x8c5a523d85fa55deL,
+        0xc6f5ccda851da1b5L,0x044bcaa820001468L,0xf7501e68e01702e0L,
+        0xf0819359e6a0acecL,0x33dda6adac0ef0b2L,0x97aeedc8fd964f01L,
+        0x48dacd0e530b90d8L,0x4c5fad6fb84122ebL,0x2284ec1ed700a1deL,
+        0x86f9a835dbca5474L } },
+    /* 236 */
+    { { 0x0e1d9055450cc69fL,0x50eb14bcc9edf98fL,0x1bb94e77ee7eba01L,
+        0x5f7a6737998f8e53L,0x588384e31b16eef0L,0xbb928723d85c5e15L,
+        0xfe51e345cbd952aaL,0xc5d0ee287e241674L,0xfdc146ef100182f0L,
+        0x0f739e92e7f5be2cL,0x501ab3afb656bd3eL,0xb1552dde5168e289L,
+        0x940dfe31b8ee104aL,0x42923603c4304475L,0x9306f114c460a913L,
+        0x5bfa9faf03b51f86L },
+      { 0x2a23f52c107b258eL,0x989e82bbd66341dcL,0x54a3ced8823cff1aL,
+        0xf45b7794719b491fL,0x898c22182433dfb8L,0x0f9dd91cc49250eeL,
+        0x50c2a2ae4fa17655L,0xf7aa1ce42c327f45L,0x13a15ad6583b1e41L,
+        0x9aa0d5a5a1bfad9eL,0x9b1caa288e1fbdcdL,0xaf9283b6915f7f87L,
+        0xc10e4e0c87e81a1eL,0x04fdca561080d296L,0x6acc961612755bd8L,
+        0x1b1266aa828feedaL } },
+    /* 237 */
+    { { 0x4ebc0a00774ee49cL,0x776f6852cb6237d7L,0xfc0544ac5df938a3L,
+        0xc3388ec8b6fbfbbdL,0x84ac8bcd745f2eaeL,0xa9c56609b1ece937L,
+        0x656fb6ac7de8fa13L,0x5f8ded74a532b871L,0xab0d428baa889f09L,
+        0x43b27f2810b7aec2L,0x26426e1efeecb34cL,0x44431b6b9e89c2dbL,
+        0xaac4bc5d39211090L,0x926f73684fd81058L,0x452fa691471ef60eL,
+        0x33517fdb218d7a23L },
+      { 0xa9c33f46593c4a36L,0xac69d71836b1a9eeL,0x55a20c1d4277beecL,
+        0x3e8ca24e7e4f179cL,0x57373369d46d88a2L,0x71ceb1cc730702f8L,
+        0x8b184d9735eed574L,0x7f4517a20704cec2L,0x7f129d18d7062a53L,
+        0x07a4571bb1d77e1cL,0x774ac3098350d8b2L,0x27b2919f61fab8efL,
+        0xa7c4cc13b5dd801bL,0xe7e6255b1434591fL,0x349937b85a3592b3L,
+        0x31fac63d30c77549L } },
+    /* 238 */
+    { { 0x2ee8cf1b04913fb6L,0x7e4013501769a6b3L,0x790ebb71783e61f0L,
+        0x1e5107f9e27f2ffeL,0x124ba67fedaf89bfL,0x189200e1e58de68dL,
+        0x962732a36df5abeeL,0x72cc37cfacbeb4aaL,0xb0c5fa96e93c5a76L,
+        0x4c2a317cde63393bL,0x97f65e67830b2d6cL,0x4afc35041be5b96aL,
+        0x0bf40a60730ce66dL,0x96a1ba799340d84fL,0x3ee1825407626b08L,
+        0x01db35db7ab0cbf5L },
+      { 0x6e0fbc2dac0efee2L,0x8406ebcdd71dbb45L,0xe72bde3e19b69abeL,
+        0x49cb7e6137e01822L,0xcbb8c01c11458b4cL,0x420b4847687c5d63L,
+        0x1847dfa1454c6776L,0xbede911dd1839d18L,0x1b9dc9c9278df046L,
+        0x294bd62b881a336cL,0x7f09687993e77adcL,0x7ac9066543ce3ba7L,
+        0x148695fd7764eefcL,0xe0c20f0b9ac465cfL,0x636e8d28a6e2cdb1L,
+        0x7b6ba98cd755341dL } },
+    /* 239 */
+    { { 0xcb1d9e03c1881ab4L,0x19c25d55b3168c88L,0xa82d3d47282364ceL,
+        0x95994390f161aa24L,0x7838bc00e1ebb2c9L,0x8fd5dfccbdec7a75L,
+        0x4dd203c24ff7220aL,0x5ec173b30efeff48L,0x99f1d2b316428b35L,
+        0xc06bd9e5056e813fL,0x929172bac0b319f1L,0x6ae0e384fd223b15L,
+        0xbd01059e98d091edL,0x6b3168e4a654648eL,0x2211447f3375e798L,
+        0x47e8101971eb4508L },
+      { 0x7045d45abc8c290dL,0xa33d1355810fb33aL,0x2baf009246fbbf2fL,
+        0xacff3f1b385c7cd9L,0xc5b150ece161985cL,0xc6ee0a7f2a888748L,
+        0x9d888c8e5e88dcc8L,0x4dd735f2ccb86443L,0xcc1e13b73c40f6f2L,
+        0xfc3a25fff3fed691L,0x4cb43b17257ee5c7L,0xaa654f93f32db135L,
+        0x44f58d0a02dff2d3L,0x78e3f188a8ca6394L,0x39646ccef3e86697L,
+        0x785b1902e0dce87bL } },
+    /* 240 */
+    { { 0xfcce2361a92f9a20L,0xb7bdca879d64540eL,0xd4739a851d00d7c5L,
+        0x067ac8dc2e97c926L,0x2aea3ffe78da6a8bL,0x6828bf5463c51b69L,
+        0x76f1c4797155141aL,0xf4bcbef63977d810L,0x75bc4949541bce7aL,
+        0xe01f4066d17041a5L,0xd282d5bd87755eafL,0x6e2107dd59e7ae80L,
+        0xaa56e166382ab36fL,0x65ee8ef6b9d1d634L,0x99a2160ace4ed844L,
+        0x6557c367b7712c27L },
+      { 0x561b0268d75b6e52L,0xb0813640118d0e89L,0xcff533306a2eb1aeL,
+        0x4e4622266d090894L,0xbb351227b5fc1d48L,0x9365ea0757a3062dL,
+        0x4caca37bd66e2dc5L,0x220d7d23b9095887L,0x9c0fd3938c4473bfL,
+        0xadff370a6787da4fL,0xef0aebccd057f4b8L,0x205e744c1173f33aL,
+        0xb8d1f0a5925a26b4L,0xa9364f49722fbbfdL,0xc891ae778227d284L,
+        0x15c40d04a0e08ab4L } },
+    /* 241 */
+    { { 0x9baf169a2a0e18d1L,0x9971c0174c0327c2L,0xd81a323f7bc262ceL,
+        0x2099db8d818ff379L,0x663f663d4cd3c330L,0xef5325c3011a0553L,
+        0x9cd70bdcf980a470L,0xe64452d11c9ed070L,0xafbf43f4ac676e13L,
+        0x97bec0a6ae85c2a5L,0x2faae550470490c4L,0x0ab97a87491e6ba9L,
+        0x4055f537aafa9914L,0xfc95adbb36726557L,0x646343b9d119d6bfL,
+        0x788e94a09d341e37L },
+      { 0x053a6fe59c53461aL,0x75ec897e08e3b6edL,0xa8f5d2f30768d939L,
+        0x9bd6bff6cc213d4fL,0x590c7b4105b0147cL,0x20a3628b7c7b8169L,
+        0xc66a086e5bce78e9L,0x3dd4d2824dec1d8fL,0x890acf44c19dcce9L,
+        0x6632d875d8435a7eL,0x590167c1ea6381b2L,0xb2259797f0dcc128L,
+        0x91a612b446f8d463L,0x42185d78c15efa39L,0xdf55ec37119f6788L,
+        0x91b19cc6780dea93L } },
+    /* 242 */
+    { { 0xebf2709dcb5d8b80L,0x03b96182fc35660eL,0xb873d991055ef969L,
+        0xd1ea4b4de47c4342L,0xcc4b9244d54f8867L,0x93b1a2cafd8d77efL,
+        0x068d24e7e8c1f563L,0x5f5fabb649973056L,0x83248c500542374fL,
+        0xc36de2b53f38e913L,0xed07e8eb7bb680beL,0x964813d7d8f313b5L,
+        0x7bb6a069afd2d392L,0xc06d848e0848a31aL,0x6867fb2fe4f0c325L,
+        0x3c2ba834067343afL },
+      { 0xab62d7759d3ad63bL,0x3f9cab9759e0eb1fL,0x70332a633885e117L,
+        0xf22cafcee20b2f9eL,0xb529ba7e49eca947L,0x249542166228d88dL,
+        0x80ea23ec39239561L,0x1b8907e7d4370644L,0x4b7fa455563e4e44L,
+        0xcca9829eb2a4b0faL,0xd0a720a448060792L,0x8ccdda0c246991ceL,
+        0x37a2325b348d086bL,0x566ed509f60aee13L,0x3d30e091147f253fL,
+        0x1fa627a5c1073bd8L } },
+    /* 243 */
+    { { 0xa11222a242478fd4L,0xacf4c6f1670b2000L,0xf71bb04f8359c6deL,
+        0x618e28297b93cdbcL,0x96e1bae3230db60bL,0xf17fd3b4965b3b29L,
+        0xa58639c6bc7055ddL,0xc3ea92ed4b817d7fL,0x9082b2a6d23b08a4L,
+        0x8471228adc17010eL,0x753b9e4620e89d97L,0xcf7e4f9703ff77c9L,
+        0x6c3f82452bbe60e5L,0x9e432cbcb80e017dL,0x150a5acdc0a45edbL,
+        0x67b8bd054798743eL },
+      { 0xe66079b4f4797cf7L,0xe31c998ad03fde02L,0x5aa3763a54caaef1L,
+        0x64d9a1fef7649711L,0x7ce0dc73af29b1a7L,0x6661b083fb66ca93L,
+        0xbf4d74fe32fb6a78L,0x25f6ef09df00a561L,0x2bc4383f831d1159L,
+        0x6d5cc10c536bde37L,0xd4945f9f882cc65bL,0x81f48f13451a99b8L,
+        0x140161cd6bac11a4L,0x9d94d4edf18a4a0aL,0x65363165a467a824L,
+        0x74297aa9a4c9aedfL } },
+    /* 244 */
+    { { 0xc49758a4e21124baL,0x99bd8198a87ffbd2L,0x45fbcdd13d6638a8L,
+        0x94645ff815f7bf76L,0x5fa6736fc4e6d57eL,0x1eae647592e61db9L,
+        0x79575c0ccbdf944aL,0xa3d1304725b31d74L,0x7881df224cab5ae6L,
+        0x8dbfd2991a2887f2L,0x23d07590a26ac459L,0x2e589852d8661d4aL,
+        0x37b5c13b8a0140f7L,0x0f94199e3fb3782aL,0x722aa0591bc14e90L,
+        0x89aab7bad55bbb12L },
+      { 0x8b345a96d656bdc7L,0x43bdc8afe176cd3bL,0xd69518b632d64c43L,
+        0xfcf364a779b82b41L,0x907b344effb0cf82L,0xf3d0c83c5101287bL,
+        0xe9f26a5934cd90efL,0xe5f5aaf207082b5cL,0x4eb72c75ece7c165L,
+        0xe9590a81be986cd6L,0xfeef498fff1536aaL,0x04560243a8263d5eL,
+        0x940be14f54ae872bL,0xbee7bcc9e3207686L,0xd496a27dc1bc4d7aL,
+        0x002dc2975940ab46L } },
+    /* 245 */
+    { { 0xee533937b69d60c3L,0x260be552fe972755L,0xb11fb78dc0c725a6L,
+        0x6982c27ecab2e7c2L,0x4bceedd9ee2322cbL,0x952b19ed122704f7L,
+        0x2df4c285854a6165L,0xba40b5bf7b192485L,0xfcbca9500119f52aL,
+        0x7467d1cbe5add86fL,0x9bf536fbd9d0f2c1L,0x3c296e34b8d4ebc9L,
+        0x0495f8f405a81317L,0x8c59e8d673335f76L,0x0b53d324e0542122L,
+        0x4d5645353c3bda73L },
+      { 0x7322f8007e5c0877L,0x481b43e60ca9a764L,0x231f4f4ba2c12716L,
+        0x09596857ed3136c2L,0xae82632238db30deL,0x652fad4099908ebcL,
+        0x0b8d1814af0d231eL,0x2680c54b09cbc349L,0xfd4562f34bf3bf8eL,
+        0x2985090b092b595fL,0xe6f39ca45e15fc34L,0x70175191bc378168L,
+        0x906944b3845a4a87L,0xacc6d74a82a1541aL,0xadc9bab3b155c8b4L,
+        0x1f2f89ce77306c62L } },
+    /* 246 */
+    { { 0x8253ef419affefdfL,0x05d7ece54cf9256bL,0x377002f2b444e483L,
+        0xb189755fcba5471fL,0xc88483cbd5cbe015L,0x254f7c696a0b8429L,
+        0x18850bd461f3f61dL,0x7ba210890a247157L,0x35abbc2ed92eeb0dL,
+        0xfb56cabe965dec89L,0x9da23724bc55684aL,0xd8ba396f6a7a7492L,
+        0xfcb90db72ef4ba46L,0xdd234fe09909b27aL,0xbdf3c16476f4366eL,
+        0x09c8097f17e50d47L },
+      { 0x6a04b14060050c07L,0xc29e831843a8e37eL,0xcb9429b2bb55e41fL,
+        0xed2fea5a2ce60e3aL,0xdc7b1ff3db9d82f4L,0x48ebecc3687d37faL,
+        0x79153e32ecb07539L,0x6a60054f57075692L,0x3871cd0c800759baL,
+        0x17a7386f30922df1L,0x4e9fc59e83357b7cL,0x1d26b3a939415186L,
+        0x912a0222d34db889L,0x6672fcf459fcdb71L,0x5a3f268d44ff3036L,
+        0x6f113ed36911e16cL } },
+    /* 247 */
+    { { 0x52a9df591836f1c9L,0xfa6519f54232307dL,0x8406c7015ded285aL,
+        0x0a1545caaf627f75L,0xae1111eeace0417dL,0xfb28bdf6a6113443L,
+        0xde9ef0ab52dbcbcbL,0xe9dc181b7813e658L,0x0b1dabdb99127225L,
+        0x5f0598e322814c59L,0x5c3b966ed934ee7eL,0x4eb84edab99ba4bfL,
+        0xb2919a343c1b55e7L,0xa9addb4994aa860fL,0x1b7220dff6811ff6L,
+        0x6636a23bd1a183e2L },
+      { 0xdf5d5a2d20587283L,0x0b3822c9ef07fc5dL,0x1786bd550ef6de38L,
+        0x163cf90725d1671dL,0x74bf971f1cdb1defL,0x5749e8300842fc4aL,
+        0x0e2edbc727f854f7L,0xbb27bbdabce24acbL,0xc1b19cec05bed08dL,
+        0xaada123ef7c904bcL,0x02429f1bd89982dbL,0x49d3616e65f6e632L,
+        0xa3789fa8ee59fd32L,0x160ba3bafe9f29f5L,0x0f2d3b61af5378a0L,
+        0x7aeecc7673c2a6f8L } },
+    /* 248 */
+    { { 0xf3a4757cdc43b0dbL,0x3d8a4e8598119cadL,0xf8095bf64616c156L,
+        0x3e2a07bc4f533e97L,0xa982436739cfc5adL,0x18a6ba3acd68052cL,
+        0xbd60e5908a1cec66L,0xae3841a502b1b695L,0x986dff12190a195bL,
+        0x2df2beacad31fd9bL,0x7d893224cc728f7bL,0xc38ea7380cf0a992L,
+        0xa8439a80586a44eaL,0xede7f7f01615f03cL,0x4824990827a1f885L,
+        0x28ec4006b78a7645L },
+      { 0xe1820c2ea2fe0009L,0xe11ba5d2f13874e9L,0x97522454c524db52L,
+        0x4d4774267fede529L,0x01d3419a9b2500d4L,0xce08a4921869244bL,
+        0xba169023dd1be1b9L,0x242c3e5432a301e0L,0x9b56f7ba70906788L,
+        0xf0ad2a09c74a8cc4L,0x99cd1841d76f9439L,0xeddafe0b621fb60eL,
+        0x056bee54bc397634L,0x4653f860ff7f0a84L,0x6bd4876f2011c0afL,
+        0x134f4cc70c9525c3L } },
+    /* 249 */
+    { { 0x9621a3ece938dff4L,0x7d101a7b486a79a3L,0xf2c4ef97de950537L,
+        0xf3184099e65d87dbL,0xb89c7ffb373b8cfaL,0x68baa505e842916eL,
+        0xa790fd094ebea764L,0x679df6d4e592892bL,0x2023331cfcfed741L,
+        0x0bf4efd29880ff21L,0x7ca78dddd0344501L,0x2cb09ecb342858c8L,
+        0x9e5eb6dc2575487aL,0x50675a15ebcb0491L,0x09d2e74f7381d471L,
+        0x6ea3782983d3d6f4L },
+      { 0xc65c094b4e5cc40aL,0x7a2e3f6a1af37dfbL,0xef677e9df9026e44L,
+        0xb7878c9593880f53L,0x4aa30b077f644aa9L,0xa0c516832f208c3cL,
+        0x7c0277ae658d663bL,0xef0b3c38ae1d9130L,0x302f37a7695c3ea4L,
+        0xe004c1c56a0c5e0dL,0x9fd495c420cbcf9fL,0x706d5b9d568a0e7cL,
+        0x8b225dff59286454L,0x527d44658d9a709cL,0x47c558da87c08d68L,
+        0x606ee6e6bb4ef07dL } },
+    /* 250 */
+    { { 0x02d99fc757c621f6L,0x292e40c17fe83d48L,0x1bdfc7a19ef199b0L,
+        0x78a04102e62c7666L,0x16cda370e6738753L,0xbc81974d1e3a65afL,
+        0x19742048f78fe209L,0xc83a058abf5981c6L,0xf26b24349c89702dL,
+        0x988b2f1e9d1a678aL,0x472bf9b0ff29ae29L,0xa143e3981d7cf5ecL,
+        0x9c9d7e45b268ddd8L,0x166cda555fc4ff76L,0x6044cdf0a4aa7673L,
+        0x49dba6f7e9148707L },
+      { 0x20e47fb2a758e37aL,0xaf6b31d72d8eaf66L,0x352ad5f96f9c2210L,
+        0x0093f72790efc32bL,0x435c99dc41e4b264L,0xbfa878e005b15795L,
+        0x99c520a40e673575L,0xca68259487eea759L,0x029f7b81f12a348bL,
+        0xa547cc182aa2ce35L,0xa11d874bead5e2c5L,0x9af0349b55682cdfL,
+        0xf86ebfea8bbe8e66L,0x3dab8782f55394abL,0x458bf797ebc8eb8fL,
+        0x4890a7a49b7de78cL } },
+    /* 251 */
+    { { 0xd72996898da995f6L,0xd39eaae7ec6156efL,0x6959040c356a82d5L,
+        0xb2046b21c135bcfeL,0xea720b640f595c78L,0x02824efae7c5fb40L,
+        0x97d8fd4c0edb3bfcL,0x12f0290579f24ebeL,0x16fc47cf187ea6b9L,
+        0xc219fd27789d5c23L,0x233a6b6c89263eccL,0x823634b28b6d30a6L,
+        0xca352e25c9b33680L,0x9388d6ca40c77456L,0xf8e55b0b3c92065bL,
+        0x5c17474b02439a76L },
+      { 0xd888e7c28aaccab5L,0x18027836aaced05bL,0x185b877dccec0f65L,
+        0x93cadc1c125c2882L,0x45df540a67fdc54cL,0x4f3c86e2c2788a33L,
+        0x3e874469e3a0fa2cL,0xc59daa47273983cfL,0x3063c48b4a96d8a5L,
+        0xc38d2bcfc2e58915L,0x90e78b8784e428c3L,0x900a292cf0c4fd53L,
+        0xb7f92db7941e6005L,0x956792416ca53a1cL,0x35f6f31db1ab0fa7L,
+        0x5d675eb47b58408cL } },
+    /* 252 */
+    { { 0xaeee1a77870c6025L,0xfc4a23b791a2dfcaL,0x7b0e60c4386b64c4L,
+        0xd5d5b17de5ae72b1L,0x6dfc88ac9eefa212L,0x4feaefbed4038b96L,
+        0x099ac3568e2d2eccL,0x548ea612012af207L,0x4ffed9db89c31218L,
+        0x1c1e91c4e0e67331L,0x009bb64faf8300e0L,0x8780501c6773c3beL,
+        0xe0cd6edec08219faL,0x7c055e07f81b06ffL,0x82b63f9ce080b36fL,
+        0x02fccbaf0a9feca3L },
+      { 0x9991d4d1b47cac61L,0x2e9d1687ab86e12cL,0x8c6855ec2b94f042L,
+        0xca40051948e648e5L,0x9ba91fb2ef89ac57L,0x4f4192061be792cdL,
+        0x82d221cbbd0f1e15L,0x062eb13bfc444019L,0xf3a97c3299790fdcL,
+        0x4e796d946067a64bL,0xc46dd3006d23775aL,0x8672c4d5ed7f0f23L,
+        0x821851dc3b4f63d7L,0x50a3ae0cd26273f2L,0x800e58fceac60f6fL,
+        0x56f1e45613845545L } },
+    /* 253 */
+    { { 0x01ccb3f632c24f3bL,0x99eb1c7f06d817e6L,0x8dc640bb6aa26776L,
+        0x7838affe0845d5e0L,0xf34fecb1f81a79a8L,0x6a2e282d3e6819b0L,
+        0xc4b977ce8237a4b8L,0x0f46b3db87636439L,0xa465f54097970497L,
+        0xd7e087628791be43L,0x00220b6c34198ec6L,0x57b38637093d94bbL,
+        0x84012e1629d690b2L,0x02ec9db520aad1a4L,0xafee2fc685dc34e3L,
+        0x911d193625500cf8L },
+      { 0x13b1bd58f5e5af5bL,0xa7ca263b7b6a22a7L,0xab6bec4df3af2adcL,
+        0x16651e59a04420bdL,0x3b448b3b4ba36c11L,0x3c62bfcdff424310L,
+        0xde15c4a5f1a96cbbL,0xbe0ad8a1e4d1f980L,0x812bd14e36673a3aL,
+        0x40303af69212acddL,0x8f6dab9c576095ceL,0x7df1882a107f5ca5L,
+        0xb903e63c8896a3b0L,0xf5048544d863b3f0L,0x5e5019b9c09887deL,
+        0x2be744fea0f53865L } },
+    /* 254 */
+    { { 0x054cd05f5b50f324L,0xb9b1eb241ea3c7a2L,0x4a858a5c7ff8e6b7L,
+        0xd83902feec040882L,0x72b26494d0cba9bdL,0xd0176f90b29c9e1eL,
+        0x05d4eb02cebadb81L,0x874405b1372b8bfcL,0x5c41288179ead190L,
+        0xd44a3dd3ec2b48cdL,0x84499a773f4d5033L,0xb37b38cd564c3a09L,
+        0x80e99497f42e803bL,0xc07b47a0b8f518b2L,0xc710e3c53568fde4L,
+        0x735f542fcead0e7aL },
+      { 0xcaa9a17138380039L,0xadfafe17f74d19c8L,0x92d4393eccbc1a8bL,
+        0x3c5dbf39fe029705L,0x4552b5ab930e9b36L,0x7ee630322afd494aL,
+        0x826a9ad73f02ac43L,0x98c5356299356298L,0x0c869f877342bb39L,
+        0xd7510020e4f9b79aL,0x6361d1a4d34789a9L,0xf0ded5bacfa85637L,
+        0x407ee73f88ac07e4L,0xfac7d03f09ef1cbdL,0x25d697cb4d475badL,
+        0x1e984c9d14bd399eL } },
+    /* 255 */
+    { { 0xc76d05614850c817L,0xb08a5b193489812dL,0x7273d1545e58cbbeL,
+        0x8900b5fa4be61e5aL,0xaa088691d7aeb8e1L,0xe66666afd35a3d4bL,
+        0x38a2c19957ec7d3dL,0xa0648e8f668d6f5cL,0x1f9fc92c7adc1746L,
+        0x23a116c0843065c3L,0x36370a2061e6ae69L,0x626c37362aa47e73L,
+        0x540c25f2deff6d84L,0x9804824ccdbed2d4L,0x4b5bfce0039a9492L,
+        0x6c474a5676942e01L },
+      { 0x3aeb9a417d88e3a1L,0x105d3c88c484742aL,0xe59de8d13fe61131L,
+        0x148f5b6b1a869e8bL,0x7a8abc59aa75d90aL,0x2f0c9bc762146013L,
+        0x43faa747c3824cd9L,0x81763a186a5d0b92L,0xbbc341bc9bcbaebcL,
+        0xe1813160f745d1ddL,0xa53ce52db75ce5f4L,0x15eae66cd50de4c2L,
+        0x5ed8996c75d7656dL,0xe4ff5711c4ca552aL,0x215e985a3c5305b4L,
+        0x6b258954fa1ba2ceL } },
+};
+
+/* Multiply the base point of P1024 by the scalar and return the result.
+ * If map is true then convert result to affine coordinates.
+ *
+ * Stripe implementation.
+ * Pre-generated: 2^0, 2^128, ...
+ * Pre-generated: products of all combinations of above.
+ * 8 doubles and adds (with qz=1)
+ *
+ * r     Resulting point.
+ * k     Scalar to multiply by.
+ * map   Indicates whether to convert result to affine.
+ * heap  Heap to use for allocation.
+ * returns MEMORY_E when memory allocation fails and MP_OKAY on success.
+ */
+static int sp_1024_ecc_mulmod_base_16(sp_point_1024* r, const sp_digit* k,
+        int map, void* heap)
+{
+    return sp_1024_ecc_mulmod_stripe_16(r, &p1024_base, p1024_table,
+                                      k, map, heap);
+}
+
+#ifdef HAVE_INTEL_AVX2
+/* Multiply the base point of P1024 by the scalar and return the result.
+ * If map is true then convert result to affine coordinates.
+ *
+ * Stripe implementation.
+ * Pre-generated: 2^0, 2^128, ...
+ * Pre-generated: products of all combinations of above.
+ * 8 doubles and adds (with qz=1)
+ *
+ * r     Resulting point.
+ * k     Scalar to multiply by.
+ * map   Indicates whether to convert result to affine.
+ * heap  Heap to use for allocation.
+ * returns MEMORY_E when memory allocation fails and MP_OKAY on success.
+ */
+static int sp_1024_ecc_mulmod_base_avx2_16(sp_point_1024* r, const sp_digit* k,
+        int map, void* heap)
+{
+    return sp_1024_ecc_mulmod_stripe_avx2_16(r, &p1024_base, p1024_table,
+                                      k, map, heap);
+}
+
+#endif /* HAVE_INTEL_AVX2 */
+/* Multiply the base point of P1024 by the scalar and return the result.
+ * If map is true then convert result to affine coordinates.
+ *
+ * km    Scalar to multiply by.
+ * r     Resulting point.
+ * map   Indicates whether to convert result to affine.
+ * heap  Heap to use for allocation.
+ * returns MEMORY_E when memory allocation fails and MP_OKAY on success.
+ */
+int sp_ecc_mulmod_base_1024(mp_int* km, ecc_point* r, int map, void* heap)
+{
+#if (!defined(WOLFSSL_SP_SMALL) && !defined(WOLFSSL_SMALL_STACK)) || defined(WOLFSSL_SP_NO_MALLOC)
+    sp_point_1024 p;
+    sp_digit kd[16];
+#endif
+    sp_point_1024* point;
+    sp_digit* k = NULL;
+    int err = MP_OKAY;
+#ifdef HAVE_INTEL_AVX2
+    word32 cpuid_flags = cpuid_get_flags();
+#endif
+
+    err = sp_1024_point_new_16(heap, p, point);
+#if (defined(WOLFSSL_SP_SMALL) || defined(WOLFSSL_SMALL_STACK)) && !defined(WOLFSSL_SP_NO_MALLOC)
+    if (err == MP_OKAY) {
+        k = (sp_digit*)XMALLOC(sizeof(sp_digit) * 16, heap, DYNAMIC_TYPE_ECC);
+        if (k == NULL) {
+            err = MEMORY_E;
+        }
+    }
+#else
+    k = kd;
+#endif
+    if (err == MP_OKAY) {
+        sp_1024_from_mp(k, 16, km);
+
+#ifdef HAVE_INTEL_AVX2
+        if (IS_INTEL_BMI2(cpuid_flags) && IS_INTEL_ADX(cpuid_flags))
+            err = sp_1024_ecc_mulmod_base_avx2_16(point, k, map, heap);
+        else
+#endif
+            err = sp_1024_ecc_mulmod_base_16(point, k, map, heap);
+    }
+    if (err == MP_OKAY) {
+        err = sp_1024_point_to_ecc_point_16(point, r);
+    }
+
+#if (defined(WOLFSSL_SP_SMALL) || defined(WOLFSSL_SMALL_STACK)) && !defined(WOLFSSL_SP_NO_MALLOC)
+    if (k != NULL) {
+        XFREE(k, heap, DYNAMIC_TYPE_ECC);
+    }
+#endif
+    sp_1024_point_free_16(point, 0, heap);
+
+    return err;
+}
+
+#ifndef WOLFSSL_SP_SMALL
+/* Generate a pre-computation table for the point.
+ *
+ * gm     Point to generate table for.
+ * table  Buffer to hold pre-computed points table.
+ * len    Length of table.
+ * heap   Heap to use for allocation.
+ * returns BAD_FUNC_ARG when gm or len is NULL, LENGTH_ONLY_E when table is
+ * NULL and length is returned, BUFFER_E if length is too small and 0 otherwise.
+ */
+int sp_ecc_gen_table_1024(ecc_point* gm, byte* table, word32* len, void* heap)
+{
+    int err = 0;
+#if (!defined(WOLFSSL_SP_SMALL) && !defined(WOLFSSL_SMALL_STACK)) || defined(WOLFSSL_SP_NO_MALLOC)
+    sp_point_1024 p;
+#endif
+    sp_point_1024* point = NULL;
+    sp_digit t[5 * 2 * 16];
+#ifdef HAVE_INTEL_AVX2
+    word32 cpuid_flags = cpuid_get_flags();
+#endif
+
+    if ((gm == NULL) || (len == NULL)) {
+        err = BAD_FUNC_ARG;
+    }
+
+    if ((err == 0) && (table == NULL)) {
+        *len = sizeof(sp_table_entry_1024) * 256;
+        err = LENGTH_ONLY_E;
+    }
+    if ((err == 0) && (*len < (int)(sizeof(sp_table_entry_1024) * 256))) {
+        err = BUFFER_E;
+    }
+
+    if (err == 0) {
+        err = sp_1024_point_new_16(heap, p, point);
+    }
+    if (err == 0) {
+        sp_1024_point_from_ecc_point_16(point, gm);
+#ifdef HAVE_INTEL_AVX2
+        if (IS_INTEL_BMI2(cpuid_flags) && IS_INTEL_ADX(cpuid_flags))
+            err = sp_1024_gen_stripe_table_avx2_16(point,
+                (sp_table_entry_1024*)table, t, heap);
+        else
+#endif
+            err = sp_1024_gen_stripe_table_16(point,
+                (sp_table_entry_1024*)table, t, heap);
+    }
+    if (err == 0) {
+        *len = sizeof(sp_table_entry_1024) * 256;
+    }
+
+    sp_1024_point_free_16(point, 0, heap);
+
+    return err;
+}
+#else
+/* Generate a pre-computation table for the point.
+ *
+ * gm     Point to generate table for.
+ * table  Buffer to hold pre-computed points table.
+ * len    Length of table.
+ * heap   Heap to use for allocation.
+ * returns BAD_FUNC_ARG when gm or len is NULL, LENGTH_ONLY_E when table is
+ * NULL and length is returned, BUFFER_E if length is too small and 0 otherwise.
+ */
+int sp_ecc_gen_table_1024(ecc_point* gm, byte* table, word32* len, void* heap)
+{
+    int err = 0;
+
+    if ((gm == NULL) || (len == NULL)) {
+        err = BAD_FUNC_ARG;
+    }
+
+    if ((err == 0) && (table == NULL)) {
+        *len = 0;
+        err = LENGTH_ONLY_E;
+    }
+    if ((err == 0) && (*len != 0)) {
+        err = BUFFER_E;
+    }
+    if (err == 0) {
+        *len = 0;
+    }
+
+    (void)heap;
+
+    return err;
+}
+#endif
+/* Multiply the point by the scalar and return the result.
+ * If map is true then convert result to affine coordinates.
+ *
+ * km     Scalar to multiply by.
+ * gm     Point to multiply.
+ * table  Pre-computed points.
+ * r      Resulting point.
+ * map    Indicates whether to convert result to affine.
+ * heap   Heap to use for allocation.
+ * returns MEMORY_E when memory allocation fails and MP_OKAY on success.
+ */
+int sp_ecc_mulmod_table_1024(mp_int* km, ecc_point* gm, byte* table,
+        ecc_point* r, int map, void* heap)
+{
+#if (!defined(WOLFSSL_SP_SMALL) && !defined(WOLFSSL_SMALL_STACK)) || defined(WOLFSSL_SP_NO_MALLOC)
+    sp_point_1024 p;
+    sp_digit kd[16];
+#endif
+    sp_point_1024* point;
+    sp_digit* k = NULL;
+    int err = MP_OKAY;
+#if defined(HAVE_INTEL_AVX2) && !defined(WOLFSSL_SP_SMALL)
+    word32 cpuid_flags = cpuid_get_flags();
+#endif
+
+    err = sp_1024_point_new_16(heap, p, point);
+#if (defined(WOLFSSL_SP_SMALL) || defined(WOLFSSL_SMALL_STACK)) && !defined(WOLFSSL_SP_NO_MALLOC)
+    if (err == MP_OKAY) {
+        k = (sp_digit*)XMALLOC(sizeof(sp_digit) * 16, heap, DYNAMIC_TYPE_ECC);
+        if (k == NULL)
+            err = MEMORY_E;
+    }
+#else
+    k = kd;
+#endif
+    if (err == MP_OKAY) {
+        sp_1024_from_mp(k, 16, km);
+        sp_1024_point_from_ecc_point_16(point, gm);
+
+#ifndef WOLFSSL_SP_SMALL
+#ifdef HAVE_INTEL_AVX2
+        if (IS_INTEL_BMI2(cpuid_flags) && IS_INTEL_ADX(cpuid_flags))
+            err = sp_1024_ecc_mulmod_stripe_avx2_16(point, point,
+                (sp_table_entry_1024*)table, k, map, heap);
+        else
+#endif
+            err = sp_1024_ecc_mulmod_stripe_16(point, point,
+                (sp_table_entry_1024*)table, k, map, heap);
+#else
+        err = sp_1024_ecc_mulmod_16(point, point, k, map, heap);
+        (void)table;
+#endif
+    }
+    if (err == MP_OKAY) {
+        err = sp_1024_point_to_ecc_point_16(point, r);
+    }
+
+#if (defined(WOLFSSL_SP_SMALL) || defined(WOLFSSL_SMALL_STACK)) && !defined(WOLFSSL_SP_NO_MALLOC)
+    if (k != NULL) {
+        XFREE(k, heap, DYNAMIC_TYPE_ECC);
+    }
+#endif
+    sp_1024_point_free_16(point, 0, heap);
+
+    return err;
+}
+
+/* Multiply p* in projective co-ordinates by q*.
+ *
+ * r.x = p.x - (p.y * q.y)
+ * r.y = (p.x * q.y) + p.y
+ *
+ * px  [in,out]  A single precision integer - X ordinate of number to multiply.
+ * py  [in,out]  A single precision integer - Y ordinate of number to multiply.
+ * q   [in]      A single precision integer - multiplier.
+ * t   [in]      Two single precision integers - temps.
+ */
+static void sp_1024_proj_mul_qx1_16(sp_digit* px, sp_digit* py,
+        const sp_digit* q, sp_digit* t)
+{
+    sp_digit* t1 = t;
+    sp_digit* t2 = t + 2 * 16;
+
+    /* t1 = p.x * q.y */
+    sp_1024_mont_mul_16(t1, px, q, p1024_mod, p1024_mp_mod);
+    /* t2 = p.y * q.y */
+    sp_1024_mont_mul_16(t2, py, q, p1024_mod, p1024_mp_mod);
+    /* r.x = p.x - (p.y * q.y) */
+    sp_1024_mont_sub_16(px, px, t2, p1024_mod);
+    /* r.y = (p.x * q.y) + p.y */
+    sp_1024_mont_add_16(py, t1, py, p1024_mod);
+}
+
+/* Square p* in projective co-ordinates.
+ *
+ *   px' = (p.x + p.y) * (p.x - p.y) = p.x^2 - p.y^2
+ *   py' = 2 * p.x * p.y
+ *
+ * px  [in,out]  A single precision integer - X ordinate of number to square.
+ * py  [in,out]  A single precision integer - Y ordinate of number to square.
+ * t   [in]      Two single precision integers - temps.
+ */
+static void sp_1024_proj_sqr_16(sp_digit* px, sp_digit* py, sp_digit* t)
+{
+    sp_digit* t1 = t;
+    sp_digit* t2 = t + 2 * 16;
+
+    /* t1 = p.x + p.y */
+    sp_1024_mont_add_16(t1, px, py, p1024_mod);
+    /* t2 = p.x - p.y */
+    sp_1024_mont_sub_16(t2, px, py, p1024_mod);
+    /* r.y = p.x * p.y */
+    sp_1024_mont_mul_16(py, px, py, p1024_mod, p1024_mp_mod);
+    /* r.x = (p.x + p.y) * (p.x - p.y) */
+    sp_1024_mont_mul_16(px, t1, t2, p1024_mod, p1024_mp_mod);
+    /* r.y = (p.x * p.y) * 2 */
+    sp_1024_mont_dbl_16(py, py, p1024_mod);
+}
+
+#ifdef WOLFSSL_SP_SMALL
+/* Perform the modular exponentiation in Fp* for SAKKE.
+ *
+ * Simple square and multiply when expontent bit is one algorithm.
+ * Square and multiply performed in Fp*.
+ *
+ * base  [in]   Base. MP integer.
+ * exp   [in]   Exponent. MP integer.
+ * res   [out]  Result. MP integer.
+ * returns 0 on success and MEMORY_E if memory allocation fails.
+ */
+static int sp_ModExp_Fp_star_x64_1024(mp_int* base, mp_int* exp, mp_int* res)
+{
+    sp_digit t[4 * 2 * 16];
+    sp_digit tx[2 * 16];
+    sp_digit ty[2 * 16];
+    sp_digit b[2 * 16];
+    sp_digit e[2 * 16];
+    sp_digit* r = ty;
+    int err = MP_OKAY;
+    int bits;
+    int i;
+
+    if (err == MP_OKAY) {
+        bits = mp_count_bits(exp);
+        sp_1024_from_mp(b, 16, base);
+        sp_1024_from_mp(e, 16, exp);
+
+        XMEMCPY(tx, p1024_norm_mod, sizeof(sp_digit) * 16);
+        sp_1024_mul_16(b, b, p1024_norm_mod);
+        err = sp_1024_mod_16(b, b, p1024_mod);
+    }
+    if (err == MP_OKAY) {
+        XMEMCPY(ty, b, sizeof(sp_digit) * 16);
+
+        for (i = bits - 2; i >= 0; i--) {
+            sp_1024_proj_sqr_16(tx, ty, t);
+            if ((e[i / 64] >> (i % 64)) & 1) {
+                sp_1024_proj_mul_qx1_16(tx, ty, b, t);
+            }
+        }
+    }
+
+    if (err == MP_OKAY) {
+        sp_1024_mont_inv_16(tx, tx, t);
+
+        XMEMSET(tx + 16, 0, sizeof(sp_digit) * 16);
+        sp_1024_mont_reduce_16(tx, p1024_mod, p1024_mp_mod);
+        XMEMSET(ty + 16, 0, sizeof(sp_digit) * 16);
+        sp_1024_mont_reduce_16(ty, p1024_mod, p1024_mp_mod);
+
+        sp_1024_mul_16(r, tx, ty);
+        err = sp_1024_mod_16(r, r, p1024_mod);
+    }
+    if (err == MP_OKAY) {
+        err = sp_1024_to_mp(r, res);
+    }
+
+    return err;
+}
+
+#else
+/* Pre-computed table for exponentiating g.
+ * Striping: 8 points at a distance of (128 combined for
+ * a total of 256 points.
+ */
+static const sp_digit sp_1024_g_table[256][16] = {
+    { 0x0000000000000000L, 0x0000000000000000L, 0x0000000000000000L,
+      0x0000000000000000L, 0x0000000000000000L, 0x0000000000000000L,
+      0x0000000000000000L, 0x0000000000000000L, 0x0000000000000000L,
+      0x0000000000000000L, 0x0000000000000000L, 0x0000000000000000L,
+      0x0000000000000000L, 0x0000000000000000L, 0x0000000000000000L,
+      0x0000000000000000L },
+    { 0x170a46d2335c1685L, 0xeac9e971e1007a58L, 0x40e8f3df43ca4a73L,
+      0x2646f81582642475L, 0x3af49bb4b36576d1L, 0xd89e2d1472bf1afbL,
+      0x27be882c2fd151e6L, 0xaddedc858f88717cL, 0xd6d859bf16ac6c6fL,
+      0x0e741a1b2d8eae58L, 0x6faf7a0061c1f30dL, 0x66dbd09a9b67e096L,
+      0x21f11c067d3b4f7dL, 0x6152ba02c727c98eL, 0xafd58891e86cb221L,
+      0x59e93c6a6bd3baf4L },
+    { 0xe54dd36f71dd4594L, 0xbbc9cc9f00aef1e6L, 0x9ea5a44ea19f6530L,
+      0x8588aa993f520928L, 0x9753794c8f5c1418L, 0x118bd792c11399faL,
+      0xb9bd3afdf5cb6ab5L, 0x813d1cb22ecb9652L, 0xfd45626740389813L,
+      0x51f7119b4ac8431cL, 0xdd9f6a910a180eb6L, 0x13946d179f7bfa2eL,
+      0x16f1863150a9d0d9L, 0x5f19c20d6f8373d3L, 0xbe85ac6a9b6a52b9L,
+      0x63ef187b74f62e03L },
+    { 0x7c376b7f016f45e7L, 0x1c1bdb572bec82f8L, 0x7392f741ce429b60L,
+      0x6fdbf0a2c7afd81dL, 0xbda41b1f7241098bL, 0x5b407474bb60f8cfL,
+      0x933e0d41b330bc4dL, 0xae182830733fa3beL, 0xa0ed299b0f5c6cd1L,
+      0x7ff3354e3f9860c8L, 0xb136098615559c41L, 0xab0cb63c129f85cbL,
+      0x682ecc4947685fbeL, 0x505e8ec2eb199633L, 0x90dcc794ddac2cdaL,
+      0x4fe6791cf192da23L },
+    { 0x94a423d505e8733cL, 0xcc845e651d5717c1L, 0x237c7e88e961b322L,
+      0x0c4471c6db4181ccL, 0x00c875e2713bd721L, 0x9dfde9edb2c17b09L,
+      0x430a6de5e88ceaf6L, 0xaaa7a61a7b81cea6L, 0xea52d026233f98d5L,
+      0xb55efdd060689a9aL, 0x30cfa7ce5cac4aabL, 0xfa4db1148e950761L,
+      0x309570c44e9a1e52L, 0x18c21f611a040170L, 0x555d1ffebe78d9d2L,
+      0x04482a18561db297L },
+    { 0xe7758ac273d486d8L, 0x8169f94661cdc1e7L, 0x723c99fc2188ab4fL,
+      0xa0e54f02f3373630L, 0x560bee25bd8c2260L, 0x28fc307c4531bc60L,
+      0xd6f21f1a7e44feb5L, 0xc8e4499c57128d37L, 0x963b053ed7b2ea45L,
+      0x40c27a0432a3d222L, 0x5b51854d35459668L, 0x66e1a49fd73557e9L,
+      0x0d267fd98692077aL, 0xfa1350d3e7342702L, 0x1a9c3f2568ccdb44L,
+      0x833a0ff8dedbf89fL },
+    { 0xa8c419c7ab376b76L, 0x3b7294f327d0f0ccL, 0xe56bb9e2a90c514dL,
+      0x931ba51ea62575a6L, 0x56fee07b098c0a88L, 0x04be5aeeb4c16a2aL,
+      0xe513350be6eb260bL, 0x339edad6a1d5c270L, 0xf366ed59e9dbadd1L,
+      0x4213be882dd06ec0L, 0x22d639c8cb1187dbL, 0x1fec95e1d8a1058aL,
+      0x03f73ea6a2b744f1L, 0x741fd51af4f05c0cL, 0x2e2df95a85f811a0L,
+      0x692b3ce3eb24965fL },
+    { 0x0ce6cb72d2a127b4L, 0x66a46ea58f92816fL, 0x43ecf46347a37616L,
+      0x163d9a01e0ab96eeL, 0xc8145c6db2edbe8cL, 0x2f426cae4de4e665L,
+      0x174d0b4074e252f9L, 0x54c240d77d2af831L, 0x581fa3973d652936L,
+      0x05b9491ca09d4695L, 0x8c4e85335452643cL, 0x32d64331d4128327L,
+      0x6447903870361f25L, 0x774191b189ef09f2L, 0xc0cf0aaf81de5fe0L,
+      0x333e430af40042d6L },
+    { 0x5df04de4cf26d3b7L, 0x57a77306b53f79beL, 0xa4013c5f1808b664L,
+      0xef291ea485037360L, 0x1ffc9d7d0b061037L, 0xd9d04dd965c913bbL,
+      0x948a37aff13b8587L, 0xb5443483fe3ee755L, 0x3fc21e7404631386L,
+      0xb3a104e5cddeb58cL, 0x94fe18626572cd52L, 0xeb9a71a115aaa408L,
+      0x8adc6fe5459ea462L, 0xbb18d1754aeb02a3L, 0xae1276362f7791d1L,
+      0x10e8b31dd6bbd708L },
+    { 0xb87f03e53ed9f1afL, 0x03ad247756676166L, 0x38dcd63074ce15b8L,
+      0x1877e2b026b1e85bL, 0xb1654d171af99c15L, 0x9782e9e49382547aL,
+      0x6dc7fc7c26d55ef5L, 0x9038f95d2fbeb54cL, 0xfe590dfe036c0357L,
+      0xcfcb6eae4fdc3f7fL, 0xcb1fbc54f35e1a88L, 0x3c8e1db2da0a5568L,
+      0x9a87393f5b6f5557L, 0x38646b32e7ac0a06L, 0xfd261c832a8495abL,
+      0x6485524c0cdcc4bcL },
+    { 0x1abfb3e2c4a6ff2aL, 0x2aa03fba35a6428aL, 0x884227f089aff742L,
+      0x2337883aba5dbd93L, 0x38186ae9d2a182cbL, 0xb9f0764d49a01f05L,
+      0x92411feb917b1e7aL, 0x700b1903570cbb5bL, 0x5d5181d5b914be7cL,
+      0x135c44371981182dL, 0x32758d24574b9997L, 0xa650a8f5632d28b2L,
+      0x24078bacfa383f09L, 0x6546a60c00a33d80L, 0xa4061c7a2df8b449L,
+      0x1f76f3f2f234563cL },
+    { 0x9aa2c14344c436b0L, 0x790705561f69c87aL, 0x35f3117b5f6db2dfL,
+      0x85761f41ed56ba82L, 0xf831464f7d0afa48L, 0xa99f29153adce71eL,
+      0xb27bf693116b7488L, 0xa98a5a8c9bb9443aL, 0x7f8780262ee5fde8L,
+      0x3a6f93dd1812acb7L, 0xaf92a4ccdc84bc92L, 0x3c2562aff1d4995aL,
+      0xfd9fc33c04ed899dL, 0xc028ca944ed2a538L, 0xd0f367bb049ea726L,
+      0x04924ffb3d108e05L },
+    { 0x06548e3dc673562fL, 0xd3b33025e2eae48cL, 0xe61fd32b5e1c6977L,
+      0x424e20646ebe557bL, 0x767391c041d6e18eL, 0x4b8ebb8e14d7e95bL,
+      0x4ae8b7d420991b8cL, 0xf8a0df66e01290d3L, 0xc97e24a3925e5f4eL,
+      0x79a7b2cb1508272aL, 0xb40b072e25072661L, 0xdad9e1829062fa49L,
+      0x8780a784f3c53bceL, 0x58a82b769f142799L, 0x08cd849cc1468426L,
+      0x4dfce809c380ae35L },
+    { 0x45069cb2d527b780L, 0xd52da015977930ddL, 0x10cc600be27d0263L,
+      0x34102c26bb2d1b2bL, 0x4c652623554adf3cL, 0xd689138245f0ff47L,
+      0x83fa8cc5ca916e7cL, 0x1e10f139d15c8d8aL, 0xf173dc2e81dc56b3L,
+      0x7fcecb045c4ed9baL, 0x307fd7d847d01228L, 0x24a571539f3a532fL,
+      0x59e9e81de2153c22L, 0xc562595de428a408L, 0xdc7daff89339bd23L,
+      0x0d075908b8a06802L },
+    { 0x870af2a7de085f2aL, 0x88fcd24fbe99b2e5L, 0x88c0d26159ca413bL,
+      0x1f02a2e48559f851L, 0x83b96021f622da0dL, 0x5c05c2f56dca3615L,
+      0x0148cf1c7910c682L, 0x392f2896272695beL, 0x883d0bb5a8d64ef6L,
+      0xef0d22441cfcbc52L, 0xf5dafcec526117e5L, 0xb68612b9f04928e9L,
+      0x283f744d393f2e2aL, 0xfbeed7ed700c1151L, 0xf2cde215a4360dfeL,
+      0x24fa961c2f08535aL },
+    { 0x0767db3f616df7f6L, 0x643057d8fbd90326L, 0x174daa906e82d544L,
+      0x2284f345689643dbL, 0x18b191dfcc89a060L, 0xbab46af4d6c27d12L,
+      0x5a57f486c9895145L, 0xc03214e9cc942f9eL, 0x273e1c8f41950158L,
+      0x8ceb759f39ad43abL, 0x5e1b8b7fe50ee173L, 0xf635b1fc8f4d7d4eL,
+      0x8eff77e3755603f3L, 0x201f61d17752fa60L, 0x94d7a03d4a6fb6e1L,
+      0x371cc23dfc4f0114L },
+    { 0x289b115dda90c351L, 0x6d196ebf364d9c06L, 0x77a89202f650b31bL,
+      0xcc28c1646f57642fL, 0xdc4f7e3608100127L, 0x8836cd08dc4c807bL,
+      0x1280f156e00240f2L, 0x3f9a6d7899cb3953L, 0x40a494d33a802038L,
+      0x45697e91e87d3474L, 0x70d97d0726dde24aL, 0x06f6a58d7640c30eL,
+      0x03c2c0e85ba6e6c6L, 0x330f6a7af1bc13e8L, 0x3e602e4fc9f4d78fL,
+      0x92b6bca00c80fb7fL },
+    { 0x2e3d5c835f00822eL, 0x0e825712b8b16f12L, 0x81c329c492b0a330L,
+      0x6b4e32ada7cc1954L, 0x0bee9cee1bb1413fL, 0xedfb7baa4a92ca27L,
+      0xcd472afaea3b9153L, 0xe8f09e7e00f0c0f9L, 0xa4e1d8725cdebb70L,
+      0xfe2bae084a9b63b6L, 0xf40141b83fd58f65L, 0xd7ec5edaa3b62759L,
+      0x9aaf6e67790e3088L, 0x215ad8301f277e31L, 0xe7db4b98cf33871cL,
+      0x71ff62c94f02f89dL },
+    { 0xaa4c71022a4a84d9L, 0xe2ee4acd5ebc71e6L, 0x3b11a8a5f1cd6578L,
+      0x83f5ef9ffff120a5L, 0xa4c598e109e65033L, 0xe1e9f990ca044180L,
+      0x8b832d46f59828c1L, 0x753f28a033af536bL, 0x92edc4b1b6d4f68aL,
+      0xedde692a72ccd1f0L, 0xd3aa0f7dd2226432L, 0x38dbb63ea3d2661cL,
+      0xf1e19fc6fdc37ddaL, 0x6c18b35084ef6b4cL, 0xe6a83fe9df1bba69L,
+      0x40fd47e75f958273L },
+    { 0x5b88b746267140a4L, 0x6dbbfc1eeab6f2fbL, 0xdd9ec88e69862548L,
+      0x69beeba12eb6efc2L, 0xcfc2214a8ac8ff88L, 0x95d5c96eb5a21950L,
+      0x93389c054171fb69L, 0x2d85d4521b468337L, 0x14d68a084113425cL,
+      0xe52c0139ec6c2174L, 0x20cf0b97f730084dL, 0x1ac16a261f578aa3L,
+      0x18b9fab3f9b6ae43L, 0x68d82111d854a695L, 0x0b334d98dffbe286L,
+      0x5b1c1157e639338cL },
+    { 0x90edaab172b6bb8fL, 0x8dc64ed202fc92c2L, 0xf42ba3c5fe694c73L,
+      0x316dc65fcb54dce4L, 0xcb2d66a3632420dcL, 0x16e706e7056dcf94L,
+      0x2809c764a4f32c9dL, 0xab18d830ea6edca8L, 0x4fd1ace681c65f57L,
+      0x1f91651c7da12c10L, 0x0ac3bd66c7791a48L, 0xb6ad1cf4785e67a3L,
+      0xe4d3fc44da0fd591L, 0xce1648016e1c6344L, 0x84de9cb833e50ab3L,
+      0x963ab83aa756eef4L },
+    { 0x944b47d8df4ea5a3L, 0x965688155cfe45feL, 0xd16e7d588a3c3564L,
+      0x84e55b3ee7c99e15L, 0x3fee204df55071bcL, 0x71006f2904057dceL,
+      0xfe8c390dbba75570L, 0x3645bcb63319adacL, 0x8189e8b07c20bfd8L,
+      0x8e5509697d7d9578L, 0x037d1321b99f4e3bL, 0x011b2521a60cfb6aL,
+      0x66594aaa837382daL, 0xc89b91fd83c1dc07L, 0x6b82b899076b9884L,
+      0x443480fcbe45c558L },
+    { 0xf8ffffb49114221aL, 0x4aec4f2e3e857a7aL, 0x42e2d0e40fa54787L,
+      0xef3e6b31d6f96152L, 0xb2296537fbfe9b77L, 0xc2a9d0f2fb43a86aL,
+      0x241284ed24572ac6L, 0xa3868917e721ba7bL, 0xdbef7c00c117a78dL,
+      0x38149071d31605acL, 0xc2dada9e065a8ee9L, 0xd5b138d8c442be82L,
+      0x9b6c224bf6d72b58L, 0xb9d355cf8eb03e6dL, 0xab6d1eb0a1700371L,
+      0x97118a88cffaa7ebL },
+    { 0xbf9c59a2cdecb5d8L, 0x8083c81ba93a6866L, 0x24e0dd8104774fbfL,
+      0xe779a3caa02070b4L, 0x9d352fbb0fbfb781L, 0xa8b0d8203ef2a1c4L,
+      0xb858637b14b3e501L, 0x5ba70a498a882ff2L, 0xa27300833b06efa5L,
+      0xa42c02f4102fee2aL, 0xe4e762998a0223a5L, 0xdba2ba2685c3fc72L,
+      0x554fe763fe52eae7L, 0x30b5405a270f45f6L, 0xd56a177aa573387cL,
+      0x17c0778d4b71fa82L },
+    { 0x0e6dff1d2735e37bL, 0xc9884e56656ec572L, 0xa2f5ac9d9ebba978L,
+      0x40fa4518ba09f3c4L, 0x8c3fa177f5b04377L, 0xa1a1decd967a2ecaL,
+      0x768bca700528bd40L, 0xf224952b18691c4aL, 0x16e12c45e86d5fd5L,
+      0x7a0d915737859a6aL, 0x723f4309a0ffce0eL, 0x5a8db79ba96cc9a3L,
+      0x6dd12ae01ad23a38L, 0x9ffec3a1e2bf5d84L, 0xd6ce84e1a452ed66L,
+      0x1219d5c8571fe4c6L },
+    { 0x43eaa67f262969ebL, 0x3a3ab39d2f03e773L, 0xe6127e5157bb0909L,
+      0x0f82b0ed8d150274L, 0xffffcad8e580bdbdL, 0x51d3d075a9743e6bL,
+      0x1484bdb18bac11d6L, 0x95cd9990eb24c388L, 0x216a61d07fac67c6L,
+      0x4308f762a04e6b87L, 0x2865dd61cba57cc8L, 0x3c296b0dd234a07aL,
+      0x76f928393a0793f9L, 0x70b57e1f0be29eceL, 0x1314a82f7e626f42L,
+      0x2c8d7ab2d657f230L },
+    { 0x67cf58920825e4d6L, 0xdf51eaa56ef83b44L, 0x63e665d81310108dL,
+      0x229f89f58dd0963fL, 0x8c4b14dd9df6436aL, 0x99dae469d45ebba7L,
+      0x118aab775a4df381L, 0xda8978bd29e37febL, 0x69ced5aaaca2d7efL,
+      0x6c98d05dc67d6a8aL, 0x7474bf0d77f84a34L, 0xd4428b2eed8cd59aL,
+      0xb0fd1cd5d1d398fbL, 0x596013db94a20b11L, 0x96eb705a1b404c44L,
+      0x2299d2774b09d958L },
+    { 0x5b9cd58dc64397e6L, 0xac198f1ebf6dd31eL, 0x5866d8e13e9f1db2L,
+      0x405ae2878fcdc68cL, 0xa4b280cde53c01fdL, 0xdc963f2d411db5f6L,
+      0xed5d5189bec4f8a0L, 0x336fd13d916ee98bL, 0x6925b1b3042df48eL,
+      0x0cf56291ace0074eL, 0xe8d38b4825317e95L, 0xc7ad1d2b821c446bL,
+      0x71c44135f0b65934L, 0x971b736f52ca0d50L, 0xaf9ffa5727b46c26L,
+      0x21ac67791936618eL },
+    { 0xab420e3f2d7fbcd2L, 0x1272247397bdfc18L, 0x492033f84df5d4b4L,
+      0x6fcd42363807b7d3L, 0xdfc19b09b33c3625L, 0x13d6f375a0f22814L,
+      0x70978a59037c19b8L, 0x4f3989970ff27b9cL, 0xfc0e1a45615a4389L,
+      0xffa3496a3e602f74L, 0xc3f1c431b261ca1cL, 0x612211dbee0164cdL,
+      0x30463ee4e7f7be9fL, 0x015f7e7892c2e1bbL, 0x663d88d624483a56L,
+      0x0e8ec1e70e62d9d8L },
+    { 0xa88ccc298a0878ddL, 0x99ac175d6640071aL, 0x90344820a5173617L,
+      0x316d023edd58a315L, 0x30785bd488d221a1L, 0xb74b3de7959c48e3L,
+      0x42ee03824c67a771L, 0x59ef6cdde0b91453L, 0x7830ae289b237e91L,
+      0xe1847a4c495d8325L, 0x67b1217ed0773666L, 0x58192c86a294a325L,
+      0x76aa0f56864d8326L, 0xe2a2bd12f4b13e5bL, 0xd850c1c01b6b73fdL,
+      0x653a795f5d103635L },
+    { 0xcfe2898550dcb199L, 0xb35b8e5e7fa02b60L, 0xbca7d7c3c97603d0L,
+      0xb0e5288d27f131b5L, 0x3aa704dee2b12d52L, 0xe206b1d81db725c7L,
+      0x0b12839ac5d1b113L, 0x14f970cbdb45d763L, 0xc997f93eb2125e8eL,
+      0xbd75739cee7daa26L, 0x46ecbd3f1fef20e9L, 0xf994a1147c6a42b1L,
+      0xd289eb4f27fb0fd1L, 0x11186d319a40da4bL, 0x083f65a5fb9d7976L,
+      0x30dfc47bd444675eL },
+    { 0xbcfc5ae29eaadfe8L, 0x25027e54b4d4e812L, 0xab0702df8b533561L,
+      0xa2b9c20456a6a214L, 0xb1a3df7a3059068eL, 0xa3514b219883110fL,
+      0xb7be2336c4b78e1cL, 0x17073ce63e2f6984L, 0x86e114a62ddf7ac6L,
+      0x276192bf07d7c3c8L, 0x5da69e0beb1ae289L, 0x983af17525184939L,
+      0x9ac52a4d407a3aa0L, 0x1535c7daae0fe218L, 0xe16fe872397f2501L,
+      0x572a591f54c212cfL },
+    { 0x4966841909a5553aL, 0x3f054318327733bcL, 0xf9ceb4b23eefd690L,
+      0xbd3cbf9bf22126d4L, 0x6d9671c02fed9578L, 0xbba597ceca0306d8L,
+      0xb705ed613d674fe5L, 0xf1d3622b67f33f76L, 0x15bcf3c611cb8c31L,
+      0xa38467dce53d1aa9L, 0x902fe929f908ab43L, 0x6e3e499d8d15767aL,
+      0x8142db5c90afd07bL, 0x120c6fbc6c8b190eL, 0x80c8655324919a4eL,
+      0x65c2cbe1d8c82c3cL },
+    { 0x684cda20a660bb63L, 0x27dc3b0a86e86245L, 0x76472cf66ba0eed7L,
+      0x79c162e5679dd158L, 0xb688427708452d44L, 0x829bc6b3413f579eL,
+      0x92ea15ec95011770L, 0x5e34e30047738183L, 0x8c3ca34973e1d2f1L,
+      0xa5c4f1dc229bd3deL, 0x783eff1b94ef7ed3L, 0x46db738ddfae7a1aL,
+      0x4353d72e1a099852L, 0x2533ad58a0dcf4abL, 0xd80550160e7888b9L,
+      0x831440d53ba77f66L },
+    { 0xf43e2e32f611b2daL, 0x5d066e29d0fa46acL, 0xe897f3e8820b3c0dL,
+      0xc45c28e61d3e44f0L, 0x929d7f66dfd27a66L, 0x735b860a101e8517L,
+      0xea3fce983de078ddL, 0xc9977db5638ce11aL, 0x0488382f48536b3bL,
+      0x7e0c7a3c64cadfc6L, 0x3cd17f7f82147b71L, 0xe95663cc1b411e3eL,
+      0x5739ac8f985fb46dL, 0x385399cdbcf119caL, 0x4a985a70e15a2815L,
+      0x504c3a8a6d5f4566L },
+    { 0x00b55283b8fa53c7L, 0x985cff38509474e3L, 0x234d241c437ce25fL,
+      0x29832430e5a129edL, 0x6ad38956aabcc674L, 0xa2dc001d7ee81ee1L,
+      0x4c23c6b6670b2702L, 0xb35e567ea6e8a3bbL, 0xbc70b3cea69673eaL,
+      0x85a7a9c3e6e28eacL, 0x2ae684de5537b7daL, 0x5ecac3e56de937dcL,
+      0xbf2ea6c9f8430422L, 0x38caf7d077fdc520L, 0xc27af0b169f56addL,
+      0x496e4699c71d21d2L },
+    { 0xba14fc829fa93467L, 0xc2e376840eb2a614L, 0x659bcfaf4833e09bL,
+      0xbc8597523686bdccL, 0x40bfd08081f3216aL, 0xc463bda617c081b8L,
+      0xbd01fa86bb04793bL, 0x5a21ece62cd640c5L, 0x97bf6a542203d5c4L,
+      0xceb40edc951167b7L, 0xd67aacaf765ba268L, 0x8ba0d9e9aeab51f9L,
+      0xc14b215eb0d6863aL, 0x354cdcdbe5f06952L, 0x4f2b5ccfcb3744b5L,
+      0x1338917313037fe8L },
+    { 0xee68064045003cd1L, 0xfdac17bc44ae2ac6L, 0x4bcd419fde8e5314L,
+      0x81e34eb9c7cea95cL, 0xbb57762d38f37e01L, 0xecc4cfb0260990c8L,
+      0x0bc493f950a34a7bL, 0x68074172543304efL, 0xaec0fcb26bc8aa2aL,
+      0x9e7a9b463b45fea5L, 0x4bb2952e55fbdbacL, 0x50f0c0a60485dff4L,
+      0x02c5104d4dea4796L, 0xd2cefa09695e3a02L, 0x4c8102b46da1f345L,
+      0x422eb573f3833fbdL },
+    { 0xac592eb6a6ad3f47L, 0xb0861f6d9714ba0eL, 0x57c1e91907281459L,
+      0xcf7c94e264ea5803L, 0x725376ac54b12723L, 0xf2a6ba41dafb736aL,
+      0xc89e8920cba03cdcL, 0xf2e20cb45b0fd3adL, 0x26ea5a54d66059feL,
+      0xee63fa8b889df8bcL, 0x40f1c7e166a3f2bfL, 0x09febc9c747312e1L,
+      0x7d19b9c2727999ffL, 0xa9fbbb4cb7fd2b05L, 0xcfba27d7a0da2dc6L,
+      0x368541cf2c252582L },
+    { 0x510d3c9e22799d37L, 0x1b677de5acfa333aL, 0x4e6ae18f080f795bL,
+      0x69b53c2aafc8dfc2L, 0x797541b60e842dc2L, 0xd5a6f2afac067fe8L,
+      0xd0208a03bd07d877L, 0x34b473f0654be2f2L, 0xe67c102af515e23eL,
+      0xb00dbf9d2ac1af48L, 0xe264fa41b6a13d00L, 0x1669786a97e94c11L,
+      0x09d8cf2d86a586f4L, 0x073bf869c7f927e9L, 0xb89778802241a566L,
+      0x59a5bf5922261334L },
+    { 0xe9d1c91e81347191L, 0x186c1abceb969972L, 0x07888767a9d46a7fL,
+      0xda93cfccdaa7d397L, 0x08bee9f1d91b9aa0L, 0x8267fd78f8dd3c6cL,
+      0xf93860d094228100L, 0x6a6a71aadadb47fbL, 0x9caa06b7a6156f8aL,
+      0xaa1b05e039848bc9L, 0x36ddc2372aaa9135L, 0x77e7e079b13f3bd1L,
+      0x8d0b5cbe4acc5f4dL, 0x04da45f8984cfd36L, 0xf14ef618d3d3e0f8L,
+      0x467564c143eb799cL },
+    { 0x8d725904b6fff5d7L, 0x037f33af92dc4752L, 0x9095d5756d20b8aaL,
+      0x32235fc143baec39L, 0xa2feb4af68a2b9b0L, 0x61c5031894d35c61L,
+      0xac92b6a2ea877486L, 0x8eb48b15011bc6f3L, 0xa28fe128c79edcb2L,
+      0x9f71bc0ca5d2a006L, 0xf31677322f15b850L, 0xfe8d728c7a036218L,
+      0x068f39cb4f81e09eL, 0x1773f0167b7c50d9L, 0x0d0f7adbed6a1e03L,
+      0x8a0dee164ee984d5L },
+    { 0x504991bf47366e6fL, 0xb8084d9fe86c3005L, 0x14c4c751a40cce36L,
+      0xbbb46aa63f1961e2L, 0x56a785f940445e43L, 0xdb8d1b57c91e215fL,
+      0x6a8e453ec7ee808dL, 0xc0367ef8bbaa1e8cL, 0x310d91f1e3e18109L,
+      0xf97cfd0e7e20a2c3L, 0xf1e80c84554cc277L, 0xe89bbc1d7b628403L,
+      0x7778a9663fe0a17cL, 0x9e9db19fc1f00073L, 0x2ce7fe7db6f6bed2L,
+      0x7b04b5d2ee97ce23L },
+    { 0x5b546bc782c5faf8L, 0x1a734c5e8eb81097L, 0x3d566861e77851e0L,
+      0x833a1013e956d51fL, 0xc7351731c3c3c37cL, 0x607738fbe0c148ecL,
+      0x2ec6f0bbe1bbef41L, 0x0aa2ac6ecfa51857L, 0x072902d766e3adf0L,
+      0xcd4d5089c622d6e3L, 0x3ae21b23a6dd802fL, 0xe5465a5533886372L,
+      0xd85119a0a8d81822L, 0x4f14d0323786977aL, 0x515b081c9c7b272cL,
+      0x1c6a95a4c99be31cL },
+    { 0xa6b14ad5c2821363L, 0x829c18234d17de1cL, 0xaef5d2c4ccade848L,
+      0xf412ab3982489e27L, 0x92c9c098f081d927L, 0x6f87bdf475cbad1fL,
+      0xf4aadab81a1d9fb1L, 0x475a7923b75f3b76L, 0x99dd0ad6dbbba8feL,
+      0x836f61644b70ab45L, 0x2a46488134bd9af1L, 0x5c91226eba9abda3L,
+      0x4cec8709e65625fbL, 0xd4b3919e0818e4beL, 0xa5c09c8414f6879cL,
+      0x72708a0230a864c9L },
+    { 0x4f33c0b1f34a466cL, 0xa1bae09c7f9d45baL, 0xd70f0fee0e28785cL,
+      0x824c714690880881L, 0xe2416c2abb043da3L, 0x733da713cec6f432L,
+      0x2b590649c9793e1cL, 0xdb62d5b0b35c9365L, 0x355eb6e23e5c1b2aL,
+      0xcfe8b5cebb16b515L, 0x9e081869f709691cL, 0xc865f9fb61a85bd5L,
+      0xf169d3ccfae103f7L, 0x9525c47373467e9dL, 0x7db55c0b43695113L,
+      0x7491c74c73265d21L },
+    { 0x312ed5bf80d2b94dL, 0x1b8ac633ba4b260bL, 0xac86c58cd62219a1L,
+      0x317ccf6baeb82c8eL, 0x2dfb29ee59ef9cedL, 0xdaa7d898e42bcd5aL,
+      0x93e295c85974b201L, 0x69e75784d9fc5adcL, 0xd6c4709f012aa3baL,
+      0x1fda9f37c85d3cb9L, 0xe5487e25d3dd4abdL, 0x00fd4b010b3ba22eL,
+      0xcb591493c6e8dcbbL, 0xb7329fabbce68664L, 0x6829d1c268906b76L,
+      0x8bcfd3e574176841L },
+    { 0x06882734d3c8c314L, 0x95f0b2f111870833L, 0xb937f7c3c068ba16L,
+      0x5365e0d877924787L, 0x15527e5e1f992227L, 0x0a06964827dffd4fL,
+      0xd58b3df22f586389L, 0x83446b896af20eadL, 0x09d7970b50746257L,
+      0xd9e8d2064022a691L, 0xd1e5f8af671ec379L, 0x6f542509057fe91eL,
+      0xf14dda8152890418L, 0xbd78010e1db932adL, 0x3e18d1e4905a9378L,
+      0x53cadcf7bd37ab49L },
+    { 0x1bb5edf75e53d0ffL, 0xd886606c888abf67L, 0x6491b0f812206d15L,
+      0xb3018345e22b6a33L, 0xaba6794bb173b317L, 0x8c1e58677dc9e595L,
+      0x4e106482239624d1L, 0x61752e59da55dd53L, 0x018b4eab9e42879cL,
+      0xcaf6784b491f2bedL, 0x3dcdb9d21e79429eL, 0x3694148510f26224L,
+      0x106f190aa650ec5cL, 0x7542a5aeb69a9760L, 0x69bd75e9c32d1046L,
+      0x90849964bf8c62b1L },
+    { 0xb1390cf65a93c661L, 0x184862649db5f056L, 0x92a93a9da51a1788L,
+      0x1b0cbb8f6772de9aL, 0x6e67febd7c71487cL, 0xf9b4382d4e62423eL,
+      0x96fda50ebb5a42f8L, 0xc921b3376089a4f2L, 0x49d32d7b875ec516L,
+      0xbd86d2cac410124bL, 0xf6862209c421fb7aL, 0x3e1949abf6b7de33L,
+      0xcdee18f0e93c9268L, 0xd4edbd5e08dc4cc0L, 0xc2b75be473580d22L,
+      0x3d7f6ffa468cd7e8L },
+    { 0xea7b290cdffbd5d1L, 0x9d759da6970338dfL, 0x56680b0890feedc9L,
+      0xbc690af542dce68eL, 0x8519df2bb2ae4d82L, 0x5612467f7f195b60L,
+      0x659a342cd83c21f4L, 0x55771bf555651633L, 0x5fc68935548ba562L,
+      0xb54192039492f23aL, 0x567528e39c9c6017L, 0x3f064ed4511e6019L,
+      0x303f9eb91d16a555L, 0x3e18c4fd2254abeeL, 0x40994d6ffd434e7cL,
+      0x8fb12d3f6dde74e6L },
+    { 0x6c6381a2293cb7a4L, 0x453e09f0b87b7e4dL, 0x4f212823078ac3efL,
+      0xe89ffad0578cae91L, 0x4a2b696a716ba4ddL, 0x14681a14f6f580a0L,
+      0x1358f97b4c2f1307L, 0x878969962932fb89L, 0x29dd850a268a5af7L,
+      0xaf771f6dfe239f83L, 0x5f20fd2e4f47499dL, 0x9b643e77867ca0e9L,
+      0xe7858ecd375981ecL, 0xbe946a5919ab1c97L, 0x4f9303a206ff3453L,
+      0x3fcc673175d237b1L },
+    { 0x509debd5df21f920L, 0xfaf70e1fc1401b90L, 0x2429cbfd95a64aafL,
+      0xf21208552c37a122L, 0x1d4c93f47deb926bL, 0x12f3e4c09fb3f1dcL,
+      0x56085a595b51bc46L, 0x2a2f5d62f10fdbd2L, 0x60dd62cfdf0cb3c2L,
+      0x154424a36b0f254bL, 0xc3a5a05d564612b7L, 0xbebe30cfa1f5249cL,
+      0x24ec69037e62a188L, 0x75f0fbacaf429939L, 0xd41345dcb3fa8685L,
+      0x645146fdc7151c34L },
+    { 0xecec633aba1924f9L, 0xbba6f136006326e1L, 0x203757ac7e50fc17L,
+      0xca531919ef3d8e00L, 0x9545a6aa51dc5a74L, 0x6e21d58fd31412b8L,
+      0x01bc30057bb1d000L, 0xf1789c696ed1a9c3L, 0x7af2d35f9858fa48L,
+      0x434d09b98197be85L, 0x1dc0775529aa265dL, 0xcad03be7c058fa80L,
+      0x92d70a9f54ba14ceL, 0x6dc785056c050a74L, 0x2a7ca4a94d005ddaL,
+      0x448d3d72abfb9f2eL },
+    { 0xdc56f14529b33989L, 0x868351bca9ae815aL, 0xb3f456134b074414L,
+      0x955ce42a3cd9f33bL, 0x13ade4ec5ff6e4a3L, 0xd3aac715a50eaa91L,
+      0x0c61ec995666efdfL, 0x108a28b8f6a4470aL, 0x402ef584e54844c9L,
+      0xb825b162d0e2f337L, 0x3dcd131fb46f7cbcL, 0x208178ec96f2fd89L,
+      0x4d8c5d6725928c78L, 0x285a33df9963c459L, 0x72497175d92a309fL,
+      0x76881479cb7019a5L },
+    { 0xba43a11491767eedL, 0x5e11b9ad92bf65dbL, 0xe8a22ce003a5e21aL,
+      0x636044212a335415L, 0xc2c563b44a9ead62L, 0x4bc06264a0b2aee5L,
+      0x75b8d5758bf2e1d7L, 0x1cff0ee7d08a265dL, 0x17914e1db0b712a7L,
+      0xc35925d04b18692dL, 0xde253f4c56cce815L, 0xa479241c9fff0e3aL,
+      0x50b9d06eddabed19L, 0x6713526059fae506L, 0xf37600fb532ce180L,
+      0x670eb01c5e5a8626L },
+    { 0xdf73c0af73cdbb43L, 0xcf08ecc57f2431adL, 0x917805412a1a3845L,
+      0x69a104f29224ddf1L, 0x4352f38dbeac7effL, 0xfc3b3b4e7c2d1322L,
+      0xa69e9430b5e4b476L, 0x7d932340975a46f0L, 0x8093899e5d64eeceL,
+      0x7b821250db2345e9L, 0x235529327f4b796bL, 0x2ee9cc154bb90b1fL,
+      0x1fa9c8f59112f7d6L, 0x2d0f2f981cbaae32L, 0xb77f03660075166aL,
+      0x504852e7635dff27L },
+    { 0x2f0f3ce5a2f392faL, 0x326c076aec6c9078L, 0xad01de9284baaaf6L,
+      0xb01b16d3cbe8e993L, 0x71305c242d950908L, 0xc66fd6173853af38L,
+      0x7735140ed3c429a0L, 0x8a31b12a1fabf027L, 0xa0530002058b3177L,
+      0xabffd9fca9c7deb9L, 0xd05ef69be8667d30L, 0x2f3a7308e9a9e13fL,
+      0x3f4c9a19b91eae9cL, 0x50d0cee7618ce6c4L, 0xfb24dc405240f8b0L,
+      0x992fe151f7e90cc4L },
+    { 0x4454db3138f197aaL, 0xa4ded69d87872f98L, 0x97b427b044f0a828L,
+      0x9821e1aea31e48c6L, 0xe38cb09fdd98efecL, 0x20b84fa8480cb3aeL,
+      0xba5bb4a847475573L, 0xa9be080acd50e96bL, 0xc4451e9cef103550L,
+      0x626ee75fc441325cL, 0x6eea5e9838a5e33dL, 0x7321beb9a2b0abd2L,
+      0xca92e4849b6082a9L, 0x1dc8168a992bcc2aL, 0x134ecf4b9c8eb9fbL,
+      0x5a68bfa84c5b71e0L },
+    { 0xb4ff3b45ff0a2bfbL, 0xd105fff95502f8b0L, 0x14de58855b1c0c26L,
+      0xed16865b0d3b9d04L, 0x2f5a2453026d3917L, 0x6a22f493f4db3c0eL,
+      0x4871548ae2418f2eL, 0x6ab363a8509bef61L, 0x91ca1e3ab8cbbbecL,
+      0x71e0dc984011a396L, 0xff982e0a0d5ca577L, 0xeb40b04581897bc1L,
+      0x4bc24a46085ad5e7L, 0xd15c8fa0a6337b7cL, 0x56ce6ef7bef1628fL,
+      0x78acfdf99f5ef439L },
+    { 0x45bf7f15f8520189L, 0x954202a0c77f61c4L, 0x39edc6b9dfa22e1bL,
+      0xd2d602671f4a3487L, 0xcd9339294814cc52L, 0xde76a12405e9f123L,
+      0xe2306ea0ae36b6f7L, 0x53815218b83a58e0L, 0x9862bb76a041231aL,
+      0xe8da253cbf31be71L, 0x2dfc533237de861fL, 0xf25c93f690ae4890L,
+      0x66bcb8f08baa6ed2L, 0x6f10ae0f908b4a29L, 0x8cb4b48cb061c949L,
+      0x0ad92d73d075a366L },
+    { 0xbfb95fedc2ca548aL, 0x4778c62080cd89abL, 0xbe99154b3466c280L,
+      0xea3be093d4be8902L, 0x847b799513e681edL, 0xf22a8f4b02f40161L,
+      0x3ef2cb4d4aeb7fe8L, 0x9adc5151b3aed5f6L, 0xec1ccfd198c31163L,
+      0xdc2ac17ba3d7d88fL, 0x08fa64d346421097L, 0x5ebf80b794b90bcfL,
+      0x1b78b4ba0b50a9ebL, 0x1a4fe934279aa66bL, 0x8ef4dcaf075b3cedL,
+      0x95bbd8a070a6e9aeL },
+    { 0x59f92495e614bbd0L, 0x7567a887b823e363L, 0xe247c9ecfc1bd6a7L,
+      0x2bfaaf478e835c42L, 0x314ef4e0aade066aL, 0x072baa635c16d336L,
+      0xfa429c71e2f0e389L, 0xcac1e5d0bd07d90fL, 0x69ff35ea514f5c04L,
+      0x893053fcc0554ec1L, 0xab1d86b72a35947fL, 0xe29fb0602aebe487L,
+      0xa0a10d6ddfb9cf21L, 0xad147059f20dfcf5L, 0x480dc66fb8867a2aL,
+      0x375a884fc125a919L },
+    { 0x178cbe2e1217f7eaL, 0x1a161e2a875c6dabL, 0xf7707ec01bdb1a54L,
+      0x678864a0e4fd73caL, 0xbaebc664d13a0d86L, 0x40325f99c8d30668L,
+      0xb93ed9c92f1c5950L, 0xfdf36763541e0667L, 0xfd97fbb0b91a6763L,
+      0x26aa69ea6079c9a0L, 0xc7303c801eaa8c47L, 0xdec75c81afa63c55L,
+      0x01cdcde24fd12adbL, 0x9fe0dda71968838aL, 0x66bb093b38415379L,
+      0x268d818b08cb84ecL },
+    { 0x73dae35841580555L, 0x4fc32e67473d103bL, 0x240c1013beccc1abL,
+      0xda4099f2b24ee9deL, 0x37b0cb5b9fa8e066L, 0xb5ae04e46438d7eeL,
+      0x7f7d31642b720140L, 0x86ef4edb339e4a78L, 0xa5e77eed3a7d8375L,
+      0x883fad37bd707c2eL, 0x816b633a0f979189L, 0xe24c028a2e7a208eL,
+      0x1171fe3c4435516aL, 0x3eb93b334f5f2bf5L, 0x8419ed4b01b53a56L,
+      0x8b02735c056ca44bL },
+    { 0xb89bb464e1019195L, 0x1de4c026f3fc28c1L, 0xac120e6e2bfc3b21L,
+      0xec71bc5a91bdf92fL, 0x485d7ab40d995bc9L, 0x97c6768ee6491ffeL,
+      0xd9552d19afbce265L, 0xbae6c7fe8e1b76c2L, 0x167d8281d7e3ad1bL,
+      0x3e149af95e989734L, 0xd1f0024c8a0c8182L, 0xf571ffdbc3006c0dL,
+      0xb32ecf7e58773d4cL, 0x5822a782fd3540d8L, 0x5ab45c3f04365042L,
+      0x400e3aa04b4d85feL },
+    { 0x473216495e46e4a2L, 0x37a2ed6424136074L, 0x659223b1c60ec77dL,
+      0x5e13aac3e5e0ac2eL, 0xda17c41bc5107ab7L, 0x65b22ec973c253dbL,
+      0xff3867b8a5012296L, 0xfed660d50621a99bL, 0xa3c28506c89fc3f5L,
+      0x3ed350b9f16451a7L, 0x27c3e03267cb586fL, 0xc807c779967185b1L,
+      0x09c157d44a13009bL, 0x362f7647adaf1f4dL, 0x4a42b9acf3a6a198L,
+      0x131c3da28da6e039L },
+    { 0x4a785ff1a7da83baL, 0xf415b425d04f4436L, 0x7c0899bdec03f812L,
+      0xc58d411a80f5f4a2L, 0x3d32d610fda251b9L, 0x99bb4504cd3b2f32L,
+      0x198c444bf4c2083cL, 0x60c261af730e83fdL, 0x060ca4dfcb02db90L,
+      0x0ff7838b9df1e7c8L, 0x6b79cf97c4c690c9L, 0x131514d75d75f154L,
+      0xa7c074f11cb0e8ffL, 0xb920aac1b2c17615L, 0xde8098ad44aa0ff0L,
+      0x71d1a46a34545ce9L },
+    { 0x76178f76fa1b382eL, 0xa0d8ecc3772dda0dL, 0xaa5aab2ac5d4d130L,
+      0x27d38ba48d72622cL, 0xc5410db6ca3bed06L, 0xf637a588793ceccfL,
+      0x1f65dafd6e65e3d7L, 0xc3b44a8560a45641L, 0x0f47b3a84f78540bL,
+      0x824fdadd5e4d60f6L, 0xd8ccf90c17d3b6d5L, 0x008eabdf325fc13aL,
+      0x3e90d7163648fab9L, 0x3964ff3a24c52d4bL, 0xb95cc416533d0acbL,
+      0x6cd2699f1167f521L },
+    { 0x2d8c0b3b12f4f3acL, 0xb03dcfe299d1bdfbL, 0x540034f830f37326L,
+      0x22dd68937c5a8c82L, 0xeb7093d0cd8f1442L, 0x892795a7585742f2L,
+      0xe15f282c087adaddL, 0x7bbdc74916ab7b5eL, 0xd30fe40ba58acbb4L,
+      0x0de417ebe2bac39bL, 0x4b4b19a6c61a04bcL, 0x9338c34df2735569L,
+      0xe8f0374230ab196fL, 0xfa2efcb86c88c965L, 0x19eee274c7eeb826L,
+      0x327c063fda345dc2L },
+    { 0xab399eff5b47cd53L, 0xbbe9869d1943aefeL, 0xe64ecc7b1402a866L,
+      0xc3e7c2aab1c25a16L, 0xc4216b79022de271L, 0xe58dfcc8366d6a5fL,
+      0xd159509eda813336L, 0x370400f2130bfb7cL, 0x1be4e05993b48780L,
+      0x0623a1fe39f3cd22L, 0x72aa22b2eecb4f87L, 0x1af4c4966c27b83bL,
+      0x7a42a94bda5fa5bfL, 0x9afba82248b01af2L, 0xeb6b9d2a3670112cL,
+      0x020f19d1c0df6856L },
+    { 0x37051a86a4dbba20L, 0xb618ebc6db1de5c5L, 0x9a780a19e6525840L,
+      0x9440302dd2bccc4dL, 0xe9ff023d10285a24L, 0x3b937ee33a486268L,
+      0xe37ee2f24cd61147L, 0x79fbbfd3a3d057cfL, 0x5fba16d3ccddefceL,
+      0x916058ec5b231727L, 0x47699ebe720c3adbL, 0x262743868b4f6bbaL,
+      0x54b0092af18a0770L, 0x99d090ebacca1160L, 0xf757e1ff0c888f60L,
+      0x79e72720b0050544L },
+    { 0x632acf252820a239L, 0xb1a3974eaae6b310L, 0xd61fd6ba48c0a1dfL,
+      0xd2453c395a3ee7aaL, 0x548455a0b980446dL, 0x9f29d97bde16676fL,
+      0xf252ca0c789375a1L, 0xe961af3e7743a985L, 0x70c79c5666cdbd8dL,
+      0x14a3854ecbc538f9L, 0x58daa73aa126851cL, 0xe9b5bb452a9f558cL,
+      0x37af7f83fbd15e05L, 0xa448792738a1939dL, 0xe428b2b59511a056L,
+      0x001d3ce37015846dL },
+    { 0xd6be36b9e145b1d7L, 0xf3e3938a009c5664L, 0x2e562e7de7c0f6dbL,
+      0x951044e6c343f539L, 0xa5ab62b8d90897b1L, 0xb1a1f70b512f797cL,
+      0x91cdd754750f28e4L, 0xb4c80e2fffb8165dL, 0x65ed39c7594d02b3L,
+      0xcc12a49d56833edcL, 0xe73694bcf3693a18L, 0x34cc134afcd2c404L,
+      0x071bd5fc11d40194L, 0x05759047fc585e46L, 0xb3280360790b7a04L,
+      0x4bb8c6fc40afc684L },
+    { 0x3120e2ddfd0f8796L, 0x6968a40db133c9deL, 0xfea366c0a9369c6eL,
+      0x37e5b6d66007273bL, 0x39e4ecf08cb81439L, 0x487fe9cd9febc005L,
+      0xeb8af4440199b53cL, 0x2f124e3b293519ebL, 0x860c218ac82c9c16L,
+      0xacd1d6f2709dc590L, 0x5696d54536d50529L, 0xc03f5df959120bfcL,
+      0x99a3e88d10ffa690L, 0xd4f9cfa56c432827L, 0x2e8fea9e9a135d89L,
+      0x3699a881b6a77e78L },
+    { 0x5bca33721eb1c64dL, 0xe9cf3a2df1d28154L, 0xb7e2e9b36537106fL,
+      0x06c171514f7cbf4dL, 0xcbde416e2058b37fL, 0x82c53a7e8834e9c5L,
+      0x94dbdfe2e9ac3a75L, 0x795ec6cbc5e67c02L, 0x8c23c25f1426a80dL,
+      0xee2cd20d6a8d4f9fL, 0x838daa54d3b7c235L, 0xb9e08ec03d7a4d52L,
+      0xca9475e9781cb473L, 0x7271f39e5ec31caaL, 0x1df08e9f82535187L,
+      0x4f3a4b03208aff8bL },
+    { 0x0f7b81071ed095f8L, 0x23e37fa6da226d4eL, 0x8b0f9852afb36d1dL,
+      0xb114634e07d8e311L, 0xb9634a97e3e0f16eL, 0x2454bb9c421eec37L,
+      0xb4ecd5dbd72b21c1L, 0xf96038686df20d7cL, 0x9f5359fddf86e0a2L,
+      0xc43d54fa5ac488aaL, 0x56d714abd1049df4L, 0x13152b3eb020607aL,
+      0x49be1c187a02325eL, 0x44f24f4a52ae84dbL, 0x9e525c030b5a7b80L,
+      0x6d874446a6d179fdL },
+    { 0xd29d07aabe9a42f5L, 0x1fd5316c3781ccc8L, 0x71a75a6d9dc69ea1L,
+      0x4e19e0df88fee91aL, 0x99c2b4dcf8d44f12L, 0x05f6df9231ae94e4L,
+      0x27fba876cf28ccc2L, 0x6e1a0f01f57f7cebL, 0xe03f1f34f3fd3b74L,
+      0xa0edc4a742c1d213L, 0x5caac2707deb8580L, 0x0f5d791faf0848bcL,
+      0x17f514ad07ac759dL, 0x95a39734904fc531L, 0x95a4aca97bb70f3dL,
+      0x3cf384c9ff9c5609L },
+    { 0x700506bace1fc9e3L, 0x49721742676b0399L, 0x2b4a1b8de72bf7b3L,
+      0xca8602a879b209f7L, 0x90580b90ce26a8e1L, 0x1ef339b7fe24f39aL,
+      0xb6c5d991629362e1L, 0x51174e1a577b24f4L, 0xf380fcb505e451e9L,
+      0xf4d97afb148321bdL, 0x099806bb747e5d2aL, 0x85525d65be99a608L,
+      0x264828d9d455e820L, 0x8c8c5405d8560a65L, 0x3c67e73c71030770L,
+      0x2b248850ee73df26L },
+    { 0x2173cde68541159fL, 0x78224c184fb410b2L, 0x07a286191f2ca1c7L,
+      0x52c207d6a8b23e40L, 0x071a0210a6b2344aL, 0xdb0e587cb5ed2945L,
+      0x6c56b8ef810fcc6cL, 0x1248c58f62d843b9L, 0x4b90363d74c66975L,
+      0x6348f7f2e66c66f6L, 0xb2f9d441c126bcbeL, 0xac07f2a373ce49e8L,
+      0x52486758e81b0df0L, 0xa108b54d1d4621d1L, 0x17261ece74414a1cL,
+      0x938b3bcc6a3ac215L },
+    { 0xa9e4a16be4ded340L, 0x8e65fb2a80e88036L, 0x97089606dcd73acbL,
+      0x1c3a0434aaa657a9L, 0xf304fc5849101b06L, 0xe60fb61ada0bb64cL,
+      0x818c2aecf5542df5L, 0x7402057656f76d5fL, 0xb566b79092533d97L,
+      0xae4655e574d6eb5fL, 0x60f7a1b5a55b44b7L, 0x7970179b93747ea5L,
+      0x8ae7e0e8f2dace56L, 0x9847460784e83c06L, 0x24e8c9ed15307341L,
+      0x6cff58a5d9e89d6bL },
+    { 0x508c01b003e51f68L, 0xe1d1f2251d2fe7d6L, 0xf7998d0b09bd8805L,
+      0x255e907a03e415b7L, 0xd148467d607d9798L, 0x055c3b1e9b453896L,
+      0x35001013809f50f4L, 0xfbbb2fa6d0233fdcL, 0x0b680b0aff1820b8L,
+      0xb1d404dc38d317e0L, 0x133d5444ccc8c7dfL, 0x7fa847e66ec13f84L,
+      0xc33f83d8046e2e48L, 0x3c627fc54863b3acL, 0x5f67f8aaeb936af7L,
+      0x5fe4ac8f31b79327L },
+    { 0x581aa4bf8b6f401eL, 0x05db12a3ad5c7ed4L, 0x7b0187266fb07b4aL,
+      0xfdd11f049c22bcd4L, 0x5454a7d469371c95L, 0x066c55fb99a46eafL,
+      0x18637c7c7fef96d0L, 0xbafc1d346b83e95cL, 0x55c3859300bb42dcL,
+      0xdd8dec2b34e7e712L, 0x69c9cfb0b184cee8L, 0x8dcc0c4249a27864L,
+      0x290d95f22010f2e7L, 0x86e254c96977a420L, 0x20931c89eb2abdadL,
+      0x81377164121c0548L },
+    { 0x6266b25e9c5a8edfL, 0x6e1388c21078a7adL, 0x5f02737d4876eedfL,
+      0x242fa7f962744617L, 0x3e2cfbd9b385382aL, 0xbadad7b102f71befL,
+      0x562abcfa677d0a92L, 0x573ebd1751fdff34L, 0xd7f658527c250c78L,
+      0xe0cf16eec47ca896L, 0x8ccd79b067622c9eL, 0x31fc5882f8f2c075L,
+      0x9232b37ea6008515L, 0x4d7bb36182e8c5baL, 0xbf24735cd2f146feL,
+      0x79c280ee9cd2db98L },
+    { 0xbdcc8203f2b48122L, 0xa8c04916b04ac48eL, 0xacf064dc9fc4885eL,
+      0xab83899782c1001cL, 0x7339e721676de250L, 0x17aa5aea8e1ab820L,
+      0x24d28ca06bc14b2eL, 0x570c5bb7816b6230L, 0x6c51235ccee6b606L,
+      0x1b2bf89f183eae42L, 0x3e3af3c69c66274bL, 0xe0b04426b51e38bcL,
+      0x26dbc58e73e40e3bL, 0x3f9dd578b5be5be4L, 0x9fd9f79152c8f408L,
+      0x758073a4a9e3ff4fL },
+    { 0x7d27b0578691ca22L, 0xf206bfd613a2a1b6L, 0xe84bd385ac795413L,
+      0xc5d18a2a75536607L, 0x2e166de7c8a0e24cL, 0x56d5750c3c474dbdL,
+      0xdef444c11366843aL, 0x14646e53cf4b8432L, 0x4bc0d030a9fd9783L,
+      0xbda4c824297ee203L, 0x3d0b10bffd7be6c7L, 0x2d21647608c7f3ffL,
+      0x06e52599b4fd4c45L, 0xfbab9fa149e9e104L, 0x9342a7fa8661d32dL,
+      0x3f3e3458faf66aa8L },
+    { 0x51ec35af951597aaL, 0xb677d4ac49df64ebL, 0x0276cd9c9bf4eff5L,
+      0x423eca49515a2935L, 0x8a696553fd9bb9c3L, 0xf99ee9dfede1f09cL,
+      0xb8fa2956199e5f98L, 0xb763875835292c32L, 0x8734eddcfc40e81bL,
+      0xd82d5e9f65457d95L, 0xc8ee323e30c78d2bL, 0xe77b2e4cc1433d67L,
+      0x56d9f8073c8314aeL, 0x441eede22a0e2f63L, 0x1e9e17ed6c48295eL,
+      0x640d20c434c294efL },
+    { 0x4e9a0b8e3284d513L, 0x074c3545f315053aL, 0xb36e740745acd52aL,
+      0xd80bdcfc1de50db7L, 0x8d9d47dc2549fc46L, 0x29b6ef13303f07a8L,
+      0x4e461aca6d4ad4c2L, 0xca8e351dfc9f1b73L, 0x8bc4094d57460e65L,
+      0xb6302b330f32d367L, 0x69a074b6285742e8L, 0xdfe52b11876c29c3L,
+      0xf39e4609912bd17aL, 0x8ee40d66349aa639L, 0xb968902ac72e05c1L,
+      0x0f9c1ca8c0d92816L },
+    { 0x1ebbaab367433df3L, 0xb6aa534715d3628cL, 0x13a320d897f0c5ccL,
+      0x72c918cb65e408f9L, 0x4b638854d5373451L, 0x731399a30b4dca09L,
+      0xcf2567300a3b1326L, 0x5ea60dfa6608b388L, 0x58ad74b07b290dfdL,
+      0x83202789d7694f9bL, 0x48593db8b6630fb1L, 0x3db47f70c65e3eafL,
+      0x63949c913e7263f8L, 0x9b9acec6e6e6ff33L, 0x34bd9ba7098a8240L,
+      0x7e31c12f45d36ec5L },
+    { 0xbe281d680dfd2dd7L, 0x1efacb0024ab61d8L, 0xb9c3005f94431f97L,
+      0x660c8dfa959cb3bcL, 0xfdd5fc30cffbb406L, 0x7a4631be7969a10dL,
+      0x336e309ede13fd1bL, 0x76b3bfadfc947076L, 0xfa91925ddcc72223L,
+      0x741f0d73156c4ee1L, 0x4f64ee410e2b3747L, 0x86be92d3efc4d93cL,
+      0xc53b7e03fc4fbb2eL, 0xac196cf5337ca1bbL, 0x4de41a307e23ba60L,
+      0x1a219c45326d5357L },
+    { 0xfdcf7ef8aa4db0bcL, 0x2e2318067b6c9963L, 0xc26390673d8a192fL,
+      0xc0cec2e2ffdc7771L, 0x997c8e35a2fc0edbL, 0x78e10ec182cc6043L,
+      0xfd0de2cb2b0c8120L, 0x4d6c457f69e57f8eL, 0x953e69b25b53f1c3L,
+      0x422a330ac4f89cb8L, 0x92ff232995566be6L, 0x73cd502d437442d1L,
+      0xf04ce590bea69403L, 0x6ac1537ef8030662L, 0xe02bcf77b6d0bf93L,
+      0x17aaa999bc90192fL },
+    { 0x0d3d56438e55db2eL, 0x835dee433b946851L, 0x1a1440e55b88462fL,
+      0xa6ff3b35ea17e27cL, 0x23f99c36dd95f7a9L, 0x7217fdd9bdd672cfL,
+      0xf400ac1edd2045c0L, 0x94b55c874ff06b25L, 0x0a44a0e50e4a49beL,
+      0xe8925e91b43b6813L, 0x78bedde1214f96c5L, 0x0f456a4c0f97fa97L,
+      0xa28fd86ba5bfd267L, 0x3b4b2d8fbe7608efL, 0xfbd5ff8c226474bcL,
+      0x6b282af0a5f3b24aL },
+    { 0x78fc025f6341a595L, 0x591c38d6a445e28cL, 0x72bd6e3deb446842L,
+      0x3f9466d375547833L, 0x911414d3083e16c4L, 0x145d946695a7acb4L,
+      0x102ddf098fd2fb64L, 0x2a2b2d2d0bfd87b1L, 0x69e9be5c59455088L,
+      0xee378bf4a80245deL, 0x80b0bd68b2306b0eL, 0x76a545c6c2be9f3dL,
+      0x429d167b4802c245L, 0x13e644272b412dfbL, 0xb664f529ee8d9762L,
+      0x6d4f5d2354706ebfL },
+    { 0x35c8f2b600ba9f88L, 0xfdc807e07bb6d0bfL, 0x0a126d42b3b81e5bL,
+      0x335ce6cea7ac781eL, 0x3e308e6ff37dcba6L, 0x028dca6263c96487L,
+      0x72eba57e8818434dL, 0xa9e3d59f79b78a26L, 0xd2f0a7dd2f07aea3L,
+      0xe0fe467824d05f74L, 0xb20851700116deb6L, 0x9c2a5e9258f37580L,
+      0xe78bd7a574070bb3L, 0x551fc872b9977d90L, 0x6eda93c440db81b4L,
+      0x4aaf0b4fd65d34adL },
+    { 0x9bef25063514c7afL, 0xb09e7dadbc181eadL, 0xef3cae878fa3ec58L,
+      0xd8dbfab5173b8685L, 0xb2490fc0921d32ddL, 0x4eef386b8bd9c466L,
+      0xc1cdd52fa061dbdbL, 0x64de989a25bc04dbL, 0x06f9836b85728636L,
+      0x11a5a8048be44aa0L, 0x16dede4e097018c7L, 0x72aec577b2c11fb1L,
+      0x144dade1a721ecd9L, 0xf99c526bd6ebf3a9L, 0xa1d4165b1c2e14d7L,
+      0x8b2cbd3982bc6337L },
+    { 0x28ec1bf28a52e991L, 0x0ba202f6cf9d42ecL, 0x8307d130c634ea45L,
+      0x3fc257b3c5762b9cL, 0xbd3298d1487c2a2dL, 0xca14f1a7a319488aL,
+      0xc70ca93b06ba06d2L, 0x9aa3f4b3ee405e89L, 0xcc64eeb335deeae7L,
+      0xd155f57803bf1d4cL, 0x041ec0b545616bfdL, 0x23df80e6086e33f6L,
+      0x399a79c8f0243cf5L, 0x86c2824e874ccd58L, 0x220eeaec8fc5c831L,
+      0x57e283047dbe3670L },
+    { 0x6e60b698fbcdf666L, 0xbdd06a998bebb1d2L, 0x4044adba80498436L,
+      0xd76bf75e522bc88dL, 0x655c4b9b28423b20L, 0x65c0f49253398a72L,
+      0x76d4f2b70ca37601L, 0x469899252030fa5aL, 0x96b37e87b6054705L,
+      0xef96f73153de1b2fL, 0x5ecbbc8cad54ef05L, 0xeb289d0aa93617b0L,
+      0x3ac0fbd57cba217dL, 0xd0d3cb5619d4a2d7L, 0xe8bee9d4c91d6063L,
+      0x4f12e037696ffda6L },
+    { 0x4ccfa42215f1a610L, 0x804a5c553786519aL, 0x1246a45473838134L,
+      0xfa15b4844b284e2aL, 0x36464c65146d1320L, 0xfb6ba88c70a8a0faL,
+      0x74e7cee793c4804eL, 0x8c34d22cb95ae16aL, 0x9d9ed89ff9c1d4ddL,
+      0x61a0866d32025371L, 0x45b232b29bd6444aL, 0xf888e92cf277bab1L,
+      0x73e69c6ea9448b02L, 0x1a496ea95b521ecbL, 0xa8f78ea75858afb2L,
+      0x83d2333eb1266f91L },
+    { 0x1c63328867b478d7L, 0xa1ee1ae150a2fc9cL, 0x05b6ab3018d2241bL,
+      0x69f1f288893cd696L, 0x159d6660a8117a87L, 0xe812011970e73d77L,
+      0x528fef0093f55f0aL, 0xb3978db8d854dfb2L, 0xd6b43ef6f45d9fbbL,
+      0x17de4bfed5bee397L, 0xa01e0f596bf76dadL, 0x28b2280e3d40754cL,
+      0x8edb6122f8e86ef3L, 0x8226b6afb7d1e586L, 0x463532152f40a55bL,
+      0x7362f13ec5a31621L },
+    { 0x792eb27c73c0c430L, 0x8cc0a65fa51c3657L, 0x50a5ceced2194f1bL,
+      0x18945688814b4947L, 0xbbf0a81a4b6fbbf4L, 0x376f4f58f0aa8608L,
+      0xd9361d683987795eL, 0xb6510cd8e3a8d0d5L, 0x63e2fdbfb6c1a455L,
+      0x2c91154eaec891f9L, 0x0eb1e715ff568f64L, 0xe7af9cd72f2b399eL,
+      0x1fc39bac89f0bf0bL, 0xf0861d9290983695L, 0xd9b16f02da0a20a8L,
+      0x2f10693fa38c0eadL },
+    { 0x07a6ce910c06ded2L, 0xf974842f2fd9087bL, 0xe468bfd6a9f635a6L,
+      0x04b618911ed60626L, 0x1fb2f89f369ee548L, 0x9cbd1113dc96a201L,
+      0x6759acfe10d633acL, 0x64ba66fc8faa629eL, 0xa686ae4947f38283L,
+      0x828c3a05d59cda99L, 0x7c7afb1408ea2f6eL, 0x2551c8e4af3953c8L,
+      0x5b53d2799daa9e4fL, 0x1eff68d4ad6f1940L, 0x2775dbdd96437cdbL,
+      0x985f83e44fe7a043L },
+    { 0x89603c16eaf45294L, 0x70131160c24b5751L, 0x4c11201839d6b52dL,
+      0x7079cf02ed943340L, 0x0c5b028b74f41b68L, 0x3dc3f0769c8ac1e1L,
+      0x5ac5eea3f8b24f0eL, 0xee6684bae34c5c22L, 0xa5259e639abc452aL,
+      0xb07d2cd1e9df45ccL, 0x07019c931a443cfaL, 0x68fddaa992c003b3L,
+      0x2d9f179c0d8cbc2eL, 0xbbf15a6f1e781ca7L, 0x54d779d550dcc799L,
+      0x0c88e5400fe962f1L },
+    { 0x84f71a6ae8f44357L, 0xf75b4bf63a3cab6aL, 0x334c9d9e5aebc680L,
+      0xcecaf0848a753ef2L, 0xe28014c1075e3c8eL, 0xbb9d5a38f74f8d3aL,
+      0x75988464b80e32aeL, 0x7b328e6ff2bc3792L, 0xebbb1fafeed0e197L,
+      0x674eac955a33065aL, 0x8c19fd8f922dbce8L, 0x8c17ae85987b907aL,
+      0x89f336273b3a2cd7L, 0xebaea019fa87772fL, 0x4e5de4993a25ced6L,
+      0x8e2560b8af110715L },
+    { 0x56d3746c3141aba6L, 0x45a1079fbab2cf9eL, 0xb63828319cdd27c7L,
+      0x222376329dfd950eL, 0x1e0b15cd3a9408ffL, 0x49a80200b1160118L,
+      0x2719db5da383bba7L, 0x6078340a651046d5L, 0x8929d4de97523b1fL,
+      0x4040345c8e0a28abL, 0x61275ac20adf09c7L, 0xb41ab2652331d611L,
+      0x230cc77c5391ca50L, 0x88be0c928f922315L, 0xfef3d92b92fd9a29L,
+      0x59005f228324f2e5L },
+    { 0x6bb1750c3c4c1c74L, 0xbe73aac0e966fb79L, 0x85a75d9266c5973fL,
+      0x8c97f9323a8656b6L, 0x2b7043b150446cdeL, 0x548916f73ff3897fL,
+      0x913dd01cb18b72b2L, 0xd0a751f1488c0de6L, 0x191757148558ca58L,
+      0x9771430144a663daL, 0x2df190acb0e08618L, 0x0080fc0cf39ead9cL,
+      0x0085ac6e17382da1L, 0xe97918513262a338L, 0xe4495936b43bae8dL,
+      0x57a78e26d783df6eL },
+    { 0x161b346f40dbddd8L, 0x2b49a9279410c3acL, 0x8c5427831886cf3bL,
+      0x72df323233b93debL, 0x9c8d59f540df579dL, 0xe5d7a67dc20ef500L,
+      0xc46b391867f08643L, 0xecfa2445ad96adc3L, 0x658f589b0c4544d0L,
+      0xe6ec9301e08417d7L, 0x6ca5ef6ac454e288L, 0x4191048fac0f462dL,
+      0x852407d808d8a036L, 0xb4c533a7f6d35b7eL, 0x3251e4128f6ada87L,
+      0x1ca370c581c472e8L },
+    { 0x94bd5171a801b68aL, 0x7312879cfd1998b3L, 0x4905aabf41163202L,
+      0xb5fe87f4f5b01fdbL, 0x78de523a9cda128bL, 0x0bf161a1c7bd31f7L,
+      0xb5decfd023904c35L, 0x224b2882e188f12dL, 0x0dd2801df99dae74L,
+      0xcad467b508cd1cd2L, 0x6c311c3dc0867e39L, 0x71a117202b425072L,
+      0x83bf464e2efd9003L, 0x53d0448a1dbd3b03L, 0x32db52f4e6265baaL,
+      0x2584b34c4c33ac79L },
+    { 0x3cb863892aeec688L, 0xa5e740ba45fbe523L, 0x422e71f7fd60b5f8L,
+      0x455d185c4874913dL, 0x04c2bb36fa17d80dL, 0x3f271854ac054524L,
+      0x76dd3045a8b9a657L, 0x2e42c3e162ee7cc8L, 0x002667064df6c7d0L,
+      0x5927dd51dc7cb488L, 0x6b3faabe187897e0L, 0xfe6ad22ef2d5737cL,
+      0xafb60269ff51a9ffL, 0xe1c8354569807baaL, 0xacddb6ff951ca49aL,
+      0x7e8113743f9ab085L },
+    { 0xad722a8b830a88b1L, 0x91918ea8ce1117e1L, 0x3e02d0b80409b47dL,
+      0xb53812d36c46d1d3L, 0x2fd09db0e589669cL, 0x9845cd0615b0cd5eL,
+      0x0c1c155a2386c453L, 0xda774de5f5ff43cbL, 0xbb076b98e391c0cdL,
+      0x97d71eff5004f286L, 0x23e0b46caeec0bfeL, 0xe453866732a1ad94L,
+      0xfe0c9f81396da422L, 0x6376c1a263db2bfeL, 0x001c7918ba56fa91L,
+      0x436b8c64df8485a6L },
+    { 0x88117e9d8ab764bcL, 0xdfa61e94a077df84L, 0x5a7765d30c18eebdL,
+      0x548916affc9451dcL, 0x01a52e33071a347aL, 0x633b95deb23b41dfL,
+      0xdd7d68c943c8c286L, 0xe4f9d41e18d97068L, 0x79908b908c92799dL,
+      0xe614148ed47394a3L, 0xe5018517cd51e53fL, 0x5060075e0243dcb6L,
+      0xe5dcde6217954405L, 0x6f7c90e1537da5ffL, 0x1df7aae40768cb66L,
+      0x5266ca9e6dbe95e1L },
+    { 0x84ddee6d1386b3dbL, 0xf9e4af5a7c38e540L, 0xb3418440eb04f49dL,
+      0x2138a1e8fde5a4fdL, 0x3e6e692430257cfcL, 0x3519c6e319fd70c1L,
+      0x8f34e17486c31ff0L, 0xf1e298fd940ce1e8L, 0x6fb8cb1d14960d7cL,
+      0x207c13472b2f3bffL, 0x899a20b4146ef8ffL, 0x7dec362b7bd3e220L,
+      0xa975044e626bea27L, 0x0f32b4494fb4cb67L, 0xc17a09201fc6703aL,
+      0x41f325b99cd84a2bL },
+    { 0x312ed513ce2843a4L, 0xe748498e00728afcL, 0xa8ef28224d864ce5L,
+      0x34064704a620083bL, 0x5905e1d94bed338dL, 0x2a578cb5063e7b38L,
+      0x98276d96289e7bb9L, 0xdfe2dc47f17b7341L, 0x5923521f1dac8944L,
+      0x3db6d28d23400aa7L, 0xc647705ea761ba43L, 0x8947ba6d9bfd07ddL,
+      0x00f2e3ac242ca8fdL, 0x49ef4670eb8c3468L, 0x7db3d37bd9aa18fdL,
+      0x56b30fb6e58cea9eL },
+    { 0x07ecdcaacd80a428L, 0x7af922dc8732c891L, 0x20d887983ada441fL,
+      0x3bed9a44924b008aL, 0x2123533cb2e81c3aL, 0xc34e407565f807d3L,
+      0x0bfaefa51f2faecbL, 0x78b634a5ade8a88dL, 0xc4e0b7f894392a91L,
+      0x3092237790bb1cd8L, 0xdea9b4faf87204aeL, 0x3edf81f585d3cd83L,
+      0x58f88c51c6523a79L, 0xe472fb8b17c0d969L, 0x899081e5dccf7f07L,
+      0x1353cc5758bdd146L },
+    { 0x28a5649739bf6e18L, 0x59e8b5a2649b89c7L, 0x8d9434a0dce8b8e7L,
+      0xd935bf512047040cL, 0x2ab3a1646a7b8e82L, 0xf1583ed627f81294L,
+      0x8416a7e072d67297L, 0x49685d86cd39e42bL, 0x8a797fc7958ddbadL,
+      0xa558f928155ce6deL, 0x75f4e570f8a36235L, 0xbc69cfc052877ae5L,
+      0x8f4193a9a6b16ebdL, 0x8d1df43cbb1cc1f1L, 0x723a830e5a21e789L,
+      0x3ec2185df451df58L },
+    { 0xb9d4c7d71f0bc2d7L, 0x6982c6cc6e51d412L, 0x92e02d93a09f80f6L,
+      0xb7dd2d25047ae09cL, 0x3503149f37f351f9L, 0x69d49ce1c77850beL,
+      0x60242acb12f0d2c8L, 0xba188c567bc28b9dL, 0x8e40612106bc0550L,
+      0xb0d84b1f8d7d4329L, 0xb4a67ae7d38951e0L, 0xb527c57b8bc97607L,
+      0xbc93c5f35497aa72L, 0x5f1de8cc39bdd666L, 0x3087dc5ce9d447a3L,
+      0x89b356b6a211abe5L },
+    { 0xed6db0afdfdcc837L, 0x0fb80baaa871b7a9L, 0x413abfc91c1d4b72L,
+      0xf5b56bf7adac9e5cL, 0x5664a2da8b8657a3L, 0x11b04f720e41d94eL,
+      0x63e11d2637433658L, 0xee628ecef426daeaL, 0x011619c9cb162dc2L,
+      0x9cf5817f87648643L, 0xe1bb97025584bc86L, 0x2cc27cef00bf7928L,
+      0x4ef3a80edc60eee5L, 0x7e1202be87adc2f9L, 0x656f18e08a0d4f52L,
+      0x39c4f10d57c5d126L },
+    { 0xb3a9b68ce88aecd3L, 0x555b0918a518aa9dL, 0xedc1cdad4bd4ee54L,
+      0x79b68b6702068d84L, 0x7dac80d0811ac72dL, 0x6d1e6d35a81a0a78L,
+      0xc841e9ea3bd16283L, 0xa7bc1775894c4444L, 0xf2b63725f1aa1202L,
+      0xbec7767ec7d4c556L, 0x2817ebb3d46ff51bL, 0xfde5be8d73f7e339L,
+      0x44c6c9775aed24c4L, 0x0b9a1707b6e579cfL, 0xcff164789069fbccL,
+      0x414b542d49152b00L },
+    { 0x33c31e58606e173bL, 0x5b7f4e1b90e6713aL, 0x425fb512debb20afL,
+      0xc788c61705120e70L, 0x3ef056029013e4ecL, 0x9f9d35ac81c6e6d7L,
+      0xe131e88f9450690aL, 0x708f9b3244af082eL, 0xb2e4d66c1ba2aea9L,
+      0xaf1f4a6e740db29cL, 0x74ab9248d1843007L, 0x13338ef8ed556a6cL,
+      0xf48e623e270d17a6L, 0x3c7362fa9608f5bfL, 0x43977874444e8515L,
+      0x52678d6ae00b8b2aL },
+    { 0x5dff1c59df36aeb4L, 0x52d6653ca92bc0abL, 0x0e03f496927a5f81L,
+      0x8509d4142dfd491fL, 0x258c2c52a571f89bL, 0x2bd6180493334485L,
+      0x1a33e94f3f7d9e09L, 0xfab418d32c1bf906L, 0xf39c490e5aa5695cL,
+      0x0e41196ef6d2d7ffL, 0x3ecd40750f7948a9L, 0x4b58f9b2d3053b4fL,
+      0xb8ee842a5d9974c9L, 0x23a59c1dbf22f682L, 0x045ac614c8efcea6L,
+      0x7040ba5bc10ceeddL },
+    { 0x2c364f81515a1a96L, 0x31a63503184327e0L, 0x0a0966501ad93d4fL,
+      0x9d7694f1273b6173L, 0x8886d876d2cda9d2L, 0x1e01a7422814c177L,
+      0x3492276b8667696bL, 0x2fd4f0c65b25f006L, 0x6527349ffb294c4aL,
+      0xc1fe0d8ade1d336fL, 0xaf9a23e8e7e3860eL, 0x97d2b721b774c31eL,
+      0xfac3e5824365784aL, 0xff2dff4e70f4eaa3L, 0x3d281e1afe873248L,
+      0x9043a6d60bd1c9c1L },
+    { 0x1511a0fe766c7937L, 0x1b2ded5cabbc3be3L, 0x2ac160cce00888acL,
+      0x928754bd616200f3L, 0xb801c83d34a2ea06L, 0x8ad7a03a9cbe106fL,
+      0x996b0822cedfcd94L, 0xc3c3463ae4069880L, 0xfb12ea4df597f663L,
+      0x2c8d383440c92af9L, 0x79bc85c64e8da154L, 0x95771fa2db4e801aL,
+      0x7bd2c1381e3579b2L, 0xe45c75dfffaad078L, 0xb0760a3cb73eac46L,
+      0x26362b483a125f35L },
+    { 0x25c68d28eefc3e89L, 0x2d0ee87769e9ee71L, 0x8b07bb86af5e4b75L,
+      0xdb709072cb86b333L, 0xfd3d20eaff552bacL, 0xa5eeb2b14c0da1e9L,
+      0x391f688a44f97145L, 0x21fbd3101e06d485L, 0x45e4f2a5bea9cd49L,
+      0x7b60d464a7bf21daL, 0x193f88c8054d5471L, 0x5ace53d1bee0f2e9L,
+      0x92c26563c1439273L, 0x9c86e0b296c6b5eeL, 0x452fe23109ff59baL,
+      0x2e952b20555c935eL },
+    { 0x2a846bcad75f886eL, 0xe68a5dbed43dfc58L, 0x103e45b6007b1b86L,
+      0x580e2ec9355ff2b5L, 0xbc702f26a263ecc9L, 0x2835b386181e5e33L,
+      0x025113ec6c122076L, 0xa5c26e3a7fbd856dL, 0x8ef83fb39d6ebcb1L,
+      0x7aaa53f2a44d2fa8L, 0x7c14ef3353b1fa97L, 0xff604a1117559a30L,
+      0x2bcd96b0b09377e0L, 0xa5c14896db2f0273L, 0x1c0a84c9eb53ef06L,
+      0x1236d01730378e4bL },
+    { 0xd7481c8fc084373bL, 0x29ae4768646097aeL, 0x1300dfa0613bc34bL,
+      0x3712714c934bc2b0L, 0x865246290e2be7e2L, 0x554fbb9fed010800L,
+      0xf0ec0b3842314576L, 0x65baf594330a3282L, 0x3bdde1a8706ef817L,
+      0x7d2c727dba7530e9L, 0xbb0c5d6674cc95cbL, 0xb3fcd3652438906dL,
+      0x19881941d14658f3L, 0xe616f5556c97f0e9L, 0x353c2d854b9ec7eaL,
+      0x02a48014620cb56eL },
+    { 0x11d6d23d506ccd38L, 0x229a1c549059baa6L, 0x717c9c2769d011c5L,
+      0xe87e1b46d828937dL, 0xf5d63bbb83835083L, 0xf0a7b427aadac258L,
+      0x99ab26bd9f154d1fL, 0xdec0ffbf8ec955fdL, 0xee957c6749fcb880L,
+      0x32395dee1e0114deL, 0x192a64b7369f46c7L, 0x4304466091eb2599L,
+      0xbe2da887a2e8c3daL, 0xa44e2c25c3556d18L, 0x31390414b55f75f3L,
+      0x1d8bde6f8f217fe0L },
+    { 0x03cd39f8a2028924L, 0x6e54f19cb06ecb9fL, 0x862bbcb7d6f05846L,
+      0xdbe067165a060776L, 0x9397c97ab10fec10L, 0xf42138266f1bb65cL,
+      0x414deccba672ba38L, 0x594d4d43f88b05e6L, 0x7993f57aac94d4d1L,
+      0x74fc2a6abfb17638L, 0xd8196b5bb6fc655aL, 0xdc375c84ee8d2139L,
+      0xb9b00a02360d3a26L, 0xb36ed35cdeb93b87L, 0xf565b28bcc83209eL,
+      0x349c6943c61013c1L },
+    { 0xd1b394444de6c88aL, 0xd5c2c4714700207eL, 0xb6f458a221c2b780L,
+      0x749f75640850993eL, 0x400ba579baef0c18L, 0x2d742938737c70f0L,
+      0xc5a8e2ec21467ebfL, 0x243a666e5337f453L, 0xc991f1c7ed0bd50aL,
+      0x3a7f3e90f4bd1f91L, 0x96089e8a5f0e129bL, 0xd0d3a17707389635L,
+      0x9cf842d527182ac9L, 0x211952990817c5c2L, 0xa32f327e87255769L,
+      0x056587ab89c2d8faL },
+    { 0x008562ed1ce4733dL, 0x5faff7cb98e51444L, 0x5f03021fa9ab46b9L,
+      0x89494c5eb61a8c13L, 0x57c9503636b35976L, 0x6be84c8f2ac2d2f6L,
+      0x0e5b34d89bd2703eL, 0xc4ad918f7e872abbL, 0xc2a89e9fc4052ee1L,
+      0xc2caee3f3190b51eL, 0x58fd14376fff254fL, 0x6f3c0d68883e0972L,
+      0x63d0a0e90fb15438L, 0xc438764bf6caae00L, 0x815f15653f1d0f6cL,
+      0x1b87f2edb86cdbdeL },
+    { 0x35792bbb2b0b15b1L, 0xa3e4b5a7ce6ba779L, 0xfbacffd9dd8f3779L,
+      0x005450bdc298d1efL, 0x0e3f5556c47031c6L, 0x0770f07a95d68066L,
+      0xce3e84e02d1052c2L, 0xb050791e7aa8cc54L, 0x4d621e73ba3223a3L,
+      0x87b9b94d39632990L, 0x8df9cb477eb8056dL, 0xe2430de8edfca0ccL,
+      0x374bf4169712a0caL, 0xbe3f3c7788848a99L, 0xb22b87b1c4a3e59eL,
+      0x8e0227c43e95bc23L },
+    { 0x000e22a83210964dL, 0xdccd5df5ff056eebL, 0x02173a1fdaf1ead7L,
+      0xd02833e067cdcae3L, 0x1cc574cb8bdcc90cL, 0x86eca7143224b4f5L,
+      0xd00e603abb3f8298L, 0xb98ece1b0c1a8debL, 0x228a46e4378c261dL,
+      0xc6f9dd0da6165e5dL, 0xb3ae38994b7ef0e2L, 0x3a3c16b3bda9f306L,
+      0x5e9a26d338a084dbL, 0x528e59935394e950L, 0x848ecb114ea206bcL,
+      0x14b15ab540545d6eL },
+    { 0x0f6d86c9664c59a2L, 0x3dfe2be160fd7aa5L, 0x33f9b5699072cb8eL,
+      0x5f2325d98176a7e0L, 0x79a0d4e74587080bL, 0xa4ee0def0d5d4e05L,
+      0xc0ad9ffac87b28e1L, 0xd6f18d2f3f09b4eeL, 0xcc896ae7292e9d87L,
+      0xca88953d6094763cL, 0xdbee97a818fbf9faL, 0xdf20e0e94b63d701L,
+      0xcbba6e3047ea722fL, 0xce57e1ca612b571fL, 0x1e16ac76009a55f5L,
+      0x742bbed8c4389e2eL },
+    { 0x23ea86dcc1dc2c73L, 0x4bbbfd5bc1643abfL, 0x07f8fa1f24d8ca1fL,
+      0xde68a6e08cb5cac7L, 0x7d54c64b54e66a7dL, 0x789dba22a9b7ad78L,
+      0x4d88d540e364ab94L, 0xc8c2e02d1f72e011L, 0x4c82605746e2a278L,
+      0xe6c35bb34b187c7dL, 0xed8b3dfeeb8fe0c9L, 0xb6bc34e87d11e415L,
+      0xb3908bbfb865c7f9L, 0x717d1ce6e1ecc17cL, 0x151e3308f7cdd69bL,
+      0x97bd5a14b5c94124L },
+    { 0xe01c62fe81e82861L, 0x703d4b6ddd42c40eL, 0x7e52e55be65e91e5L,
+      0xb8b493745abbbfddL, 0xb4f15f52c72a45f4L, 0xce8435a8550f29d8L,
+      0x9df76b9b582de75fL, 0x52e84c5fa20c8b96L, 0xaf77d2d10a8a0af4L,
+      0x0389bbd8ca6013c3L, 0xb0d9b9ba26f8305fL, 0xf053e8480cec8b9aL,
+      0x4d63367affabda18L, 0x50f53be4a6424c2aL, 0xf892c58c864fba2eL,
+      0x317c6d3148cc5469L },
+    { 0x0c3525b02cb7d42bL, 0x55240bc9310facaeL, 0x8d5d2022ff20408fL,
+      0x6b01402fe0c10ea0L, 0x7fbef68a718eb23dL, 0xa0146b5a41252a19L,
+      0x59afce48110e0d6eL, 0xe9a1d27f022de181L, 0x6db96d16dc3f49daL,
+      0xfc1ae3f5efbe4008L, 0xf9d70641eccbc11cL, 0x49022279525f8636L,
+      0x3769796ac2763c30L, 0x9cc3483c1d90630bL, 0x451651f0ee3d3f17L,
+      0x6ae597399da0b8fdL },
+    { 0x57b13bc7bff4d2eeL, 0x2075422930b173d8L, 0xb6254bd50794936cL,
+      0x1d5f232a5efd55beL, 0xc06f4a854e0c3389L, 0xcf2c5b598e61f944L,
+      0xc564861ffd5f87b7L, 0xee261fb15a2afa4cL, 0xb0ff72262d97a774L,
+      0x1a89ae22d6cf007aL, 0x28880534d346f214L, 0x8fe73bff97b6497eL,
+      0x8a8595b2fa2afffcL, 0x9ef9cf3ef151a726L, 0xa84ee5f1e744b82bL,
+      0x6649048dbc63fe72L },
+    { 0x91b7bb781e8b760dL, 0xd47b0bd825aadaa0L, 0x81493d9ffab5226fL,
+      0x4a6dd226bffc148eL, 0x5a032f8aa29be3dbL, 0x318dbc7034b0ab0bL,
+      0xdcccbfb57d654868L, 0x8506ab379c581e46L, 0x09136a6e2830ece2L,
+      0x48b79356cf6c80c7L, 0xfa176377ef6b1e86L, 0x2c9c1cc183f0f1c9L,
+      0x96f0526d16abedddL, 0x3e0e98e2a93b0de4L, 0x6f2d7ada0f13873aL,
+      0x4eb93b5cf3fa49ecL },
+    { 0xbd89f7e5e11fae32L, 0xd13d74f5c4023f51L, 0x1b0014df491c3f6fL,
+      0x1d849a57555279b7L, 0xbb9e889705ba0068L, 0x82222419c13ca2caL,
+      0xafbbb685fd33676fL, 0x931c3f5275878a2aL, 0x12aeefefef3d5173L,
+      0x189a5cc8bd8a6878L, 0x82cffdb3d99f0c16L, 0xbf565406a19d48b6L,
+      0x5605e223e9c6c4e0L, 0x53e781de86804172L, 0xcdf5c90bc7001cc8L,
+      0x2b582d937c043f68L },
+    { 0xa1165c8281abc2aeL, 0xa73380f5e2b69ecaL, 0xc097b3d207fff66fL,
+      0x5d60382654776506L, 0xdcbac9f3b57fa21cL, 0x78750db4c98dbdd5L,
+      0x85e21103d9eff32aL, 0xceed172c2f11c41cL, 0xa8e392649e348c09L,
+      0x71cb936b831eddfbL, 0x915c3d06f50864a3L, 0xfe8e33cde93acfcdL,
+      0x4bee10d7b3f2f7aaL, 0xc1d8eb48eb7cee9aL, 0x4fa49ce3fa574afdL,
+      0x78615109862db4c0L },
+    { 0x3fe3f4807ae72c21L, 0x631aa144fd0f0da5L, 0xc76ee1e8f8c3a454L,
+      0x379ae09451b4f1abL, 0x2a3a4397d7cdbb24L, 0x7a14cffe82bd5fcdL,
+      0xbbe4ed12f427ef5aL, 0x9b0a43ee284d3ccfL, 0x57b78b938eec6e1eL,
+      0x18d404e467b8e87bL, 0x0c8adc0534374c20L, 0x643736055428deb5L,
+      0xb4d80ec0c3afa2cfL, 0x6d51f93c3aa956f9L, 0x9f9a28ab84161c68L,
+      0x540b6bb76bc9c025L },
+    { 0x04e1734c321d315dL, 0x4ef56612d86e05d0L, 0xeafae145bba8cd81L,
+      0x1fb07a49acdc789aL, 0x6a21e9ad5877570fL, 0x2e4a837eb9bc53deL,
+      0x436db2931d6298ebL, 0x43afbc78ea362f45L, 0x2a973d97aabf6585L,
+      0xdce7dabe0c924d60L, 0xf69d98f07cadf0e9L, 0xe0b505a175020538L,
+      0x3db7d1a34461cd29L, 0xe1c287765e20e818L, 0x2ca2586752dd50f6L,
+      0x897cab1492e0388cL },
+    { 0x59ed38130d8bab8aL, 0xc11d364ca438200aL, 0x0687bf2c40581415L,
+      0x86ad0d3a7ac89674L, 0x44928105b97411a0L, 0x74984b11f383371cL,
+      0x70d2ed840d1a831eL, 0xd883628b6c912fe0L, 0x44f8f7fb14fa88d2L,
+      0x564f2a4dcf0ac93eL, 0x82f629aaa6c24fa6L, 0xab906ba3bf6cd949L,
+      0x2c822e6720a5182dL, 0x2ff47dac30eb93a5L, 0xdc62c4a4fff673aaL,
+      0x64b00763476b0ec5L },
+    { 0x1e3f533eb3c9a404L, 0xb1db7f73b7ef9952L, 0xc7f13e296c253693L,
+      0x7ce7f4c40738eed4L, 0xccfd3b33ce26cad0L, 0xd878493501ec5cf1L,
+      0x3f8fc09ddc084e01L, 0x217cab32c39b5acfL, 0x42daf0bb9ef5551cL,
+      0xfbc76f56e1217a95L, 0x80178b12c237002aL, 0x0b52c39fb070a293L,
+      0xe3925153576ca964L, 0x2555942419d68e36L, 0x291fb82c09e50e84L,
+      0x7dd22ea66618ed8cL },
+    { 0x7ffe844b49cbb3bfL, 0xde0cc7045562fb25L, 0x1e6ee5379f5a845aL,
+      0x956d7f26e51277fcL, 0x2c75d4b930635718L, 0x39a1489296957f34L,
+      0x8cf4eb3282e5742bL, 0x6b0d3ddd83247b72L, 0x67a9f633201a4237L,
+      0x416403c11414a485L, 0x60afd447b6f6a916L, 0x95f94930dac6f790L,
+      0x685ff94bbd3b9d82L, 0x5c8f98fc51cadf0fL, 0x9559c88ab13b7489L,
+      0x31377c665f18fcc8L },
+    { 0x35c5de097dcfb35fL, 0x2dccca9f01cc36f8L, 0x7e93e85d7576cb63L,
+      0x0c2dd48af7b4b375L, 0x9d95cd4fb09a19b5L, 0x752ed15971bfe607L,
+      0x439880cf2596dad2L, 0xe52efb5369e90a6fL, 0x4409766303d3e60aL,
+      0xfcf364faa95070e0L, 0xd8f993b605624dd2L, 0xb35a982400d5e467L,
+      0xe289d0240c8f4524L, 0xef45423c648a0179L, 0x3a5fd695587edabdL,
+      0x3dacc50ca11e5271L },
+    { 0xcb3e4f946499ae4cL, 0xa46dcbe17053c527L, 0x807f5ce9be782e8aL,
+      0xb6c64d28d8481e45L, 0xf35e4518aa286fd0L, 0xf7b7b9badf1cdb49L,
+      0xf3fb6210aec23eafL, 0x0a9ba385b9bfd2fbL, 0xe51a0d538807f3a0L,
+      0x7ab24404b17b2842L, 0x6fd57687f9dd9f0aL, 0xcd1efdb4f3e9df64L,
+      0x5dd2df7a60df194dL, 0xbed3f2c3e069df05L, 0x469b756123248a31L,
+      0x866949e1694744f7L },
+    { 0x3a9a0da53f4ab07aL, 0x2cd6f333f54a6fbfL, 0x0c92e921b23cf290L,
+      0xc9581c3e848e3d58L, 0x93af1fbdd3b218abL, 0x38598ea1066cb4d7L,
+      0x5001394e990c03a0L, 0x3b664b1e7d0877b5L, 0xd79db1bbd74c7091L,
+      0x852d44354e2d5dd0L, 0x0d2b841b3329db82L, 0xfa844eb07b96d480L,
+      0x37a50569c295dc46L, 0xc2d3837394f7ec4eL, 0xdc3884ff5b083177L,
+      0x574352b88b1fa598L },
+    { 0xed2193f70d5d7ce9L, 0x3c19fd260b487eafL, 0x7c44ab597be65fd0L,
+      0xdd9da86078270d56L, 0x8a84ec00baa70198L, 0x2ec27e49285985dfL,
+      0x996ccaf0de2028d8L, 0x4e7648c761c2201dL, 0xa96335bc091c19ebL,
+      0x253a3a69f0d6782bL, 0x3f204340d2946493L, 0x444521a1099f6873L,
+      0x5fcbcc096996011aL, 0x3884d5d8f853a94eL, 0x2418c624d3b6a3a1L,
+      0x3e431af206ae3c4fL },
+    { 0xf967d93983d381f1L, 0x36501aaed0c033c3L, 0xbf3af4d054410768L,
+      0xa86d15985093a6d3L, 0x43ae0741d92f2900L, 0xfeb2afa636f0b755L,
+      0xd090a6a3aa456d6fL, 0x336a4fdaaefdb646L, 0xfd1bfe441a942f7dL,
+      0x7fc2a3ed851ee41eL, 0x4f1c968611e935c5L, 0xcd57766653bbb343L,
+      0xf26931baad896c2aL, 0x8a0fbbd186bbfa41L, 0x1c3d7d82a203cef1L,
+      0x6dad3f15e2664d35L },
+    { 0xd1940b7d12ec35a1L, 0x6219c5b6e7dfb128L, 0x2cc278c6f13321d5L,
+      0x5e76904a33c58eb6L, 0x15090f55d9903c43L, 0x061bc926c3d96a19L,
+      0x974a9f038c0acba7L, 0x7a4140217198b21bL, 0xb069599df8958c6fL,
+      0x517f2f1dbebd0129L, 0x1109a613df3a8dc3L, 0x08e58448672375c5L,
+      0x56590ba49383d2d3L, 0xfc3ee7c60bff837cL, 0xc87a539027d2d55fL,
+      0x2438e9d45f517a3fL },
+    { 0xc4a453088815af3cL, 0xe55f1a32f3c9bed5L, 0xaef1cdc997b65ddfL,
+      0x61c61d9412e51eb5L, 0xbd0dac54e63f2490L, 0x6f14429cd0b3e231L,
+      0xf737c3c2f1da6010L, 0x7150e04b6bbc4fb1L, 0x205b4c891be281cbL,
+      0xf1b4633cd7701f5bL, 0x8b33ef462a513490L, 0xddb47c7368f1f7f2L,
+      0xf4ada511bd416b67L, 0x9d2a97cdff795bb3L, 0x00a8b7b296200e67L,
+      0x13f39011afe30e01L },
+    { 0x3dd296ef7bd0c827L, 0x506110f34a29ff46L, 0xf87930681c9a515aL,
+      0xde8d8045268bca77L, 0xcbb83024998045dfL, 0x3f90d71068c0e584L,
+      0x2a838ca8263b6062L, 0x293bb5e7535c5d0bL, 0xceea99d556415110L,
+      0xfe311ad01bbda005L, 0x2497e0bfa4d8d018L, 0x33dd77a01cf2b866L,
+      0xbc075b73d8c4ba8bL, 0x298466d4722b7bc9L, 0x17a7ce24cbda1b0bL,
+      0x458d4b6b680703b6L },
+    { 0x8a26a20e4d54d8b2L, 0x05a5696e4d320a0dL, 0x698b5858f994f700L,
+      0x7a4adc3c2f6549a8L, 0x1812e8193694d00dL, 0x46b9b000730402bdL,
+      0xe10a1449a1b36410L, 0xeae95ea599230220L, 0x3efc2e9b1b4820c3L,
+      0xfe5b5cb585c9eb8aL, 0x21ae031997847064L, 0x68ef0b708f27d49fL,
+      0x3259ef182f72556bL, 0x00ae0457624db01aL, 0x628e3b065668f95cL,
+      0x5f13f5fab6fbbf91L },
+    { 0x7c6ed9ae3a9b0dc6L, 0xaea1bde96f883ec8L, 0xea66bf88ea8b3677L,
+      0xdefa6abc9a66e3abL, 0xc4d3317b68217ffdL, 0xf741c8f2290df05cL,
+      0x1f0fdf177d11674eL, 0xfdf0ece7c35989caL, 0x0eed92df6b9c482dL,
+      0x73713e6655bf1ca7L, 0x90acb29025cec99cL, 0x37c9e3a2e803e69cL,
+      0x7c0a3c5317713a1aL, 0x350dc5656f5a174dL, 0x11625a4405f802f6L,
+      0x2196495da37ba4a2L },
+    { 0x00cb2fd313142680L, 0xab9e91d765d14cf4L, 0xc6a0ceabdfe2669eL,
+      0xbeefce580ae22bc5L, 0x3c2b7986cb6ec250L, 0x84adb1a2d738f1ffL,
+      0x9709bc28516ec8ecL, 0xf36931298e8f7db5L, 0xc48efc6b95b197f9L,
+      0x9ff109529aaaa404L, 0x2c3c8cbd144154b0L, 0x33ef7bc3427f3435L,
+      0x04a17940d21897c1L, 0x5aa0c47d6ce548a0L, 0x2971cea73d56fa62L,
+      0x93ad0eb004475f08L },
+    { 0x7a0b6967988a9963L, 0x61e477f76515e8ddL, 0x6274e3863b6b50f2L,
+      0x63a9b8d5d33922deL, 0x3c38d3fb687a5b3dL, 0x18f6f09c1302e323L,
+      0x254c05c3e02fcccfL, 0xc04ed0b726e662f7L, 0x1d5646b8143fe079L,
+      0xef8a9448c9016c8cL, 0xe5674c4bf823d797L, 0x0586f72fbccde451L,
+      0xc5fc88d54417eadeL, 0x2b952209576e588dL, 0x4408dd425844d1f9L,
+      0x73f8c3f0ea41c034L },
+    { 0x89534fc85df763ddL, 0x3b1427f33ac71836L, 0x0db5be176e8f15a0L,
+      0x1d390944cb20888eL, 0x7804c9ad857caea6L, 0xaa584428519f7bf3L,
+      0x626eecf1293aa8cfL, 0x749e0d98ea36a015L, 0xefff6dae3321edcdL,
+      0x963deea628b791ccL, 0xa14e05522d16e361L, 0xa2e058fcb15ae206L,
+      0x0f268745fca325e4L, 0x7cf9d40721341a8aL, 0xdfed25d97caa51b8L,
+      0x0108ae39adbedd75L },
+    { 0x54d178f3a9e88f63L, 0xaa05b11eab0c7325L, 0x773a53e6e261d8a6L,
+      0x24db7dae8d0b91c8L, 0xde10b073e9bb004dL, 0xfc8befe754e3090bL,
+      0x16af05990cc69c89L, 0xddc838039d59511aL, 0xc3f65b9946c5dafcL,
+      0xfbbe4be81ee0a599L, 0x88891e36fb3a9b17L, 0x0c9aad75445dad00L,
+      0xdffc46abd5097e1fL, 0x8848089bac85a4e1L, 0x348bb42fa0c45233L,
+      0x807c06d8eb13c1dfL },
+    { 0x00a969ec98ee0ef6L, 0xba9d54838bb7b7afL, 0x24484c92a02f8fdbL,
+      0x7bdb201a8b70557cL, 0xe59343e460ad1af2L, 0x53a9a942998c95fbL,
+      0x974db3deda861d3bL, 0xce1525c9ed399c0eL, 0x89b56881f72109bdL,
+      0x08ff7d15998211a4L, 0x5df76b3aef0f275aL, 0x93f180f7fa2f358bL,
+      0xaac4ffcfc39b0634L, 0x2692c62617583b53L, 0xb2fdfa36b55399fcL,
+      0x16424c6c99607a61L },
+    { 0x5dd65c55dd2744a9L, 0x2544c1c2fe3af418L, 0x32c82e99efe8b089L,
+      0x30b7ab25a9df691aL, 0x983845509be99674L, 0xbcecd258caf2d122L,
+      0x88ae4098bcc77272L, 0xd43961414b8efa0cL, 0x44ff67b9ed64d12cL,
+      0xa9e655e42e7f3404L, 0x3d16fc4545b0e9ebL, 0x474a3e14f03ded28L,
+      0xa3c9adffacccb85cL, 0x3dfe6bc17253a51bL, 0xdddaf4b9fb5831b1L,
+      0x5544e602a4f4478aL },
+    { 0x897c5313baa80b4fL, 0x0122716f63bdc8efL, 0xae2742db7b42c5a8L,
+      0xe9d9e1e90883308cL, 0x352c8c3f2d341ab1L, 0x163d0500ed945870L,
+      0x8349dd73c290d9d8L, 0x2053c5e01f6c7d29L, 0x83107446cb42033cL,
+      0x76c88bd209d09af1L, 0xd0f70e6eb2794681L, 0x720b59de19b1b540L,
+      0x80b7ecdc22994b43L, 0xc1a4cdce2dec53cfL, 0xdd7d3edd1ed60f42L,
+      0x5735995ce241d261L },
+    { 0xdc4ba3fba0237056L, 0x6856c16433ab3388L, 0xc01eebbd271ec612L,
+      0xabdeb033e3031becL, 0x4eee44196118a1f5L, 0xec4974215b600f33L,
+      0x1b7185cf08868773L, 0x7b0c46cd7c1b7dfdL, 0xd143b2da4a4c5e89L,
+      0xdb9a5984bb1ff94dL, 0xac3904e4c9cf3465L, 0xf8729bc0eace64c9L,
+      0x5cc22821768ad99aL, 0xbbd3b0818a9540c2L, 0xe468ed5f049a6917L,
+      0x885486df3ec45ef0L },
+    { 0x6a942c934bdff464L, 0x3db2719f25a7b451L, 0xccb0070b325be324L,
+      0x2055a31b19fe3339L, 0xaca69ae8241ee8ffL, 0x7607dd0855ef8defL,
+      0x9e24960f1a1b73c6L, 0xbcb0e8a271d36810L, 0x29e11aa26885e6b9L,
+      0x98b5d0ab185eae19L, 0x1a0b96e40f81f91cL, 0x4d0e8bcf994fc503L,
+      0x33d81697f119d6e0L, 0x29083287aaa4ce0cL, 0xc5dd4d3ec91ff9d7L,
+      0x31cecfe8d4ab962dL },
+    { 0x437bfd9afc8b21e8L, 0xe5dd32b3b19436dfL, 0xfe5902d4921c36a0L,
+      0x8e9de84da3d0fa90L, 0x9663e6ad5bb523bdL, 0x9800a23faecd6975L,
+      0x1009c0d9b4fbb59cL, 0x839aa7bdc9d20ff1L, 0xf502f66decd6fa3dL,
+      0x480ed4fbc5516ca9L, 0x65ffa5f66c742ac4L, 0x2b7c7945ff3252f8L,
+      0x72fefc0575d9cb3dL, 0x11b0863bd6d6f1d2L, 0x5d8f3cf09a6a4ec3L,
+      0x6961b46ada2547b3L },
+    { 0xd07b587ecb35e2acL, 0x1ed5546b57af14d9L, 0xeca17a5bdb28a04cL,
+      0xa1f91d44709d54f0L, 0xa6e719fd9c6f400eL, 0x4e4b88edfb8ce190L,
+      0xf9781edd246e3fd2L, 0xd67120e6b655af5dL, 0xda782d1d93413ca7L,
+      0x697e20a29707fa21L, 0x1eb51f3254e84123L, 0x2e254d9e36051f9fL,
+      0xddaec42b73ce5be9L, 0x89a9a32ecd3f794fL, 0x1964e22f0781aad9L,
+      0x6a63a90c53755212L },
+    { 0x76554e003d7acbbbL, 0x2c01668ab74f6108L, 0xe4a29672388c519bL,
+      0x016677143eb94d4fL, 0x086a3cdf0cd6d2f6L, 0xf86580217b370f7fL,
+      0x658880c15a4d3e7cL, 0xd6ed58165ba3f4a1L, 0xabcc78135ca471ddL,
+      0x809bf074e844a576L, 0xa53a81b36ea502eaL, 0xc20b93070e021ed3L,
+      0x8c27f8928617f165L, 0xa54764468235cd0bL, 0xffc89ffd82552961L,
+      0x51ed4a22d151d90eL },
+    { 0x37d6963a449701b4L, 0xea8d91a3bb27caf2L, 0x3ef9be15b572965fL,
+      0x75a7a055db50bf7dL, 0xfd67480ece643b9bL, 0xf2a60d2d6ceb5d5eL,
+      0x68fc320c5ed7c897L, 0x41c53cf628ce685fL, 0x0e29711f7106615eL,
+      0x7a87213823500eccL, 0xaf0a92606c29fe48L, 0x93df3f2ae1ef9712L,
+      0x0d5f6fb1d2d169bfL, 0xeb7afe2674a9793cL, 0x4173d94ae9f49256L,
+      0x2d6951bc2b8b5ce5L },
+    { 0xdd007d9f904e222eL, 0x333f248f86f4e109L, 0xd4994e8b8f429eeeL,
+      0x29573415cfc77518L, 0x6e7fea3a0b0f42f1L, 0xc795cb7dc2743519L,
+      0x820a8f66711e71a0L, 0x83d95d9c2b874f55L, 0xd4b64d78e70e1627L,
+      0x924353f58b92a742L, 0x322048b1447b5e6dL, 0x0bad730cbcf931a0L,
+      0x75c4d089a7af2268L, 0x464904c1b83b93f9L, 0xa24eba02165b3aeeL,
+      0x65c48e78e08cc5f0L },
+    { 0x1a1c73cede222c22L, 0x5683d8cdfcea23b4L, 0x0301cb14b2143b06L,
+      0x284adf8f59fcec77L, 0xfb1c581c31204cefL, 0xf54d3eee94735107L,
+      0xdbf67f0b4d3188c0L, 0x76a3f2d110f18d12L, 0x3809fa2807d3e013L,
+      0xf06f0a4625e7ece0L, 0xd82867edb2895d2eL, 0xe106f48908b0553aL,
+      0xe2280fa6ef245445L, 0x402d5785a8d9a3cbL, 0xf63dd9ffd438ba2dL,
+      0x36b5cd2c7a6b226fL },
+    { 0x87ff4e20545679a7L, 0x64d80b414520c750L, 0x90a357fa9b459cd8L,
+      0xa19eaf39c85af1a3L, 0x0d475d798d935a5eL, 0x74501983781a678aL,
+      0x748397790cc2e810L, 0xc6a21d112f412244L, 0x8d0e85f936a51a37L,
+      0xff50151eeaa74df8L, 0x14e182a793cf99c4L, 0x45593df1376a9ab6L,
+      0x18f73caf522389ffL, 0xd27cc960f7445e8aL, 0x0692f4c539a51dc8L,
+      0x08d7c144db39bfd8L },
+    { 0x809c0d963ecca773L, 0x87ea9192d48c2156L, 0xf0eccd74db6bd641L,
+      0x773123742a678cdfL, 0x7a966d8bd1587b7eL, 0xf3c1a1016130a4c6L,
+      0x7cc6e8385fce17bdL, 0x95e95bb8a8de7aa4L, 0x3fe1e8b5898308e3L,
+      0x0197243ee347694aL, 0xf3fe9c42bb0cd2bfL, 0xb59052640f9b2b49L,
+      0x4c385e8bc7367d1fL, 0x1d3050aeb5ee147bL, 0x8e2c387904004ad9L,
+      0x5f2aa8eebab70202L },
+    { 0xe208d4641266524bL, 0xb7bf3880d0a19f66L, 0xa5aa685eda106ebfL,
+      0x0a69e8d3e642dd46L, 0xef349c61c682e4d6L, 0x26f6ee3b0fcb534cL,
+      0x7daba12705eb67b8L, 0x2babb27e18be05f6L, 0x959afcba8e2d85d1L,
+      0xedcf2d1ae2d9d386L, 0x59dc52e61ea6f06eL, 0xc28278b4866e5ae8L,
+      0xd9ff034002bcd3c7L, 0xe884ac76784be82fL, 0xa316498083c9f224L,
+      0x62501a98b46ff949L },
+    { 0x563f7d9aad264086L, 0xca6a33dba5e0e4bdL, 0xe82530028c8d3d67L,
+      0xa288dac846e64b19L, 0xfa3c919720aa4536L, 0x8130c9b0ed553eacL,
+      0x622806e02ea8abd3L, 0x52fbf54dceccfe77L, 0xbd9a8e314f0d1b70L,
+      0x519d2133d59b1741L, 0xfd74101c9a6fea8aL, 0xd1acf7a0b5c4eb10L,
+      0x78499b7391f9da5eL, 0xabaa4c49c0dea586L, 0xcc9c5f73a1f3531aL,
+      0x497b15fefd3fc665L },
+    { 0x8a56cbaaf45568e9L, 0xf491a0fec7192a6fL, 0xdbb03dd39ab2539aL,
+      0xc86522f84ac37da9L, 0x8c8cdba202a0f5b4L, 0x8109fc75a29c539fL,
+      0x9cd06d31ca90f02eL, 0x8f31f0443e216dbfL, 0x99aa68acba3ebd91L,
+      0x2a80d0d242c007f4L, 0xdd8dffbf86a9b7ceL, 0x405d3e84d6308edcL,
+      0xdafa33fe068012caL, 0xc2eebd13edea1071L, 0xb7ae7e5c2ff637e6L,
+      0x18d46a6c9e514cb7L },
+    { 0x868cbb22a78b7802L, 0x0745ddb2497cbaf4L, 0xc4eb2f3e42ae8addL,
+      0xac0abcdab4ceb4e4L, 0x2e0d8325a325fd40L, 0x6cfe057113ac7345L,
+      0x7407a788b14171b9L, 0x70eb06036da7a52bL, 0xab0b36f9d85176acL,
+      0x14109d297c2954f3L, 0x370de9c8dcd705adL, 0x3f0db5cd7bb5e751L,
+      0x45f93d41a06e708cL, 0x10d54f8a7e93050dL, 0x69e6f8e45a38fef9L,
+      0x55044601d3f62e40L },
+    { 0xd1c5c91006cb9cc9L, 0x542074d741d00014L, 0x7cd8663e11236fb8L,
+      0x39721ffe29ad5f82L, 0x1d21fbfa2951fc83L, 0x1cde06e7400d144fL,
+      0x9042596b91792e6bL, 0x3365c8e529ad5166L, 0xe2220e859aeefe98L,
+      0xbcb5318970c2aee3L, 0x477ca3db9ff100bcL, 0x27074176f532973fL,
+      0xa12118ac9a2bd01bL, 0xf34252093dd79f93L, 0x563a8ff7c6f5d7dbL,
+      0x0da313fcd7b0ec4fL },
+    { 0x37125a8c15aa2557L, 0xca21d70c00893e9cL, 0x4871399467b8a823L,
+      0x0d3e9a747cb0042aL, 0x2d2bf4ffc9e2ce18L, 0xd5531a0d049aeac2L,
+      0x4d29a616f03d0660L, 0x473d50d61f1b7f00L, 0x3af0ecbbca3de50cL,
+      0xe2959bea09c28f27L, 0x6d7c2ea0f8704664L, 0xadfae4e1731083efL,
+      0x50940c26941c2554L, 0x44167410a1162d03L, 0x620230d81e82290eL,
+      0x63630be8db414accL },
+    { 0xbf8d52228a7d2e41L, 0x49e75823eb62f879L, 0x1b4d33dd6c402d89L,
+      0x883e04d6de2c59adL, 0xbf3f38f449b9dc38L, 0x9d997d18b4b70c4cL,
+      0x1f69b20c13cea045L, 0xca3d702558e2606dL, 0x3d4fd977261d1b79L,
+      0x56aeafa85a1436faL, 0x369b3e98bb443c07L, 0xfce5186ce558f6beL,
+      0xeb0cd478f8ac8f89L, 0x68074f37d5e5aa72L, 0x295845c068544eb0L,
+      0x306a9871f16688edL },
+    { 0xbc451e9d634ec136L, 0x1edf27ca0e6f658fL, 0xa9be0152c0db4120L,
+      0x87b6ef20c5bfee67L, 0x352832389a2d6023L, 0x60e564d8c7afb899L,
+      0x4af22bc00ac9c2deL, 0x28e6f63182a9d22bL, 0xc075c701f532701bL,
+      0xf6d418f882075f91L, 0xf9fa628d1beaa511L, 0x551e7a176e72a13dL,
+      0x9306215b77f4c01cL, 0x71aba73193c9d588L, 0x6443ebe058e57cd4L,
+      0x2833ac41e8103e37L },
+    { 0x7e564b868da5ec5cL, 0xac3d9da81c08db24L, 0x9d7c1f0b8c57a728L,
+      0x3512afe79d343dc2L, 0xb438e4cffdc60339L, 0x7d5a2700dcfa1941L,
+      0xd5f323f827320449L, 0x1b87a58e1393c6e6L, 0xecb68bd104baa431L,
+      0xc09c1c5a4722b4d7L, 0xf42faa97206b5faaL, 0xe1dcbcd69976327eL,
+      0x655ba9e4087787d9L, 0xbd59c757de5c0191L, 0x673020ed0bcf3538L,
+      0x120cd454a49d6303L },
+    { 0xebfdb8f4cab0f9eeL, 0xbc003ef02cce58eeL, 0x9b6a68415a8d0665L,
+      0x642ed3a69b957774L, 0x3de487f04721ab5cL, 0xef2ff38021a4f0d3L,
+      0xbd16f55829dbddcdL, 0x2ef05b4b0e93dff2L, 0xde1faa120bc9aec1L,
+      0x66dae2c2d467fa92L, 0x758daf645eb33e34L, 0xa67ad9f68f0103cbL,
+      0x151f693a9be02430L, 0xd5698496eb4054bcL, 0x8ef1677e7019336eL,
+      0x021cfd167fdeea3eL },
+    { 0x5c73715fdf5c36f3L, 0x703bde37d64ad254L, 0x55368d10f2cf7713L,
+      0x1e5ec7b70f3993c8L, 0xfdb16776304ae4caL, 0x0d8f717e3d3bb18bL,
+      0x5267073f66343d5aL, 0xfaeb52ef156008b5L, 0xb97ad5f9224a470fL,
+      0xaf86e391ed2ab51aL, 0xdc0c7e579974302cL, 0xc88fa817fd0ae28aL,
+      0x807c22dfbf8ed59cL, 0x5dedc231eb128bb6L, 0x71edcd9ca20595a3L,
+      0x07265b46c73cf78eL },
+    { 0x73dd99f0bd66232fL, 0xc59aaf89c4027716L, 0xaf826dfa5b860fc4L,
+      0x239ea8aa7a943f3bL, 0x0e0e1b1a523c428dL, 0x55ea0e3a6973b95aL,
+      0xea399caa2557753bL, 0xf8adf72f06957b1fL, 0x0389f3413bd34302L,
+      0x333f27d0f8a43a97L, 0xcd9c0c08adaf796fL, 0x6dcca49b49c12aa2L,
+      0xdd88deee7a0ac6e9L, 0x8f47575d0644080eL, 0x6e9d667d0cc2f4bdL,
+      0x36c5754b31d1496cL },
+    { 0x9120046ef323d84bL, 0xa69911227e789c4fL, 0x4b0eaf4e921b8055L,
+      0x6339844a8079974eL, 0xc905466a740f8c79L, 0x1c18d0f7cd6def49L,
+      0x5297da6b4b23e4baL, 0x1c09dff3c41800c5L, 0x6c49075b37ef6777L,
+      0xa94c3a4050513dedL, 0x3d6742e96b0b1705L, 0xc0784494c48af5aeL,
+      0x40c01532c95822deL, 0xa2ddade5c164d94fL, 0xfc8a8ac9a2975eb5L,
+      0x06fbf8611946944eL },
+    { 0x2d65338e3f45aa97L, 0xd83b58c81d040febL, 0x05fef59b0fdef8b9L,
+      0x7beb071ae4d7417cL, 0x982b61f5b30a1a23L, 0x4c5f2a2afb65bd03L,
+      0xe40abc9d5cbf6bf3L, 0x422c326df06612a5L, 0xc921e69d9571ae28L,
+      0x7c88b10b23d3434eL, 0x96d2e9579da07933L, 0x833d46a13619cf4dL,
+      0xd9d19653d95eefa1L, 0x2a7d8411a03e8f0eL, 0x5e64295304bb5ab1L,
+      0x5e9ca0fd1f0fa9eaL },
+    { 0x5bd54571197c5dc4L, 0xe2da40bfe78a95a2L, 0x65fb9efcffdb0eb2L,
+      0xe952dc2c0d17467cL, 0xc1fc9c7bc758c6a3L, 0xfc79562cd4034a9aL,
+      0x26e36fbe61f64b56L, 0x6adc4b9e1e84728bL, 0x7f165fd3a8f9ac8aL,
+      0x7bc93a4503e3e013L, 0xeacc5513656478e3L, 0xd3391717064ddc77L,
+      0x75b318dc76936914L, 0x69b1f1c7362424a6L, 0x8cc2045b49955f34L,
+      0x940622b3c6836af8L },
+    { 0x4710ccb70d997973L, 0x3b29625dd3f8f115L, 0x8cf0c4d55b97abd5L,
+      0xc6321e0a673e14a5L, 0x0541af9d3d262246L, 0xde6d87546fc83b11L,
+      0x47e97da8f01652a4L, 0x0f82b3a6ad9802b6L, 0x69aa4075ae9c44b2L,
+      0xaf3f5de2ced2bf77L, 0x1ef1ea8a497a40daL, 0x2e0f86083c23ba9cL,
+      0xd8a998a4f190a2c8L, 0xe2b49c8ccfde3368L, 0xb9f49824bde6bd71L,
+      0x80bb1664785bedb6L },
+    { 0x05e575fefd145cb5L, 0x155ee561ac5e6883L, 0x461e70cf8793b273L,
+      0x9f1553de133b2338L, 0x2fb9e0c3a2a7ba07L, 0xc3bfd6a83e7086faL,
+      0xb6ba85008bb4cb93L, 0x0b66d78976f82dbdL, 0x7d5a6ff654eb49ffL,
+      0xcd65d2371f20b322L, 0x79ea49c254e29cdcL, 0x64975963cb118ff9L,
+      0x969598ddcc58000bL, 0x95107918110c779cL, 0xedfc154863b85a35L,
+      0x077ba5ea41212350L },
+    { 0x0b3a38d3cdd86f61L, 0x431214450502a0abL, 0x1912edc5806d0272L,
+      0x01dc1f988a32f10fL, 0xbb1d31d10e80c760L, 0xd46ec7e5f464e8b3L,
+      0xd569af369abf49eeL, 0x9d286ea72cdade77L, 0x2be7020d45ad5920L,
+      0xabe5236e6299ae7fL, 0xc93179bdd3f55c07L, 0x8138995a52350e80L,
+      0x0901265caff07586L, 0x5b3c81b2f4739653L, 0xbaf7581d9bc77d21L,
+      0x6b2006df4591a2e2L },
+    { 0xb2fe50a8965b1bc1L, 0x931f536a962bb4fdL, 0xd5718d33000e7f99L,
+      0x84728f2553d5125eL, 0x4f8a6184d2125cafL, 0x54f1a701357f679eL,
+      0x70a9f40c1531c05aL, 0x10d0cb976fa8b775L, 0xb476f41e9dc12ce9L,
+      0x5c8d7a752755f894L, 0xd6c12e10625741a4L, 0x262a6fb8c917b16cL,
+      0x24d116e638d6b0a0L, 0x849540c032c38e83L, 0x855b911c66868afcL,
+      0x53217ea6bd26b550L },
+    { 0xfc840473259f52b4L, 0x968da9cbe621146cL, 0x964eb85ecacbd26eL,
+      0xab7daa2de4a54344L, 0x6dc3b848381a4ff7L, 0xa07a96b341c815efL,
+      0xc4fae9e8c3d4b1e1L, 0x0f938d1e42ce9ea8L, 0xa727dacc35cc052fL,
+      0xc81e01c9e9a06f07L, 0xa9e08dcb4a6d65a1L, 0xf8e2d1736044a9a6L,
+      0x99893dd0f2bd295bL, 0xa08d3379f9781b12L, 0x64bd600161830ac2L,
+      0x0386931ed9adbeefL },
+    { 0xd0d7abb3d09885a5L, 0xed9d2b67e355bb07L, 0x3bc238cf536ebaedL,
+      0x61ca2e78699ce4d6L, 0x354ff447111594cdL, 0x55cbe70903316ad2L,
+      0x418679fd49fff5c4L, 0x75bacd750f9c6c40L, 0x677edc882972721aL,
+      0x82596887e5ef502fL, 0x459e9367bf320e0eL, 0x81ce36ef8bbdccb2L,
+      0x1ba097fcb766863dL, 0xcd3a21d6d58c6db8L, 0x0e4967cdb4a8748bL,
+      0x2caaf74915041c20L },
+    { 0x44f980066ed20424L, 0xb3e4ea2322471545L, 0x268ed1a5781a8c86L,
+      0x48d0ab757ae5b70bL, 0x6ca8b320356d3982L, 0x9ce8e6812df31fa4L,
+      0xb909d232d925dcf2L, 0x302c8f78f56723deL, 0x11725d69abac96f9L,
+      0x656a47ca57d1a170L, 0x6bb5d511c18a2be7L, 0xb56e45f1ad50d9d9L,
+      0x36e886e270b05518L, 0xc7c71f3d09d8ff91L, 0x65a1bbe29350361eL,
+      0x86d7f53245fe3bd8L },
+    { 0x99f16eb6b0bf719aL, 0xb69750988bc3d913L, 0xfae50e5226cd01b4L,
+      0xd3e3ac5490898d1cL, 0x4da3b9db887ec666L, 0x58300644fbea45b8L,
+      0x369f3bd98355b058L, 0x0fb239a8579bcc13L, 0x4f5b45396e2bd811L,
+      0x007f3baf24198fd2L, 0x68a676db8837d51dL, 0x68eeea62eae75b16L,
+      0x5ffe5f943db6083cL, 0x52c94d0f7d836c5aL, 0x5a4c3c6fcbc1ff85L,
+      0x682a55e386c0b4ddL },
+    { 0xc8f235a4587495aaL, 0x2276026c34c7245dL, 0xd6ae0cc5b75a46e3L,
+      0x890d3965ecc3e5e7L, 0x1b13342f14296629L, 0xc89927e68a877227L,
+      0x1543f27e2324a68bL, 0x6c44768449cdc21aL, 0x9bc7fd4f1452d0acL,
+      0x2cc30a31ff4b045cL, 0x415d46a0852f7611L, 0xad737052c6fdd7a6L,
+      0xdcecc3ab7b4c7c91L, 0xd2cdf01b7688d70cL, 0x054f2542e40d3905L,
+      0x02227fa6fefe4dcdL },
+    { 0x1805efd9b751948bL, 0x8efeed46fdfd225dL, 0xcb128e094f2c8b22L,
+      0x9d1090bf96f7c5e5L, 0x0959d044b4cbeca0L, 0x21c955f98e08cb04L,
+      0xbc1f279d68fa4fceL, 0xb021e14e0710ae9aL, 0x64d16e9f881167f4L,
+      0xf5a5c22ebbc9f1a5L, 0x5f3716dfe3420eeaL, 0x971eb915d5c4e843L,
+      0x64fc55fc28ffba81L, 0x3427e54d7dd37578L, 0x446e6a6215ebc7d0L,
+      0x547e249a29269778L },
+    { 0x4706868aa1ffda27L, 0xb4e6cdcc7955cf50L, 0xf65151e10a63f3d8L,
+      0x5b4127ea9de5e70aL, 0x3d2c09baf9342823L, 0x18c99d83aa2f7d51L,
+      0xa0c5bb1dddeec025L, 0x7ffddf8403dcf1ceL, 0xe57e4d29616fdedaL,
+      0xd24565697932a1f0L, 0x7475e0e83191d4e3L, 0x3479bea1c220218bL,
+      0xfceb5c908bcb2505L, 0x1c685cea3c6132e6L, 0xc42dc745bfe6c1ebL,
+      0x45a41cc0d2b08eeaL },
+    { 0x3ea9b2c74dbbf0e1L, 0x41ff962fa17cf70eL, 0xdc1ea7585eeb4c66L,
+      0x4f5412d2a9beb17eL, 0x2c9e4f52a285741aL, 0x93df7da4984fd11fL,
+      0xb2afbddc0df3184eL, 0x96323d252421e375L, 0xc87be1e449df781eL,
+      0x145601ed3d589beaL, 0x0f0bd9bd28fff6ddL, 0x2d3259d48a0f298cL,
+      0x362d7a77d88e6944L, 0xa84c06b6b6ac2af6L, 0xba850ac9d087da02L,
+      0x128763c942ee40c8L },
+    { 0x29a80f07acbac178L, 0x7cc2004434b08f6eL, 0xe9631d1470feded2L,
+      0xb2115da386615767L, 0x7c75f5c4cb088548L, 0x5b29d2139a2e8e03L,
+      0xfe9fda668b881752L, 0x3f1d8d88c1de7ebcL, 0xb476565e03218123L,
+      0x07365561b1c995f3L, 0x2160cb18b13eb71bL, 0x7e8da51399b3a0ebL,
+      0x5e8ca1f9b20fcd74L, 0x6a7e0067b4126d72L, 0x1e8204b768bb637fL,
+      0x75e96bccfc4f74d2L },
+    { 0x189d1fdc0d19716eL, 0xdf5850587c384525L, 0x64a846d1ea987d2aL,
+      0x12b6bf836c07150fL, 0x91d85d464d6fd5b7L, 0xa97888364f53f55fL,
+      0x60083bd881509129L, 0xa7672683ea876f48L, 0xe80b2e7ac15b2489L,
+      0x985ef8d242d1d992L, 0x9c57b029cf3de492L, 0xfe02f83cb1487627L,
+      0xaeba4fe48ae5b687L, 0x8a86f09b5d6b8196L, 0xd88f566ba16e523dL,
+      0x309a6e9aba268949L },
+    { 0xef27ee50bdfbe97aL, 0x1a5fe70fb8c50c4dL, 0xcc7beb017fe09f5cL,
+      0x8fa15a85bed36cc5L, 0xc0c3acdb7550ed3aL, 0xc581ef87eb908681L,
+      0xa15b3362c49d5ccbL, 0x0fbb17141fa264e8L, 0x267f8d8f8e1eee88L,
+      0xd31ccfd621c2b63dL, 0x924dbe7d53be7efdL, 0xd42e877fdb2a358aL,
+      0xcf9673c775d68ac1L, 0xe35978fd714fea55L, 0xeeb366535769b202L,
+      0x0458258ad7593789L },
+    { 0x5df71a74a042dbdfL, 0x2d4058575779dfa2L, 0x0e66cba70d2e6657L,
+      0x285d6745ca2e892eL, 0xf56a8def0f0e6b5fL, 0xe0ee851da30767c3L,
+      0x98c0565843346b9cL, 0xb35fce26d6b3c742L, 0xc0895bff39777e00L,
+      0x83c8f6a6e7b6d886L, 0xbee148434f02904bL, 0x7f74915b2e84ec34L,
+      0xbaaf663c96d10991L, 0x004b8757e41facc0L, 0xa2b880e56f86c029L,
+      0x53f4a3e095b77358L },
+    { 0x11bb08ce89fc48e7L, 0xba60c577afab5aebL, 0xf06bcbf8a0c1cb5aL,
+      0x7d2efaea79757cb6L, 0xe26d90b176319160L, 0x42aa1ab62b77b7a9L,
+      0x38eec0cd285df2bfL, 0xd35947f5f3a8f7f0L, 0x97c8dc0efc1cb5b5L,
+      0xfeb8cca0c45845cfL, 0x16e8d989249e26f2L, 0x7c264e6d483ed89aL,
+      0x13a3f14551d91073L, 0x8501562e305e99f0L, 0xaaf98d746908d563L,
+      0x0a99e653d723d236L },
+    { 0x23536f46abbc0559L, 0xc163067b9aa1a160L, 0x229fd2290c1681b5L,
+      0x61254be11378e907L, 0xc60ff57aab793a2dL, 0xa6f2df8b466552dbL,
+      0x9ad318938c170a36L, 0xc5cd9abe29b74d9aL, 0xcf747273f7848523L,
+      0xc126a93a0d0e3063L, 0xfe2021e34248e3d8L, 0xd97343ee8323ddfaL,
+      0x9f768775332639e7L, 0x9650fc3175325548L, 0xb595dbd13eebf7eaL,
+      0x3a95cb45010fcbc0L },
+    { 0x954e68cb39d7ff2eL, 0x8dd1cb4bc1d5c48fL, 0x02a92c777169438aL,
+      0x7965c0b091cad8ceL, 0x0c5798ab32cd08d2L, 0x1a5bc3c3a6902bdaL,
+      0x545d09255186d218L, 0xf0077cdbd27e64dbL, 0x0157caa48cd092daL,
+      0x2a2fa3a024532ab3L, 0xa5fb639b41ccaba3L, 0x01702dc14744aee6L,
+      0x485bb436cdba93daL, 0x93597f66329784f1L, 0x5d713c1ddad672c3L,
+      0x366d222e030b7245L },
+    { 0xd50b4875573ea5b2L, 0x0fce401ba90da44dL, 0x7b53fa657a1a0310L,
+      0x722a80a5cf114460L, 0x0b8ebf05a538bf49L, 0xae141147d32acd21L,
+      0x6692712c7b5ad07dL, 0x6dc5fee73f48ca07L, 0x98ed14992b8a78d8L,
+      0x4e8b3145dd2f1759L, 0x43408de15f971b8eL, 0x055ea6ddadf1b368L,
+      0x4bb76e73e5932b7eL, 0x44287153d30893fdL, 0x173dccd20661bfdaL,
+      0x9072ba9979defd25L },
+    { 0x474de4dd9620ea39L, 0xfbf1649fc831cee8L, 0x0b0e8bb1cd3a9c43L,
+      0x6a38286f3f3df1d5L, 0x4ed072b38f0ec9b3L, 0xa6e4c987729c09e3L,
+      0xea3e8ac68ad12242L, 0x6ae0e22bfbdfa5baL, 0x56171ecfb0a0f592L,
+      0x33b2886d6b871f8dL, 0x6b19bea935e11bdaL, 0x4d815a407f0f153fL,
+      0x7e608d977d6c02eeL, 0x7e8f23d9b6a88f46L, 0x26ac9652439d1654L,
+      0x8d92c6bd35546c29L },
+    { 0xb3e0d7ceabeb0ff7L, 0xfbe352543e0e42f8L, 0x57d1b226de808499L,
+      0x9ece2e1f1cd44bc3L, 0x1245adbc435cfee1L, 0x874ee840f93f581cL,
+      0x916a779cbda0b947L, 0xabcc815afa57ae0aL, 0x97adec2df0a621b0L,
+      0xbe6a502b81f90bdcL, 0x54bf9de153bde63dL, 0xa88fdabf78884c25L,
+      0x30aa52b1cbbb5470L, 0xf805396c29053ef5L, 0x8d43d8988dd827eaL,
+      0x4e4bec175c1ae5c0L },
+    { 0xbf8483a2fcc09676L, 0x457c4a3f19ea9a94L, 0xa6852ef3d702a5ddL,
+      0xe7915fd2843fe7d8L, 0x644bba9816e35158L, 0x8d1b95d09ed746f0L,
+      0x47704581b90af0b5L, 0x0bd4bc6bd4fd135eL, 0xa6dce067b4e833a5L,
+      0x2c0e8f30ff56a9a1L, 0xa9c80800ec2c63feL, 0x449c20a598f508a8L,
+      0x02b94cb33292813aL, 0x647e3d28ec7e81a2L, 0x72e67d1ab4877677L,
+      0x7a4aa3f56f9ded24L },
+    { 0x559ef1bae27a0045L, 0xdc812d4fb242cb50L, 0x23a478e439cf8d24L,
+      0x97544fc59b3f9c54L, 0x5ac68132affa1fcfL, 0x74f8fee034a2c83bL,
+      0x96cc640fcd3f4bb7L, 0x775dce9db0512ea6L, 0x67dca19dcdce381eL,
+      0xc1eeb3f3a9d3fe55L, 0x38e0bf421a19274fL, 0x15992fb428d69b12L,
+      0x48fcebde9fd09df8L, 0xdc9dfa4fb41ab5dfL, 0x0cbd7dc8c0a269c5L,
+      0x60282a7bf7f0ade1L },
+    { 0x7c07e538dceea2e7L, 0x38a322c83c42061dL, 0x676828f94f1f6516L,
+      0xf21b69fbc7776a10L, 0xc63a3417b5e6b405L, 0x4c99f25891a7b642L,
+      0x38692ca82cad1440L, 0xf1e82ffe00869bcdL, 0xc30b714e16fe466aL,
+      0x5fb742f919019138L, 0xe90166d00fa516aeL, 0x5550f7acd8c73a43L,
+      0x2d6a407dfbc5c372L, 0xe47a753968cc39edL, 0x3fd286d94a5fbe70L,
+      0x5f4ae9c723c6b942L },
+    { 0xd96a2dda53f4d561L, 0x286d45d016da1992L, 0x449a01fbfdd4b051L,
+      0x25488a0d9f2195eaL, 0xc4151b0aa37661b3L, 0xb98c471ef9e5ee02L,
+      0xa4bca86ea8658817L, 0xbbcadb877a68fc0aL, 0x88b346496b7366a9L,
+      0x32ee98d415661c2dL, 0xf5b3b4c6c901420cL, 0xa23527352f2752afL,
+      0x2f64ce73510e4d9cL, 0x939a7f26aca4aa80L, 0x9cd3e291401aa503L,
+      0x92a01423dc46afd2L },
+    { 0xe9f24be11c2f7dbdL, 0xda8c900fb7d527faL, 0x963e25bb8648f128L,
+      0x9ab713e248141941L, 0xe87f7d017a6756fbL, 0x274dd85e058d90bdL,
+      0x823fee7a82566abdL, 0x9f6230d774240195L, 0x04579f2cacb5e46eL,
+      0x2a22626316a4c87eL, 0x9ca19a43d99b0857L, 0x86dc2ba3e488789eL,
+      0xf960b5b99406c3bdL, 0x6f2c428b8960957eL, 0x90748706161c515bL,
+      0x0fc8fe1eaa88cb9bL },
+    { 0x68ae1bedfeb90f2dL, 0xf393bb3ca48b1559L, 0x2be62f9cf64e9635L,
+      0x354c2410f8be75c2L, 0xbd7ea7035e6f7529L, 0xc264868e162cab31L,
+      0xb1391e70c860f3ffL, 0xdf367c751d89837eL, 0xe150b6b42bf32941L,
+      0x95e8f46e78c1318fL, 0x2b3f1daba2c4b160L, 0xc6ccf5ce701afbf3L,
+      0x3ad275305e8874c5L, 0x39285e515dc6dcbeL, 0x3c954d86d99892ddL,
+      0x2d0ba862dfd3789fL },
+    { 0xeacd8ee8b472e1afL, 0xeb354eaeb76abbccL, 0x9b520bf8d0d93fbdL,
+      0xfccd60d7fe6fc706L, 0xa9353ddea4ee2f39L, 0x5eb0925e9a81e51eL,
+      0xee334da1d1366777L, 0xc1d28c9fd5354d69L, 0xb977175592a5ed54L,
+      0x5d3e367fb7f70d81L, 0x7be7eecaa933ae7aL, 0x264cf1f9e23cfbb7L,
+      0x0d129f4a89497681L, 0x705375a409b6235bL, 0xccf64c7548a376daL,
+      0x963c87124d41dbfcL },
+    { 0xbae290cbde36a814L, 0x9bdb0195733b12b5L, 0x0ebad867f77fe0e1L,
+      0x0a7d19fd29720ceaL, 0x434d76519029ec72L, 0x856aff17bb51911eL,
+      0xd0a25d9ad80a7f60L, 0xffca86aff848c106L, 0x53e8bdf943ad749cL,
+      0xfb9e0284e3e696bbL, 0x3eb6630aeeee4215L, 0x9d8fbb9e2ecf3c63L,
+      0x71da4ffa4e00c0c0L, 0xb296be595d57beacL, 0x1751fbada8cec7efL,
+      0x2d03eb3cff55d7bdL },
+    { 0xeb16925f04f2ec1dL, 0xa878f2760d147ee2L, 0x442df604aad9d9e0L,
+      0x891df44b3f71035bL, 0xc28272b38cb95d5bL, 0x6f14efb55ee8ed23L,
+      0xf3c4460f13b0f3e3L, 0x889f9bd76bd7335eL, 0x889ee771f755ba6eL,
+      0x626984feed219b6cL, 0x2d44c737ec2ee411L, 0xb94385a263efcd37L,
+      0xd909321b6637826bL, 0xc24f8a793ee6b7a7L, 0xa3ca8d24a7cf61b7L,
+      0x842e40c1c54bacd9L },
+    { 0x5a268ed6a661d843L, 0x02328cca4f5b30cdL, 0x16e6fed11311e177L,
+      0x690decb4c6695967L, 0xbdac5bf657b2e280L, 0x827f82ca1efe42d0L,
+      0xc554ec0aca5fca2fL, 0xac5276c1dde45506L, 0xb7f4cb08e3077513L,
+      0x8caf6d9acc8797ccL, 0xd59648140d9332d2L, 0xcc6ae297285a409fL,
+      0x7773c2a56223d093L, 0x2d5266ac5128fc09L, 0xa596b7cbbc31fe6cL,
+      0x0e63319acac91328L },
+    { 0xb5cd2fadf0360ac2L, 0x86b660de285e605aL, 0x82c6cf10e25b9b14L,
+      0x9d5fa38daa9ac554L, 0x3dfcf1b8526c070eL, 0x0379a96b3fccc52dL,
+      0xe3659c290bfcc7f5L, 0x5b1a3db569d3e6a1L, 0xb41528b59b7b42d5L,
+      0x934defa49c22a006L, 0x90f380189b4ce3b6L, 0xb073bc04b3abaf32L,
+      0x27a5a222ff8389e2L, 0x0b7a9d51ffa5a35bL, 0x4939ecef28e1a7c2L,
+      0x88839da21872705aL },
+    { 0x56b66c30701ce29aL, 0x3acaf12658981d50L, 0xd4dafc0c105f9f21L,
+      0xfee571e6373e3d13L, 0xe7269c86fa2ee3caL, 0xf5cca64add20385aL,
+      0x217f27573000e9acL, 0xc934db470e7273efL, 0x4294f4f7355b6776L,
+      0x1faa36b96fc05180L, 0x8f88b1dbb052190bL, 0x35791b90e9eaef52L,
+      0xf37fb2ebdb681b90L, 0x39d0a51d4415c369L, 0xfc59cca71d2e21c9L,
+      0x64128cfea1f50c26L },
+    { 0xf03678a2e8f5b0b5L, 0x5c7e249cd340f059L, 0x4144044193ca7cecL,
+      0x075ca346bc83af98L, 0xf39f0033faa8bbb0L, 0x3d18f0edf38230f7L,
+      0x78dff00cd448f345L, 0x849228c0d51aa475L, 0xdd4e270830c928d1L,
+      0xc66ba6868f12cfd3L, 0x091049db88b3a206L, 0xd865d059016dae01L,
+      0x4599e905e253e37dL, 0x322cf0c27ce9871bL, 0x014f54da174a132eL,
+      0x93634a09bdabcbdaL },
+    { 0x62826b27a9a2e304L, 0xc57e1866c1a4c124L, 0x913ab83222381710L,
+      0x7e9b6b85a9847cfeL, 0x29655cf12b5f46fdL, 0x7295572b8038e66dL,
+      0xe4cba6016fa95eabL, 0xbbc11071b9deda81L, 0x97f0009a3f1cf61eL,
+      0x5372777b373e0cfbL, 0x302f909cd139d63bL, 0x1ed672da4f87d78eL,
+      0x362077a3b4048763L, 0xc408c32d9dcc22b2L, 0x4b4c5bf226deeee7L,
+      0x266cb467bc06357eL },
+    { 0x6faa4154b56363e8L, 0x4b4fd0783c1aa4dbL, 0x14358dde2b9e6597L,
+      0x5b34ae3efa004b84L, 0xcf44b2ecf19911a6L, 0x55caa833a536bf78L,
+      0x606e1eb98870dc95L, 0xe3c3287d09f3511dL, 0x68b2f4eb9d5cf364L,
+      0xc154e89263ab8c9eL, 0x1548828ec36ab611L, 0x0932bfcba1b7d120L,
+      0x7ee7b5bc5315b8d7L, 0x782fd0d1f7473ac1L, 0xbcb029a83c8f2af3L,
+      0x4b1d5a1b52454ee1L },
+    { 0x12fe517463d52c0cL, 0x3735525e188c099dL, 0x5c621563360e3956L,
+      0x88b3f1caacfa5a43L, 0x90123a0a797e8107L, 0xba31f6b5b15e080aL,
+      0xd7de5e12fca3dadaL, 0x3287361b0df511c8L, 0x7cc800d465757d4eL,
+      0x10810f3d5207ec91L, 0x0d4e56f130eea0e3L, 0xbbf7ee133ea5a2ecL,
+      0x6fc07762be6abbd0L, 0xc831fdce120bf619L, 0xe07439fab622d42aL,
+      0x8186b93f508e4b27L },
+    { 0xc619d15409312867L, 0x7e042c05bfaf7db4L, 0xc1cf16681f5f5ddaL,
+      0x50aa5057a4fc3d82L, 0xed30ed65ce68b8feL, 0xecb01c0bbeb4d644L,
+      0x7b5dc444831c0497L, 0x351e6a009b7d9b1cL, 0x4bb863b9d9477c91L,
+      0xaba6589105d4110aL, 0x30086cf443580b7aL, 0xb139c07690be357eL,
+      0x12bfff1a27b5214eL, 0x79cfc6d722c3ab57L, 0x4743de57f34a9bfaL,
+      0x0bf97e97c9ee2b2aL },
+    { 0x96ec4ec8dda19e96L, 0x54ce18ea6c306e8bL, 0x7e83612b65f6918aL,
+      0x1ac6f68b0d9a0d99L, 0x98a697a462fdcc09L, 0x65ce25f195bc3e13L,
+      0x1896ecdab3939730L, 0x9eb81a0f32f12806L, 0xd3d7416e1d2dc7dfL,
+      0xe22c7976ad473599L, 0x3de37a9a9f5ef439L, 0x6b7ac0ab9e69d94eL,
+      0xe6bfa9e00a9d0bc8L, 0x576a870d5676f120L, 0x3bd91bb4feaac23fL,
+      0x8fe5482c3e40aabbL },
+    { 0x85ae67c2ce9a4d1eL, 0x4c3eb8034f1d2038L, 0x5c6c8f3a25d06192L,
+      0x803de0ad308fb41cL, 0x9961f5bce71c294eL, 0xdc62078df02eb0daL,
+      0xc87ef515b64ae8b6L, 0x69679f1e50b4d18fL, 0xc5c009a152199f43L,
+      0xa7d484be0f640a5fL, 0x4c918bb123dab566L, 0xa67c114c64275d2cL,
+      0x95a913b9cad2ded6L, 0x189ed18b6b4b5c8dL, 0x4aeb6206b42d3bf6L,
+      0x3928c669bbc8bc3fL },
+    { 0xde4bea4adacb4b64L, 0x03f62a44f26179a1L, 0xf3aac94e7a9112a4L,
+      0x90448fbdd36f331eL, 0x426042bc407b85c4L, 0x5ad8a5962121b77bL,
+      0x31674a4f67cee984L, 0x7fae8bbe4e3b2f0dL, 0x681df6dda7c930ebL,
+      0xadeefa98c259d0d4L, 0x1b14d9e6bea1c1fdL, 0x3baadc8b21d405d1L,
+      0xf01dff9373892754L, 0x81c35b3ef071cde4L, 0x1704d2e19150d0d9L,
+      0x6ccc888f355134f6L },
+    { 0xf8d36f0e7ad7504cL, 0xbca3265ff7959dddL, 0x0dcd1edefede67aaL,
+      0x1276f4cebaebf32fL, 0x6825a6e6014edcfcL, 0x0b8c1a8299ad8eb7L,
+      0x312024a909b8ce1eL, 0xcb8fd98b9cbd351aL, 0xa4841378fab1e8beL,
+      0x17ed0f5d3973cacfL, 0xa17e1484259d5254L, 0x53d5b84374b91393L,
+      0x8f792b211aca3ce9L, 0x035ff110c8c0f815L, 0x6afa6357ad4ed7bdL,
+      0x2f151980b26faef9L },
+    { 0x0c8631da29d2d439L, 0x121fbbc2bc039955L, 0x3e5a97926c05b75bL,
+      0x6d6cf4c0b6ce47ecL, 0xbaaa17679d88c658L, 0x031db9e7f3355a17L,
+      0x8381e3d80aef5a85L, 0xc71db29015a31bdfL, 0x638f6b749498fd7dL,
+      0x44edf3f913beeef6L, 0xe6173271f4ab67b3L, 0x3a202c70fd22df11L,
+      0xf7be0389205c4e92L, 0x1c219085a8eb9920L, 0x6c805ce8beb54aaaL,
+      0x354b05b70ac58d65L },
+    { 0x7171e2367a9170e9L, 0x01eec42d4cad50cdL, 0xffbe824f3cddccfbL,
+      0xa73e8ce3a66cae1aL, 0xb7138a7f965c7d01L, 0x00058e3f5c3d971eL,
+      0x52591ac32ff0a72bL, 0xa32fb5bcbbbce76fL, 0xf3241ab8a9f81a18L,
+      0xf31d3332eca68630L, 0x847af9fc4482f13bL, 0x6196e217a4681be2L,
+      0x9938f932e55efcf9L, 0x3e7dacb870acc705L, 0xd41be893cf09fac2L,
+      0x48dc55c4ae3523a1L },
+    { 0x8e623826a5092193L, 0xe46ec3626898970cL, 0x2f1356af25c9eb41L,
+      0x4178064083c7d245L, 0x982def6797d00e38L, 0x382eb6e7a512151cL,
+      0x154e10778af58869L, 0x187070758a51cf02L, 0xcdeba9f771313c58L,
+      0x5d67b973ba155904L, 0x851c9f4b1d0d7b3aL, 0x19f29d718b8af2cdL,
+      0xcb94ccff986b8d62L, 0x8725e24bb93b9c33L, 0x405ce4c566e38c68L,
+      0x5f6a8edd0b6dc021L },
+    { 0x83704ca58f9a8690L, 0x3f3697662f76a407L, 0xfbc12d8c69201028L,
+      0x4cd58f16bce3a4cfL, 0x7804664a04aab26dL, 0x005cfbba4ea457a8L,
+      0x537951b3b8a59794L, 0x4ca2b9e44fe1f739L, 0xe4428acddf325797L,
+      0x648da3420ea243dbL, 0xcce6562bf43ce01eL, 0x840f0421f27db490L,
+      0x156ccb708bfb7cf0L, 0x9b33480d5a8797d3L, 0x2e12e07a9eb814bbL,
+      0x1ca65072ca7f87acL },
+    { 0xfbb321cf2b9d25a0L, 0x66affdca40a746dbL, 0xc1c1530e59e368b5L,
+      0x56ed1ea47d80068fL, 0x9b74d8fe5647dd68L, 0x1d96b50789b78da8L,
+      0x39b752438bbe3391L, 0xef8d443e0d858c5fL, 0x4dd2db499646aa34L,
+      0x7fad3bd1e667543cL, 0xd0d710c068980985L, 0x9f7aff3249facabaL,
+      0x055dec1c14f9a192L, 0xaca663991fb307a1L, 0xac44fd9135ffff64L,
+      0x462cafb6cbad3ceeL },
+    { 0x1660a647de3237ddL, 0x95f735cc82b87404L, 0xf7879f59ddfa55f8L,
+      0x15ef043e726b914aL, 0x1875393d1c93e298L, 0xa1a2be746ef18331L,
+      0x4e7e8dfc25a9a12bL, 0xdfefc97da9c3917fL, 0xbc875d030a2ebe41L,
+      0x0f75d235a732d1ccL, 0x06fee7fed9baa6d3L, 0xaa784fab65f48576L,
+      0x23155e22513f83c0L, 0xd2fb77183e8f9d13L, 0x2a291503b546eafdL,
+      0x1293c98c6cd93608L },
+    { 0x7278125149d53b77L, 0xa6ab403d96eafac7L, 0xb7d7c7db4a36b711L,
+      0x8238c70887e771c1L, 0x495f6abf33b37522L, 0xb0b0289c8c87530dL,
+      0xca83cb86e77b111aL, 0xbe1c0fb8a1bd189eL, 0x58cfb2fb1ae9d7c7L,
+      0xd05c23c54940c3e8L, 0x16e79e4174ad9107L, 0xa0a47f05064e7142L,
+      0xc6929cd4fdfd614fL, 0xedb2584c3946988bL, 0x73e4b5f3e46f8fb1L,
+      0x53b79aa168ea94baL },
+    { 0x216fafce44bbb6a1L, 0xd3a5bba067821728L, 0xef1e4b30a9dd939aL,
+      0x022eaf3df19efafeL, 0xfed5abce7b4ec014L, 0x64968ee6512c6738L,
+      0x2311986929fe89a2L, 0x0d539d8d47397c05L, 0x6400bc54234596c4L,
+      0xb9287f585346611dL, 0x04099903c9d5da0fL, 0xe5ef4997c83af2a8L,
+      0xc89dc01b328151e1L, 0x150fb4a958401104L, 0x40a6f7d5f3872c9dL,
+      0x8290d6d156c2e833L },
+    { 0xf84637c6d8546946L, 0xda134a3969ec57faL, 0xd42359a4d789007eL,
+      0xb42557fe0dc7b809L, 0xe62ae52d2d6784a9L, 0xa2714ca60bcadb5fL,
+      0xcc208de633aafca5L, 0x2380ed5ced967811L, 0x6e6b55e9db321660L,
+      0x1bead02ca675235aL, 0x51cc6ef9b33fa0e1L, 0xfd223e26f06a2a08L,
+      0x00f332e1ec47b3cfL, 0x459f297ba0aa984eL, 0x6fa1d969ee952e14L,
+      0x506ef1ab304fabb0L },
+    { 0x11b4eb2735bff163L, 0x7130b96fea9fa984L, 0x66aceb3f9deb27ceL,
+      0xa2daf1a59dd1c3d5L, 0xf5090a7ea73075aaL, 0x36a6af39e3071b58L,
+      0xa28d633ddf73ad9cL, 0xdd354cacbdc89a16L, 0xdfea3423d4dcbc3cL,
+      0x6eec74d2379d92d1L, 0xe14a456f8eed6765L, 0xfabe7743fa8feb1fL,
+      0x1404ccf8b98fcbc7L, 0x6ccd2fbff71a706eL, 0xdaaf3fdb4d85c678L,
+      0x415b7dbf15200344L },
+    { 0x970105867d8377a7L, 0x068a3d68cb803272L, 0xfd67d289f03a4c32L,
+      0x4bc7095d93c8f290L, 0x712fa13ce9e5a2b8L, 0xfc6ac6c60feb9f3bL,
+      0x0cda36d96e0e54c2L, 0x4549975186320a01L, 0xf9318c9197f00f11L,
+      0x01dc4c3fe6936508L, 0x769a2ef985f068aaL, 0x3522cef0a2b5511cL,
+      0x006965edb4122e05L, 0xfce0fafcc175d43fL, 0x525dc9bdec831d59L,
+      0x1ec314f1af58879dL },
+    { 0x0663feef2c8310c2L, 0xaa7e14da457e3f74L, 0x392b10fce5346887L,
+      0xcde4a38f637ec2c5L, 0x50773320b542f8dfL, 0x341302f9f7de1711L,
+      0x018b1c63ae4b9bc6L, 0xf001c46edd2f9e6fL, 0xd3bb0a9726eccfa0L,
+      0xa931b99d7746e0c7L, 0xe0c8b6f7f5875aecL, 0xbb32f17c96939c82L,
+      0x765135d23de5a664L, 0x71936cb452abfa6bL, 0xad5cc08f2dc105deL,
+      0x17e91d127fff5788L },
+    { 0xbe92ced3b7e051caL, 0xc644d4fd19c776d4L, 0xc8ab4b520086784bL,
+      0x3ea66227ce9d6b31L, 0x395249a3d289e9c7L, 0x54509e65d12a19eeL,
+      0xa7bd46928c365aecL, 0x354997e477963e0eL, 0x0d765957b599732dL,
+      0x99584aeb91d4a3b6L, 0x6e653ea41deb3e28L, 0xca7c98ed572571dfL,
+      0xf301a38fb18ae1f9L, 0x1629f7c263f7b97eL, 0xdf242282afc4a0d5L,
+      0x118f3b4b3ddd0c01L },
+    { 0x74a0a0a87ad4762bL, 0x1aef84da8c58d175L, 0x16ff49604cf76d86L,
+      0xc0be87867e60d98bL, 0x83637ffb3ecc1dbaL, 0xc244a6095dd6147aL,
+      0xa3e178345b0846e5L, 0x735eb686e77a4c05L, 0x5bc18b4fdf758695L,
+      0x15618d0b1bdfe52fL, 0x878ecc0d00715ba1L, 0x1dbdbd1ac2dd617fL,
+      0x21d2b63121b61710L, 0x22ce8a7944f593c2L, 0x3b9b536a44f17024L,
+      0x01d0a67c8d03e727L },
+    { 0x7b9642361e46533cL, 0xe9477990fb88c2aeL, 0x019b5d16a42c4a18L,
+      0x7135e81dd83c7a45L, 0x74a69bdd4cb663e3L, 0x7b67ecdbe76c0d63L,
+      0x03d5452111e68da6L, 0x596cceb5d2e8650aL, 0xcd572dfd2af03b37L,
+      0x52364ba1fabd5952L, 0x7f47d456b4ed8569L, 0x5ad8b572c950d5d4L,
+      0xcadd2dfa486e2f84L, 0xdd527b43c56bb044L, 0xc9adba24997c08e6L,
+      0x1b625b067da6320fL },
+    { 0x44dfaa7b4fd8446dL, 0xc01b2f01af6febebL, 0xbf444388fe8838b5L,
+      0xf33c434fbba9758bL, 0x2b971cba87156bc9L, 0x6b245e5c1f49098bL,
+      0x87dcb5342b41c5ddL, 0xdb1f80c634d852d7L, 0x6d6e32582433da34L,
+      0xf66820653f7df0c2L, 0xc4ca567c360cb365L, 0x321faac29826656aL,
+      0x13f5ca6fbf069768L, 0x15397921a7076639L, 0xbdf143288400736eL,
+      0x333eca9619fc948dL },
+    { 0x23337948ac775d81L, 0x38c2518fd41dbbcaL, 0x623c7a4fbcfce948L,
+      0xaad3623654703fe7L, 0x2b3a13a413fb3b5bL, 0x5db3565a7f5c01f0L,
+      0xd72408dc52359661L, 0x5a17f8e51d616e91L, 0x90c16eebcb25b999L,
+      0xf35e8cf13393743eL, 0x987da74ae54b64a7L, 0x557b322a65cd449dL,
+      0x765082a537e7b15dL, 0x4d25c742f2cd134fL, 0xae9d9c074ccf0746L,
+      0x72fc21108728d135L },
+    { 0xa906b203f96004c8L, 0xd83f95cf458055ffL, 0xd77d586755f35909L,
+      0x4a9ea6fbe550c8eeL, 0x91c8cca955a06081L, 0x4a1fee78bce82062L,
+      0xeb9ade069a3df85eL, 0xfbbdcf0c7d3de666L, 0x228a391b5d336d51L,
+      0x760f8d285c2ffc3cL, 0x1ee48de32f7b165bL, 0x03803d8456177040L,
+      0xe573f6489deff9a0L, 0xe1a2738ea17e35a4L, 0x238ef17c8840a6c6L,
+      0x480946f8b11ed92dL },
+    { 0x84c747a8fd71f119L, 0x19e65c5e53eb3695L, 0x0e2f67866298587aL,
+      0x48a48899ab18d6f4L, 0xa1a99024c630b8c0L, 0x849750962caaf892L,
+      0xc8869abae20fd624L, 0x3b72b04d6c2b7dd4L, 0xe2775eb60992f7d0L,
+      0x0089c06e7d06e684L, 0xcb3b4361e4bbd007L, 0xa1ae666b4ba846e4L,
+      0xc01c2eb246464d9eL, 0xf86f2be6c1f8539fL, 0x16e8e8aecf68afc7L,
+      0x8dab61fdc7386902L },
+    { 0x42a5c903d54d1d45L, 0xacd4297eff4f9ba2L, 0x2d88b52034d478b4L,
+      0x35b2ba2b08c4621aL, 0xd3d239bb34865402L, 0x1de76aed911f32e6L,
+      0x877f8bcf3f06fdc2L, 0x802714c19ec51502L, 0xa10444eba590700dL,
+      0x8694229f31dcc957L, 0x5ece77abb8169fedL, 0x55be8a152caf080eL,
+      0x3eb21b14cbd7cef1L, 0x9def7ad167b97ee1L, 0xe03ca879118f690cL,
+      0x6f77e62df99b29e7L },
+    { 0xa271bdede40bbf59L, 0x177ba4536401aad6L, 0x1755e03573541cd1L,
+      0x3465b4664b71b02fL, 0x22eb7113a813359fL, 0x9792a8fd6f38eac7L,
+      0x11aa012fff3bf3b5L, 0x99aafabff85c3fbfL, 0x91e0a2ef06c0cc42L,
+      0x314d5d57773b7b3aL, 0xae5e2e76d669840aL, 0x861360732e5a8be6L,
+      0xee6d7578c1cf5580L, 0x2344e00f68bed102L, 0x799d78868184f0ebL,
+      0x63819c91c3d2cf80L },
+    { 0xca5392e17884b073L, 0x9ec3a1fceb1267eaL, 0x3d07f5f0907038a7L,
+      0xcb2ac07ce4c47b70L, 0xf96664ee1bf96b91L, 0xebf575892aea4fbfL,
+      0x5aabf391fade6500L, 0xc5b3376f171d1204L, 0x1ff60c51a0d3d81aL,
+      0x10b2cfe7976a844bL, 0xe131cc9abda6125aL, 0xe0fc16d34ebd453eL,
+      0xc0d0319a504b6bc1L, 0xe43a0be70a2f8cabL, 0xc80afeec55e49b47L,
+      0x67d48d128265d7eeL },
+    { 0x068d59a7ea2d56d6L, 0xd71abd0e27480a63L, 0x6bd11db0ae7366cdL,
+      0xfbb639ca07204ebcL, 0x89a242e7f77e6293L, 0xdee7ca2b75ba8c3dL,
+      0x472ddc3d64a2f9a8L, 0x84229df47561a010L, 0x95f62c85c5b649d4L,
+      0xfdd56b1b4dc927cdL, 0xfe8bb1205ee60596L, 0x3efcaa50abf29401L,
+      0xd4900d0f10d1c184L, 0x2cf113a928b01df5L, 0xa3d7ebc31f0e43f5L,
+      0x27950e38e8384dc7L },
+    { 0xeab21ff0e1d0fa79L, 0x4b9fd033048b5de9L, 0x4c9346892fe374cbL,
+      0xbb4827fa4eb21f6bL, 0x46716f79a925e7e7L, 0x1442bf367dd4c531L,
+      0x2073954cd2e96ddfL, 0x4e0141ae8502aa89L, 0x8ee00e1a8eef6cc9L,
+      0x55ce84915880cdafL, 0xff3aba5c69628046L, 0x335cc4f85d15dfbfL,
+      0xa7f0440c9f684f25L, 0xae80453fbb1e5bd8L, 0xa1c99813ff2225abL,
+      0x54ff788479b25d71L },
+    { 0x27c6ee30de40b068L, 0x9226465be6f3a51eL, 0xe24a4604fa3b21f6L,
+      0x50a5a5adc0418115L, 0xe32854418df90d2bL, 0xbb74e58fdcb0c00fL,
+      0xc68f1b3b4a2c08e3L, 0x339df0810ccd9ec9L, 0x915362dcb786ea9fL,
+      0x28945e31c955aeadL, 0xd6a2c01d8b6a6c6bL, 0x069e82dc3678a427L,
+      0x1787550028c9302cL, 0x8acda9659fa101e6L, 0x4e4e4573ee30b286L,
+      0x8adbad853f1830feL },
+    { 0x060ae11f0969d524L, 0xf42fdaf7f39bcc79L, 0x3cec67667cc1fcc2L,
+      0x456b9cf2e2336d4fL, 0x6aa1f5de8e1c0f7fL, 0xcdbc2ad20984fb0eL,
+      0x4090cfa61b464b28L, 0x40d86f301243f3efL, 0x95b16ccccd5e87e7L,
+      0x403f168c3026cd41L, 0xdbe386cb816c0730L, 0x14eb86f358407a1dL,
+      0xf588b4f81717e1afL, 0xb75c41a666cbc96cL, 0xf342c1aa027e71c1L,
+      0x73930036c0945e5fL },
+    { 0x954f757d22cdaf42L, 0x788b591df4181aabL, 0x8b986819f5514f25L,
+      0x69642e08f18fd5bcL, 0x92b305d1022ceb91L, 0x1715903e6a4f6985L,
+      0x4bd7d69d61179caeL, 0xdacdfd5dd29c01aaL, 0x705ddd5ad91108ccL,
+      0x434ac7b164ac8f15L, 0x61a514e1b524632fL, 0x45b9e61b731fc447L,
+      0xcf561348e0961b31L, 0x9c28a96773eaf223L, 0x5bd10182aa7c99d3L,
+      0x8bc6ec4ae42965e2L },
+    { 0xd096e5c0e7f2a32bL, 0xff54800c09388a30L, 0x06fe437c401e360cL,
+      0x6655fc9cbb6054a6L, 0x510e18608457aa6eL, 0xa0acfca22b29b2b7L,
+      0x732483e351b7da61L, 0xe31471ee6be6c8caL, 0xe565431c8b65c9a1L,
+      0xfc9ac3b948d65cbbL, 0xd308fc21ae9b2aa8L, 0xd6a7df0daa60aa6aL,
+      0x2844d96a982fc0d4L, 0xab012c2c5847a4d7L, 0x2b3c8f71dceb8955L,
+      0x8e85437dbe9c7e15L },
+};
+
+/* Perform the modular exponentiation in Fp* for SAKKE.
+ *
+ * Base is fixed to be the g parameter - a precomputed table is used.
+ *
+ * Striping: 128 points at a distance of (8 combined for
+ * a total of 340282366920938463463374607431768211456 points in table.
+ * Square and multiply performed in Fp*.
+ *
+ * base  [in]   Base. MP integer.
+ * exp   [in]   Exponent. MP integer.
+ * res   [out]  Result. MP integer.
+ * returns 0 on success, MP_READ_E if there are too many bytes in an array
+ * and MEMORY_E if memory allocation fails.
+ */
+static int sp_ModExp_Fp_star_x64_1024(mp_int* base, mp_int* exp, mp_int* res)
+{
+    sp_digit t[4 * 2 * 16];
+    sp_digit tx[2 * 16];
+    sp_digit ty[2 * 16];
+    sp_digit* r = ty;
+    unsigned char e[128];
+    int err = MP_OKAY;
+    int i;
+    int y;
+
+    (void)base;
+
+    if (err == MP_OKAY) {
+        (void)mp_to_unsigned_bin_len(exp, e, 128);
+
+        XMEMCPY(tx, p1024_norm_mod, sizeof(sp_digit) * 16);
+        y  =  (e[112] >> 7) & 1;
+        y |= ((e[96] >> 7) & 1) << 1;
+        y |= ((e[80] >> 7) & 1) << 2;
+        y |= ((e[64] >> 7) & 1) << 3;
+        y |= ((e[48] >> 7) & 1) << 4;
+        y |= ((e[32] >> 7) & 1) << 5;
+        y |= ((e[16] >> 7) & 1) << 6;
+        y |= ((e[0] >> 7) & 1) << 7;
+        XMEMCPY(ty, sp_1024_g_table[y], sizeof(sp_digit) * 16);
+        for (i = 128-2; i >= 0; i--) {
+            y  =  (e[127 - (i / 8 + 0)] >> (i & 0x7)) & 1;
+            y |= ((e[127 - (i / 8 + 16)] >> (i & 0x7)) & 1) << 1;
+            y |= ((e[127 - (i / 8 + 32)] >> (i & 0x7)) & 1) << 2;
+            y |= ((e[127 - (i / 8 + 48)] >> (i & 0x7)) & 1) << 3;
+            y |= ((e[127 - (i / 8 + 64)] >> (i & 0x7)) & 1) << 4;
+            y |= ((e[127 - (i / 8 + 80)] >> (i & 0x7)) & 1) << 5;
+            y |= ((e[127 - (i / 8 + 96)] >> (i & 0x7)) & 1) << 6;
+            y |= ((e[127 - (i / 8 + 112)] >> (i & 0x7)) & 1) << 7;
+
+            sp_1024_proj_sqr_16(tx, ty, t);
+            sp_1024_proj_mul_qx1_16(tx, ty, sp_1024_g_table[y], t);
+        }
+    }
+
+    if (err == MP_OKAY) {
+        sp_1024_mont_inv_16(tx, tx, t);
+        sp_1024_mont_mul_16(r, tx, ty, p1024_mod, p1024_mp_mod);
+        XMEMSET(r + 16, 0, sizeof(sp_digit) * 16);
+        sp_1024_mont_reduce_16(r, p1024_mod, p1024_mp_mod);
+
+        err = sp_1024_to_mp(r, res);
+    }
+
+    return err;
+}
+
+#endif /* WOLFSSL_SP_SMALL */
+#ifdef HAVE_INTEL_AVX2
+/* Multiply p* in projective co-ordinates by q*.
+ *
+ * r.x = p.x - (p.y * q.y)
+ * r.y = (p.x * q.y) + p.y
+ *
+ * px  [in,out]  A single precision integer - X ordinate of number to multiply.
+ * py  [in,out]  A single precision integer - Y ordinate of number to multiply.
+ * q   [in]      A single precision integer - multiplier.
+ * t   [in]      Two single precision integers - temps.
+ */
+static void sp_1024_proj_mul_qx1_avx2_16(sp_digit* px, sp_digit* py,
+        const sp_digit* q, sp_digit* t)
+{
+    sp_digit* t1 = t;
+    sp_digit* t2 = t + 2 * 16;
+
+    /* t1 = p.x * q.y */
+    sp_1024_mont_mul_avx2_16(t1, px, q, p1024_mod, p1024_mp_mod);
+    /* t2 = p.y * q.y */
+    sp_1024_mont_mul_avx2_16(t2, py, q, p1024_mod, p1024_mp_mod);
+    /* r.x = p.x - (p.y * q.y) */
+    sp_1024_mont_sub_avx2_16(px, px, t2, p1024_mod);
+    /* r.y = (p.x * q.y) + p.y */
+    sp_1024_mont_add_avx2_16(py, t1, py, p1024_mod);
+}
+
+/* Square p* in projective co-ordinates.
+ *
+ *   px' = (p.x + p.y) * (p.x - p.y) = p.x^2 - p.y^2
+ *   py' = 2 * p.x * p.y
+ *
+ * px  [in,out]  A single precision integer - X ordinate of number to square.
+ * py  [in,out]  A single precision integer - Y ordinate of number to square.
+ * t   [in]      Two single precision integers - temps.
+ */
+static void sp_1024_proj_sqr_avx2_16(sp_digit* px, sp_digit* py, sp_digit* t)
+{
+    sp_digit* t1 = t;
+    sp_digit* t2 = t + 2 * 16;
+
+    /* t1 = p.x + p.y */
+    sp_1024_mont_add_avx2_16(t1, px, py, p1024_mod);
+    /* t2 = p.x - p.y */
+    sp_1024_mont_sub_avx2_16(t2, px, py, p1024_mod);
+    /* r.y = p.x * p.y */
+    sp_1024_mont_mul_avx2_16(py, px, py, p1024_mod, p1024_mp_mod);
+    /* r.x = (p.x + p.y) * (p.x - p.y) */
+    sp_1024_mont_mul_avx2_16(px, t1, t2, p1024_mod, p1024_mp_mod);
+    /* r.y = (p.x * p.y) * 2 */
+    sp_1024_mont_dbl_avx2_16(py, py, p1024_mod);
+}
+
+#ifdef WOLFSSL_SP_SMALL
+/* Perform the modular exponentiation in Fp* for SAKKE.
+ *
+ * Simple square and multiply when expontent bit is one algorithm.
+ * Square and multiply performed in Fp*.
+ *
+ * base  [in]   Base. MP integer.
+ * exp   [in]   Exponent. MP integer.
+ * res   [out]  Result. MP integer.
+ * returns 0 on success and MEMORY_E if memory allocation fails.
+ */
+static int sp_ModExp_Fp_star_avx2_1024(mp_int* base, mp_int* exp, mp_int* res)
+{
+    sp_digit t[4 * 2 * 16];
+    sp_digit tx[2 * 16];
+    sp_digit ty[2 * 16];
+    sp_digit b[2 * 16];
+    sp_digit e[2 * 16];
+    sp_digit* r = ty;
+    int err = MP_OKAY;
+    int bits;
+    int i;
+
+    if (err == MP_OKAY) {
+        bits = mp_count_bits(exp);
+        sp_1024_from_mp(b, 16, base);
+        sp_1024_from_mp(e, 16, exp);
+
+        XMEMCPY(tx, p1024_norm_mod, sizeof(sp_digit) * 16);
+        sp_1024_mul_avx2_16(b, b, p1024_norm_mod);
+        err = sp_1024_mod_16(b, b, p1024_mod);
+    }
+    if (err == MP_OKAY) {
+        XMEMCPY(ty, b, sizeof(sp_digit) * 16);
+
+        for (i = bits - 2; i >= 0; i--) {
+            sp_1024_proj_sqr_avx2_16(tx, ty, t);
+            if ((e[i / 64] >> (i % 64)) & 1) {
+                sp_1024_proj_mul_qx1_avx2_16(tx, ty, b, t);
+            }
+        }
+    }
+
+    if (err == MP_OKAY) {
+        sp_1024_mont_inv_avx2_16(tx, tx, t);
+
+        XMEMSET(tx + 16, 0, sizeof(sp_digit) * 16);
+        sp_1024_mont_reduce_avx2_16(tx, p1024_mod, p1024_mp_mod);
+        XMEMSET(ty + 16, 0, sizeof(sp_digit) * 16);
+        sp_1024_mont_reduce_avx2_16(ty, p1024_mod, p1024_mp_mod);
+
+        sp_1024_mul_avx2_16(r, tx, ty);
+        err = sp_1024_mod_16(r, r, p1024_mod);
+    }
+    if (err == MP_OKAY) {
+        err = sp_1024_to_mp(r, res);
+    }
+
+    return err;
+}
+
+#else
+/* Perform the modular exponentiation in Fp* for SAKKE.
+ *
+ * Base is fixed to be the g parameter - a precomputed table is used.
+ *
+ * Striping: 128 points at a distance of (8 combined for
+ * a total of 340282366920938463463374607431768211456 points in table.
+ * Square and multiply performed in Fp*.
+ *
+ * base  [in]   Base. MP integer.
+ * exp   [in]   Exponent. MP integer.
+ * res   [out]  Result. MP integer.
+ * returns 0 on success, MP_READ_E if there are too many bytes in an array
+ * and MEMORY_E if memory allocation fails.
+ */
+static int sp_ModExp_Fp_star_avx2_1024(mp_int* base, mp_int* exp, mp_int* res)
+{
+    sp_digit t[4 * 2 * 16];
+    sp_digit tx[2 * 16];
+    sp_digit ty[2 * 16];
+    sp_digit* r = ty;
+    unsigned char e[128];
+    int err = MP_OKAY;
+    int i;
+    int y;
+
+    (void)base;
+
+    if (err == MP_OKAY) {
+        (void)mp_to_unsigned_bin_len(exp, e, 128);
+
+        XMEMCPY(tx, p1024_norm_mod, sizeof(sp_digit) * 16);
+        y  =  (e[112] >> 7) & 1;
+        y |= ((e[96] >> 7) & 1) << 1;
+        y |= ((e[80] >> 7) & 1) << 2;
+        y |= ((e[64] >> 7) & 1) << 3;
+        y |= ((e[48] >> 7) & 1) << 4;
+        y |= ((e[32] >> 7) & 1) << 5;
+        y |= ((e[16] >> 7) & 1) << 6;
+        y |= ((e[0] >> 7) & 1) << 7;
+        XMEMCPY(ty, sp_1024_g_table[y], sizeof(sp_digit) * 16);
+        for (i = 128-2; i >= 0; i--) {
+            y  =  (e[127 - (i / 8 + 0)] >> (i & 0x7)) & 1;
+            y |= ((e[127 - (i / 8 + 16)] >> (i & 0x7)) & 1) << 1;
+            y |= ((e[127 - (i / 8 + 32)] >> (i & 0x7)) & 1) << 2;
+            y |= ((e[127 - (i / 8 + 48)] >> (i & 0x7)) & 1) << 3;
+            y |= ((e[127 - (i / 8 + 64)] >> (i & 0x7)) & 1) << 4;
+            y |= ((e[127 - (i / 8 + 80)] >> (i & 0x7)) & 1) << 5;
+            y |= ((e[127 - (i / 8 + 96)] >> (i & 0x7)) & 1) << 6;
+            y |= ((e[127 - (i / 8 + 112)] >> (i & 0x7)) & 1) << 7;
+
+            sp_1024_proj_sqr_avx2_16(tx, ty, t);
+            sp_1024_proj_mul_qx1_avx2_16(tx, ty, sp_1024_g_table[y], t);
+        }
+    }
+
+    if (err == MP_OKAY) {
+        sp_1024_mont_inv_avx2_16(tx, tx, t);
+        sp_1024_mont_mul_avx2_16(r, tx, ty, p1024_mod, p1024_mp_mod);
+        XMEMSET(r + 16, 0, sizeof(sp_digit) * 16);
+        sp_1024_mont_reduce_avx2_16(r, p1024_mod, p1024_mp_mod);
+
+        err = sp_1024_to_mp(r, res);
+    }
+
+    return err;
+}
+
+#endif /* WOLFSSL_SP_SMALL */
+#endif /* HAVE_INTEL_AVX2 */
+/* Perform the modular exponentiation for SAKKE.
+ *
+ * base  Base. MP integer.
+ * exp   Exponent. MP integer.
+ * res   Result. MP integer.
+ * returns 0 on success, MP_READ_E if there are too many bytes in an array
+ * and MEMORY_E if memory allocation fails.
+ */
+int sp_ModExp_Fp_star_1024(mp_int* base, mp_int* exp, mp_int* res)
+{
+    int err;
+#ifdef HAVE_INTEL_AVX2
+    word32 cpuid_flags = cpuid_get_flags();
+#endif
+
+#ifdef HAVE_INTEL_AVX2
+    if (IS_INTEL_BMI2(cpuid_flags) && IS_INTEL_ADX(cpuid_flags)) {
+        err = sp_ModExp_Fp_star_avx2_1024(base, exp, res);
+    }
+    else
+#endif
+    {
+        err = sp_ModExp_Fp_star_x64_1024(base, exp, res);
+    }
+
+   return err;
+}
+
+/* Multiply p* by q* in projective co-ordinates.
+ *
+ *   p.x' = (p.x * q.x) - (p.y * q.y)
+ *   p.y' = (p.x * q.y) + (p.y * q.x)
+ *
+ * px  [in,out]  A single precision integer - X ordinate of number to multiply.
+ * py  [in,out]  A single precision integer - Y ordinate of number to multiply.
+ * qx  [in]      A single precision integer - X ordinate of number of
+ *               multiplier.
+ * qy  [in]      A single precision integer - Y ordinate of number of
+ *               multiplier.
+ * t   [in]      Two single precision integers - temps.
+ */
+static void sp_1024_proj_mul_16(sp_digit* px, sp_digit* py,
+        const sp_digit* qx, const sp_digit* qy, sp_digit* t)
+{
+    sp_digit* t1 = t;
+    sp_digit* t2 = t + 2 * 16;
+
+    /* t1 = p.x * q.y */
+    sp_1024_mont_mul_16(t1, px, qy, p1024_mod, p1024_mp_mod);
+    /* r->x = p.x * q.x */
+    sp_1024_mont_mul_16(px, px, qx, p1024_mod, p1024_mp_mod);
+    /* t2 = p.y * q.y */
+    sp_1024_mont_mul_16(t2, py, qy, p1024_mod, p1024_mp_mod);
+    /* r.x = (p.x * q.x) - (p.y * q.y) */
+    sp_1024_mont_sub_16(px, px, t2, p1024_mod);
+    /* r.y = p.y * q.x */
+    sp_1024_mont_mul_16(py, py, qx, p1024_mod, p1024_mp_mod);
+    /* r.y = (p.x * q.y) + (p.y * q.x) */
+    sp_1024_mont_add_16(py, t1, py, p1024_mod);
+}
+
+#ifndef WOLFSSL_SP_SMALL
+/*
+ * Convert point from projective to affine but keep in Montgomery form.
+ *
+ * p  [in,out]  Point to convert.
+ * t  [in]      Temporary numbers: 2.
+ */
+static void sp_1024_mont_map_16(sp_point_1024* p, sp_digit* t)
+{
+    sp_digit* t1 = t;
+    sp_digit* t2 = t + 2 * 16;
+
+    sp_1024_mont_inv_16(t1, p->z, t2);
+    sp_1024_mont_sqr_16(t2, t1, p1024_mod, p1024_mp_mod);
+    sp_1024_mont_mul_16(t1, t2, t1, p1024_mod, p1024_mp_mod);
+    sp_1024_mont_mul_16(p->x, p->x, t2, p1024_mod, p1024_mp_mod);
+    sp_1024_mont_mul_16(p->y, p->y, t1, p1024_mod, p1024_mp_mod);
+    XMEMCPY(p->z, p1024_norm_mod, sizeof(sp_digit) * 16);
+}
+
+#endif /* WOLFSSL_SP_SMALL */
+/*
+ * Calculate gradient of line through P, P and [-2]P, accumulate line and
+ * double P.
+ *
+ * Calculations:
+ *   l = 3 * (p.x^2 - p.z^4) = 3 * (p.x - p.z^2) * (p.x + p.z^2)
+ *   r.x = l * (p.x + q.x * p.z^2) - 2 * p.y^2
+ *   r.y = 2 * p.y * p.z^3 * q.y
+ *   v* = v*^2 * r*
+ *   p'.x = l^2 - 8 * p.y^2 * p.x
+ *   p'.y = (4 * p.y^2 * p.x - p'.x) * l - 8 * p.y^4
+ *   p'.z = 2 * p.y * p.z
+ *
+ * @param  [in]  vx  X-ordinate of projective value in F*.
+ * @param  [in]  vy  Y-ordinate of projective value in F*.
+ * @param  [in]  p   ECC point - point on E(F_p^2) to double.
+ * @param  [in]  q   ECC point - second point on E(F_P^2).
+ * @param  [in]  t   SP temporaries (6 used).
+ */
+static void sp_1024_accumulate_line_dbl_16(sp_digit* vx, sp_digit* vy,
+        sp_point_1024* p, sp_point_1024* q, sp_digit* t)
+{
+    sp_digit* t1  = t +  0 * 16;
+    sp_digit* pz2 = t +  2 * 16;
+    sp_digit* rx  = t +  4 * 16;
+    sp_digit* ry  = t +  6 * 16;
+    sp_digit* l   = t +  8 * 16;
+    sp_digit* ty  = t + 10 * 16;
+
+    /* v = v^2 */
+    sp_1024_proj_sqr_16(vx, vy, t);
+    /* pz2 = p.z^2 */
+    sp_1024_mont_sqr_16(pz2, p->z, p1024_mod, p1024_mp_mod);
+    /* t1 = p.x + p.z^2 */
+    sp_1024_mont_add_16(t1, p->x, pz2, p1024_mod);
+    /* l = p.x - p.z^2 */
+    sp_1024_mont_sub_16(l, p->x, pz2, p1024_mod);
+    /* t1 = (p.x + p.z^2) * (p.x - p.z^2) = p.x^2 - p.z^4 */
+    sp_1024_mont_mul_16(t1, l, t1, p1024_mod, p1024_mp_mod);
+    /* l = 3 * (p.x^2 - p.z^4) */
+    sp_1024_mont_tpl_16(l, t1, p1024_mod);
+    /* t1 = q.x * p.z^2 */
+    sp_1024_mont_mul_16(t1, q->x, pz2, p1024_mod, p1024_mp_mod);
+    /* t1 = p.x + q.x * p.z^2 */
+    sp_1024_mont_add_16(t1, p->x, t1, p1024_mod);
+    /* r.x = l * (p.x + q.x * p.z^2) */
+    sp_1024_mont_mul_16(rx, l, t1, p1024_mod, p1024_mp_mod);
+    /* r.y = 2 * p.y */
+    sp_1024_mont_dbl_16(ry, p->y, p1024_mod);
+    /* ty = 4 * p.y ^ 2 */
+    sp_1024_mont_sqr_16(ty, ry, p1024_mod, p1024_mp_mod);
+    /* t1 = 2 * p.y ^ 2 */
+    sp_1024_div2_16(t1, ty, p1024_mod);
+    /* r.x -= 2 * (p.y ^ 2) */
+    sp_1024_mont_sub_16(rx, rx, t1, p1024_mod);
+    /* p'.z = p.y * 2 * p.z */
+    sp_1024_mont_mul_16(p->z, p->z, ry, p1024_mod, p1024_mp_mod);
+    /* r.y = p'.z * p.z^2 */
+    sp_1024_mont_mul_16(ry, p->z, pz2, p1024_mod, p1024_mp_mod);
+    /* r.y = p'.z * p.z^2 * q.y */
+    sp_1024_mont_mul_16(ry, ry, q->y, p1024_mod, p1024_mp_mod);
+    /* v = v^2 * r */
+    sp_1024_proj_mul_16(vx, vy, rx, ry, t);
+
+    /* Double point using previously calculated values
+     *   l = 3 * (p.x - p.z^2).(p.x + p.z^2)
+     *   ty = 4 * p.y^2
+     *   p'.z = 2 * p.y * p.z
+     */
+    /* t1 = (4 * p.y^2) ^ 2 = 16 * p.y^4 */
+    sp_1024_mont_sqr_16(t1, ty, p1024_mod, p1024_mp_mod);
+    /* t1 = 16 * p.y^4 / 2 = 8 * p.y^4 */
+    sp_1024_div2_16(t1, t1, p1024_mod);
+    /* p'.y = 4 * p.y^2 * p.x */
+    sp_1024_mont_mul_16(p->y, ty, p->x, p1024_mod, p1024_mp_mod);
+    /* p'.x = l^2 */
+    sp_1024_mont_sqr_16(p->x, l, p1024_mod, p1024_mp_mod);
+    /* p'.x = l^2 - 4 * p.y^2 * p.x */
+    sp_1024_mont_sub_16(p->x, p->x, p->y, p1024_mod);
+    /* p'.x = l^2 - 8 * p.y^2 * p.x */
+    sp_1024_mont_sub_16(p->x, p->x, p->y, p1024_mod);
+    /* p'.y = 4 * p.y^2 * p.x - p.x' */
+    sp_1024_mont_sub_16(p->y, p->y, p->x, p1024_mod);
+    /* p'.y = (4 * p.y^2 * p.x - p'.x) * l */
+    sp_1024_mont_mul_16(p->y, p->y, l, p1024_mod, p1024_mp_mod);
+    /* p'.y = (4 * p.y^2 * p.x - p'.x) * l - 8 * p.y^4 */
+    sp_1024_mont_sub_16(p->y, p->y, t1, p1024_mod);
+}
+
+#ifdef WOLFSSL_SP_SMALL
+/*
+ * Calculate gradient of line through C, P and -C-P, accumulate line and
+ * add P to C.
+ *
+ * Calculations:
+ *   r.x = (q.x + p.x) * c.y - (q.x * c.z^2 + c.x) * p.y * c.z
+ *   r.y = (c.x - p.x * c.z^2) * q.y * c.z
+ *   v* = v* * r*
+ *   r = p.y * c.z^3 - c.y
+ *   c'.x = r^2 + h^3 - 2 * c.x * h^2
+ *   c'.y = r * (c'.x - c.x * h^2) - c.y * h^3
+ *   c'.z = (c.x - p.x * c.z^2) * c.z
+ *
+ * @param  [in]  vx     X-ordinate of projective value in F*.
+ * @param  [in]  vy     Y-ordinate of projective value in F*.
+ * @param  [in]  c      ECC point - current point on E(F_p^2) to be added to.
+ * @param  [in]  p      ECC point - point on E(F_p^2) to add.
+ * @param  [in]  q      ECC point - second point on E(F_P^2).
+ * @param  [in]  qx_px  SP that is a constant value across adds.
+ * @param  [in]  t      SP temporaries (6 used).
+ */
+static void sp_1024_accumulate_line_add_one_16(sp_digit* vx, sp_digit* vy,
+        sp_point_1024* c, sp_point_1024* p, sp_point_1024* q, sp_digit* qx_px,
+        sp_digit* t)
+{
+    sp_digit* t1  = t;
+    sp_digit* t2  = t +  2 * 16;
+    sp_digit* rx  = t +  4 * 16;
+    sp_digit* ry  = t +  6 * 16;
+    sp_digit* h   = t +  8 * 16;
+    sp_digit* r   = t + 10 * 16;
+
+    /* r.x = (q.x + p.x) * c.y */
+    sp_1024_mont_mul_16(rx, qx_px, c->y, p1024_mod, p1024_mp_mod);
+    /* t2 = c.z^2 */
+    sp_1024_mont_sqr_16(t2, c->z, p1024_mod, p1024_mp_mod);
+    /* t1 = q.x * c.z^2 */
+    sp_1024_mont_mul_16(t1, q->x, t2, p1024_mod, p1024_mp_mod);
+    /* t1 = q.x * c.z^2 + c.x */
+    sp_1024_mont_add_16(t1, t1, c->x, p1024_mod);
+    /* r = p.y * c.z */
+    sp_1024_mont_mul_16(r, p->y, c->z, p1024_mod, p1024_mp_mod);
+    /* t1 = (q.x * c.z^2 + c.x) * p.y * c.z */
+    sp_1024_mont_mul_16(t1, t1, r, p1024_mod, p1024_mp_mod);
+    /* r.x -= (q.x * c.z^2 + c.x) * p.y * c.z */
+    sp_1024_mont_sub_16(rx, rx, t1, p1024_mod);
+    /* t1 = p.x * c.z^2 */
+    sp_1024_mont_mul_16(t1, p->x, t2, p1024_mod, p1024_mp_mod);
+    /* h = c.x - p.x * c.z^2 */
+    sp_1024_mont_sub_16(h, c->x, t1, p1024_mod);
+    /* c'.z = (c.x - p.x * c.z^2) * c.z */
+    sp_1024_mont_mul_16(c->z, h, c->z, p1024_mod, p1024_mp_mod);
+    /* r.y = (c.x - p.x * c.z^2) * c.z * q.y */
+    sp_1024_mont_mul_16(ry, c->z, q->y, p1024_mod, p1024_mp_mod);
+    /* r = p.y * c.z * c.z^2 = p.y * c.z^3  */
+    sp_1024_mont_mul_16(r, r, t2, p1024_mod, p1024_mp_mod);
+    /* v = v * r */
+    sp_1024_proj_mul_16(vx, vy, rx, ry, t);
+
+    /* Add p to c using previously calculated values.
+     *   h = c.x - p.x * c.z^2
+     *   r = p.y * c.z^3
+     *   c'.z = (c.x - p.x * c.z^2) * c.z
+     */
+
+    /* r = p.y * c.z^3 - c.y */
+    sp_1024_mont_sub_16(r, r, c->y, p1024_mod);
+    /* t1 = r^2 */
+    sp_1024_mont_sqr_16(t1, r, p1024_mod, p1024_mp_mod);
+    /* t2 = h^2 */
+    sp_1024_mont_sqr_16(t2, h, p1024_mod, p1024_mp_mod);
+    /* ry = c.x * h^2 */
+    sp_1024_mont_mul_16(ry, c->x, t2, p1024_mod, p1024_mp_mod);
+    /* t2 = h^3 */
+    sp_1024_mont_mul_16(t2, t2, h, p1024_mod, p1024_mp_mod);
+    /* c->x = r^2 + h^3 */
+    sp_1024_mont_add_16(c->x, t1, t2, p1024_mod);
+    /* t1 = 2 * c.x * h^2 */
+    sp_1024_mont_dbl_16(t1, ry, p1024_mod);
+    /* c'.x = r^2 + h^3 - 2 * c.x * h^2 */
+    sp_1024_mont_sub_16(c->x, c->x, t1, p1024_mod);
+    /* ry = c'.x - c.x * h^2 */
+    sp_1024_mont_sub_16(ry, c->x, ry, p1024_mod);
+    /* ry = r * (c'.x - c.x * h^2) */
+    sp_1024_mont_mul_16(ry, ry, r, p1024_mod, p1024_mp_mod);
+    /* t2 = c.y * h^3 */
+    sp_1024_mont_mul_16(t2, t2, c->y, p1024_mod, p1024_mp_mod);
+    /* c'.y = r * (c'.x - c.x * h^2) - c.y * h^3 */
+    sp_1024_mont_sub_16(c->y, ry, t2, p1024_mod);
+}
+
+/*
+ * Calculate r = pairing <P, Q>.
+ *
+ * That is, multiply base in PF_p[q] by the scalar s, such that s.P = Q.
+ *
+ * @param  [in]  key  SAKKE key.
+ * @param  [in]  p    First point on E(F_p)[q].
+ * @param  [in]  q    Second point on E(F_p)[q].
+ * @param  [in]  r    Result of calculation.
+ * @return  0 on success.
+ * @return  MEMORY_E when dynamic memory allocation fails.
+ * @return  Other -ve value on internal failure.
+ */
+static int sp_Pairing_x64_1024(ecc_point* pm, ecc_point* qm, mp_int* res)
+{
+    int err;
+    sp_digit vx[2 * 16];
+    sp_digit vy[2 * 16];
+    sp_digit qx_px[2 * 16];
+    sp_digit* r = vy;
+    sp_point_1024 p[1];
+    sp_point_1024 q[1];
+    sp_point_1024 c[1];
+    sp_digit t[6 * 2 * 16];
+    int i;
+
+    sp_1024_point_from_ecc_point_16(p, pm);
+    sp_1024_point_from_ecc_point_16(q, qm);
+
+    err = sp_1024_mod_mul_norm_16(p->x, p->x, p1024_mod);
+    if (err == MP_OKAY) {
+        err = sp_1024_mod_mul_norm_16(p->y, p->y, p1024_mod);
+    }
+    if (err == MP_OKAY) {
+        err = sp_1024_mod_mul_norm_16(p->z, p->z, p1024_mod);
+    }
+    if (err == MP_OKAY) {
+        err = sp_1024_mod_mul_norm_16(q->x, q->x, p1024_mod);
+    }
+    if (err == MP_OKAY) {
+        err = sp_1024_mod_mul_norm_16(q->y, q->y, p1024_mod);
+    }
+    if (err == MP_OKAY) {
+        XMEMCPY(c, p, sizeof(sp_point_1024));
+        XMEMSET(vx, 0, sizeof(sp_digit) * 2 * 16);
+        vx[0] = 1;
+        XMEMSET(vy, 0, sizeof(sp_digit) * 2 * 16);
+
+        sp_1024_mont_add_16(qx_px, q->x, p->x, p1024_mod);
+
+        for (i = 1020; i >= 0; i--) {
+            /* Accumulate line into v and double point. */
+            sp_1024_accumulate_line_dbl_16(vx, vy, c, q, t);
+
+            if ((i > 0) && ((p1024_order[i / 64] >> (i % 64)) & 1)) {
+                /* Accumulate line into v and add P into C. */
+                sp_1024_accumulate_line_add_one_16(vx, vy, c, p, q, qx_px, t);
+            }
+        }
+
+        /* Final exponentiation */
+        sp_1024_proj_sqr_16(vx, vy, t);
+        sp_1024_proj_sqr_16(vx, vy, t);
+
+        /* Convert from PF_p[q] to F_p */
+        sp_1024_mont_inv_16(vx, vx, t);
+        sp_1024_mont_mul_16(r, vx, vy, p1024_mod, p1024_mp_mod);
+        XMEMSET(r + 16, 0, sizeof(sp_digit) * 16);
+        sp_1024_mont_reduce_16(r, p1024_mod, p1024_mp_mod);
+
+        err = sp_1024_to_mp(r, res);
+    }
+
+    return err;
+}
+
+#else
+/*
+ * Calculate gradient of line through C, P and -C-P, accumulate line and
+ * add P to C.
+ *
+ * Both C and P have z ordinates to use in the calculation.
+ *
+ * Calculations:
+ *   r.x = (q.x * p.z^2 + p.x) * c.y * p.z - (q.x * c.z^2 + c.x) * p.y * c.z
+ *   r.y = (c.x * p.z^2 - p.x * c.z^2) * q.y * p.z * c.z
+ *   v = v * r
+ *   c'.x = r^2 - h^3 - 2 * c.x * p.z^2 * h^2
+ *   c'.y = r * (c.x * p.z^2 * h^2 - c'.x) - c.y * p.z^3 * h^3
+ *   c'.z = (p.x * c.z^2 - c.x * p.z^2) * c.z
+ *
+ * @param  [in]  vx     X-ordinate of projective value in F*.
+ * @param  [in]  vy     Y-ordinate of projective value in F*.
+ * @param  [in]  c      ECC point - current point on E(F_p^2) to be added to.
+ * @param  [in]  p      ECC point - point on E(F_p^2) to add.
+ * @param  [in]  q      ECC point - second point on E(F_P^2).
+ * @param  [in]  t      SP temporaries (6 used).
+ * @param  [in]  neg    Indicates to use negative P.
+ * @return  0 on success.
+ * @return  MEMORY_E when dynamic memory allocation fails.
+ * @return  Other -ve value on internal failure.
+ */
+static void sp_1024_accumulate_line_add_n_16(sp_digit* vx, sp_digit* vy,
+        sp_point_1024* p, sp_point_1024* q, sp_point_1024* c,
+        sp_digit* t, int neg)
+{
+    sp_digit* t1 = t;
+    sp_digit* t2 = t +  2 * 16;
+    sp_digit* rx = t +  4 * 16;
+    sp_digit* ry = t +  6 * 16;
+    sp_digit* h  = t +  8 * 16;
+    sp_digit* r  = t + 10 * 16;
+
+    /* h = p.z^2 */
+    sp_1024_mont_sqr_16(h, p->z, p1024_mod, p1024_mp_mod);
+    /* rx = q.x * p.z^2 */
+    sp_1024_mont_mul_16(rx, q->x, h, p1024_mod, p1024_mp_mod);
+    /* rx = q.x * p.z^2 + p.x */
+    sp_1024_mont_add_16(rx, rx, p->x, p1024_mod);
+    /* c.y = c.y * p.z */
+    sp_1024_mont_mul_16(c->y, c->y, p->z, p1024_mod, p1024_mp_mod);
+    /* r.x = (q.x * p.z^2 + p.x) * c.y * p.z */
+    sp_1024_mont_mul_16(rx, rx, c->y, p1024_mod, p1024_mp_mod);
+    /* c.y = c.y * p.z^3 */
+    sp_1024_mont_mul_16(c->y, c->y, h, p1024_mod, p1024_mp_mod);
+    /* t2 = c.z^2 */
+    sp_1024_mont_sqr_16(t2, c->z, p1024_mod, p1024_mp_mod);
+    /* t1 = q.x * c.z^2 */
+    sp_1024_mont_mul_16(t1, q->x, t2, p1024_mod, p1024_mp_mod);
+    /* t1 = q.x * c.z^2 + c.x */
+    sp_1024_mont_add_16(t1, t1, c->x, p1024_mod);
+    /* c.x = c.x * p.z^2 */
+    sp_1024_mont_mul_16(c->x, c->x, h, p1024_mod, p1024_mp_mod);
+    /* r = p.y * c.z */
+    sp_1024_mont_mul_16(r, p->y, c->z, p1024_mod, p1024_mp_mod);
+    if (neg) {
+        /* r = -p.y * c.z */
+        sp_1024_mont_sub_16(r, p1024_mod, r, p1024_mod);
+    }
+    /* t1 = (q.x * c.z^2 + c.x) * p.y * c.z */
+    sp_1024_mont_mul_16(t1, t1, r, p1024_mod, p1024_mp_mod);
+    /* r.x -= (q.x * c.z^2 + c.x) * p.y * c.z */
+    sp_1024_mont_sub_16(rx, t1, rx, p1024_mod);
+    /* t1 = p.x * c.z^2 */
+    sp_1024_mont_mul_16(t1, p->x, t2, p1024_mod, p1024_mp_mod);
+    /* h = p.x * c.z^2 - c.x * p.z^2 */
+    sp_1024_mont_sub_16(h, t1, c->x, p1024_mod);
+    /* c'.z = (p.x * c.z^2 - c.x * p.z^2) * c.z */
+    sp_1024_mont_mul_16(c->z, h, c->z, p1024_mod, p1024_mp_mod);
+    /* c'.z = (p.x * c.z^2 - c.x * p.z^2) * c.z * p.z */
+    sp_1024_mont_mul_16(c->z, c->z, p->z, p1024_mod, p1024_mp_mod);
+    /* r.y = (p.x * c.z^2 - c.x * p.z^2) * c.z * p.z * q.y */
+    sp_1024_mont_mul_16(ry, c->z, q->y, p1024_mod, p1024_mp_mod);
+    /* r = p.y * c.z^3 */
+    sp_1024_mont_mul_16(r, r, t2, p1024_mod, p1024_mp_mod);
+    /* r = p.y * c.z^3 - c.y * p.z^3 */
+    sp_1024_mont_sub_16(r, r, c->y, p1024_mod);
+    /* v = v * r */
+    sp_1024_proj_mul_16(vx, vy, rx, ry, t);
+
+    /* Add p to c using previously calculated values.
+     *   h = p.x * c.z^2 - c.x * p.z^2
+     *   r = p.y * c.z^3
+     *   c'.z = (p.x * c.z^2 - c.x * p.z^2) * c.z
+     */
+
+    /* t1 = r^2 */
+    sp_1024_mont_sqr_16(t1, r, p1024_mod, p1024_mp_mod);
+    /* t2 = h^2 */
+    sp_1024_mont_sqr_16(t2, h, p1024_mod, p1024_mp_mod);
+    /* ry = c.x * p.z^2 * h^2 */
+    sp_1024_mont_mul_16(ry, t2, c->x, p1024_mod, p1024_mp_mod);
+    /* t2 = h^3 */
+    sp_1024_mont_mul_16(t2, t2, h, p1024_mod, p1024_mp_mod);
+    /* c'.x = r^2 - h^3 */
+    sp_1024_mont_sub_16(c->x, t1, t2, p1024_mod);
+    /* t1 = 2 * c.x * p.z^2 * h^2 */
+    sp_1024_mont_dbl_16(t1, ry, p1024_mod);
+    /* c'.x = r^2 - h^3 - 2 * c.x * p.z^2 * h^2 */
+    sp_1024_mont_sub_16(c->x, c->x, t1, p1024_mod);
+    /* ry = c.x * p.z^2 * h^2 - c'.x */
+    sp_1024_mont_sub_16(ry, ry, c->x, p1024_mod);
+    /* ry = r * (c.x * p.z^2 * h^2 - c'.x) */
+    sp_1024_mont_mul_16(ry, ry, r, p1024_mod, p1024_mp_mod);
+    /* t2 = c.y * p.z^3 * h^3 */
+    sp_1024_mont_mul_16(t2, t2, c->y, p1024_mod, p1024_mp_mod);
+    /* c'.y = r * (c.x * p.z^2 * h^2 - c'.x) - c.y * p.z^3 * h^3 */
+    sp_1024_mont_sub_16(c->y, ry, t2, p1024_mod);
+}
+
+/* Operations to perform based on order - 1.
+ * Sliding window. Start at bottom and stop when bottom bit is one.
+ * Subtract if top bit in window is one.
+ * Width of 6 bits.
+ * Pairs: #dbls, add/subtract window value
+ */
+static const signed char sp_1024_order_op[] = {
+   5,   6, -13,   9, -21,   6,  -5,   8,  31,   6,   3,   6, -27,   6,  25,   9,
+  -1,   6, -11,   6, -13,   6,  -7,   6, -15,   6, -29,   7,  25,   6,  -9,   6,
+ -19,   7,   3,   6,  11,   9, -23,   6,   1,   6,  27,   6,   1,   7, -25,   8,
+  13,   7, -13,   7, -23,  10,  19,   7,   7,   7,  -3,   7,  27,   6,  -7,   7,
+ -21,   7,  11,   7,  31,   8,   1,   7, -23,   6, -17,   6,  -3,  10,  11,   6,
+ -21,   7, -27,  11, -29,   6,  -1,  10,  15,   8,  27,   7,  17,   6,  17,   7,
+ -13,   8,  13,   6,  21,   7, -29,   6,  19,   7, -25,   6,  11,   9,  29,   7,
+  -7,   8,  27,   7,  29,  10,  -1,   8,  -7,   8,  17,   6,  17,   7, -27,   7,
+ -21,   6,  -9,   6, -27,  12, -23,   6,  19,   6,  13,   6, -11,   7,  27,   6,
+  17,   6,  -7,   6, -25,   7, -29,   6,   9,   7,   7,   6,  13,   6, -25,   6,
+ -19,   6,  13,   6, -11,   6,   5,   8,  19,   6, -21,   8,  23,   7,  27,   6,
+ -13,   6, -19,  11,  29,   7, -15,   6,  -9,   7, -21,  10,  -3,   7,  21,  10,
+  25,   6, -15,   6, -23,   6,  21,   6,   1,   6,  21,   7,  -3,   6,  -3,   7,
+  -7,   6, -23,   7,   7,   8,  15,   9,   5,   6, -11,   6,  21,  11, -27,   7,
+  27,   6, -11,   6,  31,   6, -21,   6,  19,   6,  -7,   8,  -7,  13,  -3,   6,
+  -7,   7,  -3,   6,   1,   6,   7,   8,  19,   8,  11,   9,  -9,   7, -31,  12,
+  25,   6, -17,   9, -15,   7,   5,   6,  25,   7,  -5,   7, -25,   6,  17,   8,
+ -19,   6, -13,   6,  27,   8,   1,   7,  -5,   7,  -1,   6,  21,   6,   3,  10,
+  -3,   1,
+};
+/*
+ * Calculate r = pairing <P, Q>.
+ *
+ * That is, multiply base in PF_p[q] by the scalar s, such that s.P = Q.
+ *
+ * Sliding window. Start at bottom and stop when bottom bit is one.
+ * Subtract if top bit in window is one.
+ * Width of 6 bits.
+ *
+ * @param  [in]  pm   First point on E(F_p)[q].
+ * @param  [in]  qm   Second point on E(F_p)[q].
+ * @param  [in]  res  Result of calculation.
+ * @return  0 on success.
+ * @return  MEMORY_E when dynamic memory allocation fails.
+ */
+static int sp_Pairing_x64_1024(ecc_point* pm, ecc_point* qm, mp_int* res)
+{
+    int err;
+    sp_digit vx[2 * 16];
+    sp_digit vy[2 * 16];
+    sp_digit* r = vy;
+    sp_point_1024 p[1];
+    sp_point_1024 q[1];
+    sp_point_1024 c[1];
+    sp_point_1024 pre_p[16];
+    sp_digit pre_vx[16][32];
+    sp_digit pre_vy[16][32];
+    sp_digit pre_nvy[16][32];
+    sp_digit t[6 * 2 * 16];
+    int i, j;
+
+    sp_1024_point_from_ecc_point_16(p, pm);
+    sp_1024_point_from_ecc_point_16(q, qm);
+
+    err = sp_1024_mod_mul_norm_16(p->x, p->x, p1024_mod);
+    if (err == MP_OKAY) {
+        err = sp_1024_mod_mul_norm_16(p->y, p->y, p1024_mod);
+    }
+    if (err == MP_OKAY) {
+        err = sp_1024_mod_mul_norm_16(p->z, p->z, p1024_mod);
+    }
+    if (err == MP_OKAY) {
+        err = sp_1024_mod_mul_norm_16(q->x, q->x, p1024_mod);
+    }
+    if (err == MP_OKAY) {
+        err = sp_1024_mod_mul_norm_16(q->y, q->y, p1024_mod);
+    }
+    if (err == MP_OKAY) {
+        /* Generate pre-computation table: 1, 3, ... , 31 */
+        XMEMCPY(&pre_p[0], p, sizeof(sp_point_1024));
+        XMEMSET(pre_vx[0], 0, sizeof(sp_digit) * 2 * 16);
+        pre_vx[0][0] = 1;
+        XMEMSET(pre_vy[0], 0, sizeof(sp_digit) * 2 * 16);
+        sp_1024_mont_sub_16(pre_nvy[0], p1024_mod, pre_vy[0], p1024_mod);
+
+        /* [2]P for adding */
+        XMEMCPY(c, p, sizeof(sp_point_1024));
+        XMEMSET(vx, 0, sizeof(sp_digit) * 2 * 16);
+        vx[0] = 1;
+        XMEMSET(vy, 0, sizeof(sp_digit) * 2 * 16);
+        sp_1024_accumulate_line_dbl_16(vx, vy, c, q, t);
+
+        /* 3, 5, ... */
+        for (i = 1; i < 16; i++) {
+            XMEMCPY(&pre_p[i], &pre_p[i-1], sizeof(sp_point_1024));
+            XMEMCPY(pre_vx[i], pre_vx[i-1], sizeof(sp_digit) * 2 * 16);
+            XMEMCPY(pre_vy[i], pre_vy[i-1], sizeof(sp_digit) * 2 * 16);
+            sp_1024_proj_mul_16(pre_vx[i], pre_vy[i], vx, vy, t);
+            sp_1024_accumulate_line_add_n_16(pre_vx[i], pre_vy[i], c,
+                    q, &pre_p[i], t, 0);
+            sp_1024_mont_sub_16(pre_nvy[i], p1024_mod, pre_vy[i], p1024_mod);
+        }
+
+        j = sp_1024_order_op[0] / 2;
+        XMEMCPY(c, &pre_p[j], sizeof(sp_point_1024));
+        XMEMCPY(vx, pre_vx[j], sizeof(sp_digit) * 2 * 16);
+        XMEMCPY(vy, pre_vy[j], sizeof(sp_digit) * 2 * 16);
+
+        for (j = 0; j < sp_1024_order_op[1]; j++) {
+            /* Accumulate line into v and double point. */
+            sp_1024_accumulate_line_dbl_16(vx, vy, c, q, t);
+        }
+
+        for (i = 2; i < 290; i += 2) {
+            j = sp_1024_order_op[i];
+            if (j > 0) {
+                j /= 2;
+                /* Accumulate line into v and add P into C. */
+                sp_1024_proj_mul_16(vx, vy, pre_vx[j], pre_vy[j], t);
+                sp_1024_accumulate_line_add_n_16(vx, vy, &pre_p[j], q, c,
+                    t, 0);
+            }
+            else {
+                j = -j / 2;
+                /* Accumulate line into v and add P into C. */
+
+                sp_1024_proj_mul_16(vx, vy, pre_vx[j], pre_nvy[j], t);
+                sp_1024_accumulate_line_add_n_16(vx, vy, &pre_p[j], q, c,
+                    t, 1);
+            }
+
+            for (j = 0; j < sp_1024_order_op[i + 1]; j++) {
+                /* Accumulate line into v and double point. */
+                sp_1024_accumulate_line_dbl_16(vx, vy, c, q, t);
+            }
+        }
+
+        /* Final exponentiation */
+        sp_1024_proj_sqr_16(vx, vy, t);
+        sp_1024_proj_sqr_16(vx, vy, t);
+
+        /* Convert from PF_p[q] to F_p */
+        sp_1024_mont_inv_16(vx, vx, t);
+        sp_1024_mont_mul_16(r, vx, vy, p1024_mod, p1024_mp_mod);
+        XMEMSET(r + 16, 0, sizeof(sp_digit) * 16);
+        sp_1024_mont_reduce_16(r, p1024_mod, p1024_mp_mod);
+
+        err = sp_1024_to_mp(r, res);
+    }
+
+    return err;
+}
+
+#endif /* WOLFSSL_SP_SMALL */
+#ifdef HAVE_INTEL_AVX2
+/* Multiply p* by q* in projective co-ordinates.
+ *
+ *   p.x' = (p.x * q.x) - (p.y * q.y)
+ *   p.y' = (p.x * q.y) + (p.y * q.x)
+ *
+ * px  [in,out]  A single precision integer - X ordinate of number to multiply.
+ * py  [in,out]  A single precision integer - Y ordinate of number to multiply.
+ * qx  [in]      A single precision integer - X ordinate of number of
+ *               multiplier.
+ * qy  [in]      A single precision integer - Y ordinate of number of
+ *               multiplier.
+ * t   [in]      Two single precision integers - temps.
+ */
+static void sp_1024_proj_mul_avx2_16(sp_digit* px, sp_digit* py,
+        const sp_digit* qx, const sp_digit* qy, sp_digit* t)
+{
+    sp_digit* t1 = t;
+    sp_digit* t2 = t + 2 * 16;
+
+    /* t1 = p.x * q.y */
+    sp_1024_mont_mul_avx2_16(t1, px, qy, p1024_mod, p1024_mp_mod);
+    /* r->x = p.x * q.x */
+    sp_1024_mont_mul_avx2_16(px, px, qx, p1024_mod, p1024_mp_mod);
+    /* t2 = p.y * q.y */
+    sp_1024_mont_mul_avx2_16(t2, py, qy, p1024_mod, p1024_mp_mod);
+    /* r.x = (p.x * q.x) - (p.y * q.y) */
+    sp_1024_mont_sub_avx2_16(px, px, t2, p1024_mod);
+    /* r.y = p.y * q.x */
+    sp_1024_mont_mul_avx2_16(py, py, qx, p1024_mod, p1024_mp_mod);
+    /* r.y = (p.x * q.y) + (p.y * q.x) */
+    sp_1024_mont_add_avx2_16(py, t1, py, p1024_mod);
+}
+
+#ifndef WOLFSSL_SP_SMALL
+/*
+ * Convert point from projective to affine but keep in Montgomery form.
+ *
+ * p  [in,out]  Point to convert.
+ * t  [in]      Temporary numbers: 2.
+ */
+static void sp_1024_mont_map_avx2_16(sp_point_1024* p, sp_digit* t)
+{
+    sp_digit* t1 = t;
+    sp_digit* t2 = t + 2 * 16;
+
+    sp_1024_mont_inv_avx2_16(t1, p->z, t2);
+    sp_1024_mont_sqr_avx2_16(t2, t1, p1024_mod, p1024_mp_mod);
+    sp_1024_mont_mul_avx2_16(t1, t2, t1, p1024_mod, p1024_mp_mod);
+    sp_1024_mont_mul_avx2_16(p->x, p->x, t2, p1024_mod, p1024_mp_mod);
+    sp_1024_mont_mul_avx2_16(p->y, p->y, t1, p1024_mod, p1024_mp_mod);
+    XMEMCPY(p->z, p1024_norm_mod, sizeof(sp_digit) * 16);
+}
+
+#endif /* WOLFSSL_SP_SMALL */
+/*
+ * Calculate gradient of line through P, P and [-2]P, accumulate line and
+ * double P.
+ *
+ * Calculations:
+ *   l = 3 * (p.x^2 - p.z^4) = 3 * (p.x - p.z^2) * (p.x + p.z^2)
+ *   r.x = l * (p.x + q.x * p.z^2) - 2 * p.y^2
+ *   r.y = 2 * p.y * p.z^3 * q.y
+ *   v* = v*^2 * r*
+ *   p'.x = l^2 - 8 * p.y^2 * p.x
+ *   p'.y = (4 * p.y^2 * p.x - p'.x) * l - 8 * p.y^4
+ *   p'.z = 2 * p.y * p.z
+ *
+ * @param  [in]  vx  X-ordinate of projective value in F*.
+ * @param  [in]  vy  Y-ordinate of projective value in F*.
+ * @param  [in]  p   ECC point - point on E(F_p^2) to double.
+ * @param  [in]  q   ECC point - second point on E(F_P^2).
+ * @param  [in]  t   SP temporaries (6 used).
+ */
+static void sp_1024_accumulate_line_dbl_avx2_16(sp_digit* vx, sp_digit* vy,
+        sp_point_1024* p, sp_point_1024* q, sp_digit* t)
+{
+    sp_digit* t1  = t +  0 * 16;
+    sp_digit* pz2 = t +  2 * 16;
+    sp_digit* rx  = t +  4 * 16;
+    sp_digit* ry  = t +  6 * 16;
+    sp_digit* l   = t +  8 * 16;
+    sp_digit* ty  = t + 10 * 16;
+
+    /* v = v^2 */
+    sp_1024_proj_sqr_avx2_16(vx, vy, t);
+    /* pz2 = p.z^2 */
+    sp_1024_mont_sqr_avx2_16(pz2, p->z, p1024_mod, p1024_mp_mod);
+    /* t1 = p.x + p.z^2 */
+    sp_1024_mont_add_avx2_16(t1, p->x, pz2, p1024_mod);
+    /* l = p.x - p.z^2 */
+    sp_1024_mont_sub_avx2_16(l, p->x, pz2, p1024_mod);
+    /* t1 = (p.x + p.z^2) * (p.x - p.z^2) = p.x^2 - p.z^4 */
+    sp_1024_mont_mul_avx2_16(t1, l, t1, p1024_mod, p1024_mp_mod);
+    /* l = 3 * (p.x^2 - p.z^4) */
+    sp_1024_mont_tpl_avx2_16(l, t1, p1024_mod);
+    /* t1 = q.x * p.z^2 */
+    sp_1024_mont_mul_avx2_16(t1, q->x, pz2, p1024_mod, p1024_mp_mod);
+    /* t1 = p.x + q.x * p.z^2 */
+    sp_1024_mont_add_avx2_16(t1, p->x, t1, p1024_mod);
+    /* r.x = l * (p.x + q.x * p.z^2) */
+    sp_1024_mont_mul_avx2_16(rx, l, t1, p1024_mod, p1024_mp_mod);
+    /* r.y = 2 * p.y */
+    sp_1024_mont_dbl_avx2_16(ry, p->y, p1024_mod);
+    /* ty = 4 * p.y ^ 2 */
+    sp_1024_mont_sqr_avx2_16(ty, ry, p1024_mod, p1024_mp_mod);
+    /* t1 = 2 * p.y ^ 2 */
+    sp_1024_div2_16(t1, ty, p1024_mod);
+    /* r.x -= 2 * (p.y ^ 2) */
+    sp_1024_mont_sub_avx2_16(rx, rx, t1, p1024_mod);
+    /* p'.z = p.y * 2 * p.z */
+    sp_1024_mont_mul_avx2_16(p->z, p->z, ry, p1024_mod, p1024_mp_mod);
+    /* r.y = p'.z * p.z^2 */
+    sp_1024_mont_mul_avx2_16(ry, p->z, pz2, p1024_mod, p1024_mp_mod);
+    /* r.y = p'.z * p.z^2 * q.y */
+    sp_1024_mont_mul_avx2_16(ry, ry, q->y, p1024_mod, p1024_mp_mod);
+    /* v = v^2 * r */
+    sp_1024_proj_mul_avx2_16(vx, vy, rx, ry, t);
+
+    /* Double point using previously calculated values
+     *   l = 3 * (p.x - p.z^2).(p.x + p.z^2)
+     *   ty = 4 * p.y^2
+     *   p'.z = 2 * p.y * p.z
+     */
+    /* t1 = (4 * p.y^2) ^ 2 = 16 * p.y^4 */
+    sp_1024_mont_sqr_avx2_16(t1, ty, p1024_mod, p1024_mp_mod);
+    /* t1 = 16 * p.y^4 / 2 = 8 * p.y^4 */
+    sp_1024_div2_16(t1, t1, p1024_mod);
+    /* p'.y = 4 * p.y^2 * p.x */
+    sp_1024_mont_mul_avx2_16(p->y, ty, p->x, p1024_mod, p1024_mp_mod);
+    /* p'.x = l^2 */
+    sp_1024_mont_sqr_avx2_16(p->x, l, p1024_mod, p1024_mp_mod);
+    /* p'.x = l^2 - 4 * p.y^2 * p.x */
+    sp_1024_mont_sub_avx2_16(p->x, p->x, p->y, p1024_mod);
+    /* p'.x = l^2 - 8 * p.y^2 * p.x */
+    sp_1024_mont_sub_avx2_16(p->x, p->x, p->y, p1024_mod);
+    /* p'.y = 4 * p.y^2 * p.x - p.x' */
+    sp_1024_mont_sub_avx2_16(p->y, p->y, p->x, p1024_mod);
+    /* p'.y = (4 * p.y^2 * p.x - p'.x) * l */
+    sp_1024_mont_mul_avx2_16(p->y, p->y, l, p1024_mod, p1024_mp_mod);
+    /* p'.y = (4 * p.y^2 * p.x - p'.x) * l - 8 * p.y^4 */
+    sp_1024_mont_sub_avx2_16(p->y, p->y, t1, p1024_mod);
+}
+
+#ifdef WOLFSSL_SP_SMALL
+/*
+ * Calculate gradient of line through C, P and -C-P, accumulate line and
+ * add P to C.
+ *
+ * Calculations:
+ *   r.x = (q.x + p.x) * c.y - (q.x * c.z^2 + c.x) * p.y * c.z
+ *   r.y = (c.x - p.x * c.z^2) * q.y * c.z
+ *   v* = v* * r*
+ *   r = p.y * c.z^3 - c.y
+ *   c'.x = r^2 + h^3 - 2 * c.x * h^2
+ *   c'.y = r * (c'.x - c.x * h^2) - c.y * h^3
+ *   c'.z = (c.x - p.x * c.z^2) * c.z
+ *
+ * @param  [in]  vx     X-ordinate of projective value in F*.
+ * @param  [in]  vy     Y-ordinate of projective value in F*.
+ * @param  [in]  c      ECC point - current point on E(F_p^2) to be added to.
+ * @param  [in]  p      ECC point - point on E(F_p^2) to add.
+ * @param  [in]  q      ECC point - second point on E(F_P^2).
+ * @param  [in]  qx_px  SP that is a constant value across adds.
+ * @param  [in]  t      SP temporaries (6 used).
+ */
+static void sp_1024_accumulate_line_add_one_avx2_16(sp_digit* vx, sp_digit* vy,
+        sp_point_1024* c, sp_point_1024* p, sp_point_1024* q, sp_digit* qx_px,
+        sp_digit* t)
+{
+    sp_digit* t1  = t;
+    sp_digit* t2  = t +  2 * 16;
+    sp_digit* rx  = t +  4 * 16;
+    sp_digit* ry  = t +  6 * 16;
+    sp_digit* h   = t +  8 * 16;
+    sp_digit* r   = t + 10 * 16;
+
+    /* r.x = (q.x + p.x) * c.y */
+    sp_1024_mont_mul_avx2_16(rx, qx_px, c->y, p1024_mod, p1024_mp_mod);
+    /* t2 = c.z^2 */
+    sp_1024_mont_sqr_avx2_16(t2, c->z, p1024_mod, p1024_mp_mod);
+    /* t1 = q.x * c.z^2 */
+    sp_1024_mont_mul_avx2_16(t1, q->x, t2, p1024_mod, p1024_mp_mod);
+    /* t1 = q.x * c.z^2 + c.x */
+    sp_1024_mont_add_avx2_16(t1, t1, c->x, p1024_mod);
+    /* r = p.y * c.z */
+    sp_1024_mont_mul_avx2_16(r, p->y, c->z, p1024_mod, p1024_mp_mod);
+    /* t1 = (q.x * c.z^2 + c.x) * p.y * c.z */
+    sp_1024_mont_mul_avx2_16(t1, t1, r, p1024_mod, p1024_mp_mod);
+    /* r.x -= (q.x * c.z^2 + c.x) * p.y * c.z */
+    sp_1024_mont_sub_avx2_16(rx, rx, t1, p1024_mod);
+    /* t1 = p.x * c.z^2 */
+    sp_1024_mont_mul_avx2_16(t1, p->x, t2, p1024_mod, p1024_mp_mod);
+    /* h = c.x - p.x * c.z^2 */
+    sp_1024_mont_sub_avx2_16(h, c->x, t1, p1024_mod);
+    /* c'.z = (c.x - p.x * c.z^2) * c.z */
+    sp_1024_mont_mul_avx2_16(c->z, h, c->z, p1024_mod, p1024_mp_mod);
+    /* r.y = (c.x - p.x * c.z^2) * c.z * q.y */
+    sp_1024_mont_mul_avx2_16(ry, c->z, q->y, p1024_mod, p1024_mp_mod);
+    /* r = p.y * c.z * c.z^2 = p.y * c.z^3  */
+    sp_1024_mont_mul_avx2_16(r, r, t2, p1024_mod, p1024_mp_mod);
+    /* v = v * r */
+    sp_1024_proj_mul_avx2_16(vx, vy, rx, ry, t);
+
+    /* Add p to c using previously calculated values.
+     *   h = c.x - p.x * c.z^2
+     *   r = p.y * c.z^3
+     *   c'.z = (c.x - p.x * c.z^2) * c.z
+     */
+
+    /* r = p.y * c.z^3 - c.y */
+    sp_1024_mont_sub_avx2_16(r, r, c->y, p1024_mod);
+    /* t1 = r^2 */
+    sp_1024_mont_sqr_avx2_16(t1, r, p1024_mod, p1024_mp_mod);
+    /* t2 = h^2 */
+    sp_1024_mont_sqr_avx2_16(t2, h, p1024_mod, p1024_mp_mod);
+    /* ry = c.x * h^2 */
+    sp_1024_mont_mul_avx2_16(ry, c->x, t2, p1024_mod, p1024_mp_mod);
+    /* t2 = h^3 */
+    sp_1024_mont_mul_avx2_16(t2, t2, h, p1024_mod, p1024_mp_mod);
+    /* c->x = r^2 + h^3 */
+    sp_1024_mont_add_avx2_16(c->x, t1, t2, p1024_mod);
+    /* t1 = 2 * c.x * h^2 */
+    sp_1024_mont_dbl_avx2_16(t1, ry, p1024_mod);
+    /* c'.x = r^2 + h^3 - 2 * c.x * h^2 */
+    sp_1024_mont_sub_avx2_16(c->x, c->x, t1, p1024_mod);
+    /* ry = c'.x - c.x * h^2 */
+    sp_1024_mont_sub_avx2_16(ry, c->x, ry, p1024_mod);
+    /* ry = r * (c'.x - c.x * h^2) */
+    sp_1024_mont_mul_avx2_16(ry, ry, r, p1024_mod, p1024_mp_mod);
+    /* t2 = c.y * h^3 */
+    sp_1024_mont_mul_avx2_16(t2, t2, c->y, p1024_mod, p1024_mp_mod);
+    /* c'.y = r * (c'.x - c.x * h^2) - c.y * h^3 */
+    sp_1024_mont_sub_avx2_16(c->y, ry, t2, p1024_mod);
+}
+
+/*
+ * Calculate r = pairing <P, Q>.
+ *
+ * That is, multiply base in PF_p[q] by the scalar s, such that s.P = Q.
+ *
+ * @param  [in]  key  SAKKE key.
+ * @param  [in]  p    First point on E(F_p)[q].
+ * @param  [in]  q    Second point on E(F_p)[q].
+ * @param  [in]  r    Result of calculation.
+ * @return  0 on success.
+ * @return  MEMORY_E when dynamic memory allocation fails.
+ * @return  Other -ve value on internal failure.
+ */
+static int sp_Pairing_avx2_1024(ecc_point* pm, ecc_point* qm, mp_int* res)
+{
+    int err;
+    sp_digit vx[2 * 16];
+    sp_digit vy[2 * 16];
+    sp_digit qx_px[2 * 16];
+    sp_digit* r = vy;
+    sp_point_1024 p[1];
+    sp_point_1024 q[1];
+    sp_point_1024 c[1];
+    sp_digit t[6 * 2 * 16];
+    int i;
+
+    sp_1024_point_from_ecc_point_16(p, pm);
+    sp_1024_point_from_ecc_point_16(q, qm);
+
+    err = sp_1024_mod_mul_norm_avx2_16(p->x, p->x, p1024_mod);
+    if (err == MP_OKAY) {
+        err = sp_1024_mod_mul_norm_avx2_16(p->y, p->y, p1024_mod);
+    }
+    if (err == MP_OKAY) {
+        err = sp_1024_mod_mul_norm_avx2_16(p->z, p->z, p1024_mod);
+    }
+    if (err == MP_OKAY) {
+        err = sp_1024_mod_mul_norm_avx2_16(q->x, q->x, p1024_mod);
+    }
+    if (err == MP_OKAY) {
+        err = sp_1024_mod_mul_norm_avx2_16(q->y, q->y, p1024_mod);
+    }
+    if (err == MP_OKAY) {
+        XMEMCPY(c, p, sizeof(sp_point_1024));
+        XMEMSET(vx, 0, sizeof(sp_digit) * 2 * 16);
+        vx[0] = 1;
+        XMEMSET(vy, 0, sizeof(sp_digit) * 2 * 16);
+
+        sp_1024_mont_add_avx2_16(qx_px, q->x, p->x, p1024_mod);
+
+        for (i = 1020; i >= 0; i--) {
+            /* Accumulate line into v and double point. */
+            sp_1024_accumulate_line_dbl_avx2_16(vx, vy, c, q, t);
+
+            if ((i > 0) && ((p1024_order[i / 64] >> (i % 64)) & 1)) {
+                /* Accumulate line into v and add P into C. */
+                sp_1024_accumulate_line_add_one_avx2_16(vx, vy, c, p, q, qx_px, t);
+            }
+        }
+
+        /* Final exponentiation */
+        sp_1024_proj_sqr_avx2_16(vx, vy, t);
+        sp_1024_proj_sqr_avx2_16(vx, vy, t);
+
+        /* Convert from PF_p[q] to F_p */
+        sp_1024_mont_inv_avx2_16(vx, vx, t);
+        sp_1024_mont_mul_avx2_16(r, vx, vy, p1024_mod, p1024_mp_mod);
+        XMEMSET(r + 16, 0, sizeof(sp_digit) * 16);
+        sp_1024_mont_reduce_16(r, p1024_mod, p1024_mp_mod);
+
+        err = sp_1024_to_mp(r, res);
+    }
+
+    return err;
+}
+
+#else
+/*
+ * Calculate gradient of line through C, P and -C-P, accumulate line and
+ * add P to C.
+ *
+ * Both C and P have z ordinates to use in the calculation.
+ *
+ * Calculations:
+ *   r.x = (q.x * p.z^2 + p.x) * c.y * p.z - (q.x * c.z^2 + c.x) * p.y * c.z
+ *   r.y = (c.x * p.z^2 - p.x * c.z^2) * q.y * p.z * c.z
+ *   v = v * r
+ *   c'.x = r^2 - h^3 - 2 * c.x * p.z^2 * h^2
+ *   c'.y = r * (c.x * p.z^2 * h^2 - c'.x) - c.y * p.z^3 * h^3
+ *   c'.z = (p.x * c.z^2 - c.x * p.z^2) * c.z
+ *
+ * @param  [in]  vx     X-ordinate of projective value in F*.
+ * @param  [in]  vy     Y-ordinate of projective value in F*.
+ * @param  [in]  c      ECC point - current point on E(F_p^2) to be added to.
+ * @param  [in]  p      ECC point - point on E(F_p^2) to add.
+ * @param  [in]  q      ECC point - second point on E(F_P^2).
+ * @param  [in]  t      SP temporaries (6 used).
+ * @param  [in]  neg    Indicates to use negative P.
+ * @return  0 on success.
+ * @return  MEMORY_E when dynamic memory allocation fails.
+ * @return  Other -ve value on internal failure.
+ */
+static void sp_1024_accumulate_line_add_n_avx2_16(sp_digit* vx, sp_digit* vy,
+        sp_point_1024* p, sp_point_1024* q, sp_point_1024* c,
+        sp_digit* t, int neg)
+{
+    sp_digit* t1 = t;
+    sp_digit* t2 = t +  2 * 16;
+    sp_digit* rx = t +  4 * 16;
+    sp_digit* ry = t +  6 * 16;
+    sp_digit* h  = t +  8 * 16;
+    sp_digit* r  = t + 10 * 16;
+
+    /* h = p.z^2 */
+    sp_1024_mont_sqr_avx2_16(h, p->z, p1024_mod, p1024_mp_mod);
+    /* rx = q.x * p.z^2 */
+    sp_1024_mont_mul_avx2_16(rx, q->x, h, p1024_mod, p1024_mp_mod);
+    /* rx = q.x * p.z^2 + p.x */
+    sp_1024_mont_add_avx2_16(rx, rx, p->x, p1024_mod);
+    /* c.y = c.y * p.z */
+    sp_1024_mont_mul_avx2_16(c->y, c->y, p->z, p1024_mod, p1024_mp_mod);
+    /* r.x = (q.x * p.z^2 + p.x) * c.y * p.z */
+    sp_1024_mont_mul_avx2_16(rx, rx, c->y, p1024_mod, p1024_mp_mod);
+    /* c.y = c.y * p.z^3 */
+    sp_1024_mont_mul_avx2_16(c->y, c->y, h, p1024_mod, p1024_mp_mod);
+    /* t2 = c.z^2 */
+    sp_1024_mont_sqr_avx2_16(t2, c->z, p1024_mod, p1024_mp_mod);
+    /* t1 = q.x * c.z^2 */
+    sp_1024_mont_mul_avx2_16(t1, q->x, t2, p1024_mod, p1024_mp_mod);
+    /* t1 = q.x * c.z^2 + c.x */
+    sp_1024_mont_add_avx2_16(t1, t1, c->x, p1024_mod);
+    /* c.x = c.x * p.z^2 */
+    sp_1024_mont_mul_avx2_16(c->x, c->x, h, p1024_mod, p1024_mp_mod);
+    /* r = p.y * c.z */
+    sp_1024_mont_mul_avx2_16(r, p->y, c->z, p1024_mod, p1024_mp_mod);
+    if (neg) {
+        /* r = -p.y * c.z */
+        sp_1024_mont_sub_avx2_16(r, p1024_mod, r, p1024_mod);
+    }
+    /* t1 = (q.x * c.z^2 + c.x) * p.y * c.z */
+    sp_1024_mont_mul_avx2_16(t1, t1, r, p1024_mod, p1024_mp_mod);
+    /* r.x -= (q.x * c.z^2 + c.x) * p.y * c.z */
+    sp_1024_mont_sub_avx2_16(rx, t1, rx, p1024_mod);
+    /* t1 = p.x * c.z^2 */
+    sp_1024_mont_mul_avx2_16(t1, p->x, t2, p1024_mod, p1024_mp_mod);
+    /* h = p.x * c.z^2 - c.x * p.z^2 */
+    sp_1024_mont_sub_avx2_16(h, t1, c->x, p1024_mod);
+    /* c'.z = (p.x * c.z^2 - c.x * p.z^2) * c.z */
+    sp_1024_mont_mul_avx2_16(c->z, h, c->z, p1024_mod, p1024_mp_mod);
+    /* c'.z = (p.x * c.z^2 - c.x * p.z^2) * c.z * p.z */
+    sp_1024_mont_mul_avx2_16(c->z, c->z, p->z, p1024_mod, p1024_mp_mod);
+    /* r.y = (p.x * c.z^2 - c.x * p.z^2) * c.z * p.z * q.y */
+    sp_1024_mont_mul_avx2_16(ry, c->z, q->y, p1024_mod, p1024_mp_mod);
+    /* r = p.y * c.z^3 */
+    sp_1024_mont_mul_avx2_16(r, r, t2, p1024_mod, p1024_mp_mod);
+    /* r = p.y * c.z^3 - c.y * p.z^3 */
+    sp_1024_mont_sub_avx2_16(r, r, c->y, p1024_mod);
+    /* v = v * r */
+    sp_1024_proj_mul_avx2_16(vx, vy, rx, ry, t);
+
+    /* Add p to c using previously calculated values.
+     *   h = p.x * c.z^2 - c.x * p.z^2
+     *   r = p.y * c.z^3
+     *   c'.z = (p.x * c.z^2 - c.x * p.z^2) * c.z
+     */
+
+    /* t1 = r^2 */
+    sp_1024_mont_sqr_avx2_16(t1, r, p1024_mod, p1024_mp_mod);
+    /* t2 = h^2 */
+    sp_1024_mont_sqr_avx2_16(t2, h, p1024_mod, p1024_mp_mod);
+    /* ry = c.x * p.z^2 * h^2 */
+    sp_1024_mont_mul_avx2_16(ry, t2, c->x, p1024_mod, p1024_mp_mod);
+    /* t2 = h^3 */
+    sp_1024_mont_mul_avx2_16(t2, t2, h, p1024_mod, p1024_mp_mod);
+    /* c'.x = r^2 - h^3 */
+    sp_1024_mont_sub_avx2_16(c->x, t1, t2, p1024_mod);
+    /* t1 = 2 * c.x * p.z^2 * h^2 */
+    sp_1024_mont_dbl_avx2_16(t1, ry, p1024_mod);
+    /* c'.x = r^2 - h^3 - 2 * c.x * p.z^2 * h^2 */
+    sp_1024_mont_sub_avx2_16(c->x, c->x, t1, p1024_mod);
+    /* ry = c.x * p.z^2 * h^2 - c'.x */
+    sp_1024_mont_sub_avx2_16(ry, ry, c->x, p1024_mod);
+    /* ry = r * (c.x * p.z^2 * h^2 - c'.x) */
+    sp_1024_mont_mul_avx2_16(ry, ry, r, p1024_mod, p1024_mp_mod);
+    /* t2 = c.y * p.z^3 * h^3 */
+    sp_1024_mont_mul_avx2_16(t2, t2, c->y, p1024_mod, p1024_mp_mod);
+    /* c'.y = r * (c.x * p.z^2 * h^2 - c'.x) - c.y * p.z^3 * h^3 */
+    sp_1024_mont_sub_avx2_16(c->y, ry, t2, p1024_mod);
+}
+
+/*
+ * Calculate r = pairing <P, Q>.
+ *
+ * That is, multiply base in PF_p[q] by the scalar s, such that s.P = Q.
+ *
+ * Sliding window. Start at bottom and stop when bottom bit is one.
+ * Subtract if top bit in window is one.
+ * Width of 6 bits.
+ *
+ * @param  [in]  pm   First point on E(F_p)[q].
+ * @param  [in]  qm   Second point on E(F_p)[q].
+ * @param  [in]  res  Result of calculation.
+ * @return  0 on success.
+ * @return  MEMORY_E when dynamic memory allocation fails.
+ */
+static int sp_Pairing_avx2_1024(ecc_point* pm, ecc_point* qm, mp_int* res)
+{
+    int err;
+    sp_digit vx[2 * 16];
+    sp_digit vy[2 * 16];
+    sp_digit* r = vy;
+    sp_point_1024 p[1];
+    sp_point_1024 q[1];
+    sp_point_1024 c[1];
+    sp_point_1024 pre_p[16];
+    sp_digit pre_vx[16][32];
+    sp_digit pre_vy[16][32];
+    sp_digit pre_nvy[16][32];
+    sp_digit t[6 * 2 * 16];
+    int i, j;
+
+    sp_1024_point_from_ecc_point_16(p, pm);
+    sp_1024_point_from_ecc_point_16(q, qm);
+
+    err = sp_1024_mod_mul_norm_avx2_16(p->x, p->x, p1024_mod);
+    if (err == MP_OKAY) {
+        err = sp_1024_mod_mul_norm_avx2_16(p->y, p->y, p1024_mod);
+    }
+    if (err == MP_OKAY) {
+        err = sp_1024_mod_mul_norm_avx2_16(p->z, p->z, p1024_mod);
+    }
+    if (err == MP_OKAY) {
+        err = sp_1024_mod_mul_norm_avx2_16(q->x, q->x, p1024_mod);
+    }
+    if (err == MP_OKAY) {
+        err = sp_1024_mod_mul_norm_avx2_16(q->y, q->y, p1024_mod);
+    }
+    if (err == MP_OKAY) {
+        /* Generate pre-computation table: 1, 3, ... , 31 */
+        XMEMCPY(&pre_p[0], p, sizeof(sp_point_1024));
+        XMEMSET(pre_vx[0], 0, sizeof(sp_digit) * 2 * 16);
+        pre_vx[0][0] = 1;
+        XMEMSET(pre_vy[0], 0, sizeof(sp_digit) * 2 * 16);
+        sp_1024_mont_sub_avx2_16(pre_nvy[0], p1024_mod, pre_vy[0], p1024_mod);
+
+        /* [2]P for adding */
+        XMEMCPY(c, p, sizeof(sp_point_1024));
+        XMEMSET(vx, 0, sizeof(sp_digit) * 2 * 16);
+        vx[0] = 1;
+        XMEMSET(vy, 0, sizeof(sp_digit) * 2 * 16);
+        sp_1024_accumulate_line_dbl_avx2_16(vx, vy, c, q, t);
+
+        /* 3, 5, ... */
+        for (i = 1; i < 16; i++) {
+            XMEMCPY(&pre_p[i], &pre_p[i-1], sizeof(sp_point_1024));
+            XMEMCPY(pre_vx[i], pre_vx[i-1], sizeof(sp_digit) * 2 * 16);
+            XMEMCPY(pre_vy[i], pre_vy[i-1], sizeof(sp_digit) * 2 * 16);
+            sp_1024_proj_mul_avx2_16(pre_vx[i], pre_vy[i], vx, vy, t);
+            sp_1024_accumulate_line_add_n_avx2_16(pre_vx[i], pre_vy[i], c,
+                    q, &pre_p[i], t, 0);
+            sp_1024_mont_sub_avx2_16(pre_nvy[i], p1024_mod, pre_vy[i], p1024_mod);
+        }
+
+        j = sp_1024_order_op[0] / 2;
+        XMEMCPY(c, &pre_p[j], sizeof(sp_point_1024));
+        XMEMCPY(vx, pre_vx[j], sizeof(sp_digit) * 2 * 16);
+        XMEMCPY(vy, pre_vy[j], sizeof(sp_digit) * 2 * 16);
+
+        for (j = 0; j < sp_1024_order_op[1]; j++) {
+            /* Accumulate line into v and double point. */
+            sp_1024_accumulate_line_dbl_avx2_16(vx, vy, c, q, t);
+        }
+
+        for (i = 2; i < 290; i += 2) {
+            j = sp_1024_order_op[i];
+            if (j > 0) {
+                j /= 2;
+                /* Accumulate line into v and add P into C. */
+                sp_1024_proj_mul_avx2_16(vx, vy, pre_vx[j], pre_vy[j], t);
+                sp_1024_accumulate_line_add_n_avx2_16(vx, vy, &pre_p[j], q, c,
+                    t, 0);
+            }
+            else {
+                j = -j / 2;
+                /* Accumulate line into v and add P into C. */
+
+                sp_1024_proj_mul_avx2_16(vx, vy, pre_vx[j], pre_nvy[j], t);
+                sp_1024_accumulate_line_add_n_avx2_16(vx, vy, &pre_p[j], q, c,
+                    t, 1);
+            }
+
+            for (j = 0; j < sp_1024_order_op[i + 1]; j++) {
+                /* Accumulate line into v and double point. */
+                sp_1024_accumulate_line_dbl_avx2_16(vx, vy, c, q, t);
+            }
+        }
+
+        /* Final exponentiation */
+        sp_1024_proj_sqr_avx2_16(vx, vy, t);
+        sp_1024_proj_sqr_avx2_16(vx, vy, t);
+
+        /* Convert from PF_p[q] to F_p */
+        sp_1024_mont_inv_avx2_16(vx, vx, t);
+        sp_1024_mont_mul_avx2_16(r, vx, vy, p1024_mod, p1024_mp_mod);
+        XMEMSET(r + 16, 0, sizeof(sp_digit) * 16);
+        sp_1024_mont_reduce_avx2_16(r, p1024_mod, p1024_mp_mod);
+
+        err = sp_1024_to_mp(r, res);
+    }
+
+    return err;
+}
+
+#endif /* WOLFSSL_SP_SMALL */
+#endif /* HAVE_INTEL_AVX2 */
+/*
+ * Calculate r = pairing <P, Q>.
+ *
+ * That is, multiply base in PF_p[q] by the scalar s, such that s.P = Q.
+ *
+ * @param  [in]  key  SAKKE key.
+ * @param  [in]  p    First point on E(F_p)[q].
+ * @param  [in]  q    Second point on E(F_p)[q].
+ * @param  [in]  r    Result of calculation.
+ * @return  0 on success.
+ * @return  MEMORY_E when dynamic memory allocation fails.
+ * @return  Other -ve value on internal failure.
+ */
+int sp_Pairing_1024(ecc_point* pm, ecc_point* qm, mp_int* res)
+{
+    int err;
+#ifdef HAVE_INTEL_AVX2
+    word32 cpuid_flags = cpuid_get_flags();
+#endif
+
+#ifdef HAVE_INTEL_AVX2
+    if (IS_INTEL_BMI2(cpuid_flags) && IS_INTEL_ADX(cpuid_flags)) {
+        err = sp_Pairing_avx2_1024(pm, qm, res);
+    }
+    else
+#endif
+    {
+        err = sp_Pairing_x64_1024(pm, qm, res);
+    }
+
+   return err;
+}
+
+#ifdef WOLFSSL_SP_SMALL
+/*
+ * Generate table for pairing.
+ *
+ * Small implementation does not use a table - returns 0 length.
+ *
+ * pm     [in]      Point to generate table for.
+ * table  [in]      Generated table.
+ * len    [in,out]  On in, the size of the buffer.
+ *                  On out, length of table generated.
+ * @return  0 on success.
+ *          LENGTH_ONLY_E when table is NULL and only length returned.
+ *          BUFFER_E when len is too small.
+ */
+static int sp_Pairing_gen_precomp_x64_1024(ecc_point* pm, byte* table, word32* len)
+{
+    int err = 0;
+
+    if (table == NULL) {
+        *len = 0;
+        err = LENGTH_ONLY_E;
+    }
+    else if (*len != 0) {
+        err = BUFFER_E;
+    }
+
+    (void)*pm;
+
+    return err;
+}
+
+/*
+ * Calculate r = pairing <P, Q>.
+ *
+ * That is, multiply base in PF_p[q] by the scalar s, such that s.P = Q.
+ *
+ * Small implementation does not use a table - use the normal implementation.
+ *
+ * @param  [in]  pm     First point on E(F_p)[q].
+ * @param  [in]  qm     Second point on E(F_p)[q].
+ * @param  [in]  res    Result of calculation.
+ * @param  [in]  table  Precomputed table of values.
+ * @param  [in]  len    Length of precomputed table of values in bytes.
+ * @return  0 on success.
+ * @return  MEMORY_E when dynamic memory allocation fails.
+ */
+static int sp_Pairing_precomp_x64_1024(ecc_point* pm, ecc_point* qm, mp_int* res,
+    byte* table, word32 len)
+{
+    (void)table;
+    (void)len;
+    return sp_Pairing_x64_1024(pm, qm, res);
+}
+
+#else
+/*
+ * Calc l and c for the point when doubling p.
+ *
+ * l = 3 * (p.x^2 - 1) / (2 * p.y)
+ * c = l * p.x - p.y
+ *
+ * @param  [out]  lr  Gradient result - table entry.
+ * @param  [out]  cr  Constant result - table entry.
+ * @param  [in]   px  X-ordinate of point to double.
+ * @param  [in]   py  Y-ordinate of point to double.
+ * @param  [in]   t   SP temporaries (3 used).
+ */
+static void sp_1024_accum_dbl_calc_lc_16(sp_digit* lr, sp_digit* cr,
+        sp_digit* px, sp_digit* py, sp_digit* t)
+{
+    sp_digit* t1 = t + 0 * 2 * 16;
+    sp_digit* t2 = t + 2 * 2 * 16;
+    sp_digit* l  = t + 4 * 2 * 16;
+
+
+    /* l = 1 / 2 * p.y */
+    sp_1024_mont_dbl_16(l, py, p1024_mod);
+    sp_1024_mont_inv_16(l, l, t);
+
+    /* t1 = p.x^2 */
+    sp_1024_mont_sqr_16(t1, px, p1024_mod, p1024_mp_mod);
+    /* t1 = p.x - 1 */
+    sp_1024_mont_sub_16(t1, t1, p1024_norm_mod, p1024_mod);
+    /* t1 = 3 * (p.x^2 - 1) */
+    sp_1024_mont_dbl_16(t2, t1, p1024_mod);
+    sp_1024_mont_add_16(t1, t1, t2, p1024_mod);
+    /* t1 = 3 * (p.x^2 - 1) / (2 * p.y) */
+    sp_1024_mont_mul_16(l, l, t1, p1024_mod, p1024_mp_mod);
+    /* t2 = l * p.x */
+    sp_1024_mont_mul_16(t2, l, px, p1024_mod, p1024_mp_mod);
+    /* c = t2 = l * p.x - p.y */
+    sp_1024_mont_sub_16(t2, t2, py, p1024_mod);
+
+    XMEMCPY(lr, l, sizeof(sp_digit) * 16);
+    XMEMCPY(cr, t2, sizeof(sp_digit) * 16);
+}
+
+/*
+ * Calc l and c when adding p and c.
+ *
+ * l = (c.y - p.y) / (c.x - p.x)
+ * c = (p.x * c.y - cx * p.y) / (cx - p.x)
+ *
+ * @param  [out]  lr  Gradient result - table entry.
+ * @param  [out]  cr  Constant result - table entry.
+ * @param  [in]   px  X-ordinate of point to add.
+ * @param  [in]   py  Y-ordinate of point to add.
+ * @param  [in]   cx  X-ordinate of current point.
+ * @param  [in]   cy  Y-ordinate of current point.
+ * @param  [in]   t   SP temporaries (3 used).
+ */
+static void sp_1024_accum_add_calc_lc_16(sp_digit* lr, sp_digit* cr,
+        sp_digit* px, sp_digit* py, sp_digit* cx, sp_digit* cy, sp_digit* t)
+{
+    sp_digit* t1 = t + 0 * 2 * 16;
+    sp_digit* c  = t + 2 * 2 * 16;
+    sp_digit* l  = t + 4 * 2 * 16;
+
+
+    /* l = 1 / (c.x - p.x) */
+    sp_1024_mont_sub_16(l, cx, px, p1024_mod);
+    sp_1024_mont_inv_16(l, l, t);
+
+    /* c = p.x * c.y */
+    sp_1024_mont_mul_16(c, px, cy, p1024_mod, p1024_mp_mod);
+    /* t1 = c.x * p.y */
+    sp_1024_mont_mul_16(t1, cx, py, p1024_mod, p1024_mp_mod);
+    /* c = (p.x * c.y) - (c.x * p.y) */
+    sp_1024_mont_sub_16(c, c, t1, p1024_mod);
+    /* c = ((p.x * c.y) - (c.x * p.y)) / (c.x - p.x) */
+    sp_1024_mont_mul_16(c, c, l, p1024_mod, p1024_mp_mod);
+    /* t1 = c.y - p.y */
+    sp_1024_mont_sub_16(t1, cy, py, p1024_mod);
+    /* l = (c.y - p.y) / (c.x - p.x) */
+    sp_1024_mont_mul_16(l, t1, l, p1024_mod, p1024_mp_mod);
+
+    XMEMCPY(lr, l, sizeof(sp_digit) * 16);
+    XMEMCPY(cr, c, sizeof(sp_digit) * 16);
+}
+
+/*
+ * Calculate vx and vy given gradient l and constant c and point q.
+ *
+ * l is a the gradient and is multiplied by q->x.
+ * c is a the constant that is added to the multiplicative result.
+ * q->y is the y-ordinate in result to multiply.
+ *
+ * if dbl
+ *   v*  = v*^2
+ * r.x = l * q.x + c
+ * r.y = q->y
+ * v*  = v* * r*
+ *
+ * @param  [in,out]  vx     X-ordinate of projective value in F*.
+ * @param  [in,out]  vy     Y-ordinate of projective value in F*.
+ * @param  [in]      l      Gradient to multiply with.
+ * @param  [in]      c      Constant to add with.
+ * @param  [in]      q      ECC point - second point on E(F_P^2).
+ * @param  [in]      t      SP temporaries (3 used).
+ * @param  [in]      dbl    Indicates whether this is for doubling. Otherwise
+ *                          adding.
+ */
+static void sp_1024_accumulate_line_lc_16(sp_digit* vx, sp_digit* vy,
+        sp_digit* l, sp_digit* c, sp_point_1024* q, sp_digit* t, int dbl)
+{
+    sp_digit* rx = t + 4 * 2 * 16;
+
+    /* v = v^2 */
+    if (dbl) {
+        sp_1024_proj_sqr_16(vx, vy, t);
+    }
+    /* rx = l * q.x + c */
+    sp_1024_mont_mul_16(rx, l, q->x, p1024_mod, p1024_mp_mod);
+    sp_1024_mont_add_16(rx, rx, c, p1024_mod);
+    /* v = v^2 * r */
+    sp_1024_proj_mul_16(vx, vy, rx, q->y, t);
+}
+
+/* Operations to perform based on order - 1.
+ * Sliding window. Start at bottom and stop when bottom bit is one.
+ * Subtract if top bit in window is one.
+ * Width of 6 bits.
+ * Pairs: #dbls, add/subtract window value
+ */
+static const signed char sp_1024_order_op_pre[] = {
+   5,   6, -13,   9, -21,   6,  -5,   8,  31,   6,   3,   6, -27,   6,  25,   9,
+  -1,   6, -11,   6, -13,   6,  -7,   6, -15,   6, -29,   7,  25,   6,  -9,   6,
+ -19,   7,   3,   6,  11,   9, -23,   6,   1,   6,  27,   6,   1,   7, -25,   8,
+  13,   7, -13,   7, -23,  10,  19,   7,   7,   7,  -3,   7,  27,   6,  -7,   7,
+ -21,   7,  11,   7,  31,   8,   1,   7, -23,   6, -17,   6,  -3,  10,  11,   6,
+ -21,   7, -27,  11, -29,   6,  -1,  10,  15,   8,  27,   7,  17,   6,  17,   7,
+ -13,   8,  13,   6,  21,   7, -29,   6,  19,   7, -25,   6,  11,   9,  29,   7,
+  -7,   8,  27,   7,  29,  10,  -1,   8,  -7,   8,  17,   6,  17,   7, -27,   7,
+ -21,   6,  -9,   6, -27,  12, -23,   6,  19,   6,  13,   6, -11,   7,  27,   6,
+  17,   6,  -7,   6, -25,   7, -29,   6,   9,   7,   7,   6,  13,   6, -25,   6,
+ -19,   6,  13,   6, -11,   6,   5,   8,  19,   6, -21,   8,  23,   7,  27,   6,
+ -13,   6, -19,  11,  29,   7, -15,   6,  -9,   7, -21,  10,  -3,   7,  21,  10,
+  25,   6, -15,   6, -23,   6,  21,   6,   1,   6,  21,   7,  -3,   6,  -3,   7,
+  -7,   6, -23,   7,   7,   8,  15,   9,   5,   6, -11,   6,  21,  11, -27,   7,
+  27,   6, -11,   6,  31,   6, -21,   6,  19,   6,  -7,   8,  -7,  13,  -3,   6,
+  -7,   7,  -3,   6,   1,   6,   7,   8,  19,   8,  11,   9,  -9,   7, -31,  12,
+  25,   6, -17,   9, -15,   7,   5,   6,  25,   7,  -5,   7, -25,   6,  17,   8,
+ -19,   6, -13,   6,  27,   8,   1,   7,  -5,   7,  -1,   6,  21,   6,   3,  10,
+  -3,   1,
+};
+
+/*
+ * Generate table for pairing.
+ *
+ * Calculate the graident (l) and constant (c) at each step of the way.
+ * Sliding window. Start at bottom and stop when bottom bit is one.
+ * Subtract if top bit in window is one.
+ * Width of 6 bits.
+ *
+ * pm     [in]      Point to generate table for.
+ * table  [in]      Generated table.
+ * len    [in,out]  On in, the size of the buffer.
+ *                  On out, length of table generated.
+ * @return  0 on success.
+ *          LENGTH_ONLY_E when table is NULL and only length returned.
+ *          BUFFER_E when len is too small.
+ *          MEMORY_E when dynamic memory allocation fauls.
+ */
+static int sp_Pairing_gen_precomp_x64_1024(ecc_point* pm, byte* table, word32* len)
+{
+    int err = 0;
+    sp_point_1024 p[1];
+    sp_point_1024 c[1];
+    sp_point_1024 neg[1];
+    sp_point_1024 pre_p[16];
+    sp_digit t[6 * 2 * 16];
+    int i, j, k;
+    sp_table_entry_1024* precomp = (sp_table_entry_1024*)table;
+
+    if (table == NULL) {
+        *len = sizeof(sp_table_entry_1024) * 1167;
+        err = LENGTH_ONLY_E;
+    }
+
+    if (err == MP_OKAY) {
+        if (*len < (int)(sizeof(sp_table_entry_1024) * 1167)) {
+            err = BUFFER_E;
+        }
+    }
+
+    if (err == MP_OKAY) {
+        sp_1024_point_from_ecc_point_16(p, pm);
+
+        err = sp_1024_mod_mul_norm_16(p->x, p->x, p1024_mod);
+    }
+    if (err == MP_OKAY) {
+        err = sp_1024_mod_mul_norm_16(p->y, p->y, p1024_mod);
+    }
+    if (err == MP_OKAY) {
+        XMEMCPY(p->z, p1024_norm_mod, sizeof(p1024_norm_mod));
+        neg->infinity = 0;
+        c->infinity = 0;
+
+        /* Generate pre-computation table: 1, 3, ... , 31 */
+        XMEMCPY(&pre_p[0], p, sizeof(sp_point_1024));
+        /* [2]P for adding */
+        sp_1024_proj_point_dbl_16(c, p, t);
+
+        /* 1, 3, ... */
+        for (i = 1; i < 16; i++) {
+            sp_1024_proj_point_add_16(&pre_p[i], &pre_p[i-1], c, t);
+            sp_1024_mont_map_16(&pre_p[i], t);
+        }
+
+        k = 0;
+        j = sp_1024_order_op_pre[0] / 2;
+        XMEMCPY(c, &pre_p[j], sizeof(sp_point_1024));
+
+        for (j = 0; j < sp_1024_order_op_pre[1]; j++) {
+            sp_1024_accum_dbl_calc_lc_16(precomp[k].x, precomp[k].y, c->x, c->y, t);
+            k++;
+            sp_1024_proj_point_dbl_16(c, c, t);
+            sp_1024_mont_map_16(c, t);
+        }
+
+        for (i = 2; i < 290; i += 2) {
+            j = sp_1024_order_op_pre[i];
+            if (j > 0) {
+                sp_1024_accum_add_calc_lc_16(precomp[k].x, precomp[k].y,
+                    pre_p[j/2].x, pre_p[j/2].y, c->x, c->y, t);
+                k++;
+                sp_1024_proj_point_add_16(c, c, &pre_p[j/2], t);
+                sp_1024_mont_map_16(c, t);
+            }
+            else {
+                XMEMCPY(neg->x, pre_p[-j / 2].x, sizeof(pre_p->x));
+                sp_1024_mont_sub_16(neg->y, p1024_mod, pre_p[-j / 2].y,
+                        p1024_mod);
+                XMEMCPY(neg->z, pre_p[-j / 2].z, sizeof(pre_p->z));
+
+                sp_1024_accum_add_calc_lc_16(precomp[k].x, precomp[k].y,
+                    neg->x, neg->y, c->x, c->y, t);
+                k++;
+                sp_1024_proj_point_add_16(c, c, neg, t);
+                sp_1024_mont_map_16(c, t);
+            }
+
+            for (j = 0; j < sp_1024_order_op_pre[i + 1]; j++) {
+                sp_1024_accum_dbl_calc_lc_16(precomp[k].x, precomp[k].y, c->x, c->y, t);
+                k++;
+                sp_1024_proj_point_dbl_16(c, c, t);
+                sp_1024_mont_map_16(c, t);
+            }
+        }
+
+        *len = sizeof(sp_table_entry_1024) * 1167;
+    }
+
+    return err;
+}
+
+/*
+ * Calculate r = pairing <P, Q>.
+ *
+ * That is, multiply base in PF_p[q] by the scalar s, such that s.P = Q.
+ *
+ * Sliding window. Start at bottom and stop when bottom bit is one.
+ * Subtract if top bit in window is one.
+ * Width of 6 bits.
+ * Pre-generate values in window (1, 3, ...) - only V.
+ * Table contains all gradient l and a constant for each point on the path.
+ *
+ * @param  [in]  pm     First point on E(F_p)[q].
+ * @param  [in]  qm     Second point on E(F_p)[q].
+ * @param  [in]  res    Result of calculation.
+ * @param  [in]  table  Precomputed table of values.
+ * @param  [in]  len    Length of precomputed table of values in bytes.
+ * @return  0 on success.
+ * @return  MEMORY_E when dynamic memory allocation fails.
+ */
+static int sp_Pairing_precomp_x64_1024(ecc_point* pm, ecc_point* qm, mp_int* res,
+    byte* table, word32 len)
+{
+    int err = 0;
+    sp_digit vx[2 * 16];
+    sp_digit vy[2 * 16];
+    sp_digit* r = vy;
+    sp_point_1024 p[1];
+    sp_point_1024 q[1];
+    sp_point_1024 c[1];
+    sp_digit pre_vx[16][32];
+    sp_digit pre_vy[16][32];
+    sp_digit pre_nvy[16][32];
+    sp_digit t[6 * 2 * 16];
+    int i, j, k;
+    sp_table_entry_1024* precomp = (sp_table_entry_1024*)table;
+
+    if (len < (int)(sizeof(sp_table_entry_1024) * 1167)) {
+        err = BUFFER_E;
+    }
+
+    if (err == MP_OKAY) {
+        sp_1024_point_from_ecc_point_16(p, pm);
+        sp_1024_point_from_ecc_point_16(q, qm);
+
+        err = sp_1024_mod_mul_norm_16(p->x, p->x, p1024_mod);
+    }
+    if (err == MP_OKAY) {
+        err = sp_1024_mod_mul_norm_16(p->y, p->y, p1024_mod);
+    }
+    if (err == MP_OKAY) {
+        err = sp_1024_mod_mul_norm_16(p->z, p->z, p1024_mod);
+    }
+    if (err == MP_OKAY) {
+        err = sp_1024_mod_mul_norm_16(q->x, q->x, p1024_mod);
+    }
+    if (err == MP_OKAY) {
+        err = sp_1024_mod_mul_norm_16(q->y, q->y, p1024_mod);
+    }
+    if (err == MP_OKAY) {
+        /* Generate pre-computation table: 1, 3, ... , 31 */
+        XMEMSET(pre_vx[0], 0, sizeof(sp_digit) * 2 * 16);
+        pre_vx[0][0] = 1;
+        XMEMSET(pre_vy[0], 0, sizeof(sp_digit) * 2 * 16);
+        sp_1024_mont_sub_16(pre_nvy[0], p1024_mod, pre_vy[0], p1024_mod);
+
+        /* [2]P for adding */
+        XMEMCPY(c, p, sizeof(sp_point_1024));
+        XMEMSET(vx, 0, sizeof(sp_digit) * 2 * 16);
+        vx[0] = 1;
+        XMEMSET(vy, 0, sizeof(sp_digit) * 2 * 16);
+        sp_1024_accumulate_line_dbl_16(vx, vy, c, q, t);
+
+        /* 3, 5, ... */
+        for (i = 1; i < 16; i++) {
+            XMEMCPY(pre_vx[i], pre_vx[i-1], sizeof(sp_digit) * 2 * 16);
+            XMEMCPY(pre_vy[i], pre_vy[i-1], sizeof(sp_digit) * 2 * 16);
+            sp_1024_proj_mul_16(pre_vx[i], pre_vy[i], vx, vy, t);
+            sp_1024_accumulate_line_add_n_16(pre_vx[i], pre_vy[i], c,
+                q, p, t, 0);
+            sp_1024_mont_sub_16(pre_nvy[i], p1024_mod, pre_vy[i],
+                p1024_mod);
+        }
+
+        XMEMCPY(c->z, p1024_norm_mod, sizeof(sp_digit) * 16);
+        c->infinity = 0;
+        j = sp_1024_order_op_pre[0] / 2;
+        XMEMCPY(vx, pre_vx[j], sizeof(sp_digit) * 2 * 16);
+        XMEMCPY(vy, pre_vy[j], sizeof(sp_digit) * 2 * 16);
+
+        k = 0;
+        for (j = 0; j < sp_1024_order_op_pre[1]; j++) {
+            /* Accumulate line into v and double point. */
+            sp_1024_accumulate_line_lc_16(vx, vy, precomp[k].x,
+                precomp[k].y, q, t, 1);
+            k++;
+        }
+
+        for (i = 2; i < 290; i += 2) {
+            sp_1024_accumulate_line_lc_16(vx, vy, precomp[k].x,
+                precomp[k].y, q, t, 0);
+            k++;
+
+            j = sp_1024_order_op_pre[i];
+            if (j > 0) {
+                j /= 2;
+                /* Accumulate line into v. */
+                sp_1024_proj_mul_16(vx, vy, pre_vx[j], pre_vy[j], t);
+            }
+            else {
+                j = -j / 2;
+                /* Accumulate line into v. */
+                sp_1024_proj_mul_16(vx, vy, pre_vx[j], pre_nvy[j], t);
+            }
+
+            for (j = 0; j < sp_1024_order_op_pre[i + 1]; j++) {
+                /* Accumulate line into v and double point. */
+                sp_1024_accumulate_line_lc_16(vx, vy, precomp[k].x,
+                    precomp[k].y, q, t, 1);
+                k++;
+            }
+        }
+
+        /* Final exponentiation */
+        sp_1024_proj_sqr_16(vx, vy, t);
+        sp_1024_proj_sqr_16(vx, vy, t);
+
+        /* Convert from PF_p[q] to F_p */
+        sp_1024_mont_inv_16(vx, vx, t);
+        sp_1024_mont_mul_16(r, vx, vy, p1024_mod, p1024_mp_mod);
+        XMEMSET(r + 16, 0, sizeof(sp_digit) * 16);
+        sp_1024_mont_reduce_16(r, p1024_mod, p1024_mp_mod);
+
+        err = sp_1024_to_mp(r, res);
+    }
+
+    return err;
+}
+
+#endif /* WOLFSSL_SP_SMALL */
+#ifdef HAVE_INTEL_AVX2
+#ifdef WOLFSSL_SP_SMALL
+/*
+ * Generate table for pairing.
+ *
+ * Small implementation does not use a table - returns 0 length.
+ *
+ * pm     [in]      Point to generate table for.
+ * table  [in]      Generated table.
+ * len    [in,out]  On in, the size of the buffer.
+ *                  On out, length of table generated.
+ * @return  0 on success.
+ *          LENGTH_ONLY_E when table is NULL and only length returned.
+ *          BUFFER_E when len is too small.
+ */
+static int sp_Pairing_gen_precomp_avx2_1024(ecc_point* pm, byte* table, word32* len)
+{
+    int err = 0;
+
+    if (table == NULL) {
+        *len = 0;
+        err = LENGTH_ONLY_E;
+    }
+    else if (*len != 0) {
+        err = BUFFER_E;
+    }
+
+    (void)*pm;
+
+    return err;
+}
+
+/*
+ * Calculate r = pairing <P, Q>.
+ *
+ * That is, multiply base in PF_p[q] by the scalar s, such that s.P = Q.
+ *
+ * Small implementation does not use a table - use the normal implementation.
+ *
+ * @param  [in]  pm     First point on E(F_p)[q].
+ * @param  [in]  qm     Second point on E(F_p)[q].
+ * @param  [in]  res    Result of calculation.
+ * @param  [in]  table  Precomputed table of values.
+ * @param  [in]  len    Length of precomputed table of values in bytes.
+ * @return  0 on success.
+ * @return  MEMORY_E when dynamic memory allocation fails.
+ */
+static int sp_Pairing_precomp_avx2_1024(ecc_point* pm, ecc_point* qm, mp_int* res,
+    byte* table, word32 len)
+{
+    (void)table;
+    (void)len;
+    return sp_Pairing_avx2_1024(pm, qm, res);
+}
+
+#else
+/*
+ * Calc l and c for the point when doubling p.
+ *
+ * l = 3 * (p.x^2 - 1) / (2 * p.y)
+ * c = l * p.x - p.y
+ *
+ * @param  [out]  lr  Gradient result - table entry.
+ * @param  [out]  cr  Constant result - table entry.
+ * @param  [in]   px  X-ordinate of point to double.
+ * @param  [in]   py  Y-ordinate of point to double.
+ * @param  [in]   t   SP temporaries (3 used).
+ */
+static void sp_1024_accum_dbl_calc_lc_avx2_16(sp_digit* lr, sp_digit* cr,
+        sp_digit* px, sp_digit* py, sp_digit* t)
+{
+    sp_digit* t1 = t + 0 * 2 * 16;
+    sp_digit* t2 = t + 2 * 2 * 16;
+    sp_digit* l  = t + 4 * 2 * 16;
+
+
+    /* l = 1 / 2 * p.y */
+    sp_1024_mont_dbl_avx2_16(l, py, p1024_mod);
+    sp_1024_mont_inv_avx2_16(l, l, t);
+
+    /* t1 = p.x^2 */
+    sp_1024_mont_sqr_avx2_16(t1, px, p1024_mod, p1024_mp_mod);
+    /* t1 = p.x - 1 */
+    sp_1024_mont_sub_avx2_16(t1, t1, p1024_norm_mod, p1024_mod);
+    /* t1 = 3 * (p.x^2 - 1) */
+    sp_1024_mont_dbl_avx2_16(t2, t1, p1024_mod);
+    sp_1024_mont_add_avx2_16(t1, t1, t2, p1024_mod);
+    /* t1 = 3 * (p.x^2 - 1) / (2 * p.y) */
+    sp_1024_mont_mul_avx2_16(l, l, t1, p1024_mod, p1024_mp_mod);
+    /* t2 = l * p.x */
+    sp_1024_mont_mul_avx2_16(t2, l, px, p1024_mod, p1024_mp_mod);
+    /* c = t2 = l * p.x - p.y */
+    sp_1024_mont_sub_avx2_16(t2, t2, py, p1024_mod);
+
+    XMEMCPY(lr, l, sizeof(sp_digit) * 16);
+    XMEMCPY(cr, t2, sizeof(sp_digit) * 16);
+}
+
+/*
+ * Calc l and c when adding p and c.
+ *
+ * l = (c.y - p.y) / (c.x - p.x)
+ * c = (p.x * c.y - cx * p.y) / (cx - p.x)
+ *
+ * @param  [out]  lr  Gradient result - table entry.
+ * @param  [out]  cr  Constant result - table entry.
+ * @param  [in]   px  X-ordinate of point to add.
+ * @param  [in]   py  Y-ordinate of point to add.
+ * @param  [in]   cx  X-ordinate of current point.
+ * @param  [in]   cy  Y-ordinate of current point.
+ * @param  [in]   t   SP temporaries (3 used).
+ */
+static void sp_1024_accum_add_calc_lc_avx2_16(sp_digit* lr, sp_digit* cr,
+        sp_digit* px, sp_digit* py, sp_digit* cx, sp_digit* cy, sp_digit* t)
+{
+    sp_digit* t1 = t + 0 * 2 * 16;
+    sp_digit* c  = t + 2 * 2 * 16;
+    sp_digit* l  = t + 4 * 2 * 16;
+
+
+    /* l = 1 / (c.x - p.x) */
+    sp_1024_mont_sub_avx2_16(l, cx, px, p1024_mod);
+    sp_1024_mont_inv_avx2_16(l, l, t);
+
+    /* c = p.x * c.y */
+    sp_1024_mont_mul_avx2_16(c, px, cy, p1024_mod, p1024_mp_mod);
+    /* t1 = c.x * p.y */
+    sp_1024_mont_mul_avx2_16(t1, cx, py, p1024_mod, p1024_mp_mod);
+    /* c = (p.x * c.y) - (c.x * p.y) */
+    sp_1024_mont_sub_avx2_16(c, c, t1, p1024_mod);
+    /* c = ((p.x * c.y) - (c.x * p.y)) / (c.x - p.x) */
+    sp_1024_mont_mul_avx2_16(c, c, l, p1024_mod, p1024_mp_mod);
+    /* t1 = c.y - p.y */
+    sp_1024_mont_sub_avx2_16(t1, cy, py, p1024_mod);
+    /* l = (c.y - p.y) / (c.x - p.x) */
+    sp_1024_mont_mul_avx2_16(l, t1, l, p1024_mod, p1024_mp_mod);
+
+    XMEMCPY(lr, l, sizeof(sp_digit) * 16);
+    XMEMCPY(cr, c, sizeof(sp_digit) * 16);
+}
+
+/*
+ * Calculate vx and vy given gradient l and constant c and point q.
+ *
+ * l is a the gradient and is multiplied by q->x.
+ * c is a the constant that is added to the multiplicative result.
+ * q->y is the y-ordinate in result to multiply.
+ *
+ * if dbl
+ *   v*  = v*^2
+ * r.x = l * q.x + c
+ * r.y = q->y
+ * v*  = v* * r*
+ *
+ * @param  [in,out]  vx     X-ordinate of projective value in F*.
+ * @param  [in,out]  vy     Y-ordinate of projective value in F*.
+ * @param  [in]      l      Gradient to multiply with.
+ * @param  [in]      c      Constant to add with.
+ * @param  [in]      q      ECC point - second point on E(F_P^2).
+ * @param  [in]      t      SP temporaries (3 used).
+ * @param  [in]      dbl    Indicates whether this is for doubling. Otherwise
+ *                          adding.
+ */
+static void sp_1024_accumulate_line_lc_avx2_16(sp_digit* vx, sp_digit* vy,
+        sp_digit* l, sp_digit* c, sp_point_1024* q, sp_digit* t, int dbl)
+{
+    sp_digit* rx = t + 4 * 2 * 16;
+
+    /* v = v^2 */
+    if (dbl) {
+        sp_1024_proj_sqr_avx2_16(vx, vy, t);
+    }
+    /* rx = l * q.x + c */
+    sp_1024_mont_mul_avx2_16(rx, l, q->x, p1024_mod, p1024_mp_mod);
+    sp_1024_mont_add_avx2_16(rx, rx, c, p1024_mod);
+    /* v = v^2 * r */
+    sp_1024_proj_mul_avx2_16(vx, vy, rx, q->y, t);
+}
+
+
+/*
+ * Generate table for pairing.
+ *
+ * Calculate the graident (l) and constant (c) at each step of the way.
+ * Sliding window. Start at bottom and stop when bottom bit is one.
+ * Subtract if top bit in window is one.
+ * Width of 6 bits.
+ *
+ * pm     [in]      Point to generate table for.
+ * table  [in]      Generated table.
+ * len    [in,out]  On in, the size of the buffer.
+ *                  On out, length of table generated.
+ * @return  0 on success.
+ *          LENGTH_ONLY_E when table is NULL and only length returned.
+ *          BUFFER_E when len is too small.
+ *          MEMORY_E when dynamic memory allocation fauls.
+ */
+static int sp_Pairing_gen_precomp_avx2_1024(ecc_point* pm, byte* table, word32* len)
+{
+    int err = 0;
+    sp_point_1024 p[1];
+    sp_point_1024 c[1];
+    sp_point_1024 neg[1];
+    sp_point_1024 pre_p[16];
+    sp_digit t[6 * 2 * 16];
+    int i, j, k;
+    sp_table_entry_1024* precomp = (sp_table_entry_1024*)table;
+
+    if (table == NULL) {
+        *len = sizeof(sp_table_entry_1024) * 1167;
+        err = LENGTH_ONLY_E;
+    }
+
+    if (err == MP_OKAY) {
+        if (*len < (int)(sizeof(sp_table_entry_1024) * 1167)) {
+            err = BUFFER_E;
+        }
+    }
+
+    if (err == MP_OKAY) {
+        sp_1024_point_from_ecc_point_16(p, pm);
+
+        err = sp_1024_mod_mul_norm_avx2_16(p->x, p->x, p1024_mod);
+    }
+    if (err == MP_OKAY) {
+        err = sp_1024_mod_mul_norm_avx2_16(p->y, p->y, p1024_mod);
+    }
+    if (err == MP_OKAY) {
+        XMEMCPY(p->z, p1024_norm_mod, sizeof(p1024_norm_mod));
+        neg->infinity = 0;
+        c->infinity = 0;
+
+        /* Generate pre-computation table: 1, 3, ... , 31 */
+        XMEMCPY(&pre_p[0], p, sizeof(sp_point_1024));
+        /* [2]P for adding */
+        sp_1024_proj_point_dbl_avx2_16(c, p, t);
+
+        /* 1, 3, ... */
+        for (i = 1; i < 16; i++) {
+            sp_1024_proj_point_add_avx2_16(&pre_p[i], &pre_p[i-1], c, t);
+            sp_1024_mont_map_avx2_16(&pre_p[i], t);
+        }
+
+        k = 0;
+        j = sp_1024_order_op_pre[0] / 2;
+        XMEMCPY(c, &pre_p[j], sizeof(sp_point_1024));
+
+        for (j = 0; j < sp_1024_order_op_pre[1]; j++) {
+            sp_1024_accum_dbl_calc_lc_avx2_16(precomp[k].x, precomp[k].y, c->x, c->y, t);
+            k++;
+            sp_1024_proj_point_dbl_avx2_16(c, c, t);
+            sp_1024_mont_map_avx2_16(c, t);
+        }
+
+        for (i = 2; i < 290; i += 2) {
+            j = sp_1024_order_op_pre[i];
+            if (j > 0) {
+                sp_1024_accum_add_calc_lc_avx2_16(precomp[k].x, precomp[k].y,
+                    pre_p[j/2].x, pre_p[j/2].y, c->x, c->y, t);
+                k++;
+                sp_1024_proj_point_add_avx2_16(c, c, &pre_p[j/2], t);
+                sp_1024_mont_map_avx2_16(c, t);
+            }
+            else {
+                XMEMCPY(neg->x, pre_p[-j / 2].x, sizeof(pre_p->x));
+                sp_1024_mont_sub_avx2_16(neg->y, p1024_mod, pre_p[-j / 2].y,
+                        p1024_mod);
+                XMEMCPY(neg->z, pre_p[-j / 2].z, sizeof(pre_p->z));
+
+                sp_1024_accum_add_calc_lc_avx2_16(precomp[k].x, precomp[k].y,
+                    neg->x, neg->y, c->x, c->y, t);
+                k++;
+                sp_1024_proj_point_add_avx2_16(c, c, neg, t);
+                sp_1024_mont_map_avx2_16(c, t);
+            }
+
+            for (j = 0; j < sp_1024_order_op_pre[i + 1]; j++) {
+                sp_1024_accum_dbl_calc_lc_avx2_16(precomp[k].x, precomp[k].y, c->x, c->y, t);
+                k++;
+                sp_1024_proj_point_dbl_avx2_16(c, c, t);
+                sp_1024_mont_map_avx2_16(c, t);
+            }
+        }
+
+        *len = sizeof(sp_table_entry_1024) * 1167;
+    }
+
+    return err;
+}
+
+/*
+ * Calculate r = pairing <P, Q>.
+ *
+ * That is, multiply base in PF_p[q] by the scalar s, such that s.P = Q.
+ *
+ * Sliding window. Start at bottom and stop when bottom bit is one.
+ * Subtract if top bit in window is one.
+ * Width of 6 bits.
+ * Pre-generate values in window (1, 3, ...) - only V.
+ * Table contains all gradient l and a constant for each point on the path.
+ *
+ * @param  [in]  pm     First point on E(F_p)[q].
+ * @param  [in]  qm     Second point on E(F_p)[q].
+ * @param  [in]  res    Result of calculation.
+ * @param  [in]  table  Precomputed table of values.
+ * @param  [in]  len    Length of precomputed table of values in bytes.
+ * @return  0 on success.
+ * @return  MEMORY_E when dynamic memory allocation fails.
+ */
+static int sp_Pairing_precomp_avx2_1024(ecc_point* pm, ecc_point* qm, mp_int* res,
+    byte* table, word32 len)
+{
+    int err = 0;
+    sp_digit vx[2 * 16];
+    sp_digit vy[2 * 16];
+    sp_digit* r = vy;
+    sp_point_1024 p[1];
+    sp_point_1024 q[1];
+    sp_point_1024 c[1];
+    sp_digit pre_vx[16][32];
+    sp_digit pre_vy[16][32];
+    sp_digit pre_nvy[16][32];
+    sp_digit t[6 * 2 * 16];
+    int i, j, k;
+    sp_table_entry_1024* precomp = (sp_table_entry_1024*)table;
+
+    if (len < (int)(sizeof(sp_table_entry_1024) * 1167)) {
+        err = BUFFER_E;
+    }
+
+    if (err == MP_OKAY) {
+        sp_1024_point_from_ecc_point_16(p, pm);
+        sp_1024_point_from_ecc_point_16(q, qm);
+
+        err = sp_1024_mod_mul_norm_avx2_16(p->x, p->x, p1024_mod);
+    }
+    if (err == MP_OKAY) {
+        err = sp_1024_mod_mul_norm_avx2_16(p->y, p->y, p1024_mod);
+    }
+    if (err == MP_OKAY) {
+        err = sp_1024_mod_mul_norm_avx2_16(p->z, p->z, p1024_mod);
+    }
+    if (err == MP_OKAY) {
+        err = sp_1024_mod_mul_norm_avx2_16(q->x, q->x, p1024_mod);
+    }
+    if (err == MP_OKAY) {
+        err = sp_1024_mod_mul_norm_avx2_16(q->y, q->y, p1024_mod);
+    }
+    if (err == MP_OKAY) {
+        /* Generate pre-computation table: 1, 3, ... , 31 */
+        XMEMSET(pre_vx[0], 0, sizeof(sp_digit) * 2 * 16);
+        pre_vx[0][0] = 1;
+        XMEMSET(pre_vy[0], 0, sizeof(sp_digit) * 2 * 16);
+        sp_1024_mont_sub_avx2_16(pre_nvy[0], p1024_mod, pre_vy[0], p1024_mod);
+
+        /* [2]P for adding */
+        XMEMCPY(c, p, sizeof(sp_point_1024));
+        XMEMSET(vx, 0, sizeof(sp_digit) * 2 * 16);
+        vx[0] = 1;
+        XMEMSET(vy, 0, sizeof(sp_digit) * 2 * 16);
+        sp_1024_accumulate_line_dbl_avx2_16(vx, vy, c, q, t);
+
+        /* 3, 5, ... */
+        for (i = 1; i < 16; i++) {
+            XMEMCPY(pre_vx[i], pre_vx[i-1], sizeof(sp_digit) * 2 * 16);
+            XMEMCPY(pre_vy[i], pre_vy[i-1], sizeof(sp_digit) * 2 * 16);
+            sp_1024_proj_mul_avx2_16(pre_vx[i], pre_vy[i], vx, vy, t);
+            sp_1024_accumulate_line_add_n_avx2_16(pre_vx[i], pre_vy[i], c,
+                q, p, t, 0);
+            sp_1024_mont_sub_avx2_16(pre_nvy[i], p1024_mod, pre_vy[i],
+                p1024_mod);
+        }
+
+        XMEMCPY(c->z, p1024_norm_mod, sizeof(sp_digit) * 16);
+        c->infinity = 0;
+        j = sp_1024_order_op_pre[0] / 2;
+        XMEMCPY(vx, pre_vx[j], sizeof(sp_digit) * 2 * 16);
+        XMEMCPY(vy, pre_vy[j], sizeof(sp_digit) * 2 * 16);
+
+        k = 0;
+        for (j = 0; j < sp_1024_order_op_pre[1]; j++) {
+            /* Accumulate line into v and double point. */
+            sp_1024_accumulate_line_lc_avx2_16(vx, vy, precomp[k].x,
+                precomp[k].y, q, t, 1);
+            k++;
+        }
+
+        for (i = 2; i < 290; i += 2) {
+            sp_1024_accumulate_line_lc_avx2_16(vx, vy, precomp[k].x,
+                precomp[k].y, q, t, 0);
+            k++;
+
+            j = sp_1024_order_op_pre[i];
+            if (j > 0) {
+                j /= 2;
+                /* Accumulate line into v. */
+                sp_1024_proj_mul_avx2_16(vx, vy, pre_vx[j], pre_vy[j], t);
+            }
+            else {
+                j = -j / 2;
+                /* Accumulate line into v. */
+                sp_1024_proj_mul_avx2_16(vx, vy, pre_vx[j], pre_nvy[j], t);
+            }
+
+            for (j = 0; j < sp_1024_order_op_pre[i + 1]; j++) {
+                /* Accumulate line into v and double point. */
+                sp_1024_accumulate_line_lc_avx2_16(vx, vy, precomp[k].x,
+                    precomp[k].y, q, t, 1);
+                k++;
+            }
+        }
+
+        /* Final exponentiation */
+        sp_1024_proj_sqr_avx2_16(vx, vy, t);
+        sp_1024_proj_sqr_avx2_16(vx, vy, t);
+
+        /* Convert from PF_p[q] to F_p */
+        sp_1024_mont_inv_avx2_16(vx, vx, t);
+        sp_1024_mont_mul_avx2_16(r, vx, vy, p1024_mod, p1024_mp_mod);
+        XMEMSET(r + 16, 0, sizeof(sp_digit) * 16);
+        sp_1024_mont_reduce_avx2_16(r, p1024_mod, p1024_mp_mod);
+
+        err = sp_1024_to_mp(r, res);
+    }
+
+    return err;
+}
+
+#endif /* WOLFSSL_SP_SMALL */
+#endif /* HAVE_INTEL_AVX2 */
+/*
+ * Generate table for pairing.
+ *
+ * pm     [in]   Point to generate table for.
+ * table  [in]   Generated table.
+ * len    [in,out]  On in, the size of the buffer.
+ *                  On out, length of table generated.
+ * @return  0 on success.
+ *          Otherwise failure.
+ */
+int sp_Pairing_gen_precomp_1024(ecc_point* pm, byte* table, word32* len)
+{
+    int err;
+#ifdef HAVE_INTEL_AVX2
+    word32 cpuid_flags = cpuid_get_flags();
+#endif
+
+#ifdef HAVE_INTEL_AVX2
+    if (IS_INTEL_BMI2(cpuid_flags) && IS_INTEL_ADX(cpuid_flags)) {
+        err = sp_Pairing_gen_precomp_avx2_1024(pm, table, len);
+    }
+    else
+#endif
+    {
+        err = sp_Pairing_gen_precomp_x64_1024(pm, table, len);
+    }
+
+   return err;
+}
+
+/*
+ * Calculate r = pairing <P, Q>.
+ *
+ * That is, multiply base in PF_p[q] by the scalar s, such that s.P = Q.
+ *
+ * @param  [in]  key  SAKKE key.
+ * @param  [in]  p    First point on E(F_p)[q].
+ * @param  [in]  q    Second point on E(F_p)[q].
+ * @param  [in]  r    Result of calculation.
+ * @return  0 on success.
+ * @return  MEMORY_E when dynamic memory allocation fails.
+ * @return  Other -ve value on internal failure.
+ */
+int sp_Pairing_precomp_1024(ecc_point* pm, ecc_point* qm, mp_int* res,
+    byte* table, word32 len)
+{
+    int err;
+#ifdef HAVE_INTEL_AVX2
+    word32 cpuid_flags = cpuid_get_flags();
+#endif
+
+#ifdef HAVE_INTEL_AVX2
+    if (IS_INTEL_BMI2(cpuid_flags) && IS_INTEL_ADX(cpuid_flags)) {
+        err = sp_Pairing_precomp_avx2_1024(pm, qm, res, table, len);
+    }
+    else
+#endif
+    {
+        err = sp_Pairing_precomp_x64_1024(pm, qm, res, table, len);
+    }
+
+   return err;
+}
+
+#endif /* WOLFSSL_SP_1024 */
 #endif /* WOLFSSL_HAVE_SP_ECC */
 #endif /* WOLFSSL_SP_X86_64_ASM */
 #endif /* WOLFSSL_HAVE_SP_RSA || WOLFSSL_HAVE_SP_DH || WOLFSSL_HAVE_SP_ECC */

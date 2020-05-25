@@ -141,6 +141,19 @@ int sp_ecc_proj_dbl_point_384(mp_int* pX, mp_int* pY, mp_int* pZ,
 int sp_ecc_map_384(mp_int* pX, mp_int* pY, mp_int* pZ);
 int sp_ecc_uncompress_384(mp_int* xm, int odd, mp_int* ym);
 
+int sp_ecc_mulmod_1024(mp_int* km, ecc_point* gm, ecc_point* rm, int map,
+                       void* heap);
+int sp_ecc_mulmod_base_1024(mp_int* km, ecc_point* rm, int map, void* heap);
+int sp_ecc_gen_table_1024(ecc_point* gm, byte* table, word32* len, void* heap);
+int sp_ecc_mulmod_table_1024(mp_int* km, ecc_point* gm, byte* table,
+                             ecc_point* r, int map, void* heap);
+int sp_ModExp_Fp_star_1024(mp_int* base, mp_int* exp, mp_int* res);
+int sp_Pairing_1024(ecc_point* p, ecc_point* q, mp_int* res);
+int sp_Pairing_gen_precomp_1024(ecc_point* p, byte* table, word32* len);
+int sp_Pairing_precomp_1024(ecc_point* p, ecc_point* q, mp_int* res,
+                            byte* table, word32 len);
+
+
 #endif /*ifdef WOLFSSL_HAVE_SP_ECC */
 
 

@@ -76,7 +76,9 @@
 
 
 /* Determine max ECC bits based on enabled curves */
-#if defined(HAVE_ECC521) || defined(HAVE_ALL_CURVES)
+#if defined(WOLFCRYPT_HAVE_SAKKE)
+    #define MAX_ECC_BITS    1024
+#elif defined(HAVE_ECC521) || defined(HAVE_ALL_CURVES)
     #define MAX_ECC_BITS    521
 #elif defined(HAVE_ECC512)
     #define MAX_ECC_BITS    512
@@ -119,10 +121,15 @@ enum {
     ECC_PRIVATEKEY_ONLY = 3,
     ECC_MAXNAME     = 16,   /* MAX CURVE NAME LENGTH */
     SIG_HEADER_SZ   =  7,   /* ECC signature header size (30 81 87 02 42 [R] 02 42 [S]) */
-    ECC_BUFSIZE     = 256,  /* for exported keys temp buffer */
+    ECC_BUFSIZE     = 257,  /* for exported keys temp buffer */
     ECC_MINSIZE     = 20,   /* MIN Private Key size */
+#if defined(WOLFCRYPT_HAVE_SAKKE)
+    ECC_MAXSIZE     = 128,  /* MAX Private Key size */
+    ECC_MAXSIZE_GEN = 128,  /* MAX Buffer size required when generating ECC keys*/
+#else
     ECC_MAXSIZE     = 66,   /* MAX Private Key size */
     ECC_MAXSIZE_GEN = 74,   /* MAX Buffer size required when generating ECC keys*/
+#endif
     ECC_MAX_OID_LEN = 16,
     ECC_MAX_SIG_SIZE= ((MAX_ECC_BYTES * 2) + ECC_MAX_PAD_SZ + SIG_HEADER_SZ),
 
@@ -198,6 +205,10 @@ typedef enum ecc_curve_id {
 #endif
 #ifdef HAVE_CURVE448
     ECC_X448,
+#endif
+
+#ifdef WOLFCRYPT_HAVE_SAKKE
+    ECC_SAKKE_1,
 #endif
 
 #ifdef WOLFSSL_CUSTOM_CURVES
@@ -565,6 +576,8 @@ WOLFSSL_API
 void wc_ecc_del_point(ecc_point* p);
 WOLFSSL_API
 void wc_ecc_del_point_h(ecc_point* p, void* h);
+WOLFSSL_API
+void wc_ecc_forcezero_point(ecc_point* p);
 WOLFSSL_API
 int wc_ecc_copy_point(ecc_point* p, ecc_point *r);
 WOLFSSL_API

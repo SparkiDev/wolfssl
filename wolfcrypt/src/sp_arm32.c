@@ -3985,8 +3985,8 @@ SP_NOINLINE static void sp_2048_mont_reduce_32(sp_digit* a, const sp_digit* m,
  * m   Modulus (prime).
  * mp  Montogmery mulitplier.
  */
-static void sp_2048_mont_mul_32(sp_digit* r, const sp_digit* a, const sp_digit* b,
-        const sp_digit* m, sp_digit mp)
+static void sp_2048_mont_mul_32(sp_digit* r, const sp_digit* a,
+        const sp_digit* b, const sp_digit* m, sp_digit mp)
 {
     sp_2048_mul_32(r, a, b);
     sp_2048_mont_reduce_32(r, m, mp);
@@ -3999,8 +3999,8 @@ static void sp_2048_mont_mul_32(sp_digit* r, const sp_digit* a, const sp_digit* 
  * m   Modulus (prime).
  * mp  Montogmery mulitplier.
  */
-static void sp_2048_mont_sqr_32(sp_digit* r, const sp_digit* a, const sp_digit* m,
-        sp_digit mp)
+static void sp_2048_mont_sqr_32(sp_digit* r, const sp_digit* a,
+        const sp_digit* m, sp_digit mp)
 {
     sp_2048_sqr_32(r, a);
     sp_2048_mont_reduce_32(r, m, mp);
@@ -6111,8 +6111,8 @@ SP_NOINLINE static void sp_2048_mont_reduce_64(sp_digit* a, const sp_digit* m,
  * m   Modulus (prime).
  * mp  Montogmery mulitplier.
  */
-static void sp_2048_mont_mul_64(sp_digit* r, const sp_digit* a, const sp_digit* b,
-        const sp_digit* m, sp_digit mp)
+static void sp_2048_mont_mul_64(sp_digit* r, const sp_digit* a,
+        const sp_digit* b, const sp_digit* m, sp_digit mp)
 {
     sp_2048_mul_64(r, a, b);
     sp_2048_mont_reduce_64(r, m, mp);
@@ -6125,8 +6125,8 @@ static void sp_2048_mont_mul_64(sp_digit* r, const sp_digit* a, const sp_digit* 
  * m   Modulus (prime).
  * mp  Montogmery mulitplier.
  */
-static void sp_2048_mont_sqr_64(sp_digit* r, const sp_digit* a, const sp_digit* m,
-        sp_digit mp)
+static void sp_2048_mont_sqr_64(sp_digit* r, const sp_digit* a,
+        const sp_digit* m, sp_digit mp)
 {
     sp_2048_sqr_64(r, a);
     sp_2048_mont_reduce_64(r, m, mp);
@@ -14440,8 +14440,8 @@ SP_NOINLINE static void sp_3072_mont_reduce_48(sp_digit* a, const sp_digit* m,
  * m   Modulus (prime).
  * mp  Montogmery mulitplier.
  */
-static void sp_3072_mont_mul_48(sp_digit* r, const sp_digit* a, const sp_digit* b,
-        const sp_digit* m, sp_digit mp)
+static void sp_3072_mont_mul_48(sp_digit* r, const sp_digit* a,
+        const sp_digit* b, const sp_digit* m, sp_digit mp)
 {
     sp_3072_mul_48(r, a, b);
     sp_3072_mont_reduce_48(r, m, mp);
@@ -14454,8 +14454,8 @@ static void sp_3072_mont_mul_48(sp_digit* r, const sp_digit* a, const sp_digit* 
  * m   Modulus (prime).
  * mp  Montogmery mulitplier.
  */
-static void sp_3072_mont_sqr_48(sp_digit* r, const sp_digit* a, const sp_digit* m,
-        sp_digit mp)
+static void sp_3072_mont_sqr_48(sp_digit* r, const sp_digit* a,
+        const sp_digit* m, sp_digit mp)
 {
     sp_3072_sqr_48(r, a);
     sp_3072_mont_reduce_48(r, m, mp);
@@ -17318,8 +17318,8 @@ SP_NOINLINE static void sp_3072_mont_reduce_96(sp_digit* a, const sp_digit* m,
  * m   Modulus (prime).
  * mp  Montogmery mulitplier.
  */
-static void sp_3072_mont_mul_96(sp_digit* r, const sp_digit* a, const sp_digit* b,
-        const sp_digit* m, sp_digit mp)
+static void sp_3072_mont_mul_96(sp_digit* r, const sp_digit* a,
+        const sp_digit* b, const sp_digit* m, sp_digit mp)
 {
     sp_3072_mul_96(r, a, b);
     sp_3072_mont_reduce_96(r, m, mp);
@@ -17332,8 +17332,8 @@ static void sp_3072_mont_mul_96(sp_digit* r, const sp_digit* a, const sp_digit* 
  * m   Modulus (prime).
  * mp  Montogmery mulitplier.
  */
-static void sp_3072_mont_sqr_96(sp_digit* r, const sp_digit* a, const sp_digit* m,
-        sp_digit mp)
+static void sp_3072_mont_sqr_96(sp_digit* r, const sp_digit* a,
+        const sp_digit* m, sp_digit mp)
 {
     sp_3072_sqr_96(r, a);
     sp_3072_mont_reduce_96(r, m, mp);
@@ -24953,8 +24953,8 @@ SP_NOINLINE static void sp_4096_mont_reduce_128(sp_digit* a, const sp_digit* m,
  * m   Modulus (prime).
  * mp  Montogmery mulitplier.
  */
-static void sp_4096_mont_mul_128(sp_digit* r, const sp_digit* a, const sp_digit* b,
-        const sp_digit* m, sp_digit mp)
+static void sp_4096_mont_mul_128(sp_digit* r, const sp_digit* a,
+        const sp_digit* b, const sp_digit* m, sp_digit mp)
 {
     sp_4096_mul_128(r, a, b);
     sp_4096_mont_reduce_128(r, m, mp);
@@ -24967,8 +24967,8 @@ static void sp_4096_mont_mul_128(sp_digit* r, const sp_digit* a, const sp_digit*
  * m   Modulus (prime).
  * mp  Montogmery mulitplier.
  */
-static void sp_4096_mont_sqr_128(sp_digit* r, const sp_digit* a, const sp_digit* m,
-        sp_digit mp)
+static void sp_4096_mont_sqr_128(sp_digit* r, const sp_digit* a,
+        const sp_digit* m, sp_digit mp)
 {
     sp_4096_sqr_128(r, a);
     sp_4096_mont_reduce_128(r, m, mp);
@@ -28677,12 +28677,1201 @@ int sp_DhExp_4096(mp_int* base, const byte* exp, word32 expLen,
 
 /* Point structure to use. */
 typedef struct sp_point_256 {
+    /* X ordinate of point. */
     sp_digit x[2 * 8];
+    /* Y ordinate of point. */
     sp_digit y[2 * 8];
+    /* Z ordinate of point. */
     sp_digit z[2 * 8];
+    /* Indicates point is at infinity. */
     int infinity;
 } sp_point_256;
 
+#ifdef WOLFSSL_SP_SMALL
+/* Multiply a and b into r. (r = a * b)
+ *
+ * r  A single precision integer.
+ * a  A single precision integer.
+ * b  A single precision integer.
+ */
+static void sp_256_mul_8(sp_digit* r, const sp_digit* a, const sp_digit* b)
+{
+    __asm__ __volatile__ (
+        "sub	sp, sp, #64\n\t"
+        "mov	r5, #0\n\t"
+        "mov	r6, #0\n\t"
+        "mov	r7, #0\n\t"
+        "mov	r8, #0\n\t"
+        "\n1:\n\t"
+        "subs	r3, r5, #28\n\t"
+        "it	cc\n\t"
+        "movcc	r3, #0\n\t"
+        "sub	r4, r5, r3\n\t"
+        "\n2:\n\t"
+        "ldr	r14, [%[a], r3]\n\t"
+        "ldr	r12, [%[b], r4]\n\t"
+        "umull	r9, r10, r14, r12\n\t"
+        "adds	r6, r6, r9\n\t"
+        "adcs	r7, r7, r10\n\t"
+        "adc	r8, r8, #0\n\t"
+        "add	r3, r3, #4\n\t"
+        "sub	r4, r4, #4\n\t"
+        "cmp	r3, #32\n\t"
+        "beq	3f\n\t"
+        "cmp	r3, r5\n\t"
+        "ble	2b\n\t"
+        "\n3:\n\t"
+        "str	r6, [sp, r5]\n\t"
+        "mov	r6, r7\n\t"
+        "mov	r7, r8\n\t"
+        "mov	r8, #0\n\t"
+        "add	r5, r5, #4\n\t"
+        "cmp	r5, #56\n\t"
+        "ble	1b\n\t"
+        "str	r6, [sp, r5]\n\t"
+        "\n4:\n\t"
+        "ldr	r6, [sp, #0]\n\t"
+        "ldr	r7, [sp, #4]\n\t"
+        "ldr	r8, [sp, #8]\n\t"
+        "ldr	r3, [sp, #12]\n\t"
+        "str	r6, [%[r], #0]\n\t"
+        "str	r7, [%[r], #4]\n\t"
+        "str	r8, [%[r], #8]\n\t"
+        "str	r3, [%[r], #12]\n\t"
+        "add	sp, sp, #16\n\t"
+        "add	%[r], %[r], #16\n\t"
+        "subs	r5, r5, #16\n\t"
+        "bgt	4b\n\t"
+        : [r] "+r" (r)
+        : [a] "r" (a), [b] "r" (b)
+        : "memory", "r3", "r4", "r5", "r6", "r7", "r8", "r9", "r10", "r14", "r12"
+    );
+}
+
+#else
+/* Multiply a and b into r. (r = a * b)
+ *
+ * r  A single precision integer.
+ * a  A single precision integer.
+ * b  A single precision integer.
+ */
+static void sp_256_mul_8(sp_digit* r, const sp_digit* a, const sp_digit* b)
+{
+    __asm__ __volatile__ (
+        "sub	sp, sp, #32\n\t"
+        "mov	r10, #0\n\t"
+        "#  A[0] * B[0]\n\t"
+        "ldr	r8, [%[a], #0]\n\t"
+        "ldr	r9, [%[b], #0]\n\t"
+        "umull	r3, r4, r8, r9\n\t"
+        "mov	r5, #0\n\t"
+        "str	r3, [sp]\n\t"
+        "#  A[0] * B[1]\n\t"
+        "ldr	r8, [%[a], #0]\n\t"
+        "ldr	r9, [%[b], #4]\n\t"
+        "umull	r6, r7, r8, r9\n\t"
+        "adds	r4, r4, r6\n\t"
+        "adcs	r5, r5, r7\n\t"
+        "adc	r3, r10, r10\n\t"
+        "#  A[1] * B[0]\n\t"
+        "ldr	r8, [%[a], #4]\n\t"
+        "ldr	r9, [%[b], #0]\n\t"
+        "umull	r6, r7, r8, r9\n\t"
+        "adds	r4, r4, r6\n\t"
+        "adcs	r5, r5, r7\n\t"
+        "adc	r3, r3, r10\n\t"
+        "str	r4, [sp, #4]\n\t"
+        "#  A[0] * B[2]\n\t"
+        "ldr	r8, [%[a], #0]\n\t"
+        "ldr	r9, [%[b], #8]\n\t"
+        "umull	r6, r7, r8, r9\n\t"
+        "adds	r5, r5, r6\n\t"
+        "adcs	r3, r3, r7\n\t"
+        "adc	r4, r10, r10\n\t"
+        "#  A[1] * B[1]\n\t"
+        "ldr	r8, [%[a], #4]\n\t"
+        "ldr	r9, [%[b], #4]\n\t"
+        "umull	r6, r7, r8, r9\n\t"
+        "adds	r5, r5, r6\n\t"
+        "adcs	r3, r3, r7\n\t"
+        "adc	r4, r4, r10\n\t"
+        "#  A[2] * B[0]\n\t"
+        "ldr	r8, [%[a], #8]\n\t"
+        "ldr	r9, [%[b], #0]\n\t"
+        "umull	r6, r7, r8, r9\n\t"
+        "adds	r5, r5, r6\n\t"
+        "adcs	r3, r3, r7\n\t"
+        "adc	r4, r4, r10\n\t"
+        "str	r5, [sp, #8]\n\t"
+        "#  A[0] * B[3]\n\t"
+        "ldr	r8, [%[a], #0]\n\t"
+        "ldr	r9, [%[b], #12]\n\t"
+        "umull	r6, r7, r8, r9\n\t"
+        "adds	r3, r3, r6\n\t"
+        "adcs	r4, r4, r7\n\t"
+        "adc	r5, r10, r10\n\t"
+        "#  A[1] * B[2]\n\t"
+        "ldr	r8, [%[a], #4]\n\t"
+        "ldr	r9, [%[b], #8]\n\t"
+        "umull	r6, r7, r8, r9\n\t"
+        "adds	r3, r3, r6\n\t"
+        "adcs	r4, r4, r7\n\t"
+        "adc	r5, r5, r10\n\t"
+        "#  A[2] * B[1]\n\t"
+        "ldr	r8, [%[a], #8]\n\t"
+        "ldr	r9, [%[b], #4]\n\t"
+        "umull	r6, r7, r8, r9\n\t"
+        "adds	r3, r3, r6\n\t"
+        "adcs	r4, r4, r7\n\t"
+        "adc	r5, r5, r10\n\t"
+        "#  A[3] * B[0]\n\t"
+        "ldr	r8, [%[a], #12]\n\t"
+        "ldr	r9, [%[b], #0]\n\t"
+        "umull	r6, r7, r8, r9\n\t"
+        "adds	r3, r3, r6\n\t"
+        "adcs	r4, r4, r7\n\t"
+        "adc	r5, r5, r10\n\t"
+        "str	r3, [sp, #12]\n\t"
+        "#  A[0] * B[4]\n\t"
+        "ldr	r8, [%[a], #0]\n\t"
+        "ldr	r9, [%[b], #16]\n\t"
+        "umull	r6, r7, r8, r9\n\t"
+        "adds	r4, r4, r6\n\t"
+        "adcs	r5, r5, r7\n\t"
+        "adc	r3, r10, r10\n\t"
+        "#  A[1] * B[3]\n\t"
+        "ldr	r8, [%[a], #4]\n\t"
+        "ldr	r9, [%[b], #12]\n\t"
+        "umull	r6, r7, r8, r9\n\t"
+        "adds	r4, r4, r6\n\t"
+        "adcs	r5, r5, r7\n\t"
+        "adc	r3, r3, r10\n\t"
+        "#  A[2] * B[2]\n\t"
+        "ldr	r8, [%[a], #8]\n\t"
+        "ldr	r9, [%[b], #8]\n\t"
+        "umull	r6, r7, r8, r9\n\t"
+        "adds	r4, r4, r6\n\t"
+        "adcs	r5, r5, r7\n\t"
+        "adc	r3, r3, r10\n\t"
+        "#  A[3] * B[1]\n\t"
+        "ldr	r8, [%[a], #12]\n\t"
+        "ldr	r9, [%[b], #4]\n\t"
+        "umull	r6, r7, r8, r9\n\t"
+        "adds	r4, r4, r6\n\t"
+        "adcs	r5, r5, r7\n\t"
+        "adc	r3, r3, r10\n\t"
+        "#  A[4] * B[0]\n\t"
+        "ldr	r8, [%[a], #16]\n\t"
+        "ldr	r9, [%[b], #0]\n\t"
+        "umull	r6, r7, r8, r9\n\t"
+        "adds	r4, r4, r6\n\t"
+        "adcs	r5, r5, r7\n\t"
+        "adc	r3, r3, r10\n\t"
+        "str	r4, [sp, #16]\n\t"
+        "#  A[0] * B[5]\n\t"
+        "ldr	r8, [%[a], #0]\n\t"
+        "ldr	r9, [%[b], #20]\n\t"
+        "umull	r6, r7, r8, r9\n\t"
+        "adds	r5, r5, r6\n\t"
+        "adcs	r3, r3, r7\n\t"
+        "adc	r4, r10, r10\n\t"
+        "#  A[1] * B[4]\n\t"
+        "ldr	r8, [%[a], #4]\n\t"
+        "ldr	r9, [%[b], #16]\n\t"
+        "umull	r6, r7, r8, r9\n\t"
+        "adds	r5, r5, r6\n\t"
+        "adcs	r3, r3, r7\n\t"
+        "adc	r4, r4, r10\n\t"
+        "#  A[2] * B[3]\n\t"
+        "ldr	r8, [%[a], #8]\n\t"
+        "ldr	r9, [%[b], #12]\n\t"
+        "umull	r6, r7, r8, r9\n\t"
+        "adds	r5, r5, r6\n\t"
+        "adcs	r3, r3, r7\n\t"
+        "adc	r4, r4, r10\n\t"
+        "#  A[3] * B[2]\n\t"
+        "ldr	r8, [%[a], #12]\n\t"
+        "ldr	r9, [%[b], #8]\n\t"
+        "umull	r6, r7, r8, r9\n\t"
+        "adds	r5, r5, r6\n\t"
+        "adcs	r3, r3, r7\n\t"
+        "adc	r4, r4, r10\n\t"
+        "#  A[4] * B[1]\n\t"
+        "ldr	r8, [%[a], #16]\n\t"
+        "ldr	r9, [%[b], #4]\n\t"
+        "umull	r6, r7, r8, r9\n\t"
+        "adds	r5, r5, r6\n\t"
+        "adcs	r3, r3, r7\n\t"
+        "adc	r4, r4, r10\n\t"
+        "#  A[5] * B[0]\n\t"
+        "ldr	r8, [%[a], #20]\n\t"
+        "ldr	r9, [%[b], #0]\n\t"
+        "umull	r6, r7, r8, r9\n\t"
+        "adds	r5, r5, r6\n\t"
+        "adcs	r3, r3, r7\n\t"
+        "adc	r4, r4, r10\n\t"
+        "str	r5, [sp, #20]\n\t"
+        "#  A[0] * B[6]\n\t"
+        "ldr	r8, [%[a], #0]\n\t"
+        "ldr	r9, [%[b], #24]\n\t"
+        "umull	r6, r7, r8, r9\n\t"
+        "adds	r3, r3, r6\n\t"
+        "adcs	r4, r4, r7\n\t"
+        "adc	r5, r10, r10\n\t"
+        "#  A[1] * B[5]\n\t"
+        "ldr	r8, [%[a], #4]\n\t"
+        "ldr	r9, [%[b], #20]\n\t"
+        "umull	r6, r7, r8, r9\n\t"
+        "adds	r3, r3, r6\n\t"
+        "adcs	r4, r4, r7\n\t"
+        "adc	r5, r5, r10\n\t"
+        "#  A[2] * B[4]\n\t"
+        "ldr	r8, [%[a], #8]\n\t"
+        "ldr	r9, [%[b], #16]\n\t"
+        "umull	r6, r7, r8, r9\n\t"
+        "adds	r3, r3, r6\n\t"
+        "adcs	r4, r4, r7\n\t"
+        "adc	r5, r5, r10\n\t"
+        "#  A[3] * B[3]\n\t"
+        "ldr	r8, [%[a], #12]\n\t"
+        "ldr	r9, [%[b], #12]\n\t"
+        "umull	r6, r7, r8, r9\n\t"
+        "adds	r3, r3, r6\n\t"
+        "adcs	r4, r4, r7\n\t"
+        "adc	r5, r5, r10\n\t"
+        "#  A[4] * B[2]\n\t"
+        "ldr	r8, [%[a], #16]\n\t"
+        "ldr	r9, [%[b], #8]\n\t"
+        "umull	r6, r7, r8, r9\n\t"
+        "adds	r3, r3, r6\n\t"
+        "adcs	r4, r4, r7\n\t"
+        "adc	r5, r5, r10\n\t"
+        "#  A[5] * B[1]\n\t"
+        "ldr	r8, [%[a], #20]\n\t"
+        "ldr	r9, [%[b], #4]\n\t"
+        "umull	r6, r7, r8, r9\n\t"
+        "adds	r3, r3, r6\n\t"
+        "adcs	r4, r4, r7\n\t"
+        "adc	r5, r5, r10\n\t"
+        "#  A[6] * B[0]\n\t"
+        "ldr	r8, [%[a], #24]\n\t"
+        "ldr	r9, [%[b], #0]\n\t"
+        "umull	r6, r7, r8, r9\n\t"
+        "adds	r3, r3, r6\n\t"
+        "adcs	r4, r4, r7\n\t"
+        "adc	r5, r5, r10\n\t"
+        "str	r3, [sp, #24]\n\t"
+        "#  A[0] * B[7]\n\t"
+        "ldr	r8, [%[a], #0]\n\t"
+        "ldr	r9, [%[b], #28]\n\t"
+        "umull	r6, r7, r8, r9\n\t"
+        "adds	r4, r4, r6\n\t"
+        "adcs	r5, r5, r7\n\t"
+        "adc	r3, r10, r10\n\t"
+        "#  A[1] * B[6]\n\t"
+        "ldr	r8, [%[a], #4]\n\t"
+        "ldr	r9, [%[b], #24]\n\t"
+        "umull	r6, r7, r8, r9\n\t"
+        "adds	r4, r4, r6\n\t"
+        "adcs	r5, r5, r7\n\t"
+        "adc	r3, r3, r10\n\t"
+        "#  A[2] * B[5]\n\t"
+        "ldr	r8, [%[a], #8]\n\t"
+        "ldr	r9, [%[b], #20]\n\t"
+        "umull	r6, r7, r8, r9\n\t"
+        "adds	r4, r4, r6\n\t"
+        "adcs	r5, r5, r7\n\t"
+        "adc	r3, r3, r10\n\t"
+        "#  A[3] * B[4]\n\t"
+        "ldr	r8, [%[a], #12]\n\t"
+        "ldr	r9, [%[b], #16]\n\t"
+        "umull	r6, r7, r8, r9\n\t"
+        "adds	r4, r4, r6\n\t"
+        "adcs	r5, r5, r7\n\t"
+        "adc	r3, r3, r10\n\t"
+        "#  A[4] * B[3]\n\t"
+        "ldr	r8, [%[a], #16]\n\t"
+        "ldr	r9, [%[b], #12]\n\t"
+        "umull	r6, r7, r8, r9\n\t"
+        "adds	r4, r4, r6\n\t"
+        "adcs	r5, r5, r7\n\t"
+        "adc	r3, r3, r10\n\t"
+        "#  A[5] * B[2]\n\t"
+        "ldr	r8, [%[a], #20]\n\t"
+        "ldr	r9, [%[b], #8]\n\t"
+        "umull	r6, r7, r8, r9\n\t"
+        "adds	r4, r4, r6\n\t"
+        "adcs	r5, r5, r7\n\t"
+        "adc	r3, r3, r10\n\t"
+        "#  A[6] * B[1]\n\t"
+        "ldr	r8, [%[a], #24]\n\t"
+        "ldr	r9, [%[b], #4]\n\t"
+        "umull	r6, r7, r8, r9\n\t"
+        "adds	r4, r4, r6\n\t"
+        "adcs	r5, r5, r7\n\t"
+        "adc	r3, r3, r10\n\t"
+        "#  A[7] * B[0]\n\t"
+        "ldr	r8, [%[a], #28]\n\t"
+        "ldr	r9, [%[b], #0]\n\t"
+        "umull	r6, r7, r8, r9\n\t"
+        "adds	r4, r4, r6\n\t"
+        "adcs	r5, r5, r7\n\t"
+        "adc	r3, r3, r10\n\t"
+        "str	r4, [sp, #28]\n\t"
+        "#  A[1] * B[7]\n\t"
+        "ldr	r8, [%[a], #4]\n\t"
+        "ldr	r9, [%[b], #28]\n\t"
+        "umull	r6, r7, r8, r9\n\t"
+        "adds	r5, r5, r6\n\t"
+        "adcs	r3, r3, r7\n\t"
+        "adc	r4, r10, r10\n\t"
+        "#  A[2] * B[6]\n\t"
+        "ldr	r8, [%[a], #8]\n\t"
+        "ldr	r9, [%[b], #24]\n\t"
+        "umull	r6, r7, r8, r9\n\t"
+        "adds	r5, r5, r6\n\t"
+        "adcs	r3, r3, r7\n\t"
+        "adc	r4, r4, r10\n\t"
+        "#  A[3] * B[5]\n\t"
+        "ldr	r8, [%[a], #12]\n\t"
+        "ldr	r9, [%[b], #20]\n\t"
+        "umull	r6, r7, r8, r9\n\t"
+        "adds	r5, r5, r6\n\t"
+        "adcs	r3, r3, r7\n\t"
+        "adc	r4, r4, r10\n\t"
+        "#  A[4] * B[4]\n\t"
+        "ldr	r8, [%[a], #16]\n\t"
+        "ldr	r9, [%[b], #16]\n\t"
+        "umull	r6, r7, r8, r9\n\t"
+        "adds	r5, r5, r6\n\t"
+        "adcs	r3, r3, r7\n\t"
+        "adc	r4, r4, r10\n\t"
+        "#  A[5] * B[3]\n\t"
+        "ldr	r8, [%[a], #20]\n\t"
+        "ldr	r9, [%[b], #12]\n\t"
+        "umull	r6, r7, r8, r9\n\t"
+        "adds	r5, r5, r6\n\t"
+        "adcs	r3, r3, r7\n\t"
+        "adc	r4, r4, r10\n\t"
+        "#  A[6] * B[2]\n\t"
+        "ldr	r8, [%[a], #24]\n\t"
+        "ldr	r9, [%[b], #8]\n\t"
+        "umull	r6, r7, r8, r9\n\t"
+        "adds	r5, r5, r6\n\t"
+        "adcs	r3, r3, r7\n\t"
+        "adc	r4, r4, r10\n\t"
+        "#  A[7] * B[1]\n\t"
+        "ldr	r8, [%[a], #28]\n\t"
+        "ldr	r9, [%[b], #4]\n\t"
+        "umull	r6, r7, r8, r9\n\t"
+        "adds	r5, r5, r6\n\t"
+        "adcs	r3, r3, r7\n\t"
+        "adc	r4, r4, r10\n\t"
+        "str	r5, [%[r], #32]\n\t"
+        "#  A[2] * B[7]\n\t"
+        "ldr	r8, [%[a], #8]\n\t"
+        "ldr	r9, [%[b], #28]\n\t"
+        "umull	r6, r7, r8, r9\n\t"
+        "adds	r3, r3, r6\n\t"
+        "adcs	r4, r4, r7\n\t"
+        "adc	r5, r10, r10\n\t"
+        "#  A[3] * B[6]\n\t"
+        "ldr	r8, [%[a], #12]\n\t"
+        "ldr	r9, [%[b], #24]\n\t"
+        "umull	r6, r7, r8, r9\n\t"
+        "adds	r3, r3, r6\n\t"
+        "adcs	r4, r4, r7\n\t"
+        "adc	r5, r5, r10\n\t"
+        "#  A[4] * B[5]\n\t"
+        "ldr	r8, [%[a], #16]\n\t"
+        "ldr	r9, [%[b], #20]\n\t"
+        "umull	r6, r7, r8, r9\n\t"
+        "adds	r3, r3, r6\n\t"
+        "adcs	r4, r4, r7\n\t"
+        "adc	r5, r5, r10\n\t"
+        "#  A[5] * B[4]\n\t"
+        "ldr	r8, [%[a], #20]\n\t"
+        "ldr	r9, [%[b], #16]\n\t"
+        "umull	r6, r7, r8, r9\n\t"
+        "adds	r3, r3, r6\n\t"
+        "adcs	r4, r4, r7\n\t"
+        "adc	r5, r5, r10\n\t"
+        "#  A[6] * B[3]\n\t"
+        "ldr	r8, [%[a], #24]\n\t"
+        "ldr	r9, [%[b], #12]\n\t"
+        "umull	r6, r7, r8, r9\n\t"
+        "adds	r3, r3, r6\n\t"
+        "adcs	r4, r4, r7\n\t"
+        "adc	r5, r5, r10\n\t"
+        "#  A[7] * B[2]\n\t"
+        "ldr	r8, [%[a], #28]\n\t"
+        "ldr	r9, [%[b], #8]\n\t"
+        "umull	r6, r7, r8, r9\n\t"
+        "adds	r3, r3, r6\n\t"
+        "adcs	r4, r4, r7\n\t"
+        "adc	r5, r5, r10\n\t"
+        "str	r3, [%[r], #36]\n\t"
+        "#  A[3] * B[7]\n\t"
+        "ldr	r8, [%[a], #12]\n\t"
+        "ldr	r9, [%[b], #28]\n\t"
+        "umull	r6, r7, r8, r9\n\t"
+        "adds	r4, r4, r6\n\t"
+        "adcs	r5, r5, r7\n\t"
+        "adc	r3, r10, r10\n\t"
+        "#  A[4] * B[6]\n\t"
+        "ldr	r8, [%[a], #16]\n\t"
+        "ldr	r9, [%[b], #24]\n\t"
+        "umull	r6, r7, r8, r9\n\t"
+        "adds	r4, r4, r6\n\t"
+        "adcs	r5, r5, r7\n\t"
+        "adc	r3, r3, r10\n\t"
+        "#  A[5] * B[5]\n\t"
+        "ldr	r8, [%[a], #20]\n\t"
+        "ldr	r9, [%[b], #20]\n\t"
+        "umull	r6, r7, r8, r9\n\t"
+        "adds	r4, r4, r6\n\t"
+        "adcs	r5, r5, r7\n\t"
+        "adc	r3, r3, r10\n\t"
+        "#  A[6] * B[4]\n\t"
+        "ldr	r8, [%[a], #24]\n\t"
+        "ldr	r9, [%[b], #16]\n\t"
+        "umull	r6, r7, r8, r9\n\t"
+        "adds	r4, r4, r6\n\t"
+        "adcs	r5, r5, r7\n\t"
+        "adc	r3, r3, r10\n\t"
+        "#  A[7] * B[3]\n\t"
+        "ldr	r8, [%[a], #28]\n\t"
+        "ldr	r9, [%[b], #12]\n\t"
+        "umull	r6, r7, r8, r9\n\t"
+        "adds	r4, r4, r6\n\t"
+        "adcs	r5, r5, r7\n\t"
+        "adc	r3, r3, r10\n\t"
+        "str	r4, [%[r], #40]\n\t"
+        "#  A[4] * B[7]\n\t"
+        "ldr	r8, [%[a], #16]\n\t"
+        "ldr	r9, [%[b], #28]\n\t"
+        "umull	r6, r7, r8, r9\n\t"
+        "adds	r5, r5, r6\n\t"
+        "adcs	r3, r3, r7\n\t"
+        "adc	r4, r10, r10\n\t"
+        "#  A[5] * B[6]\n\t"
+        "ldr	r8, [%[a], #20]\n\t"
+        "ldr	r9, [%[b], #24]\n\t"
+        "umull	r6, r7, r8, r9\n\t"
+        "adds	r5, r5, r6\n\t"
+        "adcs	r3, r3, r7\n\t"
+        "adc	r4, r4, r10\n\t"
+        "#  A[6] * B[5]\n\t"
+        "ldr	r8, [%[a], #24]\n\t"
+        "ldr	r9, [%[b], #20]\n\t"
+        "umull	r6, r7, r8, r9\n\t"
+        "adds	r5, r5, r6\n\t"
+        "adcs	r3, r3, r7\n\t"
+        "adc	r4, r4, r10\n\t"
+        "#  A[7] * B[4]\n\t"
+        "ldr	r8, [%[a], #28]\n\t"
+        "ldr	r9, [%[b], #16]\n\t"
+        "umull	r6, r7, r8, r9\n\t"
+        "adds	r5, r5, r6\n\t"
+        "adcs	r3, r3, r7\n\t"
+        "adc	r4, r4, r10\n\t"
+        "str	r5, [%[r], #44]\n\t"
+        "#  A[5] * B[7]\n\t"
+        "ldr	r8, [%[a], #20]\n\t"
+        "ldr	r9, [%[b], #28]\n\t"
+        "umull	r6, r7, r8, r9\n\t"
+        "adds	r3, r3, r6\n\t"
+        "adcs	r4, r4, r7\n\t"
+        "adc	r5, r10, r10\n\t"
+        "#  A[6] * B[6]\n\t"
+        "ldr	r8, [%[a], #24]\n\t"
+        "ldr	r9, [%[b], #24]\n\t"
+        "umull	r6, r7, r8, r9\n\t"
+        "adds	r3, r3, r6\n\t"
+        "adcs	r4, r4, r7\n\t"
+        "adc	r5, r5, r10\n\t"
+        "#  A[7] * B[5]\n\t"
+        "ldr	r8, [%[a], #28]\n\t"
+        "ldr	r9, [%[b], #20]\n\t"
+        "umull	r6, r7, r8, r9\n\t"
+        "adds	r3, r3, r6\n\t"
+        "adcs	r4, r4, r7\n\t"
+        "adc	r5, r5, r10\n\t"
+        "str	r3, [%[r], #48]\n\t"
+        "#  A[6] * B[7]\n\t"
+        "ldr	r8, [%[a], #24]\n\t"
+        "ldr	r9, [%[b], #28]\n\t"
+        "umull	r6, r7, r8, r9\n\t"
+        "adds	r4, r4, r6\n\t"
+        "adcs	r5, r5, r7\n\t"
+        "adc	r3, r10, r10\n\t"
+        "#  A[7] * B[6]\n\t"
+        "ldr	r8, [%[a], #28]\n\t"
+        "ldr	r9, [%[b], #24]\n\t"
+        "umull	r6, r7, r8, r9\n\t"
+        "adds	r4, r4, r6\n\t"
+        "adcs	r5, r5, r7\n\t"
+        "adc	r3, r3, r10\n\t"
+        "str	r4, [%[r], #52]\n\t"
+        "#  A[7] * B[7]\n\t"
+        "ldr	r8, [%[a], #28]\n\t"
+        "ldr	r9, [%[b], #28]\n\t"
+        "umull	r6, r7, r8, r9\n\t"
+        "adds	r5, r5, r6\n\t"
+        "adc	r3, r3, r7\n\t"
+        "str	r5, [%[r], #56]\n\t"
+        "str	r3, [%[r], #60]\n\t"
+        "ldr	r3, [sp, #0]\n\t"
+        "ldr	r4, [sp, #4]\n\t"
+        "ldr	r5, [sp, #8]\n\t"
+        "ldr	r6, [sp, #12]\n\t"
+        "str	r3, [%[r], #0]\n\t"
+        "str	r4, [%[r], #4]\n\t"
+        "str	r5, [%[r], #8]\n\t"
+        "str	r6, [%[r], #12]\n\t"
+        "ldr	r3, [sp, #16]\n\t"
+        "ldr	r4, [sp, #20]\n\t"
+        "ldr	r5, [sp, #24]\n\t"
+        "ldr	r6, [sp, #28]\n\t"
+        "str	r3, [%[r], #16]\n\t"
+        "str	r4, [%[r], #20]\n\t"
+        "str	r5, [%[r], #24]\n\t"
+        "str	r6, [%[r], #28]\n\t"
+        "add	sp, sp, #32\n\t"
+        :
+        : [r] "r" (r), [a] "r" (a), [b] "r" (b)
+        : "memory", "r3", "r4", "r5", "r6", "r7", "r8", "r9", "r10"
+    );
+}
+
+#endif /* WOLFSSL_SP_SMALL */
+#ifdef WOLFSSL_SP_SMALL
+/* Square a and put result in r. (r = a * a)
+ *
+ * r  A single precision integer.
+ * a  A single precision integer.
+ */
+static void sp_256_sqr_8(sp_digit* r, const sp_digit* a)
+{
+    __asm__ __volatile__ (
+        "sub	sp, sp, #64\n\t"
+        "mov	r12, #0\n\t"
+        "mov	r6, #0\n\t"
+        "mov	r7, #0\n\t"
+        "mov	r8, #0\n\t"
+        "mov	r5, #0\n\t"
+        "\n1:\n\t"
+        "subs	r3, r5, #28\n\t"
+        "it	cc\n\t"
+        "movcc	r3, r12\n\t"
+        "sub	r4, r5, r3\n\t"
+        "\n2:\n\t"
+        "cmp	r4, r3\n\t"
+        "beq	4f\n\t"
+        "ldr	r14, [%[a], r3]\n\t"
+        "ldr	r9, [%[a], r4]\n\t"
+        "umull	r9, r10, r14, r9\n\t"
+        "adds	r6, r6, r9\n\t"
+        "adcs	r7, r7, r10\n\t"
+        "adc	r8, r8, r12\n\t"
+        "adds	r6, r6, r9\n\t"
+        "adcs	r7, r7, r10\n\t"
+        "adc	r8, r8, r12\n\t"
+        "bal	5f\n\t"
+        "\n4:\n\t"
+        "ldr	r14, [%[a], r3]\n\t"
+        "umull	r9, r10, r14, r14\n\t"
+        "adds	r6, r6, r9\n\t"
+        "adcs	r7, r7, r10\n\t"
+        "adc	r8, r8, r12\n\t"
+        "\n5:\n\t"
+        "add	r3, r3, #4\n\t"
+        "sub	r4, r4, #4\n\t"
+        "cmp	r3, #32\n\t"
+        "beq	3f\n\t"
+        "cmp	r3, r4\n\t"
+        "bgt	3f\n\t"
+        "cmp	r3, r5\n\t"
+        "ble	2b\n\t"
+        "\n3:\n\t"
+        "str	r6, [sp, r5]\n\t"
+        "mov	r6, r7\n\t"
+        "mov	r7, r8\n\t"
+        "mov	r8, #0\n\t"
+        "add	r5, r5, #4\n\t"
+        "cmp	r5, #56\n\t"
+        "ble	1b\n\t"
+        "str	r6, [sp, r5]\n\t"
+        "\n4:\n\t"
+        "ldr	r6, [sp, #0]\n\t"
+        "ldr	r7, [sp, #4]\n\t"
+        "ldr	r8, [sp, #8]\n\t"
+        "ldr	r3, [sp, #12]\n\t"
+        "str	r6, [%[r], #0]\n\t"
+        "str	r7, [%[r], #4]\n\t"
+        "str	r8, [%[r], #8]\n\t"
+        "str	r3, [%[r], #12]\n\t"
+        "add	sp, sp, #16\n\t"
+        "add	%[r], %[r], #16\n\t"
+        "subs	r5, r5, #16\n\t"
+        "bgt	4b\n\t"
+        : [r] "+r" (r)
+        : [a] "r" (a)
+        : "memory", "r3", "r4", "r5", "r6", "r7", "r8", "r9", "r10", "r14", "r9", "r12"
+    );
+}
+
+#else
+/* Square a and put result in r. (r = a * a)
+ *
+ * r  A single precision integer.
+ * a  A single precision integer.
+ */
+static void sp_256_sqr_8(sp_digit* r, const sp_digit* a)
+{
+    __asm__ __volatile__ (
+        "sub	sp, sp, #32\n\t"
+        "mov	r14, #0\n\t"
+        "#  A[0] * A[0]\n\t"
+        "ldr	r10, [%[a], #0]\n\t"
+        "umull	r8, r3, r10, r10\n\t"
+        "mov	r4, #0\n\t"
+        "str	r8, [sp]\n\t"
+        "#  A[0] * A[1]\n\t"
+        "ldr	r10, [%[a], #4]\n\t"
+        "ldr	r8, [%[a], #0]\n\t"
+        "umull	r8, r9, r10, r8\n\t"
+        "adds	r3, r3, r8\n\t"
+        "adcs	r4, r4, r9\n\t"
+        "adc	r2, r14, r14\n\t"
+        "adds	r3, r3, r8\n\t"
+        "adcs	r4, r4, r9\n\t"
+        "adc	r2, r2, r14\n\t"
+        "str	r3, [sp, #4]\n\t"
+        "#  A[0] * A[2]\n\t"
+        "ldr	r10, [%[a], #8]\n\t"
+        "ldr	r8, [%[a], #0]\n\t"
+        "umull	r8, r9, r10, r8\n\t"
+        "adds	r4, r4, r8\n\t"
+        "adcs	r2, r2, r9\n\t"
+        "adc	r3, r14, r14\n\t"
+        "adds	r4, r4, r8\n\t"
+        "adcs	r2, r2, r9\n\t"
+        "adc	r3, r3, r14\n\t"
+        "#  A[1] * A[1]\n\t"
+        "ldr	r10, [%[a], #4]\n\t"
+        "umull	r8, r9, r10, r10\n\t"
+        "adds	r4, r4, r8\n\t"
+        "adcs	r2, r2, r9\n\t"
+        "adc	r3, r3, r14\n\t"
+        "str	r4, [sp, #8]\n\t"
+        "#  A[0] * A[3]\n\t"
+        "ldr	r10, [%[a], #12]\n\t"
+        "ldr	r8, [%[a], #0]\n\t"
+        "umull	r8, r9, r10, r8\n\t"
+        "adds	r2, r2, r8\n\t"
+        "adcs	r3, r3, r9\n\t"
+        "adc	r4, r14, r14\n\t"
+        "adds	r2, r2, r8\n\t"
+        "adcs	r3, r3, r9\n\t"
+        "adc	r4, r4, r14\n\t"
+        "#  A[1] * A[2]\n\t"
+        "ldr	r10, [%[a], #8]\n\t"
+        "ldr	r8, [%[a], #4]\n\t"
+        "umull	r8, r9, r10, r8\n\t"
+        "adds	r2, r2, r8\n\t"
+        "adcs	r3, r3, r9\n\t"
+        "adc	r4, r4, r14\n\t"
+        "adds	r2, r2, r8\n\t"
+        "adcs	r3, r3, r9\n\t"
+        "adc	r4, r4, r14\n\t"
+        "str	r2, [sp, #12]\n\t"
+        "#  A[0] * A[4]\n\t"
+        "ldr	r10, [%[a], #16]\n\t"
+        "ldr	r8, [%[a], #0]\n\t"
+        "umull	r8, r9, r10, r8\n\t"
+        "adds	r3, r3, r8\n\t"
+        "adcs	r4, r4, r9\n\t"
+        "adc	r2, r14, r14\n\t"
+        "adds	r3, r3, r8\n\t"
+        "adcs	r4, r4, r9\n\t"
+        "adc	r2, r2, r14\n\t"
+        "#  A[1] * A[3]\n\t"
+        "ldr	r10, [%[a], #12]\n\t"
+        "ldr	r8, [%[a], #4]\n\t"
+        "umull	r8, r9, r10, r8\n\t"
+        "adds	r3, r3, r8\n\t"
+        "adcs	r4, r4, r9\n\t"
+        "adc	r2, r2, r14\n\t"
+        "adds	r3, r3, r8\n\t"
+        "adcs	r4, r4, r9\n\t"
+        "adc	r2, r2, r14\n\t"
+        "#  A[2] * A[2]\n\t"
+        "ldr	r10, [%[a], #8]\n\t"
+        "umull	r8, r9, r10, r10\n\t"
+        "adds	r3, r3, r8\n\t"
+        "adcs	r4, r4, r9\n\t"
+        "adc	r2, r2, r14\n\t"
+        "str	r3, [sp, #16]\n\t"
+        "#  A[0] * A[5]\n\t"
+        "ldr	r10, [%[a], #20]\n\t"
+        "ldr	r8, [%[a], #0]\n\t"
+        "umull	r5, r6, r10, r8\n\t"
+        "mov	r3, #0\n\t"
+        "mov	r7, #0\n\t"
+        "#  A[1] * A[4]\n\t"
+        "ldr	r10, [%[a], #16]\n\t"
+        "ldr	r8, [%[a], #4]\n\t"
+        "umull	r8, r9, r10, r8\n\t"
+        "adds	r5, r5, r8\n\t"
+        "adcs	r6, r6, r9\n\t"
+        "adc	r7, r7, r14\n\t"
+        "#  A[2] * A[3]\n\t"
+        "ldr	r10, [%[a], #12]\n\t"
+        "ldr	r8, [%[a], #8]\n\t"
+        "umull	r8, r9, r10, r8\n\t"
+        "adds	r5, r5, r8\n\t"
+        "adcs	r6, r6, r9\n\t"
+        "adc	r7, r7, r14\n\t"
+        "adds	r5, r5, r5\n\t"
+        "adcs	r6, r6, r6\n\t"
+        "adc	r7, r7, r7\n\t"
+        "adds	r4, r4, r5\n\t"
+        "adcs	r2, r2, r6\n\t"
+        "adc	r3, r3, r7\n\t"
+        "str	r4, [sp, #20]\n\t"
+        "#  A[0] * A[6]\n\t"
+        "ldr	r10, [%[a], #24]\n\t"
+        "ldr	r8, [%[a], #0]\n\t"
+        "umull	r5, r6, r10, r8\n\t"
+        "mov	r4, #0\n\t"
+        "mov	r7, #0\n\t"
+        "#  A[1] * A[5]\n\t"
+        "ldr	r10, [%[a], #20]\n\t"
+        "ldr	r8, [%[a], #4]\n\t"
+        "umull	r8, r9, r10, r8\n\t"
+        "adds	r5, r5, r8\n\t"
+        "adcs	r6, r6, r9\n\t"
+        "adc	r7, r7, r14\n\t"
+        "#  A[2] * A[4]\n\t"
+        "ldr	r10, [%[a], #16]\n\t"
+        "ldr	r8, [%[a], #8]\n\t"
+        "umull	r8, r9, r10, r8\n\t"
+        "adds	r5, r5, r8\n\t"
+        "adcs	r6, r6, r9\n\t"
+        "adc	r7, r7, r14\n\t"
+        "#  A[3] * A[3]\n\t"
+        "ldr	r10, [%[a], #12]\n\t"
+        "umull	r8, r9, r10, r10\n\t"
+        "adds	r5, r5, r5\n\t"
+        "adcs	r6, r6, r6\n\t"
+        "adc	r7, r7, r7\n\t"
+        "adds	r5, r5, r8\n\t"
+        "adcs	r6, r6, r9\n\t"
+        "adc	r7, r7, r14\n\t"
+        "adds	r2, r2, r5\n\t"
+        "adcs	r3, r3, r6\n\t"
+        "adc	r4, r4, r7\n\t"
+        "str	r2, [sp, #24]\n\t"
+        "#  A[0] * A[7]\n\t"
+        "ldr	r10, [%[a], #28]\n\t"
+        "ldr	r8, [%[a], #0]\n\t"
+        "umull	r5, r6, r10, r8\n\t"
+        "mov	r2, #0\n\t"
+        "mov	r7, #0\n\t"
+        "#  A[1] * A[6]\n\t"
+        "ldr	r10, [%[a], #24]\n\t"
+        "ldr	r8, [%[a], #4]\n\t"
+        "umull	r8, r9, r10, r8\n\t"
+        "adds	r5, r5, r8\n\t"
+        "adcs	r6, r6, r9\n\t"
+        "adc	r7, r7, r14\n\t"
+        "#  A[2] * A[5]\n\t"
+        "ldr	r10, [%[a], #20]\n\t"
+        "ldr	r8, [%[a], #8]\n\t"
+        "umull	r8, r9, r10, r8\n\t"
+        "adds	r5, r5, r8\n\t"
+        "adcs	r6, r6, r9\n\t"
+        "adc	r7, r7, r14\n\t"
+        "#  A[3] * A[4]\n\t"
+        "ldr	r10, [%[a], #16]\n\t"
+        "ldr	r8, [%[a], #12]\n\t"
+        "umull	r8, r9, r10, r8\n\t"
+        "adds	r5, r5, r8\n\t"
+        "adcs	r6, r6, r9\n\t"
+        "adc	r7, r7, r14\n\t"
+        "adds	r5, r5, r5\n\t"
+        "adcs	r6, r6, r6\n\t"
+        "adc	r7, r7, r7\n\t"
+        "adds	r3, r3, r5\n\t"
+        "adcs	r4, r4, r6\n\t"
+        "adc	r2, r2, r7\n\t"
+        "str	r3, [sp, #28]\n\t"
+        "#  A[1] * A[7]\n\t"
+        "ldr	r10, [%[a], #28]\n\t"
+        "ldr	r8, [%[a], #4]\n\t"
+        "umull	r5, r6, r10, r8\n\t"
+        "mov	r3, #0\n\t"
+        "mov	r7, #0\n\t"
+        "#  A[2] * A[6]\n\t"
+        "ldr	r10, [%[a], #24]\n\t"
+        "ldr	r8, [%[a], #8]\n\t"
+        "umull	r8, r9, r10, r8\n\t"
+        "adds	r5, r5, r8\n\t"
+        "adcs	r6, r6, r9\n\t"
+        "adc	r7, r7, r14\n\t"
+        "#  A[3] * A[5]\n\t"
+        "ldr	r10, [%[a], #20]\n\t"
+        "ldr	r8, [%[a], #12]\n\t"
+        "umull	r8, r9, r10, r8\n\t"
+        "adds	r5, r5, r8\n\t"
+        "adcs	r6, r6, r9\n\t"
+        "adc	r7, r7, r14\n\t"
+        "#  A[4] * A[4]\n\t"
+        "ldr	r10, [%[a], #16]\n\t"
+        "umull	r8, r9, r10, r10\n\t"
+        "adds	r5, r5, r5\n\t"
+        "adcs	r6, r6, r6\n\t"
+        "adc	r7, r7, r7\n\t"
+        "adds	r5, r5, r8\n\t"
+        "adcs	r6, r6, r9\n\t"
+        "adc	r7, r7, r14\n\t"
+        "adds	r4, r4, r5\n\t"
+        "adcs	r2, r2, r6\n\t"
+        "adc	r3, r3, r7\n\t"
+        "str	r4, [%[r], #32]\n\t"
+        "#  A[2] * A[7]\n\t"
+        "ldr	r10, [%[a], #28]\n\t"
+        "ldr	r8, [%[a], #8]\n\t"
+        "umull	r5, r6, r10, r8\n\t"
+        "mov	r4, #0\n\t"
+        "mov	r7, #0\n\t"
+        "#  A[3] * A[6]\n\t"
+        "ldr	r10, [%[a], #24]\n\t"
+        "ldr	r8, [%[a], #12]\n\t"
+        "umull	r8, r9, r10, r8\n\t"
+        "adds	r5, r5, r8\n\t"
+        "adcs	r6, r6, r9\n\t"
+        "adc	r7, r7, r14\n\t"
+        "#  A[4] * A[5]\n\t"
+        "ldr	r10, [%[a], #20]\n\t"
+        "ldr	r8, [%[a], #16]\n\t"
+        "umull	r8, r9, r10, r8\n\t"
+        "adds	r5, r5, r8\n\t"
+        "adcs	r6, r6, r9\n\t"
+        "adc	r7, r7, r14\n\t"
+        "adds	r5, r5, r5\n\t"
+        "adcs	r6, r6, r6\n\t"
+        "adc	r7, r7, r7\n\t"
+        "adds	r2, r2, r5\n\t"
+        "adcs	r3, r3, r6\n\t"
+        "adc	r4, r4, r7\n\t"
+        "str	r2, [%[r], #36]\n\t"
+        "#  A[3] * A[7]\n\t"
+        "ldr	r10, [%[a], #28]\n\t"
+        "ldr	r8, [%[a], #12]\n\t"
+        "umull	r8, r9, r10, r8\n\t"
+        "adds	r3, r3, r8\n\t"
+        "adcs	r4, r4, r9\n\t"
+        "adc	r2, r14, r14\n\t"
+        "adds	r3, r3, r8\n\t"
+        "adcs	r4, r4, r9\n\t"
+        "adc	r2, r2, r14\n\t"
+        "#  A[4] * A[6]\n\t"
+        "ldr	r10, [%[a], #24]\n\t"
+        "ldr	r8, [%[a], #16]\n\t"
+        "umull	r8, r9, r10, r8\n\t"
+        "adds	r3, r3, r8\n\t"
+        "adcs	r4, r4, r9\n\t"
+        "adc	r2, r2, r14\n\t"
+        "adds	r3, r3, r8\n\t"
+        "adcs	r4, r4, r9\n\t"
+        "adc	r2, r2, r14\n\t"
+        "#  A[5] * A[5]\n\t"
+        "ldr	r10, [%[a], #20]\n\t"
+        "umull	r8, r9, r10, r10\n\t"
+        "adds	r3, r3, r8\n\t"
+        "adcs	r4, r4, r9\n\t"
+        "adc	r2, r2, r14\n\t"
+        "str	r3, [%[r], #40]\n\t"
+        "#  A[4] * A[7]\n\t"
+        "ldr	r10, [%[a], #28]\n\t"
+        "ldr	r8, [%[a], #16]\n\t"
+        "umull	r8, r9, r10, r8\n\t"
+        "adds	r4, r4, r8\n\t"
+        "adcs	r2, r2, r9\n\t"
+        "adc	r3, r14, r14\n\t"
+        "adds	r4, r4, r8\n\t"
+        "adcs	r2, r2, r9\n\t"
+        "adc	r3, r3, r14\n\t"
+        "#  A[5] * A[6]\n\t"
+        "ldr	r10, [%[a], #24]\n\t"
+        "ldr	r8, [%[a], #20]\n\t"
+        "umull	r8, r9, r10, r8\n\t"
+        "adds	r4, r4, r8\n\t"
+        "adcs	r2, r2, r9\n\t"
+        "adc	r3, r3, r14\n\t"
+        "adds	r4, r4, r8\n\t"
+        "adcs	r2, r2, r9\n\t"
+        "adc	r3, r3, r14\n\t"
+        "str	r4, [%[r], #44]\n\t"
+        "#  A[5] * A[7]\n\t"
+        "ldr	r10, [%[a], #28]\n\t"
+        "ldr	r8, [%[a], #20]\n\t"
+        "umull	r8, r9, r10, r8\n\t"
+        "adds	r2, r2, r8\n\t"
+        "adcs	r3, r3, r9\n\t"
+        "adc	r4, r14, r14\n\t"
+        "adds	r2, r2, r8\n\t"
+        "adcs	r3, r3, r9\n\t"
+        "adc	r4, r4, r14\n\t"
+        "#  A[6] * A[6]\n\t"
+        "ldr	r10, [%[a], #24]\n\t"
+        "umull	r8, r9, r10, r10\n\t"
+        "adds	r2, r2, r8\n\t"
+        "adcs	r3, r3, r9\n\t"
+        "adc	r4, r4, r14\n\t"
+        "str	r2, [%[r], #48]\n\t"
+        "#  A[6] * A[7]\n\t"
+        "ldr	r10, [%[a], #28]\n\t"
+        "ldr	r8, [%[a], #24]\n\t"
+        "umull	r8, r9, r10, r8\n\t"
+        "adds	r3, r3, r8\n\t"
+        "adcs	r4, r4, r9\n\t"
+        "adc	r2, r14, r14\n\t"
+        "adds	r3, r3, r8\n\t"
+        "adcs	r4, r4, r9\n\t"
+        "adc	r2, r2, r14\n\t"
+        "str	r3, [%[r], #52]\n\t"
+        "#  A[7] * A[7]\n\t"
+        "ldr	r10, [%[a], #28]\n\t"
+        "umull	r8, r9, r10, r10\n\t"
+        "adds	r4, r4, r8\n\t"
+        "adc	r2, r2, r9\n\t"
+        "str	r4, [%[r], #56]\n\t"
+        "str	r2, [%[r], #60]\n\t"
+        "ldr	r2, [sp, #0]\n\t"
+        "ldr	r3, [sp, #4]\n\t"
+        "ldr	r4, [sp, #8]\n\t"
+        "ldr	r8, [sp, #12]\n\t"
+        "str	r2, [%[r], #0]\n\t"
+        "str	r3, [%[r], #4]\n\t"
+        "str	r4, [%[r], #8]\n\t"
+        "str	r8, [%[r], #12]\n\t"
+        "ldr	r2, [sp, #16]\n\t"
+        "ldr	r3, [sp, #20]\n\t"
+        "ldr	r4, [sp, #24]\n\t"
+        "ldr	r8, [sp, #28]\n\t"
+        "str	r2, [%[r], #16]\n\t"
+        "str	r3, [%[r], #20]\n\t"
+        "str	r4, [%[r], #24]\n\t"
+        "str	r8, [%[r], #28]\n\t"
+        "add	sp, sp, #32\n\t"
+        :
+        : [r] "r" (r), [a] "r" (a)
+        : "memory", "r2", "r3", "r4", "r8", "r9", "r10", "r8", "r5", "r6", "r7", "r14"
+    );
+}
+
+#endif /* WOLFSSL_SP_SMALL */
+#ifdef WOLFSSL_SP_SMALL
+/* Add b to a into r. (r = a + b)
+ *
+ * r  A single precision integer.
+ * a  A single precision integer.
+ * b  A single precision integer.
+ */
+static sp_digit sp_256_add_8(sp_digit* r, const sp_digit* a,
+        const sp_digit* b)
+{
+    sp_digit c = 0;
+
+    __asm__ __volatile__ (
+        "add	r12, %[a], #32\n\t"
+        "\n1:\n\t"
+        "adds	%[c], %[c], #-1\n\t"
+        "ldr	r4, [%[a]], #4\n\t"
+        "ldr	r5, [%[a]], #4\n\t"
+        "ldr	r6, [%[a]], #4\n\t"
+        "ldr	r7, [%[a]], #4\n\t"
+        "ldr	r8, [%[b]], #4\n\t"
+        "ldr	r9, [%[b]], #4\n\t"
+        "ldr	r10, [%[b]], #4\n\t"
+        "ldr	r14, [%[b]], #4\n\t"
+        "adcs	r4, r4, r8\n\t"
+        "adcs	r5, r5, r9\n\t"
+        "adcs	r6, r6, r10\n\t"
+        "adcs	r7, r7, r14\n\t"
+        "str	r4, [%[r]], #4\n\t"
+        "str	r5, [%[r]], #4\n\t"
+        "str	r6, [%[r]], #4\n\t"
+        "str	r7, [%[r]], #4\n\t"
+        "mov	r4, #0\n\t"
+        "adc	%[c], r4, #0\n\t"
+        "cmp	%[a], r12\n\t"
+        "bne	1b\n\t"
+        : [c] "+r" (c), [r] "+r" (r), [a] "+r" (a), [b] "+r" (b)
+        :
+        : "memory", "r4", "r5", "r6", "r7", "r8", "r9", "r10", "r14", "r12"
+    );
+
+    return c;
+}
+
+#else
+/* Add b to a into r. (r = a + b)
+ *
+ * r  A single precision integer.
+ * a  A single precision integer.
+ * b  A single precision integer.
+ */
+static sp_digit sp_256_add_8(sp_digit* r, const sp_digit* a,
+        const sp_digit* b)
+{
+    sp_digit c = 0;
+
+    __asm__ __volatile__ (
+        "mov	r12, #0\n\t"
+        "ldr	r4, [%[a], #0]\n\t"
+        "ldr	r5, [%[a], #4]\n\t"
+        "ldr	r6, [%[a], #8]\n\t"
+        "ldr	r7, [%[a], #12]\n\t"
+        "ldr	r8, [%[b], #0]\n\t"
+        "ldr	r9, [%[b], #4]\n\t"
+        "ldr	r10, [%[b], #8]\n\t"
+        "ldr	r14, [%[b], #12]\n\t"
+        "adds	r4, r4, r8\n\t"
+        "adcs	r5, r5, r9\n\t"
+        "adcs	r6, r6, r10\n\t"
+        "adcs	r7, r7, r14\n\t"
+        "str	r4, [%[r], #0]\n\t"
+        "str	r5, [%[r], #4]\n\t"
+        "str	r6, [%[r], #8]\n\t"
+        "str	r7, [%[r], #12]\n\t"
+        "ldr	r4, [%[a], #16]\n\t"
+        "ldr	r5, [%[a], #20]\n\t"
+        "ldr	r6, [%[a], #24]\n\t"
+        "ldr	r7, [%[a], #28]\n\t"
+        "ldr	r8, [%[b], #16]\n\t"
+        "ldr	r9, [%[b], #20]\n\t"
+        "ldr	r10, [%[b], #24]\n\t"
+        "ldr	r14, [%[b], #28]\n\t"
+        "adcs	r4, r4, r8\n\t"
+        "adcs	r5, r5, r9\n\t"
+        "adcs	r6, r6, r10\n\t"
+        "adcs	r7, r7, r14\n\t"
+        "str	r4, [%[r], #16]\n\t"
+        "str	r5, [%[r], #20]\n\t"
+        "str	r6, [%[r], #24]\n\t"
+        "str	r7, [%[r], #28]\n\t"
+        "adc	%[c], r12, r12\n\t"
+        : [c] "+r" (c)
+        : [r] "r" (r), [a] "r" (a), [b] "r" (b)
+        : "memory", "r4", "r5", "r6", "r7", "r8", "r9", "r10", "r14", "r12"
+    );
+
+    return c;
+}
+
+#endif /* WOLFSSL_SP_SMALL */
+#ifdef WOLFSSL_SP_SMALL
+/* Sub b from a into r. (r = a - b)
+ *
+ * r  A single precision integer.
+ * a  A single precision integer.
+ * b  A single precision integer.
+ */
+static sp_digit sp_256_sub_8(sp_digit* r, const sp_digit* a,
+        const sp_digit* b)
+{
+    sp_digit c = 0;
+
+    __asm__ __volatile__ (
+        "add	r12, %[a], #32\n\t"
+        "\n1:\n\t"
+        "rsbs	%[c], %[c], #0\n\t"
+        "ldr	r4, [%[a]], #4\n\t"
+        "ldr	r5, [%[a]], #4\n\t"
+        "ldr	r6, [%[a]], #4\n\t"
+        "ldr	r7, [%[a]], #4\n\t"
+        "ldr	r8, [%[b]], #4\n\t"
+        "ldr	r9, [%[b]], #4\n\t"
+        "ldr	r10, [%[b]], #4\n\t"
+        "ldr	r14, [%[b]], #4\n\t"
+        "sbcs	r4, r4, r8\n\t"
+        "sbcs	r5, r5, r9\n\t"
+        "sbcs	r6, r6, r10\n\t"
+        "sbcs	r7, r7, r14\n\t"
+        "str	r4, [%[r]], #4\n\t"
+        "str	r5, [%[r]], #4\n\t"
+        "str	r6, [%[r]], #4\n\t"
+        "str	r7, [%[r]], #4\n\t"
+        "sbc	%[c], r4, r4\n\t"
+        "cmp	%[a], r12\n\t"
+        "bne	1b\n\t"
+        : [c] "+r" (c), [r] "+r" (r), [a] "+r" (a), [b] "+r" (b)
+        :
+        : "memory", "r4", "r5", "r6", "r7", "r8", "r9", "r10", "r14", "r12"
+    );
+
+    return c;
+}
+
+#else
+/* Sub b from a into r. (r = a - b)
+ *
+ * r  A single precision integer.
+ * a  A single precision integer.
+ * b  A single precision integer.
+ */
+static sp_digit sp_256_sub_8(sp_digit* r, const sp_digit* a,
+        const sp_digit* b)
+{
+    sp_digit c = 0;
+
+    __asm__ __volatile__ (
+        "ldr	r3, [%[a], #0]\n\t"
+        "ldr	r4, [%[a], #4]\n\t"
+        "ldr	r5, [%[a], #8]\n\t"
+        "ldr	r6, [%[a], #12]\n\t"
+        "ldr	r7, [%[b], #0]\n\t"
+        "ldr	r8, [%[b], #4]\n\t"
+        "ldr	r9, [%[b], #8]\n\t"
+        "ldr	r10, [%[b], #12]\n\t"
+        "subs	r3, r3, r7\n\t"
+        "sbcs	r4, r4, r8\n\t"
+        "sbcs	r5, r5, r9\n\t"
+        "sbcs	r6, r6, r10\n\t"
+        "str	r3, [%[r], #0]\n\t"
+        "str	r4, [%[r], #4]\n\t"
+        "str	r5, [%[r], #8]\n\t"
+        "str	r6, [%[r], #12]\n\t"
+        "ldr	r3, [%[a], #16]\n\t"
+        "ldr	r4, [%[a], #20]\n\t"
+        "ldr	r5, [%[a], #24]\n\t"
+        "ldr	r6, [%[a], #28]\n\t"
+        "ldr	r7, [%[b], #16]\n\t"
+        "ldr	r8, [%[b], #20]\n\t"
+        "ldr	r9, [%[b], #24]\n\t"
+        "ldr	r10, [%[b], #28]\n\t"
+        "sbcs	r3, r3, r7\n\t"
+        "sbcs	r4, r4, r8\n\t"
+        "sbcs	r5, r5, r9\n\t"
+        "sbcs	r6, r6, r10\n\t"
+        "str	r3, [%[r], #16]\n\t"
+        "str	r4, [%[r], #20]\n\t"
+        "str	r5, [%[r], #24]\n\t"
+        "str	r6, [%[r], #28]\n\t"
+        "sbc	%[c], %[c], #0\n\t"
+        : [c] "+r" (c)
+        : [r] "r" (r), [a] "r" (a), [b] "r" (b)
+        : "memory", "r3", "r4", "r5", "r6", "r7", "r8", "r9", "r10"
+    );
+
+    return c;
+}
+
+#endif /* WOLFSSL_SP_SMALL */
 /* The modulus (prime) of the curve P256. */
 static const sp_digit p256_mod[8] = {
     0xffffffff,0xffffffff,0xffffffff,0x00000000,0x00000000,0x00000000,
@@ -28749,7 +29938,15 @@ static const sp_digit p256_b[8] = {
 };
 #endif
 
-static int sp_256_point_new_ex_8(void* heap, sp_point_256* sp, sp_point_256** p)
+/* Create a new point.
+ *
+ * heap  [in]   Buffer to allocate dynamic memory from.
+ * sp    [in]   Data for point - only if not allocating.
+ * p     [out]  New point.
+ * returns MEMORY_E when dynamic memory allocation fails and 0 otherwise. 
+ */
+static int sp_256_point_new_ex_8(void* heap, sp_point_256* sp,
+        sp_point_256** p)
 {
     int ret = MP_OKAY;
     (void)heap;
@@ -28774,6 +29971,12 @@ static int sp_256_point_new_ex_8(void* heap, sp_point_256* sp, sp_point_256** p)
 #endif
 
 
+/* Free the point.
+ *
+ * p      [in,out]  Point to free.
+ * clear  [in]      Indicates whether to zeroize point.
+ * heap   [in]      Buffer from which dynamic memory was allocate from.
+ */
 static void sp_256_point_free_8(sp_point_256* p, int clear, void* heap)
 {
 #if (defined(WOLFSSL_SP_SMALL) || defined(WOLFSSL_SMALL_STACK)) && !defined(WOLFSSL_SP_NO_MALLOC)
@@ -29115,7 +30318,8 @@ static void sp_256_from_mp(sp_digit* r, int size, const mp_int* a)
  * p   Point of type sp_point_256 (result).
  * pm  Point of type ecc_point.
  */
-static void sp_256_point_from_ecc_point_8(sp_point_256* p, const ecc_point* pm)
+static void sp_256_point_from_ecc_point_8(sp_point_256* p,
+        const ecc_point* pm)
 {
     XMEMSET(p->x, 0, sizeof(p->x));
     XMEMSET(p->y, 0, sizeof(p->y));
@@ -30828,7 +32032,8 @@ SP_NOINLINE static void sp_256_mont_reduce_8(sp_digit* a, const sp_digit* m,
  * p  Montgomery form projective coordinate point.
  * t  Temporary ordinate data.
  */
-static void sp_256_map_8(sp_point_256* r, const sp_point_256* p, sp_digit* t)
+static void sp_256_map_8(sp_point_256* r, const sp_point_256* p,
+        sp_digit* t)
 {
     sp_digit* t1 = t;
     sp_digit* t2 = t + 2*8;
@@ -30864,106 +32069,6 @@ static void sp_256_map_8(sp_point_256* r, const sp_point_256* p, sp_digit* t)
 
 }
 
-#ifdef WOLFSSL_SP_SMALL
-/* Add b to a into r. (r = a + b)
- *
- * r  A single precision integer.
- * a  A single precision integer.
- * b  A single precision integer.
- */
-static sp_digit sp_256_add_8(sp_digit* r, const sp_digit* a,
-        const sp_digit* b)
-{
-    sp_digit c = 0;
-
-    __asm__ __volatile__ (
-        "add	r12, %[a], #32\n\t"
-        "\n1:\n\t"
-        "adds	%[c], %[c], #-1\n\t"
-        "ldr	r4, [%[a]], #4\n\t"
-        "ldr	r5, [%[a]], #4\n\t"
-        "ldr	r6, [%[a]], #4\n\t"
-        "ldr	r7, [%[a]], #4\n\t"
-        "ldr	r8, [%[b]], #4\n\t"
-        "ldr	r9, [%[b]], #4\n\t"
-        "ldr	r10, [%[b]], #4\n\t"
-        "ldr	r14, [%[b]], #4\n\t"
-        "adcs	r4, r4, r8\n\t"
-        "adcs	r5, r5, r9\n\t"
-        "adcs	r6, r6, r10\n\t"
-        "adcs	r7, r7, r14\n\t"
-        "str	r4, [%[r]], #4\n\t"
-        "str	r5, [%[r]], #4\n\t"
-        "str	r6, [%[r]], #4\n\t"
-        "str	r7, [%[r]], #4\n\t"
-        "mov	r4, #0\n\t"
-        "adc	%[c], r4, #0\n\t"
-        "cmp	%[a], r12\n\t"
-        "bne	1b\n\t"
-        : [c] "+r" (c), [r] "+r" (r), [a] "+r" (a), [b] "+r" (b)
-        :
-        : "memory", "r4", "r5", "r6", "r7", "r8", "r9", "r10", "r14", "r12"
-    );
-
-    return c;
-}
-
-#else
-/* Add b to a into r. (r = a + b)
- *
- * r  A single precision integer.
- * a  A single precision integer.
- * b  A single precision integer.
- */
-static sp_digit sp_256_add_8(sp_digit* r, const sp_digit* a,
-        const sp_digit* b)
-{
-    sp_digit c = 0;
-
-    __asm__ __volatile__ (
-        "mov	r12, #0\n\t"
-        "ldr	r4, [%[a], #0]\n\t"
-        "ldr	r5, [%[a], #4]\n\t"
-        "ldr	r6, [%[a], #8]\n\t"
-        "ldr	r7, [%[a], #12]\n\t"
-        "ldr	r8, [%[b], #0]\n\t"
-        "ldr	r9, [%[b], #4]\n\t"
-        "ldr	r10, [%[b], #8]\n\t"
-        "ldr	r14, [%[b], #12]\n\t"
-        "adds	r4, r4, r8\n\t"
-        "adcs	r5, r5, r9\n\t"
-        "adcs	r6, r6, r10\n\t"
-        "adcs	r7, r7, r14\n\t"
-        "str	r4, [%[r], #0]\n\t"
-        "str	r5, [%[r], #4]\n\t"
-        "str	r6, [%[r], #8]\n\t"
-        "str	r7, [%[r], #12]\n\t"
-        "ldr	r4, [%[a], #16]\n\t"
-        "ldr	r5, [%[a], #20]\n\t"
-        "ldr	r6, [%[a], #24]\n\t"
-        "ldr	r7, [%[a], #28]\n\t"
-        "ldr	r8, [%[b], #16]\n\t"
-        "ldr	r9, [%[b], #20]\n\t"
-        "ldr	r10, [%[b], #24]\n\t"
-        "ldr	r14, [%[b], #28]\n\t"
-        "adcs	r4, r4, r8\n\t"
-        "adcs	r5, r5, r9\n\t"
-        "adcs	r6, r6, r10\n\t"
-        "adcs	r7, r7, r14\n\t"
-        "str	r4, [%[r], #16]\n\t"
-        "str	r5, [%[r], #20]\n\t"
-        "str	r6, [%[r], #24]\n\t"
-        "str	r7, [%[r], #28]\n\t"
-        "adc	%[c], r12, r12\n\t"
-        : [c] "+r" (c)
-        : [r] "r" (r), [a] "r" (a), [b] "r" (b)
-        : "memory", "r4", "r5", "r6", "r7", "r8", "r9", "r10", "r14", "r12"
-    );
-
-    return c;
-}
-
-#endif /* WOLFSSL_SP_SMALL */
 /* Add two Montgomery form numbers (r = a + b % m).
  *
  * r   Result of addition.
@@ -31332,7 +32437,8 @@ static void sp_256_div2_8(sp_digit* r, const sp_digit* a, const sp_digit* m)
  * p  Point to double.
  * t  Temporary ordinate data.
  */
-static void sp_256_proj_point_dbl_8(sp_point_256* r, const sp_point_256* p, sp_digit* t)
+static void sp_256_proj_point_dbl_8(sp_point_256* r,
+        const sp_point_256* p, sp_digit* t)
 {
     sp_digit* t1 = t;
     sp_digit* t2 = t + 2*8;
@@ -31386,104 +32492,6 @@ static void sp_256_proj_point_dbl_8(sp_point_256* r, const sp_point_256* p, sp_d
     sp_256_mont_sub_8(y, y, t2, p256_mod);
 }
 
-#ifdef WOLFSSL_SP_SMALL
-/* Sub b from a into r. (r = a - b)
- *
- * r  A single precision integer.
- * a  A single precision integer.
- * b  A single precision integer.
- */
-static sp_digit sp_256_sub_8(sp_digit* r, const sp_digit* a,
-        const sp_digit* b)
-{
-    sp_digit c = 0;
-
-    __asm__ __volatile__ (
-        "add	r12, %[a], #32\n\t"
-        "\n1:\n\t"
-        "rsbs	%[c], %[c], #0\n\t"
-        "ldr	r4, [%[a]], #4\n\t"
-        "ldr	r5, [%[a]], #4\n\t"
-        "ldr	r6, [%[a]], #4\n\t"
-        "ldr	r7, [%[a]], #4\n\t"
-        "ldr	r8, [%[b]], #4\n\t"
-        "ldr	r9, [%[b]], #4\n\t"
-        "ldr	r10, [%[b]], #4\n\t"
-        "ldr	r14, [%[b]], #4\n\t"
-        "sbcs	r4, r4, r8\n\t"
-        "sbcs	r5, r5, r9\n\t"
-        "sbcs	r6, r6, r10\n\t"
-        "sbcs	r7, r7, r14\n\t"
-        "str	r4, [%[r]], #4\n\t"
-        "str	r5, [%[r]], #4\n\t"
-        "str	r6, [%[r]], #4\n\t"
-        "str	r7, [%[r]], #4\n\t"
-        "sbc	%[c], r4, r4\n\t"
-        "cmp	%[a], r12\n\t"
-        "bne	1b\n\t"
-        : [c] "+r" (c), [r] "+r" (r), [a] "+r" (a), [b] "+r" (b)
-        :
-        : "memory", "r4", "r5", "r6", "r7", "r8", "r9", "r10", "r14", "r12"
-    );
-
-    return c;
-}
-
-#else
-/* Sub b from a into r. (r = a - b)
- *
- * r  A single precision integer.
- * a  A single precision integer.
- * b  A single precision integer.
- */
-static sp_digit sp_256_sub_8(sp_digit* r, const sp_digit* a,
-        const sp_digit* b)
-{
-    sp_digit c = 0;
-
-    __asm__ __volatile__ (
-        "ldr	r3, [%[a], #0]\n\t"
-        "ldr	r4, [%[a], #4]\n\t"
-        "ldr	r5, [%[a], #8]\n\t"
-        "ldr	r6, [%[a], #12]\n\t"
-        "ldr	r7, [%[b], #0]\n\t"
-        "ldr	r8, [%[b], #4]\n\t"
-        "ldr	r9, [%[b], #8]\n\t"
-        "ldr	r10, [%[b], #12]\n\t"
-        "subs	r3, r3, r7\n\t"
-        "sbcs	r4, r4, r8\n\t"
-        "sbcs	r5, r5, r9\n\t"
-        "sbcs	r6, r6, r10\n\t"
-        "str	r3, [%[r], #0]\n\t"
-        "str	r4, [%[r], #4]\n\t"
-        "str	r5, [%[r], #8]\n\t"
-        "str	r6, [%[r], #12]\n\t"
-        "ldr	r3, [%[a], #16]\n\t"
-        "ldr	r4, [%[a], #20]\n\t"
-        "ldr	r5, [%[a], #24]\n\t"
-        "ldr	r6, [%[a], #28]\n\t"
-        "ldr	r7, [%[b], #16]\n\t"
-        "ldr	r8, [%[b], #20]\n\t"
-        "ldr	r9, [%[b], #24]\n\t"
-        "ldr	r10, [%[b], #28]\n\t"
-        "sbcs	r3, r3, r7\n\t"
-        "sbcs	r4, r4, r8\n\t"
-        "sbcs	r5, r5, r9\n\t"
-        "sbcs	r6, r6, r10\n\t"
-        "str	r3, [%[r], #16]\n\t"
-        "str	r4, [%[r], #20]\n\t"
-        "str	r5, [%[r], #24]\n\t"
-        "str	r6, [%[r], #28]\n\t"
-        "sbc	%[c], %[c], #0\n\t"
-        : [c] "+r" (c)
-        : [r] "r" (r), [a] "r" (a), [b] "r" (b)
-        : "memory", "r3", "r4", "r5", "r6", "r7", "r8", "r9", "r10"
-    );
-
-    return c;
-}
-
-#endif /* WOLFSSL_SP_SMALL */
 /* Compare two numbers to determine if they are equal.
  * Constant time implementation.
  *
@@ -31504,8 +32512,8 @@ static int sp_256_cmp_equal_8(const sp_digit* a, const sp_digit* b)
  * q  Second point to add.
  * t  Temporary ordinate data.
  */
-static void sp_256_proj_point_add_8(sp_point_256* r, const sp_point_256* p, const sp_point_256* q,
-        sp_digit* t)
+static void sp_256_proj_point_add_8(sp_point_256* r,
+        const sp_point_256* p, const sp_point_256* q, sp_digit* t)
 {
     const sp_point_256* ap[2];
     sp_point_256* rp[2];
@@ -31593,6 +32601,12 @@ static void sp_256_proj_point_add_8(sp_point_256* r, const sp_point_256* p, cons
 
 /* Multiply the point by the scalar and return the result.
  * If map is true then convert result to affine coordinates.
+ *
+ * Fast implementation that generates a pre-computation table.
+ * 4 bits of window (no sliding!).
+ * Uses add and double for calculating table.
+ * 256 doubles.
+ * 76 adds.
  *
  * r     Resulting point.
  * g     Point to multiply.
@@ -31734,7 +32748,8 @@ typedef struct sp_table_entry_256 {
  * n  Number of times to double
  * t  Temporary ordinate data.
  */
-static void sp_256_proj_point_dbl_n_8(sp_point_256* p, int n, sp_digit* t)
+static void sp_256_proj_point_dbl_n_8(sp_point_256* p, int n,
+        sp_digit* t)
 {
     sp_digit* w = t;
     sp_digit* a = t + 2*8;
@@ -31924,6 +32939,10 @@ static void sp_256_proj_to_affine_8(sp_point_256* a, sp_digit* t)
 
 /* Generate the pre-computed table of points for the base point.
  *
+ * width = 4
+ * 16 entries
+ * 64 bits between
+ *
  * a      The base point.
  * table  Place to store generated point data.
  * tmp    Temporary data.
@@ -32007,14 +33026,20 @@ static int sp_256_gen_stripe_table_8(const sp_point_256* a,
 /* Multiply the point by the scalar and return the result.
  * If map is true then convert result to affine coordinates.
  *
+ * Stripe implementation.
+ * Pre-generated: 2^0, 2^64, ...
+ * Pre-generated: products of all combinations of above.
+ * 4 doubles and adds (with qz=1)
+ *
  * r     Resulting point.
  * k     Scalar to multiply by.
  * map   Indicates whether to convert result to affine.
  * heap  Heap to use for allocation.
  * returns MEMORY_E when memory allocation fails and MP_OKAY on success.
  */
-static int sp_256_ecc_mulmod_stripe_8(sp_point_256* r, const sp_point_256* g,
-        const sp_table_entry_256* table, const sp_digit* k, int map, void* heap)
+static int sp_256_ecc_mulmod_stripe_8(sp_point_256* r,
+        const sp_point_256* g, const sp_table_entry_256* table,
+        const sp_digit* k, int map, void* heap)
 {
 #if (!defined(WOLFSSL_SP_SMALL) && !defined(WOLFSSL_SMALL_STACK)) || defined(WOLFSSL_SP_NO_MALLOC)
     sp_point_256 rtd;
@@ -32094,16 +33119,25 @@ static int sp_256_ecc_mulmod_stripe_8(sp_point_256* r, const sp_point_256* g,
     #define FP_ENTRIES 16
 #endif
 
+/* Cache entry - holds precomputation tables for a point. */
 typedef struct sp_cache_256_t {
+    /* X ordinate of point that table was generated from. */
     sp_digit x[8];
+    /* Y ordinate of point that table was generated from. */
     sp_digit y[8];
+    /* Precomputation table for point. */
     sp_table_entry_256 table[16];
+    /* Count of entries in table. */
     uint32_t cnt;
+    /* Point and table set in entry. */
     int set;
 } sp_cache_256_t;
 
+/* Cache of tables. */
 static THREAD_LS_T sp_cache_256_t sp_cache_256[FP_ENTRIES];
+/* Index of last entry in cache. */
 static THREAD_LS_T int sp_cache_256_last = -1;
+/* Cache has been initialized. */
 static THREAD_LS_T int sp_cache_256_inited = 0;
 
 #ifndef HAVE_THREAD_LS
@@ -32111,7 +33145,13 @@ static THREAD_LS_T int sp_cache_256_inited = 0;
     static wolfSSL_Mutex sp_cache_256_lock;
 #endif
 
-static void sp_ecc_get_cache_256(const sp_point_256* g, sp_cache_256_t** cache)
+/* Get the cache entry for the point.
+ *
+ * g      [in]   Point scalar multipling.
+ * cache  [out]  Cache table to use.
+ */
+static void sp_ecc_get_cache_256(const sp_point_256* g,
+        sp_cache_256_t** cache)
 {
     int i, j;
     uint32_t least;
@@ -32177,8 +33217,8 @@ static void sp_ecc_get_cache_256(const sp_point_256* g, sp_cache_256_t** cache)
  * heap  Heap to use for allocation.
  * returns MEMORY_E when memory allocation fails and MP_OKAY on success.
  */
-static int sp_256_ecc_mulmod_8(sp_point_256* r, const sp_point_256* g, const sp_digit* k,
-        int map, void* heap)
+static int sp_256_ecc_mulmod_8(sp_point_256* r, const sp_point_256* g,
+        const sp_digit* k, int map, void* heap)
 {
 #ifndef FP_ECC
     return sp_256_ecc_mulmod_fast_8(r, g, k, map, heap);
@@ -32221,6 +33261,10 @@ static int sp_256_ecc_mulmod_8(sp_point_256* r, const sp_point_256* g, const sp_
 #else
 #ifdef FP_ECC
 /* Generate the pre-computed table of points for the base point.
+ *
+ * width = 8
+ * 256 entries
+ * 32 bits between
  *
  * a      The base point.
  * table  Place to store generated point data.
@@ -32305,14 +33349,20 @@ static int sp_256_gen_stripe_table_8(const sp_point_256* a,
 /* Multiply the point by the scalar and return the result.
  * If map is true then convert result to affine coordinates.
  *
+ * Stripe implementation.
+ * Pre-generated: 2^0, 2^32, ...
+ * Pre-generated: products of all combinations of above.
+ * 8 doubles and adds (with qz=1)
+ *
  * r     Resulting point.
  * k     Scalar to multiply by.
  * map   Indicates whether to convert result to affine.
  * heap  Heap to use for allocation.
  * returns MEMORY_E when memory allocation fails and MP_OKAY on success.
  */
-static int sp_256_ecc_mulmod_stripe_8(sp_point_256* r, const sp_point_256* g,
-        const sp_table_entry_256* table, const sp_digit* k, int map, void* heap)
+static int sp_256_ecc_mulmod_stripe_8(sp_point_256* r,
+        const sp_point_256* g, const sp_table_entry_256* table,
+        const sp_digit* k, int map, void* heap)
 {
 #if (!defined(WOLFSSL_SP_SMALL) && !defined(WOLFSSL_SMALL_STACK)) || defined(WOLFSSL_SP_NO_MALLOC)
     sp_point_256 rtd;
@@ -32392,16 +33442,25 @@ static int sp_256_ecc_mulmod_stripe_8(sp_point_256* r, const sp_point_256* g,
     #define FP_ENTRIES 16
 #endif
 
+/* Cache entry - holds precomputation tables for a point. */
 typedef struct sp_cache_256_t {
+    /* X ordinate of point that table was generated from. */
     sp_digit x[8];
+    /* Y ordinate of point that table was generated from. */
     sp_digit y[8];
+    /* Precomputation table for point. */
     sp_table_entry_256 table[256];
+    /* Count of entries in table. */
     uint32_t cnt;
+    /* Point and table set in entry. */
     int set;
 } sp_cache_256_t;
 
+/* Cache of tables. */
 static THREAD_LS_T sp_cache_256_t sp_cache_256[FP_ENTRIES];
+/* Index of last entry in cache. */
 static THREAD_LS_T int sp_cache_256_last = -1;
+/* Cache has been initialized. */
 static THREAD_LS_T int sp_cache_256_inited = 0;
 
 #ifndef HAVE_THREAD_LS
@@ -32409,7 +33468,13 @@ static THREAD_LS_T int sp_cache_256_inited = 0;
     static wolfSSL_Mutex sp_cache_256_lock;
 #endif
 
-static void sp_ecc_get_cache_256(const sp_point_256* g, sp_cache_256_t** cache)
+/* Get the cache entry for the point.
+ *
+ * g      [in]   Point scalar multipling.
+ * cache  [out]  Cache table to use.
+ */
+static void sp_ecc_get_cache_256(const sp_point_256* g,
+        sp_cache_256_t** cache)
 {
     int i, j;
     uint32_t least;
@@ -32475,8 +33540,8 @@ static void sp_ecc_get_cache_256(const sp_point_256* g, sp_cache_256_t** cache)
  * heap  Heap to use for allocation.
  * returns MEMORY_E when memory allocation fails and MP_OKAY on success.
  */
-static int sp_256_ecc_mulmod_8(sp_point_256* r, const sp_point_256* g, const sp_digit* k,
-        int map, void* heap)
+static int sp_256_ecc_mulmod_8(sp_point_256* r, const sp_point_256* g,
+        const sp_digit* k, int map, void* heap)
 {
 #ifndef FP_ECC
     return sp_256_ecc_mulmod_fast_8(r, g, k, map, heap);
@@ -32570,6 +33635,10 @@ int sp_ecc_mulmod_256(mp_int* km, ecc_point* gm, ecc_point* r, int map,
 }
 
 #ifdef WOLFSSL_SP_SMALL
+/* Striping precomputation table.
+ * 4 points combined into a table of 16 points.
+ * Distance of 64 between points.
+ */
 static const sp_table_entry_256 p256_table[16] = {
     /* 0 */
     { { 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 },
@@ -32654,6 +33723,11 @@ static const sp_table_entry_256 p256_table[16] = {
 /* Multiply the base point of P256 by the scalar and return the result.
  * If map is true then convert result to affine coordinates.
  *
+ * Stripe implementation.
+ * Pre-generated: 2^0, 2^64, ...
+ * Pre-generated: products of all combinations of above.
+ * 4 doubles and adds (with qz=1)
+ *
  * r     Resulting point.
  * k     Scalar to multiply by.
  * map   Indicates whether to convert result to affine.
@@ -32668,6 +33742,10 @@ static int sp_256_ecc_mulmod_base_8(sp_point_256* r, const sp_digit* k,
 }
 
 #else
+/* Striping precomputation table.
+ * 8 points combined into a table of 256 points.
+ * Distance of 32 between points.
+ */
 static const sp_table_entry_256 p256_table[256] = {
     /* 0 */
     { { 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 },
@@ -33952,6 +35030,11 @@ static const sp_table_entry_256 p256_table[256] = {
 /* Multiply the base point of P256 by the scalar and return the result.
  * If map is true then convert result to affine coordinates.
  *
+ * Stripe implementation.
+ * Pre-generated: 2^0, 2^32, ...
+ * Pre-generated: products of all combinations of above.
+ * 8 doubles and adds (with qz=1)
+ *
  * r     Resulting point.
  * k     Scalar to multiply by.
  * map   Indicates whether to convert result to affine.
@@ -33989,8 +35072,7 @@ int sp_ecc_mulmod_base_256(mp_int* km, ecc_point* r, int map, void* heap)
     err = sp_256_point_new_8(heap, p, point);
 #if (defined(WOLFSSL_SP_SMALL) || defined(WOLFSSL_SMALL_STACK)) && !defined(WOLFSSL_SP_NO_MALLOC)
     if (err == MP_OKAY) {
-        k = (sp_digit*)XMALLOC(sizeof(sp_digit) * 8, heap,
-                                                              DYNAMIC_TYPE_ECC);
+        k = (sp_digit*)XMALLOC(sizeof(sp_digit) * 8, heap, DYNAMIC_TYPE_ECC);
         if (k == NULL) {
             err = MEMORY_E;
         }
@@ -34313,564 +35395,6 @@ int sp_ecc_secret_gen_256(mp_int* priv, ecc_point* pub, byte* out,
 #endif /* HAVE_ECC_DHE */
 
 #if defined(HAVE_ECC_SIGN) || defined(HAVE_ECC_VERIFY)
-#ifdef WOLFSSL_SP_SMALL
-/* Multiply a and b into r. (r = a * b)
- *
- * r  A single precision integer.
- * a  A single precision integer.
- * b  A single precision integer.
- */
-static void sp_256_mul_8(sp_digit* r, const sp_digit* a, const sp_digit* b)
-{
-    __asm__ __volatile__ (
-        "sub	sp, sp, #64\n\t"
-        "mov	r5, #0\n\t"
-        "mov	r6, #0\n\t"
-        "mov	r7, #0\n\t"
-        "mov	r8, #0\n\t"
-        "\n1:\n\t"
-        "subs	r3, r5, #28\n\t"
-        "it	cc\n\t"
-        "movcc	r3, #0\n\t"
-        "sub	r4, r5, r3\n\t"
-        "\n2:\n\t"
-        "ldr	r14, [%[a], r3]\n\t"
-        "ldr	r12, [%[b], r4]\n\t"
-        "umull	r9, r10, r14, r12\n\t"
-        "adds	r6, r6, r9\n\t"
-        "adcs	r7, r7, r10\n\t"
-        "adc	r8, r8, #0\n\t"
-        "add	r3, r3, #4\n\t"
-        "sub	r4, r4, #4\n\t"
-        "cmp	r3, #32\n\t"
-        "beq	3f\n\t"
-        "cmp	r3, r5\n\t"
-        "ble	2b\n\t"
-        "\n3:\n\t"
-        "str	r6, [sp, r5]\n\t"
-        "mov	r6, r7\n\t"
-        "mov	r7, r8\n\t"
-        "mov	r8, #0\n\t"
-        "add	r5, r5, #4\n\t"
-        "cmp	r5, #56\n\t"
-        "ble	1b\n\t"
-        "str	r6, [sp, r5]\n\t"
-        "\n4:\n\t"
-        "ldr	r6, [sp, #0]\n\t"
-        "ldr	r7, [sp, #4]\n\t"
-        "ldr	r8, [sp, #8]\n\t"
-        "ldr	r3, [sp, #12]\n\t"
-        "str	r6, [%[r], #0]\n\t"
-        "str	r7, [%[r], #4]\n\t"
-        "str	r8, [%[r], #8]\n\t"
-        "str	r3, [%[r], #12]\n\t"
-        "add	sp, sp, #16\n\t"
-        "add	%[r], %[r], #16\n\t"
-        "subs	r5, r5, #16\n\t"
-        "bgt	4b\n\t"
-        : [r] "+r" (r)
-        : [a] "r" (a), [b] "r" (b)
-        : "memory", "r3", "r4", "r5", "r6", "r7", "r8", "r9", "r10", "r14", "r12"
-    );
-}
-
-#else
-/* Multiply a and b into r. (r = a * b)
- *
- * r  A single precision integer.
- * a  A single precision integer.
- * b  A single precision integer.
- */
-static void sp_256_mul_8(sp_digit* r, const sp_digit* a, const sp_digit* b)
-{
-    __asm__ __volatile__ (
-        "sub	sp, sp, #32\n\t"
-        "mov	r10, #0\n\t"
-        "#  A[0] * B[0]\n\t"
-        "ldr	r8, [%[a], #0]\n\t"
-        "ldr	r9, [%[b], #0]\n\t"
-        "umull	r3, r4, r8, r9\n\t"
-        "mov	r5, #0\n\t"
-        "str	r3, [sp]\n\t"
-        "#  A[0] * B[1]\n\t"
-        "ldr	r8, [%[a], #0]\n\t"
-        "ldr	r9, [%[b], #4]\n\t"
-        "umull	r6, r7, r8, r9\n\t"
-        "adds	r4, r4, r6\n\t"
-        "adcs	r5, r5, r7\n\t"
-        "adc	r3, r10, r10\n\t"
-        "#  A[1] * B[0]\n\t"
-        "ldr	r8, [%[a], #4]\n\t"
-        "ldr	r9, [%[b], #0]\n\t"
-        "umull	r6, r7, r8, r9\n\t"
-        "adds	r4, r4, r6\n\t"
-        "adcs	r5, r5, r7\n\t"
-        "adc	r3, r3, r10\n\t"
-        "str	r4, [sp, #4]\n\t"
-        "#  A[0] * B[2]\n\t"
-        "ldr	r8, [%[a], #0]\n\t"
-        "ldr	r9, [%[b], #8]\n\t"
-        "umull	r6, r7, r8, r9\n\t"
-        "adds	r5, r5, r6\n\t"
-        "adcs	r3, r3, r7\n\t"
-        "adc	r4, r10, r10\n\t"
-        "#  A[1] * B[1]\n\t"
-        "ldr	r8, [%[a], #4]\n\t"
-        "ldr	r9, [%[b], #4]\n\t"
-        "umull	r6, r7, r8, r9\n\t"
-        "adds	r5, r5, r6\n\t"
-        "adcs	r3, r3, r7\n\t"
-        "adc	r4, r4, r10\n\t"
-        "#  A[2] * B[0]\n\t"
-        "ldr	r8, [%[a], #8]\n\t"
-        "ldr	r9, [%[b], #0]\n\t"
-        "umull	r6, r7, r8, r9\n\t"
-        "adds	r5, r5, r6\n\t"
-        "adcs	r3, r3, r7\n\t"
-        "adc	r4, r4, r10\n\t"
-        "str	r5, [sp, #8]\n\t"
-        "#  A[0] * B[3]\n\t"
-        "ldr	r8, [%[a], #0]\n\t"
-        "ldr	r9, [%[b], #12]\n\t"
-        "umull	r6, r7, r8, r9\n\t"
-        "adds	r3, r3, r6\n\t"
-        "adcs	r4, r4, r7\n\t"
-        "adc	r5, r10, r10\n\t"
-        "#  A[1] * B[2]\n\t"
-        "ldr	r8, [%[a], #4]\n\t"
-        "ldr	r9, [%[b], #8]\n\t"
-        "umull	r6, r7, r8, r9\n\t"
-        "adds	r3, r3, r6\n\t"
-        "adcs	r4, r4, r7\n\t"
-        "adc	r5, r5, r10\n\t"
-        "#  A[2] * B[1]\n\t"
-        "ldr	r8, [%[a], #8]\n\t"
-        "ldr	r9, [%[b], #4]\n\t"
-        "umull	r6, r7, r8, r9\n\t"
-        "adds	r3, r3, r6\n\t"
-        "adcs	r4, r4, r7\n\t"
-        "adc	r5, r5, r10\n\t"
-        "#  A[3] * B[0]\n\t"
-        "ldr	r8, [%[a], #12]\n\t"
-        "ldr	r9, [%[b], #0]\n\t"
-        "umull	r6, r7, r8, r9\n\t"
-        "adds	r3, r3, r6\n\t"
-        "adcs	r4, r4, r7\n\t"
-        "adc	r5, r5, r10\n\t"
-        "str	r3, [sp, #12]\n\t"
-        "#  A[0] * B[4]\n\t"
-        "ldr	r8, [%[a], #0]\n\t"
-        "ldr	r9, [%[b], #16]\n\t"
-        "umull	r6, r7, r8, r9\n\t"
-        "adds	r4, r4, r6\n\t"
-        "adcs	r5, r5, r7\n\t"
-        "adc	r3, r10, r10\n\t"
-        "#  A[1] * B[3]\n\t"
-        "ldr	r8, [%[a], #4]\n\t"
-        "ldr	r9, [%[b], #12]\n\t"
-        "umull	r6, r7, r8, r9\n\t"
-        "adds	r4, r4, r6\n\t"
-        "adcs	r5, r5, r7\n\t"
-        "adc	r3, r3, r10\n\t"
-        "#  A[2] * B[2]\n\t"
-        "ldr	r8, [%[a], #8]\n\t"
-        "ldr	r9, [%[b], #8]\n\t"
-        "umull	r6, r7, r8, r9\n\t"
-        "adds	r4, r4, r6\n\t"
-        "adcs	r5, r5, r7\n\t"
-        "adc	r3, r3, r10\n\t"
-        "#  A[3] * B[1]\n\t"
-        "ldr	r8, [%[a], #12]\n\t"
-        "ldr	r9, [%[b], #4]\n\t"
-        "umull	r6, r7, r8, r9\n\t"
-        "adds	r4, r4, r6\n\t"
-        "adcs	r5, r5, r7\n\t"
-        "adc	r3, r3, r10\n\t"
-        "#  A[4] * B[0]\n\t"
-        "ldr	r8, [%[a], #16]\n\t"
-        "ldr	r9, [%[b], #0]\n\t"
-        "umull	r6, r7, r8, r9\n\t"
-        "adds	r4, r4, r6\n\t"
-        "adcs	r5, r5, r7\n\t"
-        "adc	r3, r3, r10\n\t"
-        "str	r4, [sp, #16]\n\t"
-        "#  A[0] * B[5]\n\t"
-        "ldr	r8, [%[a], #0]\n\t"
-        "ldr	r9, [%[b], #20]\n\t"
-        "umull	r6, r7, r8, r9\n\t"
-        "adds	r5, r5, r6\n\t"
-        "adcs	r3, r3, r7\n\t"
-        "adc	r4, r10, r10\n\t"
-        "#  A[1] * B[4]\n\t"
-        "ldr	r8, [%[a], #4]\n\t"
-        "ldr	r9, [%[b], #16]\n\t"
-        "umull	r6, r7, r8, r9\n\t"
-        "adds	r5, r5, r6\n\t"
-        "adcs	r3, r3, r7\n\t"
-        "adc	r4, r4, r10\n\t"
-        "#  A[2] * B[3]\n\t"
-        "ldr	r8, [%[a], #8]\n\t"
-        "ldr	r9, [%[b], #12]\n\t"
-        "umull	r6, r7, r8, r9\n\t"
-        "adds	r5, r5, r6\n\t"
-        "adcs	r3, r3, r7\n\t"
-        "adc	r4, r4, r10\n\t"
-        "#  A[3] * B[2]\n\t"
-        "ldr	r8, [%[a], #12]\n\t"
-        "ldr	r9, [%[b], #8]\n\t"
-        "umull	r6, r7, r8, r9\n\t"
-        "adds	r5, r5, r6\n\t"
-        "adcs	r3, r3, r7\n\t"
-        "adc	r4, r4, r10\n\t"
-        "#  A[4] * B[1]\n\t"
-        "ldr	r8, [%[a], #16]\n\t"
-        "ldr	r9, [%[b], #4]\n\t"
-        "umull	r6, r7, r8, r9\n\t"
-        "adds	r5, r5, r6\n\t"
-        "adcs	r3, r3, r7\n\t"
-        "adc	r4, r4, r10\n\t"
-        "#  A[5] * B[0]\n\t"
-        "ldr	r8, [%[a], #20]\n\t"
-        "ldr	r9, [%[b], #0]\n\t"
-        "umull	r6, r7, r8, r9\n\t"
-        "adds	r5, r5, r6\n\t"
-        "adcs	r3, r3, r7\n\t"
-        "adc	r4, r4, r10\n\t"
-        "str	r5, [sp, #20]\n\t"
-        "#  A[0] * B[6]\n\t"
-        "ldr	r8, [%[a], #0]\n\t"
-        "ldr	r9, [%[b], #24]\n\t"
-        "umull	r6, r7, r8, r9\n\t"
-        "adds	r3, r3, r6\n\t"
-        "adcs	r4, r4, r7\n\t"
-        "adc	r5, r10, r10\n\t"
-        "#  A[1] * B[5]\n\t"
-        "ldr	r8, [%[a], #4]\n\t"
-        "ldr	r9, [%[b], #20]\n\t"
-        "umull	r6, r7, r8, r9\n\t"
-        "adds	r3, r3, r6\n\t"
-        "adcs	r4, r4, r7\n\t"
-        "adc	r5, r5, r10\n\t"
-        "#  A[2] * B[4]\n\t"
-        "ldr	r8, [%[a], #8]\n\t"
-        "ldr	r9, [%[b], #16]\n\t"
-        "umull	r6, r7, r8, r9\n\t"
-        "adds	r3, r3, r6\n\t"
-        "adcs	r4, r4, r7\n\t"
-        "adc	r5, r5, r10\n\t"
-        "#  A[3] * B[3]\n\t"
-        "ldr	r8, [%[a], #12]\n\t"
-        "ldr	r9, [%[b], #12]\n\t"
-        "umull	r6, r7, r8, r9\n\t"
-        "adds	r3, r3, r6\n\t"
-        "adcs	r4, r4, r7\n\t"
-        "adc	r5, r5, r10\n\t"
-        "#  A[4] * B[2]\n\t"
-        "ldr	r8, [%[a], #16]\n\t"
-        "ldr	r9, [%[b], #8]\n\t"
-        "umull	r6, r7, r8, r9\n\t"
-        "adds	r3, r3, r6\n\t"
-        "adcs	r4, r4, r7\n\t"
-        "adc	r5, r5, r10\n\t"
-        "#  A[5] * B[1]\n\t"
-        "ldr	r8, [%[a], #20]\n\t"
-        "ldr	r9, [%[b], #4]\n\t"
-        "umull	r6, r7, r8, r9\n\t"
-        "adds	r3, r3, r6\n\t"
-        "adcs	r4, r4, r7\n\t"
-        "adc	r5, r5, r10\n\t"
-        "#  A[6] * B[0]\n\t"
-        "ldr	r8, [%[a], #24]\n\t"
-        "ldr	r9, [%[b], #0]\n\t"
-        "umull	r6, r7, r8, r9\n\t"
-        "adds	r3, r3, r6\n\t"
-        "adcs	r4, r4, r7\n\t"
-        "adc	r5, r5, r10\n\t"
-        "str	r3, [sp, #24]\n\t"
-        "#  A[0] * B[7]\n\t"
-        "ldr	r8, [%[a], #0]\n\t"
-        "ldr	r9, [%[b], #28]\n\t"
-        "umull	r6, r7, r8, r9\n\t"
-        "adds	r4, r4, r6\n\t"
-        "adcs	r5, r5, r7\n\t"
-        "adc	r3, r10, r10\n\t"
-        "#  A[1] * B[6]\n\t"
-        "ldr	r8, [%[a], #4]\n\t"
-        "ldr	r9, [%[b], #24]\n\t"
-        "umull	r6, r7, r8, r9\n\t"
-        "adds	r4, r4, r6\n\t"
-        "adcs	r5, r5, r7\n\t"
-        "adc	r3, r3, r10\n\t"
-        "#  A[2] * B[5]\n\t"
-        "ldr	r8, [%[a], #8]\n\t"
-        "ldr	r9, [%[b], #20]\n\t"
-        "umull	r6, r7, r8, r9\n\t"
-        "adds	r4, r4, r6\n\t"
-        "adcs	r5, r5, r7\n\t"
-        "adc	r3, r3, r10\n\t"
-        "#  A[3] * B[4]\n\t"
-        "ldr	r8, [%[a], #12]\n\t"
-        "ldr	r9, [%[b], #16]\n\t"
-        "umull	r6, r7, r8, r9\n\t"
-        "adds	r4, r4, r6\n\t"
-        "adcs	r5, r5, r7\n\t"
-        "adc	r3, r3, r10\n\t"
-        "#  A[4] * B[3]\n\t"
-        "ldr	r8, [%[a], #16]\n\t"
-        "ldr	r9, [%[b], #12]\n\t"
-        "umull	r6, r7, r8, r9\n\t"
-        "adds	r4, r4, r6\n\t"
-        "adcs	r5, r5, r7\n\t"
-        "adc	r3, r3, r10\n\t"
-        "#  A[5] * B[2]\n\t"
-        "ldr	r8, [%[a], #20]\n\t"
-        "ldr	r9, [%[b], #8]\n\t"
-        "umull	r6, r7, r8, r9\n\t"
-        "adds	r4, r4, r6\n\t"
-        "adcs	r5, r5, r7\n\t"
-        "adc	r3, r3, r10\n\t"
-        "#  A[6] * B[1]\n\t"
-        "ldr	r8, [%[a], #24]\n\t"
-        "ldr	r9, [%[b], #4]\n\t"
-        "umull	r6, r7, r8, r9\n\t"
-        "adds	r4, r4, r6\n\t"
-        "adcs	r5, r5, r7\n\t"
-        "adc	r3, r3, r10\n\t"
-        "#  A[7] * B[0]\n\t"
-        "ldr	r8, [%[a], #28]\n\t"
-        "ldr	r9, [%[b], #0]\n\t"
-        "umull	r6, r7, r8, r9\n\t"
-        "adds	r4, r4, r6\n\t"
-        "adcs	r5, r5, r7\n\t"
-        "adc	r3, r3, r10\n\t"
-        "str	r4, [sp, #28]\n\t"
-        "#  A[1] * B[7]\n\t"
-        "ldr	r8, [%[a], #4]\n\t"
-        "ldr	r9, [%[b], #28]\n\t"
-        "umull	r6, r7, r8, r9\n\t"
-        "adds	r5, r5, r6\n\t"
-        "adcs	r3, r3, r7\n\t"
-        "adc	r4, r10, r10\n\t"
-        "#  A[2] * B[6]\n\t"
-        "ldr	r8, [%[a], #8]\n\t"
-        "ldr	r9, [%[b], #24]\n\t"
-        "umull	r6, r7, r8, r9\n\t"
-        "adds	r5, r5, r6\n\t"
-        "adcs	r3, r3, r7\n\t"
-        "adc	r4, r4, r10\n\t"
-        "#  A[3] * B[5]\n\t"
-        "ldr	r8, [%[a], #12]\n\t"
-        "ldr	r9, [%[b], #20]\n\t"
-        "umull	r6, r7, r8, r9\n\t"
-        "adds	r5, r5, r6\n\t"
-        "adcs	r3, r3, r7\n\t"
-        "adc	r4, r4, r10\n\t"
-        "#  A[4] * B[4]\n\t"
-        "ldr	r8, [%[a], #16]\n\t"
-        "ldr	r9, [%[b], #16]\n\t"
-        "umull	r6, r7, r8, r9\n\t"
-        "adds	r5, r5, r6\n\t"
-        "adcs	r3, r3, r7\n\t"
-        "adc	r4, r4, r10\n\t"
-        "#  A[5] * B[3]\n\t"
-        "ldr	r8, [%[a], #20]\n\t"
-        "ldr	r9, [%[b], #12]\n\t"
-        "umull	r6, r7, r8, r9\n\t"
-        "adds	r5, r5, r6\n\t"
-        "adcs	r3, r3, r7\n\t"
-        "adc	r4, r4, r10\n\t"
-        "#  A[6] * B[2]\n\t"
-        "ldr	r8, [%[a], #24]\n\t"
-        "ldr	r9, [%[b], #8]\n\t"
-        "umull	r6, r7, r8, r9\n\t"
-        "adds	r5, r5, r6\n\t"
-        "adcs	r3, r3, r7\n\t"
-        "adc	r4, r4, r10\n\t"
-        "#  A[7] * B[1]\n\t"
-        "ldr	r8, [%[a], #28]\n\t"
-        "ldr	r9, [%[b], #4]\n\t"
-        "umull	r6, r7, r8, r9\n\t"
-        "adds	r5, r5, r6\n\t"
-        "adcs	r3, r3, r7\n\t"
-        "adc	r4, r4, r10\n\t"
-        "str	r5, [%[r], #32]\n\t"
-        "#  A[2] * B[7]\n\t"
-        "ldr	r8, [%[a], #8]\n\t"
-        "ldr	r9, [%[b], #28]\n\t"
-        "umull	r6, r7, r8, r9\n\t"
-        "adds	r3, r3, r6\n\t"
-        "adcs	r4, r4, r7\n\t"
-        "adc	r5, r10, r10\n\t"
-        "#  A[3] * B[6]\n\t"
-        "ldr	r8, [%[a], #12]\n\t"
-        "ldr	r9, [%[b], #24]\n\t"
-        "umull	r6, r7, r8, r9\n\t"
-        "adds	r3, r3, r6\n\t"
-        "adcs	r4, r4, r7\n\t"
-        "adc	r5, r5, r10\n\t"
-        "#  A[4] * B[5]\n\t"
-        "ldr	r8, [%[a], #16]\n\t"
-        "ldr	r9, [%[b], #20]\n\t"
-        "umull	r6, r7, r8, r9\n\t"
-        "adds	r3, r3, r6\n\t"
-        "adcs	r4, r4, r7\n\t"
-        "adc	r5, r5, r10\n\t"
-        "#  A[5] * B[4]\n\t"
-        "ldr	r8, [%[a], #20]\n\t"
-        "ldr	r9, [%[b], #16]\n\t"
-        "umull	r6, r7, r8, r9\n\t"
-        "adds	r3, r3, r6\n\t"
-        "adcs	r4, r4, r7\n\t"
-        "adc	r5, r5, r10\n\t"
-        "#  A[6] * B[3]\n\t"
-        "ldr	r8, [%[a], #24]\n\t"
-        "ldr	r9, [%[b], #12]\n\t"
-        "umull	r6, r7, r8, r9\n\t"
-        "adds	r3, r3, r6\n\t"
-        "adcs	r4, r4, r7\n\t"
-        "adc	r5, r5, r10\n\t"
-        "#  A[7] * B[2]\n\t"
-        "ldr	r8, [%[a], #28]\n\t"
-        "ldr	r9, [%[b], #8]\n\t"
-        "umull	r6, r7, r8, r9\n\t"
-        "adds	r3, r3, r6\n\t"
-        "adcs	r4, r4, r7\n\t"
-        "adc	r5, r5, r10\n\t"
-        "str	r3, [%[r], #36]\n\t"
-        "#  A[3] * B[7]\n\t"
-        "ldr	r8, [%[a], #12]\n\t"
-        "ldr	r9, [%[b], #28]\n\t"
-        "umull	r6, r7, r8, r9\n\t"
-        "adds	r4, r4, r6\n\t"
-        "adcs	r5, r5, r7\n\t"
-        "adc	r3, r10, r10\n\t"
-        "#  A[4] * B[6]\n\t"
-        "ldr	r8, [%[a], #16]\n\t"
-        "ldr	r9, [%[b], #24]\n\t"
-        "umull	r6, r7, r8, r9\n\t"
-        "adds	r4, r4, r6\n\t"
-        "adcs	r5, r5, r7\n\t"
-        "adc	r3, r3, r10\n\t"
-        "#  A[5] * B[5]\n\t"
-        "ldr	r8, [%[a], #20]\n\t"
-        "ldr	r9, [%[b], #20]\n\t"
-        "umull	r6, r7, r8, r9\n\t"
-        "adds	r4, r4, r6\n\t"
-        "adcs	r5, r5, r7\n\t"
-        "adc	r3, r3, r10\n\t"
-        "#  A[6] * B[4]\n\t"
-        "ldr	r8, [%[a], #24]\n\t"
-        "ldr	r9, [%[b], #16]\n\t"
-        "umull	r6, r7, r8, r9\n\t"
-        "adds	r4, r4, r6\n\t"
-        "adcs	r5, r5, r7\n\t"
-        "adc	r3, r3, r10\n\t"
-        "#  A[7] * B[3]\n\t"
-        "ldr	r8, [%[a], #28]\n\t"
-        "ldr	r9, [%[b], #12]\n\t"
-        "umull	r6, r7, r8, r9\n\t"
-        "adds	r4, r4, r6\n\t"
-        "adcs	r5, r5, r7\n\t"
-        "adc	r3, r3, r10\n\t"
-        "str	r4, [%[r], #40]\n\t"
-        "#  A[4] * B[7]\n\t"
-        "ldr	r8, [%[a], #16]\n\t"
-        "ldr	r9, [%[b], #28]\n\t"
-        "umull	r6, r7, r8, r9\n\t"
-        "adds	r5, r5, r6\n\t"
-        "adcs	r3, r3, r7\n\t"
-        "adc	r4, r10, r10\n\t"
-        "#  A[5] * B[6]\n\t"
-        "ldr	r8, [%[a], #20]\n\t"
-        "ldr	r9, [%[b], #24]\n\t"
-        "umull	r6, r7, r8, r9\n\t"
-        "adds	r5, r5, r6\n\t"
-        "adcs	r3, r3, r7\n\t"
-        "adc	r4, r4, r10\n\t"
-        "#  A[6] * B[5]\n\t"
-        "ldr	r8, [%[a], #24]\n\t"
-        "ldr	r9, [%[b], #20]\n\t"
-        "umull	r6, r7, r8, r9\n\t"
-        "adds	r5, r5, r6\n\t"
-        "adcs	r3, r3, r7\n\t"
-        "adc	r4, r4, r10\n\t"
-        "#  A[7] * B[4]\n\t"
-        "ldr	r8, [%[a], #28]\n\t"
-        "ldr	r9, [%[b], #16]\n\t"
-        "umull	r6, r7, r8, r9\n\t"
-        "adds	r5, r5, r6\n\t"
-        "adcs	r3, r3, r7\n\t"
-        "adc	r4, r4, r10\n\t"
-        "str	r5, [%[r], #44]\n\t"
-        "#  A[5] * B[7]\n\t"
-        "ldr	r8, [%[a], #20]\n\t"
-        "ldr	r9, [%[b], #28]\n\t"
-        "umull	r6, r7, r8, r9\n\t"
-        "adds	r3, r3, r6\n\t"
-        "adcs	r4, r4, r7\n\t"
-        "adc	r5, r10, r10\n\t"
-        "#  A[6] * B[6]\n\t"
-        "ldr	r8, [%[a], #24]\n\t"
-        "ldr	r9, [%[b], #24]\n\t"
-        "umull	r6, r7, r8, r9\n\t"
-        "adds	r3, r3, r6\n\t"
-        "adcs	r4, r4, r7\n\t"
-        "adc	r5, r5, r10\n\t"
-        "#  A[7] * B[5]\n\t"
-        "ldr	r8, [%[a], #28]\n\t"
-        "ldr	r9, [%[b], #20]\n\t"
-        "umull	r6, r7, r8, r9\n\t"
-        "adds	r3, r3, r6\n\t"
-        "adcs	r4, r4, r7\n\t"
-        "adc	r5, r5, r10\n\t"
-        "str	r3, [%[r], #48]\n\t"
-        "#  A[6] * B[7]\n\t"
-        "ldr	r8, [%[a], #24]\n\t"
-        "ldr	r9, [%[b], #28]\n\t"
-        "umull	r6, r7, r8, r9\n\t"
-        "adds	r4, r4, r6\n\t"
-        "adcs	r5, r5, r7\n\t"
-        "adc	r3, r10, r10\n\t"
-        "#  A[7] * B[6]\n\t"
-        "ldr	r8, [%[a], #28]\n\t"
-        "ldr	r9, [%[b], #24]\n\t"
-        "umull	r6, r7, r8, r9\n\t"
-        "adds	r4, r4, r6\n\t"
-        "adcs	r5, r5, r7\n\t"
-        "adc	r3, r3, r10\n\t"
-        "str	r4, [%[r], #52]\n\t"
-        "#  A[7] * B[7]\n\t"
-        "ldr	r8, [%[a], #28]\n\t"
-        "ldr	r9, [%[b], #28]\n\t"
-        "umull	r6, r7, r8, r9\n\t"
-        "adds	r5, r5, r6\n\t"
-        "adc	r3, r3, r7\n\t"
-        "str	r5, [%[r], #56]\n\t"
-        "str	r3, [%[r], #60]\n\t"
-        "ldr	r3, [sp, #0]\n\t"
-        "ldr	r4, [sp, #4]\n\t"
-        "ldr	r5, [sp, #8]\n\t"
-        "ldr	r6, [sp, #12]\n\t"
-        "str	r3, [%[r], #0]\n\t"
-        "str	r4, [%[r], #4]\n\t"
-        "str	r5, [%[r], #8]\n\t"
-        "str	r6, [%[r], #12]\n\t"
-        "ldr	r3, [sp, #16]\n\t"
-        "ldr	r4, [sp, #20]\n\t"
-        "ldr	r5, [sp, #24]\n\t"
-        "ldr	r6, [sp, #28]\n\t"
-        "str	r3, [%[r], #16]\n\t"
-        "str	r4, [%[r], #20]\n\t"
-        "str	r5, [%[r], #24]\n\t"
-        "str	r6, [%[r], #28]\n\t"
-        "add	sp, sp, #32\n\t"
-        :
-        : [r] "r" (r), [a] "r" (a), [b] "r" (b)
-        : "memory", "r3", "r4", "r5", "r6", "r7", "r8", "r9", "r10"
-    );
-}
-
-#endif /* WOLFSSL_SP_SMALL */
 #endif
 #if defined(HAVE_ECC_SIGN) || defined(HAVE_ECC_VERIFY)
 #ifdef WOLFSSL_SP_SMALL
@@ -35216,435 +35740,6 @@ static WC_INLINE int sp_256_mod_8(sp_digit* r, const sp_digit* a, const sp_digit
 
 #endif
 #if defined(HAVE_ECC_SIGN) || defined(HAVE_ECC_VERIFY)
-#ifdef WOLFSSL_SP_SMALL
-/* Square a and put result in r. (r = a * a)
- *
- * r  A single precision integer.
- * a  A single precision integer.
- */
-static void sp_256_sqr_8(sp_digit* r, const sp_digit* a)
-{
-    __asm__ __volatile__ (
-        "sub	sp, sp, #64\n\t"
-        "mov	r12, #0\n\t"
-        "mov	r6, #0\n\t"
-        "mov	r7, #0\n\t"
-        "mov	r8, #0\n\t"
-        "mov	r5, #0\n\t"
-        "\n1:\n\t"
-        "subs	r3, r5, #28\n\t"
-        "it	cc\n\t"
-        "movcc	r3, r12\n\t"
-        "sub	r4, r5, r3\n\t"
-        "\n2:\n\t"
-        "cmp	r4, r3\n\t"
-        "beq	4f\n\t"
-        "ldr	r14, [%[a], r3]\n\t"
-        "ldr	r9, [%[a], r4]\n\t"
-        "umull	r9, r10, r14, r9\n\t"
-        "adds	r6, r6, r9\n\t"
-        "adcs	r7, r7, r10\n\t"
-        "adc	r8, r8, r12\n\t"
-        "adds	r6, r6, r9\n\t"
-        "adcs	r7, r7, r10\n\t"
-        "adc	r8, r8, r12\n\t"
-        "bal	5f\n\t"
-        "\n4:\n\t"
-        "ldr	r14, [%[a], r3]\n\t"
-        "umull	r9, r10, r14, r14\n\t"
-        "adds	r6, r6, r9\n\t"
-        "adcs	r7, r7, r10\n\t"
-        "adc	r8, r8, r12\n\t"
-        "\n5:\n\t"
-        "add	r3, r3, #4\n\t"
-        "sub	r4, r4, #4\n\t"
-        "cmp	r3, #32\n\t"
-        "beq	3f\n\t"
-        "cmp	r3, r4\n\t"
-        "bgt	3f\n\t"
-        "cmp	r3, r5\n\t"
-        "ble	2b\n\t"
-        "\n3:\n\t"
-        "str	r6, [sp, r5]\n\t"
-        "mov	r6, r7\n\t"
-        "mov	r7, r8\n\t"
-        "mov	r8, #0\n\t"
-        "add	r5, r5, #4\n\t"
-        "cmp	r5, #56\n\t"
-        "ble	1b\n\t"
-        "str	r6, [sp, r5]\n\t"
-        "\n4:\n\t"
-        "ldr	r6, [sp, #0]\n\t"
-        "ldr	r7, [sp, #4]\n\t"
-        "ldr	r8, [sp, #8]\n\t"
-        "ldr	r3, [sp, #12]\n\t"
-        "str	r6, [%[r], #0]\n\t"
-        "str	r7, [%[r], #4]\n\t"
-        "str	r8, [%[r], #8]\n\t"
-        "str	r3, [%[r], #12]\n\t"
-        "add	sp, sp, #16\n\t"
-        "add	%[r], %[r], #16\n\t"
-        "subs	r5, r5, #16\n\t"
-        "bgt	4b\n\t"
-        : [r] "+r" (r)
-        : [a] "r" (a)
-        : "memory", "r3", "r4", "r5", "r6", "r7", "r8", "r9", "r10", "r14", "r9", "r12"
-    );
-}
-
-#else
-/* Square a and put result in r. (r = a * a)
- *
- * r  A single precision integer.
- * a  A single precision integer.
- */
-static void sp_256_sqr_8(sp_digit* r, const sp_digit* a)
-{
-    __asm__ __volatile__ (
-        "sub	sp, sp, #32\n\t"
-        "mov	r14, #0\n\t"
-        "#  A[0] * A[0]\n\t"
-        "ldr	r10, [%[a], #0]\n\t"
-        "umull	r8, r3, r10, r10\n\t"
-        "mov	r4, #0\n\t"
-        "str	r8, [sp]\n\t"
-        "#  A[0] * A[1]\n\t"
-        "ldr	r10, [%[a], #4]\n\t"
-        "ldr	r8, [%[a], #0]\n\t"
-        "umull	r8, r9, r10, r8\n\t"
-        "adds	r3, r3, r8\n\t"
-        "adcs	r4, r4, r9\n\t"
-        "adc	r2, r14, r14\n\t"
-        "adds	r3, r3, r8\n\t"
-        "adcs	r4, r4, r9\n\t"
-        "adc	r2, r2, r14\n\t"
-        "str	r3, [sp, #4]\n\t"
-        "#  A[0] * A[2]\n\t"
-        "ldr	r10, [%[a], #8]\n\t"
-        "ldr	r8, [%[a], #0]\n\t"
-        "umull	r8, r9, r10, r8\n\t"
-        "adds	r4, r4, r8\n\t"
-        "adcs	r2, r2, r9\n\t"
-        "adc	r3, r14, r14\n\t"
-        "adds	r4, r4, r8\n\t"
-        "adcs	r2, r2, r9\n\t"
-        "adc	r3, r3, r14\n\t"
-        "#  A[1] * A[1]\n\t"
-        "ldr	r10, [%[a], #4]\n\t"
-        "umull	r8, r9, r10, r10\n\t"
-        "adds	r4, r4, r8\n\t"
-        "adcs	r2, r2, r9\n\t"
-        "adc	r3, r3, r14\n\t"
-        "str	r4, [sp, #8]\n\t"
-        "#  A[0] * A[3]\n\t"
-        "ldr	r10, [%[a], #12]\n\t"
-        "ldr	r8, [%[a], #0]\n\t"
-        "umull	r8, r9, r10, r8\n\t"
-        "adds	r2, r2, r8\n\t"
-        "adcs	r3, r3, r9\n\t"
-        "adc	r4, r14, r14\n\t"
-        "adds	r2, r2, r8\n\t"
-        "adcs	r3, r3, r9\n\t"
-        "adc	r4, r4, r14\n\t"
-        "#  A[1] * A[2]\n\t"
-        "ldr	r10, [%[a], #8]\n\t"
-        "ldr	r8, [%[a], #4]\n\t"
-        "umull	r8, r9, r10, r8\n\t"
-        "adds	r2, r2, r8\n\t"
-        "adcs	r3, r3, r9\n\t"
-        "adc	r4, r4, r14\n\t"
-        "adds	r2, r2, r8\n\t"
-        "adcs	r3, r3, r9\n\t"
-        "adc	r4, r4, r14\n\t"
-        "str	r2, [sp, #12]\n\t"
-        "#  A[0] * A[4]\n\t"
-        "ldr	r10, [%[a], #16]\n\t"
-        "ldr	r8, [%[a], #0]\n\t"
-        "umull	r8, r9, r10, r8\n\t"
-        "adds	r3, r3, r8\n\t"
-        "adcs	r4, r4, r9\n\t"
-        "adc	r2, r14, r14\n\t"
-        "adds	r3, r3, r8\n\t"
-        "adcs	r4, r4, r9\n\t"
-        "adc	r2, r2, r14\n\t"
-        "#  A[1] * A[3]\n\t"
-        "ldr	r10, [%[a], #12]\n\t"
-        "ldr	r8, [%[a], #4]\n\t"
-        "umull	r8, r9, r10, r8\n\t"
-        "adds	r3, r3, r8\n\t"
-        "adcs	r4, r4, r9\n\t"
-        "adc	r2, r2, r14\n\t"
-        "adds	r3, r3, r8\n\t"
-        "adcs	r4, r4, r9\n\t"
-        "adc	r2, r2, r14\n\t"
-        "#  A[2] * A[2]\n\t"
-        "ldr	r10, [%[a], #8]\n\t"
-        "umull	r8, r9, r10, r10\n\t"
-        "adds	r3, r3, r8\n\t"
-        "adcs	r4, r4, r9\n\t"
-        "adc	r2, r2, r14\n\t"
-        "str	r3, [sp, #16]\n\t"
-        "#  A[0] * A[5]\n\t"
-        "ldr	r10, [%[a], #20]\n\t"
-        "ldr	r8, [%[a], #0]\n\t"
-        "umull	r5, r6, r10, r8\n\t"
-        "mov	r3, #0\n\t"
-        "mov	r7, #0\n\t"
-        "#  A[1] * A[4]\n\t"
-        "ldr	r10, [%[a], #16]\n\t"
-        "ldr	r8, [%[a], #4]\n\t"
-        "umull	r8, r9, r10, r8\n\t"
-        "adds	r5, r5, r8\n\t"
-        "adcs	r6, r6, r9\n\t"
-        "adc	r7, r7, r14\n\t"
-        "#  A[2] * A[3]\n\t"
-        "ldr	r10, [%[a], #12]\n\t"
-        "ldr	r8, [%[a], #8]\n\t"
-        "umull	r8, r9, r10, r8\n\t"
-        "adds	r5, r5, r8\n\t"
-        "adcs	r6, r6, r9\n\t"
-        "adc	r7, r7, r14\n\t"
-        "adds	r5, r5, r5\n\t"
-        "adcs	r6, r6, r6\n\t"
-        "adc	r7, r7, r7\n\t"
-        "adds	r4, r4, r5\n\t"
-        "adcs	r2, r2, r6\n\t"
-        "adc	r3, r3, r7\n\t"
-        "str	r4, [sp, #20]\n\t"
-        "#  A[0] * A[6]\n\t"
-        "ldr	r10, [%[a], #24]\n\t"
-        "ldr	r8, [%[a], #0]\n\t"
-        "umull	r5, r6, r10, r8\n\t"
-        "mov	r4, #0\n\t"
-        "mov	r7, #0\n\t"
-        "#  A[1] * A[5]\n\t"
-        "ldr	r10, [%[a], #20]\n\t"
-        "ldr	r8, [%[a], #4]\n\t"
-        "umull	r8, r9, r10, r8\n\t"
-        "adds	r5, r5, r8\n\t"
-        "adcs	r6, r6, r9\n\t"
-        "adc	r7, r7, r14\n\t"
-        "#  A[2] * A[4]\n\t"
-        "ldr	r10, [%[a], #16]\n\t"
-        "ldr	r8, [%[a], #8]\n\t"
-        "umull	r8, r9, r10, r8\n\t"
-        "adds	r5, r5, r8\n\t"
-        "adcs	r6, r6, r9\n\t"
-        "adc	r7, r7, r14\n\t"
-        "#  A[3] * A[3]\n\t"
-        "ldr	r10, [%[a], #12]\n\t"
-        "umull	r8, r9, r10, r10\n\t"
-        "adds	r5, r5, r5\n\t"
-        "adcs	r6, r6, r6\n\t"
-        "adc	r7, r7, r7\n\t"
-        "adds	r5, r5, r8\n\t"
-        "adcs	r6, r6, r9\n\t"
-        "adc	r7, r7, r14\n\t"
-        "adds	r2, r2, r5\n\t"
-        "adcs	r3, r3, r6\n\t"
-        "adc	r4, r4, r7\n\t"
-        "str	r2, [sp, #24]\n\t"
-        "#  A[0] * A[7]\n\t"
-        "ldr	r10, [%[a], #28]\n\t"
-        "ldr	r8, [%[a], #0]\n\t"
-        "umull	r5, r6, r10, r8\n\t"
-        "mov	r2, #0\n\t"
-        "mov	r7, #0\n\t"
-        "#  A[1] * A[6]\n\t"
-        "ldr	r10, [%[a], #24]\n\t"
-        "ldr	r8, [%[a], #4]\n\t"
-        "umull	r8, r9, r10, r8\n\t"
-        "adds	r5, r5, r8\n\t"
-        "adcs	r6, r6, r9\n\t"
-        "adc	r7, r7, r14\n\t"
-        "#  A[2] * A[5]\n\t"
-        "ldr	r10, [%[a], #20]\n\t"
-        "ldr	r8, [%[a], #8]\n\t"
-        "umull	r8, r9, r10, r8\n\t"
-        "adds	r5, r5, r8\n\t"
-        "adcs	r6, r6, r9\n\t"
-        "adc	r7, r7, r14\n\t"
-        "#  A[3] * A[4]\n\t"
-        "ldr	r10, [%[a], #16]\n\t"
-        "ldr	r8, [%[a], #12]\n\t"
-        "umull	r8, r9, r10, r8\n\t"
-        "adds	r5, r5, r8\n\t"
-        "adcs	r6, r6, r9\n\t"
-        "adc	r7, r7, r14\n\t"
-        "adds	r5, r5, r5\n\t"
-        "adcs	r6, r6, r6\n\t"
-        "adc	r7, r7, r7\n\t"
-        "adds	r3, r3, r5\n\t"
-        "adcs	r4, r4, r6\n\t"
-        "adc	r2, r2, r7\n\t"
-        "str	r3, [sp, #28]\n\t"
-        "#  A[1] * A[7]\n\t"
-        "ldr	r10, [%[a], #28]\n\t"
-        "ldr	r8, [%[a], #4]\n\t"
-        "umull	r5, r6, r10, r8\n\t"
-        "mov	r3, #0\n\t"
-        "mov	r7, #0\n\t"
-        "#  A[2] * A[6]\n\t"
-        "ldr	r10, [%[a], #24]\n\t"
-        "ldr	r8, [%[a], #8]\n\t"
-        "umull	r8, r9, r10, r8\n\t"
-        "adds	r5, r5, r8\n\t"
-        "adcs	r6, r6, r9\n\t"
-        "adc	r7, r7, r14\n\t"
-        "#  A[3] * A[5]\n\t"
-        "ldr	r10, [%[a], #20]\n\t"
-        "ldr	r8, [%[a], #12]\n\t"
-        "umull	r8, r9, r10, r8\n\t"
-        "adds	r5, r5, r8\n\t"
-        "adcs	r6, r6, r9\n\t"
-        "adc	r7, r7, r14\n\t"
-        "#  A[4] * A[4]\n\t"
-        "ldr	r10, [%[a], #16]\n\t"
-        "umull	r8, r9, r10, r10\n\t"
-        "adds	r5, r5, r5\n\t"
-        "adcs	r6, r6, r6\n\t"
-        "adc	r7, r7, r7\n\t"
-        "adds	r5, r5, r8\n\t"
-        "adcs	r6, r6, r9\n\t"
-        "adc	r7, r7, r14\n\t"
-        "adds	r4, r4, r5\n\t"
-        "adcs	r2, r2, r6\n\t"
-        "adc	r3, r3, r7\n\t"
-        "str	r4, [%[r], #32]\n\t"
-        "#  A[2] * A[7]\n\t"
-        "ldr	r10, [%[a], #28]\n\t"
-        "ldr	r8, [%[a], #8]\n\t"
-        "umull	r5, r6, r10, r8\n\t"
-        "mov	r4, #0\n\t"
-        "mov	r7, #0\n\t"
-        "#  A[3] * A[6]\n\t"
-        "ldr	r10, [%[a], #24]\n\t"
-        "ldr	r8, [%[a], #12]\n\t"
-        "umull	r8, r9, r10, r8\n\t"
-        "adds	r5, r5, r8\n\t"
-        "adcs	r6, r6, r9\n\t"
-        "adc	r7, r7, r14\n\t"
-        "#  A[4] * A[5]\n\t"
-        "ldr	r10, [%[a], #20]\n\t"
-        "ldr	r8, [%[a], #16]\n\t"
-        "umull	r8, r9, r10, r8\n\t"
-        "adds	r5, r5, r8\n\t"
-        "adcs	r6, r6, r9\n\t"
-        "adc	r7, r7, r14\n\t"
-        "adds	r5, r5, r5\n\t"
-        "adcs	r6, r6, r6\n\t"
-        "adc	r7, r7, r7\n\t"
-        "adds	r2, r2, r5\n\t"
-        "adcs	r3, r3, r6\n\t"
-        "adc	r4, r4, r7\n\t"
-        "str	r2, [%[r], #36]\n\t"
-        "#  A[3] * A[7]\n\t"
-        "ldr	r10, [%[a], #28]\n\t"
-        "ldr	r8, [%[a], #12]\n\t"
-        "umull	r8, r9, r10, r8\n\t"
-        "adds	r3, r3, r8\n\t"
-        "adcs	r4, r4, r9\n\t"
-        "adc	r2, r14, r14\n\t"
-        "adds	r3, r3, r8\n\t"
-        "adcs	r4, r4, r9\n\t"
-        "adc	r2, r2, r14\n\t"
-        "#  A[4] * A[6]\n\t"
-        "ldr	r10, [%[a], #24]\n\t"
-        "ldr	r8, [%[a], #16]\n\t"
-        "umull	r8, r9, r10, r8\n\t"
-        "adds	r3, r3, r8\n\t"
-        "adcs	r4, r4, r9\n\t"
-        "adc	r2, r2, r14\n\t"
-        "adds	r3, r3, r8\n\t"
-        "adcs	r4, r4, r9\n\t"
-        "adc	r2, r2, r14\n\t"
-        "#  A[5] * A[5]\n\t"
-        "ldr	r10, [%[a], #20]\n\t"
-        "umull	r8, r9, r10, r10\n\t"
-        "adds	r3, r3, r8\n\t"
-        "adcs	r4, r4, r9\n\t"
-        "adc	r2, r2, r14\n\t"
-        "str	r3, [%[r], #40]\n\t"
-        "#  A[4] * A[7]\n\t"
-        "ldr	r10, [%[a], #28]\n\t"
-        "ldr	r8, [%[a], #16]\n\t"
-        "umull	r8, r9, r10, r8\n\t"
-        "adds	r4, r4, r8\n\t"
-        "adcs	r2, r2, r9\n\t"
-        "adc	r3, r14, r14\n\t"
-        "adds	r4, r4, r8\n\t"
-        "adcs	r2, r2, r9\n\t"
-        "adc	r3, r3, r14\n\t"
-        "#  A[5] * A[6]\n\t"
-        "ldr	r10, [%[a], #24]\n\t"
-        "ldr	r8, [%[a], #20]\n\t"
-        "umull	r8, r9, r10, r8\n\t"
-        "adds	r4, r4, r8\n\t"
-        "adcs	r2, r2, r9\n\t"
-        "adc	r3, r3, r14\n\t"
-        "adds	r4, r4, r8\n\t"
-        "adcs	r2, r2, r9\n\t"
-        "adc	r3, r3, r14\n\t"
-        "str	r4, [%[r], #44]\n\t"
-        "#  A[5] * A[7]\n\t"
-        "ldr	r10, [%[a], #28]\n\t"
-        "ldr	r8, [%[a], #20]\n\t"
-        "umull	r8, r9, r10, r8\n\t"
-        "adds	r2, r2, r8\n\t"
-        "adcs	r3, r3, r9\n\t"
-        "adc	r4, r14, r14\n\t"
-        "adds	r2, r2, r8\n\t"
-        "adcs	r3, r3, r9\n\t"
-        "adc	r4, r4, r14\n\t"
-        "#  A[6] * A[6]\n\t"
-        "ldr	r10, [%[a], #24]\n\t"
-        "umull	r8, r9, r10, r10\n\t"
-        "adds	r2, r2, r8\n\t"
-        "adcs	r3, r3, r9\n\t"
-        "adc	r4, r4, r14\n\t"
-        "str	r2, [%[r], #48]\n\t"
-        "#  A[6] * A[7]\n\t"
-        "ldr	r10, [%[a], #28]\n\t"
-        "ldr	r8, [%[a], #24]\n\t"
-        "umull	r8, r9, r10, r8\n\t"
-        "adds	r3, r3, r8\n\t"
-        "adcs	r4, r4, r9\n\t"
-        "adc	r2, r14, r14\n\t"
-        "adds	r3, r3, r8\n\t"
-        "adcs	r4, r4, r9\n\t"
-        "adc	r2, r2, r14\n\t"
-        "str	r3, [%[r], #52]\n\t"
-        "#  A[7] * A[7]\n\t"
-        "ldr	r10, [%[a], #28]\n\t"
-        "umull	r8, r9, r10, r10\n\t"
-        "adds	r4, r4, r8\n\t"
-        "adc	r2, r2, r9\n\t"
-        "str	r4, [%[r], #56]\n\t"
-        "str	r2, [%[r], #60]\n\t"
-        "ldr	r2, [sp, #0]\n\t"
-        "ldr	r3, [sp, #4]\n\t"
-        "ldr	r4, [sp, #8]\n\t"
-        "ldr	r8, [sp, #12]\n\t"
-        "str	r2, [%[r], #0]\n\t"
-        "str	r3, [%[r], #4]\n\t"
-        "str	r4, [%[r], #8]\n\t"
-        "str	r8, [%[r], #12]\n\t"
-        "ldr	r2, [sp, #16]\n\t"
-        "ldr	r3, [sp, #20]\n\t"
-        "ldr	r4, [sp, #24]\n\t"
-        "ldr	r8, [sp, #28]\n\t"
-        "str	r2, [%[r], #16]\n\t"
-        "str	r3, [%[r], #20]\n\t"
-        "str	r4, [%[r], #24]\n\t"
-        "str	r8, [%[r], #28]\n\t"
-        "add	sp, sp, #32\n\t"
-        :
-        : [r] "r" (r), [a] "r" (a)
-        : "memory", "r2", "r3", "r4", "r8", "r9", "r10", "r8", "r5", "r6", "r7", "r14"
-    );
-}
-
-#endif /* WOLFSSL_SP_SMALL */
 #ifdef WOLFSSL_SP_SMALL
 /* Order-2 for the P256 curve. */
 static const uint32_t p256_order_minus_2[8] = {
@@ -36693,407 +36788,15 @@ int sp_ecc_uncompress_256(mp_int* xm, int odd, mp_int* ym)
 
 /* Point structure to use. */
 typedef struct sp_point_384 {
+    /* X ordinate of point. */
     sp_digit x[2 * 12];
+    /* Y ordinate of point. */
     sp_digit y[2 * 12];
+    /* Z ordinate of point. */
     sp_digit z[2 * 12];
+    /* Indicates point is at infinity. */
     int infinity;
 } sp_point_384;
-
-/* The modulus (prime) of the curve P384. */
-static const sp_digit p384_mod[12] = {
-    0xffffffff,0x00000000,0x00000000,0xffffffff,0xfffffffe,0xffffffff,
-    0xffffffff,0xffffffff,0xffffffff,0xffffffff,0xffffffff,0xffffffff
-};
-/* The Montogmery normalizer for modulus of the curve P384. */
-static const sp_digit p384_norm_mod[12] = {
-    0x00000001,0xffffffff,0xffffffff,0x00000000,0x00000001,0x00000000,
-    0x00000000,0x00000000,0x00000000,0x00000000,0x00000000,0x00000000
-};
-/* The Montogmery multiplier for modulus of the curve P384. */
-static sp_digit p384_mp_mod = 0x00000001;
-#if defined(WOLFSSL_VALIDATE_ECC_KEYGEN) || defined(HAVE_ECC_SIGN) || \
-                                            defined(HAVE_ECC_VERIFY)
-/* The order of the curve P384. */
-static const sp_digit p384_order[12] = {
-    0xccc52973,0xecec196a,0x48b0a77a,0x581a0db2,0xf4372ddf,0xc7634d81,
-    0xffffffff,0xffffffff,0xffffffff,0xffffffff,0xffffffff,0xffffffff
-};
-#endif
-/* The order of the curve P384 minus 2. */
-static const sp_digit p384_order2[12] = {
-    0xccc52971,0xecec196a,0x48b0a77a,0x581a0db2,0xf4372ddf,0xc7634d81,
-    0xffffffff,0xffffffff,0xffffffff,0xffffffff,0xffffffff,0xffffffff
-};
-#if defined(HAVE_ECC_SIGN) || defined(HAVE_ECC_VERIFY)
-/* The Montogmery normalizer for order of the curve P384. */
-static const sp_digit p384_norm_order[12] = {
-    0x333ad68d,0x1313e695,0xb74f5885,0xa7e5f24d,0x0bc8d220,0x389cb27e,
-    0x00000000,0x00000000,0x00000000,0x00000000,0x00000000,0x00000000
-};
-#endif
-#if defined(HAVE_ECC_SIGN) || defined(HAVE_ECC_VERIFY)
-/* The Montogmery multiplier for order of the curve P384. */
-static sp_digit p384_mp_order = 0xe88fdc45;
-#endif
-/* The base point of curve P384. */
-static const sp_point_384 p384_base = {
-    /* X ordinate */
-    {
-        0x72760ab7,0x3a545e38,0xbf55296c,0x5502f25d,0x82542a38,0x59f741e0,
-        0x8ba79b98,0x6e1d3b62,0xf320ad74,0x8eb1c71e,0xbe8b0537,0xaa87ca22,
-        0L, 0L, 0L, 0L, 0L, 0L, 0L, 0L, 0L, 0L, 0L, 0L
-    },
-    /* Y ordinate */
-    {
-        0x90ea0e5f,0x7a431d7c,0x1d7e819d,0x0a60b1ce,0xb5f0b8c0,0xe9da3113,
-        0x289a147c,0xf8f41dbd,0x9292dc29,0x5d9e98bf,0x96262c6f,0x3617de4a,
-        0L, 0L, 0L, 0L, 0L, 0L, 0L, 0L, 0L, 0L, 0L, 0L
-    },
-    /* Z ordinate */
-    {
-        0x00000001,0x00000000,0x00000000,0x00000000,0x00000000,0x00000000,
-        0x00000000,0x00000000,0x00000000,0x00000000,0x00000000,0x00000000,
-        0L, 0L, 0L, 0L, 0L, 0L, 0L, 0L, 0L, 0L, 0L, 0L
-    },
-    /* infinity */
-    0
-};
-#if defined(HAVE_ECC_CHECK_KEY) || defined(HAVE_COMP_KEY)
-static const sp_digit p384_b[12] = {
-    0xd3ec2aef,0x2a85c8ed,0x8a2ed19d,0xc656398d,0x5013875a,0x0314088f,
-    0xfe814112,0x181d9c6e,0xe3f82d19,0x988e056b,0xe23ee7e4,0xb3312fa7
-};
-#endif
-
-static int sp_384_point_new_ex_12(void* heap, sp_point_384* sp, sp_point_384** p)
-{
-    int ret = MP_OKAY;
-    (void)heap;
-#if (defined(WOLFSSL_SP_SMALL) || defined(WOLFSSL_SMALL_STACK)) && !defined(WOLFSSL_SP_NO_MALLOC)
-    (void)sp;
-    *p = (sp_point_384*)XMALLOC(sizeof(sp_point_384), heap, DYNAMIC_TYPE_ECC);
-#else
-    *p = sp;
-#endif
-    if (*p == NULL) {
-        ret = MEMORY_E;
-    }
-    return ret;
-}
-
-#if (defined(WOLFSSL_SP_SMALL) || defined(WOLFSSL_SMALL_STACK)) && !defined(WOLFSSL_SP_NO_MALLOC)
-/* Allocate memory for point and return error. */
-#define sp_384_point_new_12(heap, sp, p) sp_384_point_new_ex_12((heap), NULL, &(p))
-#else
-/* Set pointer to data and return no error. */
-#define sp_384_point_new_12(heap, sp, p) sp_384_point_new_ex_12((heap), &(sp), &(p))
-#endif
-
-
-static void sp_384_point_free_12(sp_point_384* p, int clear, void* heap)
-{
-#if (defined(WOLFSSL_SP_SMALL) || defined(WOLFSSL_SMALL_STACK)) && !defined(WOLFSSL_SP_NO_MALLOC)
-/* If valid pointer then clear point data if requested and free data. */
-    if (p != NULL) {
-        if (clear != 0) {
-            XMEMSET(p, 0, sizeof(*p));
-        }
-        XFREE(p, heap, DYNAMIC_TYPE_ECC);
-    }
-#else
-/* Clear point data if requested. */
-    if (clear != 0) {
-        XMEMSET(p, 0, sizeof(*p));
-    }
-#endif
-    (void)heap;
-}
-
-/* Multiply a number by Montogmery normalizer mod modulus (prime).
- *
- * r  The resulting Montgomery form number.
- * a  The number to convert.
- * m  The modulus (prime).
- * returns MEMORY_E when memory allocation fails and MP_OKAY otherwise.
- */
-static int sp_384_mod_mul_norm_12(sp_digit* r, const sp_digit* a, const sp_digit* m)
-{
-#if (defined(WOLFSSL_SP_SMALL) || defined(WOLFSSL_SMALL_STACK)) && !defined(WOLFSSL_SP_NO_MALLOC)
-    int64_t* t;
-#else
-    int64_t t[12];
-#endif
-    int64_t o;
-    int err = MP_OKAY;
-
-    (void)m;
-
-#if (defined(WOLFSSL_SP_SMALL) || defined(WOLFSSL_SMALL_STACK)) && !defined(WOLFSSL_SP_NO_MALLOC)
-    t = (int64_t*)XMALLOC(sizeof(int64_t) * 12, NULL, DYNAMIC_TYPE_ECC);
-    if (t == NULL) {
-        err = MEMORY_E;
-    }
-#endif
-
-    if (err == MP_OKAY) {
-        /*  1  0  0  0  0  0  0  0  1  1  0 -1 */
-        t[0] = 0 + (uint64_t)a[0] + (uint64_t)a[8] + (uint64_t)a[9] - (uint64_t)a[11];
-        /* -1  1  0  0  0  0  0  0 -1  0  1  1 */
-        t[1] = 0 - (uint64_t)a[0] + (uint64_t)a[1] - (uint64_t)a[8] + (uint64_t)a[10] + (uint64_t)a[11];
-        /*  0 -1  1  0  0  0  0  0  0 -1  0  1 */
-        t[2] = 0 - (uint64_t)a[1] + (uint64_t)a[2] - (uint64_t)a[9] + (uint64_t)a[11];
-        /*  1  0 -1  1  0  0  0  0  1  1 -1 -1 */
-        t[3] = 0 + (uint64_t)a[0] - (uint64_t)a[2] + (uint64_t)a[3] + (uint64_t)a[8] + (uint64_t)a[9] - (uint64_t)a[10] - (uint64_t)a[11];
-        /*  1  1  0 -1  1  0  0  0  1  2  1 -2 */
-        t[4] = 0 + (uint64_t)a[0] + (uint64_t)a[1] - (uint64_t)a[3] + (uint64_t)a[4] + (uint64_t)a[8] + 2 * (uint64_t)a[9] + (uint64_t)a[10] -  2 * (uint64_t)a[11];
-        /*  0  1  1  0 -1  1  0  0  0  1  2  1 */
-        t[5] = 0 + (uint64_t)a[1] + (uint64_t)a[2] - (uint64_t)a[4] + (uint64_t)a[5] + (uint64_t)a[9] + 2 * (uint64_t)a[10] + (uint64_t)a[11];
-        /*  0  0  1  1  0 -1  1  0  0  0  1  2 */
-        t[6] = 0 + (uint64_t)a[2] + (uint64_t)a[3] - (uint64_t)a[5] + (uint64_t)a[6] + (uint64_t)a[10] + 2 * (uint64_t)a[11];
-        /*  0  0  0  1  1  0 -1  1  0  0  0  1 */
-        t[7] = 0 + (uint64_t)a[3] + (uint64_t)a[4] - (uint64_t)a[6] + (uint64_t)a[7] + (uint64_t)a[11];
-        /*  0  0  0  0  1  1  0 -1  1  0  0  0 */
-        t[8] = 0 + (uint64_t)a[4] + (uint64_t)a[5] - (uint64_t)a[7] + (uint64_t)a[8];
-        /*  0  0  0  0  0  1  1  0 -1  1  0  0 */
-        t[9] = 0 + (uint64_t)a[5] + (uint64_t)a[6] - (uint64_t)a[8] + (uint64_t)a[9];
-        /*  0  0  0  0  0  0  1  1  0 -1  1  0 */
-        t[10] = 0 + (uint64_t)a[6] + (uint64_t)a[7] - (uint64_t)a[9] + (uint64_t)a[10];
-        /*  0  0  0  0  0  0  0  1  1  0 -1  1 */
-        t[11] = 0 + (uint64_t)a[7] + (uint64_t)a[8] - (uint64_t)a[10] + (uint64_t)a[11];
-
-        t[1] += t[0] >> 32; t[0] &= 0xffffffff;
-        t[2] += t[1] >> 32; t[1] &= 0xffffffff;
-        t[3] += t[2] >> 32; t[2] &= 0xffffffff;
-        t[4] += t[3] >> 32; t[3] &= 0xffffffff;
-        t[5] += t[4] >> 32; t[4] &= 0xffffffff;
-        t[6] += t[5] >> 32; t[5] &= 0xffffffff;
-        t[7] += t[6] >> 32; t[6] &= 0xffffffff;
-        t[8] += t[7] >> 32; t[7] &= 0xffffffff;
-        t[9] += t[8] >> 32; t[8] &= 0xffffffff;
-        t[10] += t[9] >> 32; t[9] &= 0xffffffff;
-        t[11] += t[10] >> 32; t[10] &= 0xffffffff;
-        o     = t[11] >> 32; t[11] &= 0xffffffff;
-        t[0] += o;
-        t[1] -= o;
-        t[3] += o;
-        t[4] += o;
-        t[1] += t[0] >> 32; t[0] &= 0xffffffff;
-        t[2] += t[1] >> 32; t[1] &= 0xffffffff;
-        t[3] += t[2] >> 32; t[2] &= 0xffffffff;
-        t[4] += t[3] >> 32; t[3] &= 0xffffffff;
-        t[5] += t[4] >> 32; t[4] &= 0xffffffff;
-        t[6] += t[5] >> 32; t[5] &= 0xffffffff;
-        t[7] += t[6] >> 32; t[6] &= 0xffffffff;
-        t[8] += t[7] >> 32; t[7] &= 0xffffffff;
-        t[9] += t[8] >> 32; t[8] &= 0xffffffff;
-        t[10] += t[9] >> 32; t[9] &= 0xffffffff;
-        t[11] += t[10] >> 32; t[10] &= 0xffffffff;
-
-        r[0] = t[0];
-        r[1] = t[1];
-        r[2] = t[2];
-        r[3] = t[3];
-        r[4] = t[4];
-        r[5] = t[5];
-        r[6] = t[6];
-        r[7] = t[7];
-        r[8] = t[8];
-        r[9] = t[9];
-        r[10] = t[10];
-        r[11] = t[11];
-    }
-
-#if (defined(WOLFSSL_SP_SMALL) || defined(WOLFSSL_SMALL_STACK)) && !defined(WOLFSSL_SP_NO_MALLOC)
-    if (t != NULL)
-        XFREE(t, NULL, DYNAMIC_TYPE_ECC);
-#endif
-
-    return err;
-}
-
-/* Convert an mp_int to an array of sp_digit.
- *
- * r  A single precision integer.
- * size  Maximum number of bytes to convert
- * a  A multi-precision integer.
- */
-static void sp_384_from_mp(sp_digit* r, int size, const mp_int* a)
-{
-#if DIGIT_BIT == 32
-    int j;
-
-    XMEMCPY(r, a->dp, sizeof(sp_digit) * a->used);
-
-    for (j = a->used; j < size; j++) {
-        r[j] = 0;
-    }
-#elif DIGIT_BIT > 32
-    int i, j = 0;
-    word32 s = 0;
-
-    r[0] = 0;
-    for (i = 0; i < a->used && j < size; i++) {
-        r[j] |= ((sp_digit)a->dp[i] << s);
-        r[j] &= 0xffffffff;
-        s = 32U - s;
-        if (j + 1 >= size) {
-            break;
-        }
-        /* lint allow cast of mismatch word32 and mp_digit */
-        r[++j] = (sp_digit)(a->dp[i] >> s); /*lint !e9033*/
-        while ((s + 32U) <= (word32)DIGIT_BIT) {
-            s += 32U;
-            r[j] &= 0xffffffff;
-            if (j + 1 >= size) {
-                break;
-            }
-            if (s < (word32)DIGIT_BIT) {
-                /* lint allow cast of mismatch word32 and mp_digit */
-                r[++j] = (sp_digit)(a->dp[i] >> s); /*lint !e9033*/
-            }
-            else {
-                r[++j] = 0L;
-            }
-        }
-        s = (word32)DIGIT_BIT - s;
-    }
-
-    for (j++; j < size; j++) {
-        r[j] = 0;
-    }
-#else
-    int i, j = 0, s = 0;
-
-    r[0] = 0;
-    for (i = 0; i < a->used && j < size; i++) {
-        r[j] |= ((sp_digit)a->dp[i]) << s;
-        if (s + DIGIT_BIT >= 32) {
-            r[j] &= 0xffffffff;
-            if (j + 1 >= size) {
-                break;
-            }
-            s = 32 - s;
-            if (s == DIGIT_BIT) {
-                r[++j] = 0;
-                s = 0;
-            }
-            else {
-                r[++j] = a->dp[i] >> s;
-                s = DIGIT_BIT - s;
-            }
-        }
-        else {
-            s += DIGIT_BIT;
-        }
-    }
-
-    for (j++; j < size; j++) {
-        r[j] = 0;
-    }
-#endif
-}
-
-/* Convert a point of type ecc_point to type sp_point_384.
- *
- * p   Point of type sp_point_384 (result).
- * pm  Point of type ecc_point.
- */
-static void sp_384_point_from_ecc_point_12(sp_point_384* p, const ecc_point* pm)
-{
-    XMEMSET(p->x, 0, sizeof(p->x));
-    XMEMSET(p->y, 0, sizeof(p->y));
-    XMEMSET(p->z, 0, sizeof(p->z));
-    sp_384_from_mp(p->x, 12, pm->x);
-    sp_384_from_mp(p->y, 12, pm->y);
-    sp_384_from_mp(p->z, 12, pm->z);
-    p->infinity = 0;
-}
-
-/* Convert an array of sp_digit to an mp_int.
- *
- * a  A single precision integer.
- * r  A multi-precision integer.
- */
-static int sp_384_to_mp(const sp_digit* a, mp_int* r)
-{
-    int err;
-
-    err = mp_grow(r, (384 + DIGIT_BIT - 1) / DIGIT_BIT);
-    if (err == MP_OKAY) { /*lint !e774 case where err is always MP_OKAY*/
-#if DIGIT_BIT == 32
-        XMEMCPY(r->dp, a, sizeof(sp_digit) * 12);
-        r->used = 12;
-        mp_clamp(r);
-#elif DIGIT_BIT < 32
-        int i, j = 0, s = 0;
-
-        r->dp[0] = 0;
-        for (i = 0; i < 12; i++) {
-            r->dp[j] |= (mp_digit)(a[i] << s);
-            r->dp[j] &= (1L << DIGIT_BIT) - 1;
-            s = DIGIT_BIT - s;
-            r->dp[++j] = (mp_digit)(a[i] >> s);
-            while (s + DIGIT_BIT <= 32) {
-                s += DIGIT_BIT;
-                r->dp[j++] &= (1L << DIGIT_BIT) - 1;
-                if (s == SP_WORD_SIZE) {
-                    r->dp[j] = 0;
-                }
-                else {
-                    r->dp[j] = (mp_digit)(a[i] >> s);
-                }
-            }
-            s = 32 - s;
-        }
-        r->used = (384 + DIGIT_BIT - 1) / DIGIT_BIT;
-        mp_clamp(r);
-#else
-        int i, j = 0, s = 0;
-
-        r->dp[0] = 0;
-        for (i = 0; i < 12; i++) {
-            r->dp[j] |= ((mp_digit)a[i]) << s;
-            if (s + 32 >= DIGIT_BIT) {
-    #if DIGIT_BIT != 32 && DIGIT_BIT != 64
-                r->dp[j] &= (1L << DIGIT_BIT) - 1;
-    #endif
-                s = DIGIT_BIT - s;
-                r->dp[++j] = a[i] >> s;
-                s = 32 - s;
-            }
-            else {
-                s += 32;
-            }
-        }
-        r->used = (384 + DIGIT_BIT - 1) / DIGIT_BIT;
-        mp_clamp(r);
-#endif
-    }
-
-    return err;
-}
-
-/* Convert a point of type sp_point_384 to type ecc_point.
- *
- * p   Point of type sp_point_384.
- * pm  Point of type ecc_point (result).
- * returns MEMORY_E when allocation of memory in ecc_point fails otherwise
- * MP_OKAY.
- */
-static int sp_384_point_to_ecc_point_12(const sp_point_384* p, ecc_point* pm)
-{
-    int err;
-
-    err = sp_384_to_mp(p->x, pm->x);
-    if (err == MP_OKAY) {
-        err = sp_384_to_mp(p->y, pm->y);
-    }
-    if (err == MP_OKAY) {
-        err = sp_384_to_mp(p->z, pm->z);
-    }
-
-    return err;
-}
 
 #ifdef WOLFSSL_SP_SMALL
 /* Multiply a and b into r. (r = a * b)
@@ -38229,272 +37932,6 @@ static void sp_384_mul_12(sp_digit* r, const sp_digit* a, const sp_digit* b)
 }
 
 #endif /* WOLFSSL_SP_SMALL */
-/* Conditionally subtract b from a using the mask m.
- * m is -1 to subtract and 0 when not copying.
- *
- * r  A single precision number representing condition subtract result.
- * a  A single precision number to subtract from.
- * b  A single precision number to subtract.
- * m  Mask value to apply.
- */
-static sp_digit sp_384_cond_sub_12(sp_digit* r, const sp_digit* a, const sp_digit* b,
-        sp_digit m)
-{
-    sp_digit c = 0;
-
-#ifdef WOLFSSL_SP_SMALL
-    __asm__ __volatile__ (
-        "mov	r9, #0\n\t"
-        "mov	r8, #0\n\t"
-        "1:\n\t"
-        "subs	%[c], r9, %[c]\n\t"
-        "ldr	r4, [%[a], r8]\n\t"
-        "ldr	r5, [%[b], r8]\n\t"
-        "and	r5, r5, %[m]\n\t"
-        "sbcs	r4, r4, r5\n\t"
-        "sbc	%[c], r9, r9\n\t"
-        "str	r4, [%[r], r8]\n\t"
-        "add	r8, r8, #4\n\t"
-        "cmp	r8, #48\n\t"
-        "blt	1b\n\t"
-        : [c] "+r" (c)
-        : [r] "r" (r), [a] "r" (a), [b] "r" (b), [m] "r" (m)
-        : "memory", "r4", "r6", "r5", "r7", "r8", "r9"
-    );
-#else
-    __asm__ __volatile__ (
-
-        "mov	r9, #0\n\t"
-        "ldr	r4, [%[a], #0]\n\t"
-        "ldr	r6, [%[a], #4]\n\t"
-        "ldr	r5, [%[b], #0]\n\t"
-        "ldr	r7, [%[b], #4]\n\t"
-        "and	r5, r5, %[m]\n\t"
-        "and	r7, r7, %[m]\n\t"
-        "subs	r4, r4, r5\n\t"
-        "sbcs	r6, r6, r7\n\t"
-        "str	r4, [%[r], #0]\n\t"
-        "str	r6, [%[r], #4]\n\t"
-        "ldr	r4, [%[a], #8]\n\t"
-        "ldr	r6, [%[a], #12]\n\t"
-        "ldr	r5, [%[b], #8]\n\t"
-        "ldr	r7, [%[b], #12]\n\t"
-        "and	r5, r5, %[m]\n\t"
-        "and	r7, r7, %[m]\n\t"
-        "sbcs	r4, r4, r5\n\t"
-        "sbcs	r6, r6, r7\n\t"
-        "str	r4, [%[r], #8]\n\t"
-        "str	r6, [%[r], #12]\n\t"
-        "ldr	r4, [%[a], #16]\n\t"
-        "ldr	r6, [%[a], #20]\n\t"
-        "ldr	r5, [%[b], #16]\n\t"
-        "ldr	r7, [%[b], #20]\n\t"
-        "and	r5, r5, %[m]\n\t"
-        "and	r7, r7, %[m]\n\t"
-        "sbcs	r4, r4, r5\n\t"
-        "sbcs	r6, r6, r7\n\t"
-        "str	r4, [%[r], #16]\n\t"
-        "str	r6, [%[r], #20]\n\t"
-        "ldr	r4, [%[a], #24]\n\t"
-        "ldr	r6, [%[a], #28]\n\t"
-        "ldr	r5, [%[b], #24]\n\t"
-        "ldr	r7, [%[b], #28]\n\t"
-        "and	r5, r5, %[m]\n\t"
-        "and	r7, r7, %[m]\n\t"
-        "sbcs	r4, r4, r5\n\t"
-        "sbcs	r6, r6, r7\n\t"
-        "str	r4, [%[r], #24]\n\t"
-        "str	r6, [%[r], #28]\n\t"
-        "ldr	r4, [%[a], #32]\n\t"
-        "ldr	r6, [%[a], #36]\n\t"
-        "ldr	r5, [%[b], #32]\n\t"
-        "ldr	r7, [%[b], #36]\n\t"
-        "and	r5, r5, %[m]\n\t"
-        "and	r7, r7, %[m]\n\t"
-        "sbcs	r4, r4, r5\n\t"
-        "sbcs	r6, r6, r7\n\t"
-        "str	r4, [%[r], #32]\n\t"
-        "str	r6, [%[r], #36]\n\t"
-        "ldr	r4, [%[a], #40]\n\t"
-        "ldr	r6, [%[a], #44]\n\t"
-        "ldr	r5, [%[b], #40]\n\t"
-        "ldr	r7, [%[b], #44]\n\t"
-        "and	r5, r5, %[m]\n\t"
-        "and	r7, r7, %[m]\n\t"
-        "sbcs	r4, r4, r5\n\t"
-        "sbcs	r6, r6, r7\n\t"
-        "str	r4, [%[r], #40]\n\t"
-        "str	r6, [%[r], #44]\n\t"
-        "sbc	%[c], r9, r9\n\t"
-        : [c] "+r" (c)
-        : [r] "r" (r), [a] "r" (a), [b] "r" (b), [m] "r" (m)
-        : "memory", "r4", "r6", "r5", "r7", "r8", "r9"
-    );
-#endif /* WOLFSSL_SP_SMALL */
-
-    return c;
-}
-
-#define sp_384_mont_reduce_order_12   sp_384_mont_reduce_12
-
-/* Reduce the number back to 384 bits using Montgomery reduction.
- *
- * a   A single precision number to reduce in place.
- * m   The single precision number representing the modulus.
- * mp  The digit representing the negative inverse of m mod 2^n.
- */
-SP_NOINLINE static void sp_384_mont_reduce_12(sp_digit* a, const sp_digit* m,
-        sp_digit mp)
-{
-    sp_digit ca = 0;
-
-    __asm__ __volatile__ (
-        "# i = 0\n\t"
-        "mov	r12, #0\n\t"
-        "ldr	r10, [%[a], #0]\n\t"
-        "ldr	r14, [%[a], #4]\n\t"
-        "\n1:\n\t"
-        "# mu = a[i] * mp\n\t"
-        "mul	r8, %[mp], r10\n\t"
-        "# a[i+0] += m[0] * mu\n\t"
-        "ldr	r7, [%[m], #0]\n\t"
-        "ldr	r9, [%[a], #0]\n\t"
-        "umull	r6, r7, r8, r7\n\t"
-        "adds	r10, r10, r6\n\t"
-        "adc	r5, r7, #0\n\t"
-        "# a[i+1] += m[1] * mu\n\t"
-        "ldr	r7, [%[m], #4]\n\t"
-        "ldr	r9, [%[a], #4]\n\t"
-        "umull	r6, r7, r8, r7\n\t"
-        "adds	r10, r14, r6\n\t"
-        "adc	r4, r7, #0\n\t"
-        "adds	r10, r10, r5\n\t"
-        "adc	r4, r4, #0\n\t"
-        "# a[i+2] += m[2] * mu\n\t"
-        "ldr	r7, [%[m], #8]\n\t"
-        "ldr	r14, [%[a], #8]\n\t"
-        "umull	r6, r7, r8, r7\n\t"
-        "adds	r14, r14, r6\n\t"
-        "adc	r5, r7, #0\n\t"
-        "adds	r14, r14, r4\n\t"
-        "adc	r5, r5, #0\n\t"
-        "# a[i+3] += m[3] * mu\n\t"
-        "ldr	r7, [%[m], #12]\n\t"
-        "ldr	r9, [%[a], #12]\n\t"
-        "umull	r6, r7, r8, r7\n\t"
-        "adds	r9, r9, r6\n\t"
-        "adc	r4, r7, #0\n\t"
-        "adds	r9, r9, r5\n\t"
-        "str	r9, [%[a], #12]\n\t"
-        "adc	r4, r4, #0\n\t"
-        "# a[i+4] += m[4] * mu\n\t"
-        "ldr	r7, [%[m], #16]\n\t"
-        "ldr	r9, [%[a], #16]\n\t"
-        "umull	r6, r7, r8, r7\n\t"
-        "adds	r9, r9, r6\n\t"
-        "adc	r5, r7, #0\n\t"
-        "adds	r9, r9, r4\n\t"
-        "str	r9, [%[a], #16]\n\t"
-        "adc	r5, r5, #0\n\t"
-        "# a[i+5] += m[5] * mu\n\t"
-        "ldr	r7, [%[m], #20]\n\t"
-        "ldr	r9, [%[a], #20]\n\t"
-        "umull	r6, r7, r8, r7\n\t"
-        "adds	r9, r9, r6\n\t"
-        "adc	r4, r7, #0\n\t"
-        "adds	r9, r9, r5\n\t"
-        "str	r9, [%[a], #20]\n\t"
-        "adc	r4, r4, #0\n\t"
-        "# a[i+6] += m[6] * mu\n\t"
-        "ldr	r7, [%[m], #24]\n\t"
-        "ldr	r9, [%[a], #24]\n\t"
-        "umull	r6, r7, r8, r7\n\t"
-        "adds	r9, r9, r6\n\t"
-        "adc	r5, r7, #0\n\t"
-        "adds	r9, r9, r4\n\t"
-        "str	r9, [%[a], #24]\n\t"
-        "adc	r5, r5, #0\n\t"
-        "# a[i+7] += m[7] * mu\n\t"
-        "ldr	r7, [%[m], #28]\n\t"
-        "ldr	r9, [%[a], #28]\n\t"
-        "umull	r6, r7, r8, r7\n\t"
-        "adds	r9, r9, r6\n\t"
-        "adc	r4, r7, #0\n\t"
-        "adds	r9, r9, r5\n\t"
-        "str	r9, [%[a], #28]\n\t"
-        "adc	r4, r4, #0\n\t"
-        "# a[i+8] += m[8] * mu\n\t"
-        "ldr	r7, [%[m], #32]\n\t"
-        "ldr	r9, [%[a], #32]\n\t"
-        "umull	r6, r7, r8, r7\n\t"
-        "adds	r9, r9, r6\n\t"
-        "adc	r5, r7, #0\n\t"
-        "adds	r9, r9, r4\n\t"
-        "str	r9, [%[a], #32]\n\t"
-        "adc	r5, r5, #0\n\t"
-        "# a[i+9] += m[9] * mu\n\t"
-        "ldr	r7, [%[m], #36]\n\t"
-        "ldr	r9, [%[a], #36]\n\t"
-        "umull	r6, r7, r8, r7\n\t"
-        "adds	r9, r9, r6\n\t"
-        "adc	r4, r7, #0\n\t"
-        "adds	r9, r9, r5\n\t"
-        "str	r9, [%[a], #36]\n\t"
-        "adc	r4, r4, #0\n\t"
-        "# a[i+10] += m[10] * mu\n\t"
-        "ldr	r7, [%[m], #40]\n\t"
-        "ldr	r9, [%[a], #40]\n\t"
-        "umull	r6, r7, r8, r7\n\t"
-        "adds	r9, r9, r6\n\t"
-        "adc	r5, r7, #0\n\t"
-        "adds	r9, r9, r4\n\t"
-        "str	r9, [%[a], #40]\n\t"
-        "adc	r5, r5, #0\n\t"
-        "# a[i+11] += m[11] * mu\n\t"
-        "ldr	r7, [%[m], #44]\n\t"
-        "ldr   r9, [%[a], #44]\n\t"
-        "umull	r6, r7, r8, r7\n\t"
-        "adds	r5, r5, r6\n\t"
-        "adcs	r7, r7, %[ca]\n\t"
-        "mov	%[ca], #0\n\t"
-        "adc	%[ca], %[ca], %[ca]\n\t"
-        "adds	r9, r9, r5\n\t"
-        "str	r9, [%[a], #44]\n\t"
-        "ldr	r9, [%[a], #48]\n\t"
-        "adcs	r9, r9, r7\n\t"
-        "str	r9, [%[a], #48]\n\t"
-        "adc	%[ca], %[ca], #0\n\t"
-        "# i += 1\n\t"
-        "add	%[a], %[a], #4\n\t"
-        "add	r12, r12, #4\n\t"
-        "cmp	r12, #48\n\t"
-        "blt	1b\n\t"
-        "str	r10, [%[a], #0]\n\t"
-        "str	r14, [%[a], #4]\n\t"
-        : [ca] "+r" (ca), [a] "+r" (a)
-        : [m] "r" (m), [mp] "r" (mp)
-        : "memory", "r4", "r5", "r6", "r7", "r8", "r9", "r10", "r14", "r12"
-    );
-
-    sp_384_cond_sub_12(a - 12, a, m, (sp_digit)0 - ca);
-}
-
-/* Multiply two Montogmery form numbers mod the modulus (prime).
- * (r = a * b mod m)
- *
- * r   Result of multiplication.
- * a   First number to multiply in Montogmery form.
- * b   Second number to multiply in Montogmery form.
- * m   Modulus (prime).
- * mp  Montogmery mulitplier.
- */
-static void sp_384_mont_mul_12(sp_digit* r, const sp_digit* a, const sp_digit* b,
-        const sp_digit* m, sp_digit mp)
-{
-    sp_384_mul_12(r, a, b);
-    sp_384_mont_reduce_12(r, m, mp);
-}
-
 #ifdef WOLFSSL_SP_SMALL
 /* Square a and put result in r. (r = a * a)
  *
@@ -39270,6 +38707,913 @@ static void sp_384_sqr_12(sp_digit* r, const sp_digit* a)
 }
 
 #endif /* WOLFSSL_SP_SMALL */
+#ifdef WOLFSSL_SP_SMALL
+/* Add b to a into r. (r = a + b)
+ *
+ * r  A single precision integer.
+ * a  A single precision integer.
+ * b  A single precision integer.
+ */
+static sp_digit sp_384_add_12(sp_digit* r, const sp_digit* a,
+        const sp_digit* b)
+{
+    sp_digit c = 0;
+
+    __asm__ __volatile__ (
+        "add	r12, %[a], #48\n\t"
+        "\n1:\n\t"
+        "adds	%[c], %[c], #-1\n\t"
+        "ldr	r4, [%[a]], #4\n\t"
+        "ldr	r5, [%[a]], #4\n\t"
+        "ldr	r6, [%[a]], #4\n\t"
+        "ldr	r7, [%[a]], #4\n\t"
+        "ldr	r8, [%[b]], #4\n\t"
+        "ldr	r9, [%[b]], #4\n\t"
+        "ldr	r10, [%[b]], #4\n\t"
+        "ldr	r14, [%[b]], #4\n\t"
+        "adcs	r4, r4, r8\n\t"
+        "adcs	r5, r5, r9\n\t"
+        "adcs	r6, r6, r10\n\t"
+        "adcs	r7, r7, r14\n\t"
+        "str	r4, [%[r]], #4\n\t"
+        "str	r5, [%[r]], #4\n\t"
+        "str	r6, [%[r]], #4\n\t"
+        "str	r7, [%[r]], #4\n\t"
+        "mov	r4, #0\n\t"
+        "adc	%[c], r4, #0\n\t"
+        "cmp	%[a], r12\n\t"
+        "bne	1b\n\t"
+        : [c] "+r" (c), [r] "+r" (r), [a] "+r" (a), [b] "+r" (b)
+        :
+        : "memory", "r4", "r5", "r6", "r7", "r8", "r9", "r10", "r14", "r12"
+    );
+
+    return c;
+}
+
+#else
+/* Add b to a into r. (r = a + b)
+ *
+ * r  A single precision integer.
+ * a  A single precision integer.
+ * b  A single precision integer.
+ */
+static sp_digit sp_384_add_12(sp_digit* r, const sp_digit* a,
+        const sp_digit* b)
+{
+    sp_digit c = 0;
+
+    __asm__ __volatile__ (
+        "mov	r12, #0\n\t"
+        "ldr	r4, [%[a], #0]\n\t"
+        "ldr	r5, [%[a], #4]\n\t"
+        "ldr	r6, [%[a], #8]\n\t"
+        "ldr	r7, [%[a], #12]\n\t"
+        "ldr	r8, [%[b], #0]\n\t"
+        "ldr	r9, [%[b], #4]\n\t"
+        "ldr	r10, [%[b], #8]\n\t"
+        "ldr	r14, [%[b], #12]\n\t"
+        "adds	r4, r4, r8\n\t"
+        "adcs	r5, r5, r9\n\t"
+        "adcs	r6, r6, r10\n\t"
+        "adcs	r7, r7, r14\n\t"
+        "str	r4, [%[r], #0]\n\t"
+        "str	r5, [%[r], #4]\n\t"
+        "str	r6, [%[r], #8]\n\t"
+        "str	r7, [%[r], #12]\n\t"
+        "ldr	r4, [%[a], #16]\n\t"
+        "ldr	r5, [%[a], #20]\n\t"
+        "ldr	r6, [%[a], #24]\n\t"
+        "ldr	r7, [%[a], #28]\n\t"
+        "ldr	r8, [%[b], #16]\n\t"
+        "ldr	r9, [%[b], #20]\n\t"
+        "ldr	r10, [%[b], #24]\n\t"
+        "ldr	r14, [%[b], #28]\n\t"
+        "adcs	r4, r4, r8\n\t"
+        "adcs	r5, r5, r9\n\t"
+        "adcs	r6, r6, r10\n\t"
+        "adcs	r7, r7, r14\n\t"
+        "str	r4, [%[r], #16]\n\t"
+        "str	r5, [%[r], #20]\n\t"
+        "str	r6, [%[r], #24]\n\t"
+        "str	r7, [%[r], #28]\n\t"
+        "ldr	r4, [%[a], #32]\n\t"
+        "ldr	r5, [%[a], #36]\n\t"
+        "ldr	r6, [%[a], #40]\n\t"
+        "ldr	r7, [%[a], #44]\n\t"
+        "ldr	r8, [%[b], #32]\n\t"
+        "ldr	r9, [%[b], #36]\n\t"
+        "ldr	r10, [%[b], #40]\n\t"
+        "ldr	r14, [%[b], #44]\n\t"
+        "adcs	r4, r4, r8\n\t"
+        "adcs	r5, r5, r9\n\t"
+        "adcs	r6, r6, r10\n\t"
+        "adcs	r7, r7, r14\n\t"
+        "str	r4, [%[r], #32]\n\t"
+        "str	r5, [%[r], #36]\n\t"
+        "str	r6, [%[r], #40]\n\t"
+        "str	r7, [%[r], #44]\n\t"
+        "adc	%[c], r12, r12\n\t"
+        : [c] "+r" (c)
+        : [r] "r" (r), [a] "r" (a), [b] "r" (b)
+        : "memory", "r4", "r5", "r6", "r7", "r8", "r9", "r10", "r14", "r12"
+    );
+
+    return c;
+}
+
+#endif /* WOLFSSL_SP_SMALL */
+#ifdef WOLFSSL_SP_SMALL
+/* Sub b from a into r. (r = a - b)
+ *
+ * r  A single precision integer.
+ * a  A single precision integer.
+ * b  A single precision integer.
+ */
+static sp_digit sp_384_sub_12(sp_digit* r, const sp_digit* a,
+        const sp_digit* b)
+{
+    sp_digit c = 0;
+
+    __asm__ __volatile__ (
+        "add	r12, %[a], #48\n\t"
+        "\n1:\n\t"
+        "rsbs	%[c], %[c], #0\n\t"
+        "ldr	r4, [%[a]], #4\n\t"
+        "ldr	r5, [%[a]], #4\n\t"
+        "ldr	r6, [%[a]], #4\n\t"
+        "ldr	r7, [%[a]], #4\n\t"
+        "ldr	r8, [%[b]], #4\n\t"
+        "ldr	r9, [%[b]], #4\n\t"
+        "ldr	r10, [%[b]], #4\n\t"
+        "ldr	r14, [%[b]], #4\n\t"
+        "sbcs	r4, r4, r8\n\t"
+        "sbcs	r5, r5, r9\n\t"
+        "sbcs	r6, r6, r10\n\t"
+        "sbcs	r7, r7, r14\n\t"
+        "str	r4, [%[r]], #4\n\t"
+        "str	r5, [%[r]], #4\n\t"
+        "str	r6, [%[r]], #4\n\t"
+        "str	r7, [%[r]], #4\n\t"
+        "sbc	%[c], r4, r4\n\t"
+        "cmp	%[a], r12\n\t"
+        "bne	1b\n\t"
+        : [c] "+r" (c), [r] "+r" (r), [a] "+r" (a), [b] "+r" (b)
+        :
+        : "memory", "r4", "r5", "r6", "r7", "r8", "r9", "r10", "r14", "r12"
+    );
+
+    return c;
+}
+
+#else
+/* Sub b from a into r. (r = a - b)
+ *
+ * r  A single precision integer.
+ * a  A single precision integer.
+ * b  A single precision integer.
+ */
+static sp_digit sp_384_sub_12(sp_digit* r, const sp_digit* a,
+        const sp_digit* b)
+{
+    sp_digit c = 0;
+
+    __asm__ __volatile__ (
+        "ldr	r3, [%[a], #0]\n\t"
+        "ldr	r4, [%[a], #4]\n\t"
+        "ldr	r5, [%[a], #8]\n\t"
+        "ldr	r6, [%[a], #12]\n\t"
+        "ldr	r7, [%[b], #0]\n\t"
+        "ldr	r8, [%[b], #4]\n\t"
+        "ldr	r9, [%[b], #8]\n\t"
+        "ldr	r10, [%[b], #12]\n\t"
+        "subs	r3, r3, r7\n\t"
+        "sbcs	r4, r4, r8\n\t"
+        "sbcs	r5, r5, r9\n\t"
+        "sbcs	r6, r6, r10\n\t"
+        "str	r3, [%[r], #0]\n\t"
+        "str	r4, [%[r], #4]\n\t"
+        "str	r5, [%[r], #8]\n\t"
+        "str	r6, [%[r], #12]\n\t"
+        "ldr	r3, [%[a], #16]\n\t"
+        "ldr	r4, [%[a], #20]\n\t"
+        "ldr	r5, [%[a], #24]\n\t"
+        "ldr	r6, [%[a], #28]\n\t"
+        "ldr	r7, [%[b], #16]\n\t"
+        "ldr	r8, [%[b], #20]\n\t"
+        "ldr	r9, [%[b], #24]\n\t"
+        "ldr	r10, [%[b], #28]\n\t"
+        "sbcs	r3, r3, r7\n\t"
+        "sbcs	r4, r4, r8\n\t"
+        "sbcs	r5, r5, r9\n\t"
+        "sbcs	r6, r6, r10\n\t"
+        "str	r3, [%[r], #16]\n\t"
+        "str	r4, [%[r], #20]\n\t"
+        "str	r5, [%[r], #24]\n\t"
+        "str	r6, [%[r], #28]\n\t"
+        "ldr	r3, [%[a], #32]\n\t"
+        "ldr	r4, [%[a], #36]\n\t"
+        "ldr	r5, [%[a], #40]\n\t"
+        "ldr	r6, [%[a], #44]\n\t"
+        "ldr	r7, [%[b], #32]\n\t"
+        "ldr	r8, [%[b], #36]\n\t"
+        "ldr	r9, [%[b], #40]\n\t"
+        "ldr	r10, [%[b], #44]\n\t"
+        "sbcs	r3, r3, r7\n\t"
+        "sbcs	r4, r4, r8\n\t"
+        "sbcs	r5, r5, r9\n\t"
+        "sbcs	r6, r6, r10\n\t"
+        "str	r3, [%[r], #32]\n\t"
+        "str	r4, [%[r], #36]\n\t"
+        "str	r5, [%[r], #40]\n\t"
+        "str	r6, [%[r], #44]\n\t"
+        "sbc	%[c], %[c], #0\n\t"
+        : [c] "+r" (c)
+        : [r] "r" (r), [a] "r" (a), [b] "r" (b)
+        : "memory", "r3", "r4", "r5", "r6", "r7", "r8", "r9", "r10"
+    );
+
+    return c;
+}
+
+#endif /* WOLFSSL_SP_SMALL */
+/* The modulus (prime) of the curve P384. */
+static const sp_digit p384_mod[12] = {
+    0xffffffff,0x00000000,0x00000000,0xffffffff,0xfffffffe,0xffffffff,
+    0xffffffff,0xffffffff,0xffffffff,0xffffffff,0xffffffff,0xffffffff
+};
+/* The Montogmery normalizer for modulus of the curve P384. */
+static const sp_digit p384_norm_mod[12] = {
+    0x00000001,0xffffffff,0xffffffff,0x00000000,0x00000001,0x00000000,
+    0x00000000,0x00000000,0x00000000,0x00000000,0x00000000,0x00000000
+};
+/* The Montogmery multiplier for modulus of the curve P384. */
+static sp_digit p384_mp_mod = 0x00000001;
+#if defined(WOLFSSL_VALIDATE_ECC_KEYGEN) || defined(HAVE_ECC_SIGN) || \
+                                            defined(HAVE_ECC_VERIFY)
+/* The order of the curve P384. */
+static const sp_digit p384_order[12] = {
+    0xccc52973,0xecec196a,0x48b0a77a,0x581a0db2,0xf4372ddf,0xc7634d81,
+    0xffffffff,0xffffffff,0xffffffff,0xffffffff,0xffffffff,0xffffffff
+};
+#endif
+/* The order of the curve P384 minus 2. */
+static const sp_digit p384_order2[12] = {
+    0xccc52971,0xecec196a,0x48b0a77a,0x581a0db2,0xf4372ddf,0xc7634d81,
+    0xffffffff,0xffffffff,0xffffffff,0xffffffff,0xffffffff,0xffffffff
+};
+#if defined(HAVE_ECC_SIGN) || defined(HAVE_ECC_VERIFY)
+/* The Montogmery normalizer for order of the curve P384. */
+static const sp_digit p384_norm_order[12] = {
+    0x333ad68d,0x1313e695,0xb74f5885,0xa7e5f24d,0x0bc8d220,0x389cb27e,
+    0x00000000,0x00000000,0x00000000,0x00000000,0x00000000,0x00000000
+};
+#endif
+#if defined(HAVE_ECC_SIGN) || defined(HAVE_ECC_VERIFY)
+/* The Montogmery multiplier for order of the curve P384. */
+static sp_digit p384_mp_order = 0xe88fdc45;
+#endif
+/* The base point of curve P384. */
+static const sp_point_384 p384_base = {
+    /* X ordinate */
+    {
+        0x72760ab7,0x3a545e38,0xbf55296c,0x5502f25d,0x82542a38,0x59f741e0,
+        0x8ba79b98,0x6e1d3b62,0xf320ad74,0x8eb1c71e,0xbe8b0537,0xaa87ca22,
+        0L, 0L, 0L, 0L, 0L, 0L, 0L, 0L, 0L, 0L, 0L, 0L
+    },
+    /* Y ordinate */
+    {
+        0x90ea0e5f,0x7a431d7c,0x1d7e819d,0x0a60b1ce,0xb5f0b8c0,0xe9da3113,
+        0x289a147c,0xf8f41dbd,0x9292dc29,0x5d9e98bf,0x96262c6f,0x3617de4a,
+        0L, 0L, 0L, 0L, 0L, 0L, 0L, 0L, 0L, 0L, 0L, 0L
+    },
+    /* Z ordinate */
+    {
+        0x00000001,0x00000000,0x00000000,0x00000000,0x00000000,0x00000000,
+        0x00000000,0x00000000,0x00000000,0x00000000,0x00000000,0x00000000,
+        0L, 0L, 0L, 0L, 0L, 0L, 0L, 0L, 0L, 0L, 0L, 0L
+    },
+    /* infinity */
+    0
+};
+#if defined(HAVE_ECC_CHECK_KEY) || defined(HAVE_COMP_KEY)
+static const sp_digit p384_b[12] = {
+    0xd3ec2aef,0x2a85c8ed,0x8a2ed19d,0xc656398d,0x5013875a,0x0314088f,
+    0xfe814112,0x181d9c6e,0xe3f82d19,0x988e056b,0xe23ee7e4,0xb3312fa7
+};
+#endif
+
+/* Create a new point.
+ *
+ * heap  [in]   Buffer to allocate dynamic memory from.
+ * sp    [in]   Data for point - only if not allocating.
+ * p     [out]  New point.
+ * returns MEMORY_E when dynamic memory allocation fails and 0 otherwise. 
+ */
+static int sp_384_point_new_ex_12(void* heap, sp_point_384* sp,
+        sp_point_384** p)
+{
+    int ret = MP_OKAY;
+    (void)heap;
+#if (defined(WOLFSSL_SP_SMALL) || defined(WOLFSSL_SMALL_STACK)) && !defined(WOLFSSL_SP_NO_MALLOC)
+    (void)sp;
+    *p = (sp_point_384*)XMALLOC(sizeof(sp_point_384), heap, DYNAMIC_TYPE_ECC);
+#else
+    *p = sp;
+#endif
+    if (*p == NULL) {
+        ret = MEMORY_E;
+    }
+    return ret;
+}
+
+#if (defined(WOLFSSL_SP_SMALL) || defined(WOLFSSL_SMALL_STACK)) && !defined(WOLFSSL_SP_NO_MALLOC)
+/* Allocate memory for point and return error. */
+#define sp_384_point_new_12(heap, sp, p) sp_384_point_new_ex_12((heap), NULL, &(p))
+#else
+/* Set pointer to data and return no error. */
+#define sp_384_point_new_12(heap, sp, p) sp_384_point_new_ex_12((heap), &(sp), &(p))
+#endif
+
+
+/* Free the point.
+ *
+ * p      [in,out]  Point to free.
+ * clear  [in]      Indicates whether to zeroize point.
+ * heap   [in]      Buffer from which dynamic memory was allocate from.
+ */
+static void sp_384_point_free_12(sp_point_384* p, int clear, void* heap)
+{
+#if (defined(WOLFSSL_SP_SMALL) || defined(WOLFSSL_SMALL_STACK)) && !defined(WOLFSSL_SP_NO_MALLOC)
+/* If valid pointer then clear point data if requested and free data. */
+    if (p != NULL) {
+        if (clear != 0) {
+            XMEMSET(p, 0, sizeof(*p));
+        }
+        XFREE(p, heap, DYNAMIC_TYPE_ECC);
+    }
+#else
+/* Clear point data if requested. */
+    if (clear != 0) {
+        XMEMSET(p, 0, sizeof(*p));
+    }
+#endif
+    (void)heap;
+}
+
+/* Multiply a number by Montogmery normalizer mod modulus (prime).
+ *
+ * r  The resulting Montgomery form number.
+ * a  The number to convert.
+ * m  The modulus (prime).
+ * returns MEMORY_E when memory allocation fails and MP_OKAY otherwise.
+ */
+static int sp_384_mod_mul_norm_12(sp_digit* r, const sp_digit* a, const sp_digit* m)
+{
+#if (defined(WOLFSSL_SP_SMALL) || defined(WOLFSSL_SMALL_STACK)) && !defined(WOLFSSL_SP_NO_MALLOC)
+    int64_t* t;
+#else
+    int64_t t[12];
+#endif
+    int64_t o;
+    int err = MP_OKAY;
+
+    (void)m;
+
+#if (defined(WOLFSSL_SP_SMALL) || defined(WOLFSSL_SMALL_STACK)) && !defined(WOLFSSL_SP_NO_MALLOC)
+    t = (int64_t*)XMALLOC(sizeof(int64_t) * 12, NULL, DYNAMIC_TYPE_ECC);
+    if (t == NULL) {
+        err = MEMORY_E;
+    }
+#endif
+
+    if (err == MP_OKAY) {
+        /*  1  0  0  0  0  0  0  0  1  1  0 -1 */
+        t[0] = 0 + (uint64_t)a[0] + (uint64_t)a[8] + (uint64_t)a[9] - (uint64_t)a[11];
+        /* -1  1  0  0  0  0  0  0 -1  0  1  1 */
+        t[1] = 0 - (uint64_t)a[0] + (uint64_t)a[1] - (uint64_t)a[8] + (uint64_t)a[10] + (uint64_t)a[11];
+        /*  0 -1  1  0  0  0  0  0  0 -1  0  1 */
+        t[2] = 0 - (uint64_t)a[1] + (uint64_t)a[2] - (uint64_t)a[9] + (uint64_t)a[11];
+        /*  1  0 -1  1  0  0  0  0  1  1 -1 -1 */
+        t[3] = 0 + (uint64_t)a[0] - (uint64_t)a[2] + (uint64_t)a[3] + (uint64_t)a[8] + (uint64_t)a[9] - (uint64_t)a[10] - (uint64_t)a[11];
+        /*  1  1  0 -1  1  0  0  0  1  2  1 -2 */
+        t[4] = 0 + (uint64_t)a[0] + (uint64_t)a[1] - (uint64_t)a[3] + (uint64_t)a[4] + (uint64_t)a[8] + 2 * (uint64_t)a[9] + (uint64_t)a[10] -  2 * (uint64_t)a[11];
+        /*  0  1  1  0 -1  1  0  0  0  1  2  1 */
+        t[5] = 0 + (uint64_t)a[1] + (uint64_t)a[2] - (uint64_t)a[4] + (uint64_t)a[5] + (uint64_t)a[9] + 2 * (uint64_t)a[10] + (uint64_t)a[11];
+        /*  0  0  1  1  0 -1  1  0  0  0  1  2 */
+        t[6] = 0 + (uint64_t)a[2] + (uint64_t)a[3] - (uint64_t)a[5] + (uint64_t)a[6] + (uint64_t)a[10] + 2 * (uint64_t)a[11];
+        /*  0  0  0  1  1  0 -1  1  0  0  0  1 */
+        t[7] = 0 + (uint64_t)a[3] + (uint64_t)a[4] - (uint64_t)a[6] + (uint64_t)a[7] + (uint64_t)a[11];
+        /*  0  0  0  0  1  1  0 -1  1  0  0  0 */
+        t[8] = 0 + (uint64_t)a[4] + (uint64_t)a[5] - (uint64_t)a[7] + (uint64_t)a[8];
+        /*  0  0  0  0  0  1  1  0 -1  1  0  0 */
+        t[9] = 0 + (uint64_t)a[5] + (uint64_t)a[6] - (uint64_t)a[8] + (uint64_t)a[9];
+        /*  0  0  0  0  0  0  1  1  0 -1  1  0 */
+        t[10] = 0 + (uint64_t)a[6] + (uint64_t)a[7] - (uint64_t)a[9] + (uint64_t)a[10];
+        /*  0  0  0  0  0  0  0  1  1  0 -1  1 */
+        t[11] = 0 + (uint64_t)a[7] + (uint64_t)a[8] - (uint64_t)a[10] + (uint64_t)a[11];
+
+        t[1] += t[0] >> 32; t[0] &= 0xffffffff;
+        t[2] += t[1] >> 32; t[1] &= 0xffffffff;
+        t[3] += t[2] >> 32; t[2] &= 0xffffffff;
+        t[4] += t[3] >> 32; t[3] &= 0xffffffff;
+        t[5] += t[4] >> 32; t[4] &= 0xffffffff;
+        t[6] += t[5] >> 32; t[5] &= 0xffffffff;
+        t[7] += t[6] >> 32; t[6] &= 0xffffffff;
+        t[8] += t[7] >> 32; t[7] &= 0xffffffff;
+        t[9] += t[8] >> 32; t[8] &= 0xffffffff;
+        t[10] += t[9] >> 32; t[9] &= 0xffffffff;
+        t[11] += t[10] >> 32; t[10] &= 0xffffffff;
+        o     = t[11] >> 32; t[11] &= 0xffffffff;
+        t[0] += o;
+        t[1] -= o;
+        t[3] += o;
+        t[4] += o;
+        t[1] += t[0] >> 32; t[0] &= 0xffffffff;
+        t[2] += t[1] >> 32; t[1] &= 0xffffffff;
+        t[3] += t[2] >> 32; t[2] &= 0xffffffff;
+        t[4] += t[3] >> 32; t[3] &= 0xffffffff;
+        t[5] += t[4] >> 32; t[4] &= 0xffffffff;
+        t[6] += t[5] >> 32; t[5] &= 0xffffffff;
+        t[7] += t[6] >> 32; t[6] &= 0xffffffff;
+        t[8] += t[7] >> 32; t[7] &= 0xffffffff;
+        t[9] += t[8] >> 32; t[8] &= 0xffffffff;
+        t[10] += t[9] >> 32; t[9] &= 0xffffffff;
+        t[11] += t[10] >> 32; t[10] &= 0xffffffff;
+
+        r[0] = t[0];
+        r[1] = t[1];
+        r[2] = t[2];
+        r[3] = t[3];
+        r[4] = t[4];
+        r[5] = t[5];
+        r[6] = t[6];
+        r[7] = t[7];
+        r[8] = t[8];
+        r[9] = t[9];
+        r[10] = t[10];
+        r[11] = t[11];
+    }
+
+#if (defined(WOLFSSL_SP_SMALL) || defined(WOLFSSL_SMALL_STACK)) && !defined(WOLFSSL_SP_NO_MALLOC)
+    if (t != NULL)
+        XFREE(t, NULL, DYNAMIC_TYPE_ECC);
+#endif
+
+    return err;
+}
+
+/* Convert an mp_int to an array of sp_digit.
+ *
+ * r  A single precision integer.
+ * size  Maximum number of bytes to convert
+ * a  A multi-precision integer.
+ */
+static void sp_384_from_mp(sp_digit* r, int size, const mp_int* a)
+{
+#if DIGIT_BIT == 32
+    int j;
+
+    XMEMCPY(r, a->dp, sizeof(sp_digit) * a->used);
+
+    for (j = a->used; j < size; j++) {
+        r[j] = 0;
+    }
+#elif DIGIT_BIT > 32
+    int i, j = 0;
+    word32 s = 0;
+
+    r[0] = 0;
+    for (i = 0; i < a->used && j < size; i++) {
+        r[j] |= ((sp_digit)a->dp[i] << s);
+        r[j] &= 0xffffffff;
+        s = 32U - s;
+        if (j + 1 >= size) {
+            break;
+        }
+        /* lint allow cast of mismatch word32 and mp_digit */
+        r[++j] = (sp_digit)(a->dp[i] >> s); /*lint !e9033*/
+        while ((s + 32U) <= (word32)DIGIT_BIT) {
+            s += 32U;
+            r[j] &= 0xffffffff;
+            if (j + 1 >= size) {
+                break;
+            }
+            if (s < (word32)DIGIT_BIT) {
+                /* lint allow cast of mismatch word32 and mp_digit */
+                r[++j] = (sp_digit)(a->dp[i] >> s); /*lint !e9033*/
+            }
+            else {
+                r[++j] = 0L;
+            }
+        }
+        s = (word32)DIGIT_BIT - s;
+    }
+
+    for (j++; j < size; j++) {
+        r[j] = 0;
+    }
+#else
+    int i, j = 0, s = 0;
+
+    r[0] = 0;
+    for (i = 0; i < a->used && j < size; i++) {
+        r[j] |= ((sp_digit)a->dp[i]) << s;
+        if (s + DIGIT_BIT >= 32) {
+            r[j] &= 0xffffffff;
+            if (j + 1 >= size) {
+                break;
+            }
+            s = 32 - s;
+            if (s == DIGIT_BIT) {
+                r[++j] = 0;
+                s = 0;
+            }
+            else {
+                r[++j] = a->dp[i] >> s;
+                s = DIGIT_BIT - s;
+            }
+        }
+        else {
+            s += DIGIT_BIT;
+        }
+    }
+
+    for (j++; j < size; j++) {
+        r[j] = 0;
+    }
+#endif
+}
+
+/* Convert a point of type ecc_point to type sp_point_384.
+ *
+ * p   Point of type sp_point_384 (result).
+ * pm  Point of type ecc_point.
+ */
+static void sp_384_point_from_ecc_point_12(sp_point_384* p,
+        const ecc_point* pm)
+{
+    XMEMSET(p->x, 0, sizeof(p->x));
+    XMEMSET(p->y, 0, sizeof(p->y));
+    XMEMSET(p->z, 0, sizeof(p->z));
+    sp_384_from_mp(p->x, 12, pm->x);
+    sp_384_from_mp(p->y, 12, pm->y);
+    sp_384_from_mp(p->z, 12, pm->z);
+    p->infinity = 0;
+}
+
+/* Convert an array of sp_digit to an mp_int.
+ *
+ * a  A single precision integer.
+ * r  A multi-precision integer.
+ */
+static int sp_384_to_mp(const sp_digit* a, mp_int* r)
+{
+    int err;
+
+    err = mp_grow(r, (384 + DIGIT_BIT - 1) / DIGIT_BIT);
+    if (err == MP_OKAY) { /*lint !e774 case where err is always MP_OKAY*/
+#if DIGIT_BIT == 32
+        XMEMCPY(r->dp, a, sizeof(sp_digit) * 12);
+        r->used = 12;
+        mp_clamp(r);
+#elif DIGIT_BIT < 32
+        int i, j = 0, s = 0;
+
+        r->dp[0] = 0;
+        for (i = 0; i < 12; i++) {
+            r->dp[j] |= (mp_digit)(a[i] << s);
+            r->dp[j] &= (1L << DIGIT_BIT) - 1;
+            s = DIGIT_BIT - s;
+            r->dp[++j] = (mp_digit)(a[i] >> s);
+            while (s + DIGIT_BIT <= 32) {
+                s += DIGIT_BIT;
+                r->dp[j++] &= (1L << DIGIT_BIT) - 1;
+                if (s == SP_WORD_SIZE) {
+                    r->dp[j] = 0;
+                }
+                else {
+                    r->dp[j] = (mp_digit)(a[i] >> s);
+                }
+            }
+            s = 32 - s;
+        }
+        r->used = (384 + DIGIT_BIT - 1) / DIGIT_BIT;
+        mp_clamp(r);
+#else
+        int i, j = 0, s = 0;
+
+        r->dp[0] = 0;
+        for (i = 0; i < 12; i++) {
+            r->dp[j] |= ((mp_digit)a[i]) << s;
+            if (s + 32 >= DIGIT_BIT) {
+    #if DIGIT_BIT != 32 && DIGIT_BIT != 64
+                r->dp[j] &= (1L << DIGIT_BIT) - 1;
+    #endif
+                s = DIGIT_BIT - s;
+                r->dp[++j] = a[i] >> s;
+                s = 32 - s;
+            }
+            else {
+                s += 32;
+            }
+        }
+        r->used = (384 + DIGIT_BIT - 1) / DIGIT_BIT;
+        mp_clamp(r);
+#endif
+    }
+
+    return err;
+}
+
+/* Convert a point of type sp_point_384 to type ecc_point.
+ *
+ * p   Point of type sp_point_384.
+ * pm  Point of type ecc_point (result).
+ * returns MEMORY_E when allocation of memory in ecc_point fails otherwise
+ * MP_OKAY.
+ */
+static int sp_384_point_to_ecc_point_12(const sp_point_384* p, ecc_point* pm)
+{
+    int err;
+
+    err = sp_384_to_mp(p->x, pm->x);
+    if (err == MP_OKAY) {
+        err = sp_384_to_mp(p->y, pm->y);
+    }
+    if (err == MP_OKAY) {
+        err = sp_384_to_mp(p->z, pm->z);
+    }
+
+    return err;
+}
+
+/* Conditionally subtract b from a using the mask m.
+ * m is -1 to subtract and 0 when not copying.
+ *
+ * r  A single precision number representing condition subtract result.
+ * a  A single precision number to subtract from.
+ * b  A single precision number to subtract.
+ * m  Mask value to apply.
+ */
+static sp_digit sp_384_cond_sub_12(sp_digit* r, const sp_digit* a, const sp_digit* b,
+        sp_digit m)
+{
+    sp_digit c = 0;
+
+#ifdef WOLFSSL_SP_SMALL
+    __asm__ __volatile__ (
+        "mov	r9, #0\n\t"
+        "mov	r8, #0\n\t"
+        "1:\n\t"
+        "subs	%[c], r9, %[c]\n\t"
+        "ldr	r4, [%[a], r8]\n\t"
+        "ldr	r5, [%[b], r8]\n\t"
+        "and	r5, r5, %[m]\n\t"
+        "sbcs	r4, r4, r5\n\t"
+        "sbc	%[c], r9, r9\n\t"
+        "str	r4, [%[r], r8]\n\t"
+        "add	r8, r8, #4\n\t"
+        "cmp	r8, #48\n\t"
+        "blt	1b\n\t"
+        : [c] "+r" (c)
+        : [r] "r" (r), [a] "r" (a), [b] "r" (b), [m] "r" (m)
+        : "memory", "r4", "r6", "r5", "r7", "r8", "r9"
+    );
+#else
+    __asm__ __volatile__ (
+
+        "mov	r9, #0\n\t"
+        "ldr	r4, [%[a], #0]\n\t"
+        "ldr	r6, [%[a], #4]\n\t"
+        "ldr	r5, [%[b], #0]\n\t"
+        "ldr	r7, [%[b], #4]\n\t"
+        "and	r5, r5, %[m]\n\t"
+        "and	r7, r7, %[m]\n\t"
+        "subs	r4, r4, r5\n\t"
+        "sbcs	r6, r6, r7\n\t"
+        "str	r4, [%[r], #0]\n\t"
+        "str	r6, [%[r], #4]\n\t"
+        "ldr	r4, [%[a], #8]\n\t"
+        "ldr	r6, [%[a], #12]\n\t"
+        "ldr	r5, [%[b], #8]\n\t"
+        "ldr	r7, [%[b], #12]\n\t"
+        "and	r5, r5, %[m]\n\t"
+        "and	r7, r7, %[m]\n\t"
+        "sbcs	r4, r4, r5\n\t"
+        "sbcs	r6, r6, r7\n\t"
+        "str	r4, [%[r], #8]\n\t"
+        "str	r6, [%[r], #12]\n\t"
+        "ldr	r4, [%[a], #16]\n\t"
+        "ldr	r6, [%[a], #20]\n\t"
+        "ldr	r5, [%[b], #16]\n\t"
+        "ldr	r7, [%[b], #20]\n\t"
+        "and	r5, r5, %[m]\n\t"
+        "and	r7, r7, %[m]\n\t"
+        "sbcs	r4, r4, r5\n\t"
+        "sbcs	r6, r6, r7\n\t"
+        "str	r4, [%[r], #16]\n\t"
+        "str	r6, [%[r], #20]\n\t"
+        "ldr	r4, [%[a], #24]\n\t"
+        "ldr	r6, [%[a], #28]\n\t"
+        "ldr	r5, [%[b], #24]\n\t"
+        "ldr	r7, [%[b], #28]\n\t"
+        "and	r5, r5, %[m]\n\t"
+        "and	r7, r7, %[m]\n\t"
+        "sbcs	r4, r4, r5\n\t"
+        "sbcs	r6, r6, r7\n\t"
+        "str	r4, [%[r], #24]\n\t"
+        "str	r6, [%[r], #28]\n\t"
+        "ldr	r4, [%[a], #32]\n\t"
+        "ldr	r6, [%[a], #36]\n\t"
+        "ldr	r5, [%[b], #32]\n\t"
+        "ldr	r7, [%[b], #36]\n\t"
+        "and	r5, r5, %[m]\n\t"
+        "and	r7, r7, %[m]\n\t"
+        "sbcs	r4, r4, r5\n\t"
+        "sbcs	r6, r6, r7\n\t"
+        "str	r4, [%[r], #32]\n\t"
+        "str	r6, [%[r], #36]\n\t"
+        "ldr	r4, [%[a], #40]\n\t"
+        "ldr	r6, [%[a], #44]\n\t"
+        "ldr	r5, [%[b], #40]\n\t"
+        "ldr	r7, [%[b], #44]\n\t"
+        "and	r5, r5, %[m]\n\t"
+        "and	r7, r7, %[m]\n\t"
+        "sbcs	r4, r4, r5\n\t"
+        "sbcs	r6, r6, r7\n\t"
+        "str	r4, [%[r], #40]\n\t"
+        "str	r6, [%[r], #44]\n\t"
+        "sbc	%[c], r9, r9\n\t"
+        : [c] "+r" (c)
+        : [r] "r" (r), [a] "r" (a), [b] "r" (b), [m] "r" (m)
+        : "memory", "r4", "r6", "r5", "r7", "r8", "r9"
+    );
+#endif /* WOLFSSL_SP_SMALL */
+
+    return c;
+}
+
+#define sp_384_mont_reduce_order_12   sp_384_mont_reduce_12
+
+/* Reduce the number back to 384 bits using Montgomery reduction.
+ *
+ * a   A single precision number to reduce in place.
+ * m   The single precision number representing the modulus.
+ * mp  The digit representing the negative inverse of m mod 2^n.
+ */
+SP_NOINLINE static void sp_384_mont_reduce_12(sp_digit* a, const sp_digit* m,
+        sp_digit mp)
+{
+    sp_digit ca = 0;
+
+    __asm__ __volatile__ (
+        "# i = 0\n\t"
+        "mov	r12, #0\n\t"
+        "ldr	r10, [%[a], #0]\n\t"
+        "ldr	r14, [%[a], #4]\n\t"
+        "\n1:\n\t"
+        "# mu = a[i] * mp\n\t"
+        "mul	r8, %[mp], r10\n\t"
+        "# a[i+0] += m[0] * mu\n\t"
+        "ldr	r7, [%[m], #0]\n\t"
+        "ldr	r9, [%[a], #0]\n\t"
+        "umull	r6, r7, r8, r7\n\t"
+        "adds	r10, r10, r6\n\t"
+        "adc	r5, r7, #0\n\t"
+        "# a[i+1] += m[1] * mu\n\t"
+        "ldr	r7, [%[m], #4]\n\t"
+        "ldr	r9, [%[a], #4]\n\t"
+        "umull	r6, r7, r8, r7\n\t"
+        "adds	r10, r14, r6\n\t"
+        "adc	r4, r7, #0\n\t"
+        "adds	r10, r10, r5\n\t"
+        "adc	r4, r4, #0\n\t"
+        "# a[i+2] += m[2] * mu\n\t"
+        "ldr	r7, [%[m], #8]\n\t"
+        "ldr	r14, [%[a], #8]\n\t"
+        "umull	r6, r7, r8, r7\n\t"
+        "adds	r14, r14, r6\n\t"
+        "adc	r5, r7, #0\n\t"
+        "adds	r14, r14, r4\n\t"
+        "adc	r5, r5, #0\n\t"
+        "# a[i+3] += m[3] * mu\n\t"
+        "ldr	r7, [%[m], #12]\n\t"
+        "ldr	r9, [%[a], #12]\n\t"
+        "umull	r6, r7, r8, r7\n\t"
+        "adds	r9, r9, r6\n\t"
+        "adc	r4, r7, #0\n\t"
+        "adds	r9, r9, r5\n\t"
+        "str	r9, [%[a], #12]\n\t"
+        "adc	r4, r4, #0\n\t"
+        "# a[i+4] += m[4] * mu\n\t"
+        "ldr	r7, [%[m], #16]\n\t"
+        "ldr	r9, [%[a], #16]\n\t"
+        "umull	r6, r7, r8, r7\n\t"
+        "adds	r9, r9, r6\n\t"
+        "adc	r5, r7, #0\n\t"
+        "adds	r9, r9, r4\n\t"
+        "str	r9, [%[a], #16]\n\t"
+        "adc	r5, r5, #0\n\t"
+        "# a[i+5] += m[5] * mu\n\t"
+        "ldr	r7, [%[m], #20]\n\t"
+        "ldr	r9, [%[a], #20]\n\t"
+        "umull	r6, r7, r8, r7\n\t"
+        "adds	r9, r9, r6\n\t"
+        "adc	r4, r7, #0\n\t"
+        "adds	r9, r9, r5\n\t"
+        "str	r9, [%[a], #20]\n\t"
+        "adc	r4, r4, #0\n\t"
+        "# a[i+6] += m[6] * mu\n\t"
+        "ldr	r7, [%[m], #24]\n\t"
+        "ldr	r9, [%[a], #24]\n\t"
+        "umull	r6, r7, r8, r7\n\t"
+        "adds	r9, r9, r6\n\t"
+        "adc	r5, r7, #0\n\t"
+        "adds	r9, r9, r4\n\t"
+        "str	r9, [%[a], #24]\n\t"
+        "adc	r5, r5, #0\n\t"
+        "# a[i+7] += m[7] * mu\n\t"
+        "ldr	r7, [%[m], #28]\n\t"
+        "ldr	r9, [%[a], #28]\n\t"
+        "umull	r6, r7, r8, r7\n\t"
+        "adds	r9, r9, r6\n\t"
+        "adc	r4, r7, #0\n\t"
+        "adds	r9, r9, r5\n\t"
+        "str	r9, [%[a], #28]\n\t"
+        "adc	r4, r4, #0\n\t"
+        "# a[i+8] += m[8] * mu\n\t"
+        "ldr	r7, [%[m], #32]\n\t"
+        "ldr	r9, [%[a], #32]\n\t"
+        "umull	r6, r7, r8, r7\n\t"
+        "adds	r9, r9, r6\n\t"
+        "adc	r5, r7, #0\n\t"
+        "adds	r9, r9, r4\n\t"
+        "str	r9, [%[a], #32]\n\t"
+        "adc	r5, r5, #0\n\t"
+        "# a[i+9] += m[9] * mu\n\t"
+        "ldr	r7, [%[m], #36]\n\t"
+        "ldr	r9, [%[a], #36]\n\t"
+        "umull	r6, r7, r8, r7\n\t"
+        "adds	r9, r9, r6\n\t"
+        "adc	r4, r7, #0\n\t"
+        "adds	r9, r9, r5\n\t"
+        "str	r9, [%[a], #36]\n\t"
+        "adc	r4, r4, #0\n\t"
+        "# a[i+10] += m[10] * mu\n\t"
+        "ldr	r7, [%[m], #40]\n\t"
+        "ldr	r9, [%[a], #40]\n\t"
+        "umull	r6, r7, r8, r7\n\t"
+        "adds	r9, r9, r6\n\t"
+        "adc	r5, r7, #0\n\t"
+        "adds	r9, r9, r4\n\t"
+        "str	r9, [%[a], #40]\n\t"
+        "adc	r5, r5, #0\n\t"
+        "# a[i+11] += m[11] * mu\n\t"
+        "ldr	r7, [%[m], #44]\n\t"
+        "ldr   r9, [%[a], #44]\n\t"
+        "umull	r6, r7, r8, r7\n\t"
+        "adds	r5, r5, r6\n\t"
+        "adcs	r7, r7, %[ca]\n\t"
+        "mov	%[ca], #0\n\t"
+        "adc	%[ca], %[ca], %[ca]\n\t"
+        "adds	r9, r9, r5\n\t"
+        "str	r9, [%[a], #44]\n\t"
+        "ldr	r9, [%[a], #48]\n\t"
+        "adcs	r9, r9, r7\n\t"
+        "str	r9, [%[a], #48]\n\t"
+        "adc	%[ca], %[ca], #0\n\t"
+        "# i += 1\n\t"
+        "add	%[a], %[a], #4\n\t"
+        "add	r12, r12, #4\n\t"
+        "cmp	r12, #48\n\t"
+        "blt	1b\n\t"
+        "str	r10, [%[a], #0]\n\t"
+        "str	r14, [%[a], #4]\n\t"
+        : [ca] "+r" (ca), [a] "+r" (a)
+        : [m] "r" (m), [mp] "r" (mp)
+        : "memory", "r4", "r5", "r6", "r7", "r8", "r9", "r10", "r14", "r12"
+    );
+
+    sp_384_cond_sub_12(a - 12, a, m, (sp_digit)0 - ca);
+}
+
+/* Multiply two Montogmery form numbers mod the modulus (prime).
+ * (r = a * b mod m)
+ *
+ * r   Result of multiplication.
+ * a   First number to multiply in Montogmery form.
+ * b   Second number to multiply in Montogmery form.
+ * m   Modulus (prime).
+ * mp  Montogmery mulitplier.
+ */
+static void sp_384_mont_mul_12(sp_digit* r, const sp_digit* a,
+        const sp_digit* b, const sp_digit* m, sp_digit mp)
+{
+    sp_384_mul_12(r, a, b);
+    sp_384_mont_reduce_12(r, m, mp);
+}
+
 /* Square the Montgomery form number. (r = a * a mod m)
  *
  * r   Result of squaring.
@@ -39277,8 +39621,8 @@ static void sp_384_sqr_12(sp_digit* r, const sp_digit* a)
  * m   Modulus (prime).
  * mp  Montogmery mulitplier.
  */
-static void sp_384_mont_sqr_12(sp_digit* r, const sp_digit* a, const sp_digit* m,
-        sp_digit mp)
+static void sp_384_mont_sqr_12(sp_digit* r, const sp_digit* a,
+        const sp_digit* m, sp_digit mp)
 {
     sp_384_sqr_12(r, a);
     sp_384_mont_reduce_12(r, m, mp);
@@ -39591,7 +39935,8 @@ static int32_t sp_384_cmp_12(const sp_digit* a, const sp_digit* b)
  * p  Montgomery form projective coordinate point.
  * t  Temporary ordinate data.
  */
-static void sp_384_map_12(sp_point_384* r, const sp_point_384* p, sp_digit* t)
+static void sp_384_map_12(sp_point_384* r, const sp_point_384* p,
+        sp_digit* t)
 {
     sp_digit* t1 = t;
     sp_digit* t2 = t + 2*12;
@@ -39627,122 +39972,6 @@ static void sp_384_map_12(sp_point_384* r, const sp_point_384* p, sp_digit* t)
 
 }
 
-#ifdef WOLFSSL_SP_SMALL
-/* Add b to a into r. (r = a + b)
- *
- * r  A single precision integer.
- * a  A single precision integer.
- * b  A single precision integer.
- */
-static sp_digit sp_384_add_12(sp_digit* r, const sp_digit* a,
-        const sp_digit* b)
-{
-    sp_digit c = 0;
-
-    __asm__ __volatile__ (
-        "add	r12, %[a], #48\n\t"
-        "\n1:\n\t"
-        "adds	%[c], %[c], #-1\n\t"
-        "ldr	r4, [%[a]], #4\n\t"
-        "ldr	r5, [%[a]], #4\n\t"
-        "ldr	r6, [%[a]], #4\n\t"
-        "ldr	r7, [%[a]], #4\n\t"
-        "ldr	r8, [%[b]], #4\n\t"
-        "ldr	r9, [%[b]], #4\n\t"
-        "ldr	r10, [%[b]], #4\n\t"
-        "ldr	r14, [%[b]], #4\n\t"
-        "adcs	r4, r4, r8\n\t"
-        "adcs	r5, r5, r9\n\t"
-        "adcs	r6, r6, r10\n\t"
-        "adcs	r7, r7, r14\n\t"
-        "str	r4, [%[r]], #4\n\t"
-        "str	r5, [%[r]], #4\n\t"
-        "str	r6, [%[r]], #4\n\t"
-        "str	r7, [%[r]], #4\n\t"
-        "mov	r4, #0\n\t"
-        "adc	%[c], r4, #0\n\t"
-        "cmp	%[a], r12\n\t"
-        "bne	1b\n\t"
-        : [c] "+r" (c), [r] "+r" (r), [a] "+r" (a), [b] "+r" (b)
-        :
-        : "memory", "r4", "r5", "r6", "r7", "r8", "r9", "r10", "r14", "r12"
-    );
-
-    return c;
-}
-
-#else
-/* Add b to a into r. (r = a + b)
- *
- * r  A single precision integer.
- * a  A single precision integer.
- * b  A single precision integer.
- */
-static sp_digit sp_384_add_12(sp_digit* r, const sp_digit* a,
-        const sp_digit* b)
-{
-    sp_digit c = 0;
-
-    __asm__ __volatile__ (
-        "mov	r12, #0\n\t"
-        "ldr	r4, [%[a], #0]\n\t"
-        "ldr	r5, [%[a], #4]\n\t"
-        "ldr	r6, [%[a], #8]\n\t"
-        "ldr	r7, [%[a], #12]\n\t"
-        "ldr	r8, [%[b], #0]\n\t"
-        "ldr	r9, [%[b], #4]\n\t"
-        "ldr	r10, [%[b], #8]\n\t"
-        "ldr	r14, [%[b], #12]\n\t"
-        "adds	r4, r4, r8\n\t"
-        "adcs	r5, r5, r9\n\t"
-        "adcs	r6, r6, r10\n\t"
-        "adcs	r7, r7, r14\n\t"
-        "str	r4, [%[r], #0]\n\t"
-        "str	r5, [%[r], #4]\n\t"
-        "str	r6, [%[r], #8]\n\t"
-        "str	r7, [%[r], #12]\n\t"
-        "ldr	r4, [%[a], #16]\n\t"
-        "ldr	r5, [%[a], #20]\n\t"
-        "ldr	r6, [%[a], #24]\n\t"
-        "ldr	r7, [%[a], #28]\n\t"
-        "ldr	r8, [%[b], #16]\n\t"
-        "ldr	r9, [%[b], #20]\n\t"
-        "ldr	r10, [%[b], #24]\n\t"
-        "ldr	r14, [%[b], #28]\n\t"
-        "adcs	r4, r4, r8\n\t"
-        "adcs	r5, r5, r9\n\t"
-        "adcs	r6, r6, r10\n\t"
-        "adcs	r7, r7, r14\n\t"
-        "str	r4, [%[r], #16]\n\t"
-        "str	r5, [%[r], #20]\n\t"
-        "str	r6, [%[r], #24]\n\t"
-        "str	r7, [%[r], #28]\n\t"
-        "ldr	r4, [%[a], #32]\n\t"
-        "ldr	r5, [%[a], #36]\n\t"
-        "ldr	r6, [%[a], #40]\n\t"
-        "ldr	r7, [%[a], #44]\n\t"
-        "ldr	r8, [%[b], #32]\n\t"
-        "ldr	r9, [%[b], #36]\n\t"
-        "ldr	r10, [%[b], #40]\n\t"
-        "ldr	r14, [%[b], #44]\n\t"
-        "adcs	r4, r4, r8\n\t"
-        "adcs	r5, r5, r9\n\t"
-        "adcs	r6, r6, r10\n\t"
-        "adcs	r7, r7, r14\n\t"
-        "str	r4, [%[r], #32]\n\t"
-        "str	r5, [%[r], #36]\n\t"
-        "str	r6, [%[r], #40]\n\t"
-        "str	r7, [%[r], #44]\n\t"
-        "adc	%[c], r12, r12\n\t"
-        : [c] "+r" (c)
-        : [r] "r" (r), [a] "r" (a), [b] "r" (b)
-        : "memory", "r4", "r5", "r6", "r7", "r8", "r9", "r10", "r14", "r12"
-    );
-
-    return c;
-}
-
-#endif /* WOLFSSL_SP_SMALL */
 /* Add two Montgomery form numbers (r = a + b % m).
  *
  * r   Result of addition.
@@ -39789,120 +40018,6 @@ static void sp_384_mont_tpl_12(sp_digit* r, const sp_digit* a, const sp_digit* m
     sp_384_cond_sub_12(r, r, m, 0 - o);
 }
 
-#ifdef WOLFSSL_SP_SMALL
-/* Sub b from a into r. (r = a - b)
- *
- * r  A single precision integer.
- * a  A single precision integer.
- * b  A single precision integer.
- */
-static sp_digit sp_384_sub_12(sp_digit* r, const sp_digit* a,
-        const sp_digit* b)
-{
-    sp_digit c = 0;
-
-    __asm__ __volatile__ (
-        "add	r12, %[a], #48\n\t"
-        "\n1:\n\t"
-        "rsbs	%[c], %[c], #0\n\t"
-        "ldr	r4, [%[a]], #4\n\t"
-        "ldr	r5, [%[a]], #4\n\t"
-        "ldr	r6, [%[a]], #4\n\t"
-        "ldr	r7, [%[a]], #4\n\t"
-        "ldr	r8, [%[b]], #4\n\t"
-        "ldr	r9, [%[b]], #4\n\t"
-        "ldr	r10, [%[b]], #4\n\t"
-        "ldr	r14, [%[b]], #4\n\t"
-        "sbcs	r4, r4, r8\n\t"
-        "sbcs	r5, r5, r9\n\t"
-        "sbcs	r6, r6, r10\n\t"
-        "sbcs	r7, r7, r14\n\t"
-        "str	r4, [%[r]], #4\n\t"
-        "str	r5, [%[r]], #4\n\t"
-        "str	r6, [%[r]], #4\n\t"
-        "str	r7, [%[r]], #4\n\t"
-        "sbc	%[c], r4, r4\n\t"
-        "cmp	%[a], r12\n\t"
-        "bne	1b\n\t"
-        : [c] "+r" (c), [r] "+r" (r), [a] "+r" (a), [b] "+r" (b)
-        :
-        : "memory", "r4", "r5", "r6", "r7", "r8", "r9", "r10", "r14", "r12"
-    );
-
-    return c;
-}
-
-#else
-/* Sub b from a into r. (r = a - b)
- *
- * r  A single precision integer.
- * a  A single precision integer.
- * b  A single precision integer.
- */
-static sp_digit sp_384_sub_12(sp_digit* r, const sp_digit* a,
-        const sp_digit* b)
-{
-    sp_digit c = 0;
-
-    __asm__ __volatile__ (
-        "ldr	r3, [%[a], #0]\n\t"
-        "ldr	r4, [%[a], #4]\n\t"
-        "ldr	r5, [%[a], #8]\n\t"
-        "ldr	r6, [%[a], #12]\n\t"
-        "ldr	r7, [%[b], #0]\n\t"
-        "ldr	r8, [%[b], #4]\n\t"
-        "ldr	r9, [%[b], #8]\n\t"
-        "ldr	r10, [%[b], #12]\n\t"
-        "subs	r3, r3, r7\n\t"
-        "sbcs	r4, r4, r8\n\t"
-        "sbcs	r5, r5, r9\n\t"
-        "sbcs	r6, r6, r10\n\t"
-        "str	r3, [%[r], #0]\n\t"
-        "str	r4, [%[r], #4]\n\t"
-        "str	r5, [%[r], #8]\n\t"
-        "str	r6, [%[r], #12]\n\t"
-        "ldr	r3, [%[a], #16]\n\t"
-        "ldr	r4, [%[a], #20]\n\t"
-        "ldr	r5, [%[a], #24]\n\t"
-        "ldr	r6, [%[a], #28]\n\t"
-        "ldr	r7, [%[b], #16]\n\t"
-        "ldr	r8, [%[b], #20]\n\t"
-        "ldr	r9, [%[b], #24]\n\t"
-        "ldr	r10, [%[b], #28]\n\t"
-        "sbcs	r3, r3, r7\n\t"
-        "sbcs	r4, r4, r8\n\t"
-        "sbcs	r5, r5, r9\n\t"
-        "sbcs	r6, r6, r10\n\t"
-        "str	r3, [%[r], #16]\n\t"
-        "str	r4, [%[r], #20]\n\t"
-        "str	r5, [%[r], #24]\n\t"
-        "str	r6, [%[r], #28]\n\t"
-        "ldr	r3, [%[a], #32]\n\t"
-        "ldr	r4, [%[a], #36]\n\t"
-        "ldr	r5, [%[a], #40]\n\t"
-        "ldr	r6, [%[a], #44]\n\t"
-        "ldr	r7, [%[b], #32]\n\t"
-        "ldr	r8, [%[b], #36]\n\t"
-        "ldr	r9, [%[b], #40]\n\t"
-        "ldr	r10, [%[b], #44]\n\t"
-        "sbcs	r3, r3, r7\n\t"
-        "sbcs	r4, r4, r8\n\t"
-        "sbcs	r5, r5, r9\n\t"
-        "sbcs	r6, r6, r10\n\t"
-        "str	r3, [%[r], #32]\n\t"
-        "str	r4, [%[r], #36]\n\t"
-        "str	r5, [%[r], #40]\n\t"
-        "str	r6, [%[r], #44]\n\t"
-        "sbc	%[c], %[c], #0\n\t"
-        : [c] "+r" (c)
-        : [r] "r" (r), [a] "r" (a), [b] "r" (b)
-        : "memory", "r3", "r4", "r5", "r6", "r7", "r8", "r9", "r10"
-    );
-
-    return c;
-}
-
-#endif /* WOLFSSL_SP_SMALL */
 /* Conditionally add a and b using the mask m.
  * m is -1 to add and 0 when not.
  *
@@ -40102,7 +40217,8 @@ static void sp_384_div2_12(sp_digit* r, const sp_digit* a, const sp_digit* m)
  * p  Point to double.
  * t  Temporary ordinate data.
  */
-static void sp_384_proj_point_dbl_12(sp_point_384* r, const sp_point_384* p, sp_digit* t)
+static void sp_384_proj_point_dbl_12(sp_point_384* r,
+        const sp_point_384* p, sp_digit* t)
 {
     sp_digit* t1 = t;
     sp_digit* t2 = t + 2*12;
@@ -40177,8 +40293,8 @@ static int sp_384_cmp_equal_12(const sp_digit* a, const sp_digit* b)
  * q  Second point to add.
  * t  Temporary ordinate data.
  */
-static void sp_384_proj_point_add_12(sp_point_384* r, const sp_point_384* p, const sp_point_384* q,
-        sp_digit* t)
+static void sp_384_proj_point_add_12(sp_point_384* r,
+        const sp_point_384* p, const sp_point_384* q, sp_digit* t)
 {
     const sp_point_384* ap[2];
     sp_point_384* rp[2];
@@ -40266,6 +40382,12 @@ static void sp_384_proj_point_add_12(sp_point_384* r, const sp_point_384* p, con
 
 /* Multiply the point by the scalar and return the result.
  * If map is true then convert result to affine coordinates.
+ *
+ * Fast implementation that generates a pre-computation table.
+ * 4 bits of window (no sliding!).
+ * Uses add and double for calculating table.
+ * 384 doubles.
+ * 108 adds.
  *
  * r     Resulting point.
  * g     Point to multiply.
@@ -40407,7 +40529,8 @@ typedef struct sp_table_entry_384 {
  * n  Number of times to double
  * t  Temporary ordinate data.
  */
-static void sp_384_proj_point_dbl_n_12(sp_point_384* p, int n, sp_digit* t)
+static void sp_384_proj_point_dbl_n_12(sp_point_384* p, int n,
+        sp_digit* t)
 {
     sp_digit* w = t;
     sp_digit* a = t + 2*12;
@@ -40597,6 +40720,10 @@ static void sp_384_proj_to_affine_12(sp_point_384* a, sp_digit* t)
 
 /* Generate the pre-computed table of points for the base point.
  *
+ * width = 4
+ * 16 entries
+ * 96 bits between
+ *
  * a      The base point.
  * table  Place to store generated point data.
  * tmp    Temporary data.
@@ -40680,14 +40807,20 @@ static int sp_384_gen_stripe_table_12(const sp_point_384* a,
 /* Multiply the point by the scalar and return the result.
  * If map is true then convert result to affine coordinates.
  *
+ * Stripe implementation.
+ * Pre-generated: 2^0, 2^96, ...
+ * Pre-generated: products of all combinations of above.
+ * 4 doubles and adds (with qz=1)
+ *
  * r     Resulting point.
  * k     Scalar to multiply by.
  * map   Indicates whether to convert result to affine.
  * heap  Heap to use for allocation.
  * returns MEMORY_E when memory allocation fails and MP_OKAY on success.
  */
-static int sp_384_ecc_mulmod_stripe_12(sp_point_384* r, const sp_point_384* g,
-        const sp_table_entry_384* table, const sp_digit* k, int map, void* heap)
+static int sp_384_ecc_mulmod_stripe_12(sp_point_384* r,
+        const sp_point_384* g, const sp_table_entry_384* table,
+        const sp_digit* k, int map, void* heap)
 {
 #if (!defined(WOLFSSL_SP_SMALL) && !defined(WOLFSSL_SMALL_STACK)) || defined(WOLFSSL_SP_NO_MALLOC)
     sp_point_384 rtd;
@@ -40767,16 +40900,25 @@ static int sp_384_ecc_mulmod_stripe_12(sp_point_384* r, const sp_point_384* g,
     #define FP_ENTRIES 16
 #endif
 
+/* Cache entry - holds precomputation tables for a point. */
 typedef struct sp_cache_384_t {
+    /* X ordinate of point that table was generated from. */
     sp_digit x[12];
+    /* Y ordinate of point that table was generated from. */
     sp_digit y[12];
+    /* Precomputation table for point. */
     sp_table_entry_384 table[16];
+    /* Count of entries in table. */
     uint32_t cnt;
+    /* Point and table set in entry. */
     int set;
 } sp_cache_384_t;
 
+/* Cache of tables. */
 static THREAD_LS_T sp_cache_384_t sp_cache_384[FP_ENTRIES];
+/* Index of last entry in cache. */
 static THREAD_LS_T int sp_cache_384_last = -1;
+/* Cache has been initialized. */
 static THREAD_LS_T int sp_cache_384_inited = 0;
 
 #ifndef HAVE_THREAD_LS
@@ -40784,7 +40926,13 @@ static THREAD_LS_T int sp_cache_384_inited = 0;
     static wolfSSL_Mutex sp_cache_384_lock;
 #endif
 
-static void sp_ecc_get_cache_384(const sp_point_384* g, sp_cache_384_t** cache)
+/* Get the cache entry for the point.
+ *
+ * g      [in]   Point scalar multipling.
+ * cache  [out]  Cache table to use.
+ */
+static void sp_ecc_get_cache_384(const sp_point_384* g,
+        sp_cache_384_t** cache)
 {
     int i, j;
     uint32_t least;
@@ -40850,8 +40998,8 @@ static void sp_ecc_get_cache_384(const sp_point_384* g, sp_cache_384_t** cache)
  * heap  Heap to use for allocation.
  * returns MEMORY_E when memory allocation fails and MP_OKAY on success.
  */
-static int sp_384_ecc_mulmod_12(sp_point_384* r, const sp_point_384* g, const sp_digit* k,
-        int map, void* heap)
+static int sp_384_ecc_mulmod_12(sp_point_384* r, const sp_point_384* g,
+        const sp_digit* k, int map, void* heap)
 {
 #ifndef FP_ECC
     return sp_384_ecc_mulmod_fast_12(r, g, k, map, heap);
@@ -40894,6 +41042,10 @@ static int sp_384_ecc_mulmod_12(sp_point_384* r, const sp_point_384* g, const sp
 #else
 #ifdef FP_ECC
 /* Generate the pre-computed table of points for the base point.
+ *
+ * width = 8
+ * 256 entries
+ * 48 bits between
  *
  * a      The base point.
  * table  Place to store generated point data.
@@ -40978,14 +41130,20 @@ static int sp_384_gen_stripe_table_12(const sp_point_384* a,
 /* Multiply the point by the scalar and return the result.
  * If map is true then convert result to affine coordinates.
  *
+ * Stripe implementation.
+ * Pre-generated: 2^0, 2^48, ...
+ * Pre-generated: products of all combinations of above.
+ * 8 doubles and adds (with qz=1)
+ *
  * r     Resulting point.
  * k     Scalar to multiply by.
  * map   Indicates whether to convert result to affine.
  * heap  Heap to use for allocation.
  * returns MEMORY_E when memory allocation fails and MP_OKAY on success.
  */
-static int sp_384_ecc_mulmod_stripe_12(sp_point_384* r, const sp_point_384* g,
-        const sp_table_entry_384* table, const sp_digit* k, int map, void* heap)
+static int sp_384_ecc_mulmod_stripe_12(sp_point_384* r,
+        const sp_point_384* g, const sp_table_entry_384* table,
+        const sp_digit* k, int map, void* heap)
 {
 #if (!defined(WOLFSSL_SP_SMALL) && !defined(WOLFSSL_SMALL_STACK)) || defined(WOLFSSL_SP_NO_MALLOC)
     sp_point_384 rtd;
@@ -41065,16 +41223,25 @@ static int sp_384_ecc_mulmod_stripe_12(sp_point_384* r, const sp_point_384* g,
     #define FP_ENTRIES 16
 #endif
 
+/* Cache entry - holds precomputation tables for a point. */
 typedef struct sp_cache_384_t {
+    /* X ordinate of point that table was generated from. */
     sp_digit x[12];
+    /* Y ordinate of point that table was generated from. */
     sp_digit y[12];
+    /* Precomputation table for point. */
     sp_table_entry_384 table[256];
+    /* Count of entries in table. */
     uint32_t cnt;
+    /* Point and table set in entry. */
     int set;
 } sp_cache_384_t;
 
+/* Cache of tables. */
 static THREAD_LS_T sp_cache_384_t sp_cache_384[FP_ENTRIES];
+/* Index of last entry in cache. */
 static THREAD_LS_T int sp_cache_384_last = -1;
+/* Cache has been initialized. */
 static THREAD_LS_T int sp_cache_384_inited = 0;
 
 #ifndef HAVE_THREAD_LS
@@ -41082,7 +41249,13 @@ static THREAD_LS_T int sp_cache_384_inited = 0;
     static wolfSSL_Mutex sp_cache_384_lock;
 #endif
 
-static void sp_ecc_get_cache_384(const sp_point_384* g, sp_cache_384_t** cache)
+/* Get the cache entry for the point.
+ *
+ * g      [in]   Point scalar multipling.
+ * cache  [out]  Cache table to use.
+ */
+static void sp_ecc_get_cache_384(const sp_point_384* g,
+        sp_cache_384_t** cache)
 {
     int i, j;
     uint32_t least;
@@ -41148,8 +41321,8 @@ static void sp_ecc_get_cache_384(const sp_point_384* g, sp_cache_384_t** cache)
  * heap  Heap to use for allocation.
  * returns MEMORY_E when memory allocation fails and MP_OKAY on success.
  */
-static int sp_384_ecc_mulmod_12(sp_point_384* r, const sp_point_384* g, const sp_digit* k,
-        int map, void* heap)
+static int sp_384_ecc_mulmod_12(sp_point_384* r, const sp_point_384* g,
+        const sp_digit* k, int map, void* heap)
 {
 #ifndef FP_ECC
     return sp_384_ecc_mulmod_fast_12(r, g, k, map, heap);
@@ -41243,6 +41416,10 @@ int sp_ecc_mulmod_384(mp_int* km, ecc_point* gm, ecc_point* r, int map,
 }
 
 #ifdef WOLFSSL_SP_SMALL
+/* Striping precomputation table.
+ * 4 points combined into a table of 16 points.
+ * Distance of 96 between points.
+ */
 static const sp_table_entry_384 p384_table[16] = {
     /* 0 */
     { { 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 },
@@ -41327,6 +41504,11 @@ static const sp_table_entry_384 p384_table[16] = {
 /* Multiply the base point of P384 by the scalar and return the result.
  * If map is true then convert result to affine coordinates.
  *
+ * Stripe implementation.
+ * Pre-generated: 2^0, 2^96, ...
+ * Pre-generated: products of all combinations of above.
+ * 4 doubles and adds (with qz=1)
+ *
  * r     Resulting point.
  * k     Scalar to multiply by.
  * map   Indicates whether to convert result to affine.
@@ -41341,6 +41523,10 @@ static int sp_384_ecc_mulmod_base_12(sp_point_384* r, const sp_digit* k,
 }
 
 #else
+/* Striping precomputation table.
+ * 8 points combined into a table of 256 points.
+ * Distance of 48 between points.
+ */
 static const sp_table_entry_384 p384_table[256] = {
     /* 0 */
     { { 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 },
@@ -42625,6 +42811,11 @@ static const sp_table_entry_384 p384_table[256] = {
 /* Multiply the base point of P384 by the scalar and return the result.
  * If map is true then convert result to affine coordinates.
  *
+ * Stripe implementation.
+ * Pre-generated: 2^0, 2^48, ...
+ * Pre-generated: products of all combinations of above.
+ * 8 doubles and adds (with qz=1)
+ *
  * r     Resulting point.
  * k     Scalar to multiply by.
  * map   Indicates whether to convert result to affine.
@@ -42662,8 +42853,7 @@ int sp_ecc_mulmod_base_384(mp_int* km, ecc_point* r, int map, void* heap)
     err = sp_384_point_new_12(heap, p, point);
 #if (defined(WOLFSSL_SP_SMALL) || defined(WOLFSSL_SMALL_STACK)) && !defined(WOLFSSL_SP_NO_MALLOC)
     if (err == MP_OKAY) {
-        k = (sp_digit*)XMALLOC(sizeof(sp_digit) * 12, heap,
-                                                              DYNAMIC_TYPE_ECC);
+        k = (sp_digit*)XMALLOC(sizeof(sp_digit) * 12, heap, DYNAMIC_TYPE_ECC);
         if (k == NULL) {
             err = MEMORY_E;
         }
