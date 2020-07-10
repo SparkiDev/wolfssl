@@ -6157,7 +6157,7 @@ void bench_sakke(void)
     word16 authSz = sizeof(auth);
     int ret;
     byte* table = NULL;
-    word32 len = 0;
+    word32 len;
     byte* iTable = NULL;
     word32 iTableLen = 0;
 

@@ -378,7 +378,7 @@ static int eccsi_compute_hs(EccsiKey* key, enum wc_HashType hashType,
         const byte* id, word32 idSz, ecc_point* pvt, byte* hash, byte* hashSz)
 {
     int err;
-    word32 dataSz;
+    word32 dataSz = 0;
     int idx = wc_ecc_get_curve_idx(key->ecc.dp->id);
     ecc_point* kpak = &key->ecc.pubkey;
 
@@ -1225,8 +1225,8 @@ int wc_ValidateEccsiPair(EccsiKey* key, enum wc_HashType hashType,
     if (err == 0) {
         err = ecc_map(res, &params->prime, mp);
     }
-
-    if (valid != NULL) {
+	/* explicit check on key for dereference and static analysis */
+    if (valid != NULL && key != NULL) {
         kpak = &key->ecc.pubkey;
         /* Compare KPAK and [SSK]G + -[HS]PVT */
         *valid = ((err == 0) && (wc_ecc_cmp_point(res, kpak) == MP_EQ));

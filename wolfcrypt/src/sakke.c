@@ -33,6 +33,7 @@
     #define WOLFSSL_MISC_INCLUDED
     #include <wolfcrypt/src/misc.c>
 #endif
+
 #ifdef WOLFSSL_HAVE_SP_ECC
     #include <wolfssl/wolfcrypt/sp.h>
 #endif
@@ -418,7 +419,7 @@ static int sakke_mulmod_point(SakkeKey* key, const mp_int* n, ecc_point* p,
 int wc_MakeSakkeKey(SakkeKey* key, WC_RNG* rng)
 {
     int err = 0;
-    int digits;
+    int digits = 0;
 
     if ((key == NULL) || (rng == NULL)) {
         err = BAD_FUNC_ARG;
@@ -767,7 +768,7 @@ int wc_ExportSakkePublicKey(SakkeKey* key, byte* data, word32* sz)
 int wc_MakeSakkeRsk(SakkeKey* key, const byte* id, word16 idSz, ecc_point* rsk)
 {
     int err = 0;
-    mp_int* a;
+    mp_int* a = NULL;
 
     if ((key == NULL) || (id == NULL) || (rsk == NULL)) {
         err = BAD_FUNC_ARG;
@@ -1150,7 +1151,7 @@ static int sakke_pairing(const SakkeKey* key, ecc_point* p, ecc_point* q,
     (void)key;
     (void)p;
     (void)q;
-    (void)ri;
+    (void)r;
     (void)table;
     (void)len;
 #endif
@@ -6014,7 +6015,7 @@ int wc_SetSakkeIdentity(SakkeKey* key, const byte* id, word16 idSz)
 
     if (err == 0) {
         XMEMCPY(key->id, id, idSz);
-        key->idSz = idSz;
+        key->idSz = (word16) idSz;
     }
 
     return err;
@@ -6368,7 +6369,7 @@ int wc_MakeSakkeEncapsulatedSSV(SakkeKey* key, enum wc_HashType hashType,
         }
     }
     if (err == 0) {
-        *authSz = outSz;
+        *authSz = (word16) outSz;
 
         if (auth == NULL) {
             err = LENGTH_ONLY_E;
@@ -6464,7 +6465,7 @@ int wc_GenerateSakkeSSV(SakkeKey* key, WC_RNG* rng, byte* ssv, word16* ssvSz)
     if (err == 0) {
         /* Return length only if an ouput buffer is NULL. */
         if (ssv == NULL) {
-            *ssvSz = n / 8;
+            *ssvSz = (word16) (n / 8);
             err = LENGTH_ONLY_E;
         }
         else {

@@ -21056,7 +21056,7 @@ static int eccsi_make_key_test(EccsiKey* priv, EccsiKey* pub, WC_RNG* rng,
     int ret;
     char mail[] = "test@wolfssl.com";
     byte* id = (byte*)mail;
-    word32 idSz = XSTRLEN(mail);
+    word32 idSz = (word32) XSTRLEN(mail);
     int valid;
 
     ret = wc_MakeEccsiKey(priv, rng);
@@ -21100,7 +21100,7 @@ static int eccsi_sign_verify_test(EccsiKey* priv, EccsiKey* pub, WC_RNG* rng,
     int verified, valid;
     char mail[] = "test@wolfssl.com";
     byte* id = (byte*)mail;
-    word32 idSz = XSTRLEN(mail);
+    word32 idSz = (word32) XSTRLEN(mail);
     byte msg[] = { 0x00 };
     word32 msgSz = sizeof(msg);
 
@@ -22022,7 +22022,7 @@ static int sakke_make_key_test(SakkeKey* priv, SakkeKey* pub, WC_RNG* rng,
     word32 sz;
     char mail[] = "test@wolfssl.com";
     byte* id = (byte*)mail;
-    word32 idSz = XSTRLEN(mail);
+    word32 idSz = (word32) XSTRLEN(mail);
     int valid;
     SakkeKey key;
     ecc_point* pubKey = rsk;
@@ -22160,7 +22160,7 @@ static int sakke_op_test(SakkeKey* priv, SakkeKey* pub, WC_RNG* rng,
     word16 authSz;
     char mail[] = "test@wolfssl.com";
     byte* id = (byte*)mail;
-    word32 idSz = XSTRLEN(mail);
+    word32 idSz = (word32) XSTRLEN(mail);
     byte pointI[256];
     word32 sz;
 
