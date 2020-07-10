@@ -819,8 +819,8 @@ int wc_Poly1305_EncodeSizes(Poly1305* ctx, word32 aadSz, word32 dataSz)
     tagSz      : Size of input tag buffer (must be at least
                  WC_POLY1305_MAC_SZ(16))
  */
-int wc_Poly1305_MAC(Poly1305* ctx, byte* additional, word32 addSz,
-                    byte* input, word32 sz, byte* tag, word32 tagSz)
+int wc_Poly1305_MAC(Poly1305* ctx, const byte* additional, word32 addSz,
+                    const byte* input, word32 sz, byte* tag, word32 tagSz)
 {
     int ret;
 

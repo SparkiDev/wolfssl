@@ -211,8 +211,8 @@ WC_STATIC WC_INLINE void ForceZero(const void* mem, word32 len)
         len -= l;
         while (l--) *z++ = 0;
     #endif
-    for (w = (volatile word64*)z; len >= sizeof(*w); len -= sizeof(*w))
-        *w++ = 0;
+    for (w = (volatile word64*)z; len >= sizeof(*w); w++, len -= sizeof(*w))
+        *w = 0;
     z = (volatile byte*)w;
 #endif
 

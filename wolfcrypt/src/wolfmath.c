@@ -72,7 +72,7 @@
 
 
 #if !defined(WOLFSSL_SP_MATH)
-int get_digit_count(mp_int* a)
+int get_digit_count(const mp_int* a)
 {
     if (a == NULL)
         return 0;
@@ -81,7 +81,7 @@ int get_digit_count(mp_int* a)
 }
 #endif
 
-mp_digit get_digit(mp_int* a, int n)
+mp_digit get_digit(const mp_int* a, int n)
 {
     if (a == NULL)
         return 0;

@@ -228,9 +228,11 @@ enum {
     PKCS7_SIGNEEDS_CHECK= -272,  /* signature needs verified by caller */
     PSS_SALTLEN_RECOVER_E=-273,  /* PSS slat length not recoverable */
 
-    ASN_SELF_SIGNED_E   = -274, /* ASN self-signed certificate error */
+    ASN_SELF_SIGNED_E   = -274,  /* ASN self-signed certificate error */
 
-    WC_LAST_E           = -274,  /* Update this to indicate last error */
+    SAKKE_VERIFY_FAIL_E = -275,  /* SAKKE derivation verification error */
+
+    WC_LAST_E           = -275,  /* Update this to indicate last error */
     MIN_CODE_E          = -300   /* errors -101 - -299 */
 
     /* add new companion error id strings for any new error codes

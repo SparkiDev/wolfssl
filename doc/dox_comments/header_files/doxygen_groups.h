@@ -29,6 +29,163 @@
     \defgroup SHA Algorithms - SHA 128/224/256/384/512
     \defgroup SRP Algorithms - SRP
 
+    \defgroup ECCSI_Overview Overview of ECCSI
+    ECCSI (Elliptic Curve-Based Certificateless Signatures for Identity-Based Encryption) is specified in RFC 6507 (https://tools.ietf.org/html/rfc6507).
+
+    In Identity-Based cryptography, there is a Key Management Service that generates keys based on an identity for a client.
+The private key (SSK) and public key (PVT) are delivered to the signer and the public key (PVT) only delivered to the verifier on request.\n\n
+    wolfCrypt offers the ability to:
+      -# Create KMS keys,
+      -# Generate signing key pairs,
+      -# Validate signing key pairs,
+      -# Sign messages and
+      -# Verify messages.
+
+    KMS:
+      -# Initialize ECCSI Key: wc_InitEccsiKey()
+      -# Make and save or load ECCSI Key:
+        -# wc_MakeEccsiKey(), wc_ExportEccsiKey(), wc_ExportEccsiPublicKey() or
+        -# wc_ImportEccsiKey()
+      -# Wait for request:
+        -# Receive signing ID from client.
+        -# Generate signing key pair from ID: wc_MakeEccsiPair()
+        -# Encode result:
+          -# For signer, signing key pair: wc_EncodeEccsiPair()
+          -# For verifier, PVT: wc_EncodeEccsiPvt()
+        -# Send KPAK and result
+      -# Free ECCSI Key: wc_FreeEccsiKey()
+
+    Client, signer:
+      -# Initialize ECCSI Key: wc_InitEccsiKey()
+      -# (When signing pair not cached) Request KPAK and signing pair from KMS
+        -# Send signing ID to KMS.
+        -# Receive signing key pair from KMS.
+        -# Load KMS Public Key: wc_ImportEccsiPublicKey()
+        -# Decode signing key pair: wc_DecodeEccsiPair()
+        -# Validate the key pair: wc_ValidateEccsiPair()
+      -# (If not done above) Load KMS Public Key: wc_ImportEccsiPublicKey()
+      -# (If not cached) Calculate hash of the ID and PVT: wc_HashEccsiId()
+      -# For each message:
+        -# Sign using hash ID, SSK and PVT: wc_SignEccsiHash()
+        -# Send hash ID, message and signature to peer.
+      -# Free ECCSI Key: wc_FreeEccsiKey()
+
+    Client, verifier:
+      -# Receive hash ID, message and signature from signer.
+      -# Request KPAK (if not cached) and PVT (if not cached) for hash ID from KMS.
+      -# Receive KPAK (if not cached) and PVT (if not cached) for hash ID from KMS.
+      -# Initialize ECCSI Key: wc_InitEccsiKey()
+      -# Load KMS Public Key: wc_ImportEccsiPublicKey()
+      -# Decode PVT: wc_DecodeEccsiPvt()
+      -# Calculate hash of the ID and PVT: wc_HashEccsiId()
+      -# Verify signature of message with hash ID: wc_VerifyEccsiHash()
+      -# Free ECCSI Key: wc_FreeEccsiKey()
+
+    \defgroup ECCSI_Setup Setup ECCSI Key
+    Operations for establinshing an ECCSI key.
+
+    Initialize ECCSI Key before use (wc_InitEccsiKey()).\n
+    Initialize ECCSI Key before use (wc_InitEccsiKey_ex()) for use with a curve other than P256.\n
+    Either make a new key (wc_MakeEccsiKey()) or import an existing key (wc_ImportEccsiKey()).\n
+    Export the key (wc_ExportEccsiKey()) after making a new key for future use.\n
+    Export the public key (wc_ExportEccsiPublicKey()) from KMS to pass to client.\n
+    Import the public key (wc_ImportEccsiPublicKey()) into client.\n
+    Free the ECCSI Key (wc_FreeEccsiKey()) when finished.
+
+    \defgroup ECCSI_Operations Operations for Signing and Verifying with ECCSI Key
+    These operations are for signing and verifying with ECCSI keys.
+
+    Make an ECCSI key pair (wc_MakeEccsiPair()) with the signer's ID for use when signing.\n
+    Validate the ECCSI key pair (wc_ValidateEccsiPair()) with the signer's ID.\n
+    Validate the ECCSI Public Validation Token (PVT) (wc_ValidateEccsiPvt()).\n
+    Encode the ECCSI key pair (wc_EncodeEccsiPair()) for transfer to client.\n
+    Encode the ECCSI PVT (wc_EncodeEccsiPvt()) for transfer to verifier.\n
+    Decode the ECCSI key pair (wc_DecodeEccsiPair()) on client for signing.\n
+    Decode the ECCSI PVT (wc_DecodeEccsiPvt()) on client for verifying.\n
+    Calculate hash of the ID (wc_HashEccsiId()) for signing/verifying using ID and Public Validation Token (PVT).\n
+    Sign (wc_SignEccsiHash()) a message with the hash of the ID and the Secret Signing Key (SSK) and Public Validation Token (PVT).\n
+    Verify (wc_VerifyEccsiHash()) a message with the hash of the signer's ID.
+
+    \defgroup SAKKE_Overview Overview of SAKKE Key
+    SAKKE (Sakai-Kasahara Key Encryption) is specified in RFC 6508 (https://tools.ietf.org/html/rfc6508).
+
+    SAKKE is used to transfer a secret to a peer using Identity Based cryptography.\n
+    The Key Management Service (KMS) is responsible for issuing Receiver Secret %Keys (RSKs).
+    Data up to (2^hashlen)^hashlen bytes of data can be transferred.\n
+    The sender must know the identity of the receiver and the KMS Public Key.\n
+    The receiver must have obtained a Receiver Secret Key (RSK) for the identity from a KMS in order to derive the secret.
+
+    KMS:
+      -# Initialize SAKKE Key: wc_InitSakkeKey()
+      -# Make and save or load SAKKE Key:
+        -# wc_MakeSakkeKey(), wc_ExportSakkeKey(), wc_ExportSakkePublicKey() or
+        -# wc_ImportSakkeKey()
+      -# Wait for request:
+        -# Make an RSK base on ID for the client: wc_MakeSakkeRsk()
+        -# Encode RSK for transfer to client: wc_EncodeSakkeRsk()
+      -# Free SAKKE Key: wc_FreeSakkeKey()
+
+    Key Exchange, Peer A:
+      -# Initialize SAKKE Key: wc_InitSakkeKey()
+      -# Load KMS Public Key: wc_ImportSakkePublicKey()
+      -# Generate a random SSV: wc_GenerateSakkeSSV()
+      -# Make an encapsulated SSV and auth data with identity of Peer B: wc_MakeSakkeEncapsulatedSSV()
+      -# Send encapsualted data to Peer B
+      -# Free SAKKE Key: wc_FreeSakkeKey()
+
+    Key Exchange, Peer B:
+      -# Receive encapsulated data.
+      -# Initialize SAKKE Key: wc_InitSakkeKey()
+      -# Load KMS Public Key: wc_ImportSakkePublicKey()
+      -# Decode RSK transferred from KMS or stored locally: wc_DecodeSakkeRsk()
+      -# Validate RSK before first use: wc_ValidateSakkeRsk()
+      -# Derive SSV with identity, RSK and auth data: wc_DeriveSakkeSSV()
+      -# Free SAKKE Key: wc_FreeSakkeKey()
+
+    Transfer secret, Peer A:
+      -# Initialize SAKKE Key: wc_InitSakkeKey()
+      -# Load KMS Public Key: wc_ImportSakkePublicKey()
+      -# Make an encapsulation of the SSV and auth data with identity of Peer B: wc_MakeSakkeEncapsulatedSSV()
+      -# Send encapsualted data to Peer B
+      -# Free SAKKE Key: wc_FreeSakkeKey()
+
+    Transfer secret, Peer B:
+      -# Initialize SAKKE Key: wc_InitSakkeKey()
+      -# Load KMS Public Key: wc_ImportSakkePublicKey()
+      -# Decode RSK transferred from KMS or stored locally: wc_DecodeSakkeRsk()
+      -# Validate RSK before first use: wc_ValidateSakkeRsk()
+      -# Receive encapsulated data.
+      -# Derive SSV with identity, RSK and auth data: wc_DeriveSakkeSSV()
+      -# Free SAKKE Key: wc_FreeSakkeKey()
+    
+    \defgroup SAKKE_Setup Setup SAKKE Key
+    Operations for establishing a SAKKE key.
+
+    Initialization SAKKE Key before use (wc_InitSakkeKey()).\n
+    Either make a new key (wc_MakeSakkeKey()) or import an existing key (wc_ImportSakkeKey()).\n
+    Export the key (wc_ExportSakkeKey()) after making a new key for future use.\n
+    If only the private part of the KMS SAKKE Key is avaialble, make the public key (wc_MakeSakkePublicKey()).\n
+    Export the public key (wc_ExportSakkePublicKey()) from KMS to pass to client.\n
+    Import the public key (wc_ImportSakkePublicKey()) into client.\n
+    Free the SAKKE Key (wc_FreeSakkeKey()) when finished.
+
+    \defgroup SAKKE_RSK Operations on/with SAKKE RSK
+    These operations make, validate, encode and decode a Receiver Secret Key (RSK).
+
+    An RSK is required to derive an SSV (see wc_DeriveSakkeSSV()).\n
+    On the KMS, make an RSK (wc_MakeSakkeRsk()) from the client's ID.\n
+    On the client, validate the RSK (wc_ValidateSakkeRsk()) with the ID.\n
+    Encode the RSK (wc_EncodeSakkeRsk()) to pass to client or for storage.\n
+    Decode the RSK (wc_DecodeSakkeRsk()) on the client when needed.
+
+    \defgroup SAKKE_Operations Operations using SAKKE Key
+    These operations transfer a Shared Secret Value (SSV) from one client to another. The SSV may be randomly generated.
+
+    Calculate the size of the authentication data (wc_GetSakkeAuthSize()) to determine where the SSV starts in a buffer.\n
+    Make an encapsulated SSV (wc_MakeSakkeEncapsulatedSSV()) to share with another client. Data in SSV is modified.\n
+    Generate a random SSV (wc_GenerateSakkeSSV()) for key exchange.\n
+    Derive the SSV, (wc_DeriveSakkeSSV()) on the recipient from the encapsulated SSV.
+
     \defgroup ASN ASN.1
     \defgroup Base_Encoding Base Encoding
     \defgroup CertManager CertManager API

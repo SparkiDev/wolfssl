@@ -75,7 +75,7 @@ WOLFSSL_LOCAL int sp_ModExp_4096(sp_int* base, sp_int* exp, sp_int* mod,
 
 #endif
 
-int sp_get_digit_count(sp_int *a)
+int sp_get_digit_count(const sp_int *a)
 {
     int ret;
     if (!a)
@@ -444,7 +444,7 @@ void sp_forcezero(sp_int* a)
  * r  SP integer.
  * returns MP_OKAY always.
  */
-int sp_copy(sp_int* a, sp_int* r)
+int sp_copy(const sp_int* a, sp_int* r)
 {
     if (a != r) {
         XMEMCPY(r->dp, a->dp, a->used * sizeof(sp_int_digit));

@@ -874,7 +874,7 @@ int GetInt(mp_int* mpi, const byte* input, word32* inOutIdx, word32 maxIdx)
     if (mp_init(mpi) != MP_OKAY)
         return MP_INIT_E;
 
-    if (mp_read_unsigned_bin(mpi, (byte*)input + idx, length) != 0) {
+    if (mp_read_unsigned_bin(mpi, input + idx, length) != 0) {
         mp_clear(mpi);
         return ASN_GETINT_E;
     }
@@ -1727,6 +1727,8 @@ const byte* OidFromId(word32 id, word32 type, word32* oidSz)
                     *oidSz = sizeof(hashSha512hOid);
                     break;
             #endif
+                default:
+                    break;
             }
             break;
 
@@ -1960,6 +1962,8 @@ const byte* OidFromId(word32 id, word32 type, word32* oidSz)
                     *oidSz = sizeof(blkDes3CbcOid);
                     break;
     #endif /* !NO_DES3 */
+                default:
+                    break;
             }
             break;
 
@@ -1973,6 +1977,8 @@ const byte* OidFromId(word32 id, word32 type, word32* oidSz)
                 case OCSP_NONCE_OID:
                     oid = ocspNonceOid;
                     *oidSz = sizeof(ocspNonceOid);
+                    break;
+                default:
                     break;
             }
             break;
@@ -2026,6 +2032,8 @@ const byte* OidFromId(word32 id, word32 type, word32* oidSz)
                     *oidSz = sizeof(extNameConsOid);
                     break;
             #endif
+                default:
+                    break;
             }
             break;
 
@@ -2035,6 +2043,8 @@ const byte* OidFromId(word32 id, word32 type, word32* oidSz)
                 case AUTH_KEY_OID:
                     oid = extAuthKeyOid;
                     *oidSz = sizeof(extAuthKeyOid);
+                    break;
+                default:
                     break;
             }
             #endif
@@ -2052,6 +2062,8 @@ const byte* OidFromId(word32 id, word32 type, word32* oidSz)
                     oid = extAuthInfoCaIssuerOid;
                     *oidSz = sizeof(extAuthInfoCaIssuerOid);
                     break;
+                default:
+                    break;
             }
             break;
 
@@ -2061,6 +2073,8 @@ const byte* OidFromId(word32 id, word32 type, word32* oidSz)
                     oid = extCertPolicyAnyOid;
                     *oidSz = sizeof(extCertPolicyAnyOid);
                     break;
+                default:
+                    break;
             }
             break;
 
@@ -2069,6 +2083,8 @@ const byte* OidFromId(word32 id, word32 type, word32* oidSz)
                 case HW_NAME_OID:
                     oid = extAltNamesHwNameOid;
                     *oidSz = sizeof(extAltNamesHwNameOid);
+                    break;
+                default:
                     break;
             }
             break;
@@ -2103,6 +2119,8 @@ const byte* OidFromId(word32 id, word32 type, word32* oidSz)
                     oid = extExtKeyUsageOcspSignOid;
                     *oidSz = sizeof(extExtKeyUsageOcspSignOid);
                     break;
+                default:
+                    break;
             }
             break;
 
@@ -2111,6 +2129,8 @@ const byte* OidFromId(word32 id, word32 type, word32* oidSz)
                 case PBKDF2_OID:
                     oid = pbkdf2Oid;
                     *oidSz = sizeof(pbkdf2Oid);
+                    break;
+                default:
                     break;
             }
             break;
@@ -2139,6 +2159,8 @@ const byte* OidFromId(word32 id, word32 type, word32* oidSz)
                 case PBES2:
                     oid = pbes2;
                     *oidSz = sizeof(pbes2);
+                    break;
+                default:
                     break;
             }
             break;
@@ -2169,6 +2191,8 @@ const byte* OidFromId(word32 id, word32 type, word32* oidSz)
                     *oidSz = sizeof(wrapPwriKekOid);
                     break;
             #endif
+                default:
+                    break;
             }
             break;
 
@@ -2204,6 +2228,8 @@ const byte* OidFromId(word32 id, word32 type, word32* oidSz)
                     *oidSz = sizeof(dhSinglePass_stdDH_sha512kdf_Oid);
                     break;
             #endif
+                default:
+                    break;
             }
             break;
 
@@ -2234,6 +2260,8 @@ const byte* OidFromId(word32 id, word32 type, word32* oidSz)
                     *oidSz = sizeof(hmacSha512Oid);
                     break;
         #endif
+                default:
+                    break;
             }
             break;
 #endif /* !NO_HMAC */
@@ -3397,8 +3425,7 @@ int UnTraditionalEnc(byte* key, word32 keySz, byte* out, word32* outSz,
             if ((ret = wc_RNG_GenerateBlock(rng, saltTmp, saltSz)) != 0) {
                 WOLFSSL_MSG("Error generating random salt");
             #ifdef WOLFSSL_SMALL_STACK
-                if (saltTmp != NULL)
-                    XFREE(saltTmp, heap, DYNAMIC_TYPE_TMP_BUFFER);
+                XFREE(saltTmp, heap, DYNAMIC_TYPE_TMP_BUFFER);
             #endif
                 return ret;
             }
@@ -4865,8 +4892,10 @@ int wc_SetDsaPublicKey(byte* output, DsaKey* key,
     XMEMCPY(output + idx, g, gSz);
     idx += gSz;
     /* bit string */
-    XMEMCPY(output + idx, bitString, bitStringSz);
-    idx += bitStringSz;
+    if (bitStringSz > 0) {
+        XMEMCPY(output + idx, bitString, bitStringSz);
+        idx += bitStringSz;
+    }
     /* y */
     XMEMCPY(output + idx, y, ySz);
     idx += ySz;
@@ -7449,6 +7478,9 @@ static int ConfirmSignature(SignatureCtx* sigCtx,
 
             break;
         } /* SIG_STATE_CHECK */
+
+        default:
+            break;
     } /* switch (sigCtx->state) */
 
 exit_cs:
@@ -7583,6 +7615,8 @@ static int ConfirmNameConstraints(Signer* signer, DecodedCert* cert)
                     }
                     break;
                 }
+                default:
+                    break;
             }; /* switch */
             base = base->next;
         }
@@ -7642,6 +7676,8 @@ static int ConfirmNameConstraints(Signer* signer, DecodedCert* cert)
                     }
                     break;
                 }
+                default:
+                    break;
             } /* switch */
             base = base->next;
         }
@@ -7789,9 +7825,8 @@ static int DecodeAltNames(const byte* input, int sz, DecodedCert* cert)
                         break;
                     }
                     if (input[idx + i] == '/') {
-                        i = strLen; /* error, found relative path since '/' was
-                                     * encountered before ':'. Returning error
-                                     * value in next if statement. */
+                        WOLFSSL_MSG("\tAlt Name must be absolute URI");
+                        return ASN_ALT_NAME_E;
                     }
                 }
 
@@ -8318,6 +8353,8 @@ static int DecodeExtKeyUsage(const byte* input, int sz, DecodedCert* cert)
                 break;
             case EKU_OCSP_SIGN_OID:
                 cert->extExtKeyUsage |= EXTKEYUSE_OCSP_SIGN;
+                break;
+            default:
                 break;
         }
 
@@ -9890,7 +9927,8 @@ wcchar END_PUB_KEY          = "-----END PUBLIC KEY-----";
 #endif
 
 
-static WC_INLINE char* SkipEndOfLineChars(char* line, const char* endOfLine)
+static WC_INLINE const char* SkipEndOfLineChars(const char* line,
+                                                const char* endOfLine)
 {
     /* eat end of line characters */
     while (line < endOfLine &&
@@ -10070,18 +10108,18 @@ int wc_EncryptedInfoGet(EncryptedInfo* info, const char* cipherInfo)
     return ret;
 }
 
-int wc_EncryptedInfoParse(EncryptedInfo* info, char** pBuffer, size_t bufSz)
+int wc_EncryptedInfoParse(EncryptedInfo* info, const char** pBuffer, size_t bufSz)
 {
-    int err = 0;
-    char*  bufferStart;
-    char*  bufferEnd;
-    char*  line;
-    word32 lineSz;
-    char*  finish;
-    word32 finishSz;
-    char*  start = NULL;
-    word32 startSz;
-    char*  newline = NULL;
+    int         err = 0;
+    const char* bufferStart;
+    const char* bufferEnd;
+    char*       line;
+    word32      lineSz;
+    char*       finish;
+    word32      finishSz;
+    char*       start = NULL;
+    word32      startSz;
+    const char* newline = NULL;
 
     if (info == NULL || pBuffer == NULL || bufSz == 0)
         return BAD_FUNC_ARG;
@@ -10350,10 +10388,10 @@ int PemToDer(const unsigned char* buff, long longSz, int type,
 {
     const char* header      = NULL;
     const char* footer      = NULL;
-    char*       headerEnd;
-    char*       footerEnd;
-    char*       consumedEnd;
-    char*       bufferEnd   = (char*)(buff + longSz);
+    const char* headerEnd;
+    const char* footerEnd;
+    const char* consumedEnd;
+    const char* bufferEnd   = (const char*)buff + longSz;
     long        neededSz;
     int         ret         = 0;
     int         sz          = (int)longSz;
@@ -10426,7 +10464,7 @@ int PemToDer(const unsigned char* buff, long longSz, int type,
     if (!headerEnd) {
 #ifdef OPENSSL_EXTRA
         if (type == PRIVATEKEY_TYPE) {
-            char* beginEnd;
+            const char* beginEnd;
             int endLen;
             /* see if there is a -----BEGIN * PRIVATE KEY----- header */
             headerEnd = XSTRNSTR((char*)buff, PRIV_KEY_SUFFIX, sz);
@@ -10541,7 +10579,7 @@ int PemToDer(const unsigned char* buff, long longSz, int type,
     }
 
     if (info)
-        info->consumed = (long)(consumedEnd - (char*)buff);
+        info->consumed = (long)(consumedEnd - (const char*)buff);
 
     /* set up der buffer */
     neededSz = (long)(footerEnd - headerEnd);
@@ -11643,7 +11681,7 @@ int wc_EccPublicKeyToDer(ecc_key* key, byte* output, word32 inLen,
 
 #if defined(HAVE_SELFTEST) || defined(HAVE_FIPS)
     /* older version of ecc.c can not handle dp being NULL */
-    if (key != NULL && key->dp == NULL) {
+    if (key->dp == NULL) {
         keySz = 1 + 2 * MAX_ECC_BYTES;
         ret = LENGTH_ONLY_E;
     }
@@ -15672,7 +15710,7 @@ int wc_EccPublicKeyDecode(const byte* input, word32* inOutIdx,
 #if defined(HAVE_ECC_KEY_EXPORT) && !defined(NO_ASN_CRYPT)
 /* build DER formatted ECC key, include optional public key if requested,
  * return length on success, negative on error */
-static int wc_BuildEccKeyDer(ecc_key* key, byte* output, word32 inLen,
+static int wc_BuildEccKeyDer(ecc_key* key, byte* output, word32* inLen,
                              int pubIn)
 {
     byte   curve[MAX_ALGO_SZ+2];
@@ -15686,7 +15724,7 @@ static int wc_BuildEccKeyDer(ecc_key* key, byte* output, word32 inLen,
     word32 idx = 0, prvidx = 0, pubidx = 0, curveidx = 0;
     word32 seqSz, privSz, pubSz = ECC_BUFSIZE;
 
-    if (key == NULL || output == NULL || inLen == 0)
+    if (key == NULL || inLen == NULL)
         return BAD_FUNC_ARG;
 
     /* curve */
@@ -15706,7 +15744,12 @@ static int wc_BuildEccKeyDer(ecc_key* key, byte* output, word32 inLen,
     if (prv == NULL) {
         return MEMORY_E;
     }
-    prvidx += SetOctetString8Bit(key->dp->size, &prv[prvidx]);
+    if (key->dp->size < 0x80) {
+        prvidx += SetOctetString8Bit(key->dp->size, &prv[prvidx]);
+    }
+    else {
+        prvidx += SetOctetString(key->dp->size, &prv[prvidx]);
+    }
     ret = wc_ecc_export_private_only(key, prv + prvidx, &privSz);
     if (ret < 0) {
         XFREE(prv, key->heap, DYNAMIC_TYPE_TMP_BUFFER);
@@ -15730,7 +15773,7 @@ static int wc_BuildEccKeyDer(ecc_key* key, byte* output, word32 inLen,
         }
 
         pub[pubidx++] = ECC_PREFIX_1;
-        if (pubSz > 128) /* leading zero + extra size byte */
+        if (pubSz >= 0x80) /* leading zero + extra size byte */
             pubidx += SetLength(pubSz + ASN_ECC_CONTEXT_SZ + 2, pub+pubidx);
         else /* leading zero */
             pubidx += SetLength(pubSz + ASN_ECC_CONTEXT_SZ + 1, pub+pubidx);
@@ -15751,7 +15794,13 @@ static int wc_BuildEccKeyDer(ecc_key* key, byte* output, word32 inLen,
     seqSz = SetSequence(verSz + prvidx + pubidx + curveidx, seq);
 
     totalSz = prvidx + pubidx + curveidx + verSz + seqSz;
-    if (totalSz > (int)inLen) {
+    if (output == NULL) {
+        *inLen = totalSz;
+        XFREE(prv, key->heap, DYNAMIC_TYPE_TMP_BUFFER);
+        XFREE(pub, key->heap, DYNAMIC_TYPE_TMP_BUFFER);
+        return LENGTH_ONLY_E;
+    }
+    if (totalSz > (int)*inLen) {
         XFREE(prv, key->heap, DYNAMIC_TYPE_TMP_BUFFER);
         if (pubIn) {
             XFREE(pub, key->heap, DYNAMIC_TYPE_TMP_BUFFER);
@@ -15791,7 +15840,7 @@ static int wc_BuildEccKeyDer(ecc_key* key, byte* output, word32 inLen,
  * length on success else < 0 */
 int wc_EccKeyToDer(ecc_key* key, byte* output, word32 inLen)
 {
-    return wc_BuildEccKeyDer(key, output, inLen, 1);
+    return wc_BuildEccKeyDer(key, output, &inLen, 1);
 }
 
 
@@ -15799,7 +15848,22 @@ int wc_EccKeyToDer(ecc_key* key, byte* output, word32 inLen)
  * length on success else < 0 */
 int wc_EccPrivateKeyToDer(ecc_key* key, byte* output, word32 inLen)
 {
-    return wc_BuildEccKeyDer(key, output, inLen, 0);
+    return wc_BuildEccKeyDer(key, output, &inLen, 0);
+}
+
+/* Write only private ecc key to DER format,
+ * length on success else < 0 */
+int wc_EccKeyDerSize(ecc_key* key, int pub)
+{
+    word32 sz = 0;
+    int ret;
+
+    ret = wc_BuildEccKeyDer(key, NULL, &sz, pub);
+
+    if (ret != LENGTH_ONLY_E) {
+        return ret;
+    }
+    return sz;
 }
 
 #ifdef HAVE_PKCS8
@@ -15817,6 +15881,7 @@ int wc_EccPrivateKeyToPKCS8(ecc_key* key, byte* output, word32* outLen)
     word32 pkcs8Sz = 0;
     const byte* curveOID = NULL;
     byte* tmpDer = NULL;
+    word32 sz = ECC_BUFSIZE;
 
     if (key == NULL || outLen == NULL)
         return BAD_FUNC_ARG;
@@ -15834,7 +15899,7 @@ int wc_EccPrivateKeyToPKCS8(ecc_key* key, byte* output, word32* outLen)
 
     XMEMSET(tmpDer, 0, ECC_BUFSIZE);
 
-    tmpDerSz = wc_BuildEccKeyDer(key, tmpDer, ECC_BUFSIZE, 0);
+    tmpDerSz = wc_BuildEccKeyDer(key, tmpDer, &sz, 0);
     if (tmpDerSz < 0) {
         XFREE(tmpDer, key->heap, DYNAMIC_TYPE_TMP_BUFFER);
         return tmpDerSz;

@@ -98,9 +98,10 @@ WOLFSSL_LOCAL int sp_DhExp_4096(mp_int* base, const byte* exp, word32 expLen,
 
 #ifdef WOLFSSL_HAVE_SP_ECC
 
-int sp_ecc_mulmod_256(mp_int* km, ecc_point* gm, ecc_point* rm, int map,
+int sp_ecc_mulmod_256(const mp_int* km, ecc_point* gm, ecc_point* rm, int map,
                       void* heap);
-int sp_ecc_mulmod_base_256(mp_int* km, ecc_point* rm, int map, void* heap);
+int sp_ecc_mulmod_base_256(const mp_int* km, ecc_point* rm, int map,
+                           void* heap);
 
 int sp_ecc_make_key_256(WC_RNG* rng, mp_int* priv, ecc_point* pub, void* heap);
 int sp_ecc_secret_gen_256(mp_int* priv, ecc_point* pub, byte* out,
@@ -120,9 +121,10 @@ int sp_ecc_map_256(mp_int* pX, mp_int* pY, mp_int* pZ);
 int sp_ecc_uncompress_256(mp_int* xm, int odd, mp_int* ym);
 
 
-int sp_ecc_mulmod_384(mp_int* km, ecc_point* gm, ecc_point* rm, int map,
+int sp_ecc_mulmod_384(const mp_int* km, ecc_point* gm, ecc_point* rm, int map,
                       void* heap);
-int sp_ecc_mulmod_base_384(mp_int* km, ecc_point* rm, int map, void* heap);
+int sp_ecc_mulmod_base_384(const mp_int* km, ecc_point* rm, int map,
+                           void* heap);
 
 int sp_ecc_make_key_384(WC_RNG* rng, mp_int* priv, ecc_point* pub, void* heap);
 int sp_ecc_secret_gen_384(mp_int* priv, ecc_point* pub, byte* out,
@@ -140,6 +142,20 @@ int sp_ecc_proj_dbl_point_384(mp_int* pX, mp_int* pY, mp_int* pZ,
                               mp_int* rX, mp_int* rY, mp_int* rZ);
 int sp_ecc_map_384(mp_int* pX, mp_int* pY, mp_int* pZ);
 int sp_ecc_uncompress_384(mp_int* xm, int odd, mp_int* ym);
+
+int sp_ecc_mulmod_1024(const mp_int* km, ecc_point* gm, ecc_point* rm, int map,
+                       void* heap);
+int sp_ecc_mulmod_base_1024(const mp_int* km, ecc_point* rm, int map,
+                            void* heap);
+int sp_ecc_gen_table_1024(ecc_point* gm, byte* table, word32* len, void* heap);
+int sp_ecc_mulmod_table_1024(const mp_int* km, ecc_point* gm, byte* table,
+                             ecc_point* r, int map, void* heap);
+int sp_ModExp_Fp_star_1024(mp_int* base, mp_int* exp, mp_int* res);
+int sp_Pairing_1024(ecc_point* p, ecc_point* q, mp_int* res);
+int sp_Pairing_gen_precomp_1024(const ecc_point* p, byte* table, word32* len);
+int sp_Pairing_precomp_1024(ecc_point* p, ecc_point* q, mp_int* res,
+                            byte* table, word32 len);
+
 
 #endif /*ifdef WOLFSSL_HAVE_SP_ECC */
 

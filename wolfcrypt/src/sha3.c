@@ -554,7 +554,7 @@ static word64 Load64BitBigEndian(const byte* a)
 
     return n;
 #else
-    return *(word64*)a;
+    return *(const word64*)a;
 #endif
 }
 
