@@ -222,7 +222,12 @@ int EmbedReceive(WOLFSSL *ssl, char *buf, int sz, void *ctx)
         int err = wolfSSL_LastError();
         WOLFSSL_MSG("Embed Receive error");
 
-        if (err == SOCKET_EWOULDBLOCK || err == SOCKET_EAGAIN) {
+#if SOCKET_EWOULDBLOCK != SOCKET_EAGAIN
+        if ((err == SOCKET_EWOULDBLOCK) || (err == SOCKET_EAGAIN))
+#else
+        if (err == SOCKET_EWOULDBLOCK)
+#endif
+        {
             WOLFSSL_MSG("\tWould block");
             return WOLFSSL_CBIO_ERR_WANT_READ;
         }
@@ -269,7 +274,12 @@ int EmbedSend(WOLFSSL* ssl, char *buf, int sz, void *ctx)
         int err = wolfSSL_LastError();
         WOLFSSL_MSG("Embed Send error");
 
-        if (err == SOCKET_EWOULDBLOCK || err == SOCKET_EAGAIN) {
+#if SOCKET_EWOULDBLOCK != SOCKET_EAGAIN
+        if ((err == SOCKET_EWOULDBLOCK) || (err == SOCKET_EAGAIN))
+#else
+        if (err == SOCKET_EWOULDBLOCK)
+#endif
+        {
             WOLFSSL_MSG("\tWould Block");
             return WOLFSSL_CBIO_ERR_WANT_WRITE;
         }

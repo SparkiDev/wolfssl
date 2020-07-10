@@ -63,6 +63,7 @@ int wc_InitEccsiKey_ex(EccsiKey* key, int keySz, int curveId, void* heap,
     int err = 0;
     ecc_key* ecc = NULL;
     ecc_key* pubkey = NULL;
+    EccsiKeyParams* params;
 
     if (key == NULL) {
         err = BAD_FUNC_ARG;
@@ -71,6 +72,7 @@ int wc_InitEccsiKey_ex(EccsiKey* key, int keySz, int curveId, void* heap,
     if (err == 0) {
         XMEMSET(key, 0, sizeof(*key));
         key->heap = heap;
+        params = &key->params;
 
         err = wc_ecc_init_ex(&key->ecc, heap, devId);
     }
@@ -79,14 +81,20 @@ int wc_InitEccsiKey_ex(EccsiKey* key, int keySz, int curveId, void* heap,
         err = wc_ecc_init_ex(&key->pubkey, heap, devId);
     }
     if (err == 0) {
+        key->pvt = wc_ecc_new_point_h(heap);
+        if (key->pvt == NULL) {
+            err = MEMORY_E;
+        }
+    }
+    if (err == 0) {
         pubkey = &key->pubkey;
-        err = mp_init_multi(&key->order,
+        err = mp_init_multi(&params->order,
 #ifdef WOLFCRYPT_ECCSI_CLIENT
-                &key->a, &key->b, &key->prime, &key->tmp,
+                &params->a, &params->b, &params->prime, &key->tmp, &key->ssk
 #else
-                NULL, NULL, NULL, NULL,
+                NULL, NULL, NULL, NULL, NULL
 #endif
-                NULL);
+                );
     }
     if (err == 0) {
         err = wc_ecc_set_curve(&key->ecc, keySz, curveId);
@@ -133,14 +141,18 @@ int wc_InitEccsiKey(EccsiKey* key, void* heap, int devId)
 void wc_FreeEccsiKey(EccsiKey* key)
 {
     if (key != NULL) {
-        wc_ecc_del_point_h(key->base, key->heap);
+        EccsiKeyParams* params = &key->params;
+
+        wc_ecc_del_point_h(params->base, key->heap);
 #ifdef WOLFCRYPT_ECCSI_CLIENT
+        mp_free(&key->ssk);
         mp_free(&key->tmp);
-        mp_free(&key->prime);
-        mp_free(&key->b);
-        mp_free(&key->a);
+        mp_free(&params->prime);
+        mp_free(&params->b);
+        mp_free(&params->a);
 #endif
-        mp_free(&key->order);
+        mp_free(&params->order);
+        wc_ecc_del_point_h(key->pvt, key->heap);
         wc_ecc_free(&key->pubkey);
         wc_ecc_free(&key->ecc);
     }
@@ -158,10 +170,11 @@ static int eccsi_load_order(EccsiKey* key)
 {
     int err = 0;
 
-    if (!key->haveOrder) {
-        err = mp_read_radix(&key->order, key->ecc.dp->order, MP_RADIX_HEX);
+    if (!key->params.haveOrder) {
+        err = mp_read_radix(&key->params.order, key->ecc.dp->order,
+                MP_RADIX_HEX);
         if (err == 0) {
-            key->haveOrder = 1;
+            key->params.haveOrder = 1;
         }
     }
 
@@ -182,29 +195,25 @@ static int eccsi_load_order(EccsiKey* key)
 static int eccsi_load_ecc_params(EccsiKey* key)
 {
     int err = 0;
+    EccsiKeyParams* params = &key->params;
 
-    if (!key->haveOrder) {
-        err = mp_read_radix(&key->order, key->ecc.dp->order, MP_RADIX_HEX);
+    err = eccsi_load_order(key);
+    if ((err == 0) && !params->haveA) {
+        err = mp_read_radix(&params->a, key->ecc.dp->Af, MP_RADIX_HEX);
         if (err == 0) {
-            key->haveOrder = 1;
+            params->haveA = 1;
         }
     }
-    if ((err == 0) && !key->haveA) {
-        err = mp_read_radix(&key->a, key->ecc.dp->Af, MP_RADIX_HEX);
+    if ((err == 0) && !params->haveB) {
+        err = mp_read_radix(&params->b, key->ecc.dp->Bf, MP_RADIX_HEX);
         if (err == 0) {
-            key->haveA = 1;
+            params->haveB = 1;
         }
     }
-    if ((err == 0) && !key->haveB) {
-        err = mp_read_radix(&key->b, key->ecc.dp->Bf, MP_RADIX_HEX);
+    if ((err == 0) && !params->havePrime) {
+        err = mp_read_radix(&params->prime, key->ecc.dp->prime, MP_RADIX_HEX);
         if (err == 0) {
-            key->haveB = 1;
-        }
-    }
-    if ((err == 0) && !key->havePrime) {
-        err = mp_read_radix(&key->prime, key->ecc.dp->prime, MP_RADIX_HEX);
-        if (err == 0) {
-            key->havePrime = 1;
+            params->havePrime = 1;
         }
     }
 
@@ -225,25 +234,26 @@ static int eccsi_load_ecc_params(EccsiKey* key)
 static int eccsi_load_base(EccsiKey* key)
 {
     int err = 0;
+    EccsiKeyParams* params = &key->params;
 
-    if (!key->haveBase) {
-        if (key->base == NULL) {
-            key->base = wc_ecc_new_point_h(key->heap);
-            if (key->base == NULL) {
+    if (!params->haveBase) {
+        if (params->base == NULL) {
+            params->base = wc_ecc_new_point_h(key->heap);
+            if (params->base == NULL) {
                 err = MEMORY_E;
             }
         }
         if (err == 0) {
-            err = mp_read_radix(key->base->x, key->ecc.dp->Gx, MP_RADIX_HEX);
+            err = mp_read_radix(params->base->x, key->ecc.dp->Gx, MP_RADIX_HEX);
         }
         if (err == 0) {
-            err = mp_read_radix(key->base->y, key->ecc.dp->Gy, MP_RADIX_HEX);
+            err = mp_read_radix(params->base->y, key->ecc.dp->Gy, MP_RADIX_HEX);
         }
         if (err == 0) {
-            err = mp_set(key->base->z, 1);
+            err = mp_set(params->base->z, 1);
         }
         if (err == 0) {
-            key->haveBase = 1;
+            params->haveBase = 1;
         }
     }
 
@@ -270,7 +280,7 @@ static int eccsi_encode_base(EccsiKey* key, byte* data, word32* dataSz)
 
     err = eccsi_load_base(key);
     if (err == 0) {
-        err = wc_ecc_export_point_der(idx, key->base, data, dataSz);
+        err = wc_ecc_export_point_der(idx, key->params.base, data, dataSz);
     }
 
     return err;
@@ -291,17 +301,18 @@ static int eccsi_kpak_to_mont(EccsiKey* key)
     int err = 0;
     ecc_point* kpak = &key->ecc.pubkey;
     mp_int* mu = &key->tmp;
+    mp_int* prime = &key->params.prime;
 
     if (!key->kpakMont) {
-        err = mp_montgomery_calc_normalization(mu, &key->prime);
+        err = mp_montgomery_calc_normalization(mu, prime);
         if (err == 0) {
-            err = mp_mulmod(kpak->x, mu, &key->prime, kpak->x);
+            err = mp_mulmod(kpak->x, mu, prime, kpak->x);
         }
         if (err == 0) {
-            err = mp_mulmod(kpak->y, mu, &key->prime, kpak->y);
+            err = mp_mulmod(kpak->y, mu, prime, kpak->y);
         }
         if (err == 0) {
-            err = mp_mulmod(kpak->z, mu, &key->prime, kpak->z);
+            err = mp_mulmod(kpak->z, mu, prime, kpak->z);
         }
         if (err == 0) {
             key->kpakMont = 1;
@@ -326,17 +337,18 @@ static int eccsi_kpak_from_mont(EccsiKey* key)
     int err = 0;
     ecc_point* kpak = &key->ecc.pubkey;
     mp_digit mp;
+    mp_int* prime = &key->params.prime;
 
     if (key->kpakMont) {
-        err = mp_montgomery_setup(&key->prime, &mp);
+        err = mp_montgomery_setup(prime, &mp);
         if (err == 0) {
-            err = mp_montgomery_reduce(kpak->x, &key->prime, mp);
+            err = mp_montgomery_reduce(kpak->x, prime, mp);
         }
         if (err == 0) {
-            err = mp_montgomery_reduce(kpak->y, &key->prime, mp);
+            err = mp_montgomery_reduce(kpak->y, prime, mp);
         }
         if (err == 0) {
-            err = mp_montgomery_reduce(kpak->z, &key->prime, mp);
+            err = mp_montgomery_reduce(kpak->z, prime, mp);
         }
         if (err == 0) {
             key->kpakMont = 0;
@@ -347,7 +359,7 @@ static int eccsi_kpak_from_mont(EccsiKey* key)
 }
 
 /*
- * Compute HS = hash( G || KPAK || ID || PVT )
+ * Compute HS = hash( G | KPAK | ID | PVT )
  *
  * Use when making a (SSK,PVT) pair, signing and verifying.
  *
@@ -363,14 +375,14 @@ static int eccsi_kpak_from_mont(EccsiKey* key)
  * @return  Other -ve value when an internal operation fails.
  */
 static int eccsi_compute_hs(EccsiKey* key, enum wc_HashType hashType,
-        const byte* id, word32 idSz, ecc_point* pvt, byte* hash, word32* hashSz)
+        const byte* id, word32 idSz, ecc_point* pvt, byte* hash, byte* hashSz)
 {
     int err;
     word32 dataSz;
     int idx = wc_ecc_get_curve_idx(key->ecc.dp->id);
     ecc_point* kpak = &key->ecc.pubkey;
 
-    /* HS = hash( G || KPAK || ID || PVT ) */
+    /* HS = hash( G | KPAK | ID | PVT ) */
     err = wc_HashInit_ex(&key->hash, hashType, key->heap, INVALID_DEVID);
     if (err == 0) {
         /* Base Point - G */
@@ -409,7 +421,7 @@ static int eccsi_compute_hs(EccsiKey* key, enum wc_HashType hashType,
     }
 
     if (err == 0) {
-        *hashSz = wc_HashGetDigestSize(hashType);
+        *hashSz = (byte)wc_HashGetDigestSize(hashType);
     }
 
     return err;
@@ -454,8 +466,59 @@ int wc_MakeEccsiKey(EccsiKey* key, WC_RNG* rng)
     return err;
 }
 
+/*
+ * Encode the ECCSI public key.
+ *
+ * Encodes the public key x and y ordinates as big-endian bytes of fixed length.
+ *
+ * @param  [in]      key   ECCSI key.
+ * @param  [out]     data  Buffer to hold encoded ECCSI key.
+ * @return  0 on success.
+ * @return  MEMORY_E when dynamic memory allocation fails (WOLFSSL_SMALL_STACK).
+ */
+static int eccsi_encode_public_key(EccsiKey* key, byte* data)
+{
+    int err;
+
+    /* Write out the public key point's x ordinate into key size bytes. */
+    err = mp_to_unsigned_bin_len(key->ecc.pubkey.x, data, key->ecc.dp->size);
+    if (err == 0) {
+        data += key->ecc.dp->size;
+        /* Write out the public key point's y ordinate into key size bytes. */
+        err = mp_to_unsigned_bin_len(key->ecc.pubkey.y, data,
+                key->ecc.dp->size);
+    }
+
+    return err;
+}
+
+/*
+ * Encode the ECCSI key.
+ *
+ * Encodes the private key as big-endian bytes of fixed length.
+ * Encodes the public key x and y ordinates as big-endian bytes of fixed length.
+ *
+ * @param  [in]      key   ECCSI key.
+ * @param  [out]     data  Buffer to hold encoded ECCSI key.
+ * @return  0 on success.
+ * @return  MEMORY_E when dynamic memory allocation fails (WOLFSSL_SMALL_STACK).
+ */
+static int eccsi_encode_key(EccsiKey* key, byte* data)
+{
+    int err;
+
+    /* Write out the secret value into key size bytes. */
+    err = mp_to_unsigned_bin_len(&key->ecc.k, data, key->ecc.dp->size);
+    if (err == 0) {
+        /* Write the public key. */
+        err = eccsi_encode_public_key(key, data + key->ecc.dp->size);
+    }
+
+    return err;
+}
+
 /**
- * Export the ECCSI key as DER encoded public/private ECC key.
+ * Export the ECCSI key as encoded public/private ECC key.
  *
  * Use when saving the KMS key pair.
  *
@@ -469,6 +532,7 @@ int wc_MakeEccsiKey(EccsiKey* key, WC_RNG* rng)
  * @return  BAD_STATE_E when no key to export.
  * @return  LENGTH_ONLY_E when data is NULL - sz is set.
  * @return  BUFFER_E when the buffer passed in is too small.
+ * @return  MEMORY_E when dynamic memory allocation fails (WOLFSSL_SMALL_STACK).
  */
 int wc_ExportEccsiKey(EccsiKey* key, byte* data, word32* sz)
 {
@@ -498,27 +562,68 @@ int wc_ExportEccsiKey(EccsiKey* key, byte* data, word32* sz)
         err = eccsi_kpak_from_mont(key);
     }
     if (err == 0) {
-        /* Write out the secret value into key size bytes. */
-        err = mp_to_unsigned_bin_len(&key->ecc.k, data, key->ecc.dp->size);
+        /* Encode key */
+        err = eccsi_encode_key(key, data);
     }
+
+    return err;
+}
+
+/*
+ * Decode the ECCSI public key.
+ *
+ * Decodes the public key x and y ordinates as big-endian bytes of fixed length.
+ *
+ * @param  [in]  key   ECCSI key.
+ * @param  [in]  data  Buffer holding encoded ECCSI key.
+ * @return  0 on success.
+ * @return  MP_MEM or MEMORY_E when dynamic memory allocation fails.
+ */
+static int eccsi_decode_public_key(EccsiKey* key, const byte* data)
+{
+    int err;
+
+    /* Read the public key point's x value from key size bytes. */
+    err = mp_read_unsigned_bin(key->ecc.pubkey.x, data, key->ecc.dp->size);
     if (err == 0) {
         data += key->ecc.dp->size;
-        /* Write out the public key point's x ordinate into key size bytes. */
-        err = mp_to_unsigned_bin_len(key->ecc.pubkey.x, data,
-                key->ecc.dp->size);
+        /* Read the public key point's y value from key size bytes. */
+        err = mp_read_unsigned_bin(key->ecc.pubkey.y, data, key->ecc.dp->size);
     }
     if (err == 0) {
-        data += key->ecc.dp->size;
-        /* Write out the public key point's y ordinate into key size bytes. */
-        err = mp_to_unsigned_bin_len(key->ecc.pubkey.y, data,
-                key->ecc.dp->size);
+        err = mp_set(key->ecc.pubkey.z, 1);
+    }
+
+   return err;
+}
+
+/*
+ * Import the ECCSI key as encoded public/private ECC key.
+ *
+ * Decodes the private key as big-endian bytes of fixed length.
+ * Decodes the public key x and y ordinates as big-endian bytes of fixed length.
+ *
+ * @param  [in]  key   ECCSI key.
+ * @param  [in]  data  Buffer holding encoded ECCSI key.
+ * @return  0 on success.
+ * @return  MP_MEM or MEMORY_E when dynamic memory allocation fails.
+ */
+static int eccsi_decode_key(EccsiKey* key, const byte* data)
+{
+    int err;
+
+    /* Read the secret value from key size bytes. */
+    err = mp_read_unsigned_bin(&key->ecc.k, data, key->ecc.dp->size);
+    if (err == 0) {
+        /* Read public key. */
+        err = eccsi_decode_public_key(key, data + key->ecc.dp->size);
     }
 
     return err;
 }
 
 /**
- * Import the ECCSI key as DER encoded public/private ECC key.
+ * Import the ECCSI key as encoded public/private ECC key.
  *
  * Use when restoring the KMS key pair.
  *
@@ -544,21 +649,8 @@ int wc_ImportEccsiKey(EccsiKey* key, const byte* data, word32 sz)
     if (err == 0) {
         key->kpakMont = 0;
 
-        /* Read the secret value from key size bytes. */
-        err = mp_read_unsigned_bin(&key->ecc.k, data, key->ecc.dp->size);
-    }
-    if (err == 0) {
-        data += key->ecc.dp->size;
-        /* Read the public key point's x value from key size bytes. */
-        err = mp_read_unsigned_bin(key->ecc.pubkey.x, data, key->ecc.dp->size);
-    }
-    if (err == 0) {
-        data += key->ecc.dp->size;
-        /* Read the public key point's y value from key size bytes. */
-        err = mp_read_unsigned_bin(key->ecc.pubkey.y, data, key->ecc.dp->size);
-    }
-    if (err == 0) {
-        err = mp_set(key->ecc.pubkey.z, 1);
+        /* Encode key */
+        err = eccsi_decode_key(key, data);
     }
     if (err == 0) {
         key->ecc.type = ECC_PRIVATEKEY;
@@ -609,16 +701,68 @@ int wc_ExportEccsiPublicKey(EccsiKey* key, byte* data, word32* sz)
         err = eccsi_kpak_from_mont(key);
     }
     if (err == 0) {
-        /* Write out the public key point's x ordinate into key size bytes. */
-        err = mp_to_unsigned_bin_len(key->ecc.pubkey.x, data,
-                key->ecc.dp->size);
+        /* Write out public key. */
+        err = eccsi_encode_public_key(key, data);
     }
-    if (err == 0) {
-        data += key->ecc.dp->size;
-        /* Write out the public key point's y ordinate into key size bytes. */
-        err = mp_to_unsigned_bin_len(key->ecc.pubkey.y, data,
-                key->ecc.dp->size);
+
+    return err;
+}
+
+/*
+ * Generates an (SSK, PVT) Pair - signing key pair.
+ *
+ * RFC 6507, Section 5.1.1
+ *
+ * @param  [in]   key       ECCSI key.
+ * @param  [in]   rng       Random number generator.
+ * @param  [in]   hashType  Type of hash algorithm. e.g. WC_SHA256
+ * @param  [in]   id        Identity to create hash from.
+ * @param  [in]   idSz      Length of identity in bytes.
+ * @param  [out]  ssk       Secret Signing Key as an MP integer.
+ * @param  [out]  pvt       Public Validation Token (PVT) as an ECC point.
+ * @return  0 on success.
+ * @return  MP_MEM or MEMORY_E when dynamic memory allocation fails.
+ * @return  Other -ve value when an internal operation fails.
+ */
+static int eccsi_make_pair(EccsiKey* key, WC_RNG* rng,
+        enum wc_HashType hashType, const byte* id, word32 idSz, mp_int* ssk,
+        ecc_point* pvt)
+{
+    int err;
+    byte hashSz;
+
+    do {
+        /* Step 1 and 2: Generate ephemeral key - v, PVT = [v]G */
+        err = wc_ecc_make_key_ex(rng, key->ecc.dp->size, &key->pubkey,
+                key->ecc.dp->id);
+        if (err == 0) {
+            err = wc_ecc_copy_point(&key->pubkey.pubkey, pvt);
+        }
+
+        /* Step 3: Compute HS */
+        if (err == 0) {
+            hashSz = (byte)sizeof(key->data);
+            err = eccsi_compute_hs(key, hashType, id, idSz, pvt, key->data,
+                    &hashSz);
+        }
+
+        /* Step 4: Compute SSK = ( KSAK + HS * v ) modulo q */
+        if (err == 0) {
+            err = mp_read_unsigned_bin(ssk, key->data, hashSz);
+        }
+        if (err == 0) {
+            err = mp_mulmod(ssk, &key->pubkey.k, &key->params.order, ssk);
+        }
+        if (err == 0) {
+            err = mp_addmod(ssk, &key->ecc.k, &key->params.order, ssk);
+        }
     }
+    while ((err == 0) && (mp_iszero(ssk) ||
+            (mp_cmp(ssk, &key->ecc.k) == MP_EQ)));
+    /* Step 5: ensure SSK and HS are non-zero (code lines above) */
+
+    /* Step 6: Copy out SSK (done during calc) and PVT. Erase v */
+    mp_forcezero(&key->pubkey.k);
 
     return err;
 }
@@ -650,7 +794,6 @@ int wc_MakeEccsiPair(EccsiKey* key, WC_RNG* rng, enum wc_HashType hashType,
         const byte* id, word32 idSz, mp_int* ssk, ecc_point* pvt)
 {
     int err = 0;
-    word32 hashSz;
 
     if ((key == NULL) || (rng == NULL) || (id == NULL) || (ssk == NULL) ||
             (pvt == NULL)) {
@@ -661,41 +804,10 @@ int wc_MakeEccsiPair(EccsiKey* key, WC_RNG* rng, enum wc_HashType hashType,
     }
 
     if (err == 0) {
-        do {
-            /* Step 1 and 2: Generate ephemeral key - v, PVT = [v]G */
-            err = wc_ecc_make_key_ex(rng, key->ecc.dp->size, &key->pubkey,
-                    key->ecc.dp->id);
-            if (err == 0) {
-                err = wc_ecc_copy_point(&key->pubkey.pubkey, pvt);
-            }
-
-            /* Step 3: Compute HS */
-            if (err == 0) {
-                hashSz = sizeof(key->data);
-                err = eccsi_compute_hs(key, hashType, id, idSz, pvt, key->data,
-                        &hashSz);
-            }
-
-            /* Step 4: Compute SSK = ( KSAK + HS * v ) modulo q */
-            if (err == 0) {
-                err = mp_read_unsigned_bin(ssk, key->data, hashSz);
-            }
-            if (err == 0) {
-                err = eccsi_load_order(key);
-            }
-            if (err == 0) {
-                err = mp_mulmod(ssk, &key->pubkey.k, &key->order, ssk);
-            }
-            if (err == 0) {
-                err = mp_addmod(ssk, &key->ecc.k, &key->order, ssk);
-            }
-        }
-        while ((err == 0) && (mp_iszero(ssk) ||
-                (mp_cmp(ssk, &key->ecc.k) == MP_EQ)));
-        /* Step 5: ensure SSK and HS are non-zero (code lines above) */
-
-        /* Step 6: Copy out SSK (done during calc) and PVT. Erase v */
-        mp_forcezero(&key->pubkey.k);
+        err = eccsi_load_order(key);
+    }
+    if (err == 0) {
+        err = eccsi_make_pair(key, rng, hashType, id, idSz, ssk, pvt);
     }
 
     return err;
@@ -717,8 +829,8 @@ int wc_MakeEccsiPair(EccsiKey* key, WC_RNG* rng, enum wc_HashType hashType,
  * @return  MP_MEM or MEMORY_E when dynamic memory allocation fails.
  * @return  LENGTH_ONLY_E when data is NULL - sz is set.
  */
-int wc_EncodeEccsiPair(EccsiKey* key, mp_int* ssk, ecc_point* pvt, byte* data,
-        word32* sz)
+int wc_EncodeEccsiPair(const EccsiKey* key, mp_int* ssk, ecc_point* pvt,
+        byte* data, word32* sz)
 {
     int err = 0;
 
@@ -770,7 +882,8 @@ int wc_EncodeEccsiPair(EccsiKey* key, mp_int* ssk, ecc_point* pvt, byte* data,
  * @return  MP_MEM or MEMORY_E when dynamic memory allocation fails.
  * @return  LENGTH_ONLY_E when data is NULL - sz is set.
  */
-int wc_EncodeEccsiPvt(EccsiKey* key, ecc_point* pvt, byte* data, word32* sz)
+int wc_EncodeEccsiPvt(const EccsiKey* key, ecc_point* pvt, byte* data,
+        word32* sz)
 {
     int err = 0;
 
@@ -821,8 +934,8 @@ int wc_EncodeEccsiPvt(EccsiKey* key, ecc_point* pvt, byte* data, word32* sz)
  * @return  BUFFER_E when size of data is not equal to the expected size.
  * @return  MP_MEM or MEMORY_E when dynamic memory allocation fails.
  */
-int wc_DecodeEccsiPair(EccsiKey* key, const byte* data, word32 sz, mp_int* ssk,
-        ecc_point* pvt)
+int wc_DecodeEccsiPair(const EccsiKey* key, const byte* data, word32 sz,
+        mp_int* ssk, ecc_point* pvt)
 {
     int err = 0;
 
@@ -870,7 +983,7 @@ int wc_DecodeEccsiPair(EccsiKey* key, const byte* data, word32 sz, mp_int* ssk,
  * @return  BUFFER_E when size of data is not equal to the expected size.
  * @return  MP_MEM or MEMORY_E when dynamic memory allocation fails.
  */
-int wc_DecodeEccsiPvt(EccsiKey* key, const byte* data, word32 sz,
+int wc_DecodeEccsiPvt(const EccsiKey* key, const byte* data, word32 sz,
         ecc_point* pvt)
 {
     int err = 0;
@@ -930,16 +1043,8 @@ int wc_ImportEccsiPublicKey(EccsiKey* key, const byte* data, word32 sz,
     if (err == 0) {
         key->kpakMont = 0;
 
-        /* Read the public key point's x value from key size bytes. */
-        err = mp_read_unsigned_bin(key->ecc.pubkey.x, data, key->ecc.dp->size);
-    }
-    if (err == 0) {
-        data += key->ecc.dp->size;
-        /* Read the public key point's y value from key size bytes. */
-        err = mp_read_unsigned_bin(key->ecc.pubkey.y, data, key->ecc.dp->size);
-    }
-    if (err == 0) {
-        err = mp_set(key->ecc.pubkey.z, 1);
+        /* Read the public key. */
+        err = eccsi_decode_public_key(key, data);
     }
     if (err == 0) {
         key->ecc.type = ECC_PUBLICKEY;
@@ -963,7 +1068,8 @@ int wc_ImportEccsiPublicKey(EccsiKey* key, const byte* data, word32 sz,
  * @return  MEMORY_E when dynamic memory allocation fails.
  * @return  Other -ve value when an internal operation fails.
  */
-static int eccsi_mulmod_base(EccsiKey* key, mp_int* n, ecc_point* res, int map)
+static int eccsi_mulmod_base(EccsiKey* key, const mp_int* n, ecc_point* res,
+        int map)
 {
     int err;
 
@@ -978,7 +1084,9 @@ static int eccsi_mulmod_base(EccsiKey* key, mp_int* n, ecc_point* res, int map)
     }
 #endif
 #else
-    err = wc_ecc_mulmod(n, key->base, res, &key->a, &key->prime, map);
+    EccsiKeyParams* params = &key->params;
+
+    err = wc_ecc_mulmod(n, params->base, res, &params->a, &params->prime, map);
 #endif
 
     return err;
@@ -997,7 +1105,7 @@ static int eccsi_mulmod_base(EccsiKey* key, mp_int* n, ecc_point* res, int map)
  * @return  MEMORY_E when dynamic memory allocation fails.
  * @return  Other -ve value when an internal operation fails.
  */
-static int eccsi_mulmod_point(EccsiKey* key, mp_int* n, ecc_point* point,
+static int eccsi_mulmod_point(EccsiKey* key, const mp_int* n, ecc_point* point,
         ecc_point* res, int map)
 {
     int err;
@@ -1013,7 +1121,9 @@ static int eccsi_mulmod_point(EccsiKey* key, mp_int* n, ecc_point* point,
     }
 #endif
 #else
-    err = wc_ecc_mulmod(n, point, res, &key->a, &key->prime, map);
+    EccsiKeyParams* params = &key->params;
+
+    err = wc_ecc_mulmod(n, point, res, &params->a, &params->prime, map);
 #endif
 
     return err;
@@ -1041,14 +1151,16 @@ static int eccsi_mulmod_point(EccsiKey* key, mp_int* n, ecc_point* point,
  * @return  Other -ve value when an internal operation fails.
  */
 int wc_ValidateEccsiPair(EccsiKey* key, enum wc_HashType hashType,
-        const byte* id, word32 idSz, mp_int* ssk, ecc_point* pvt, int* valid)
+        const byte* id, word32 idSz, const mp_int* ssk, ecc_point* pvt,
+        int* valid)
 {
     int err = 0;
     ecc_point* res = NULL;
     mp_int* hs;
     mp_digit mp;
-    word32 hashSz;
+    byte hashSz;
     ecc_point* kpak;
+    EccsiKeyParams* params = &key->params;
 
     if ((key == NULL) || (id == NULL) || (ssk == NULL) || (pvt == NULL) ||
             (valid == NULL)) {
@@ -1069,20 +1181,20 @@ int wc_ValidateEccsiPair(EccsiKey* key, enum wc_HashType hashType,
        err = eccsi_load_ecc_params(key);
     }
     if (err == 0) {
-        err = mp_montgomery_setup(&key->prime, &mp);
+        err = mp_montgomery_setup(&params->prime, &mp);
     }
 
     /* Step 1: Validate PVT is on curve */
     if (err == 0) {
-        err = wc_ecc_is_point(pvt, &key->a, &key->b, &key->prime);
+        err = wc_ecc_is_point(pvt, &params->a, &params->b, &params->prime);
         if (err == -1) {
             err = IS_POINT_E;
         }
     }
 
-    /* Step 2: Compute HS = hash( G || KPAK || ID || PVT ) */
+    /* Step 2: Compute HS = hash( G | KPAK | ID | PVT ) */
     if (err == 0) {
-        hashSz = sizeof(key->data);
+        hashSz = (byte)sizeof(key->data);
         /* Converts KPAK from mont. */
         err = eccsi_compute_hs(key, hashType, id, idSz, pvt, key->data,
                 &hashSz);
@@ -1094,8 +1206,8 @@ int wc_ValidateEccsiPair(EccsiKey* key, enum wc_HashType hashType,
     }
     /* [SSK]G */
     if (err == 0) {
-        err = eccsi_mulmod_base(key, ssk, key->base, 0);
-        key->haveBase = 0;
+        err = eccsi_mulmod_base(key, ssk, params->base, 0);
+        key->params.haveBase = 0;
     }
     /* [HS]PVT */
     if (err == 0) {
@@ -1103,15 +1215,15 @@ int wc_ValidateEccsiPair(EccsiKey* key, enum wc_HashType hashType,
     }
     /* -[HS]PVT */
     if (err == 0) {
-        err = mp_sub(&key->prime, res->y, res->y);
+        err = mp_sub(&params->prime, res->y, res->y);
     }
     /* [SSK]G + -[HS]PVT */
     if (err == 0) {
-        err = ecc_projective_add_point(key->base, res, res, &key->a,
-                &key->prime, mp);
+        err = ecc_projective_add_point(params->base, res, res, &params->a,
+                &params->prime, mp);
     }
     if (err == 0) {
-        err = ecc_map(res, &key->prime, mp);
+        err = ecc_map(res, &params->prime, mp);
     }
 
     if (valid != NULL) {
@@ -1139,7 +1251,7 @@ int wc_ValidateEccsiPair(EccsiKey* key, enum wc_HashType hashType,
  * @return  MP_MEM or MEMORY_E when dynamic memory allocation fails.
  * @return  Other -ve value when an internal operation fails.
  */
-int wc_ValidateEccsiPvt(EccsiKey* key, ecc_point* pvt, int* valid)
+int wc_ValidateEccsiPvt(EccsiKey* key, const ecc_point* pvt, int* valid)
 {
     int err = 0;
 
@@ -1183,7 +1295,7 @@ int wc_ValidateEccsiPvt(EccsiKey* key, ecc_point* pvt, int* valid)
  * @return  Other -ve value when an internal operation fails.
  */
 int wc_HashEccsiId(EccsiKey* key, enum wc_HashType hashType, const byte* id,
-        word32 idSz, ecc_point* pvt, byte* hash, word32* hashSz)
+        word32 idSz, ecc_point* pvt, byte* hash, byte* hashSz)
 {
     int err = 0;
 
@@ -1206,6 +1318,56 @@ int wc_HashEccsiId(EccsiKey* key, enum wc_HashType hashType, const byte* id,
     return err;
 }
 
+/**
+ * Set the identity hash for use with signing/verification.
+ *
+ * @param  [in]  key     ECCSI key.
+ * @param  [in]  hash    Buffer with hash of identity.
+ * @param  [in]  hashSz  Length of hash data in bytes.
+ * @return  0 on success.
+ * @return  BAD_FUNC_ARG when key or hash is NULL, or hashSz is greater than
+ *          WC_MAX_DIGEST_SIZE.
+ */
+int wc_SetEccsiHash(EccsiKey* key, const byte* hash, byte hashSz)
+{
+    int err = 0;
+
+    if ((key == NULL) || (hash == NULL) || (hashSz > WC_MAX_DIGEST_SIZE)) {
+        err = BAD_FUNC_ARG;
+    }
+    if (err == 0) {
+        XMEMCPY(key->idHash, hash, hashSz);
+        key->idHashSz = hashSz;
+    }
+
+    return err;
+}
+
+/**
+ * Set an (SSV, PVT) Pair for signing.
+ *
+ * @param  [in]   key  ECCSI key.
+ * @param  [in]   ssk  Secret Signing Key as an MP integer.
+ * @param  [in]   pvt  Public Validation Token (PVT) as an ECC point.
+ * @return  0 on success.
+ * @return  BAD_FUNC_ARG when key, ssk or pvt is NULL.
+ */
+int wc_SetEccsiPair(EccsiKey* key, const mp_int* ssk, const ecc_point* pvt)
+{
+    int err = 0;
+
+    if ((key == NULL) || (ssk == NULL) || (pvt == NULL)) {
+        err = BAD_FUNC_ARG;
+    }
+    if (err == 0) {
+        mp_copy(ssk, &key->ssk);
+        wc_ecc_copy_point(pvt, key->pvt);
+    }
+
+    return err;
+}
+
+#ifdef ECCSI_ORDER_MORE_BITS_THAN_PRIME
 /*
  * Fit the number to the maximum number of bytes.
  *
@@ -1220,35 +1382,54 @@ int wc_HashEccsiId(EccsiKey* key, enum wc_HashType hashType, const byte* id,
  * @return  0 on success.
  * @return  MEMORY_E when dynamic memory allocation fails.
  */
-static int eccsi_fit_to_octets(mp_int* a, mp_int* order, int max, mp_int* r)
+static int eccsi_fit_to_octets(const mp_int* a, mp_int* order, int max,
+        mp_int* r)
 {
     int err;
 
-    (void)order;
-    (void)max;
-
-#ifdef ECCSI_ORDER_MORE_BITS_THAN_PRIME
     if (mp_count_bits(a) > max * 8) {
-        err = mp_sub(order, a, r);
+        err = mp_sub(order, (mp_int*)a, r);
     }
     else
-#endif
     {
         err = mp_copy(a, r);
     }
 
     return err;
 }
+#else
+/*
+ * Fit the number to the maximum number of bytes.
+ *
+ * If the number is too big then subtract from order.
+ * RFC 6507, Section 5.2.1, Note at end.
+ * This should only happen when order is larger than prime in bits.
+ *
+ * @param  [in]   a      MP integer to fix.
+ * @param  [in]   order  MP integer representing order of curve.
+ * @param  [in]   max    Maximum number of bytes to encode into.
+ * @param  [out]  r      MP integer that is the result after fixing.
+ * @return  0 on success.
+ * @return  MEMORY_E when dynamic memory allocation fails.
+ */
+static int eccsi_fit_to_octets(const mp_int* a, const mp_int* order, int max,
+        mp_int* r)
+{
+    (void)order;
+    (void)max;
+
+    /* Duplicate line to stop static analyzer complaining. */
+    return mp_copy(a, r);
+}
+#endif
 
 /*
- * Compute the HE = hash( HS || r || M ), hash value of signature.
+ * Compute the HE = hash( HS | r | M ), hash value of signature.
  *
  * Partial result required for signing and verification.
  *
  * @param  [in]   key       ECCSI key.
  * @param  [in]   hashType  Type of hash algorithm. e.g. WC_SHA256
- * @param  [in]   hash      Identity hash.
- * @param  [in]   hashSz    Length of identity hash in bytes.
  * @param  [in]   r         MP integer that is the first signature element.
  * @param  [in]   msg       Message of signature.
  * @param  [in]   msgSz     Length of message in bytes.
@@ -1259,17 +1440,16 @@ static int eccsi_fit_to_octets(mp_int* a, mp_int* order, int max, mp_int* r)
  * @return  Other -ve value when an internal operation fails.
  */
 static int eccsi_compute_he(EccsiKey* key, enum wc_HashType hashType,
-        const byte* hash, word32 hashSz, mp_int* r, const byte* msg,
-        word32 msgSz, byte* he, word32* heSz)
+        mp_int* r, const byte* msg, word32 msgSz, byte* he, word32* heSz)
 {
     int err = 0;
     word32 dataSz = key->ecc.dp->size;
 
-    /* HE = hash( HS || r || M ) */
+    /* HE = hash( HS | r | M ) */
     err = wc_HashInit_ex(&key->hash, hashType, key->heap, INVALID_DEVID);
     if (err == 0) {
         /* HS */
-        err = wc_HashUpdate(&key->hash, hashType, hash, hashSz);
+        err = wc_HashUpdate(&key->hash, hashType, key->idHash, key->idHashSz);
     }
     if (err == 0) {
         err = mp_to_unsigned_bin_len(r, key->data, dataSz);
@@ -1293,7 +1473,7 @@ static int eccsi_compute_he(EccsiKey* key, enum wc_HashType hashType,
 }
 
 /*
- * Encode the signature = ( r || s || PVT )
+ * Encode the signature = ( r | s | PVT )
  *
  * @param  [in]   key    ECCSI key.
  * @param  [in]   r      MP integer that is the first signature element.
@@ -1302,7 +1482,7 @@ static int eccsi_compute_he(EccsiKey* key, enum wc_HashType hashType,
  * @param  [out]  sig    Signature of message.
  * @param  [out]  sigSz  Length of signature in bytes.
  */
-static int eccsi_encode_sig(EccsiKey* key, mp_int* r, mp_int* s, ecc_point* pvt,
+static int eccsi_encode_sig(const EccsiKey* key, mp_int* r, mp_int* s,
         byte* sig, word32* sigSz)
 {
     int err;
@@ -1315,7 +1495,7 @@ static int eccsi_encode_sig(EccsiKey* key, mp_int* r, mp_int* s, ecc_point* pvt,
     if (err == 0) {
         *sigSz = key->ecc.dp->size * 2 + 1;
         err = wc_ecc_export_point_der(wc_ecc_get_curve_idx(key->ecc.dp->id),
-                 pvt, sig + sz * 2, sigSz);
+                 key->pvt, sig + sz * 2, sigSz);
     }
     if (err == 0) {
         *sigSz = sz * 4 + 1;
@@ -1323,6 +1503,64 @@ static int eccsi_encode_sig(EccsiKey* key, mp_int* r, mp_int* s, ecc_point* pvt,
 
     return err;
 }
+
+/*
+ * Sign the ECCSI hash (of ID with the key) to two mp_int objects: r and s.
+ *
+ * RFC 6507, Section 5.2.1, Steps 1 to 4
+ *
+ * @param  [in]   key       ECCSI key.
+ * @param  [in]   rng       Random number generator.
+ * @param  [in]   hashType  Type of hash algorithm. e.g. WC_SHA256
+ * @param  [in]   msg       Message to sign.
+ * @param  [in]   msgSz     Length of message in bytes.
+ * @param  [out]  r         First big number integer part of signature.
+ * @param  [out]  s         Second big number integer part of signature.
+ * @return  0 on success.
+ * @return  MEMORY_E when dynamic memory allocation fails.
+ * @return  Other -ve value when an internal operation fails.
+ */
+static int eccsi_gen_sig(EccsiKey* key, WC_RNG* rng, enum wc_HashType hashType,
+        const byte* msg, word32 msgSz, mp_int* r, mp_int* s)
+{
+    int err;
+    word32 sz = key->ecc.dp->size;
+    word32 heSz;
+    const mp_int* jx;
+    mp_int* he = &key->tmp;
+
+    do {
+        /* Step 1 and 2: Generate ephemeral key - j, J = [j]G, r = Jx */
+        err = wc_ecc_make_key_ex(rng, sz, &key->pubkey, key->ecc.dp->id);
+        if (err == 0) {
+            jx = key->pubkey.pubkey.x;
+            err = eccsi_fit_to_octets(jx, &key->params.order, sz, r);
+        }
+
+        /* Step 3: Compute HE = hash( HS | r | M ) */
+        if (err == 0) {
+            err = eccsi_compute_he(key, hashType, r, msg, msgSz, key->data,
+                    &heSz);
+        }
+
+        /* Step 4: Verify that HE + r * SSK is non-zero modulo q */
+        if (err == 0) {
+            err = mp_read_unsigned_bin(he, key->data, heSz);
+        }
+        /* s' = r * SSK */
+        if (err == 0) {
+            err = mp_mulmod(r, &key->ssk, &key->params.order, s);
+        }
+        /* s' = HE + r * SSK */
+        if (err == 0) {
+            err = mp_addmod(he, s, &key->params.order, s);
+        }
+    }
+    while ((err == 0) && (mp_iszero(s) || (mp_cmp(s, he) == MP_EQ)));
+
+    return err;
+}
+
 
 /**
  * Sign the ECCSI hash (of ID with the key).
@@ -1335,38 +1573,27 @@ static int eccsi_encode_sig(EccsiKey* key, mp_int* r, mp_int* s, ecc_point* pvt,
  * @param  [in]   key       ECCSI key.
  * @param  [in]   rng       Random number generator.
  * @param  [in]   hashType  Type of hash algorithm. e.g. WC_SHA256
- * @param  [in]   hash      Identity hash.
- * @param  [in]   hashSz    Length of identity hash in bytes.
  * @param  [in]   msg       Message to sign.
  * @param  [in]   msgSz     Length of message in bytes.
- * @param  [in]   ssk       MP integer representing Secret Signing Key (SSK).
- * @param  [in]   pvt       ECC point representing Public Validation Token
- *                          (PVT).
  * @param  [out]  sig       Signature of message.
  * @param  [out]  sigSz     Length of signature in bytes.
  * @return  0 on success.
- * @return  BAD_FUNC_ARG when key, rng, hash, msg, ssk, pvt, hash, msg, ssk, pvt
- *          or sigSz is NULL.
+ * @return  BAD_FUNC_ARG when key, rng, msg or sigSz is NULL.
  * @return  BAD_STATE_E when the curve has not been set (no key set).
  * @return  LENGTH_ONLY_E when sig is NULL - sigSz is set.
  * @return  MEMORY_E when dynamic memory allocation fails.
  * @return  Other -ve value when an internal operation fails.
  */
 int wc_SignEccsiHash(EccsiKey* key, WC_RNG* rng, enum wc_HashType hashType,
-        const byte* hash, word32 hashSz, const byte* msg, word32 msgSz,
-        mp_int* ssk, ecc_point* pvt, byte* sig, word32* sigSz)
+        const byte* msg, word32 msgSz, byte* sig, word32* sigSz)
 {
     int err = 0;
-    word32 heSz;
-    mp_int* he;
     mp_int* r;
     mp_int* s;
     mp_int* j;
     word32 sz;
-    mp_int* jx;
 
-    if ((key == NULL) || (rng == NULL) || (hash == NULL) || (msg == NULL) ||
-            (ssk == NULL) || (pvt == NULL) || (sigSz == NULL)) {
+    if ((key == NULL) || (rng == NULL) || (msg == NULL) || (sigSz == NULL)) {
         err = BAD_FUNC_ARG;
     }
     if ((err == 0) && (key->ecc.type != ECC_PUBLICKEY) &&
@@ -1381,76 +1608,47 @@ int wc_SignEccsiHash(EccsiKey* key, WC_RNG* rng, enum wc_HashType hashType,
             err = LENGTH_ONLY_E;
         }
     }
-    if (err == 0)  {
-        if (*sigSz < sz * 4 + 1) {
-            err = BAD_FUNC_ARG;
-        }
+    if ((err == 0) && (*sigSz < sz * 4 + 1)) {
+        err = BAD_FUNC_ARG;
     }
 
     if (err == 0) {
-        he = &key->tmp;
         r = key->pubkey.pubkey.y;
         s = key->pubkey.pubkey.z;
 
         err = eccsi_load_order(key);
     }
 
-    do {
-        /* Step 1 and 2: Generate ephemeral key - j, J = [j]G, r = Jx */
-        if (err == 0) {
-            err = wc_ecc_make_key_ex(rng, sz, &key->pubkey, key->ecc.dp->id);
-        }
-        if (err == 0) {
-            j  = &key->pubkey.k;
-            jx = key->pubkey.pubkey.x;
-            err = eccsi_fit_to_octets(jx, &key->order, sz, r);
-        }
-
-        /* Step 3: Compute HE = hash( HS || r || M ) */
-        if (err == 0) {
-            err = eccsi_compute_he(key, hashType, hash, hashSz, r, msg, msgSz,
-                  key->data, &heSz);
-        }
-
-        /* Step 4: Verify that HE + r * SSK is non-zero modulo q */
-        if (err == 0) {
-            err = mp_read_unsigned_bin(he, key->data, heSz);
-        }
-        /* s' = r * SSK */
-        if (err == 0) {
-            err = mp_mulmod(r, ssk, &key->order, s);
-        }
-        /* s' = HE + r * SSK */
-        if (err == 0) {
-            err = mp_addmod(he, s, &key->order, s);
-        }
+    if (err == 0) {
+        /* Steps 1 to 4. */
+        err = eccsi_gen_sig(key, rng, hashType, msg, msgSz, r, s);
     }
-    while ((err == 0) && (mp_iszero(s) || (mp_cmp(s, he) == MP_EQ)));
 
     /* Step 5: s' = ( (( HE + r * SSK )^-1) * j ) modulo q, erase j */
     if (err == 0) {
-        err = mp_invmod(s, &key->order, s);
+        err = mp_invmod(s, &key->params.order, s);
     }
     if (err == 0) {
-        err = mp_mulmod(s, j, &key->order, s);
+        j  = &key->pubkey.k;
+        err = mp_mulmod(s, j, &key->params.order, s);
     }
     if (err == 0) {
         mp_forcezero(j);
 
         /* Step 6: s = s' fitted */
-        err = eccsi_fit_to_octets(s, &key->order, sz, s);
+        err = eccsi_fit_to_octets(s, &key->params.order, sz, s);
     }
 
-    /* Step 7: Output Signature = ( r || s || PVT ) */
+    /* Step 7: Output Signature = ( r | s | PVT ) */
     if (err == 0) {
-        err = eccsi_encode_sig(key, r, s, pvt, sig, sigSz);
+        err = eccsi_encode_sig(key, r, s, sig, sigSz);
     }
 
     return err;
 }
 
 /*
- * Decode the s part of the signature = ( r || s || PVT )
+ * Decode the s part of the signature = ( r | s | PVT )
  *
  * @param  [in]   key    ECCSI key.
  * @param  [in]   sig    Signature of message.
@@ -1460,13 +1658,13 @@ int wc_SignEccsiHash(EccsiKey* key, WC_RNG* rng, enum wc_HashType hashType,
  * @return  MEMORY_E when dynamic memory allocation fails.
  * @return  Other -ve value when an internal operation fails.
  */
-static int eccsi_decode_sig_s(EccsiKey* key, const byte* sig, word32 sigSz,
-        mp_int* s)
+static int eccsi_decode_sig_s(const EccsiKey* key, const byte* sig,
+        word32 sigSz, mp_int* s)
 {
     int err = 0;
     word32 sz = key->ecc.dp->size;
 
-    if (sigSz != (word32)(sz * 4 + 1)) {
+    if (sigSz != sz * 4 + 1) {
         err = BAD_FUNC_ARG;
     }
 
@@ -1478,7 +1676,7 @@ static int eccsi_decode_sig_s(EccsiKey* key, const byte* sig, word32 sigSz,
 }
 
 /*
- * Decode the r and pvt part of the signature = ( r || s || PVT )
+ * Decode the r and pvt part of the signature = ( r | s | PVT )
  *
  * @param  [in]   key    ECCSI key.
  * @param  [in]   sig    Signature of message.
@@ -1489,13 +1687,13 @@ static int eccsi_decode_sig_s(EccsiKey* key, const byte* sig, word32 sigSz,
  * @return  MEMORY_E when dynamic memory allocation fails.
  * @return  Other -ve value when an internal operation fails.
  */
-static int eccsi_decode_sig_r_pvt(EccsiKey* key, const byte* sig, word32 sigSz,
-        mp_int* r, ecc_point* pvt)
+static int eccsi_decode_sig_r_pvt(const EccsiKey* key, const byte* sig,
+        word32 sigSz, mp_int* r, ecc_point* pvt)
 {
     int err = 0;
     word32 sz = key->ecc.dp->size;
 
-    if (sigSz != (word32)(sz * 4 + 1)) {
+    if (sigSz != sz * 4 + 1) {
         err = BAD_FUNC_ARG;
     }
 
@@ -1503,7 +1701,7 @@ static int eccsi_decode_sig_r_pvt(EccsiKey* key, const byte* sig, word32 sigSz,
         err = mp_read_unsigned_bin(r, sig, sz);
     }
     if (err == 0) {
-        err = wc_ecc_import_point_der((byte*)(sig + sz * 2), sz * 2 + 1,
+        err = wc_ecc_import_point_der(sig + sz * 2, sz * 2 + 1,
                 wc_ecc_get_curve_idx(key->ecc.dp->id), pvt);
     }
 
@@ -1516,8 +1714,6 @@ static int eccsi_decode_sig_r_pvt(EccsiKey* key, const byte* sig, word32 sigSz,
  * Y = [HS]PVT + KPAK
  *
  * @param  [in]   key      ECCSI key.
- * @param  [in]   hash     Identity hash.
- * @param  [in]   hashSz   Length of identity hash in bytes.
  * @param  [in]   pvt      ECC point representing Public Validation Token.
  * @param  [in]   mp       Montgomery reduction multiplier.
  * @param  [out]  y        ECC point representing calculated value Y.
@@ -1525,16 +1721,17 @@ static int eccsi_decode_sig_r_pvt(EccsiKey* key, const byte* sig, word32 sigSz,
  * @return  MEMORY_E when dynamic memory allocation fails.
  * @return  Other value when an an internal operation fails.
  */
-static int eccsi_calc_y(EccsiKey* key, const byte* hash, word32 hashSz,
-        ecc_point* pvt, mp_digit mp, ecc_point* y)
+static int eccsi_calc_y(EccsiKey* key, ecc_point* pvt, mp_digit mp,
+        ecc_point* y)
 {
     int err;
     mp_int* hs;
     ecc_point* kpak = &key->ecc.pubkey;
+    mp_int* prime = &key->params.prime;
 
     /* [HS]PVT */
     hs = &key->tmp;
-    err = mp_read_unsigned_bin(hs, hash, hashSz);
+    err = mp_read_unsigned_bin(hs, key->idHash, key->idHashSz);
     if (err == 0) {
         err = eccsi_mulmod_point(key, hs, pvt, y, 0);
     }
@@ -1544,10 +1741,10 @@ static int eccsi_calc_y(EccsiKey* key, const byte* hash, word32 hashSz,
     }
     /* [HS]PVT + KPAK */
     if (err == 0) {
-        err = ecc_projective_add_point(y, kpak, y, &key->a, &key->prime, mp);
+        err = ecc_projective_add_point(y, kpak, y, &key->params.a, prime, mp);
     }
     if (err == 0) {
-        err = ecc_map(y, &key->prime, mp);
+        err = ecc_map(y, prime, mp);
     }
 
     return err;
@@ -1559,44 +1756,33 @@ static int eccsi_calc_y(EccsiKey* key, const byte* hash, word32 hashSz,
  * J = [s]( [HE]G + [r]Y )
  *
  * @param  [in]   key    ECCSI key.
- * @param  [in]   he     Hash of hs, r and message.
- * @param  [in]   heSz   Length of hash in bytes.
+ * @param  [in]   hem    MP int represnetation of HE = Hash (hs, r and message).
  * @param  [in]   sig    Signature of message.
  * @param  [in]   sigSz  Length of signature in bytes.
- * @param  [in]   r      MP integer representation of r.
- * @param  [in]   y      ECC point representing Y.
+ * @param  [in]   y      ECC point representing [r]Y.
  * @param  [in]   mp     Montgomery reduction multiplier.
  * @param  [out]  j      ECC point representing calculated value J.
  * @return  0 on success.
  * @return  MEMORY_E when dynamic memory allocation fails.
  * @return  Other value when an an internal operation fails.
  */
-static int eccsi_calc_j(EccsiKey* key, const byte* he, word32 heSz,
-        const byte* sig, word32 sigSz, mp_int* r, ecc_point* y, mp_digit mp,
-        ecc_point* j)
+static int eccsi_calc_j(EccsiKey* key, const mp_int* hem, const byte* sig,
+        word32 sigSz, ecc_point* y, mp_digit mp, ecc_point* j)
 {
     int err;
-    mp_int* hem;
     mp_int* s = &key->tmp;
+    EccsiKeyParams* params = &key->params;
 
     /* [HE]G */
-    hem = &key->tmp;
-    err = mp_read_unsigned_bin(hem, he, heSz);
-    if (err == 0) {
-        err = eccsi_mulmod_base(key, hem, key->base, 0);
-        key->haveBase = 0;
-    }
-    /* [r]Y */
-    if (err == 0) {
-        err = eccsi_mulmod_point(key, r, y, y, 0);
-    }
+    err = eccsi_mulmod_base(key, hem, params->base, 0);
+    key->params.haveBase = 0;
     /* [HE]G + [r]Y */
     if (err == 0) {
-        err = ecc_projective_add_point(key->base, y, j, &key->a, &key->prime,
-                mp);
+        err = ecc_projective_add_point(params->base, y, j, &params->a,
+                &params->prime, mp);
     }
     if (err == 0) {
-        err = ecc_map(j, &key->prime, mp);
+        err = ecc_map(j, &params->prime, mp);
     }
     if (err == 0) {
         err = eccsi_decode_sig_s(key, sig, sigSz, s);
@@ -1619,9 +1805,7 @@ static int eccsi_calc_j(EccsiKey* key, const byte* he, word32 heSz,
  *
  * @param  [in]   key       ECCSI key.
  * @param  [in]   hashType  Type of hash algorithm. e.g. WC_SHA256
- * @param  [in]   hash      Identity hash.
- * @param  [in]   hashSz    Length of identity hash in bytes.
- * @param  [in]   msg       Message to sign.
+ * @param  [in]   msg       Message to verify.
  * @param  [in]   msgSz     Length of message in bytes.
  * @param  [in]   sig       Signature of message.
  * @param  [in]   sigSz     Length of signature in bytes.
@@ -1633,21 +1817,22 @@ static int eccsi_calc_j(EccsiKey* key, const byte* he, word32 heSz,
  * @return  Other value when an an internal operation fails.
  */
 int wc_VerifyEccsiHash(EccsiKey* key, enum wc_HashType hashType,
-        const byte* hash, word32 hashSz, const byte* msg, word32 msgSz,
-        const byte* sig, word32 sigSz, int* verified)
+        const byte* msg, word32 msgSz, const byte* sig, word32 sigSz,
+        int* verified)
 {
     int err = 0;
     byte* he;
     word32 heSz;
     mp_int* r = NULL;
     mp_int* jx;
+    mp_int* hem;
     ecc_point* pvt = NULL;
     ecc_point* y;
     ecc_point* j;
     mp_digit mp;
+    EccsiKeyParams* params = &key->params;
 
-    if ((key == NULL) || (hash == NULL) || (msg == NULL) || (sig == NULL) ||
-            (verified == NULL)) {
+    if ((key == NULL) || (msg == NULL) || (sig == NULL) || (verified == NULL)) {
         err = BAD_FUNC_ARG;
     }
     if ((err == 0) && (key->ecc.type != ECC_PRIVATEKEY) &&
@@ -1667,44 +1852,51 @@ int wc_VerifyEccsiHash(EccsiKey* key, enum wc_HashType hashType,
         err = eccsi_load_base(key);
     }
     if (err == 0) {
-       err = eccsi_load_ecc_params(key);
+        err = eccsi_load_ecc_params(key);
     }
     if (err == 0) {
-        err = mp_montgomery_setup(&key->prime, &mp);
+        err = mp_montgomery_setup(&params->prime, &mp);
     }
 
     /* Step 1: Validate PVT is on curve */
     if (err == 0) {
-        err = wc_ecc_is_point(pvt, &key->a, &key->b, &key->prime);
+        err = wc_ecc_is_point(pvt, &params->a, &params->b, &params->prime);
     }
 
-    /* Step 2: Compute HS = hash( G || KPAK || ID || PVT )
-     * HS is input hash, hashSz */
+    /* Step 2: Compute HS = hash( G | KPAK | ID | PVT )
+     * HS is key->idHash, key->idHashSz */
 
-    /* Step 3: Compute HE = hash( HS || r || M ) */
+    /* Step 3: Compute HE = hash( HS | r | M ) */
     if (err == 0) {
         he = key->data;
-        err = eccsi_compute_he(key, hashType, hash, hashSz, r, msg, msgSz, he,
-              &heSz);
+        err = eccsi_compute_he(key, hashType, r, msg, msgSz, he, &heSz);
     }
 
     /* Step 4: Y = [HS]PVT + KPAK */
     if (err == 0) {
         y = pvt;
-        err = eccsi_calc_y(key, hash, hashSz, pvt, mp, y);
+        err = eccsi_calc_y(key, pvt, mp, y);
     }
 
     /* Step 5: Compute J = [s]( [HE]G + [r]Y ) */
+    /* [r]Y */
     if (err == 0) {
-        j = key->base;
-        err = eccsi_calc_j(key, he, heSz, sig, sigSz, r, y, mp, j);
-        key->haveBase = 0;
+        hem = &key->tmp;
+        err = mp_read_unsigned_bin(hem, he, heSz);
+    }
+    if (err == 0) {
+        err = eccsi_mulmod_point(key, r, y, y, 0);
+    }
+    if (err == 0) {
+        j = params->base;
+        err = eccsi_calc_j(key, hem, sig, sigSz, y, mp, j);
+        key->params.haveBase = 0;
     }
 
     /* Step 6: Jx fitting, compare with r */
     if (err == 0) {
         jx = &key->tmp;
-        err = eccsi_fit_to_octets(j->x, &key->order, key->ecc.dp->size, jx);
+        err = eccsi_fit_to_octets(j->x, &params->order, key->ecc.dp->size, jx);
     }
 
     if (verified != NULL) {

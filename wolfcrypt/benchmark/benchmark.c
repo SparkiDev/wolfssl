@@ -5992,7 +5992,7 @@ void bench_eccsi(void)
     byte id[] = { 0x01, 0x23, 0x34, 0x45 };
     byte msg[] = { 0x01, 0x23, 0x34, 0x45 };
     byte hash[WC_SHA256_DIGEST_SIZE];
-    word32 hashSz = sizeof(hash);
+    byte hashSz = (byte)sizeof(hash);
     byte sig[257];
     word32 sigSz = sizeof(sig);
     int ret;
@@ -6000,19 +6000,21 @@ void bench_eccsi(void)
 
     mp_init(&ssk);
     pvt = wc_ecc_new_point();
-    wc_InitEccsiKey(&genKey, NULL, INVALID_DEVID);
+    (void)wc_InitEccsiKey(&genKey, NULL, INVALID_DEVID);
     (void)wc_MakeEccsiKey(&genKey, &gRng);
     (void)wc_MakeEccsiPair(&genKey, &gRng, WC_SHA256, id, sizeof(id), &ssk,
                            pvt);
     (void)wc_HashEccsiId(&genKey, WC_SHA256, id, sizeof(id), pvt, hash,
                          &hashSz);
+    (void)wc_SetEccsiHash(&genKey, hash, hashSz);
+    (void)wc_SetEccsiPair(&genKey, &ssk, pvt);
 
     /* Encapsulate */
     bench_stats_start(&count, &start);
     do {
         for (i = 0; i < genTimes; i++) {
-            ret = wc_SignEccsiHash(&genKey, &gRng, WC_SHA256, hash, hashSz, msg,
-                sizeof(msg), &ssk, pvt, sig, &sigSz);
+            ret = wc_SignEccsiHash(&genKey, &gRng, WC_SHA256, msg, sizeof(msg),
+                    sig, &sigSz);
             if (ret != 0) {
                 printf("wc_SignEccsiHash failed: %d\n", ret);
                 break;
@@ -6026,8 +6028,8 @@ void bench_eccsi(void)
     bench_stats_start(&count, &start);
     do {
         for (i = 0; i < genTimes; i++) {
-            ret = wc_VerifyEccsiHash(&genKey, WC_SHA256, hash, hashSz, msg,
-                sizeof(msg), sig, sigSz, &verified);
+            ret = wc_VerifyEccsiHash(&genKey, WC_SHA256, msg, sizeof(msg), sig,
+                    sigSz, &verified);
             if (ret != 0 || !verified) {
                 printf("wc_VerifyEccsiHash failed: %d (verified: %d)\n", ret,
                        verified);
@@ -6155,21 +6157,23 @@ void bench_sakke(void)
     word16 authSz = sizeof(auth);
     int ret;
     byte* table = NULL;
-    word32 len;
+    word32 len = 0;
     byte* iTable = NULL;
-    word32 iTableLen;
+    word32 iTableLen = 0;
 
     rsk = wc_ecc_new_point();
-    wc_InitSakkeKey_ex(&genKey, 128, ECC_SAKKE_1, NULL, INVALID_DEVID);
+    (void)wc_InitSakkeKey_ex(&genKey, 128, ECC_SAKKE_1, NULL, INVALID_DEVID);
     (void)wc_MakeSakkeKey(&genKey, &gRng);
     (void)wc_MakeSakkeRsk(&genKey, id, sizeof(id), rsk);
+    (void)wc_SetSakkeRsk(&genKey, rsk, NULL, 0);
+    (void)wc_SetSakkeIdentity(&genKey, id, sizeof(id));
 
     /* Encapsulate */
     bench_stats_start(&count, &start);
     do {
         for (i = 0; i < genTimes; i++) {
-            ret = wc_MakeSakkeEncapsulatedSSV(&genKey, ssv, sizeof(ssv),
-                WC_SHA256, id, sizeof(id), auth, &authSz);
+            ret = wc_MakeSakkeEncapsulatedSSV(&genKey, WC_SHA256, ssv,
+                sizeof(ssv), auth, &authSz);
             if (ret != 0) {
                 printf("wc_MakeSakkeEncapsulatedSSV failed: %d\n", ret);
                 break;
@@ -6184,8 +6188,8 @@ void bench_sakke(void)
     do {
         for (i = 0; i < genTimes; i++) {
             XMEMCPY(derSSV, ssv, sizeof(ssv));
-            ret = wc_DeriveSakkeSSV(&genKey, WC_SHA256, id, sizeof(id), rsk,
-                derSSV, sizeof(derSSV), auth, authSz);
+            ret = wc_DeriveSakkeSSV(&genKey, WC_SHA256, derSSV, sizeof(derSSV),
+                    auth, authSz);
             if (ret != 0) {
                 printf("wc_DeriveSakkeSSV failed: %d\n", ret);
                 break;
@@ -6209,8 +6213,8 @@ void bench_sakke(void)
     bench_stats_start(&count, &start);
     do {
         for (i = 0; i < genTimes; i++) {
-            ret = wc_MakeSakkeEncapsulatedSSV(&genKey, ssv, sizeof(ssv),
-                WC_SHA256, id, sizeof(id), auth, &authSz);
+            ret = wc_MakeSakkeEncapsulatedSSV(&genKey, WC_SHA256, ssv,
+                sizeof(ssv), auth, &authSz);
             if (ret != 0) {
                 printf("wc_MakeSakkeEncapsulatedSSV failed: %d\n", ret);
                 break;
@@ -6220,12 +6224,14 @@ void bench_sakke(void)
     } while (bench_stats_sym_check(start));
     bench_stats_asym_finish("SAKKE", 1024, desc[9], 0, count, start, 0);
 
+    (void)wc_SetSakkeRsk(&genKey, rsk, table, len);
+
     bench_stats_start(&count, &start);
     do {
         for (i = 0; i < genTimes; i++) {
             XMEMCPY(derSSV, ssv, sizeof(ssv));
-            ret = wc_DeriveSakkeSSVPrecomp(&genKey, WC_SHA256, id, sizeof(id),
-                rsk, table, len, derSSV, sizeof(derSSV), auth, authSz);
+            ret = wc_DeriveSakkeSSV(&genKey, WC_SHA256, derSSV, sizeof(derSSV),
+                    auth, authSz);
             if (ret != 0) {
                 printf("wc_DeriveSakkeSSV failed: %d\n", ret);
                 break;
@@ -6242,12 +6248,14 @@ void bench_sakke(void)
         table = (byte*)XMALLOC(len, HEAP_HINT, DYNAMIC_TYPE_TMP_BUFFER);
         wc_GenerateSakkeRskTable(&genKey, rsk, table, &len);
     }
+    (void)wc_SetSakkeRsk(&genKey, rsk, table, len);
+
     bench_stats_start(&count, &start);
     do {
         for (i = 0; i < genTimes; i++) {
             XMEMCPY(derSSV, ssv, sizeof(ssv));
-            ret = wc_DeriveSakkeSSVPrecomp(&genKey, WC_SHA256, id, sizeof(id),
-                rsk, table, len, derSSV, sizeof(derSSV), auth, authSz);
+            ret = wc_DeriveSakkeSSV(&genKey, WC_SHA256, derSSV, sizeof(derSSV),
+                    auth, authSz);
             if (ret != 0) {
                 printf("wc_DeriveSakkeSSV failed: %d\n", ret);
                 break;
@@ -6263,8 +6271,8 @@ void bench_sakke(void)
     do {
         for (i = 0; i < genTimes; i++) {
             XMEMCPY(derSSV, ssv, sizeof(ssv));
-            ret = wc_DeriveSakkeSSVPrecomp(&genKey, WC_SHA256, id, sizeof(id),
-                rsk, table, len, derSSV, sizeof(derSSV), auth, authSz);
+            ret = wc_DeriveSakkeSSV(&genKey, WC_SHA256, derSSV, sizeof(derSSV),
+                    auth, authSz);
             if (ret != 0) {
                 printf("wc_DeriveSakkeSSV failed: %d\n", ret);
                 break;

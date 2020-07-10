@@ -20496,7 +20496,7 @@ static int eccsi_api_test(WC_RNG* rng, mp_int* ssk, ecc_point* pvt)
     word32 sz;
     byte data[256];
     byte hash[WC_MAX_DIGEST_SIZE];
-    word32 hashSz;
+    byte hashSz;
     byte sig[257];
     word32 sigSz;
 
@@ -20731,72 +20731,85 @@ static int eccsi_api_test(WC_RNG* rng, mp_int* ssk, ecc_point* pvt)
     if (ret != BAD_STATE_E)
         return -10091;
 
-    ret = wc_SignEccsiHash(NULL, NULL, WC_SHA256, NULL, 0, NULL, 0, NULL, NULL,
-                           sig, NULL);
+    ret = wc_SetEccsiHash(NULL, NULL, 1);
+    if (ret != BAD_FUNC_ARG)
+        return -10090;
+    ret = wc_SetEccsiHash(&key, NULL, 1);
+    if (ret != BAD_FUNC_ARG)
+        return -10090;
+    ret = wc_SetEccsiHash(NULL, hash, 1);
+    if (ret != BAD_FUNC_ARG)
+        return -10090;
+
+    ret = wc_SetEccsiPair(NULL, NULL, NULL);
+    if (ret != BAD_FUNC_ARG)
+        return -10090;
+    ret = wc_SetEccsiPair(&key, NULL, NULL);
+    if (ret != BAD_FUNC_ARG)
+        return -10090;
+    ret = wc_SetEccsiPair(NULL, ssk, NULL);
+    if (ret != BAD_FUNC_ARG)
+        return -10090;
+    ret = wc_SetEccsiPair(NULL, NULL, pvt);
+    if (ret != BAD_FUNC_ARG)
+        return -10090;
+    ret = wc_SetEccsiPair(&key, ssk, NULL);
+    if (ret != BAD_FUNC_ARG)
+        return -10090;
+    ret = wc_SetEccsiPair(&key, NULL, pvt);
+    if (ret != BAD_FUNC_ARG)
+        return -10090;
+    ret = wc_SetEccsiPair(NULL, ssk, pvt);
+    if (ret != BAD_FUNC_ARG)
+        return -10090;
+
+    ret = wc_SignEccsiHash(NULL, NULL, WC_SHA256, NULL, 0, sig, NULL);
     if (ret != BAD_FUNC_ARG)
         return -10092;
-    ret = wc_SignEccsiHash(&key, rng, WC_SHA256, hash, 0, data, 0, ssk, pvt,
-                           sig, NULL);
+    ret = wc_SignEccsiHash(&key, rng, WC_SHA256, data, 0, sig, NULL);
     if (ret != BAD_FUNC_ARG)
         return -10093;
-    ret = wc_SignEccsiHash(&key, rng, WC_SHA256, hash, 0, data, 0, ssk, NULL,
-                           sig, &sigSz);
-    if (ret != BAD_FUNC_ARG)
-        return -10094;
-    ret = wc_SignEccsiHash(&key, rng, WC_SHA256, hash, 0, data, 0, NULL, pvt,
-                           sig, &sigSz);
-    if (ret != BAD_FUNC_ARG)
-        return -10095;
-    ret = wc_SignEccsiHash(&key, rng, WC_SHA256, hash, 0, NULL, 0, ssk, pvt,
-                           sig, &sigSz);
+    ret = wc_SignEccsiHash(&key, rng, WC_SHA256, NULL, 0, sig, &sigSz);
     if (ret != BAD_FUNC_ARG)
         return -10096;
-    ret = wc_SignEccsiHash(&key, rng, WC_SHA256, NULL, 0, data, 0, ssk, pvt,
-                           sig, &sigSz);
-    if (ret != BAD_FUNC_ARG)
-        return -10097;
-    ret = wc_SignEccsiHash(&key, NULL, WC_SHA256, hash, 0, data, 0, ssk, pvt,
-                           sig, &sigSz);
+    ret = wc_SignEccsiHash(&key, NULL, WC_SHA256, data, 0, sig, &sigSz);
     if (ret != BAD_FUNC_ARG)
         return -10098;
-    ret = wc_SignEccsiHash(NULL, rng, WC_SHA256, hash, 0, data, 0, ssk, pvt,
-                           sig, &sigSz);
+    ret = wc_SignEccsiHash(NULL, rng, WC_SHA256, data, 0, sig, &sigSz);
     if (ret != BAD_FUNC_ARG)
         return -10099;
     /* Key not set. */
-    ret = wc_SignEccsiHash(&key, rng, WC_SHA256, hash, 0, data, 0, ssk, pvt,
-                           NULL, &sigSz);
+    ret = wc_SignEccsiHash(&key, rng, WC_SHA256, data, 0, NULL, &sigSz);
     if (ret != BAD_STATE_E)
         return -10100;
 
-    ret = wc_VerifyEccsiHash(NULL, WC_SHA256, NULL, 0, NULL, 0, NULL, 0,
-                             NULL);
+    ret = wc_VerifyEccsiHash(NULL, WC_SHA256, NULL, 0, NULL, 0, NULL);
     if (ret != BAD_FUNC_ARG)
         return -10101;
-    ret = wc_VerifyEccsiHash(&key, WC_SHA256, hash, 0, data, 0, sig, 0,
-                             NULL);
+    ret = wc_VerifyEccsiHash(&key, WC_SHA256, NULL, 0, NULL, 0, NULL);
+    if (ret != BAD_FUNC_ARG)
+        return -10101;
+    ret = wc_VerifyEccsiHash(NULL, WC_SHA256, data, 0, NULL, 0, NULL);
+    if (ret != BAD_FUNC_ARG)
+        return -10101;
+    ret = wc_VerifyEccsiHash(NULL, WC_SHA256, NULL, 0, sig, 0, NULL);
+    if (ret != BAD_FUNC_ARG)
+        return -10101;
+    ret = wc_VerifyEccsiHash(NULL, WC_SHA256, NULL, 0, NULL, 0, &valid);
+    if (ret != BAD_FUNC_ARG)
+        return -10101;
+    ret = wc_VerifyEccsiHash(&key, WC_SHA256, data, 0, sig, 0, NULL);
     if (ret != BAD_FUNC_ARG)
         return -10102;
-    ret = wc_VerifyEccsiHash(&key, WC_SHA256, hash, 0, data, 0, NULL, 0,
-                             &valid);
+    ret = wc_VerifyEccsiHash(&key, WC_SHA256, data, 0, NULL, 0, &valid);
     if (ret != BAD_FUNC_ARG)
         return -10103;
-    ret = wc_VerifyEccsiHash(&key, WC_SHA256, hash, 0, NULL, 0, sig, 0,
-                             &valid);
+    ret = wc_VerifyEccsiHash(&key, WC_SHA256, NULL, 0, sig, 0, &valid);
     if (ret != BAD_FUNC_ARG)
         return -10104;
-    ret = wc_VerifyEccsiHash(&key, WC_SHA256, NULL, 0, data, 0, sig, 0,
-                             &valid);
-    if (ret != BAD_FUNC_ARG)
-        return -10105;
-    ret = wc_VerifyEccsiHash(NULL, WC_SHA256, hash, 0, data, 0, sig, 0,
-                             &valid);
+    ret = wc_VerifyEccsiHash(NULL, WC_SHA256, data, 0, sig, 0, &valid);
     if (ret != BAD_FUNC_ARG)
         return -10106;
-    ret = wc_VerifyEccsiHash(&key, WC_SHA256, hash, 0, data, 0, sig, 0,
-                             &valid);
-    if (ret != BAD_STATE_E)
-        return -10107;
 
     wc_FreeEccsiKey(&key);
 
@@ -20812,7 +20825,7 @@ static int eccsi_kat_verify_test(EccsiKey* key, ecc_point* pvt)
     const byte msg[] = { 0x6D, 0x65, 0x73, 0x73, 0x61, 0x67, 0x65, 0x00 };
     word32 msgSz = sizeof(msg);
     byte hash[WC_SHA256_DIGEST_SIZE];
-    word32 hashSz = WC_SHA256_DIGEST_SIZE;
+    byte hashSz = WC_SHA256_DIGEST_SIZE;
     static const byte id[] = {
         0x32, 0x30, 0x31, 0x31, 0x2D, 0x30, 0x32, 0x00,
         0x74, 0x65, 0x6C, 0x3A, 0x2B, 0x34, 0x34, 0x37,
@@ -20889,8 +20902,11 @@ static int eccsi_kat_verify_test(EccsiKey* key, ecc_point* pvt)
     if (XMEMCMP(hash, expHash, hashSz) != 0)
         return -10114;
 
-    ret = wc_VerifyEccsiHash(key, WC_SHA256, hash, hashSz, msg, msgSz, sig,
-                             sigSz, &verified);
+    ret = wc_SetEccsiHash(key, hash, hashSz);
+    if (ret != 0)
+        return -10112;
+
+    ret = wc_VerifyEccsiHash(key, WC_SHA256, msg, msgSz, sig, sigSz, &verified);
     if (ret != 0)
         return -10115;
     if (!verified)
@@ -21061,7 +21077,7 @@ static int eccsi_sign_verify_test(EccsiKey* priv, EccsiKey* pub, WC_RNG* rng,
     int ret;
     byte hashPriv[WC_MAX_DIGEST_SIZE];
     byte hashPub[WC_MAX_DIGEST_SIZE];
-    word32 hashSz;
+    byte hashSz;
     byte sig[144];
     word32 sigSz;
     int verified, valid;
@@ -21085,19 +21101,27 @@ static int eccsi_sign_verify_test(EccsiKey* priv, EccsiKey* pub, WC_RNG* rng,
     if (XMEMCMP(hashPriv, hashPub, hashSz) != 0)
         return -10151;
 
-    ret = wc_SignEccsiHash(priv, rng, WC_SHA256, hashPriv, hashSz, msg, msgSz,
-                           ssk, pvt, NULL, &sigSz);
+    ret = wc_SetEccsiHash(priv, hashPriv, hashSz);
+    if (ret != 0)
+        return -10149;
+    ret = wc_SetEccsiPair(priv, ssk, pvt);
+    if (ret != 0)
+        return -10149;
+
+    ret = wc_SignEccsiHash(priv, rng, WC_SHA256, msg, msgSz, NULL, &sigSz);
     if (ret != LENGTH_ONLY_E)
         return -10152;
     if (sigSz != 129)
         return -10153;
-    ret = wc_SignEccsiHash(priv, rng, WC_SHA256, hashPriv, hashSz, msg, msgSz,
-                           ssk, pvt, sig, &sigSz);
+    ret = wc_SignEccsiHash(priv, rng, WC_SHA256, msg, msgSz, sig, &sigSz);
     if (ret != 0)
         return -10154;
 
-    ret = wc_VerifyEccsiHash(pub, WC_SHA256, hashPub, hashSz, msg, msgSz, sig,
-                             sigSz, &verified);
+    ret = wc_SetEccsiHash(pub, hashPub, hashSz);
+    if (ret != 0)
+        return -10149;
+
+    ret = wc_VerifyEccsiHash(pub, WC_SHA256, msg, msgSz, sig, sigSz, &verified);
     if (ret != 0)
         return -10155;
     if (!verified)
@@ -21105,17 +21129,22 @@ static int eccsi_sign_verify_test(EccsiKey* priv, EccsiKey* pub, WC_RNG* rng,
 
     /* Check that changing HS results in verification failure. */
     hashPub[0] ^= 0x80;
-    ret = wc_VerifyEccsiHash(pub, WC_SHA256, hashPub, hashSz, msg, msgSz, sig,
-                             sigSz, &verified);
+    ret = wc_SetEccsiHash(pub, hashPub, hashSz);
+    if (ret != 0)
+        return -10149;
+    ret = wc_VerifyEccsiHash(pub, WC_SHA256, msg, msgSz, sig, sigSz, &verified);
     if (ret != 0)
         return -10157;
     if (verified)
         return -10158;
     hashPub[0] ^= 0x80;
+    ret = wc_SetEccsiHash(pub, hashPub, hashSz);
+    if (ret != 0)
+        return -10149;
+
     /* Check that changing msg results in verification failure. */
     msg[0] ^= 0x80;
-    ret = wc_VerifyEccsiHash(pub, WC_SHA256, hashPub, hashSz, msg, msgSz, sig,
-                             sigSz, &verified);
+    ret = wc_VerifyEccsiHash(pub, WC_SHA256, msg, msgSz, sig, sigSz, &verified);
     if (ret != 0)
         return -10159;
     if (verified)
@@ -21123,8 +21152,7 @@ static int eccsi_sign_verify_test(EccsiKey* priv, EccsiKey* pub, WC_RNG* rng,
     msg[0] ^= 0x80;
     /* Check that changing signature results in verification failure. */
     sig[0] ^= 0x80;
-    ret = wc_VerifyEccsiHash(pub, WC_SHA256, hashPub, hashSz, msg, msgSz, sig,
-                             sigSz, &verified);
+    ret = wc_VerifyEccsiHash(pub, WC_SHA256, msg, msgSz, sig, sigSz, &verified);
     if (ret != 0)
         return -10161;
     if (verified)
@@ -21132,16 +21160,15 @@ static int eccsi_sign_verify_test(EccsiKey* priv, EccsiKey* pub, WC_RNG* rng,
     sig[0] ^= 0x80;
 
     /* Check that key state hasn't been invalidated. */
-    ret = wc_VerifyEccsiHash(pub, WC_SHA256, hashPub, hashSz, msg, msgSz, sig,
-                             sigSz, &verified);
+    ret = wc_VerifyEccsiHash(pub, WC_SHA256, msg, msgSz, sig, sigSz, &verified);
     if (ret != 0)
         return -10163;
     if (!verified)
         return -10164;
 
     /* Check that verifying with the private key works. */
-    ret = wc_VerifyEccsiHash(priv, WC_SHA256, hashPub, hashSz, msg, msgSz, sig,
-                             sigSz, &verified);
+    ret = wc_VerifyEccsiHash(priv, WC_SHA256, msg, msgSz, sig, sigSz,
+            &verified);
     if (ret != 0)
         return -10165;
     if (!verified)
@@ -21153,8 +21180,8 @@ static int eccsi_sign_verify_test(EccsiKey* priv, EccsiKey* pub, WC_RNG* rng,
         return ret;
 
     /* Check that KPAK can converted to Montogmery form again. */
-    ret = wc_VerifyEccsiHash(priv, WC_SHA256, hashPub, hashSz, msg, msgSz, sig,
-                             sigSz, &verified);
+    ret = wc_VerifyEccsiHash(priv, WC_SHA256, msg, msgSz, sig, sigSz,
+            &verified);
     if (ret != 0)
         return -10167;
     if (!verified)
@@ -21168,8 +21195,8 @@ static int eccsi_sign_verify_test(EccsiKey* priv, EccsiKey* pub, WC_RNG* rng,
         return -10170;
 
     /* Check that KPAK can converted to Montogmery form again. */
-    ret = wc_VerifyEccsiHash(priv, WC_SHA256, hashPub, hashSz, msg, msgSz, sig,
-                             sigSz, &verified);
+    ret = wc_VerifyEccsiHash(priv, WC_SHA256, msg, msgSz, sig, sigSz,
+            &verified);
     if (ret != 0)
         return -10171;
     if (!verified)
@@ -21540,112 +21567,92 @@ static int sakke_api_test(WC_RNG* rng, ecc_point* rsk)
     if (ret != BUFFER_E)
         return -10288;
 
+    ret = wc_SetSakkeIdentity(NULL, NULL, 1);
+    if (ret != BAD_FUNC_ARG)
+        return -10286;
+    ret = wc_SetSakkeIdentity(&key, NULL, 1);
+    if (ret != BAD_FUNC_ARG)
+        return -10286;
+    ret = wc_SetSakkeIdentity(NULL, id, 1);
+    if (ret != BAD_FUNC_ARG)
+        return -10286;
+
     ssvSz = sizeof(ssv);
-    ret = wc_MakeSakkeEncapsulatedSSV(NULL, NULL, ssvSz, WC_SHA256, NULL, 1,
+    ret = wc_MakeSakkeEncapsulatedSSV(NULL, WC_SHA256, NULL, ssvSz,
             auth, NULL);
     if (ret != BAD_FUNC_ARG)
         return -10289;
-    ret = wc_MakeSakkeEncapsulatedSSV(&key, ssv, ssvSz, WC_SHA256, id, 1,
+    ret = wc_MakeSakkeEncapsulatedSSV(&key, WC_SHA256, NULL, ssvSz,
             auth, NULL);
     if (ret != BAD_FUNC_ARG)
         return -10290;
-    ret = wc_MakeSakkeEncapsulatedSSV(&key, ssv, ssvSz, WC_SHA256, NULL, 1,
-            auth, &authSz);
+    ret = wc_MakeSakkeEncapsulatedSSV(NULL, WC_SHA256, ssv, ssvSz,
+            auth, NULL);
     if (ret != BAD_FUNC_ARG)
         return -10291;
-    ret = wc_MakeSakkeEncapsulatedSSV(&key, NULL, ssvSz, WC_SHA256, id, 1,
+    ret = wc_MakeSakkeEncapsulatedSSV(NULL, WC_SHA256, NULL, ssvSz,
             auth, &authSz);
     if (ret != BAD_FUNC_ARG)
         return -10292;
-    ret = wc_MakeSakkeEncapsulatedSSV(NULL, ssv, ssvSz, WC_SHA256, id, 1,
-            auth, &authSz);
+    ret = wc_MakeSakkeEncapsulatedSSV(&key, WC_SHA256, ssv, ssvSz,
+            auth, NULL);
     if (ret != BAD_FUNC_ARG)
         return -10293;
+    ret = wc_MakeSakkeEncapsulatedSSV(&key, WC_SHA256, NULL, ssvSz,
+            auth, &authSz);
+    if (ret != BAD_FUNC_ARG)
+        return -10294;
+    ret = wc_MakeSakkeEncapsulatedSSV(NULL, WC_SHA256, ssv, ssvSz,
+            auth, &authSz);
+    if (ret != BAD_FUNC_ARG)
+        return -10295;
 
     ret = wc_GenerateSakkeSSV(NULL, NULL, data, NULL);
     if (ret != BAD_FUNC_ARG)
-        return -10294;
+        return -10296;
     ret = wc_GenerateSakkeSSV(&key, rng, data, NULL);
     if (ret != BAD_FUNC_ARG)
-        return -10295;
+        return -10297;
     ret = wc_GenerateSakkeSSV(&key, NULL, data, &ssvSz);
     if (ret != BAD_FUNC_ARG)
-        return -10296;
+        return -10298;
     ret = wc_GenerateSakkeSSV(NULL, rng, data, &ssvSz);
     if (ret != BAD_FUNC_ARG)
-        return -10297;
+        return -10299;
+
+    ret = wc_SetSakkeRsk(NULL, NULL, data, 1);
+    if (ret != BAD_FUNC_ARG)
+        return -10286;
+    ret = wc_SetSakkeRsk(&key, NULL, data, 1);
+    if (ret != BAD_FUNC_ARG)
+        return -10286;
+    ret = wc_SetSakkeRsk(NULL, rsk, data, 1);
+    if (ret != BAD_FUNC_ARG)
+        return -10286;
 
     ssvSz = sizeof(ssv);
     authSz = sizeof(auth);
-    ret = wc_DeriveSakkeSSV(NULL, WC_SHA256, NULL, 1, NULL, NULL, ssvSz,
-            NULL, authSz);
-    if (ret != BAD_FUNC_ARG)
-        return -10298;
-    ret = wc_DeriveSakkeSSV(&key, WC_SHA256, id, 1, rsk, ssv, ssvSz,
-            NULL, authSz);
-    if (ret != BAD_FUNC_ARG)
-        return -10299;
-    ret = wc_DeriveSakkeSSV(&key, WC_SHA256, id, 1, rsk, NULL, ssvSz,
-            auth, authSz);
+    ret = wc_DeriveSakkeSSV(NULL, WC_SHA256, NULL, ssvSz, NULL, authSz);
     if (ret != BAD_FUNC_ARG)
         return -10300;
-    ret = wc_DeriveSakkeSSV(&key, WC_SHA256, id, 1, NULL, ssv, ssvSz,
-            auth, authSz);
+    ret = wc_DeriveSakkeSSV(&key, WC_SHA256, NULL, ssvSz, NULL, authSz);
     if (ret != BAD_FUNC_ARG)
-        return -10301;
-    ret = wc_DeriveSakkeSSV(&key, WC_SHA256, NULL, 1, rsk, ssv, ssvSz,
-            auth, authSz);
+        return -10300;
+    ret = wc_DeriveSakkeSSV(NULL, WC_SHA256, ssv, ssvSz, NULL, authSz);
     if (ret != BAD_FUNC_ARG)
-        return -10302;
-    ret = wc_DeriveSakkeSSV(NULL, WC_SHA256, id, 1, rsk, ssv, ssvSz,
-            auth, authSz);
+        return -10300;
+    ret = wc_DeriveSakkeSSV(NULL, WC_SHA256, NULL, ssvSz, auth, authSz);
     if (ret != BAD_FUNC_ARG)
-        return -10303;
-
-    ret = wc_DeriveSakkeSSVPrecomp(NULL, WC_SHA256, NULL, 1, NULL, data, 1,
-            NULL, ssvSz, NULL, authSz);
+        return -10300;
+    ret = wc_DeriveSakkeSSV(&key, WC_SHA256, ssv, ssvSz, NULL, authSz);
     if (ret != BAD_FUNC_ARG)
-        return -10304;
-    ret = wc_DeriveSakkeSSVPrecomp(&key, WC_SHA256, NULL, 1, NULL, data, 1,
-            NULL, ssvSz, NULL, authSz);
+        return -10300;
+    ret = wc_DeriveSakkeSSV(&key, WC_SHA256, NULL, ssvSz, auth, authSz);
     if (ret != BAD_FUNC_ARG)
-        return -10305;
-    ret = wc_DeriveSakkeSSVPrecomp(NULL, WC_SHA256, id, 1, NULL, data, 1,
-            NULL, ssvSz, NULL, authSz);
+        return -10300;
+    ret = wc_DeriveSakkeSSV(NULL, WC_SHA256, ssv, ssvSz, auth, authSz);
     if (ret != BAD_FUNC_ARG)
-        return -10306;
-    ret = wc_DeriveSakkeSSVPrecomp(NULL, WC_SHA256, NULL, 1, rsk, data, 1,
-            NULL, ssvSz, NULL, authSz);
-    if (ret != BAD_FUNC_ARG)
-        return -10307;
-    ret = wc_DeriveSakkeSSVPrecomp(NULL, WC_SHA256, NULL, 1, NULL, data, 1,
-            ssv, ssvSz, NULL, authSz);
-    if (ret != BAD_FUNC_ARG)
-        return -10308;
-    ret = wc_DeriveSakkeSSVPrecomp(NULL, WC_SHA256, NULL, 1, NULL, data, 1,
-            NULL, ssvSz, auth, authSz);
-    if (ret != BAD_FUNC_ARG)
-        return -10309;
-    ret = wc_DeriveSakkeSSVPrecomp(&key, WC_SHA256, id, 1, rsk, data, 1,
-            ssv, ssvSz, NULL, authSz);
-    if (ret != BAD_FUNC_ARG)
-        return -10310;
-    ret = wc_DeriveSakkeSSVPrecomp(&key, WC_SHA256, id, 1, rsk, data, 1,
-            NULL, ssvSz, auth, authSz);
-    if (ret != BAD_FUNC_ARG)
-        return -10311;
-    ret = wc_DeriveSakkeSSVPrecomp(&key, WC_SHA256, id, 1, NULL, data, 1,
-            ssv, ssvSz, auth, authSz);
-    if (ret != BAD_FUNC_ARG)
-        return -10312;
-    ret = wc_DeriveSakkeSSVPrecomp(&key, WC_SHA256, NULL, 1, rsk, data, 1,
-            ssv, ssvSz, auth, authSz);
-    if (ret != BAD_FUNC_ARG)
-        return -10313;
-    ret = wc_DeriveSakkeSSVPrecomp(NULL, WC_SHA256, id, 1, rsk, data, 1,
-            ssv, ssvSz, auth, authSz);
-    if (ret != BAD_FUNC_ARG)
-        return -10314;
+        return -10300;
 
     wc_FreeSakkeKey(&key);
 
@@ -21796,11 +21803,18 @@ static int sakke_kat_derive_test(SakkeKey* key, ecc_point* rsk)
     if (valid != 1)
         return -10318;
 
-    XMEMCPY(tmpSsv, encSsv, sizeof(encSsv));
-    ret = wc_DeriveSakkeSSV(key, WC_SHA256, id, sizeof(id), rsk, tmpSsv,
-            sizeof(tmpSsv), auth, sizeof(auth));
+    ret = wc_SetSakkeRsk(key, rsk, NULL, 0);
     if (ret != 0)
         return -10319;
+    ret = wc_SetSakkeIdentity(key, id, sizeof(id));
+    if (ret != 0)
+        return -10319;
+
+    XMEMCPY(tmpSsv, encSsv, sizeof(encSsv));
+    ret = wc_DeriveSakkeSSV(key, WC_SHA256, tmpSsv, sizeof(tmpSsv), auth,
+            sizeof(auth));
+    if (ret != 0)
+        return -10322;
     if (XMEMCMP(tmpSsv, ssv, sizeof(ssv)) != 0)
         return -10320;
 
@@ -21832,9 +21846,13 @@ static int sakke_kat_derive_test(SakkeKey* key, ecc_point* rsk)
             return -10327;
     }
 
+    ret = wc_SetSakkeRsk(key, rsk, table, len);
+    if (ret != 0)
+        return -10319;
+
     XMEMCPY(tmpSsv, encSsv, sizeof(encSsv));
-    ret = wc_DeriveSakkeSSVPrecomp(key, WC_SHA256, id, sizeof(id), rsk, table,
-            len, tmpSsv, sizeof(tmpSsv), auth, sizeof(auth));
+    ret = wc_DeriveSakkeSSV(key, WC_SHA256, tmpSsv, sizeof(tmpSsv), auth,
+            sizeof(auth));
     if (ret != 0)
         return -10328;
     if (XMEMCMP(tmpSsv, ssv, sizeof(ssv)) != 0)
@@ -21959,17 +21977,21 @@ static int sakke_kat_encapsulate_test(SakkeKey* key)
     if (ret != 0)
         return -10334;
 
-    ret = wc_MakeSakkeEncapsulatedSSV(key, ssv, ssvSz, WC_SHA256, id, idSz,
-        auth, &authSz);
+    ret = wc_SetSakkeIdentity(key, id, idSz);
     if (ret != 0)
         return -10335;
-    if (authSz != 257)
+
+    ret = wc_MakeSakkeEncapsulatedSSV(key, WC_SHA256, ssv, ssvSz, auth,
+            &authSz);
+    if (ret != 0)
         return -10336;
+    if (authSz != 257)
+        return -10337;
 
     if (XMEMCMP(ssv, encSsv, ssvSz) != 0)
-        return -10337;
-    if (XMEMCMP(auth, expAuth, authSz) != 0)
         return -10338;
+    if (XMEMCMP(auth, expAuth, authSz) != 0)
+        return -10339;
 
     return 0;
 }
@@ -22146,21 +22168,25 @@ static int sakke_op_test(SakkeKey* priv, SakkeKey* pub, WC_RNG* rng,
     if (ret != 0)
         return -10380;
 
-    ret = wc_MakeSakkeEncapsulatedSSV(pub, ssv, ssvSz, WC_SHA256, id, idSz,
-        NULL, &authSz);
+    ret = wc_SetSakkeIdentity(pub, id, idSz);
+    if (ret != 0)
+        return -10380;
+
+    ret = wc_MakeSakkeEncapsulatedSSV(pub, WC_SHA256, ssv, ssvSz, NULL,
+            &authSz);
     if (ret != LENGTH_ONLY_E)
         return -10381;
     if (authSz != 257)
         return -10382;
 
     authSz--;
-    ret = wc_MakeSakkeEncapsulatedSSV(pub, ssv, ssvSz, WC_SHA256, id, idSz,
-        auth, &authSz);
+    ret = wc_MakeSakkeEncapsulatedSSV(pub, WC_SHA256, ssv, ssvSz, auth,
+            &authSz);
     if (ret == 0)
         return -10383;
     authSz++;
-    ret = wc_MakeSakkeEncapsulatedSSV(pub, ssv, ssvSz, WC_SHA256, id, idSz,
-        auth, &authSz);
+    ret = wc_MakeSakkeEncapsulatedSSV(pub, WC_SHA256, ssv, ssvSz, auth,
+            &authSz);
     if (ret != 0)
         return -10384;
     if (authSz != 257)
@@ -22185,26 +22211,30 @@ static int sakke_op_test(SakkeKey* priv, SakkeKey* pub, WC_RNG* rng,
     ret = wc_MakeSakkePointI(pub, ssv, ssvSz);
     if (ret != 0)
         return -10391;
-    ret = wc_MakeSakkeEncapsulatedSSV(pub, ssv, ssvSz, WC_SHA256, id, idSz,
-        auth, &authSz);
+    ret = wc_MakeSakkeEncapsulatedSSV(pub, WC_SHA256, ssv, ssvSz, auth,
+            &authSz);
     if (ret != 0)
         return -10392;
     if (authSz != 257)
         return -10393;
 
+    ret = wc_SetSakkeRsk(priv, rsk, NULL, 0);
+    if (ret != 0)
+        return -10392;
+    ret = wc_SetSakkeIdentity(priv, id, idSz);
+    if (ret != 0)
+        return -10392;
+
     authSz--;
-    ret = wc_DeriveSakkeSSV(priv, WC_SHA256, id, idSz, rsk, ssv, ssvSz, auth,
-                            authSz);
+    ret = wc_DeriveSakkeSSV(priv, WC_SHA256, ssv, ssvSz, auth, authSz);
     if (ret == 0)
         return -10394;
     authSz++;
-    ret = wc_DeriveSakkeSSV(priv, WC_SHA256, id, idSz, rsk, ssv, ssvSz, auth,
-                            authSz);
+    ret = wc_DeriveSakkeSSV(priv, WC_SHA256, ssv, ssvSz, auth, authSz);
     if (ret != 0)
         return -10395;
     ssv[0] ^= 0x80;
-    ret = wc_DeriveSakkeSSV(priv, WC_SHA256, id, idSz, rsk, ssv, ssvSz, auth,
-                            authSz);
+    ret = wc_DeriveSakkeSSV(priv, WC_SHA256, ssv, ssvSz, auth, authSz);
     if (ret != SAKKE_VERIFY_FAIL_E)
         return -10396;
     ssv[0] ^= 0x80;
@@ -22213,8 +22243,7 @@ static int sakke_op_test(SakkeKey* priv, SakkeKey* pub, WC_RNG* rng,
     ret = wc_MakeSakkePointI(pub, ssv, idSz);
     if (ret != 0)
         return -10397;
-    ret = wc_DeriveSakkeSSV(priv, WC_SHA256, id, idSz, rsk, ssv, ssvSz, auth,
-                            authSz);
+    ret = wc_DeriveSakkeSSV(priv, WC_SHA256, ssv, ssvSz, auth, authSz);
     if (ret != 0)
         return -10398;
 

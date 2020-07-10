@@ -52401,7 +52401,3 @@ _sp_1024_mont_sub_avx2_16:
 .size	sp_1024_mont_sub_avx2_16,.-sp_1024_mont_sub_avx2_16
 #endif /* __APPLE__ */
 #endif /* WOLFSSL_SP_1024 */
-
-#if defined(__linux__) && defined(__ELF__)
-.section	.note.GNU-stack,"",%progbits
-#endif

@@ -579,7 +579,7 @@ void wc_ecc_del_point_h(ecc_point* p, void* h);
 WOLFSSL_API
 void wc_ecc_forcezero_point(ecc_point* p);
 WOLFSSL_API
-int wc_ecc_copy_point(ecc_point* p, ecc_point *r);
+int wc_ecc_copy_point(const ecc_point* p, ecc_point *r);
 WOLFSSL_API
 int wc_ecc_cmp_point(ecc_point* a, ecc_point *b);
 WOLFSSL_API
@@ -587,10 +587,10 @@ int wc_ecc_point_is_at_infinity(ecc_point *p);
 
 #if !defined(WOLFSSL_ATECC508A) && !defined(WOLFSSL_ATECC608A)
 WOLFSSL_API
-int wc_ecc_mulmod(mp_int* k, ecc_point *G, ecc_point *R,
+int wc_ecc_mulmod(const mp_int* k, ecc_point *G, ecc_point *R,
                   mp_int* a, mp_int* modulus, int map);
 WOLFSSL_LOCAL
-int wc_ecc_mulmod_ex(mp_int* k, ecc_point *G, ecc_point *R,
+int wc_ecc_mulmod_ex(const mp_int* k, ecc_point *G, ecc_point *R,
                   mp_int* a, mp_int* modulus, int map, void* heap);
 #endif /* !WOLFSSL_ATECC508A */
 
@@ -665,10 +665,11 @@ int wc_ecc_export_point_der_compressed(const int curve_idx, ecc_point* point,
 
 #ifdef HAVE_ECC_KEY_IMPORT
 WOLFSSL_API
-int wc_ecc_import_point_der_ex(byte* in, word32 inLen, const int curve_idx,
-                               ecc_point* point, int shortKeySize);
+int wc_ecc_import_point_der_ex(const byte* in, word32 inLen,
+                               const int curve_idx, ecc_point* point,
+                               int shortKeySize);
 WOLFSSL_API
-int wc_ecc_import_point_der(byte* in, word32 inLen, const int curve_idx,
+int wc_ecc_import_point_der(const byte* in, word32 inLen, const int curve_idx,
                             ecc_point* point);
 #endif /* HAVE_ECC_KEY_IMPORT */
 
@@ -678,7 +679,7 @@ int wc_ecc_size(ecc_key* key);
 WOLFSSL_API
 int wc_ecc_sig_size_calc(int sz);
 WOLFSSL_API
-int wc_ecc_sig_size(ecc_key* key);
+int wc_ecc_sig_size(const ecc_key* key);
 
 WOLFSSL_API
 int wc_ecc_get_oid(word32 oidSum, const byte** oid, word32* oidSz);

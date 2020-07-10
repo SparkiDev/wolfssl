@@ -14965,16 +14965,20 @@ static int sp_256_ecc_mulmod_stripe_10(sp_point_256* r,
         XMEMCPY(rt->z, p256_norm_mod, sizeof(p256_norm_mod));
 
         y = 0;
-        for (j=0,x=31; j<8; j++,x+=32) {
+        x = 31;
+        for (j = 0; j < 8; j++) {
             y |= ((k[x / 26] >> (x % 26)) & 1) << j;
+            x += 32;
         }
         XMEMCPY(rt->x, table[y].x, sizeof(table[y].x));
         XMEMCPY(rt->y, table[y].y, sizeof(table[y].y));
         rt->infinity = !y;
-        for (i=30; i>=0; i--) {
+        for (i = 30; i >= 0; i--) {
             y = 0;
-            for (j=0,x=i; j<8; j++,x+=32) {
+            x = i;
+            for (j=0; j<8; j++) {
                 y |= ((k[x / 26] >> (x % 26)) & 1) << j;
+                x += 32;
             }
 
             sp_256_proj_point_dbl_10(rt, rt, t);
@@ -15158,7 +15162,7 @@ static int sp_256_ecc_mulmod_10(sp_point_256* r, const sp_point_256* g,
  * heap  Heap to use for allocation.
  * returns MEMORY_E when memory allocation fails and MP_OKAY on success.
  */
-int sp_ecc_mulmod_256(mp_int* km, ecc_point* gm, ecc_point* r, int map,
+int sp_ecc_mulmod_256(const mp_int* km, ecc_point* gm, ecc_point* r, int map,
         void* heap)
 {
 #if (!defined(WOLFSSL_SP_SMALL) && !defined(WOLFSSL_SMALL_STACK)) || defined(WOLFSSL_SP_NO_MALLOC)
@@ -16552,7 +16556,7 @@ static int sp_256_ecc_mulmod_base_10(sp_point_256* r, const sp_digit* k,
  * heap  Heap to use for allocation.
  * returns MEMORY_E when memory allocation fails and MP_OKAY on success.
  */
-int sp_ecc_mulmod_base_256(mp_int* km, ecc_point* r, int map, void* heap)
+int sp_ecc_mulmod_base_256(const mp_int* km, ecc_point* r, int map, void* heap)
 {
 #if (!defined(WOLFSSL_SP_SMALL) && !defined(WOLFSSL_SMALL_STACK)) || defined(WOLFSSL_SP_NO_MALLOC)
     sp_point_256 p;
@@ -20916,16 +20920,20 @@ static int sp_384_ecc_mulmod_stripe_15(sp_point_384* r,
         XMEMCPY(rt->z, p384_norm_mod, sizeof(p384_norm_mod));
 
         y = 0;
-        for (j=0,x=47; j<8; j++,x+=48) {
+        x = 47;
+        for (j = 0; j < 8; j++) {
             y |= ((k[x / 26] >> (x % 26)) & 1) << j;
+            x += 48;
         }
         XMEMCPY(rt->x, table[y].x, sizeof(table[y].x));
         XMEMCPY(rt->y, table[y].y, sizeof(table[y].y));
         rt->infinity = !y;
-        for (i=46; i>=0; i--) {
+        for (i = 46; i >= 0; i--) {
             y = 0;
-            for (j=0,x=i; j<8; j++,x+=48) {
+            x = i;
+            for (j=0; j<8; j++) {
                 y |= ((k[x / 26] >> (x % 26)) & 1) << j;
+                x += 48;
             }
 
             sp_384_proj_point_dbl_15(rt, rt, t);
@@ -21109,7 +21117,7 @@ static int sp_384_ecc_mulmod_15(sp_point_384* r, const sp_point_384* g,
  * heap  Heap to use for allocation.
  * returns MEMORY_E when memory allocation fails and MP_OKAY on success.
  */
-int sp_ecc_mulmod_384(mp_int* km, ecc_point* gm, ecc_point* r, int map,
+int sp_ecc_mulmod_384(const mp_int* km, ecc_point* gm, ecc_point* r, int map,
         void* heap)
 {
 #if (!defined(WOLFSSL_SP_SMALL) && !defined(WOLFSSL_SMALL_STACK)) || defined(WOLFSSL_SP_NO_MALLOC)
@@ -23013,7 +23021,7 @@ static int sp_384_ecc_mulmod_base_15(sp_point_384* r, const sp_digit* k,
  * heap  Heap to use for allocation.
  * returns MEMORY_E when memory allocation fails and MP_OKAY on success.
  */
-int sp_ecc_mulmod_base_384(mp_int* km, ecc_point* r, int map, void* heap)
+int sp_ecc_mulmod_base_384(const mp_int* km, ecc_point* r, int map, void* heap)
 {
 #if (!defined(WOLFSSL_SP_SMALL) && !defined(WOLFSSL_SMALL_STACK)) || defined(WOLFSSL_SP_NO_MALLOC)
     sp_point_384 p;
@@ -27646,16 +27654,20 @@ static int sp_1024_ecc_mulmod_stripe_42(sp_point_1024* r,
         XMEMCPY(rt->z, p1024_norm_mod, sizeof(p1024_norm_mod));
 
         y = 0;
-        for (j=0,x=127; j<8; j++,x+=128) {
+        x = 127;
+        for (j = 0; j < 8; j++) {
             y |= ((k[x / 25] >> (x % 25)) & 1) << j;
+            x += 128;
         }
         XMEMCPY(rt->x, table[y].x, sizeof(table[y].x));
         XMEMCPY(rt->y, table[y].y, sizeof(table[y].y));
         rt->infinity = !y;
-        for (i=126; i>=0; i--) {
+        for (i = 126; i >= 0; i--) {
             y = 0;
-            for (j=0,x=i; j<8; j++,x+=128) {
+            x = i;
+            for (j=0; j<8; j++) {
                 y |= ((k[x / 25] >> (x % 25)) & 1) << j;
+                x += 128;
             }
 
             sp_1024_proj_point_dbl_42(rt, rt, t);
@@ -27839,7 +27851,7 @@ static int sp_1024_ecc_mulmod_42(sp_point_1024* r, const sp_point_1024* g,
  * heap  Heap to use for allocation.
  * returns MEMORY_E when memory allocation fails and MP_OKAY on success.
  */
-int sp_ecc_mulmod_1024(mp_int* km, ecc_point* gm, ecc_point* r, int map,
+int sp_ecc_mulmod_1024(const mp_int* km, ecc_point* gm, ecc_point* r, int map,
         void* heap)
 {
 #if (!defined(WOLFSSL_SP_SMALL) && !defined(WOLFSSL_SMALL_STACK)) || defined(WOLFSSL_SP_NO_MALLOC)
@@ -31783,7 +31795,7 @@ static int sp_1024_ecc_mulmod_base_42(sp_point_1024* r, const sp_digit* k,
  * heap  Heap to use for allocation.
  * returns MEMORY_E when memory allocation fails and MP_OKAY on success.
  */
-int sp_ecc_mulmod_base_1024(mp_int* km, ecc_point* r, int map, void* heap)
+int sp_ecc_mulmod_base_1024(const mp_int* km, ecc_point* r, int map, void* heap)
 {
 #if (!defined(WOLFSSL_SP_SMALL) && !defined(WOLFSSL_SMALL_STACK)) || defined(WOLFSSL_SP_NO_MALLOC)
     sp_point_1024 p;
@@ -31915,7 +31927,7 @@ int sp_ecc_gen_table_1024(ecc_point* gm, byte* table, word32* len, void* heap)
  * heap   Heap to use for allocation.
  * returns MEMORY_E when memory allocation fails and MP_OKAY on success.
  */
-int sp_ecc_mulmod_table_1024(mp_int* km, ecc_point* gm, byte* table,
+int sp_ecc_mulmod_table_1024(const mp_int* km, ecc_point* gm, byte* table,
         ecc_point* r, int map, void* heap)
 {
 #if (!defined(WOLFSSL_SP_SMALL) && !defined(WOLFSSL_SMALL_STACK)) || defined(WOLFSSL_SP_NO_MALLOC)
@@ -34789,7 +34801,8 @@ int sp_Pairing_1024(ecc_point* pm, ecc_point* qm, mp_int* res)
  *          LENGTH_ONLY_E when table is NULL and only length returned.
  *          BUFFER_E when len is too small.
  */
-int sp_Pairing_gen_precomp_1024(ecc_point* pm, byte* table, word32* len)
+int sp_Pairing_gen_precomp_1024(const ecc_point* pm, byte* table,
+        word32* len)
 {
     int err = 0;
 
@@ -34998,7 +35011,8 @@ static const signed char sp_1024_order_op_pre[] = {
  *          BUFFER_E when len is too small.
  *          MEMORY_E when dynamic memory allocation fauls.
  */
-int sp_Pairing_gen_precomp_1024(ecc_point* pm, byte* table, word32* len)
+int sp_Pairing_gen_precomp_1024(const ecc_point* pm, byte* table,
+        word32* len)
 {
     int err = 0;
     sp_point_1024 p[1];

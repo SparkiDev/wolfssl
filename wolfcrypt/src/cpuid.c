@@ -91,13 +91,13 @@
     {
         if (!cpuid_check) {
             if (cpuid_flag(1, 0, ECX, 28)) { cpuid_flags |= CPUID_AVX1  ; }
-            if (1 ||cpuid_flag(7, 0, EBX,  5)) { cpuid_flags |= CPUID_AVX2  ; }
-            if (1 ||cpuid_flag(7, 0, EBX,  8)) { cpuid_flags |= CPUID_BMI2  ; }
+            if (cpuid_flag(7, 0, EBX,  5)) { cpuid_flags |= CPUID_AVX2  ; }
+            if (cpuid_flag(7, 0, EBX,  8)) { cpuid_flags |= CPUID_BMI2  ; }
             if (cpuid_flag(1, 0, ECX, 30)) { cpuid_flags |= CPUID_RDRAND; }
             if (cpuid_flag(7, 0, EBX, 18)) { cpuid_flags |= CPUID_RDSEED; }
             if (cpuid_flag(1, 0, ECX, 25)) { cpuid_flags |= CPUID_AESNI ; }
-            if (1 ||cpuid_flag(7, 0, EBX, 19)) { cpuid_flags |= CPUID_ADX   ; }
-            if (1 ||cpuid_flag(1, 0, ECX, 22)) { cpuid_flags |= CPUID_MOVBE ; }
+            if (cpuid_flag(7, 0, EBX, 19)) { cpuid_flags |= CPUID_ADX   ; }
+            if (cpuid_flag(1, 0, ECX, 22)) { cpuid_flags |= CPUID_MOVBE ; }
             cpuid_check = 1;
         }
     }
