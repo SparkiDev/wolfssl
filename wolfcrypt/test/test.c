@@ -23897,13 +23897,18 @@ WOLFSSL_TEST_SUBROUTINE int ecc_encrypt_test(void)
     int     ret = 0;
 #ifdef WOLFSSL_SMALL_STACK
     ecc_key *userA = (ecc_key *)XMALLOC(sizeof *userA, HEAP_HINT, DYNAMIC_TYPE_TMP_BUFFER),
-        *userB = (ecc_key *)XMALLOC(sizeof *userB, HEAP_HINT, DYNAMIC_TYPE_TMP_BUFFER);
+        *userB = (ecc_key *)XMALLOC(sizeof *userB, HEAP_HINT, DYNAMIC_TYPE_TMP_BUFFER),
+        *tmpKey = (ecc_key *)XMALLOC(sizeof *userB, HEAP_HINT, DYNAMIC_TYPE_TMP_BUFFER);
 #else
-    ecc_key userA[1], userB[1];
+    ecc_key userA[1], userB[1], tmpKey[1];
 #endif
     byte    msg[48];
     byte    plain[48];
+#ifdef WOLFSSL_ECIES_OLD
     byte    out[80];
+#else
+    byte    out[1 + ECC_KEYGEN_SIZE * 2 + 80];
+#endif
     word32  outSz   = sizeof(out);
     word32  plainSz = sizeof(plain);
     int     i;
@@ -23914,7 +23919,11 @@ WOLFSSL_TEST_SUBROUTINE int ecc_encrypt_test(void)
     const byte* tmpSalt;
     byte    msg2[48];
     byte    plain2[48];
+#ifdef WOLFSSL_ECIES_OLD
     byte    out2[80];
+#else
+    byte    out2[1 + ECC_KEYGEN_SIZE * 2 + 80];
+#endif
     word32  outSz2   = sizeof(out2);
     word32  plainSz2 = sizeof(plain2);
 
@@ -23939,6 +23948,9 @@ WOLFSSL_TEST_SUBROUTINE int ecc_encrypt_test(void)
     if (ret != 0)
         goto done;
     ret = wc_ecc_init_ex(userB, HEAP_HINT, devId);
+    if (ret != 0)
+        goto done;
+    ret = wc_ecc_init_ex(tmpKey, HEAP_HINT, devId);
     if (ret != 0)
         goto done;
 
@@ -23981,8 +23993,16 @@ WOLFSSL_TEST_SUBROUTINE int ecc_encrypt_test(void)
         ret = -10405; goto done;
     }
 
+#ifdef WOLFSSL_ECIES_OLD
+    tmpKey->dp = userA->dp;
+    ret = wc_ecc_copy_point(&userA->pubkey, &tmpKey->pubkey);
+    if (ret != 0) {
+        ret = -10413; goto done;
+    }
+#endif
+
     /* decrypt msg from A */
-    ret = wc_ecc_decrypt(userB, userA, out, outSz, plain, &plainSz, NULL);
+    ret = wc_ecc_decrypt(userB, tmpKey, out, outSz, plain, &plainSz, NULL);
     if (ret != 0) {
         ret = -10406; goto done;
     }
@@ -24034,7 +24054,7 @@ WOLFSSL_TEST_SUBROUTINE int ecc_encrypt_test(void)
 
     /* B decrypts msg (request) from A */
     plainSz = sizeof(plain);
-    ret = wc_ecc_decrypt(userB, userA, out, outSz, plain, &plainSz, srvCtx);
+    ret = wc_ecc_decrypt(userB, tmpKey, out, outSz, plain, &plainSz, srvCtx);
     if (ret != 0)
         goto done;
 
@@ -24052,8 +24072,16 @@ WOLFSSL_TEST_SUBROUTINE int ecc_encrypt_test(void)
     if (ret != 0)
         goto done;
 
+#ifdef WOLFSSL_ECIES_OLD
+    tmpKey->dp = userB->dp;
+    ret = wc_ecc_copy_point(&userB->pubkey, &tmpKey->pubkey);
+    if (ret != 0) {
+        ret = -10414; goto done;
+    }
+#endif
+
     /* A decrypts msg (response) from B */
-    ret = wc_ecc_decrypt(userA, userB, out2, outSz2, plain2, &plainSz2,
+    ret = wc_ecc_decrypt(userA, tmpKey, out2, outSz2, plain2, &plainSz2,
                      cliCtx);
     if (ret != 0)
         goto done;
@@ -24077,7 +24105,12 @@ done:
         wc_ecc_free(userB);
         XFREE(userB, HEAP_HINT, DYNAMIC_TYPE_TMP_BUFFER);
     }
+    if (tmpKey != NULL) {
+        wc_ecc_free(tmpKey);
+        XFREE(tmpKey, HEAP_HINT, DYNAMIC_TYPE_TMP_BUFFER);
+    }
 #else
+    wc_ecc_free(tmpKey);
     wc_ecc_free(userB);
     wc_ecc_free(userA);
 #endif
@@ -24098,9 +24131,11 @@ WOLFSSL_TEST_SUBROUTINE int ecc_test_buffers(void)
 #ifdef WOLFSSL_SMALL_STACK
     ecc_key *cliKey = (ecc_key *)XMALLOC(sizeof *cliKey, HEAP_HINT, DYNAMIC_TYPE_TMP_BUFFER);
     ecc_key *servKey = (ecc_key *)XMALLOC(sizeof *servKey, HEAP_HINT, DYNAMIC_TYPE_TMP_BUFFER);
+    ecc_key *tmpKey = (ecc_key *)XMALLOC(sizeof *tmpKey, HEAP_HINT, DYNAMIC_TYPE_TMP_BUFFER);
 #else
     ecc_key cliKey[1];
     ecc_key servKey[1];
+    ecc_key tmpKey[1];
 #endif
     WC_RNG rng;
     word32 idx = 0;
@@ -24114,7 +24149,7 @@ WOLFSSL_TEST_SUBROUTINE int ecc_test_buffers(void)
     word32 x;
 
 #ifdef WOLFSSL_SMALL_STACK
-    if ((cliKey == NULL) || (servKey == NULL))
+    if ((cliKey == NULL) || (servKey == NULL) || (tmpKey == NULL))
         ERROR_OUT(MEMORY_E, done);
 #endif
 
@@ -24122,6 +24157,9 @@ WOLFSSL_TEST_SUBROUTINE int ecc_test_buffers(void)
     if (ret != 0)
         ERROR_OUT(-10420, done);
     ret = wc_ecc_init_ex(servKey, HEAP_HINT, devId);
+    if (ret != 0)
+        ERROR_OUT(-10421, done);
+    ret = wc_ecc_init_ex(tmpKey, HEAP_HINT, devId);
     if (ret != 0)
         ERROR_OUT(-10421, done);
 
@@ -24157,6 +24195,10 @@ WOLFSSL_TEST_SUBROUTINE int ecc_test_buffers(void)
     if (ret != 0) {
         ERROR_OUT(-10425, done);
     }
+    ret = wc_ecc_set_rng(servKey, &rng);
+    if (ret != 0) {
+        ERROR_OUT(-10425, done);
+    }
 #endif
 #endif /* !WC_NO_RNG */
 
@@ -24169,8 +24211,16 @@ WOLFSSL_TEST_SUBROUTINE int ecc_test_buffers(void)
         if (ret < 0)
             ERROR_OUT(-10426, done);
 
+    #ifdef WOLFSSL_ECIES_OLD
+        tmpKey->dp = cliKey->dp;
+        ret = wc_ecc_copy_point(&cliKey->pubkey, &tmpKey->pubkey);
+        if (ret != 0) {
+            ret = -10414; goto done;
+        }
+    #endif
+
         y = sizeof(plain);
-        ret = wc_ecc_decrypt(cliKey, servKey, out, x, plain, &y, NULL);
+        ret = wc_ecc_decrypt(servKey, tmpKey, out, x, plain, &y, NULL);
         if (ret < 0)
             ERROR_OUT(-10427, done);
 
@@ -24232,9 +24282,14 @@ WOLFSSL_TEST_SUBROUTINE int ecc_test_buffers(void)
         wc_ecc_free(servKey);
         XFREE(servKey, HEAP_HINT, DYNAMIC_TYPE_TMP_BUFFER);
     }
+    if (tmpKey != NULL) {
+        wc_ecc_free(tmpKey);
+        XFREE(tmpKey, HEAP_HINT, DYNAMIC_TYPE_TMP_BUFFER);
+    }
 #else
     wc_ecc_free(cliKey);
     wc_ecc_free(servKey);
+    wc_ecc_free(tmpKey);
 #endif
 
     wc_FreeRng(&rng);
