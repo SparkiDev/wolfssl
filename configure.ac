@@ -5107,6 +5107,21 @@ do
     fi
     ;;
 
+  smallfast)
+    ENABLED_SP_SMALL=yes
+    ENABLED_SP_RSA=yes
+    ENABLED_SP_DH=yes
+    ENABLED_SP_FF_2048=yes
+    ENABLED_SP_FF_3072=yes
+    ENABLED_SP_ECC=yes
+    ENABLED_SP_EC_256=yes
+    if test "$host_cpu" = "x86_64"; then
+      ENABLED_SP_FF_4096=yes
+      ENABLED_SP_EC_384=yes
+    fi
+    AM_CFLAGS="$AM_CFLAGS -DWOLFSSL_SP_FAST_MODEXP"
+    ;;
+
   yes)
     ENABLED_SP_RSA=yes
     ENABLED_SP_DH=yes
